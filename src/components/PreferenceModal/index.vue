@@ -65,18 +65,15 @@
 import { reactive, computed, nextTick } from "vue";
 import { useAppStore } from "@/store/app";
 import { Lang, Site } from "@/enums";
+import { useUserStore } from "@/store/user";
 defineOptions({
   name: "PreferenceModal"
 });
 
-const emit = defineEmits(["confirm"]);
+const emit = defineEmits(["success"]);
 const appStore = useAppStore();
-const visible = computed({
-  get: () => appStore.isFirstLogin && !appStore.hasSetPreference,
-  set: (val) => {
-    if (!val) appStore.setFirstLogin(false);
-  }
-});
+const userStore = useUserStore();
+const visible = computed(() => !userStore.hasSetPreference);
 
 const siteOptions = computed(() => {
   return Object.entries(appStore.sitesMap).map(([key, value]) => ({
@@ -119,17 +116,13 @@ const handleSiteChange = (val: string) => {
 };
 
 const handleSubmit = async () => {
-  console.log("PreferenceModal: handleSubmit started", form);
   await appStore.setPreferences({
     site: form.site,
     timezone: form.timezone!,
     lang: form.lang!
   });
-  console.log("PreferenceModal: setPreferences finished");
   await nextTick();
-  appStore.setFirstLogin(false);
-  console.log("PreferenceModal: emitting confirm");
-  emit("confirm");
+  emit("success");
 };
 </script>
 

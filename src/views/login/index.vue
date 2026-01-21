@@ -35,7 +35,6 @@
           />
 
           <!-- 注册表单 -->
-
           <RegisterForm
             v-else-if="mode === 'register'"
             @success="handleSuccess"
@@ -44,6 +43,7 @@
           <!-- 验证码表单 -->
           <VerifyCodeForm
             v-else-if="mode === 'verify'"
+            :register-data="registerData"
             @success="handleSuccess"
             @switch="handleSwitch"
           />
@@ -52,16 +52,15 @@
     </div>
 
     <!-- 偏好设置弹窗 -->
-    <PreferenceModal @confirm="handlePreferenceConfirm" />
+    <PreferenceModal @success="redirectToHome" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { ElMessage } from "element-plus";
 import { useUserStore } from "@/store/user";
-import { useAppStore } from "@/store/app";
 import { useI18n } from "vue-i18n";
 import LoginForm from "./components/LoginForm.vue";
 import RegisterForm from "./components/RegisterForm.vue";
@@ -73,35 +72,25 @@ const { t } = useI18n();
 const router = useRouter();
 const route = useRoute();
 const userStore = useUserStore();
-const appStore = useAppStore();
 
 const mode = ref<"login" | "register" | "verify">("login");
+const registerData = ref({ email: "", password: "" });
 
-const handleSwitch = (_mode: "login" | "register" | "verify") => {
+const handleSwitch = (
+  _mode: "login" | "register" | "verify",
+  data?: { email: string; password: string }
+) => {
   mode.value = _mode;
+  if (data) {
+    registerData.value = data;
+  }
 };
 
 const handleSuccess = async (type: "login" | "register") => {
   if (type === "login") {
-    // 模拟登录成功
-    await userStore.login({
-      token: "mock-token",
-      userInfo: {
-        name: "Admin",
-        avatar: ""
-      }
-    });
-
-    // 1. 登录后立即尝试获取云端偏好
-    await appStore.fetchPreferences();
-
-    // 2. 如果已经设置过偏好 (来自本地或云端)，直接跳转
-    if (appStore.hasSetPreference) {
+    if (userStore.hasSetPreference) {
+      ElMessage.success(t("登录成功"));
       redirectToHome();
-    } else {
-      // 3. 否则触发弹窗
-      appStore.setFirstLogin(true);
-      ElMessage.success(t("登录成功，请设置您的偏好"));
     }
   } else {
     ElMessage.success(t("注册成功，请登录"));
@@ -109,12 +98,7 @@ const handleSuccess = async (type: "login" | "register") => {
   }
 };
 
-const handlePreferenceConfirm = () => {
-  redirectToHome();
-};
-
 const redirectToHome = () => {
-  ElMessage.success(t("登录成功"));
   const redirect = route.query.redirect as string;
   if (redirect && redirect !== "/login") {
     router.push(redirect);

@@ -85,22 +85,22 @@ export const routes: RouteRecordRaw[] = [
       {
         path: "recharge",
         name: "Recharge",
-        component: () => import("@/views/home/index.vue"),
-        // component: () => import("@/views/finance/recharge.vue"),
+        // component: () => import("@/views/home/index.vue"),
+        component: () => import("@/views/finance/recharge.vue"),
         meta: { title: "充值", requireAuth: true, i18n: "web.gfuc.recharge" }
       },
       {
         path: "record",
         name: "RechargeRecord",
-        component: () => import("@/views/home/index.vue"),
-        // component: () => import("@/views/finance/record.vue"),
+        // component: () => import("@/views/home/index.vue"),
+        component: () => import("@/views/finance/record.vue"),
         meta: { title: "充值记录", i18n: "web.gfuc.recharge_record" }
       },
       {
         path: "balance",
         name: "Balance",
-        component: () => import("@/views/home/index.vue"),
-        // component: () => import("@/views/finance/balance.vue"),
+        // component: () => import("@/views/home/index.vue"),
+        component: () => import("@/views/finance/balance.vue"),
         meta: { title: "余额", requireAuth: true, i18n: "web.gfuc.balance" }
       },
       {

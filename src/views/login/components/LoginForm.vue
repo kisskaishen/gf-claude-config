@@ -53,10 +53,13 @@
 import { ref, reactive, watch } from "vue";
 import { type FormInstance, type FormRules } from "element-plus";
 import { useI18n } from "vue-i18n";
+import { useUserStore } from "@/store/user";
 
 const emit = defineEmits(["switch", "success"]);
 
 const { t } = useI18n();
+
+const userStore = useUserStore();
 
 // --- 登录逻辑 ---
 const showCaptcha = ref(false);
@@ -93,68 +96,11 @@ const handleLogin = async () => {
 
   await loginFormRef.value.validate(async (valid) => {
     if (valid) {
-      // 模拟后端接口返回
-      // 实际开发中这里会是: const res = await loginApi(loginData)
-
-      // 模拟逻辑：
-      // 1. 账号不存在或密码错误 (1次): code: 40101
-      // 2. 账号不存在或密码错误 (2-4次): code: 40102
-      // 3. 账号锁定: code: 40103
-      // 4. 验证码错误: code: 40104
-
-      const mockLoginApi = (data: any) => {
-        return new Promise((resolve, reject) => {
-          if (data.email === "locked@gofo.com") {
-            reject({ code: 40103 });
-          } else if (data.email === "error1@gofo.com") {
-            reject({ code: 40101 });
-          } else if (data.email === "error2@gofo.com") {
-            reject({ code: 40102 });
-          } else if (
-            showCaptcha.value &&
-            data.captcha.toUpperCase() !== "T4FR"
-          ) {
-            reject({ code: 40104 });
-          } else if (
-            data.email === "admin@gofo.com" &&
-            data.password === "Password123!"
-          ) {
-            resolve({ code: 200 });
-          } else {
-            // 默认第一次错
-            reject({ code: 40101 });
-          }
-        });
-      };
-
       try {
-        await mockLoginApi(loginData);
+        await userStore.login(loginData);
         showCaptcha.value = false;
         emit("success", "login");
       } catch (error: any) {
-        const { code } = error;
-
-        switch (code) {
-          case 40101:
-            showCaptcha.value = true;
-            ElMessage.error(t("您输入的账号密码错误，请重新输入。"));
-            break;
-          case 40102:
-            showCaptcha.value = true;
-            ElMessage.error(
-              t("您输入的账号密码错误，请重新输入。输错5次将锁定账号")
-            );
-            break;
-          case 40103:
-            ElMessage.error(t("账号已被锁定"));
-            break;
-          case 40104:
-            ElMessage.error(t("验证码错误"));
-            break;
-          default:
-            ElMessage.error(t("登录失败，请稍后再试"));
-        }
-
         if (showCaptcha.value) {
           refreshCaptcha();
         }

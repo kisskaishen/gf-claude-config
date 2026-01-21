@@ -3,6 +3,8 @@ import { defineStore } from "pinia";
 import { Lang, Site } from "@/enums";
 import { getInitialLang, setI18nLang } from "@/lang";
 import { store } from "@/store";
+import { useUserStore } from "./user";
+import { postSavePreferences } from "@/api/user";
 
 // 语言
 
@@ -34,6 +36,7 @@ const timezonesMap = {
 export const useAppStore = defineStore(
   "app",
   () => {
+    const userStore = useUserStore();
     // 侧边栏状态
     const sidebar = reactive({
       opened: true,
@@ -45,12 +48,6 @@ export const useAppStore = defineStore(
     const timezone = ref(timezonesMap.Local);
 
     const site = ref(Site.fr);
-
-    // 是否已设置偏好
-    const hasSetPreference = ref(false);
-
-    // 是否是登录后第一次进入 (不持久化)
-    const isFirstLogin = ref(false);
 
     // Actions
     const toggleSidebar = () => {
@@ -76,62 +73,22 @@ export const useAppStore = defineStore(
       console.log("Save timezone to cloud:", tz);
     };
 
-    const setFirstLogin = (val: boolean) => {
-      isFirstLogin.value = val;
-    };
-
-    const fetchPreferences = async () => {
-      // 模拟从云端获取偏好设置
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          const cloudData = {
-            site: Site.it,
-            timezone: "Europe/Rome",
-            lang: Lang.it,
-            hasSetPreference: true // 云端标记已设置
-          };
-
-          // 逻辑：优先取 localstorage (即当前 store 的值)，如果本地没有设置过，才取云端
-          if (!hasSetPreference.value) {
-            console.log(
-              "AppStore: Local preferences not found, syncing from cloud"
-            );
-            site.value = cloudData.site;
-            timezone.value = cloudData.timezone;
-            lang.value = cloudData.lang;
-            hasSetPreference.value = cloudData.hasSetPreference;
-            setI18nLang(cloudData.lang);
-          } else {
-            console.log(
-              "AppStore: Local preferences found, skipping cloud sync"
-            );
-          }
-
-          resolve(cloudData);
-        }, 500);
-      });
-    };
-
     const setPreferences = async (data: {
       site: Site;
       timezone: string;
       lang: Lang;
     }) => {
-      // 模拟接口存储
-      console.log("Saving preferences to cloud...", {
-        ...data,
-        hasSetPreference: true
+      await postSavePreferences({
+        ...data
       });
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          // 先标记已设置偏好，防止状态同步延迟
-          hasSetPreference.value = true;
-          site.value = data.site;
-          timezone.value = data.timezone;
-          lang.value = data.lang;
-          setI18nLang(data.lang);
-          resolve(true);
-        }, 500);
+      site.value = data.site;
+      timezone.value = data.timezone;
+      lang.value = data.lang;
+      setI18nLang(data.lang);
+      userStore.setUserInfo({
+        defaultSite: data.site,
+        defaultLanguage: data.lang,
+        defaultTimeZone: data.timezone
       });
     };
 
@@ -143,15 +100,12 @@ export const useAppStore = defineStore(
       langsMap,
       timezone,
       timezonesMap,
-      hasSetPreference,
-      isFirstLogin,
+
       toggleSidebar,
       setSite,
       setLang,
       setTimezone,
-      setPreferences,
-      setFirstLogin,
-      fetchPreferences
+      setPreferences
     };
   },
   {

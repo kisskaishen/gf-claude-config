@@ -139,6 +139,7 @@ import {
 } from "element-plus";
 import { useI18n } from "vue-i18n";
 import AgreementModal from "./AgreementModal.vue";
+import { postVerifyEmail } from "@/api/user";
 
 const { t } = useI18n();
 
@@ -205,13 +206,17 @@ const strength = computed(() => {
 const handleRegister = async () => {
   if (!registerFormRef.value) return;
 
-  await registerFormRef.value.validate((valid) => {
+  await registerFormRef.value.validate(async (valid) => {
     if (valid) {
       if (!registerData.agree1) {
         ElMessage.warning(t("请同意注册协议"));
         return;
       }
-      emit("switch", "verify");
+      await postVerifyEmail({ email: registerData.email });
+      emit("switch", "verify", {
+        email: registerData.email,
+        password: registerData.password
+      });
     }
   });
 };
