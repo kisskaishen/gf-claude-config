@@ -1,0 +1,40 @@
+/* Element Plus SCSS 变量覆盖 */
+@forward "element-plus/theme-chalk/src/common/var.scss" with (
+  $colors: (
+    "primary": (
+      "base": #fc4c02
+    ),
+    "success": (
+      "base": #00b578
+    ),
+    "warning": (
+      "base": #ff9811
+    ),
+    "danger": (
+      "base": #ff0014
+    ),
+    "info": (
+      "base": #7a869a
+    )
+  ),
+  // 基础字号
+  $font-size: (
+      "base": 16px
+    ),
+  // 文字颜色
+  $text-color: (
+      "primary": #191e23,
+      "regular": #354250,
+      "secondary": #4e5969,
+      "placeholder": #bbbdbf
+    ),
+  // 边框颜色
+  $border-color: (
+      "": #eff0f5
+    ),
+  // 弹窗配置
+  $dialog: (
+      "border-radius": 8px,
+      "padding-primary": 24px
+    )
+);

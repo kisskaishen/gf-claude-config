@@ -1,0 +1,32 @@
+# Build and deps
+dist/
+dist-ssr/
+node_modules/
+coverage/
+build/
+
+# Config files
+*.js
+*.mjs
+*.cjs
+*.ts
+*.mts
+*.cts
+*.json
+*.yaml
+*.yml
+*.md
+*.html
+
+# Assets
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp
+*.ico
+
+# Other
+*.d.ts
+pnpm-lock.yaml

@@ -1,0 +1,77 @@
+// CSS 变量定义 - 基于设计规范
+:root {
+  /* --- 品牌色 Brand --- */
+  --color-primary: #fc4c02;
+  --color-primary-rgb: 252, 76, 2;
+  --color-primary-light: rgb(252 76 2 / 10%);
+  --color-primary-hover: #ff6a42; /* 推测的 hover 颜色，比主色稍亮 */
+
+  /* --- 功能色 Functional --- */
+  --color-success: #00b578;
+  --color-warning: #ff9811;
+  --color-danger: #ff3141;
+  --color-info: #7a869a; /* 使用 Text-4 作为信息色 */
+
+  /* --- 文字颜色 Text --- */
+
+  /* Text-1 强调/大标题 */
+  --text-color-primary: #191e23;
+
+  /* Text-2 次强调/标题 */
+  --text-color-regular: #364250;
+
+  /* Text-3 正文 */
+  --text-color-secondary: #4e5969;
+
+  /* Text-4 次要信息-深 */
+  --text-color-tertiary: #7a869a;
+
+  /* Text-5 输入框默认颜色/置灰信息 */
+  --text-color-placeholder: #bbbdbf;
+
+  /* --- 边框颜色 Border --- */
+
+  /* Line-1 按钮描边 */
+  --border-color: #e6e8eb;
+
+  /* Line-1 输入框描边 */
+  --border-color-light: #eff0f5;
+
+  /** 表单描边 */
+  --border-color-form: #ff8755;
+
+  /* --- 背景颜色 Fill --- */
+
+  /* 页面背景 */
+  --bg-color: #f6f7fb;
+
+  /* 容器背景/灰色背景 */
+  --bg-color-overlay: #e6e8eb;
+
+  /* 白色背景 */
+  --bg-color-white: #fff;
+
+  /* --- 布局尺寸 Layout --- */
+  --sidebar-width: 248px;
+  --header-height: 42px;
+  --tags-height: 40px;
+
+  /* --- 字体排版 Typography --- */
+
+  /* 字号 Font Size */
+  --font-size-xl: 24px; /* 超大标题 */
+  --font-size-lg: 20px; /* 重要标题 */
+  --font-size-md: 18px; /* 标题 */
+  --font-size-base: 16px; /* 正文 */
+  --font-size-sm: 14px; /* 次级文字 */
+  --font-size-xs: 12px; /* 最小文字 */
+
+  /* 字重 Font Weight */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* 行高 Line Height */
+  --line-height-base: 1.5;
+  --line-height-heading: 1.4; /* 超大标题使用 1.4 倍行距 */
+}
