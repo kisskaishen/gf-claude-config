@@ -61,7 +61,7 @@ service.interceptors.request.use(
     }
 
     // 5. X-Request-ID: 请求id (建议)
-    config.headers["X-Request-ID"] = crypto.randomUUID();
+    // config.headers["X-Request-ID"] = crypto.randomUUID();
 
     return config;
   },
