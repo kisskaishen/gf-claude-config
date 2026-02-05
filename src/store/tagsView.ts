@@ -128,7 +128,7 @@ export const useTagsViewStore = defineStore(
   },
   {
     persist: {
-      key: "dbu-tags-view",
+      key: "csd-gfuc-web-tags-view",
       storage: sessionStorage,
       pick: ["visitedViews", "cachedViews"]
     }

@@ -23,7 +23,6 @@
           <el-date-picker
             v-model="searchFormModel.registerTime"
             type="daterange"
-            range-separator="至"
             :start-placeholder="$t('开始日期')"
             :end-placeholder="$t('结束日期')"
           />

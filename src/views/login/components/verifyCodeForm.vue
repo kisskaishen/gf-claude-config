@@ -51,9 +51,13 @@
     </div>
 
     <div class="form-actions">
-      <el-button type="primary" class="submit-btn" @click="handleVerify">{{
-        $t("认证")
-      }}</el-button>
+      <el-button
+        type="primary"
+        class="submit-btn"
+        @click="handleVerify"
+        :disabled="loading"
+        >{{ $t("认证") }}</el-button
+      >
     </div>
 
     <div class="form-footer">
@@ -68,7 +72,7 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import { useI18n } from "vue-i18n";
 import { postRegister, postSendVerificationCode } from "@/api/user";
-import { hashPassword } from "@/utils/crypto";
+import { rsaEncryptPwd } from "@/utils/crypto";
 
 const { t } = useI18n();
 
@@ -83,6 +87,7 @@ const verifyCode = ref(["", "", "", ""]);
 const codeRefs = ref<HTMLInputElement[]>([]);
 const countdown = ref(60);
 const showVerifyError = ref(false);
+const loading = ref(false);
 let timer: any = null;
 
 const startTimer = () => {
@@ -95,7 +100,6 @@ const startTimer = () => {
 };
 
 const handleSendCode = async () => {
-  if (countdown.value > 0) return;
   await postSendVerificationCode({
     email: props.registerData.email
   });
@@ -135,17 +139,20 @@ const handleVerify = async () => {
   if (verifyCode.value.some((c) => !c)) {
     return;
   }
-
+  loading.value = true;
   try {
     const code = verifyCode.value.join("");
+    const encryptedPwd = await rsaEncryptPwd(props.registerData.password);
     await postRegister({
       email: props.registerData.email,
-      password: await hashPassword(props.registerData.password),
+      password: encryptedPwd,
       verificationCode: code
     });
     emit("success", "register");
   } catch (error) {
     // 错误处理已在 request.ts 中统一处理
+  } finally {
+    loading.value = false;
   }
 };
 </script>

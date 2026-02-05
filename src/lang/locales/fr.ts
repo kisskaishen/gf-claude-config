@@ -1,5 +1,4 @@
 export default {
-  "web.gfuc.customer_platform": "Plateforme client",
   "web.gfuc.homepage": "Page d‘accueil",
   "web.gfuc.order_management": "Gestion des commandes",
   "web.gfuc.single_ticket_order": "Commande unitaire",
@@ -15,5 +14,31 @@ export default {
   "web.gfuc.register_agreement": "Contrat de souscription",
   "web.gfuc.privacy_policy": "Politique de confidentialité",
   "web.gfuc.agreement":
-    "Je suis d'accord avec le {register_agreement} et la {privacy_policy}"
+    "Je suis d'accord avec le {register_agreement} et la {privacy_policy}",
+  "web.gfuc.email": "Email",
+  "web.gfuc.password": "Mot de passe",
+  "web.gfuc.code": "Code",
+  "web.gfuc.please_enter_password": "Veuillez entrer votre mot de passe",
+  "web.gfuc.please_enter_verification_code":
+    "Veuillez entrer le code de vérification",
+  "web.gfuc.no_account_yet": "Vous n'avez pas de compte ?",
+  "web.gfuc.go_to_register": "Aller à l'enregistrement",
+  "web.gfuc.login": "Login",
+  "web.gfuc.email_format_incorrect":
+    "L'adresse e-mail que vous avez entrée n'est pas correcte, veuillez entrer une adresse e-mail valide",
+  "web.gfuc.close": "Fermer",
+  "web.gfuc.cancel": "Annuler",
+  "web.gfuc.agree": "Accepter",
+  "web.gfuc.please_enter_email": "Veuillez entrer votre email",
+  "web.gfuc.security_authentication": "Veiligheidsverzekerings",
+  "web.gfuc.security_authentication_tip":
+    "Om uw account veilig te houden, moet uw wachtwoord verschillende elementen bevatten",
+  "web.gfuc.lowercase": "Kleine letters",
+  "web.gfuc.uppercase": "Grote letters",
+  "web.gfuc.special": "Speciale tekens",
+  "web.gfuc.length": "8-12 tekens",
+  "web.gfuc.agreement2":
+    "Door deze optie te selecteren, ga ik akkoord met het ontvangen van marketingberichten via SMS van GOFO. Er kunnen kosten voor SMS en data worden in rekening gebracht. Door mijn telefoonnummer te verstrekken, ga ik akkoord met het ontvangen van transactiegerelateerde berichten van GOFO via SMS, inclusief bestelnotificaties en verificatiecodes.",
+  "web.gfuc.already_have_account": "Heeft u al een account?",
+  "web.gfuc.go_to_login": "Ga naar login"
 };

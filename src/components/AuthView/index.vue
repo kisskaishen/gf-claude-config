@@ -1,5 +1,5 @@
 <template>
-  <div class="auth-wrapper">
+  <page-container>
     <div class="auth-container">
       <div class="icon">
         <img src="@/assets/lock.png" />
@@ -13,8 +13,8 @@
         }}</el-button>
       </div>
     </div>
-    <AuthModal v-model="showAuthModal" />
-  </div>
+    <AuthModal v-model="showAuthModal" @success="handleSuccess" />
+  </page-container>
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
@@ -23,14 +23,17 @@ defineOptions({
   name: "AuthView"
 });
 
+import { useUserStore } from "@/store/user";
+
 const showAuthModal = ref(false);
+const userStore = useUserStore();
+
+const handleSuccess = () => {
+  userStore.fetchUserInfo();
+};
 </script>
 
 <style scoped lang="scss">
-.auth-wrapper {
-  height: 100%;
-}
-
 .auth-container {
   display: flex;
   flex-direction: column;

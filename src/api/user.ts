@@ -1,5 +1,15 @@
-import type { Lang, Site } from "@/enums";
 import request from "@/utils/request";
+
+/**
+ * 用户注册-账号核对
+ */
+export function postCheckAccount(data: { email: string }) {
+  return request({
+    url: "/user/email/check",
+    method: "post",
+    data
+  });
+}
 
 /**
  * 用户注册
@@ -17,17 +27,6 @@ export function postRegister(data: {
 }
 
 /**
- * 验证用户注册邮箱是否有效
- */
-export function postVerifyEmail(data: { email: string }) {
-  return request({
-    url: "/user/register/email/verify",
-    method: "post",
-    data
-  });
-}
-
-/**
  * 发送邮箱验证码
  */
 
@@ -38,27 +37,64 @@ export function postSendVerificationCode(data: { email: string }) {
     data
   });
 }
+/**
+ * 获取验证码
+ */
+export function getVerifyCode() {
+  return request({
+    url: "/user/verifyCode",
+    method: "get"
+  });
+}
 
 /**
  * 用户登录
  */
-export function postLogin(data: { email: string; password: string }) {
+export function postLogin(data: {
+  email: string;
+  password: string;
+  code: string;
+  /** 验证码 */ uuid: string; /*** 验证码UUID */
+}) {
   return request({
     url: "/user/login",
     method: "post",
     data
   });
 }
+/** 获取用户信息 */
+export function getUserInfo() {
+  return request({
+    url: `/user/info/token`,
+    method: "get"
+  });
+}
 /**
- * 保存偏好设置
+ * 更新用户信息
  */
-export function postSavePreferences(data: {
-  site: Site;
-  timezone: string;
-  lang: Lang;
+export function postUpdateUserInfo(data: any) {
+  return request({
+    url: "/userInfo/update",
+    method: "post",
+    data
+  });
+}
+
+/**
+ * 开通服务
+ */
+export function postOpenService(data: {
+  /** 货量预估 */
+  count?: string;
+  /** 发货频率 */
+  frequency?: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  phone?: string;
 }) {
   return request({
-    url: "/user/preferences",
+    url: "/userInfo/accountAuth",
     method: "post",
     data
   });

@@ -30,7 +30,7 @@ body {
   }
 
   .el-form-item__label {
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-color-tertiary);
   }
 
@@ -302,5 +302,14 @@ body {
   // Tabs 标签
   .el-tabs__item {
     color: var(--text-color-tertiary);
+  }
+
+  // 日期范围
+  .el-date-editor .el-range__icon {
+    font-size: 16px;
+  }
+
+  .el-range-editor--large .el-range-input {
+    font-size: 16px;
   }
 }

@@ -1,5 +1,4 @@
 export default {
-  "web.gfuc.customer_platform": "Klantenplatform",
   "web.gfuc.homepage": "Startpagina",
   "web.gfuc.order_management": "Orderbeheer",
   "web.gfuc.single_ticket_order": "Enkele ticketbestelling",
@@ -15,5 +14,30 @@ export default {
   "web.gfuc.register_agreement": "Aanmeldingsovereenkomst",
   "web.gfuc.privacy_policy": "Privacybeleid",
   "web.gfuc.agreement":
-    "Ik accepteer de {register_agreement} en {privacy_policy}"
+    "Ik accepteer de {register_agreement} en {privacy_policy}",
+  "web.gfuc.email": "E-mail",
+  "web.gfuc.password": "Wachtwoord",
+  "web.gfuc.code": "Code",
+  "web.gfuc.please_enter_password": "Vul wachtwoord in",
+  "web.gfuc.please_enter_verification_code": "Vul verificatiecode in",
+  "web.gfuc.no_account_yet": "Nog geen account?",
+  "web.gfuc.go_to_register": "Ga naar registratie",
+  "web.gfuc.login": "Login",
+  "web.gfuc.email_format_incorrect":
+    "Uw e-mailadres is niet correct, vul een geldig e-mailadres in",
+  "web.gfuc.close": "Sluiten",
+  "web.gfuc.cancel": "Annuleren",
+  "web.gfuc.agree": "Accepteren",
+  "web.gfuc.please_enter_email": "Vul e-mailadres in",
+  "web.gfuc.security_authentication": "Veiligheidsverzekerings",
+  "web.gfuc.security_authentication_tip":
+    "Om uw account veilig te houden, moet uw wachtwoord verschillende elementen bevatten",
+  "web.gfuc.lowercase": "Kleine letters",
+  "web.gfuc.uppercase": "Grote letters",
+  "web.gfuc.special": "Speciale tekens",
+  "web.gfuc.length": "8-12 tekens",
+  "web.gfuc.agreement2":
+    "Door deze optie te selecteren, ga ik akkoord met het ontvangen van marketingberichten via SMS van GOFO. Er kunnen kosten voor SMS en data worden in rekening gebracht. Door mijn telefoonnummer te verstrekken, ga ik akkoord met het ontvangen van transactiegerelateerde berichten van GOFO via SMS, inclusief bestelnotificaties en verificatiecodes.",
+  "web.gfuc.already_have_account": "Heeft u al een account?",
+  "web.gfuc.go_to_login": "Ga naar login"
 };

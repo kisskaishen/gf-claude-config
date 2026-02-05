@@ -6,19 +6,19 @@
     label-position="top"
     class="form-body"
   >
-    <el-form-item label="邮箱" prop="email">
+    <el-form-item :label="$t('web.gfuc.email' /** 邮箱 */)" prop="email">
       <el-input
         v-model="registerData.email"
-        placeholder="请输入邮箱"
+        :placeholder="$t('web.gfuc.please_enter_email' /** 请输入邮箱 */)"
         :suffix-icon="isEmailValid ? CircleCheckFilled : ''"
         class="email-input"
       />
     </el-form-item>
-    <el-form-item label="密码" prop="password">
+    <el-form-item :label="$t('web.gfuc.password' /** 密码 */)" prop="password">
       <el-input
         v-model="registerData.password"
         type="password"
-        placeholder="请输入密码"
+        :placeholder="$t('web.gfuc.please_enter_password' /** 请输入密码 */)"
         show-password
       />
     </el-form-item>
@@ -26,7 +26,9 @@
     <!-- 安全认证 (密码强度) -->
     <div v-if="registerData.password" class="password-strength">
       <div class="strength-header">
-        <span>{{ $t("安全认证") }}</span>
+        <span>{{
+          $t("web.gfuc.security_authentication" /** 安全认证 */)
+        }}</span>
         <div class="strength-bars" :class="'level-' + strength">
           <div class="bar" :class="{ active: strength >= 1 }"></div>
           <div class="bar" :class="{ active: strength >= 2 }"></div>
@@ -34,41 +36,49 @@
         </div>
       </div>
       <p class="strength-tip">
-        {{ $t("为了您的账号安全，您的密码必须包含以下几个部分") }}
+        {{
+          $t(
+            "web.gfuc.security_authentication_tip" /** 为了您的账号安全，您的密码必须包含以下几个部分 */
+          )
+        }}
       </p>
       <ul class="strength-list">
         <li :class="{ success: hasLowercase }">
           <el-icon
             ><CircleCheckFilled v-if="hasLowercase" /><CircleCloseFilled v-else
           /></el-icon>
-          {{ $t("小写字母") }}
+          {{ $t("web.gfuc.lowercase" /** 小写字母 */) }}
         </li>
         <li :class="{ success: hasUppercase }">
           <el-icon
             ><CircleCheckFilled v-if="hasUppercase" /><CircleCloseFilled v-else
           /></el-icon>
-          {{ $t("大写字母") }}
+          {{ $t("web.gfuc.uppercase" /** 大写字母 */) }}
         </li>
         <li :class="{ success: hasSpecial }">
           <el-icon
             ><CircleCheckFilled v-if="hasSpecial" /><CircleCloseFilled v-else
           /></el-icon>
-          {{ $t("特殊字符") }}
+          {{ $t("web.gfuc.special" /** 特殊字符 */) }}
         </li>
         <li :class="{ success: isLengthValid }">
           <el-icon
             ><CircleCheckFilled v-if="isLengthValid" /><CircleCloseFilled
               v-else
           /></el-icon>
-          {{ $t("8-12位字符") }}
+          {{ $t("web.gfuc.length" /** 8-12位字符 */) }}
         </li>
       </ul>
     </div>
 
     <div class="form-actions">
-      <el-button type="primary" class="submit-btn" @click="handleRegister">{{
-        $t("注册")
-      }}</el-button>
+      <el-button
+        type="primary"
+        class="submit-btn"
+        @click="handleRegister"
+        :disabled="loading"
+        >{{ $t("注册") }}</el-button
+      >
     </div>
 
     <div class="agreements">
@@ -79,14 +89,14 @@
           <template #register_agreement>
             <span
               class="link-inline"
-              @click.stop.prevent="openUserAgreement(false)"
+              @click.stop.prevent="openAgreement('register')"
               >{{ $t("web.gfuc.register_agreement" /** 注册协议 */) }}</span
             >
           </template>
           <template #privacy_policy>
             <span
               class="link-inline"
-              @click.stop.prevent="openPrivacyPolicy(false)"
+              @click.stop.prevent="openAgreement('privacy')"
               >{{ $t("web.gfuc.privacy_policy" /** 隐私政策 */) }}</span
             >
           </template>
@@ -95,16 +105,16 @@
       <el-checkbox v-model="registerData.agree2">
         {{
           $t(
-            " 通过勾选此框，我明确同意接收来自 GOFO通过短信发送的营销信息。可能需要支付短信和数据费用。通过提供我的手机号码，我同意接收来自GOFO 通过短信发送的交易相关消息，包括订单通知和验证码。"
+            "web.gfuc.agreement2" /** 通过勾选此框，我明确同意接收来自 GOFO通过短信发送的营销信息。可能需要支付短信和数据费用。通过提供我的手机号码，我同意接收来自GOFO 通过短信发送的交易相关消息，包括订单通知和验证码。 */
           )
         }}
       </el-checkbox>
     </div>
 
     <div class="form-footer">
-      <span>{{ $t("已经有账号？") }}</span>
+      <span>{{ $t("web.gfuc.already_have_account" /** 已有账号？ */) }}</span>
       <a href="javascript:;" class="link" @click="$emit('switch', 'login')">{{
-        $t("去登录")
+        $t("web.gfuc.go_to_login" /** 去登录 */)
       }}</a>
     </div>
 
@@ -112,7 +122,8 @@
     <AgreementModal
       v-model:visible="userAgreementVisible"
       :title="$t('web.gfuc.register_agreement' /** 注册协议 */)"
-      @confirm="handleUserAgreementConfirm"
+      :view-only="isViewOnly"
+      @confirm="handleAgreementConfirm('register')"
       @cancel="handleAgreementCancel"
     >
       <div v-html="userAgreementContent"></div>
@@ -121,7 +132,8 @@
     <AgreementModal
       v-model:visible="privacyPolicyVisible"
       :title="$t('web.gfuc.privacy_policy' /** 隐私政策 */)"
-      @confirm="handlePrivacyPolicyConfirm"
+      :view-only="isViewOnly"
+      @confirm="handleAgreementConfirm('privacy')"
       @cancel="handleAgreementCancel"
     >
       <div v-html="privacyPolicyContent"></div>
@@ -134,12 +146,11 @@ import { CircleCheckFilled, CircleCloseFilled } from "@element-plus/icons-vue";
 import {
   type CheckboxValueType,
   type FormInstance,
-  type FormRules,
-  ElMessage
+  type FormRules
 } from "element-plus";
 import { useI18n } from "vue-i18n";
 import AgreementModal from "./AgreementModal.vue";
-import { postVerifyEmail } from "@/api/user";
+import { postCheckAccount } from "@/api/user";
 
 const { t } = useI18n();
 
@@ -152,6 +163,8 @@ const registerData = reactive({
   agree1: false,
   agree2: false
 });
+
+const loading = ref(false);
 
 const registerFormRef = ref<FormInstance>();
 
@@ -208,15 +221,20 @@ const handleRegister = async () => {
 
   await registerFormRef.value.validate(async (valid) => {
     if (valid) {
-      if (!registerData.agree1) {
+      if (!registerData.agree1 || !registerData.agree2) {
         ElMessage.warning(t("请同意注册协议"));
         return;
       }
-      await postVerifyEmail({ email: registerData.email });
-      emit("switch", "verify", {
-        email: registerData.email,
-        password: registerData.password
-      });
+      loading.value = true;
+      try {
+        await postCheckAccount({ email: registerData.email });
+        emit("switch", "verify", {
+          email: registerData.email,
+          password: registerData.password
+        });
+      } finally {
+        loading.value = false;
+      }
     }
   });
 };
@@ -225,6 +243,10 @@ const handleRegister = async () => {
 const userAgreementVisible = ref(false);
 const privacyPolicyVisible = ref(false);
 const isSequentialFlow = ref(false);
+
+const isUserAgreementRead = ref(false);
+const isPrivacyPolicyRead = ref(false);
+const isViewOnly = computed(() => registerData.agree1);
 
 // 模拟协议内容
 const userAgreementContent = `
@@ -249,43 +271,49 @@ const privacyPolicyContent = `
 
 const handleAgreeChange = (val: CheckboxValueType) => {
   if (val) {
-    // 用户尝试勾选，拦截并开始流程
-    registerData.agree1 = false;
-    isSequentialFlow.value = true;
-    openUserAgreement(true);
+    if (isUserAgreementRead.value && isPrivacyPolicyRead.value) {
+      registerData.agree1 = true;
+    } else {
+      registerData.agree1 = false;
+      if (!isUserAgreementRead.value) {
+        openAgreement("register");
+      } else if (!isPrivacyPolicyRead.value) {
+        openAgreement("privacy");
+      }
+    }
+  } else {
+    // 复选框取消勾选时，重置阅读状态
+    isUserAgreementRead.value = false;
+    isPrivacyPolicyRead.value = false;
   }
 };
 
-const openUserAgreement = (sequential: boolean) => {
-  if (!sequential) isSequentialFlow.value = false;
-  userAgreementVisible.value = true;
-};
-
-const openPrivacyPolicy = (sequential: boolean) => {
-  if (!sequential) isSequentialFlow.value = false;
-  privacyPolicyVisible.value = true;
-};
-
-const handleUserAgreementConfirm = () => {
-  if (isSequentialFlow.value) {
-    // 流程中：用户协议同意后，打开隐私协议
-    openPrivacyPolicy(true);
+const openAgreement = (type: "register" | "privacy") => {
+  if (type === "register") {
+    userAgreementVisible.value = true;
+  } else {
+    privacyPolicyVisible.value = true;
   }
-  // 非流程中：仅关闭
 };
 
-const handlePrivacyPolicyConfirm = () => {
-  if (isSequentialFlow.value) {
-    // 流程中：隐私协议同意后，勾选复选框
-    registerData.agree1 = true;
-    isSequentialFlow.value = false;
+const handleAgreementConfirm = (type: "register" | "privacy") => {
+  if (type === "register") {
+    isUserAgreementRead.value = true;
+    if (!isPrivacyPolicyRead.value) {
+      openAgreement("privacy");
+    }
+  } else {
+    isPrivacyPolicyRead.value = true;
+    if (!isUserAgreementRead.value) {
+      openAgreement("register");
+    }
   }
-  // 非流程中：仅关闭
+  registerData.agree1 = isUserAgreementRead.value && isPrivacyPolicyRead.value;
 };
 
 const handleAgreementCancel = () => {
-  // 任何取消都中断流程
-  isSequentialFlow.value = false;
+  isUserAgreementRead.value = false;
+  isPrivacyPolicyRead.value = false;
 };
 </script>
 <style lang="scss" scoped>

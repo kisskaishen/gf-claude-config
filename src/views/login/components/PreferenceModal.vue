@@ -19,7 +19,7 @@
             @change="handleSiteChange"
           >
             <el-option
-              v-for="item in siteOptions"
+              v-for="item in siteDict.options.value"
               :key="item.value"
               :label="item.label"
               :value="item.value"
@@ -30,7 +30,7 @@
         <el-form-item :label="$t('您默认的时区是')">
           <el-select v-model="form.timezone" class="full-width">
             <el-option
-              v-for="item in timezoneOptions"
+              v-for="item in timezoneDict.options.value"
               :key="item.value"
               :label="item.label"
               :value="item.value"
@@ -41,7 +41,7 @@
         <el-form-item :label="$t('您默认的语言是')">
           <el-select v-model="form.lang" class="full-width">
             <el-option
-              v-for="item in langOptions"
+              v-for="item in langDict.options.value"
               :key="item.value"
               :label="item.label"
               :value="item.value"
@@ -54,7 +54,7 @@
     <template #footer>
       <div class="dialog-footer">
         <el-button type="primary" class="submit-btn" @click="handleSubmit">
-          {{ $t("确定") }}
+          {{ $t("tis_confirm" /** 确定 **/) }}
         </el-button>
       </div>
     </template>
@@ -64,47 +64,45 @@
 <script setup lang="ts">
 import { reactive, computed, nextTick } from "vue";
 import { useAppStore } from "@/store/app";
-import { Lang, Site } from "@/enums";
-import { useUserStore } from "@/store/user";
+import { Lang, Site, Timezone } from "@/enums";
+import { useDict } from "@/hooks/useDict";
 defineOptions({
   name: "PreferenceModal"
 });
-
-const emit = defineEmits(["success"]);
+const props = defineProps({
+  modelValue: {
+    type: Boolean,
+    default: false
+  }
+});
+const emit = defineEmits(["success", "update:modelValue"]);
 const appStore = useAppStore();
-const userStore = useUserStore();
-const visible = computed(() => !userStore.hasSetPreference);
-
-const siteOptions = computed(() => {
-  return Object.entries(appStore.sitesMap).map(([key, value]) => ({
-    value: key,
-    label: value
-  }));
-});
-const timezoneOptions = computed(() => {
-  return Object.entries(appStore.timezonesMap).map(([key, value]) => ({
-    label: value,
-    value: key
-  }));
+const visible = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(val) {
+    emit("update:modelValue", val);
+  }
 });
 
-const langOptions = computed(() => {
-  return Object.entries(appStore.langsMap).map(([key, value]) => ({
-    value: key,
-    label: value
-  }));
-});
+const siteDict = useDict<Site>("gfuc.site.code");
+
+const timezoneDict = useDict<Timezone>("gfuc.time.zone");
+
+const langDict = useDict<Lang>("gfuc.lang");
+
 // 站点联动配置
-const siteLinkageMap: Record<string, { timezone: string; lang: Lang }> = {
-  [Site.fr]: { timezone: "Europe/Paris", lang: Lang.fr },
-  [Site.it]: { timezone: "Europe/Rome", lang: Lang.it },
-  [Site.nl]: { timezone: "Europe/Amsterdam", lang: Lang.nl }
+const siteLinkageMap: Record<string, { timezone: Timezone; lang: Lang }> = {
+  [Site.fr]: { timezone: Timezone.Europe_Paris, lang: Lang.fr },
+  [Site.it]: { timezone: Timezone.Europe_Rome, lang: Lang.it },
+  [Site.nl]: { timezone: Timezone.Europe_Amsterdam, lang: Lang.nl }
 };
 
 const form = reactive({
-  site: appStore.site || Site.fr,
-  timezone: appStore.timezone || siteLinkageMap[Site.fr]?.timezone,
-  lang: appStore.lang || siteLinkageMap[Site.fr]?.lang
+  site: Site.fr,
+  timezone: siteLinkageMap[Site.fr]!.timezone,
+  lang: siteLinkageMap[Site.fr]!.lang
 });
 
 const handleSiteChange = (val: string) => {
@@ -122,6 +120,7 @@ const handleSubmit = async () => {
     lang: form.lang!
   });
   await nextTick();
+  emit("update:modelValue", false);
   emit("success");
 };
 </script>

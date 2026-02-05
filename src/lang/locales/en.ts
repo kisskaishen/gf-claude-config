@@ -1,5 +1,4 @@
 export default {
-  "web.gfuc.customer_platform": "Customer Platform",
   "web.gfuc.homepage": "Homepage",
   "web.gfuc.order_management": "Order Management",
   "web.gfuc.single_ticket_order": "Single Ticket Order",
@@ -16,5 +15,31 @@ export default {
   "web.gfuc.register_agreement": "Register Agreement",
   "web.gfuc.privacy_policy": "Privacy Policy",
   "web.gfuc.agreement":
-    "I agree to the {register_agreement} and {privacy_policy}"
+    "I agree to the {register_agreement} and {privacy_policy}",
+  "web.gfuc.email": "Email",
+  "web.gfuc.password": "Password",
+  "web.gfuc.code": "Code",
+  "web.gfuc.please_enter_password": "Please enter your password",
+  "web.gfuc.please_enter_verification_code":
+    "Please enter the verification code",
+  "web.gfuc.no_account_yet": "You don't have an account yet?",
+  "web.gfuc.go_to_register": "Go to registration",
+  "web.gfuc.login": "Login",
+  "web.gfuc.email_format_incorrect":
+    "The email address you entered is incorrect, please enter a valid email address",
+  "web.gfuc.close": "Close",
+  "web.gfuc.cancel": "Cancel",
+  "web.gfuc.agree": "Agree",
+  "web.gfuc.please_enter_email": "Please enter your email",
+  "web.gfuc.security_authentication": "Security Authentication",
+  "web.gfuc.security_authentication_tip":
+    "To ensure the security of your account, your password must contain the following elements",
+  "web.gfuc.lowercase": "Lowercase",
+  "web.gfuc.uppercase": "Uppercase",
+  "web.gfuc.special": "Special characters",
+  "web.gfuc.length": "8-12 characters",
+  "web.gfuc.agreement2":
+    "By checking this box, I explicitly agree to receive marketing messages from GOFO via SMS. There may be charges for SMS and data. By providing my phone number, I agree to receive transaction-related messages from GOFO via SMS, including order notifications and verification codes.",
+  "web.gfuc.already_have_account": "Already have an account?",
+  "web.gfuc.go_to_login": "Go to login"
 };

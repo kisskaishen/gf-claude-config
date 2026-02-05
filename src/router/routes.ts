@@ -26,52 +26,52 @@ export const routes: RouteRecordRaw[] = [
       }
     ]
   },
-  {
-    path: "/order",
-    component: () => import("@/layout/index.vue"),
-    redirect: "/order/single",
-    meta: {
-      title: "订单管理",
-      icon: "order",
-      i18n: "web.gfuc.order_management",
-      requireAuth: true
-    },
-    children: [
-      {
-        path: "single",
-        name: "SingleOrder",
-        // component: () => import("@/views/order/single.vue"),
-        component: () => import("@/views/home/index.vue"),
-        meta: {
-          title: "单票下单",
-          i18n: "web.gfuc.single_ticket_order",
-          requireAuth: true
-        }
-      },
-      {
-        path: "batch",
-        name: "BatchOrder",
-        // component: () => import("@/views/order/batch.vue"),
-        component: () => import("@/views/home/index.vue"),
-        meta: {
-          title: "批量下单",
-          i18n: "web.gfuc.batch_order",
-          requireAuth: true
-        }
-      },
-      {
-        path: "list",
-        name: "OrderList",
-        // component: () => import("@/views/order/list.vue"),
-        component: () => import("@/views/home/index.vue"),
-        meta: {
-          title: "订单列表",
-          i18n: "web.gfuc.order_list",
-          requireAuth: true
-        }
-      }
-    ]
-  },
+  // {
+  //   path: "/order",
+  //   component: () => import("@/layout/index.vue"),
+  //   redirect: "/order/single",
+  //   meta: {
+  //     title: "订单管理",
+  //     icon: "order",
+  //     i18n: "web.gfuc.order_management",
+  //     requireAuth: true
+  //   },
+  //   children: [
+  //     {
+  //       path: "single",
+  //       name: "SingleOrder",
+  //       // component: () => import("@/views/order/single.vue"),
+  //       component: () => import("@/views/home/index.vue"),
+  //       meta: {
+  //         title: "单票下单",
+  //         i18n: "web.gfuc.single_ticket_order",
+  //         requireAuth: true
+  //       }
+  //     },
+  //     {
+  //       path: "batch",
+  //       name: "BatchOrder",
+  //       // component: () => import("@/views/order/batch.vue"),
+  //       component: () => import("@/views/home/index.vue"),
+  //       meta: {
+  //         title: "批量下单",
+  //         i18n: "web.gfuc.batch_order",
+  //         requireAuth: true
+  //       }
+  //     },
+  //     {
+  //       path: "list",
+  //       name: "OrderList",
+  //       // component: () => import("@/views/order/list.vue"),
+  //       component: () => import("@/views/home/index.vue"),
+  //       meta: {
+  //         title: "订单列表",
+  //         i18n: "web.gfuc.order_list",
+  //         requireAuth: true
+  //       }
+  //     }
+  //   ]
+  // },
   {
     path: "/finance",
     component: () => import("@/layout/index.vue"),
@@ -85,57 +85,57 @@ export const routes: RouteRecordRaw[] = [
       {
         path: "recharge",
         name: "Recharge",
-        // component: () => import("@/views/home/index.vue"),
         component: () => import("@/views/finance/recharge.vue"),
         meta: { title: "充值", requireAuth: true, i18n: "web.gfuc.recharge" }
       },
       {
         path: "record",
         name: "RechargeRecord",
-        // component: () => import("@/views/home/index.vue"),
         component: () => import("@/views/finance/record.vue"),
-        meta: { title: "充值记录", i18n: "web.gfuc.recharge_record" }
+        meta: {
+          title: "充值记录",
+          requireAuth: true,
+          i18n: "web.gfuc.recharge_record"
+        }
       },
       {
         path: "balance",
         name: "Balance",
-        // component: () => import("@/views/home/index.vue"),
         component: () => import("@/views/finance/balance.vue"),
         meta: { title: "余额", requireAuth: true, i18n: "web.gfuc.balance" }
-      },
-      {
-        path: "account",
-        name: "Account",
-        // component: () => import("@/views/finance/account.vue"),
-        component: () => import("@/views/home/index.vue"),
-        meta: { title: "账单", requireAuth: true, i18n: "web.gfuc.bill" }
       }
+      // {
+      //   path: "account",
+      //   name: "Account",
+      //   component: () => import("@/views/home/index.vue"),
+      //   meta: { title: "账单", requireAuth: true, i18n: "web.gfuc.bill" }
+      // }
     ]
   },
-  {
-    path: "/problem",
-    redirect: "/problem/list",
-    component: () => import("@/layout/index.vue"),
-    meta: {
-      title: "问题件管理",
-      icon: "problem",
-      i18n: "web.gfuc.problem_piece_management"
-    },
+  // {
+  //   path: "/problem",
+  //   redirect: "/problem/list",
+  //   component: () => import("@/layout/index.vue"),
+  //   meta: {
+  //     title: "问题件管理",
+  //     icon: "problem",
+  //     i18n: "web.gfuc.problem_piece_management"
+  //   },
 
-    children: [
-      {
-        path: "list",
-        name: "ProblemList",
-        // component: () => import("@/views/problem/list.vue"),
-        component: () => import("@/views/home/index.vue"),
-        meta: {
-          title: "问题件查看",
-          i18n: "web.gfuc.problem_piece_view",
-          requireAuth: true
-        }
-      }
-    ]
-  },
+  //   children: [
+  //     {
+  //       path: "list",
+  //       name: "ProblemList",
+  //       // component: () => import("@/views/problem/list.vue"),
+  //       component: () => import("@/views/home/index.vue"),
+  //       meta: {
+  //         title: "问题件查看",
+  //         i18n: "web.gfuc.problem_piece_view",
+  //         requireAuth: true
+  //       }
+  //     }
+  //   ]
+  // },
   {
     path: "/redirect",
     component: () => import("@/layout/index.vue"),

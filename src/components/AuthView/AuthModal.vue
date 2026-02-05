@@ -30,6 +30,25 @@
     >
       <el-row :gutter="16">
         <el-col :span="12">
+          <el-form-item :label="$t('姓名')" prop="name">
+            <el-input v-model="formData.name" :placeholder="$t('请输入')" />
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item :label="$t('国家')" prop="country">
+            <el-select
+              v-model="formData.country"
+              :placeholder="$t('请输入')"
+              :options="countryDict.options.value"
+              multiple
+              collapse-tags
+            />
+          </el-form-item>
+        </el-col>
+      </el-row>
+
+      <el-row :gutter="16">
+        <el-col :span="12">
           <el-form-item :label="$t('邮箱')" prop="email">
             <el-input v-model="formData.email" :placeholder="$t('请输入')" />
           </el-form-item>
@@ -46,36 +65,20 @@
           <el-form-item :label="$t('您发货的频率')" prop="frequency">
             <el-select
               v-model="formData.frequency"
-              :placeholder="$t('请选择')"
-              :options="frequencyOptions"
+              :placeholder="$t('选择')"
+              :options="frequencyDict.options.value"
             >
             </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item :label="$t('一个月的货量预估')" prop="volume">
+          <el-form-item :label="$t('一个月的货量预估')" prop="count">
             <el-select
-              v-model="formData.volume"
-              :placeholder="$t('请选择')"
-              :options="volumeOptions"
+              v-model="formData.count"
+              :placeholder="$t('选择')"
+              :options="volumeDict.options.value"
             >
             </el-select>
-          </el-form-item>
-        </el-col>
-      </el-row>
-
-      <el-row :gutter="16">
-        <el-col :span="12">
-          <el-form-item :label="$t('名')" prop="firstName">
-            <el-input
-              v-model="formData.firstName"
-              :placeholder="$t('请输入')"
-            />
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item :label="$t('姓氏')" prop="lastName">
-            <el-input v-model="formData.lastName" :placeholder="$t('请输入')" />
           </el-form-item>
         </el-col>
       </el-row>
@@ -83,7 +86,7 @@
 
     <template #footer>
       <div class="dialog-footer">
-        <el-button type="primary" @click="handleSubmit">{{
+        <el-button type="primary" @click="handleSubmit" :disabled="loading">{{
           $t("提交")
         }}</el-button>
       </div>
@@ -97,8 +100,12 @@ import { InfoFilled } from "@element-plus/icons-vue";
 import type { FormInstance, FormRules } from "element-plus";
 import { ElMessage } from "element-plus";
 import { useI18n } from "vue-i18n";
+import { postOpenService } from "@/api/user";
+import { useDict } from "@/hooks/useDict";
 
 const { t } = useI18n();
+
+const loading = ref(false);
 
 const props = defineProps<{
   modelValue: boolean;
@@ -106,81 +113,42 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: boolean): void;
+  (e: "success"): void;
 }>();
 
 const visible = computed({
   get: () => props.modelValue,
   set: (val) => emit("update:modelValue", val)
 });
+const countryDict = useDict("gfuc.site.code");
+const frequencyDict = useDict("gfuc.send.frequency");
+const volumeDict = useDict("gfuc.send.count");
 
-const frequencyOptions = ref([
-  {
-    label: t("web.gfuc.daily" /** 每天 */),
-    value: "daily"
-  },
-  {
-    label: t("每周"),
-    value: "weekly"
-  },
-  {
-    label: t("每月"),
-    value: "monthly"
-  },
-  {
-    label: t("一年一次"),
-    value: "yearly"
-  },
-  {
-    label: t("其它"),
-    value: "other"
-  }
-]);
-
-const volumeOptions = ref([
-  {
-    label: t("至少100票"),
-    value: 1
-  },
-  {
-    label: "100~499",
-    value: 2
-  },
-  {
-    label: "500~1499",
-    value: 3
-  },
-  {
-    label: "1500~3000",
-    value: 4
-  },
-  {
-    label: "超过 3000",
-    value: 5
-  }
-]);
 const formRef = ref<FormInstance>();
 
-// 默认值设为图片中的示例值，方便展示
 const formData = reactive({
-  firstName: "俊杰",
-  lastName: "刘",
-  email: "123564@163.com",
-  phone: "123567899",
-  frequency: "yearly", // 对应“一年一次”
-  volume: "100+" // 对应“至少100票”
+  name: "",
+  email: "",
+  phone: "",
+  /** 发货频率 */
+  frequency: undefined,
+  /** 货量预估 */
+  count: undefined,
+  /** 国家 */
+  country: undefined
 });
 
 const rules = reactive<FormRules>({
-  firstName: [{ required: true, message: t("请输入名"), trigger: "blur" }],
-  lastName: [{ required: true, message: t("请输入姓氏"), trigger: "blur" }],
+  name: [{ required: true, message: t("请输入姓名"), trigger: "change" }],
+  country: [{ required: true, message: t("请输入国家"), trigger: "change" }],
   email: [
-    { required: true, message: t("请输入邮箱"), trigger: "blur" },
-    { type: "email", message: t("请输入正确的邮箱格式"), trigger: "blur" }
+    { required: true, message: t("请输入邮箱"), trigger: "change" },
+    { type: "email", message: t("请输入正确的邮箱格式"), trigger: "change" }
   ],
   frequency: [
     { required: true, message: t("请选择发货频率"), trigger: "change" }
   ],
-  volume: [{ required: true, message: t("请选择货量预估"), trigger: "change" }]
+  count: [{ required: true, message: t("请选择货量预估"), trigger: "change" }]
 });
 
 const validate = () => {
@@ -199,8 +167,15 @@ const validate = () => {
 
 const handleSubmit = async () => {
   if (!(await validate())) return;
-  ElMessage.success(t("提交成功"));
-  visible.value = false;
+  loading.value = true;
+  try {
+    await postOpenService(formData);
+    ElMessage.success(t("提交成功"));
+    visible.value = false;
+    emit("success");
+  } finally {
+    loading.value = false;
+  }
 };
 </script>
 
@@ -211,8 +186,9 @@ const handleSubmit = async () => {
   padding: 9px 16px;
   margin-bottom: 24px;
   font-size: var(--font-size-base);
-  background-color: #eef2ff; /* 浅蓝色背景 */
+  background-color: #e5eaff; /* 浅蓝色背景 */
   border-radius: 4px;
+  box-shadow: 0 2px 16px 0 #4f577d14;
 
   .tip-icon {
     flex-shrink: 0;
@@ -226,7 +202,6 @@ const handleSubmit = async () => {
     line-height: 24px;
     color: var(--text-color-secondary);
     text-align: justify;
-    box-shadow: 0 2px 16px 0 #4f577d14;
 
     .tip-link {
       color: var(--color-primary); /* 橙色链接 */

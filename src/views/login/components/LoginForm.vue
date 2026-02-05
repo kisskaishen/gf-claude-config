@@ -6,54 +6,62 @@
     label-position="top"
     class="form-body"
   >
-    <el-form-item :label="$t('邮箱')" prop="email">
+    <el-form-item :label="$t('web.gfuc.email' /** 邮箱 */)" prop="email">
       <el-input v-model="loginData.email" :placeholder="$t('请输入邮箱')" />
     </el-form-item>
-    <el-form-item :label="$t('密码')" prop="password">
+    <el-form-item :label="$t('web.gfuc.password' /** 密码 */)" prop="password">
       <el-input
         v-model="loginData.password"
         type="password"
-        :placeholder="$t('请输入密码')"
+        :placeholder="$t('web.gfuc.please_enter_password')"
         show-password
       />
     </el-form-item>
 
     <!-- 图片验证码-->
-    <el-form-item v-if="showCaptcha" :label="$t('验证码')" prop="captcha">
+    <el-form-item :label="$t('web.gfuc.code' /** 验证码 */)" prop="code">
       <div class="captcha-wrapper">
         <el-input
-          v-model="loginData.captcha"
-          :placeholder="$t('请输入图片验证码')"
+          v-model="loginData.code"
+          :placeholder="
+            $t('web.gfuc.please_enter_verification_code' /** 请输入验证码 */)
+          "
           class="captcha-input"
         />
         <div class="captcha-img" @click="refreshCaptcha">
-          <span>T 4 F R</span>
+          <img :src="codeUrl" />
         </div>
       </div>
     </el-form-item>
 
     <div class="form-actions">
-      <el-button type="primary" class="submit-btn" @click="handleLogin">{{
-        $t("登录")
-      }}</el-button>
+      <el-button
+        type="primary"
+        class="submit-btn"
+        @click="handleLogin"
+        :disabled="loading"
+        >{{ $t("web.gfuc.login" /** 登录 */) }}</el-button
+      >
     </div>
 
     <div class="form-footer">
-      <span>{{ $t("还没有账号？") }}</span>
+      <span>{{ $t("web.gfuc.no_account_yet" /** 还没有账号？ */) }}</span>
       <a
         href="javascript:;"
         class="link"
         @click="$emit('switch', 'register')"
-        >{{ $t("去注册") }}</a
+        >{{ $t("web.gfuc.go_to_register" /** 去注册 */) }}</a
       >
     </div>
   </el-form>
 </template>
 <script setup lang="ts">
-import { ref, reactive, watch } from "vue";
+import { ref, reactive } from "vue";
 import { type FormInstance, type FormRules } from "element-plus";
 import { useI18n } from "vue-i18n";
 import { useUserStore } from "@/store/user";
+import { rsaEncryptPwd } from "@/utils/crypto";
+import { getVerifyCode } from "@/api/user";
 
 const emit = defineEmits(["switch", "success"]);
 
@@ -62,33 +70,53 @@ const { t } = useI18n();
 const userStore = useUserStore();
 
 // --- 登录逻辑 ---
-const showCaptcha = ref(false);
+const verifyCodeData = reactive({
+  image: "",
+  uuid: ""
+});
+
+const codeUrl = computed(() =>
+  verifyCodeData.image ? "data:image/gif;base64," + verifyCodeData.image : ""
+);
 const loginData = reactive({
   email: "",
   password: "",
-  captcha: ""
+  code: ""
 });
+
+const loading = ref(false);
 
 const loginFormRef = ref<FormInstance>();
 
 const loginRules = reactive<FormRules>({
   email: [
-    { required: true, message: t("请输入邮箱"), trigger: "change" },
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_email" /** 请输入邮箱 */),
+      trigger: "change"
+    },
     {
       type: "email",
-      message: t("您输入的邮箱格式不对，请填写正确的邮箱"),
+      message: t(
+        "web.gfuc.email_format_incorrect" /** 您输入的邮箱格式不对，请填写正确的邮箱 */
+      ),
       trigger: "change"
     }
   ],
-  password: [{ required: true, message: t("请输入密码"), trigger: "change" }],
-  captcha: [{ required: true, message: t("请输入验证码"), trigger: "change" }]
-});
-
-// 1. 监听显示状态，第一次显示时自动获取
-watch(showCaptcha, (val) => {
-  if (val) {
-    refreshCaptcha();
-  }
+  password: [
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_password" /** 请输入密码 */),
+      trigger: "change"
+    }
+  ],
+  code: [
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_verification_code" /** 请输入验证码 */),
+      trigger: "change"
+    }
+  ]
 });
 
 const handleLogin = async () => {
@@ -97,21 +125,33 @@ const handleLogin = async () => {
   await loginFormRef.value.validate(async (valid) => {
     if (valid) {
       try {
-        await userStore.login(loginData);
-        showCaptcha.value = false;
+        loading.value = true;
+        await userStore.login({
+          email: loginData.email,
+          password: await rsaEncryptPwd(loginData.password),
+          code: loginData.code,
+          uuid: verifyCodeData.uuid
+        });
+        await nextTick();
         emit("success", "login");
       } catch (error: any) {
-        if (showCaptcha.value) {
-          refreshCaptcha();
-        }
+        console.error(error);
+
+        refreshCaptcha();
+      } finally {
+        loading.value = false;
       }
     }
   });
 };
 
-const refreshCaptcha = () => {
-  // ElMessage.info(t("验证码已刷新"));
+const refreshCaptcha = async () => {
+  const res = await getVerifyCode();
+  verifyCodeData.image = res?.image;
+  verifyCodeData.uuid = res?.uuid;
 };
+
+refreshCaptcha();
 </script>
 <style lang="scss" scoped>
 .form-body {
@@ -153,14 +193,16 @@ const refreshCaptcha = () => {
       justify-content: center;
       width: 140px;
       height: 48px;
-      font-family: "Courier New", Courier, monospace;
-      font-weight: bold;
-      color: #4e5969;
-      letter-spacing: 2px;
       cursor: pointer;
       user-select: none;
       border: 1px solid #eff0f5;
       border-radius: 4px;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 

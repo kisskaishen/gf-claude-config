@@ -17,7 +17,7 @@
       <el-avatar :size="30" :src="avatarImg"></el-avatar>
 
       <!-- 退出按钮 -->
-      <div class="logout-btn" @click="handleLogout" :title="t('退出登录')">
+      <div class="logout-btn" @click="handleLogout" :title="$t('退出登录')">
         <img src="@/assets/logout.png" alt="switch" />
       </div>
     </div>

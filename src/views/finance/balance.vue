@@ -1,5 +1,5 @@
 <template>
-  <page-container>
+  <page-container :loading="loading">
     <div class="balance-header">
       <!-- 可下单金额 -->
       <div class="balance-card primary-card">
@@ -13,7 +13,7 @@
             </el-tooltip>
           </div>
           <div class="amount">
-            € {{ formatAmount(balanceInfo.availableAmount) }}
+            € {{ formatAmount(balanceInfo.availableOrderAmount) }}
           </div>
           <el-button class="recharge-btn" @click="handleRecharge">
             {{ $t("充值") }}
@@ -34,9 +34,7 @@
               </el-icon>
             </el-tooltip>
           </div>
-          <div class="amount">
-            € {{ formatAmount(balanceInfo.accountBalance) }}
-          </div>
+          <div class="amount">€ {{ formatAmount(balanceInfo.balance) }}</div>
         </div>
       </div>
 
@@ -72,7 +70,7 @@
             </el-tooltip>
           </div>
           <div class="amount">
-            € {{ formatAmount(balanceInfo.frozenAmount) }}
+            € {{ formatAmount(balanceInfo.freezeAmount) }}
           </div>
         </div>
       </div>
@@ -81,6 +79,7 @@
 </template>
 
 <script setup lang="ts">
+import { getBalance } from "@/api/finance";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
@@ -90,12 +89,17 @@ defineOptions({
 
 const router = useRouter();
 
-// 模拟数据
+const loading = ref(false);
+
 const balanceInfo = ref({
-  availableAmount: 5415654.54561,
-  accountBalance: 5415654456464,
+  /** 可下单金额 */
+  availableOrderAmount: 5415654.54561,
+  /** 账号余额 */
+  balance: 5415654456464,
+  /** 可用信用额度 */
   creditLimit: 5415654456464,
-  frozenAmount: 544564
+  /** 预扣费额度 */
+  freezeAmount: 544564
 });
 
 const formatAmount = (num: number) => {
@@ -108,6 +112,20 @@ const formatAmount = (num: number) => {
 const handleRecharge = () => {
   router.push("/finance/recharge");
 };
+
+const init = async () => {
+  try {
+    loading.value = true;
+    const res = await getBalance();
+    balanceInfo.value = res || {};
+  } finally {
+    loading.value = false;
+  }
+};
+
+onMounted(() => {
+  init();
+});
 </script>
 
 <style lang="scss" scoped>

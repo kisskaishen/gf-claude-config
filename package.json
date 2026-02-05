@@ -1,5 +1,5 @@
 {
-  "name": "dbu-user-center",
+  "name": "csd-gfuc-web",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,10 +10,12 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@datarangers/sdk-javascript": "^0.1.4",
     "@element-plus/icons-vue": "^2.3.2",
     "axios": "^1.13.2",
     "bcryptjs": "^3.0.3",
     "element-plus": "^2.13.0",
+    "jsencrypt": "^3.5.4",
     "lodash-es": "^4.17.22",
     "pinia": "^3.0.4",
     "pinia-plugin-persistedstate": "^4.7.1",

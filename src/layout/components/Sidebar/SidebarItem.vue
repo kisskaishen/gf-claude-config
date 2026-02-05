@@ -87,4 +87,8 @@ function getI18nTitle(meta: any) {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.el-icon {
+  font-size: 20px;
+}
 </style>

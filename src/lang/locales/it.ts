@@ -15,5 +15,30 @@ export default {
   "web.gfuc.register_agreement": "Contratto di iscrizione",
   "web.gfuc.privacy_policy": "Politica di privacy",
   "web.gfuc.agreement":
-    "I agree to the {register_agreement} and {privacy_policy}"
+    "I agree to the {register_agreement} and {privacy_policy}",
+  "web.gfuc.email": "Email",
+  "web.gfuc.password": "Password",
+  "web.gfuc.code": "Codice",
+  "web.gfuc.please_enter_password": "Inserisci la tua password",
+  "web.gfuc.please_enter_verification_code": "Inserisci il codice di verifica",
+  "web.gfuc.no_account_yet": "Non hai un account?",
+  "web.gfuc.go_to_register": "Vai al registro",
+  "web.gfuc.login": "Login",
+  "web.gfuc.email_format_incorrect":
+    "Il tuo indirizzo e-mail non è corretto, inserisci un indirizzo e-mail valido",
+  "web.gfuc.close": "Chiudi",
+  "web.gfuc.cancel": "Annulla",
+  "web.gfuc.agree": "Accetto",
+  "web.gfuc.please_enter_email": "Inserisci la tua email",
+  "web.gfuc.security_authentication": "Veiligheidsverzekerings",
+  "web.gfuc.security_authentication_tip":
+    "Om uw account veilig te houden, moet uw wachtwoord verschillende elementen bevatten",
+  "web.gfuc.lowercase": "Kleine letters",
+  "web.gfuc.uppercase": "Grote letters",
+  "web.gfuc.special": "Speciale tekens",
+  "web.gfuc.length": "8-12 tekens",
+  "web.gfuc.agreement2":
+    "Door deze optie te selecteren, ga ik akkoord met het ontvangen van marketingberichten via SMS van GOFO. Er kunnen kosten voor SMS en data worden in rekening gebracht. Door mijn telefoonnummer te verstrekken, ga ik akkoord met het ontvangen van transactiegerelateerde berichten van GOFO via SMS, inclusief bestelnotificaties en verificatiecodes.",
+  "web.gfuc.already_have_account": "Heeft u al een account?",
+  "web.gfuc.go_to_login": "Ga naar login"
 };

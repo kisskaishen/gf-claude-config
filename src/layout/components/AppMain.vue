@@ -18,17 +18,21 @@ import { computed } from "vue";
 import { type RouteLocationNormalizedLoadedGeneric } from "vue-router";
 import { useTagsViewStore } from "@/store/tagsView";
 import AuthView from "@/components/AuthView/index.vue";
+import { useUserStore } from "@/store/user";
+import { UserBindStatus } from "@/enums";
+const { userInfo } = useUserStore();
 
 const tagsViewStore = useTagsViewStore();
 
 const cachedViews = computed(() => tagsViewStore.cachedViews);
 
-// 模拟权限检查逻辑
 const checkPermission = (_route: RouteLocationNormalizedLoadedGeneric) => {
-  // return !_route.meta?.requireAuth
-  console.log("_route", _route);
-
-  return true;
+  if (
+    _route.meta.requireAuth &&
+    userInfo?.bindStatus !== UserBindStatus.bound
+  ) {
+    return false;
+  }
 };
 </script>
 

@@ -2,8 +2,11 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { useTagsViewStore } from "./tagsView";
 import { store } from "@/store";
-import { postLogin } from "@/api/user";
-import type { Lang, Site } from "@/enums";
+import { getUserInfo, postLogin, postUpdateUserInfo } from "@/api/user";
+import { Site, Timezone, UserBindStatus, type Lang } from "@/enums";
+import { useAppStore } from "./app";
+import { getInitialLang } from "@/lang";
+import { dataFinder } from "@/plugins/monitor/dataFinder";
 
 export interface UserInfo {
   /** 用户id */
@@ -19,7 +22,7 @@ export interface UserInfo {
   /** 账号状态: 0-生效, 1-锁定 */
   accountStatus: 0 | 1;
   /** 是否绑定客户信息: 0-未绑定, 1-已绑定 */
-  bindStatus: 0 | 1;
+  bindStatus: UserBindStatus;
   /** 主子账号类型: 0-主, 1-子 */
   mainSubType: 0 | 1;
   /** 主账号id */
@@ -45,10 +48,13 @@ export const useUserStore = defineStore(
   () => {
     const tagsViewStore = useTagsViewStore();
 
+    const appStore = useAppStore();
+
     // State
     const token = ref("");
 
     const userInfo = ref<UserInfo | null>(null);
+    const isUserInfoUpdated = ref(false);
 
     const hasSetPreference = computed(() => {
       return (
@@ -57,8 +63,19 @@ export const useUserStore = defineStore(
         userInfo.value?.defaultTimeZone
       );
     });
+    const fetchUserInfo = async () => {
+      const res = await getUserInfo();
+      if (res) {
+        userInfo.value = res;
+        isUserInfoUpdated.value = true;
+      }
+    };
 
-    const setUserInfo = (data: Partial<UserInfo>) => {
+    const updateUserInfo = async (data: Partial<UserInfo>) => {
+      await postUpdateUserInfo({
+        id: userInfo.value?.id,
+        ...data
+      });
       if (userInfo.value) {
         userInfo.value = {
           ...userInfo.value,
@@ -68,26 +85,53 @@ export const useUserStore = defineStore(
     };
 
     // Actions
-    const login = async (data: { email: string; password: string }) => {
+    const login = async (data: {
+      email: string;
+      password: string;
+      uuid: string;
+      code: string;
+    }) => {
       const res = await postLogin(data);
       if (res) {
         token.value = res.token;
-
         userInfo.value = res.userInfo;
+        if (!appStore.site) {
+          appStore.setSite(userInfo.value?.defaultSite || Site.fr);
+        }
+        if (!appStore.lang) {
+          appStore.setLang(userInfo.value?.defaultLanguage || getInitialLang());
+        }
+        if (!appStore.timezone) {
+          appStore.setTimezone(
+            userInfo.value?.defaultTimeZone || Timezone.Local
+          );
+        }
       }
+      dataFinder.initUser();
+      isUserInfoUpdated.value = true;
     };
 
     const logout = () => {
       token.value = "";
       userInfo.value = null;
       tagsViewStore.delAllViews();
+      location.reload();
     };
 
-    return { token, userInfo, login, logout, hasSetPreference, setUserInfo };
+    return {
+      token,
+      userInfo,
+      login,
+      logout,
+      hasSetPreference,
+      fetchUserInfo,
+      updateUserInfo,
+      isUserInfoUpdated
+    };
   },
   {
     persist: {
-      key: "dbu-user-state",
+      key: "csd-gfuc-web-user-state",
       pick: ["token", "userInfo"]
     }
   }

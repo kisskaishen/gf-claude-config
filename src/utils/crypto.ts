@@ -1,47 +1,18 @@
-import * as bcrypt from "bcryptjs";
+import { getPublicKey } from "@/api/common";
+import JSEncrypt from "jsencrypt";
 
-/**
- * 使用 bcryptjs 对密码进行哈希处理
- * @param password 原始密码
- * @param saltRounds 盐的轮数，默认为 10
- * @returns 哈希后的密码
- */
-export async function hashPassword(
-  password: string,
-  saltRounds: number = 10
-): Promise<string> {
-  return new Promise((resolve, reject) => {
-    bcrypt.hash(password, saltRounds, (err, hash) => {
-      if (err) {
-        reject(err);
-      } else if (hash === undefined) {
-        reject(new Error("Hash generation failed"));
-      } else {
-        resolve(hash);
-      }
-    });
-  });
-}
-
-/**
- * 校验密码是否匹配
- * @param password 原始密码
- * @param hash 哈希后的密码
- * @returns 是否匹配
- */
-export async function comparePassword(
-  password: string,
-  hash: string
-): Promise<boolean> {
-  return new Promise((resolve, reject) => {
-    bcrypt.compare(password, hash, (err, isMatch) => {
-      if (err) {
-        reject(err);
-      } else if (isMatch === undefined) {
-        reject(new Error("Password comparison failed"));
-      } else {
-        resolve(isMatch);
-      }
-    });
-  });
+export async function rsaEncryptPwd(rawPassword: string) {
+  // 步骤1：获取后端公钥
+  const publicKey = await getPublicKey();
+  // 步骤2：初始化JSEncrypt实例
+  const encryptor = new JSEncrypt();
+  // 步骤3：设置公钥（直接传入后端Base64编码的公钥，无需手动解码）
+  encryptor.setPublicKey(publicKey);
+  // 步骤4：执行加密（自动PKCS1Padding填充+Base64编码，直接传给后端）
+  const encryptedPwd = encryptor.encrypt(rawPassword);
+  // 校验加密结果（公钥无效/明文过长会返回false）
+  if (!encryptedPwd) {
+    throw new Error("密码加密失败，请检查密码长度或公钥有效性");
+  }
+  return encryptedPwd; // 返回加密后的Base64密文
 }
