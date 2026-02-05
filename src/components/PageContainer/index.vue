@@ -1,5 +1,9 @@
 <template>
-  <div class="page-container" :class="{ 'is-fixed': fixedHeight }">
+  <div
+    v-loading="loading"
+    class="page-container"
+    :class="{ 'is-fixed': fixedHeight }"
+  >
     <slot></slot>
   </div>
 </template>
@@ -13,6 +17,11 @@ defineProps({
     type: Boolean,
     default: true,
     description: "是否固定高度为父容器剩余高度"
+  },
+  loading: {
+    type: Boolean,
+    default: false,
+    description: "是否显示加载状态"
   }
 });
 </script>

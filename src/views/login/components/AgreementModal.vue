@@ -19,15 +19,18 @@
     <template #footer>
       <div class="dialog-footer">
         <el-button class="btn-cancel" @click="handleCancel">{{
-          $t("取消")
+          viewOnly
+            ? $t("web.gfuc.close" /** 关闭 */)
+            : $t("web.gfuc.cancel" /** 取消 */)
         }}</el-button>
         <el-button
+          v-if="!viewOnly"
           type="primary"
           class="btn-confirm"
           :disabled="currentCountdown > 0"
           @click="handleConfirm"
         >
-          {{ $t("同意") }}
+          {{ $t("web.gfuc.agree" /** 同意 */) }}
           {{ currentCountdown > 0 ? `(${currentCountdown}S)` : "" }}
         </el-button>
       </div>
@@ -50,6 +53,10 @@ const props = defineProps({
   countdown: {
     type: Number,
     default: 4
+  },
+  viewOnly: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -62,7 +69,9 @@ watch(
   () => props.visible,
   (val) => {
     if (val) {
-      startCountdown();
+      if (!props.viewOnly) {
+        startCountdown();
+      }
     } else {
       stopCountdown();
     }

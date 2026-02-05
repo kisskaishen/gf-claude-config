@@ -51,9 +51,13 @@
     </div>
 
     <div class="form-actions">
-      <el-button type="primary" class="submit-btn" @click="handleVerify">{{
-        $t("认证")
-      }}</el-button>
+      <el-button
+        type="primary"
+        class="submit-btn"
+        @click="handleVerify"
+        :disabled="loading"
+        >{{ $t("认证") }}</el-button
+      >
     </div>
 
     <div class="form-footer">
@@ -67,8 +71,14 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import { useI18n } from "vue-i18n";
+import { postRegister, postSendVerificationCode } from "@/api/user";
+import { rsaEncryptPwd } from "@/utils/crypto";
 
 const { t } = useI18n();
+
+const props = defineProps<{
+  registerData: { email: string; password: string };
+}>();
 
 const emit = defineEmits(["switch", "success"]);
 
@@ -77,6 +87,7 @@ const verifyCode = ref(["", "", "", ""]);
 const codeRefs = ref<HTMLInputElement[]>([]);
 const countdown = ref(60);
 const showVerifyError = ref(false);
+const loading = ref(false);
 let timer: any = null;
 
 const startTimer = () => {
@@ -88,8 +99,18 @@ const startTimer = () => {
   }, 1000);
 };
 
-onMounted(() => {
+const handleSendCode = async () => {
+  await postSendVerificationCode({
+    email: props.registerData.email
+  });
   startTimer();
+  verifyCode.value = ["", "", "", ""];
+  codeRefs.value[0]?.focus();
+  showVerifyError.value = false;
+};
+
+onMounted(() => {
+  handleSendCode();
 });
 
 onUnmounted(() => {
@@ -109,10 +130,8 @@ const handleCodeDelete = (_e: any, index: number) => {
   }
 };
 
-const resendCode = () => {
-  if (countdown.value > 0) return;
-  ElMessage.success(t("验证码已重新发送"));
-  startTimer();
+const resendCode = async () => {
+  handleSendCode();
 };
 
 const handleVerify = async () => {
@@ -120,7 +139,21 @@ const handleVerify = async () => {
   if (verifyCode.value.some((c) => !c)) {
     return;
   }
-  emit("success", "register");
+  loading.value = true;
+  try {
+    const code = verifyCode.value.join("");
+    const encryptedPwd = await rsaEncryptPwd(props.registerData.password);
+    await postRegister({
+      email: props.registerData.email,
+      password: encryptedPwd,
+      verificationCode: code
+    });
+    emit("success", "register");
+  } catch (error) {
+    // 错误处理已在 request.ts 中统一处理
+  } finally {
+    loading.value = false;
+  }
 };
 </script>
 <style lang="scss" scoped>

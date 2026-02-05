@@ -1,0 +1,101 @@
+import request from "@/utils/request";
+
+/**
+ * 用户注册-账号核对
+ */
+export function postCheckAccount(data: { email: string }) {
+  return request({
+    url: "/user/email/check",
+    method: "post",
+    data
+  });
+}
+
+/**
+ * 用户注册
+ */
+export function postRegister(data: {
+  email: string;
+  password: string;
+  verificationCode: string;
+}) {
+  return request({
+    url: "/user/register",
+    method: "post",
+    data
+  });
+}
+
+/**
+ * 发送邮箱验证码
+ */
+
+export function postSendVerificationCode(data: { email: string }) {
+  return request({
+    url: "/user/register/email/code",
+    method: "post",
+    data
+  });
+}
+/**
+ * 获取验证码
+ */
+export function getVerifyCode() {
+  return request({
+    url: "/user/verifyCode",
+    method: "get"
+  });
+}
+
+/**
+ * 用户登录
+ */
+export function postLogin(data: {
+  email: string;
+  password: string;
+  code: string;
+  /** 验证码 */ uuid: string; /*** 验证码UUID */
+}) {
+  return request({
+    url: "/user/login",
+    method: "post",
+    data
+  });
+}
+/** 获取用户信息 */
+export function getUserInfo() {
+  return request({
+    url: `/user/info/token`,
+    method: "get"
+  });
+}
+/**
+ * 更新用户信息
+ */
+export function postUpdateUserInfo(data: any) {
+  return request({
+    url: "/userInfo/update",
+    method: "post",
+    data
+  });
+}
+
+/**
+ * 开通服务
+ */
+export function postOpenService(data: {
+  /** 货量预估 */
+  count?: string;
+  /** 发货频率 */
+  frequency?: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  phone?: string;
+}) {
+  return request({
+    url: "/userInfo/accountAuth",
+    method: "post",
+    data
+  });
+}

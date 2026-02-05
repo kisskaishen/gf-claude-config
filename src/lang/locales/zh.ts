@@ -1,5 +1,4 @@
 export default {
-  "web.gfuc.customer_platform": "客户平台",
   "web.gfuc.homepage": "首页",
   "web.gfuc.order_management": "订单管理",
   "web.gfuc.single_ticket_order": "单票下单",
@@ -15,5 +14,29 @@ export default {
   "web.gfuc.daily": "每天",
   "web.gfuc.register_agreement": "注册协议",
   "web.gfuc.privacy_policy": "隐私政策",
-  "web.gfuc.agreement": "我同意GOFO的{register_agreement}和{privacy_policy}"
+  "web.gfuc.agreement": "我同意GOFO的{register_agreement}和{privacy_policy}",
+  "web.gfuc.email": "邮箱",
+  "web.gfuc.password": "密码",
+  "web.gfuc.code": "验证码",
+  "web.gfuc.please_enter_password": "请输入密码",
+  "web.gfuc.please_enter_verification_code": "请输入验证码",
+  "web.gfuc.no_account_yet": "还没有账号？",
+  "web.gfuc.go_to_register": "去注册",
+  "web.gfuc.login": "登录",
+  "web.gfuc.email_format_incorrect": "您输入的邮箱格式不对，请填写正确的邮箱",
+  "web.gfuc.close": "关闭",
+  "web.gfuc.cancel": "取消",
+  "web.gfuc.agree": "同意",
+  "web.gfuc.please_enter_email": "请输入邮箱",
+  "web.gfuc.security_authentication": "安全认证",
+  "web.gfuc.security_authentication_tip":
+    "为了您的账号安全，您的密码必须包含以下几个部分",
+  "web.gfuc.lowercase": "小写字母",
+  "web.gfuc.uppercase": "大写字母",
+  "web.gfuc.special": "特殊字符",
+  "web.gfuc.length": "8-12位字符",
+  "web.gfuc.agreement2":
+    "通过勾选此框，我明确同意接收来自 GOFO通过短信发送的营销信息。可能需要支付短信和数据费用。通过提供我的手机号码，我同意接收来自GOFO 通过短信发送的交易相关消息，包括订单通知和验证码。",
+  "web.gfuc.already_have_account": "已经有账号？",
+  "web.gfuc.go_to_login": "去登录"
 };

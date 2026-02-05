@@ -13,11 +13,11 @@
       <!-- 时区选择 (带搜索) -->
       <TimezoneSelect />
 
-      <!-- 用户头像 (文字) -->
-      <el-avatar :size="30" class="user-avatar-text">MT</el-avatar>
+      <!-- 用户头像 -->
+      <el-avatar :size="30" :src="avatarImg"></el-avatar>
 
       <!-- 退出按钮 -->
-      <div class="logout-btn" @click="handleLogout" :title="t('退出登录')">
+      <div class="logout-btn" @click="handleLogout" :title="$t('退出登录')">
         <img src="@/assets/logout.png" alt="switch" />
       </div>
     </div>
@@ -31,6 +31,7 @@ import TimezoneSelect from "@/components/TimezoneSelect/index.vue";
 import SiteSelect from "@/components/SiteSelect/index.vue";
 import LangSelect from "@/components/LangSelect/index.vue";
 import { useI18n } from "vue-i18n";
+import avatarImg from "@/assets/avatar.png";
 
 const { t } = useI18n();
 
@@ -71,14 +72,6 @@ const handleLogout = async () => {
     gap: 24px;
     align-items: center;
     font-size: 14px;
-
-    .user-avatar-text {
-      font-size: 12px;
-      font-weight: 500;
-      color: #fff;
-      cursor: pointer;
-      background-color: #0eb0be; /* 青色背景 */
-    }
 
     .logout-btn {
       margin-right: 40px;

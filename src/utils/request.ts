@@ -1,6 +1,5 @@
 import axios from "axios";
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import { ElMessage, ElMessageBox } from "element-plus";
 import { useAppStoreWithOut } from "@/store/app";
 import { useUserStoreWithOut } from "@/store/user";
 
@@ -30,7 +29,7 @@ export interface PageResult<T = any> {
 
 // 创建 axios 实例
 const service: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_API || "/api",
+  baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 10000
 });
 
@@ -56,7 +55,12 @@ service.interceptors.request.use(
       config.headers["Authorization"] = `Bearer ${userStore.token}`;
     }
 
-    // 4. X-Request-ID: 请求id (建议)
+    // 4. SiteCode: 站点
+    if (appStore.site) {
+      config.headers["SiteCode"] = appStore.site;
+    }
+
+    // 5. X-Request-ID: 请求id (建议)
     config.headers["X-Request-ID"] = crypto.randomUUID();
 
     return config;
@@ -88,18 +92,8 @@ service.interceptors.response.use(
       // 特殊错误码处理，例如：Token 失效
       if (res.code === 401) {
         const userStore = useUserStoreWithOut();
-        ElMessageBox.confirm(
-          "登录状态已过期，您可以继续留在该页面，或者重新登录",
-          "系统提示",
-          {
-            confirmButtonText: "重新登录",
-            cancelButtonText: "取消",
-            type: "warning"
-          }
-        ).then(() => {
-          userStore.logout();
-          location.reload();
-        });
+        userStore.logout();
+        location.reload();
       }
       return Promise.reject(new Error(res.message || "Error"));
     } else {

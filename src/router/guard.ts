@@ -1,23 +1,19 @@
 import type { Router } from "vue-router";
 import { useUserStoreWithOut } from "@/store/user";
-import { useAppStoreWithOut } from "@/store/app";
-
+import { i18n } from "@/lang";
 const whiteList = ["/login"];
 
 export function setupRouteGuard(router: Router) {
-  router.beforeEach((to, _from, next) => {
+  router.beforeEach(async (to, _from, next) => {
     const userStore = useUserStoreWithOut();
-    const appStore = useAppStoreWithOut();
-    const hasToken = userStore.token;
+    if (userStore.token && !userStore.isUserInfoUpdated) {
+      await userStore.fetchUserInfo();
+    }
 
-    if (hasToken) {
+    if (userStore.token && userStore.hasSetPreference) {
       if (to.path === "/login") {
         // 已登录，如果已设置偏好则跳转到首页，否则留在登录页设置偏好
-        if (appStore.hasSetPreference) {
-          next({ path: "/" });
-        } else {
-          next();
-        }
+        next({ path: "/" });
       } else {
         next();
       }
@@ -31,5 +27,11 @@ export function setupRouteGuard(router: Router) {
         next(`/login?redirect=${to.path}`);
       }
     }
+  });
+
+  router.afterEach((to, _from) => {
+    document.title = (to.meta.title as string)
+      ? i18n.global.t(to.meta.title as string)
+      : i18n.global.t("用户中心");
   });
 }

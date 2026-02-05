@@ -15,40 +15,33 @@
         <el-form-item :label="$t('付款方式')" prop="paymentMethod">
           <el-select
             v-model="searchForm.paymentMethod"
-            :placeholder="$t('请选择')"
+            :placeholder="$t('选择')"
             clearable
+            :options="receiptMethodDict.options.value"
+            multiple
+            collapse-tags
           >
-            <el-option
-              v-for="item in paymentOptions"
-              :key="item.value"
-              :label="$t(item.label)"
-              :value="item.value"
-            />
           </el-select>
         </el-form-item>
 
         <el-form-item :label="$t('状态')" prop="status">
           <el-select
             v-model="searchForm.status"
-            :placeholder="$t('请选择')"
+            :placeholder="$t('选择')"
             multiple
             collapse-tags
             clearable
+            :options="statusDict.options.value"
           >
-            <el-option
-              v-for="item in statusOptions"
-              :key="item.value"
-              :label="$t(item.label)"
-              :value="item.value"
-            />
           </el-select>
         </el-form-item>
 
         <el-form-item class="date-range-item">
           <template #label>
-            <el-radio-group v-model="searchForm.dateType">
-              <el-radio value="submit">{{ $t("提交日期") }}</el-radio>
-              <el-radio value="recharge">{{ $t("充值日期") }}</el-radio>
+            <el-radio-group
+              v-model="searchForm.dateType"
+              :options="dateTypeOptions"
+            >
             </el-radio-group>
           </template>
           <el-date-picker
@@ -57,6 +50,7 @@
             :start-placeholder="$t('开始日期')"
             :end-placeholder="$t('结束日期')"
             value-format="YYYY-MM-DD"
+            :fallback-placements="['bottom']"
           />
         </el-form-item>
       </template>
@@ -64,18 +58,18 @@
       <!-- 表格区域 -->
       <template #columns>
         <el-table-column
-          prop="amount"
+          prop="receiptAmount"
           :label="$t('充值金额')"
           min-width="120"
         />
         <el-table-column prop="currency" :label="$t('币种')" min-width="80" />
         <el-table-column
-          prop="paymentMethod"
+          prop="receiptMethod"
           :label="$t('付款方式')"
           min-width="120"
         >
           <template #default="{ row }">
-            {{ $t(row.paymentMethod) }}
+            {{ receiptMethodDict.getLabel(row.receiptMethod) ?? "-" }}
           </template>
         </el-table-column>
         <el-table-column
@@ -87,17 +81,17 @@
         <el-table-column prop="status" :label="$t('状态')" min-width="100">
           <template #default="{ row }">
             <span :class="['status-tag', getStatusClass(row.status)]">
-              {{ $t(getStatusLabel(row.status)) }}
+              {{ statusDict.getLabel(row.status) ?? "-" }}
             </span>
           </template>
         </el-table-column>
         <el-table-column
-          prop="failReason"
+          prop="rejectionReason"
           :label="$t('失败原因')"
           min-width="150"
         />
         <el-table-column
-          prop="submitTime"
+          prop="createTimeStr"
           :label="$t('提交时间')"
           min-width="160"
         />
@@ -107,10 +101,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import TableLayout from "@/components/TableLayout/index.vue";
 import PageContainer from "@/components/PageContainer/index.vue";
 import { useI18n } from "vue-i18n";
+import { useDict } from "@/hooks/useDict";
+import { getRechargeRecord } from "@/api/finance";
 
 defineOptions({
   name: "RechargeRecord"
@@ -118,25 +114,44 @@ defineOptions({
 
 const { t } = useI18n();
 
+/** 日期类型 */
+const enum DateType {
+  /** 提交日期 */
+  Submit = "submit",
+  /** 充值日期 */
+  Recharge = "recharge"
+}
+
+/** 状态 */
+const enum Status {
+  /** 充值中 */
+  Recharging,
+  /** 充值成功 */
+  RechargeSuccess,
+  /** 充值失败 */
+  RechargeFailed
+}
+
+/** 日期类型选项 */
+const dateTypeOptions = [
+  { label: t("提交日期"), value: DateType.Submit },
+  {
+    label: t("web.fms.receipt.rechargeDate" /** 充值日期 **/),
+    value: DateType.Recharge
+  }
+];
+
 // --- 搜索相关 ---
 const searchForm = ref({
-  paymentMethod: "",
+  paymentMethod: [],
   status: [],
-  dateType: "submit",
+  dateType: DateType.Submit,
   dateRange: []
 });
 
-const paymentOptions = [
-  { label: t("银行转账"), value: "bank_transfer" },
-  { label: t("支票"), value: "check" },
-  { label: t("承兑汇票"), value: "acceptance_bill" }
-];
+const receiptMethodDict = useDict("fms.provider.paymentMode.type");
 
-const statusOptions = [
-  { label: t("充值中"), value: "pending" },
-  { label: t("充值成功"), value: "success" },
-  { label: t("充值失败"), value: "failed" }
-];
+const statusDict = useDict<Status>("fms.payable.verification.status");
 
 // --- 表格相关 ---
 const loading = ref(false);
@@ -145,18 +160,13 @@ const total = ref(0);
 const currentPage = ref(1);
 const pageSize = ref(20);
 
-const getStatusLabel = (status: string) => {
-  const found = statusOptions.find((item) => item.value === status);
-  return found ? found.label : status;
-};
-
-const getStatusClass = (status: string) => {
+const getStatusClass = (status: Status) => {
   switch (status) {
-    case "pending":
+    case Status.Recharging:
       return "status-pending";
-    case "success":
+    case Status.RechargeSuccess:
       return "status-success";
-    case "failed":
+    case Status.RechargeFailed:
       return "status-failed";
     default:
       return "";
@@ -164,127 +174,31 @@ const getStatusClass = (status: string) => {
 };
 
 // 模拟数据获取
-const fetchData = () => {
+const fetchData = async () => {
   loading.value = true;
-  setTimeout(() => {
-    // 模拟数据
-    const mockData = [
-      {
-        id: 1,
-        amount: "32",
-        currency: "USB",
-        paymentMethod: "银行转账",
-        rechargeDate: "2023-03-19",
-        remark: "银行打款充值",
-        status: "pending",
-        failReason: "-",
-        submitTime: "2023-03-19 08:59"
-      },
-      {
-        id: 2,
-        amount: "5212",
-        currency: "USB",
-        paymentMethod: "银行转账",
-        rechargeDate: "2023-03-17",
-        remark: "-",
-        status: "failed",
-        failReason: "充值记录不存在",
-        submitTime: "2023-03-17 04:05"
-      },
-      {
-        id: 3,
-        amount: "621",
-        currency: "USB",
-        paymentMethod: "银行转账",
-        rechargeDate: "2023-03-19",
-        remark: "-",
-        status: "success",
-        failReason: "-",
-        submitTime: "2023-03-19 12:27"
-      },
-      {
-        id: 4,
-        amount: "223",
-        currency: "USB",
-        paymentMethod: "银行转账",
-        rechargeDate: "2023-03-15",
-        remark: "-",
-        status: "pending",
-        failReason: "-",
-        submitTime: "2023-03-15 08:20"
-      },
-      {
-        id: 5,
-        amount: "622",
-        currency: "USB",
-        paymentMethod: "银行转账",
-        rechargeDate: "2023-03-18",
-        remark: "-",
-        status: "failed",
-        failReason: "-",
-        submitTime: "2023-03-18 11:52"
-      },
-      {
-        id: 6,
-        amount: "422",
-        currency: "USB",
-        paymentMethod: "银行转账",
-        rechargeDate: "2023-03-18",
-        remark: "-",
-        status: "success",
-        failReason: "-",
-        submitTime: "2023-03-18 08:29"
-      },
-      {
-        id: 7,
-        amount: "722",
-        currency: "USB",
-        paymentMethod: "银行转账",
-        rechargeDate: "2023-03-18",
-        remark: "-",
-        status: "pending",
-        failReason: "-",
-        submitTime: "2023-03-18 11:34"
-      },
-      {
-        id: 8,
-        amount: "922",
-        currency: "USB",
-        paymentMethod: "银行转账",
-        rechargeDate: "2023-03-14",
-        remark: "-",
-        status: "failed",
-        failReason: "-",
-        submitTime: "2023-03-14 22:59"
-      },
-      {
-        id: 9,
-        amount: "101",
-        currency: "USB",
-        paymentMethod: "银行转账",
-        rechargeDate: "2023-03-14",
-        remark: "-",
-        status: "success",
-        failReason: "-",
-        submitTime: "2023-03-14 00:56"
-      },
-      {
-        id: 10,
-        amount: "132",
-        currency: "USB",
-        paymentMethod: "银行转账",
-        rechargeDate: "2023-03-18",
-        remark: "-",
-        status: "pending",
-        failReason: "-",
-        submitTime: "2023-03-18 16:35"
-      }
-    ];
-
-    tableData.value = mockData;
-    total.value = 320;
+  try {
+    const res = await getRechargeRecord({
+      pageNumber: currentPage.value,
+      pageSize: pageSize.value,
+      receiptMethod: searchForm.value.paymentMethod,
+      status: searchForm.value.status,
+      ...(searchForm.value.dateType === DateType.Submit
+        ? {
+            submitStart: searchForm.value.dateRange[0]!,
+            submitEnd: searchForm.value.dateRange[1]!
+          }
+        : {
+            receiptDateStart: searchForm.value.dateRange[0]!,
+            receiptDateTimeEnd: searchForm.value.dateRange[1]!
+          })
+    });
+    if (res) {
+      tableData.value = res.items || [];
+      total.value = res.totalCount || 0;
+    }
+  } finally {
     loading.value = false;
-  }, 500);
+  }
 };
 
 onMounted(() => {

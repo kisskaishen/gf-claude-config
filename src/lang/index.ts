@@ -19,7 +19,7 @@ export const getBrowserLang = (): Lang => {
 };
 export const getInitialLang = (): Lang => {
   const persistedState = JSON.parse(
-    localStorage.getItem("dbu-app-state") || "{}"
+    localStorage.getItem("csd-gfuc-web-app-state") || "{}"
   );
   if (
     persistedState.lang &&
@@ -27,6 +27,7 @@ export const getInitialLang = (): Lang => {
   ) {
     return persistedState.lang as Lang;
   }
+
   return getBrowserLang();
 };
 
@@ -53,6 +54,7 @@ export const getElementLang = (lang: Lang) => {
 
   return map[lang];
 };
+console.log("test", getInitialLang());
 
 export const i18n = createI18n({
   legacy: false,

@@ -57,7 +57,8 @@
       class="contextmenu"
     >
       <li @click="refreshSelectedTag(selectedTag)">
-        <el-icon><Refresh /></el-icon> {{ $t("刷新") }}
+        <el-icon><Refresh /></el-icon>
+        {{ $t("deliveryLocale.common.button.refresh" /** 刷新 **/) }}
       </li>
       <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">
         <el-icon><Close /></el-icon> {{ $t("关闭") }}

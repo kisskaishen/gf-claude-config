@@ -24,17 +24,17 @@
 import { computed } from "vue";
 import { useAppStore } from "@/store/app";
 import SelectDropdown from "@/components/SelectDropdown/index.vue";
+import { Timezone } from "@/enums";
 
 const appStore = useAppStore();
 
-// 模拟数据
 const timezoneOptions = computed(() =>
-  Object.entries(appStore.timezonesMap).map(([key, value]) => {
+  Object.entries(Timezone).map(([key, value]) => {
     const fileName = key.split("/").join("_");
 
     return {
       label: value,
-      value: key,
+      value,
       // 使用 new URL 动态获取资源路径
       icon: new URL(`../../assets/timezones/${fileName}.png`, import.meta.url)
         .href

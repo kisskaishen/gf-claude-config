@@ -1,5 +1,5 @@
 <template>
-  <div class="recharge-container">
+  <page-container :fixedHeight="false">
     <el-form
       ref="formRef"
       :model="formData"
@@ -12,44 +12,60 @@
         <template #label>
           <div class="label-with-link">
             <span>{{ $t("支付截图") }}</span>
-            <el-link type="primary" class="example-link" :underline="false">
+            <el-link
+              type="primary"
+              class="example-link"
+              :underline="false"
+              @click="handleDownloadExample"
+            >
               {{ $t("支付凭证示例") }}
             </el-link>
           </div>
         </template>
-        <el-upload
-          class="upload-demo"
-          drag
-          action="#"
-          :auto-upload="false"
-          :show-file-list="true"
-          :on-change="handleFileChange"
-          :on-remove="handleFileRemove"
-          :limit="1"
-          accept=".pdf,.jpg,.png,.jpeg"
-        >
-          <div v-if="!formData.file" class="upload-placeholder">
-            <img src="@/assets/upload.png" alt="upload" class="upload-icon" />
-            <div class="upload__text">{{ $t("点击上传文件") }}</div>
-          </div>
-          <div v-else class="upload-file-info">
-            <el-icon class="file-icon"><Document /></el-icon>
-            <span>{{ formData.file.name }}</span>
-          </div>
-          <template #tip>
-            <div class="form-tip">
-              {{ $t("只支持pdf/jpg/png/jpeg 文件，单个大小不能超过10MB") }}
+        <div>
+          <el-upload
+            class="upload-demo"
+            action="#"
+            accept=".pdf,.jpg,.png,.jpeg"
+            v-model:file-list="fileList"
+            :show-file-list="false"
+            :before-upload="handleBeforeUpload"
+            :http-request="handleUpload"
+            drag
+          >
+            <div class="upload-placeholder">
+              <img src="@/assets/upload.png" alt="upload" class="upload-icon" />
+              <div class="upload__text">{{ $t("点击上传文件") }}</div>
             </div>
-          </template>
-        </el-upload>
+          </el-upload>
+
+          <div class="form-tip">
+            {{ $t("只支持pdf/jpg/png/jpeg 文件，单个大小不能超过10MB") }}
+          </div>
+
+          <!-- 自定义文件列表显示 -->
+          <div v-if="fileList.length > 0" class="custom-file-list">
+            <div v-for="file in fileList" :key="file.uid" class="file-item">
+              <div class="file-info">
+                <img class="file-icon" src="@/assets/uploadFile/excel.svg" />
+                <a class="file-name" @click="handleFilePreview(file)">
+                  {{ file.name }}
+                </a>
+              </div>
+              <el-icon class="delete-icon" @click="handleFileRemove(file)">
+                <svg-icon name="trash" />
+              </el-icon>
+            </div>
+          </div>
+        </div>
       </el-form-item>
 
       <el-row :gutter="24">
         <!-- 充值金额 -->
         <el-col :span="12">
-          <el-form-item :label="$t('充值金额')" prop="amount">
+          <el-form-item :label="$t('充值金额')" prop="arrivalAmount">
             <el-input
-              v-model="formData.amount"
+              v-model="formData.arrivalAmount"
               :placeholder="$t('充值的金额需要跟上传图片的金额一致')"
             />
           </el-form-item>
@@ -65,16 +81,16 @@
       <el-row :gutter="24">
         <!-- 支付方式 -->
         <el-col :span="12">
-          <el-form-item :label="$t('支付方式')" prop="method">
+          <el-form-item :label="$t('支付方式')" prop="receiptMethod">
             <el-select
-              v-model="formData.method"
+              v-model="formData.receiptMethod"
               :placeholder="$t('请选择充值时支付的方式')"
               style="width: 100%"
             >
               <el-option
-                v-for="item in paymentMethods"
+                v-for="item in receiptMethodDict.options.value"
                 :key="item.value"
-                :label="$t(item.label)"
+                :label="item.label"
                 :value="item.value"
               />
             </el-select>
@@ -82,9 +98,9 @@
         </el-col>
         <!-- 充值日期 -->
         <el-col :span="12">
-          <el-form-item :label="$t('充值日期')" prop="date">
+          <el-form-item :label="$t('充值日期')" prop="receiptDate">
             <el-date-picker
-              v-model="formData.date"
+              v-model="formData.receiptDate"
               type="date"
               :placeholder="$t('时间需要跟上传截图的时间一致')"
               style="width: 100%"
@@ -110,44 +126,59 @@
         {{ $t("提交") }}
       </el-button>
     </el-form>
-  </div>
+  </page-container>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from "vue";
-import { Document } from "@element-plus/icons-vue";
 import {
   type FormInstance,
   type FormRules,
-  type UploadFile,
-  ElMessage
+  type UploadRequestOptions,
+  type UploadRawFile,
+  ElMessage,
+  type UploadFile
 } from "element-plus";
 import { useI18n } from "vue-i18n";
+import { uploadFile } from "@/api/common";
+import { useDict } from "@/hooks/useDict";
+import { recharge } from "@/api/finance";
+import { downloadFile } from "@/utils/download";
 
 defineOptions({
   name: "Recharge"
 });
 
 const { t } = useI18n();
+const loading = ref(false);
 const formRef = ref<FormInstance>();
+const fileList = ref<UploadFile[]>([]);
+/** 示例图片链接 */
+const exampleImage = ref(
+  "https://raw.githubusercontent.com/xfiveco/mock-api-images/main/images/img-01-xs.jpg"
+);
 
 const formData = reactive({
-  file: null as UploadFile | null,
-  amount: "",
+  /** 附件key */
+  attachmentKeys: [] as string[],
+  /** 充值金额 */
+  arrivalAmount: "",
   currency: "EUR",
-  method: "",
-  date: "",
+  /** 支付方式 */
+  receiptMethod: undefined,
+  /** 充值日期 */
+  receiptDate: undefined as string | undefined,
   remark: ""
 });
 
-const paymentMethods = [
-  { label: t("银行转账"), value: "bank_transfer" },
-  { label: t("支票"), value: "check" },
-  { label: t("承兑汇票"), value: "acceptance_bill" }
-];
+const handleDownloadExample = () => {
+  downloadFile(exampleImage.value, t("支付凭证示例.jpg"));
+};
+
+const receiptMethodDict = useDict("fms.provider.paymentMode.type");
 
 const validateFile = (_rule: any, value: any, callback: any) => {
-  if (!formData.file) {
+  if (!formData.attachmentKeys.length) {
     callback(new Error(t("请上传支付截图")));
   } else {
     callback();
@@ -169,48 +200,91 @@ const rules = reactive<FormRules>({
   date: [{ required: true, message: t("请选择充值日期"), trigger: "change" }]
 });
 
-const handleFileChange = (uploadFile: UploadFile) => {
-  const isLt10M = uploadFile.size ? uploadFile.size / 1024 / 1024 < 10 : false;
-  const validTypes = ["application/pdf", "image/jpeg", "image/png"];
-
-  // Element Plus upload rawFile type check
-  if (uploadFile.raw && !validTypes.includes(uploadFile.raw.type)) {
-    ElMessage.error(t("只支持pdf/jpg/png/jpeg 文件"));
-    handleFileRemove();
-    return;
+const handleFileRemove = (file: UploadFile) => {
+  // 移除 formData 中的 key
+  if (file.url) {
+    formData.attachmentKeys = formData.attachmentKeys.filter(
+      (key) => key !== file.url
+    );
   }
+  // 移除 fileList 中的 item
+  const index = fileList.value.indexOf(file);
+  if (index !== -1) {
+    fileList.value.splice(index, 1);
+  }
+};
+
+const handleFilePreview = (file: UploadFile) => {
+  console.log("file", file);
+
+  if (file.url) {
+    window.open(file.url, "_blank");
+  }
+};
+
+const handleBeforeUpload = (rawFile: UploadRawFile) => {
+  const isLt10M = rawFile.size ? rawFile.size / 1024 / 1024 < 10 : false;
 
   if (!isLt10M) {
     ElMessage.error(t("单个大小不能超过10MB"));
-    handleFileRemove();
-    return;
+    return false;
   }
 
-  formData.file = uploadFile;
-  // Trigger validation manually to clear error if any
-  formRef.value?.validateField("file");
+  const validTypes = ["application/pdf", "image/jpeg", "image/png"];
+
+  // Element Plus upload rawFile type check
+  if (rawFile.type && !validTypes.includes(rawFile.type)) {
+    ElMessage.error(t("只支持pdf/jpg/png/jpeg 文件"));
+    return false;
+  }
+
+  return true;
 };
 
-const handleFileRemove = () => {
-  formData.file = null;
+const handleUpload = async (options: UploadRequestOptions) => {
+  try {
+    const data = new FormData();
+    data.append("file", options.file);
+    const res = await uploadFile(data);
+    formData.attachmentKeys.push(res); // 假设返回结构中包含 url 字段
+
+    // 更新 fileList 中的 url，以便删除时使用
+    const file = fileList.value.find((f) => f.uid === options.file.uid);
+    if (file) {
+      file.url = res;
+      file.status = "success";
+    }
+
+    formRef.value?.clearValidate("file");
+  } catch (error) {
+    ElMessage.error(t("上传失败，请重试"));
+    // 上传失败移除文件
+    const index = fileList.value.findIndex((f) => f.uid === options.file.uid);
+    if (index !== -1) fileList.value.splice(index, 1);
+  }
+};
+
+const validate = () => {
+  return new Promise((resolve) => {
+    formRef.value?.validate((valid) => {
+      resolve(valid);
+    });
+  });
 };
 
 const handleSubmit = async () => {
-  if (!formRef.value) return;
-  await formRef.value.validate((valid) => {
-    if (valid) {
-      console.log("Form submitted:", formData);
-      ElMessage.success(t("提交成功"));
-    }
-  });
+  if (!(await validate())) return;
+  try {
+    loading.value = true;
+    await recharge(formData);
+    ElMessage.success(t("提交成功"));
+  } finally {
+    loading.value = false;
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-.recharge-container {
-  padding: 24px;
-}
-
 .recharge-form {
   max-width: 732px;
 }
@@ -249,15 +323,45 @@ const handleSubmit = async () => {
   }
 }
 
-.upload-file-info {
+.custom-file-list {
   display: flex;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  color: var(--el-color-primary);
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
 
-  .file-icon {
-    font-size: 20px;
+  .file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background: #eff0f533;
+    border-radius: 8px;
+
+    .file-info {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .file-icon {
+      width: 22px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .file-name {
+      font-size: 14px;
+      color: #7a869a;
+    }
+
+    .delete-icon {
+      font-size: 16px;
+      color: #909399;
+      cursor: pointer;
+    }
   }
 }
 
