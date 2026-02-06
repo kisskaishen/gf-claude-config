@@ -1,13 +1,13 @@
 import type { Router } from "vue-router";
 import { useUserStoreWithOut } from "@/store/user";
-import { i18n } from "@/lang";
+import { i18n, loadI18nMap } from "@/lang";
 const whiteList = ["/login"];
 
 export function setupRouteGuard(router: Router) {
   router.beforeEach(async (to, _from, next) => {
     const userStore = useUserStoreWithOut();
     if (userStore.token && !userStore.isUserInfoUpdated) {
-      await userStore.fetchUserInfo();
+      await Promise.all([userStore.fetchUserInfo(), loadI18nMap()]);
     }
 
     if (userStore.token && userStore.hasSetPreference) {

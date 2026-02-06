@@ -9,6 +9,7 @@
     class="preference-modal"
   >
     <div class="preference-content">
+      {{ $t("web.gfuc.test1") }}
       <p class="subtitle">{{ $t("为了更好的服务，您需要设置您的网站偏好") }}</p>
 
       <el-form :model="form" label-position="top">
@@ -54,7 +55,7 @@
     <template #footer>
       <div class="dialog-footer">
         <el-button type="primary" class="submit-btn" @click="handleSubmit">
-          {{ $t("tis_confirm" /** 确定 **/) }}
+          {{ $t("确定") }}
         </el-button>
       </div>
     </template>

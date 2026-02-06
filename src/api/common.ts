@@ -32,3 +32,11 @@ export const uploadFile = (data: FormData) => {
     data
   });
 };
+
+/** 获取i18n词条 */
+export const getI18nMap = () => {
+  return request({
+    url: "/findI18nMap",
+    method: "get"
+  });
+};

@@ -3,7 +3,7 @@ import { routes } from "./routes";
 import { setupRouteGuard } from "./guard";
 
 const router = createRouter({
-  history: createWebHistory("csd-gfuc-web"),
+  history: createWebHistory(),
   routes
 });
 

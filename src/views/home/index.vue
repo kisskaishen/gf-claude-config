@@ -1,5 +1,5 @@
 <template>
-  <div>home</div>
+  <div>home {{ $t("web.gfuc.test2") }}</div>
 </template>
 
 <script setup lang="ts">

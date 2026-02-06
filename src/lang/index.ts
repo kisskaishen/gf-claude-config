@@ -5,6 +5,7 @@ import en from "element-plus/es/locale/lang/en";
 import fr from "element-plus/es/locale/lang/fr";
 import it from "element-plus/es/locale/lang/it";
 import nl from "element-plus/es/locale/lang/nl";
+import { getI18nMap } from "@/api/common";
 
 export const getBrowserLang = (): Lang => {
   // 获取浏览器语言
@@ -54,7 +55,6 @@ export const getElementLang = (lang: Lang) => {
 
   return map[lang];
 };
-console.log("test", getInitialLang());
 
 export const i18n = createI18n({
   legacy: false,
@@ -72,4 +72,9 @@ export const setI18nLang = (lang: Lang) => {
   } else {
     global.locale = lang;
   }
+};
+
+export const loadI18nMap = async () => {
+  const i18nMap = await getI18nMap();
+  i18n.global.mergeLocaleMessage(i18n.global.locale.value, i18nMap);
 };
