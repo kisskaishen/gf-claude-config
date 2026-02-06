@@ -93,13 +93,13 @@ const loading = ref(false);
 
 const balanceInfo = ref({
   /** 可下单金额 */
-  availableOrderAmount: 5415654.54561,
+  availableOrderAmount: 0,
   /** 账号余额 */
-  balance: 5415654456464,
+  balance: 0,
   /** 可用信用额度 */
-  creditLimit: 5415654456464,
+  creditLimit: 0,
   /** 预扣费额度 */
-  freezeAmount: 544564
+  freezeAmount: 0
 });
 
 const formatAmount = (num: number) => {
@@ -110,7 +110,9 @@ const formatAmount = (num: number) => {
 };
 
 const handleRecharge = () => {
-  router.push("/finance/recharge");
+  router.push({
+    name: "Recharge"
+  });
 };
 
 const init = async () => {

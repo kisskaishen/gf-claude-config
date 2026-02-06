@@ -13,7 +13,11 @@
         }}</el-button>
       </div>
     </div>
-    <AuthModal v-model="showAuthModal" @success="handleSuccess" />
+    <AuthModal
+      v-if="showAuthModal"
+      v-model="showAuthModal"
+      @success="handleSuccess"
+    />
   </page-container>
 </template>
 <script setup lang="ts">

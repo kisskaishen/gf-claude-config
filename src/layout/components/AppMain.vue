@@ -33,6 +33,7 @@ const checkPermission = (_route: RouteLocationNormalizedLoadedGeneric) => {
   ) {
     return false;
   }
+  return true;
 };
 </script>
 

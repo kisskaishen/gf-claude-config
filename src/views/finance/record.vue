@@ -136,7 +136,7 @@ const enum Status {
 const dateTypeOptions = [
   { label: t("提交日期"), value: DateType.Submit },
   {
-    label: t("web.fms.receipt.rechargeDate" /** 充值日期 **/),
+    label: t("充值日期"),
     value: DateType.Recharge
   }
 ];

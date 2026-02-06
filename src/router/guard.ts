@@ -7,7 +7,8 @@ export function setupRouteGuard(router: Router) {
   router.beforeEach(async (to, _from, next) => {
     const userStore = useUserStoreWithOut();
     if (userStore.token && !userStore.isUserInfoUpdated) {
-      await Promise.all([userStore.fetchUserInfo(), loadI18nMap()]);
+      // await Promise.all([userStore.fetchUserInfo(), loadI18nMap()]);
+      await Promise.all([userStore.fetchUserInfo()]);
     }
 
     if (userStore.token && userStore.hasSetPreference) {

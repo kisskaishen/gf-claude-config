@@ -65,7 +65,7 @@ export function postLogin(data: {
 /** 获取用户信息 */
 export function getUserInfo() {
   return request({
-    url: `/user/info/token`,
+    url: `/user/info`,
     method: "get"
   });
 }
@@ -85,16 +85,16 @@ export function postUpdateUserInfo(data: any) {
  */
 export function postOpenService(data: {
   /** 货量预估 */
-  count?: string;
+  shippingVolume?: string;
   /** 发货频率 */
-  frequency?: string;
+  shippingFrequency?: string;
   email?: string;
-  firstName?: string;
-  lastName?: string;
+  name?: string;
+  country?: any[];
   phone?: string;
 }) {
   return request({
-    url: "/userInfo/accountAuth",
+    url: "/fms/customer/lead",
     method: "post",
     data
   });

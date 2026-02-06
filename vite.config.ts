@@ -67,21 +67,21 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "/api/gfuc": {
-        target: "http://127.0.0.1:4523/m1/7052181-6772291-default",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, "")
-      }
+      // "/api/gfuc": {
+      //   target: "http://127.0.0.1:4523/m1/7052181-6772291-default",
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/api/, "")
+      // }
       // "/api/gfuc": {
       //   target: "http://10.80.8.17:7777",
       //   changeOrigin: true,
       //   rewrite: (path) => path.replace(/^\/api/, "")
       // }
-      // "/api/gfuc": {
-      //   target: "http://192.168.104.124:7777",
-      //   changeOrigin: true,
-      //   rewrite: (path) => path.replace(/^\/api/, "")
-      // }
+      "/api/gfuc": {
+        target: "http://192.168.104.124:7777",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, "")
+      }
       // "/api/gfuc": {
       //   target: "http://10.100.5.180:32633",
       //   changeOrigin: true,

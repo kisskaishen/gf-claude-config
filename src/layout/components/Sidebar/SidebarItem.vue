@@ -69,6 +69,7 @@ function hasOneShowingChild(
 // 解析路径（简单处理，可根据需求增强）
 function resolvePath(routePath: string) {
   if (routePath.startsWith("/")) return routePath;
+  if (!routePath) return props.basePath;
 
   return `${props.basePath}/${routePath}`.replace(/\/+/g, "/");
 }

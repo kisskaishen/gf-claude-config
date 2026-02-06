@@ -62,9 +62,9 @@
 
       <el-row :gutter="16">
         <el-col :span="12">
-          <el-form-item :label="$t('您发货的频率')" prop="frequency">
+          <el-form-item :label="$t('您发货的频率')" prop="shippingFrequency">
             <el-select
-              v-model="formData.frequency"
+              v-model="formData.shippingFrequency"
               :placeholder="$t('选择')"
               :options="frequencyDict.options.value"
             >
@@ -72,9 +72,9 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item :label="$t('一个月的货量预估')" prop="count">
+          <el-form-item :label="$t('一个月的货量预估')" prop="shippingVolume">
             <el-select
-              v-model="formData.count"
+              v-model="formData.shippingVolume"
               :placeholder="$t('选择')"
               :options="volumeDict.options.value"
             >
@@ -131,9 +131,9 @@ const formData = reactive({
   email: "",
   phone: "",
   /** 发货频率 */
-  frequency: undefined,
+  shippingFrequency: undefined,
   /** 货量预估 */
-  count: undefined,
+  shippingVolume: undefined,
   /** 国家 */
   country: undefined
 });
@@ -145,10 +145,12 @@ const rules = reactive<FormRules>({
     { required: true, message: t("请输入邮箱"), trigger: "change" },
     { type: "email", message: t("请输入正确的邮箱格式"), trigger: "change" }
   ],
-  frequency: [
+  shippingFrequency: [
     { required: true, message: t("请选择发货频率"), trigger: "change" }
   ],
-  count: [{ required: true, message: t("请选择货量预估"), trigger: "change" }]
+  shippingVolume: [
+    { required: true, message: t("请选择货量预估"), trigger: "change" }
+  ]
 });
 
 const validate = () => {
