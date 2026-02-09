@@ -38,5 +38,10 @@ export default {
   "web.gfuc.agreement2":
     "通过勾选此框，我明确同意接收来自 GOFO通过短信发送的营销信息。可能需要支付短信和数据费用。通过提供我的手机号码，我同意接收来自GOFO 通过短信发送的交易相关消息，包括订单通知和验证码。",
   "web.gfuc.already_have_account": "已经有账号？",
-  "web.gfuc.go_to_login": "去登录"
+  "web.gfuc.go_to_login": "去登录",
+  "web.gfuc.submit": "提交",
+  "web.gfuc.user_center": "用户中心",
+  "web.gfuc.register": "注册",
+  "web.gfuc.invalid_email_format": "您输入的邮箱格式不对，请填写正确的邮箱",
+  "web.gfuc.please_agree_to_terms": "请同意注册协议"
 };

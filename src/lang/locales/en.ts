@@ -41,5 +41,11 @@ export default {
   "web.gfuc.agreement2":
     "By checking this box, I explicitly agree to receive marketing messages from GOFO via SMS. There may be charges for SMS and data. By providing my phone number, I agree to receive transaction-related messages from GOFO via SMS, including order notifications and verification codes.",
   "web.gfuc.already_have_account": "Already have an account?",
-  "web.gfuc.go_to_login": "Go to login"
+  "web.gfuc.go_to_login": "Go to login",
+  "web.gfuc.submit": "Submit",
+  "web.gfuc.user_center": "User Center",
+  "web.gfuc.register": "Register",
+  "web.gfuc.invalid_email_format":
+    "The email address you entered is incorrect, please enter a valid email address",
+  "web.gfuc.please_agree_to_terms": "Please agree to the registration agreement"
 };

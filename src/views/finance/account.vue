@@ -7,27 +7,27 @@
       @search="handleSearch"
     >
       <template #search>
-        <el-form-item :label="$t('名称')">
+        <el-form-item :label="$t('gfuc.name' /** 名称 **/)">
           <el-input
             v-model="searchFormModel.name"
-            :placeholder="$t('请输入名称')"
+            :placeholder="$t('gfuc.please_enter_name' /** 请输入名称 **/)"
           />
         </el-form-item>
-        <el-form-item :label="$t('年龄')">
+        <el-form-item :label="$t('gfuc.age' /** 年龄 **/)">
           <el-input
             v-model="searchFormModel.age"
-            :placeholder="$t('请输入年龄')"
+            :placeholder="$t('gfuc.please_enter_age' /** 请输入年龄 **/)"
           />
         </el-form-item>
-        <el-form-item :label="$t('登记时间')">
+        <el-form-item :label="$t('gfuc.registration_time' /** 登记时间 **/)">
           <el-date-picker
             v-model="searchFormModel.registerTime"
             type="daterange"
-            :start-placeholder="$t('开始日期')"
-            :end-placeholder="$t('结束日期')"
+            :start-placeholder="$t('gfuc.start_date' /** 开始日期 **/)"
+            :end-placeholder="$t('gfuc.end_date' /** 结束日期 **/)"
           />
         </el-form-item>
-        <el-form-item :label="$t('地址')" :span="16">
+        <el-form-item :label="$t('gfuc.address' /** 地址 **/)" :span="16">
           <el-input
             v-model="searchFormModel.address"
             placeholder="请输入地址"

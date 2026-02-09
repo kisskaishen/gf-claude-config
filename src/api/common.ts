@@ -36,7 +36,7 @@ export const uploadFile = (data: FormData) => {
 /** 获取i18n词条 */
 export const getI18nMap = () => {
   return request({
-    url: "/findI18nMap",
+    url: "/sys/i18n/getWebI18nAll",
     method: "get"
   });
 };

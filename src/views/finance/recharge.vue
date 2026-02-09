@@ -11,14 +11,14 @@
       <el-form-item prop="attachmentKeys">
         <template #label>
           <div class="label-with-link">
-            <span>{{ $t("支付截图") }}</span>
+            <span>{{ $t("gfuc.payment_screenshot" /** 支付截图 **/) }}</span>
             <el-link
               type="primary"
               class="example-link"
               :underline="false"
               @click="handleDownloadExample"
             >
-              {{ $t("支付凭证示例") }}
+              {{ $t("gfuc.payment_proof_example" /** 支付凭证示例 **/) }}
             </el-link>
           </div>
         </template>
@@ -35,12 +35,18 @@
           >
             <div class="upload-placeholder">
               <img src="@/assets/upload.png" alt="upload" class="upload-icon" />
-              <div class="upload__text">{{ $t("点击上传文件") }}</div>
+              <div class="upload__text">
+                {{ $t("gfuc.click_to_upload_file" /** 点击上传文件 **/) }}
+              </div>
             </div>
           </el-upload>
 
           <div class="form-tip">
-            {{ $t("只支持pdf/jpg/png/jpeg 文件，单个大小不能超过10MB") }}
+            {{
+              $t(
+                "gfuc.file_format_restrictions" /** 只支持pdf/jpg/png/jpeg 文件，单个大小不能超过10MB **/
+              )
+            }}
           </div>
 
           <!-- 自定义文件列表显示 -->
@@ -66,16 +72,26 @@
       <el-row :gutter="24">
         <!-- 充值金额 -->
         <el-col :span="12">
-          <el-form-item :label="$t('充值金额')" prop="arrivalAmount">
+          <el-form-item
+            :label="$t('gfuc.recharge_amount' /** 充值金额 **/)"
+            prop="arrivalAmount"
+          >
             <el-input
               v-model="formData.arrivalAmount"
-              :placeholder="$t('充值的金额需要跟上传图片的金额一致')"
+              :placeholder="
+                $t(
+                  'gfuc.recharge_amount_consistency' /** 充值的金额需要跟上传图片的金额一致 **/
+                )
+              "
             />
           </el-form-item>
         </el-col>
         <!-- 币种 -->
         <el-col :span="12">
-          <el-form-item :label="$t('币种')" prop="currency">
+          <el-form-item
+            :label="$t('gfuc.currency' /** 币种 **/)"
+            prop="currency"
+          >
             <el-input v-model="formData.currency" disabled />
           </el-form-item>
         </el-col>
@@ -84,10 +100,17 @@
       <el-row :gutter="24">
         <!-- 支付方式 -->
         <el-col :span="12">
-          <el-form-item :label="$t('支付方式')" prop="receiptMethod">
+          <el-form-item
+            :label="$t('gfuc.pay_method' /** 支付方式 **/)"
+            prop="receiptMethod"
+          >
             <el-select
               v-model="formData.receiptMethod"
-              :placeholder="$t('请选择充值时支付的方式')"
+              :placeholder="
+                $t(
+                  'gfuc.payment_method_selection' /** 请选择充值时支付的方式 **/
+                )
+              "
               style="width: 100%"
             >
               <el-option
@@ -101,11 +124,16 @@
         </el-col>
         <!-- 充值日期 -->
         <el-col :span="12">
-          <el-form-item :label="$t('充值日期')" prop="receiptDate">
+          <el-form-item
+            :label="$t('gfuc.recharge_date' /** 充值日期 **/)"
+            prop="receiptDate"
+          >
             <el-date-picker
               v-model="formData.receiptDate"
               type="date"
-              :placeholder="$t('时间需要跟上传截图的时间一致')"
+              :placeholder="
+                $t('gfuc.time_consistency' /** 时间需要跟上传截图的时间一致 **/)
+              "
               style="width: 100%"
               value-format="YYYY-MM-DD"
             />
@@ -114,19 +142,23 @@
       </el-row>
 
       <!-- 备注 -->
-      <el-form-item :label="$t('备注')" prop="remark">
+      <el-form-item :label="$t('gfuc.remark' /** 备注 **/)" prop="remark">
         <el-input
           v-model="formData.remark"
           type="textarea"
           :rows="4"
-          :placeholder="$t('若有其他补充信息，请填写备注')"
+          :placeholder="
+            $t(
+              'gfuc.additional_info_remark' /** 若有其他补充信息，请填写备注 **/
+            )
+          "
           maxlength="300"
           show-word-limit
         />
       </el-form-item>
 
       <el-button type="primary" class="submit-btn" @click="handleSubmit">
-        {{ $t("提交") }}
+        {{ $t("web.gfuc.submit" /** 提交 **/) }}
       </el-button>
     </el-form>
   </page-container>
@@ -189,14 +221,21 @@ const formData = reactive({
 });
 
 const handleDownloadExample = () => {
-  downloadFile(exampleImage.value, t("支付凭证示例.jpg"));
+  downloadFile(
+    exampleImage.value,
+    t("gfuc.payment_proof_example_filename" /** 支付凭证示例.jpg **/)
+  );
 };
 
 const receiptMethodDict = useDict("fms.provider.paymentMode.type");
 
 const validateFile = (_rule: any, value: any, callback: any) => {
   if (!formData.attachmentKeys.length) {
-    callback(new Error(t("请上传支付截图")));
+    callback(
+      new Error(
+        t("gfuc.please_upload_payment_screenshot" /** 请上传支付截图 **/)
+      )
+    );
   } else {
     callback();
   }
@@ -207,19 +246,37 @@ const rules = reactive<FormRules>({
     { required: true, validator: validateFile, trigger: "change" }
   ],
   arrivalAmount: [
-    { required: true, message: t("请输入充值金额"), trigger: "blur" },
+    {
+      required: true,
+      message: t("gfuc.please_enter_recharge_amount" /** 请输入充值金额 **/),
+      trigger: "blur"
+    },
     {
       pattern: /^\d+(\.\d{1,2})?$/,
-      message: t("请输入有效的金额"),
+      message: t("gfuc.please_enter_valid_amount" /** 请输入有效的金额 **/),
       trigger: "blur"
     }
   ],
-  currency: [{ required: true, message: t("币种不能为空"), trigger: "blur" }],
+  currency: [
+    {
+      required: true,
+      message: t("gfuc.currency_cannot_be_empty" /** 币种不能为空 **/),
+      trigger: "blur"
+    }
+  ],
   receiptMethod: [
-    { required: true, message: t("请选择支付方式"), trigger: "change" }
+    {
+      required: true,
+      message: t("gfuc.please_select_payment_method" /** 请选择支付方式 **/),
+      trigger: "change"
+    }
   ],
   receiptDate: [
-    { required: true, message: t("请选择充值日期"), trigger: "change" }
+    {
+      required: true,
+      message: t("gfuc.please_select_recharge_date" /** 请选择充值日期 **/),
+      trigger: "change"
+    }
   ]
 });
 
@@ -247,7 +304,9 @@ const handleBeforeUpload = (rawFile: UploadRawFile) => {
   const isLt10M = rawFile.size ? rawFile.size / 1024 / 1024 < 10 : false;
 
   if (!isLt10M) {
-    ElMessage.error(t("单个大小不能超过10MB"));
+    ElMessage.error(
+      t("gfuc.single_file_size_limit" /** 单个大小不能超过10MB **/)
+    );
     return false;
   }
 
@@ -255,7 +314,9 @@ const handleBeforeUpload = (rawFile: UploadRawFile) => {
 
   // Element Plus upload rawFile type check
   if (rawFile.type && !validTypes.includes(rawFile.type)) {
-    ElMessage.error(t("只支持pdf/jpg/png/jpeg 文件"));
+    ElMessage.error(
+      t("gfuc.supported_file_formats" /** 只支持pdf/jpg/png/jpeg 文件 **/)
+    );
     return false;
   }
 
@@ -278,7 +339,7 @@ const handleUpload = async (options: UploadRequestOptions) => {
 
     formRef.value?.clearValidate("file");
   } catch (error) {
-    ElMessage.error(t("上传失败，请重试"));
+    ElMessage.error(t("gfuc.upload_failed_retry" /** 上传失败，请重试 **/));
     // 上传失败移除文件
     const index = fileList.value.findIndex((f) => f.uid === options.file.uid);
     if (index !== -1) fileList.value.splice(index, 1);
@@ -298,7 +359,7 @@ const handleSubmit = async () => {
   try {
     loading.value = true;
     await recharge(formData);
-    ElMessage.success(t("提交成功"));
+    ElMessage.success(t("gfuc.submission_successful" /** 提交成功 **/));
   } finally {
     loading.value = false;
   }

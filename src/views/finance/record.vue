@@ -12,10 +12,13 @@
     >
       <!-- 搜索区域 -->
       <template #search>
-        <el-form-item :label="$t('付款方式')" prop="paymentMethod">
+        <el-form-item
+          :label="$t('gfuc.payment_method' /** 付款方式 **/)"
+          prop="paymentMethod"
+        >
           <el-select
             v-model="searchForm.paymentMethod"
-            :placeholder="$t('请选择')"
+            :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
             clearable
             :options="receiptMethodDict.options.value"
             multiple
@@ -24,10 +27,10 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item :label="$t('状态')" prop="status">
+        <el-form-item :label="$t('gfuc.status' /** 状态 **/)" prop="status">
           <el-select
             v-model="searchForm.status"
-            :placeholder="$t('请选择')"
+            :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
             multiple
             collapse-tags
             clearable
@@ -47,8 +50,8 @@
           <el-date-picker
             v-model="searchForm.dateRange"
             type="daterange"
-            :start-placeholder="$t('开始日期')"
-            :end-placeholder="$t('结束日期')"
+            :start-placeholder="$t('gfuc.start_date' /** 开始日期 **/)"
+            :end-placeholder="$t('gfuc.end_date' /** 结束日期 **/)"
             value-format="YYYY-MM-DD"
             :fallback-placements="['bottom']"
           />
@@ -59,13 +62,17 @@
       <template #columns>
         <el-table-column
           prop="receiptAmount"
-          :label="$t('充值金额')"
+          :label="$t('gfuc.recharge_amount' /** 充值金额 **/)"
           min-width="120"
         />
-        <el-table-column prop="currency" :label="$t('币种')" min-width="80" />
+        <el-table-column
+          prop="currency"
+          :label="$t('gfuc.currency' /** 币种 **/)"
+          min-width="80"
+        />
         <el-table-column
           prop="receiptMethod"
-          :label="$t('付款方式')"
+          :label="$t('gfuc.payment_method' /** 付款方式 **/)"
           min-width="120"
         >
           <template #default="{ row }">
@@ -74,11 +81,19 @@
         </el-table-column>
         <el-table-column
           prop="receiptDate"
-          :label="$t('充值日期')"
+          :label="$t('gfuc.recharge_date' /** 充值日期 **/)"
           min-width="120"
         />
-        <el-table-column prop="remark" :label="$t('备注')" min-width="150" />
-        <el-table-column prop="status" :label="$t('状态')" min-width="100">
+        <el-table-column
+          prop="remark"
+          :label="$t('gfuc.remark' /** 备注 **/)"
+          min-width="150"
+        />
+        <el-table-column
+          prop="status"
+          :label="$t('gfuc.status' /** 状态 **/)"
+          min-width="100"
+        >
           <template #default="{ row }">
             <span :class="['status-tag', getStatusClass(row.status)]">
               {{ statusDict.getLabel(row.status) ?? "-" }}
@@ -87,12 +102,12 @@
         </el-table-column>
         <el-table-column
           prop="rejectionReason"
-          :label="$t('失败原因')"
+          :label="$t('gfuc.failure_reason' /** 失败原因 **/)"
           min-width="150"
         />
         <el-table-column
           prop="createTimeStr"
-          :label="$t('提交时间')"
+          :label="$t('gfuc.submission_time' /** 提交时间 **/)"
           min-width="160"
         />
       </template>
@@ -134,9 +149,9 @@ const enum Status {
 
 /** 日期类型选项 */
 const dateTypeOptions = [
-  { label: t("提交日期"), value: DateType.Submit },
+  { label: t("gfuc.submission_date" /** 提交日期 **/), value: DateType.Submit },
   {
-    label: t("充值日期"),
+    label: t("gfuc.recharge_date" /** 充值日期 **/),
     value: DateType.Recharge
   }
 ];

@@ -30,7 +30,9 @@
                 class="inner-logo-img"
               />
             </div>
-            <span class="header-title">{{ $t("用户中心") }}</span>
+            <span class="header-title">{{
+              $t("web.gfuc.user_center" /** 用户中心 **/)
+            }}</span>
           </div>
 
           <!-- 登录表单 -->
@@ -103,13 +105,15 @@ const handleSwitch = (
 const handleSuccess = async (type: "login" | "register") => {
   if (type === "login") {
     if (userStore.hasSetPreference) {
-      ElMessage.success(t("登录成功"));
+      ElMessage.success(t("gfuc.login_successful" /** 登录成功 **/));
       redirectToHome();
     } else {
       showPreferenceModal.value = true;
     }
   } else {
-    ElMessage.success(t("注册成功，请登录"));
+    ElMessage.success(
+      t("gfuc.registration_success_please_login" /** 注册成功，请登录 **/)
+    );
     mode.value = "login";
   }
 };

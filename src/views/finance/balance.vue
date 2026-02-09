@@ -5,8 +5,15 @@
       <div class="balance-card primary-card">
         <div class="card-content">
           <div class="label">
-            {{ $t("可下单金额") }}
-            <el-tooltip :content="$t('总的可用于下单的金额')" placement="top">
+            {{ $t("gfuc.available_order_amount" /** 可下单金额 **/) }}
+            <el-tooltip
+              :content="
+                $t(
+                  'gfuc.total_available_order_amount' /** 总的可用于下单的金额 **/
+                )
+              "
+              placement="top"
+            >
               <el-icon class="tip-icon">
                 <svg-icon name="question" />
               </el-icon>
@@ -16,7 +23,7 @@
             € {{ formatAmount(balanceInfo.availableOrderAmount) }}
           </div>
           <el-button class="recharge-btn" @click="handleRecharge">
-            {{ $t("充值") }}
+            {{ $t("gfuc.recharge" /** 充值 **/) }}
           </el-button>
         </div>
       </div>
@@ -27,8 +34,13 @@
       <div class="balance-card">
         <div class="card-content">
           <div class="label">
-            {{ $t("账号余额") }}
-            <el-tooltip :content="$t('客户充值进账号的金额')" placement="top">
+            {{ $t("gfuc.account_balance" /** 账号余额 **/) }}
+            <el-tooltip
+              :content="
+                $t('gfuc.customer_recharge_amount' /** 客户充值进账号的金额 **/)
+              "
+              placement="top"
+            >
               <el-icon class="tip-icon">
                 <svg-icon name="question" />
               </el-icon>
@@ -44,8 +56,13 @@
       <div class="balance-card">
         <div class="card-content">
           <div class="label">
-            {{ $t("可用信用额度") }}
-            <el-tooltip :content="$t('剩余可用的信用额度')" placement="top">
+            {{ $t("gfuc.available_credit_line" /** 可用信用额度 **/) }}
+            <el-tooltip
+              :content="
+                $t('gfuc.remaining_available_credit' /** 剩余可用的信用额度 **/)
+              "
+              placement="top"
+            >
               <el-icon class="tip-icon"><svg-icon name="question" /> </el-icon>
             </el-tooltip>
           </div>
@@ -61,9 +78,13 @@
       <div class="balance-card">
         <div class="card-content">
           <div class="label">
-            {{ $t("预扣费金额") }}
+            {{ $t("gfuc.pre_deducted_amount" /** 预扣费金额 **/) }}
             <el-tooltip
-              :content="$t('下单时，对订单进行预扣费的金额，也叫冻结金额')"
+              :content="
+                $t(
+                  'gfuc.pre_deduction_amount_description' /** 下单时，对订单进行预扣费的金额，也叫冻结金额 **/
+                )
+              "
               placement="top"
             >
               <el-icon class="tip-icon"><svg-icon name="question" /> </el-icon>

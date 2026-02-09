@@ -2,16 +2,22 @@
   <div class="error-container">
     <div class="error-content">
       <div class="error-code">404</div>
-      <h2 class="error-title">{{ $t("页面不见了") }}</h2>
+      <h2 class="error-title">
+        {{ $t("gfuc.page_not_found" /** 页面不见了 **/) }}
+      </h2>
       <p class="error-message">
-        {{ $t("抱歉，您访问的页面不存在或已被移除。") }}
+        {{
+          $t(
+            "gfuc.page_not_found_description" /** 抱歉，您访问的页面不存在或已被移除。 **/
+          )
+        }}
       </p>
       <div class="error-actions">
         <el-button type="primary" size="large" @click="goHome">
-          {{ $t("返回首页") }}
+          {{ $t("gfuc.return_to_home" /** 返回首页 **/) }}
         </el-button>
         <el-button size="large" @click="goBack">
-          {{ $t("返回上一页") }}
+          {{ $t("gfuc.return_to_previous" /** 返回上一页 **/) }}
         </el-button>
       </div>
     </div>

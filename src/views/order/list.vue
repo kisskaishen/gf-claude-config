@@ -8,13 +8,34 @@
         span="24"
         @tab-click="handleTabClick"
       >
-        <el-tab-pane :label="$t('全部订单')" name="all" />
-        <el-tab-pane :label="$t('已下单')" name="ordered" />
-        <el-tab-pane :label="$t('准备派送')" name="ready" />
-        <el-tab-pane :label="$t('派送中')" name="delivering" />
-        <el-tab-pane :label="$t('派送成功')" name="success" />
-        <el-tab-pane :label="$t('异常')" name="exception" />
-        <el-tab-pane :label="$t('已取消')" name="cancelled" />
+        <el-tab-pane
+          :label="$t('gfuc.all_orders' /** 全部订单 **/)"
+          name="all"
+        />
+        <el-tab-pane
+          :label="$t('gfuc.ordered' /** 已下单 **/)"
+          name="ordered"
+        />
+        <el-tab-pane
+          :label="$t('gfuc.ready_to_dispatch' /** 准备派送 **/)"
+          name="ready"
+        />
+        <el-tab-pane
+          :label="$t('gfuc.dispatching' /** 派送中 **/)"
+          name="delivering"
+        />
+        <el-tab-pane
+          :label="$t('gfuc.delivered' /** 派送成功 **/)"
+          name="success"
+        />
+        <el-tab-pane
+          :label="$t('gfuc.abnormal' /** 异常 **/)"
+          name="exception"
+        />
+        <el-tab-pane
+          :label="$t('gfuc.cancelled' /** 已取消 **/)"
+          name="cancelled"
+        />
         />
       </el-tabs>
       <div class="order-content">
@@ -30,56 +51,99 @@
         >
           <template #search>
             <!-- Search Fields -->
-            <el-form-item :label="$t('单号')" prop="orderNo">
+            <el-form-item
+              :label="$t('gfuc.tracking_number' /** 单号 **/)"
+              prop="orderNo"
+            >
               <el-input
                 v-model="searchForm.orderNo"
-                :placeholder="$t('请输入订单号或运单号')"
+                :placeholder="
+                  $t(
+                    'gfuc.please_enter_order_or_tracking_number' /** 请输入订单号或运单号 **/
+                  )
+                "
               />
             </el-form-item>
-            <el-form-item :label="$t('订单状态')" prop="status">
+            <el-form-item
+              :label="$t('gfuc.order_status' /** 订单状态 **/)"
+              prop="status"
+            >
               <el-select
                 v-model="searchForm.status"
-                :placeholder="$t('请选择')"
+                :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
                 clearable
               >
-                <el-option :label="$t('已下单')" value="ordered" />
-                <el-option :label="$t('准备派送')" value="ready" />
-                <el-option :label="$t('派送中')" value="delivering" />
-                <el-option :label="$t('派送成功')" value="success" />
-                <el-option :label="$t('异常')" value="exception" />
-                <el-option :label="$t('已取消')" value="cancelled" />
+                <el-option
+                  :label="$t('gfuc.ordered' /** 已下单 **/)"
+                  value="ordered"
+                />
+                <el-option
+                  :label="$t('gfuc.ready_to_dispatch' /** 准备派送 **/)"
+                  value="ready"
+                />
+                <el-option
+                  :label="$t('gfuc.dispatching' /** 派送中 **/)"
+                  value="delivering"
+                />
+                <el-option
+                  :label="$t('gfuc.delivered' /** 派送成功 **/)"
+                  value="success"
+                />
+                <el-option
+                  :label="$t('gfuc.abnormal' /** 异常 **/)"
+                  value="exception"
+                />
+                <el-option
+                  :label="$t('gfuc.cancelled' /** 已取消 **/)"
+                  value="cancelled"
+                />
               </el-select>
             </el-form-item>
-            <el-form-item :label="$t('下单时间')" prop="orderTime">
+            <el-form-item
+              :label="$t('gfuc.order_time' /** 下单时间 **/)"
+              prop="orderTime"
+            >
               <el-date-picker
                 v-model="searchForm.orderTime"
                 type="daterange"
-                :start-placeholder="$t('开始日期')"
-                :end-placeholder="$t('结束日期')"
+                :start-placeholder="$t('gfuc.start_date' /** 开始日期 **/)"
+                :end-placeholder="$t('gfuc.end_date' /** 结束日期 **/)"
                 value-format="YYYY-MM-DD"
               />
             </el-form-item>
-            <el-form-item :label="$t('收件人邮编')" prop="recipientPostcode">
+            <el-form-item
+              :label="$t('gfuc.recipient_postal_code' /** 收件人邮编 **/)"
+              prop="recipientPostcode"
+            >
               <el-input
                 v-model="searchForm.recipientPostcode"
-                :placeholder="$t('请输入')"
+                :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
               />
             </el-form-item>
-            <el-form-item :label="$t('收件人电话')" prop="recipientPhone">
+            <el-form-item
+              :label="$t('gfuc.recipient_phone' /** 收件人电话 **/)"
+              prop="recipientPhone"
+            >
               <el-select
                 v-model="searchForm.recipientPhone"
-                :placeholder="$t('请选择')"
+                :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
                 clearable
               >
               </el-select>
             </el-form-item>
-            <el-form-item :label="$t('产品')" prop="product">
+            <el-form-item
+              :label="$t('gfuc.product' /** 产品 **/)"
+              prop="product"
+            >
               <el-select
                 v-model="searchForm.product"
-                :placeholder="$t('请选择')"
+                :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
                 clearable
               >
-                <el-option :label="$t('揽收派送')" value="揽收派送" />
+                <el-option
+                  :label="$t('gfuc.pickup_delivery' /** 揽收派送 **/)"
+                  value="揽收派送"
+                />
               </el-select>
             </el-form-item>
           </template>
@@ -88,20 +152,24 @@
             <el-table-column type="selection" width="55" />
             <el-table-column
               prop="customerOrderNo"
-              :label="$t('客户订单号')"
+              :label="$t('gfuc.customer_order_number' /** 客户订单号 **/)"
               min-width="180"
             />
             <el-table-column
               prop="waybillNo"
-              :label="$t('运单号')"
+              :label="$t('gfuc.waybill_number' /** 运单号 **/)"
               min-width="180"
             />
             <el-table-column
               prop="productName"
-              :label="$t('产品名称')"
+              :label="$t('gfuc.product_name' /** 产品名称 **/)"
               min-width="120"
             />
-            <el-table-column prop="status" :label="$t('订单状态')" width="100">
+            <el-table-column
+              prop="status"
+              :label="$t('gfuc.order_status' /** 订单状态 **/)"
+              width="100"
+            >
               <template #default="{ row }">
                 <span
                   :style="{ color: row.status === '下单失败' ? 'red' : '' }"
@@ -112,26 +180,30 @@
             </el-table-column>
             <el-table-column
               prop="recipient"
-              :label="$t('收件人')"
+              :label="$t('gfuc.recipient' /** 收件人 **/)"
               min-width="120"
             />
             <el-table-column
               prop="recipientPhone"
-              :label="$t('收件人电话')"
+              :label="$t('gfuc.recipient_phone' /** 收件人电话 **/)"
               min-width="130"
             />
             <el-table-column
               prop="recipientAddress"
-              :label="$t('收件人地址')"
+              :label="$t('gfuc.recipient_address' /** 收件人地址 **/)"
               min-width="200"
               show-overflow-tooltip
             />
             <el-table-column
               prop="submitTime"
-              :label="$t('提交时间')"
+              :label="$t('gfuc.submission_time' /** 提交时间 **/)"
               width="180"
             />
-            <el-table-column :label="$t('操作')" width="180" fixed="right">
+            <el-table-column
+              :label="$t('gfuc.operation' /** 操作 **/)"
+              width="180"
+              fixed="right"
+            >
               <template #default="{ row }">
                 <div class="table-actions">
                   <!-- 查看 (所有状态都有) -->

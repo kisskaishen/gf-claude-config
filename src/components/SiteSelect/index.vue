@@ -22,15 +22,15 @@ const appStore = useAppStore();
 const options = [
   {
     value: Site.fr,
-    label: t("法国站")
+    label: t("gfuc.french_site" /** 法国站 **/)
   },
   {
     value: Site.it,
-    label: t("意大利站")
+    label: t("gfuc.italian_site" /** 意大利站 **/)
   },
   {
     value: Site.nl,
-    label: t("荷兰站")
+    label: t("gfuc.dutch_site" /** 荷兰站 **/)
   }
 ];
 

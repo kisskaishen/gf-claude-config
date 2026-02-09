@@ -5,11 +5,15 @@
         <img src="@/assets/lock.png" />
       </div>
       <p class="desc">
-        {{ $t("你的账号还没有绑定客户信息，暂无权限，请先授权") }}
+        {{
+          $t(
+            "gfuc.no_permission_not_bound" /** 你的账号还没有绑定客户信息，暂无权限，请先授权 **/
+          )
+        }}
       </p>
       <div class="action">
         <el-button type="primary" @click="showAuthModal = true">{{
-          $t("去授权")
+          $t("gfuc.go_to_authorize" /** 去授权 **/)
         }}</el-button>
       </div>
     </div>

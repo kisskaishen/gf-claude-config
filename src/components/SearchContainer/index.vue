@@ -14,7 +14,7 @@
       </div>
       <div class="operation-right">
         <el-button class="btn-reset" :icon="Refresh" @click="handleReset">
-          {{ $t("重置") }}
+          {{ $t("gfuc.reset" /** 重置 **/) }}
         </el-button>
 
         <el-button
@@ -24,7 +24,7 @@
           :loading="loading"
           @click="throttledSearch"
         >
-          {{ $t("搜索") }}
+          {{ $t("gfuc.search" /** 搜索 **/) }}
         </el-button>
 
         <el-button

@@ -17,7 +17,11 @@
       <el-avatar :size="30" :src="avatarImg"></el-avatar>
 
       <!-- 退出按钮 -->
-      <div class="logout-btn" @click="handleLogout" :title="$t('退出登录')">
+      <div
+        class="logout-btn"
+        @click="handleLogout"
+        :title="$t('gfuc.logout' /** 退出登录 **/)"
+      >
         <img src="@/assets/logout.png" alt="switch" />
       </div>
     </div>
@@ -41,15 +45,19 @@ const userStore = useUserStore();
 // --- 退出逻辑 ---
 const handleLogout = async () => {
   try {
-    await ElMessageBox.confirm(t("确定要退出登录吗？"), t("提示"), {
-      confirmButtonText: t("确定"),
-      cancelButtonText: t("取消"),
-      type: "warning"
-    });
+    await ElMessageBox.confirm(
+      t("gfuc.confirm_logout_prompt" /** 确定要退出登录吗？ **/),
+      t("gfuc.prompt" /** 提示 **/),
+      {
+        confirmButtonText: t("gfuc.confirm" /** 确定 **/),
+        cancelButtonText: t("gfuc.cancel" /** 取消 **/),
+        type: "warning"
+      }
+    );
 
     userStore.logout();
     router.push("/login");
-    ElMessage.success(t("已退出登录"));
+    ElMessage.success(t("gfuc.logged_out" /** 已退出登录 **/));
   } catch {
     // 用户取消
   }

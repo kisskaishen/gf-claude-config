@@ -95,7 +95,7 @@ export const useUserStore = defineStore(
       if (res) {
         token.value = res.token;
         userInfo.value = res.userInfo;
-        // await loadI18nMap();
+        await loadI18nMap();
         if (!appStore.site) {
           appStore.setSite(userInfo.value?.defaultSite || Site.fr);
         }

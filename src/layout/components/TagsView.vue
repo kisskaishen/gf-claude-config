@@ -58,16 +58,18 @@
     >
       <li @click="refreshSelectedTag(selectedTag)">
         <el-icon><Refresh /></el-icon>
-        {{ $t("刷新") }}
+        {{ $t("gfuc.refresh" /** 刷新 **/) }}
       </li>
       <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">
-        <el-icon><Close /></el-icon> {{ $t("关闭") }}
+        <el-icon><Close /></el-icon> {{ $t("gfuc.close" /** 关闭 **/) }}
       </li>
       <li @click="closeOthersTags">
-        <el-icon><CircleClose /></el-icon> {{ $t("关闭其他") }}
+        <el-icon><CircleClose /></el-icon>
+        {{ $t("gfuc.close_others" /** 关闭其他 **/) }}
       </li>
       <li @click="closeAllTags">
-        <el-icon><CircleClose /></el-icon> {{ $t("关闭所有") }}
+        <el-icon><CircleClose /></el-icon>
+        {{ $t("gfuc.close_all" /** 关闭所有 **/) }}
       </li>
     </ul>
   </div>

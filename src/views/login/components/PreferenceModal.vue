@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     v-model="visible"
-    :title="$t('偏好设置')"
+    :title="$t('gfuc.preference_settings' /** 偏好设置 **/)"
     width="480px"
     :close-on-click-modal="false"
     :close-on-press-escape="false"
@@ -10,10 +10,18 @@
   >
     <div class="preference-content">
       {{ $t("web.gfuc.test1") }}
-      <p class="subtitle">{{ $t("为了更好的服务，您需要设置您的网站偏好") }}</p>
+      <p class="subtitle">
+        {{
+          $t(
+            "gfuc.preference_settings_description" /** 为了更好的服务，您需要设置您的网站偏好 **/
+          )
+        }}
+      </p>
 
       <el-form :model="form" label-position="top">
-        <el-form-item :label="$t('你默认的站点是')">
+        <el-form-item
+          :label="$t('gfuc.your_default_site' /** 你默认的站点是 **/)"
+        >
           <el-select
             v-model="form.site"
             class="full-width"
@@ -28,7 +36,9 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item :label="$t('您默认的时区是')">
+        <el-form-item
+          :label="$t('gfuc.your_default_timezone' /** 您默认的时区是 **/)"
+        >
           <el-select v-model="form.timezone" class="full-width">
             <el-option
               v-for="item in timezoneDict.options.value"
@@ -39,7 +49,9 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item :label="$t('您默认的语言是')">
+        <el-form-item
+          :label="$t('gfuc.your_default_language' /** 您默认的语言是 **/)"
+        >
           <el-select v-model="form.lang" class="full-width">
             <el-option
               v-for="item in langDict.options.value"
@@ -55,7 +67,7 @@
     <template #footer>
       <div class="dialog-footer">
         <el-button type="primary" class="submit-btn" @click="handleSubmit">
-          {{ $t("确定") }}
+          {{ $t("gfuc.confirm" /** 确定 **/) }}
         </el-button>
       </div>
     </template>

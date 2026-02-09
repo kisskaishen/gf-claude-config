@@ -2,7 +2,9 @@
   <div class="sidebar-container" :class="{ 'is-collapse': isCollapse }">
     <div class="logo" @click="toggleCollapse">
       <img src="@/assets/logos/logo-red.png" alt="GOFO" />
-      <span v-show="!isCollapse" class="logo-text">{{ $t("用户中心") }}</span>
+      <span v-show="!isCollapse" class="logo-text">{{
+        $t("gfuc.user_center" /** 用户中心 **/)
+      }}</span>
     </div>
 
     <el-scrollbar>

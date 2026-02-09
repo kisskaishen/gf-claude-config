@@ -34,7 +34,9 @@
       >
         <slot name="columns"></slot>
         <template #empty>
-          <el-empty :description="$t('暂无数据')" />
+          <el-empty
+            :description="$t('gfuc.no_data_available' /** 暂无数据 **/)"
+          />
         </template>
       </el-table>
     </div>

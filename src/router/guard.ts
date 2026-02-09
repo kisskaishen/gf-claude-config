@@ -7,8 +7,7 @@ export function setupRouteGuard(router: Router) {
   router.beforeEach(async (to, _from, next) => {
     const userStore = useUserStoreWithOut();
     if (userStore.token && !userStore.isUserInfoUpdated) {
-      // await Promise.all([userStore.fetchUserInfo(), loadI18nMap()]);
-      await Promise.all([userStore.fetchUserInfo()]);
+      await Promise.all([userStore.fetchUserInfo(), loadI18nMap()]);
     }
 
     if (userStore.token && userStore.hasSetPreference) {
@@ -33,6 +32,6 @@ export function setupRouteGuard(router: Router) {
   router.afterEach((to, _from) => {
     document.title = (to.meta.title as string)
       ? i18n.global.t(to.meta.title as string)
-      : i18n.global.t("用户中心");
+      : i18n.global.t("web.gfuc.user_center" /** 用户中心 **/);
   });
 }

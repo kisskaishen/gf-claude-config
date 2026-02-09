@@ -39,5 +39,12 @@ export default {
   "web.gfuc.agreement2":
     "Door deze optie te selecteren, ga ik akkoord met het ontvangen van marketingberichten via SMS van GOFO. Er kunnen kosten voor SMS en data worden in rekening gebracht. Door mijn telefoonnummer te verstrekken, ga ik akkoord met het ontvangen van transactiegerelateerde berichten van GOFO via SMS, inclusief bestelnotificaties en verificatiecodes.",
   "web.gfuc.already_have_account": "Heeft u al een account?",
-  "web.gfuc.go_to_login": "Ga naar login"
+  "web.gfuc.go_to_login": "Ga naar login",
+  "web.gfuc.submit": "Verzenden",
+  "web.gfuc.user_center": "Gebruikerscentrum",
+  "web.gfuc.register": "Registreren",
+  "web.gfuc.invalid_email_format":
+    "Uw e-mailadres is niet correct, vul een geldig e-mailadres in",
+  "web.gfuc.please_agree_to_terms":
+    "Ga a.u.b. akkoord met de aanmeldingsovereenkomst"
 };

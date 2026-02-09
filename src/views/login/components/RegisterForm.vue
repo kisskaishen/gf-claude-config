@@ -77,7 +77,7 @@
         class="submit-btn"
         @click="handleRegister"
         :disabled="loading"
-        >{{ $t("注册") }}</el-button
+        >{{ $t("web.gfuc.register" /** 注册 **/) }}</el-button
       >
     </div>
 
@@ -175,7 +175,7 @@ const validatePassword = (_rule: any, value: string, callback: any) => {
   const isLengthValid = value.length >= 8 && value.length <= 12;
 
   if (!value) {
-    callback(new Error(t("请输入密码")));
+    callback(new Error(t("web.gfuc.please_enter_password" /** 请输入密码 **/)));
   } else if (!hasLowercase || !hasUppercase || !hasSpecial || !isLengthValid) {
     callback(new Error(""));
   } else {
@@ -185,10 +185,16 @@ const validatePassword = (_rule: any, value: string, callback: any) => {
 
 const registerRules = reactive<FormRules>({
   email: [
-    { required: true, message: t("请输入邮箱"), trigger: "change" },
+    {
+      required: true,
+      message: t("gfuc.please_enter_email" /** 请输入邮箱 **/),
+      trigger: "change"
+    },
     {
       type: "email",
-      message: t("您输入的邮箱格式不对，请填写正确的邮箱"),
+      message: t(
+        "web.gfuc.invalid_email_format" /** 您输入的邮箱格式不对，请填写正确的邮箱 **/
+      ),
       trigger: "change"
     }
   ],
@@ -222,7 +228,9 @@ const handleRegister = async () => {
   await registerFormRef.value.validate(async (valid) => {
     if (valid) {
       if (!registerData.agree1 || !registerData.agree2) {
-        ElMessage.warning(t("请同意注册协议"));
+        ElMessage.warning(
+          t("web.gfuc.please_agree_to_terms" /** 请同意注册协议 **/)
+        );
         return;
       }
       loading.value = true;

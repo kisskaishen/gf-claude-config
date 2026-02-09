@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     v-model="visible"
-    :title="$t('账号授权')"
+    :title="$t('gfuc.account_authorization' /** 账号授权 **/)"
     width="587px"
     :close-on-click-modal="false"
     destroy-on-close
@@ -13,7 +13,7 @@
       <div class="tip-content">
         {{
           $t(
-            "如果您已经跟我们公司签约走货，请联系您的商务帮您进行账号的授权绑定，如果还没商务联系您，请留下您的联系方式，将会派人专门跟进，或者您可用联系我们的邮箱："
+            "gfuc.authorization_instructions" /** 如果您已经跟我们公司签约走货，请联系您的商务帮您进行账号的授权绑定，如果还没商务联系您，请留下您的联系方式，将会派人专门跟进，或者您可用联系我们的邮箱： **/
           )
         }}
         <a class="tip-link">gofoasle@gofo.com</a>
@@ -30,15 +30,18 @@
     >
       <el-row :gutter="16">
         <el-col :span="12">
-          <el-form-item :label="$t('姓名')" prop="name">
-            <el-input v-model="formData.name" :placeholder="$t('请输入')" />
+          <el-form-item :label="$t('gfuc.full_name' /** 姓名 **/)" prop="name">
+            <el-input
+              v-model="formData.name"
+              :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item :label="$t('国家')" prop="country">
+          <el-form-item :label="$t('gfuc.country' /** 国家 **/)" prop="country">
             <el-select
               v-model="formData.country"
-              :placeholder="$t('请输入')"
+              :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
               :options="countryDict.options.value"
               multiple
               collapse-tags
@@ -49,33 +52,47 @@
 
       <el-row :gutter="16">
         <el-col :span="12">
-          <el-form-item :label="$t('邮箱')" prop="email">
-            <el-input v-model="formData.email" :placeholder="$t('请输入')" />
+          <el-form-item :label="$t('gfuc.email' /** 邮箱 **/)" prop="email">
+            <el-input
+              v-model="formData.email"
+              :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item :label="$t('电话')" prop="phone">
-            <el-input v-model="formData.phone" :placeholder="$t('请输入')" />
+          <el-form-item :label="$t('gfuc.phone' /** 电话 **/)" prop="phone">
+            <el-input
+              v-model="formData.phone"
+              :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
+            />
           </el-form-item>
         </el-col>
       </el-row>
 
       <el-row :gutter="16">
         <el-col :span="12">
-          <el-form-item :label="$t('您发货的频率')" prop="shippingFrequency">
+          <el-form-item
+            :label="$t('gfuc.your_shipping_frequency' /** 您发货的频率 **/)"
+            prop="shippingFrequency"
+          >
             <el-select
               v-model="formData.shippingFrequency"
-              :placeholder="$t('请选择')"
+              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
               :options="frequencyDict.options.value"
             >
             </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item :label="$t('一个月的货量预估')" prop="shippingVolume">
+          <el-form-item
+            :label="
+              $t('gfuc.monthly_shipment_estimate' /** 一个月的货量预估 **/)
+            "
+            prop="shippingVolume"
+          >
             <el-select
               v-model="formData.shippingVolume"
-              :placeholder="$t('请选择')"
+              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
               :options="volumeDict.options.value"
             >
             </el-select>
@@ -84,12 +101,12 @@
       </el-row>
       <el-row>
         <el-col>
-          <el-form-item :label="$t('备注')" prop="remark">
+          <el-form-item :label="$t('gfuc.remark' /** 备注 **/)" prop="remark">
             <el-input
               v-model="formData.remark"
               type="textarea"
               :rows="2"
-              :placeholder="$t('请输入')"
+              :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
               maxlength="300"
               show-word-limit
             ></el-input>
@@ -155,17 +172,49 @@ const formData = reactive({
 });
 
 const rules = reactive<FormRules>({
-  name: [{ required: true, message: t("请输入姓名"), trigger: "change" }],
-  country: [{ required: true, message: t("请输入国家"), trigger: "change" }],
+  name: [
+    {
+      required: true,
+      message: t("gfuc.please_enter_full_name" /** 请输入姓名 **/),
+      trigger: "change"
+    }
+  ],
+  country: [
+    {
+      required: true,
+      message: t("gfuc.please_enter_country" /** 请输入国家 **/),
+      trigger: "change"
+    }
+  ],
   email: [
-    { required: true, message: t("请输入邮箱"), trigger: "change" },
-    { type: "email", message: t("请输入正确的邮箱格式"), trigger: "change" }
+    {
+      required: true,
+      message: t("gfuc.please_enter_email" /** 请输入邮箱 **/),
+      trigger: "change"
+    },
+    {
+      type: "email",
+      message: t(
+        "gfuc.please_enter_correct_email_format" /** 请输入正确的邮箱格式 **/
+      ),
+      trigger: "change"
+    }
   ],
   shippingFrequency: [
-    { required: true, message: t("请选择发货频率"), trigger: "change" }
+    {
+      required: true,
+      message: t(
+        "gfuc.please_select_shipping_frequency" /** 请选择发货频率 **/
+      ),
+      trigger: "change"
+    }
   ],
   shippingVolume: [
-    { required: true, message: t("请选择货量预估"), trigger: "change" }
+    {
+      required: true,
+      message: t("gfuc.please_select_shipment_estimate" /** 请选择货量预估 **/),
+      trigger: "change"
+    }
   ]
 });
 
@@ -188,7 +237,7 @@ const handleSubmit = async () => {
   loading.value = true;
   try {
     await postOpenService(formData);
-    ElMessage.success(t("提交成功"));
+    ElMessage.success(t("gfuc.submission_successful" /** 提交成功 **/));
     visible.value = false;
     emit("success");
   } finally {
