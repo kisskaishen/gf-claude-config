@@ -15,7 +15,7 @@
         <el-form-item :label="$t('付款方式')" prop="paymentMethod">
           <el-select
             v-model="searchForm.paymentMethod"
-            :placeholder="$t('选择')"
+            :placeholder="$t('请选择')"
             clearable
             :options="receiptMethodDict.options.value"
             multiple
@@ -27,7 +27,7 @@
         <el-form-item :label="$t('状态')" prop="status">
           <el-select
             v-model="searchForm.status"
-            :placeholder="$t('选择')"
+            :placeholder="$t('请选择')"
             multiple
             collapse-tags
             clearable
