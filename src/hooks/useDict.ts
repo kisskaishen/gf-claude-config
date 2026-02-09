@@ -38,7 +38,7 @@ export function useDict<T = any>(code: string) {
         options.value = res
           .sort((a, b) => (a.sortval || 0) - (b.sortval || 0))
           .map((item) => ({
-            value: item.itemCode as unknown as T,
+            value: parseInt(item.itemCode as string) as unknown as T,
             label: item.itemValue
           }));
       } else {

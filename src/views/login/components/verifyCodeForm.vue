@@ -146,7 +146,13 @@ const handleVerify = async () => {
     await postRegister({
       email: props.registerData.email,
       password: encryptedPwd,
-      verificationCode: code
+      verificationCode: code,
+      protocolTracing: JSON.stringify({
+        email: props.registerData.email,
+        time: Date.now(),
+        name: "注册协议、隐私协议",
+        version: "1.0.0"
+      })
     });
     emit("success", "register");
   } catch (error) {

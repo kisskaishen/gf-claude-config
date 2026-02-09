@@ -33,6 +33,13 @@ const service: AxiosInstance = axios.create({
   timeout: 10000
 });
 
+/** 修改请求基础路径 */
+export const setServiceBaseUrl = (url: string) => {
+  if (url) {
+    service.defaults.baseURL = url;
+  }
+};
+
 // 请求拦截器
 service.interceptors.request.use(
   (config) => {

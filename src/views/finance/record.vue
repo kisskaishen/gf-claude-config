@@ -15,7 +15,7 @@
         <el-form-item :label="$t('付款方式')" prop="paymentMethod">
           <el-select
             v-model="searchForm.paymentMethod"
-            :placeholder="$t('选择')"
+            :placeholder="$t('请选择')"
             clearable
             :options="receiptMethodDict.options.value"
             multiple
@@ -27,7 +27,7 @@
         <el-form-item :label="$t('状态')" prop="status">
           <el-select
             v-model="searchForm.status"
-            :placeholder="$t('选择')"
+            :placeholder="$t('请选择')"
             multiple
             collapse-tags
             clearable
@@ -73,7 +73,7 @@
           </template>
         </el-table-column>
         <el-table-column
-          prop="rechargeDate"
+          prop="receiptDate"
           :label="$t('充值日期')"
           min-width="120"
         />
@@ -173,7 +173,6 @@ const getStatusClass = (status: Status) => {
   }
 };
 
-// 模拟数据获取
 const fetchData = async () => {
   loading.value = true;
   try {
@@ -184,12 +183,12 @@ const fetchData = async () => {
       status: searchForm.value.status,
       ...(searchForm.value.dateType === DateType.Submit
         ? {
-            submitStart: searchForm.value.dateRange[0]!,
-            submitEnd: searchForm.value.dateRange[1]!
+            submitStart: searchForm.value.dateRange?.[0] || "",
+            submitEnd: searchForm.value.dateRange?.[1] || ""
           }
         : {
-            receiptDateStart: searchForm.value.dateRange[0]!,
-            receiptDateTimeEnd: searchForm.value.dateRange[1]!
+            receiptDateStart: searchForm.value.dateRange?.[0] || "",
+            receiptDateTimeEnd: searchForm.value.dateRange?.[1] || ""
           })
     });
     if (res) {

@@ -18,6 +18,8 @@ export function postRegister(data: {
   email: string;
   password: string;
   verificationCode: string;
+  /** 协议留痕（前端自定义） */
+  protocolTracing: string;
 }) {
   return request({
     url: "/user/register",

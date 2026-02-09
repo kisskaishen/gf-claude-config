@@ -39,7 +39,7 @@
             <el-form-item :label="$t('订单状态')" prop="status">
               <el-select
                 v-model="searchForm.status"
-                :placeholder="$t('选择')"
+                :placeholder="$t('请选择')"
                 clearable
               >
                 <el-option :label="$t('已下单')" value="ordered" />
@@ -68,7 +68,7 @@
             <el-form-item :label="$t('收件人电话')" prop="recipientPhone">
               <el-select
                 v-model="searchForm.recipientPhone"
-                :placeholder="$t('选择')"
+                :placeholder="$t('请选择')"
                 clearable
               >
               </el-select>
@@ -76,7 +76,7 @@
             <el-form-item :label="$t('产品')" prop="product">
               <el-select
                 v-model="searchForm.product"
-                :placeholder="$t('选择')"
+                :placeholder="$t('请选择')"
                 clearable
               >
                 <el-option :label="$t('揽收派送')" value="揽收派送" />

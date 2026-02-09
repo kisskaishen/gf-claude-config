@@ -8,7 +8,7 @@
       class="recharge-form"
     >
       <!-- 支付截图 -->
-      <el-form-item prop="file">
+      <el-form-item prop="attachmentKeys">
         <template #label>
           <div class="label-with-link">
             <span>{{ $t("支付截图") }}</span>
@@ -47,7 +47,10 @@
           <div v-if="fileList.length > 0" class="custom-file-list">
             <div v-for="file in fileList" :key="file.uid" class="file-item">
               <div class="file-info">
-                <img class="file-icon" src="@/assets/uploadFile/excel.svg" />
+                <img
+                  class="file-icon"
+                  :src="fileIconMap[file.raw?.type || '']"
+                />
                 <a class="file-name" @click="handleFilePreview(file)">
                   {{ file.name }}
                 </a>
@@ -144,6 +147,20 @@ import { uploadFile } from "@/api/common";
 import { useDict } from "@/hooks/useDict";
 import { recharge } from "@/api/finance";
 import { downloadFile } from "@/utils/download";
+import excelIcon from "@/assets/upload-file/excel.svg";
+import jpegIcon from "@/assets/upload-file/jpeg.svg";
+import jpgIcon from "@/assets/upload-file/jpg.svg";
+import pdfIcon from "@/assets/upload-file/pdf.svg";
+import pngIcon from "@/assets/upload-file/png.svg";
+
+const fileIconMap: Record<string, string> = {
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
+    excelIcon,
+  "image/jpeg": jpegIcon,
+  "image/jpg": jpgIcon,
+  "application/pdf": pdfIcon,
+  "image/png": pngIcon
+};
 
 defineOptions({
   name: "Recharge"
@@ -186,8 +203,10 @@ const validateFile = (_rule: any, value: any, callback: any) => {
 };
 
 const rules = reactive<FormRules>({
-  file: [{ required: true, validator: validateFile, trigger: "change" }],
-  amount: [
+  attachmentKeys: [
+    { required: true, validator: validateFile, trigger: "change" }
+  ],
+  arrivalAmount: [
     { required: true, message: t("请输入充值金额"), trigger: "blur" },
     {
       pattern: /^\d+(\.\d{1,2})?$/,
@@ -196,8 +215,12 @@ const rules = reactive<FormRules>({
     }
   ],
   currency: [{ required: true, message: t("币种不能为空"), trigger: "blur" }],
-  method: [{ required: true, message: t("请选择支付方式"), trigger: "change" }],
-  date: [{ required: true, message: t("请选择充值日期"), trigger: "change" }]
+  receiptMethod: [
+    { required: true, message: t("请选择支付方式"), trigger: "change" }
+  ],
+  receiptDate: [
+    { required: true, message: t("请选择充值日期"), trigger: "change" }
+  ]
 });
 
 const handleFileRemove = (file: UploadFile) => {
@@ -215,8 +238,6 @@ const handleFileRemove = (file: UploadFile) => {
 };
 
 const handleFilePreview = (file: UploadFile) => {
-  console.log("file", file);
-
   if (file.url) {
     window.open(file.url, "_blank");
   }
@@ -246,12 +267,12 @@ const handleUpload = async (options: UploadRequestOptions) => {
     const data = new FormData();
     data.append("file", options.file);
     const res = await uploadFile(data);
-    formData.attachmentKeys.push(res); // 假设返回结构中包含 url 字段
+    formData.attachmentKeys.push(res.filePath); // 假设返回结构中包含 url 字段
 
     // 更新 fileList 中的 url，以便删除时使用
     const file = fileList.value.find((f) => f.uid === options.file.uid);
     if (file) {
-      file.url = res;
+      file.url = res.url;
       file.status = "success";
     }
 

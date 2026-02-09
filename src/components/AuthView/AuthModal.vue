@@ -65,7 +65,7 @@
           <el-form-item :label="$t('您发货的频率')" prop="shippingFrequency">
             <el-select
               v-model="formData.shippingFrequency"
-              :placeholder="$t('选择')"
+              :placeholder="$t('请选择')"
               :options="frequencyDict.options.value"
             >
             </el-select>
@@ -75,10 +75,24 @@
           <el-form-item :label="$t('一个月的货量预估')" prop="shippingVolume">
             <el-select
               v-model="formData.shippingVolume"
-              :placeholder="$t('选择')"
+              :placeholder="$t('请选择')"
               :options="volumeDict.options.value"
             >
             </el-select>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col>
+          <el-form-item :label="$t('备注')" prop="remark">
+            <el-input
+              v-model="formData.remark"
+              type="textarea"
+              :rows="2"
+              :placeholder="$t('请输入')"
+              maxlength="300"
+              show-word-limit
+            ></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -135,7 +149,9 @@ const formData = reactive({
   /** 货量预估 */
   shippingVolume: undefined,
   /** 国家 */
-  country: undefined
+  country: undefined,
+  /** 备注 */
+  remark: ""
 });
 
 const rules = reactive<FormRules>({
