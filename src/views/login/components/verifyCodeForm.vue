@@ -33,7 +33,7 @@
           @keydown.delete="handleCodeDelete($event, i)"
           ref="codeRefs"
         />
-        <div class="countdown">{{ countdown }}S</div>
+        <div v-show="countdown > 0" class="countdown">{{ countdown }}S</div>
       </div>
     </el-form-item>
 

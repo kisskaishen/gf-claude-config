@@ -183,11 +183,21 @@ const validatePassword = (_rule: any, value: string, callback: any) => {
   const hasUppercase = /[A-Z]/.test(value);
   const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(value);
   const isLengthValid = value.length >= 8 && value.length <= 12;
+  // 只允许字母、数字和指定的特殊字符
+  const hasInvalidChar = /[^a-zA-Z0-9!@#$%^&*(),.?":{}|<>]/.test(value);
 
   if (!value) {
     callback(new Error(t("web.gfuc.please_enter_password" /** 请输入密码 **/)));
-  } else if (!hasLowercase || !hasUppercase || !hasSpecial || !isLengthValid) {
-    callback(new Error(""));
+  } else if (
+    hasInvalidChar ||
+    !hasLowercase ||
+    !hasUppercase ||
+    !hasSpecial ||
+    !isLengthValid
+  ) {
+    callback(
+      new Error(t("web.gfuc.password_format_incorrect" /** 密码格式不正确 **/))
+    );
   } else {
     callback();
   }
@@ -407,7 +417,6 @@ const handleAgreementCancel = () => {
 }
 
 .password-strength {
-  margin-top: -12px;
   margin-bottom: 24px;
 
   .strength-header {

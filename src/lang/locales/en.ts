@@ -63,5 +63,7 @@ export default {
   "web.gfuc.confirm": "Confirm",
   "web.gfuc.preference_settings_description":
     "To serve you better, you need to set your website preferences",
-  "web.gfuc.your_default_site": "Your default site is"
+  "web.gfuc.your_default_site": "Your default site is",
+  "web.gfuc.password_format_incorrect":
+    "Password error: must be 8-12 characters and contain letters, numbers, and symbols."
 };

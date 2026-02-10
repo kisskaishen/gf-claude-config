@@ -127,6 +127,11 @@ const loginRules = reactive<FormRules>({
       required: true,
       message: t("web.gfuc.please_enter_password" /** 请输入密码 */),
       trigger: "change"
+    },
+    {
+      pattern: /^[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]*$/,
+      message: t("web.gfuc.password_format_incorrect" /** 密码格式不正确 */),
+      trigger: ["blur", "change"]
     }
   ],
   code: [

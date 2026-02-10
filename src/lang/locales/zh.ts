@@ -57,5 +57,7 @@ export default {
   "web.gfuc.confirm": "确定",
   "web.gfuc.preference_settings_description":
     "为了更好的服务，您需要设置您的网站偏好",
-  "web.gfuc.your_default_site": "你默认的站点是"
+  "web.gfuc.your_default_site": "你默认的站点是",
+  "web.gfuc.password_format_incorrect":
+    "密码错误，密码需8-12位，且包含字母、数字和符号。"
 };
