@@ -55,10 +55,10 @@ const isCollapse = computed(() => !appStore.sidebar.opened);
   }
 
   .main-wrapper {
-    // min-width: 1000px;
     display: flex;
     flex: 1;
     flex-direction: column;
+    min-width: 1000px;
     overflow: hidden;
     background-color: var(--bg-color);
 

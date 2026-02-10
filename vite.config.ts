@@ -77,16 +77,16 @@ export default defineConfig({
       //   changeOrigin: true,
       //   rewrite: (path) => path.replace(/^\/api/, "")
       // }
-      "/api/gfuc": {
-        target: "http://192.168.104.124:7777",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, "")
-      }
       // "/api/gfuc": {
-      //   target: "http://10.100.5.180:32633",
+      //   target: "http://192.168.104.124:7777",
       //   changeOrigin: true,
       //   rewrite: (path) => path.replace(/^\/api/, "")
       // }
+      "/api/gfuc": {
+        target: "https://sit-gfuc-eu-api.eminxing.com",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, "")
+      }
     }
   }
 });

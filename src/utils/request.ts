@@ -27,9 +27,27 @@ export interface PageResult<T = any> {
   pageSize: number;
 }
 
+/** 获取动态基础路径 */
+const getDynamicBaseUrl = () => {
+  const envBaseApi = import.meta.env.VITE_APP_BASE_API;
+  // 如果是开发环境，则使用环境变量的配置
+  if (import.meta.env.DEV) {
+    return envBaseApi;
+  }
+
+  const { protocol, hostname } = window.location;
+  const parts = hostname.split(".");
+  if (parts.length > 1) {
+    // 例如：sit-gfuc-eu.eminxing.com -> sit-gfuc-eu-api.eminxing.com
+    return `${protocol}//${parts[0]}-api.${parts.slice(1).join(".")}/${envBaseApi}`;
+  }
+
+  return envBaseApi;
+};
+
 // 创建 axios 实例
 const service: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_API,
+  baseURL: getDynamicBaseUrl(),
   timeout: 10000
 });
 
