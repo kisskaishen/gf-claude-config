@@ -38,7 +38,11 @@ export function useDict<T = any>(code: string) {
         options.value = res
           .sort((a, b) => (a.sortval || 0) - (b.sortval || 0))
           .map((item) => ({
-            value: parseInt(item.itemCode as string) as unknown as T,
+            value: (typeof item.itemCode === "string" &&
+            item.itemCode.trim() !== "" &&
+            !isNaN(Number(item.itemCode))
+              ? Number(item.itemCode)
+              : item.itemCode) as unknown as T,
             label: item.itemValue
           }));
       } else {

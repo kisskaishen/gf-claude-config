@@ -9,7 +9,6 @@
     class="preference-modal"
   >
     <div class="preference-content">
-      {{ $t("web.gfuc.test1") }}
       <p class="subtitle">
         {{
           $t(

@@ -7,25 +7,25 @@ export const routes: RouteRecordRaw[] = [
     component: () => import("@/views/login/index.vue"),
     meta: { hidden: true } // 登录页不在菜单显示
   },
-  // {
-  //   path: "/",
-  //   component: () => import("@/layout/index.vue"),
-  //   redirect: "/home",
-  //   meta: { showOnlyOneChild: true },
-  //   children: [
-  //     {
-  //       path: "home",
-  //       name: "Home",
-  //       component: () => import("@/views/home/index.vue"),
-  //       meta: {
-  //         title: "首页",
-  //         icon: "home",
-  //         i18n: "web.gfuc.homepage",
-  //         affix: true
-  //       }
-  //     }
-  //   ]
-  // },
+  {
+    path: "/",
+    component: () => import("@/layout/index.vue"),
+    redirect: "/home",
+    meta: { showOnlyOneChild: true },
+    children: [
+      {
+        path: "home",
+        name: "Home",
+        component: () => import("@/views/home/index.vue"),
+        meta: {
+          title: "首页",
+          icon: "home",
+          i18n: "web.gfuc.homepage",
+          affix: true
+        }
+      }
+    ]
+  },
   // {
   //   path: "/order",
   //   component: () => import("@/layout/index.vue"),

@@ -31,7 +31,11 @@ export interface PageResult<T = any> {
 const getDynamicBaseUrl = () => {
   const envBaseApi = import.meta.env.VITE_APP_BASE_API;
   // 如果是开发环境，则使用环境变量的配置
+  console.log("import.meta.env.DEV", import.meta.env.DEV);
+
   if (import.meta.env.DEV) {
+    console.log("envBaseApi", envBaseApi);
+
     return envBaseApi;
   }
 
