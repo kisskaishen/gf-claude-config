@@ -38,6 +38,7 @@
           <!-- 登录表单 -->
           <LoginForm
             v-if="mode === 'login'"
+            :email="registerData.email"
             @success="handleSuccess"
             @switch="handleSwitch"
           />
@@ -45,6 +46,7 @@
           <!-- 注册表单 -->
           <RegisterForm
             v-else-if="mode === 'register'"
+            :register-data="registerData"
             @success="handleSuccess"
             @switch="handleSwitch"
           />
@@ -90,29 +92,34 @@ const userStore = useUserStore();
 const showPreferenceModal = ref(false);
 
 const mode = ref<"login" | "register" | "verify">("login");
-const registerData = ref({ email: "", password: "" });
+const registerData = ref({
+  email: "",
+  password: "",
+  agree1: false,
+  agree2: false
+});
 
 const handleSwitch = (
   _mode: "login" | "register" | "verify",
-  data?: { email: string; password: string }
+  data?: typeof registerData.value
 ) => {
-  mode.value = _mode;
   if (data) {
-    registerData.value = data;
+    registerData.value = { ...registerData.value, ...data };
   }
+  mode.value = _mode;
 };
 
 const handleSuccess = async (type: "login" | "register") => {
   if (type === "login") {
     if (userStore.hasSetPreference) {
-      ElMessage.success(t("gfuc.login_successful" /** 登录成功 **/));
+      ElMessage.success(t("web.gfuc.login_successful" /** 登录成功 **/));
       redirectToHome();
     } else {
       showPreferenceModal.value = true;
     }
   } else {
     ElMessage.success(
-      t("gfuc.registration_success_please_login" /** 注册成功，请登录 **/)
+      t("web.gfuc.registration_success_please_login" /** 注册成功，请登录 **/)
     );
     mode.value = "login";
   }

@@ -52,14 +52,14 @@
       <a
         href="javascript:;"
         class="link"
-        @click="$emit('switch', 'register')"
+        @click="$emit('switch', 'register', { email: loginData.email })"
         >{{ $t("web.gfuc.go_to_register" /** 去注册 */) }}</a
       >
     </div>
   </el-form>
 </template>
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { ref, reactive, computed, nextTick, watch } from "vue";
 import { type FormInstance, type FormRules } from "element-plus";
 import { useI18n } from "vue-i18n";
 import { useUserStore } from "@/store/user";
@@ -72,6 +72,13 @@ const { t } = useI18n();
 
 const userStore = useUserStore();
 
+const props = defineProps({
+  email: {
+    type: String,
+    default: ""
+  }
+});
+
 // --- 登录逻辑 ---
 const verifyCodeData = reactive({
   image: "",
@@ -82,10 +89,19 @@ const codeUrl = computed(() =>
   verifyCodeData.image ? "data:image/gif;base64," + verifyCodeData.image : ""
 );
 const loginData = reactive({
-  email: "",
+  email: props.email || "",
   password: "",
   code: ""
 });
+
+watch(
+  () => props.email,
+  (val) => {
+    if (val) {
+      loginData.email = val;
+    }
+  }
+);
 
 const loading = ref(false);
 

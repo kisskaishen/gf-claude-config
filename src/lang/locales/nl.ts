@@ -46,5 +46,20 @@ export default {
   "web.gfuc.invalid_email_format":
     "Uw e-mailadres is niet correct, vul een geldig e-mailadres in",
   "web.gfuc.please_agree_to_terms":
-    "Ga a.u.b. akkoord met de aanmeldingsovereenkomst"
+    "Ga a.u.b. akkoord met de aanmeldingsovereenkomst",
+  "web.gfuc.verification_code": "Verificatiecode",
+  "web.gfuc.please_enter_verification_code_sent_to_email":
+    "Vul de verificatiecode in die we naar uw e-mail hebben gestuurd",
+  "web.gfuc.verification_code_not_received": "Geen verificatiecode ontvangen?",
+  "web.gfuc.resend": "Opnieuw verzenden",
+  "web.gfuc.email_filled_incorrectly": "E-mailadres verkeerd ingevuld?",
+  "web.gfuc.return_to_refill": "Terug naar opnieuw invullen",
+  "web.gfuc.authentication": "Authenticatie",
+  "web.gfuc.login_successful": "Login succesvol",
+  "web.gfuc.registration_success_please_login":
+    "Registratie succesvol, log a.u.b. in",
+  "web.gfuc.confirm": "Bevestigen",
+  "web.gfuc.preference_settings_description":
+    "Om u beter van dienst te zijn, moet u uw websitevoorkeuren instellen",
+  "web.gfuc.your_default_site": "Uw standaardwebsite is"
 };

@@ -6,12 +6,12 @@
   >
     <div class="verify-header">
       <h3 class="verify-title">
-        {{ $t("gfuc.verification_code" /** 验证码 **/) }}
+        {{ $t("web.gfuc.verification_code" /** 验证码 **/) }}
       </h3>
       <p class="verify-tip">
         {{
           $t(
-            "gfuc.please_enter_verification_code_sent_to_email" /** 请输入我们发送到您的邮箱的验证码 **/
+            "web.gfuc.please_enter_verification_code_sent_to_email" /** 请输入我们发送到您的邮箱的验证码 **/
           )
         }}
       </p>
@@ -39,21 +39,26 @@
 
     <div class="verify-actions">
       <p>
-        {{ $t("gfuc.verification_code_not_received" /** 没有收到验证码？ **/)
+        {{
+          $t(
+            "web.gfuc.verification_code_not_received" /** 没有收到验证码？ **/
+          )
         }}<a
           href="javascript:;"
           :class="['link-inline', { 'is-disabled': countdown > 0 }]"
           @click="countdown === 0 && resendCode()"
-          >{{ $t("gfuc.resend" /** 再次发送 **/) }}.</a
+          >{{ $t("web.gfuc.resend" /** 再次发送 **/) }}.</a
         >
       </p>
       <p>
-        {{ $t("gfuc.email_filled_incorrectly" /** 邮箱填写错误？ **/)
+        {{ $t("web.gfuc.email_filled_incorrectly" /** 邮箱填写错误？ **/)
         }}<a
           href="javascript:;"
           class="link-inline"
-          @click="$emit('switch', 'register')"
-          >{{ $t("gfuc.return_to_refill" /** 返回重新填写 **/) }}</a
+          @click="
+            $emit('switch', 'register', { email: props.registerData.email })
+          "
+          >{{ $t("web.gfuc.return_to_refill" /** 返回重新填写 **/) }}</a
         >
       </p>
     </div>
@@ -64,15 +69,20 @@
         class="submit-btn"
         @click="handleVerify"
         :disabled="loading"
-        >{{ $t("gfuc.authentication" /** 认证 **/) }}</el-button
+        >{{ $t("web.gfuc.authentication" /** 认证 **/) }}</el-button
       >
     </div>
 
     <div class="form-footer">
-      <span>{{ $t("gfuc.already_have_account" /** 已经有账号？ **/) }}</span>
-      <a href="javascript:;" class="link" @click="$emit('switch', 'login')">{{
-        $t("gfuc.go_to_login" /** 去登录 **/)
-      }}</a>
+      <span>{{
+        $t("web.gfuc.already_have_account" /** 已经有账号？ **/)
+      }}</span>
+      <a
+        href="javascript:;"
+        class="link"
+        @click="$emit('switch', 'login', { email: props.registerData.email })"
+        >{{ $t("web.gfuc.go_to_login" /** 去登录 **/) }}</a
+      >
     </div>
   </el-form>
 </template>

@@ -43,5 +43,19 @@ export default {
   "web.gfuc.user_center": "用户中心",
   "web.gfuc.register": "注册",
   "web.gfuc.invalid_email_format": "您输入的邮箱格式不对，请填写正确的邮箱",
-  "web.gfuc.please_agree_to_terms": "请同意注册协议"
+  "web.gfuc.please_agree_to_terms": "请同意注册协议",
+  "web.gfuc.verification_code": "验证码",
+  "web.gfuc.please_enter_verification_code_sent_to_email":
+    "请输入我们发送到您的邮箱的验证码",
+  "web.gfuc.verification_code_not_received": "没有收到验证码？",
+  "web.gfuc.resend": "再次发送",
+  "web.gfuc.email_filled_incorrectly": "邮箱填写错误？",
+  "web.gfuc.return_to_refill": "返回重新填写",
+  "web.gfuc.authentication": "认证",
+  "web.gfuc.login_successful": "登录成功",
+  "web.gfuc.registration_success_please_login": "注册成功，请登录",
+  "web.gfuc.confirm": "确定",
+  "web.gfuc.preference_settings_description":
+    "为了更好的服务，您需要设置您的网站偏好",
+  "web.gfuc.your_default_site": "你默认的站点是"
 };

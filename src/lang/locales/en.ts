@@ -47,5 +47,21 @@ export default {
   "web.gfuc.register": "Register",
   "web.gfuc.invalid_email_format":
     "The email address you entered is incorrect, please enter a valid email address",
-  "web.gfuc.please_agree_to_terms": "Please agree to the registration agreement"
+  "web.gfuc.please_agree_to_terms":
+    "Please agree to the registration agreement",
+  "web.gfuc.verification_code": "Verification Code",
+  "web.gfuc.please_enter_verification_code_sent_to_email":
+    "Please enter the verification code sent to your email",
+  "web.gfuc.verification_code_not_received": "No verification code received?",
+  "web.gfuc.resend": "Resend",
+  "web.gfuc.email_filled_incorrectly": "Email filled incorrectly?",
+  "web.gfuc.return_to_refill": "Return to refill",
+  "web.gfuc.authentication": "Authentication",
+  "web.gfuc.login_successful": "Login successful",
+  "web.gfuc.registration_success_please_login":
+    "Registration successful, please login",
+  "web.gfuc.confirm": "Confirm",
+  "web.gfuc.preference_settings_description":
+    "To serve you better, you need to set your website preferences",
+  "web.gfuc.your_default_site": "Your default site is"
 };

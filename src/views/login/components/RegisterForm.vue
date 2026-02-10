@@ -113,9 +113,12 @@
 
     <div class="form-footer">
       <span>{{ $t("web.gfuc.already_have_account" /** 已有账号？ */) }}</span>
-      <a href="javascript:;" class="link" @click="$emit('switch', 'login')">{{
-        $t("web.gfuc.go_to_login" /** 去登录 */)
-      }}</a>
+      <a
+        href="javascript:;"
+        class="link"
+        @click="$emit('switch', 'login', { email: registerData.email })"
+        >{{ $t("web.gfuc.go_to_login" /** 去登录 */) }}</a
+      >
     </div>
 
     <!-- 协议弹窗 -->
@@ -156,12 +159,19 @@ const { t } = useI18n();
 
 const emit = defineEmits(["switch", "success"]);
 
+const props = defineProps({
+  registerData: {
+    type: Object,
+    default: () => ({ email: "", password: "", agree1: false, agree2: false })
+  }
+});
+
 // --- 注册逻辑 ---
 const registerData = reactive({
-  email: "",
-  password: "",
-  agree1: false,
-  agree2: false
+  email: props.registerData.email || "",
+  password: props.registerData.password || "",
+  agree1: props.registerData.agree1 || false,
+  agree2: props.registerData.agree2 || false
 });
 
 const loading = ref(false);
@@ -187,7 +197,7 @@ const registerRules = reactive<FormRules>({
   email: [
     {
       required: true,
-      message: t("gfuc.please_enter_email" /** 请输入邮箱 **/),
+      message: t("web.gfuc.please_enter_email" /** 请输入邮箱 **/),
       trigger: "change"
     },
     {
@@ -237,8 +247,7 @@ const handleRegister = async () => {
       try {
         await postCheckAccount({ email: registerData.email });
         emit("switch", "verify", {
-          email: registerData.email,
-          password: registerData.password
+          ...registerData
         });
       } finally {
         loading.value = false;
@@ -250,7 +259,6 @@ const handleRegister = async () => {
 // --- 协议弹窗逻辑 ---
 const userAgreementVisible = ref(false);
 const privacyPolicyVisible = ref(false);
-const isSequentialFlow = ref(false);
 
 const isUserAgreementRead = ref(false);
 const isPrivacyPolicyRead = ref(false);

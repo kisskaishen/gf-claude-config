@@ -47,5 +47,21 @@ export default {
   "web.gfuc.invalid_email_format":
     "L'indirizzo email inserito non è corretto, inserisci un indirizzo email valido",
   "web.gfuc.please_agree_to_terms":
-    "Si prega di accettare il contratto di iscrizione"
+    "Si prega di accettare il contratto di iscrizione",
+  "web.gfuc.verification_code": "Codice di verifica",
+  "web.gfuc.please_enter_verification_code_sent_to_email":
+    "Inserisci il codice di verifica che ti abbiamo inviato via email",
+  "web.gfuc.verification_code_not_received":
+    "Nessun codice di verifica ricevuto?",
+  "web.gfuc.resend": "Reinvia",
+  "web.gfuc.email_filled_incorrectly": "Email inserita in modo errato?",
+  "web.gfuc.return_to_refill": "Torna a inserire",
+  "web.gfuc.authentication": "Autenticazione",
+  "web.gfuc.login_successful": "Login riuscito",
+  "web.gfuc.registration_success_please_login":
+    "Registrazione riuscita, accedi",
+  "web.gfuc.confirm": "Conferma",
+  "web.gfuc.preference_settings_description":
+    "Per servirvi meglio, dovete impostare le preferenze del vostro sito web",
+  "web.gfuc.your_default_site": "Il tuo sito predefinito è"
 };

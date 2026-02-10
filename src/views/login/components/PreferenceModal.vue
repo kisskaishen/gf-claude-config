@@ -12,14 +12,14 @@
       <p class="subtitle">
         {{
           $t(
-            "gfuc.preference_settings_description" /** 为了更好的服务，您需要设置您的网站偏好 **/
+            "web.gfuc.preference_settings_description" /** 为了更好的服务，您需要设置您的网站偏好 **/
           )
         }}
       </p>
 
       <el-form :model="form" label-position="top">
         <el-form-item
-          :label="$t('gfuc.your_default_site' /** 你默认的站点是 **/)"
+          :label="$t('web.gfuc.your_default_site' /** 你默认的站点是 **/)"
         >
           <el-select
             v-model="form.site"
@@ -66,7 +66,7 @@
     <template #footer>
       <div class="dialog-footer">
         <el-button type="primary" class="submit-btn" @click="handleSubmit">
-          {{ $t("gfuc.confirm" /** 确定 **/) }}
+          {{ $t("web.gfuc.confirm" /** 确定 **/) }}
         </el-button>
       </div>
     </template>
