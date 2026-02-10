@@ -56,7 +56,10 @@
           href="javascript:;"
           class="link-inline"
           @click="
-            $emit('switch', 'register', { email: props.registerData.email })
+            $emit('switch', 'register', {
+              email: props.registerData.email,
+              password: ''
+            })
           "
           >{{ $t("web.gfuc.return_to_refill" /** 返回重新填写 **/) }}</a
         >
@@ -80,7 +83,12 @@
       <a
         href="javascript:;"
         class="link"
-        @click="$emit('switch', 'login', { email: props.registerData.email })"
+        @click="
+          $emit('switch', 'login', {
+            email: props.registerData.email,
+            password: ''
+          })
+        "
         >{{ $t("web.gfuc.go_to_login" /** 去登录 **/) }}</a
       >
     </div>
