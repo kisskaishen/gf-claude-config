@@ -29,6 +29,7 @@ defineProps({
 <style lang="scss" scoped>
 .page-container {
   box-sizing: border-box;
+  min-height: calc(100vh - var(--header-height) - var(--tags-height) - 16px);
   padding: 24px;
   background-color: #fff;
   border-radius: 4px;
