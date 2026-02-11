@@ -69,7 +69,14 @@
           prop="currency"
           :label="$t('gfuc.currency' /** 币种 **/)"
           min-width="80"
-        />
+        >
+          <template #default="{ row }">
+            {{
+              currencyOptions.find((item) => item.value === row.currency)
+                ?.label ?? "-"
+            }}
+          </template>
+        </el-table-column>
         <el-table-column
           prop="receiptMethod"
           :label="$t('gfuc.payment_method' /** 付款方式 **/)"
@@ -154,6 +161,18 @@ const dateTypeOptions = [
     label: t("gfuc.recharge_date" /** 充值日期 **/),
     value: DateType.Recharge
   }
+];
+
+/** 币种 */
+const enum Currency {
+  EUR = 1,
+  USD = 2
+}
+
+/** 币种选项 */
+const currencyOptions = [
+  { label: "EUR", value: Currency.EUR },
+  { label: "USD", value: Currency.USD }
 ];
 
 // --- 搜索相关 ---
