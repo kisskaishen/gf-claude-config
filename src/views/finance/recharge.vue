@@ -157,7 +157,12 @@
         />
       </el-form-item>
 
-      <el-button type="primary" class="submit-btn" @click="handleSubmit">
+      <el-button
+        type="primary"
+        class="submit-btn"
+        @click="handleSubmit"
+        :loading="loading"
+      >
         {{ $t("web.gfuc.submit" /** 提交 **/) }}
       </el-button>
     </el-form>
