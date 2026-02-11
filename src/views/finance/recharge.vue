@@ -170,7 +170,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { reactive, ref, computed } from "vue";
 import {
   type FormInstance,
   type FormRules,
@@ -190,6 +190,13 @@ import jpgIcon from "@/assets/upload-file/jpg.svg";
 import pdfIcon from "@/assets/upload-file/pdf.svg";
 import pngIcon from "@/assets/upload-file/png.svg";
 
+import { useAppStore } from "@/store/app";
+import frExample from "@/assets/payment-example/FR.png";
+import itExample from "@/assets/payment-example/IT.png";
+import nlExample from "@/assets/payment-example/NL.png";
+
+const appStore = useAppStore();
+
 const fileIconMap: Record<string, string> = {
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
     excelIcon,
@@ -207,10 +214,20 @@ const { t } = useI18n();
 const loading = ref(false);
 const formRef = ref<FormInstance>();
 const fileList = ref<UploadFile[]>([]);
+
 /** 示例图片链接 */
-const exampleImage = ref(
-  "https://raw.githubusercontent.com/xfiveco/mock-api-images/main/images/img-01-xs.jpg"
-);
+const exampleImage = computed(() => {
+  const site = appStore.site;
+  switch (site) {
+    case "IT":
+      return itExample;
+    case "NL":
+      return nlExample;
+    case "FR":
+    default:
+      return frExample;
+  }
+});
 
 const formData = reactive({
   /** 附件key */
