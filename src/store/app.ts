@@ -21,6 +21,8 @@ export const useAppStore = defineStore(
 
     const site = ref(userStore.userInfo?.defaultSite);
 
+    const loadedI18nMap = ref(false);
+
     // Actions
     const toggleSidebar = () => {
       sidebar.opened = !sidebar.opened;
@@ -37,6 +39,10 @@ export const useAppStore = defineStore(
 
     const setTimezone = (tz: string) => {
       timezone.value = tz;
+    };
+
+    const setLoadedI18nMap = (val: boolean) => {
+      loadedI18nMap.value = val;
     };
 
     const setPreferences = async (data: {
@@ -60,12 +66,14 @@ export const useAppStore = defineStore(
       site,
       lang,
       timezone,
+      loadedI18nMap,
 
       toggleSidebar,
       setSite,
       setLang,
       setTimezone,
-      setPreferences
+      setPreferences,
+      setLoadedI18nMap
     };
   },
   {

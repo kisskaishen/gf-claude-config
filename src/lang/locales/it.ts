@@ -63,5 +63,8 @@ export default {
   "web.gfuc.confirm": "Conferma",
   "web.gfuc.preference_settings_description":
     "Per servirvi meglio, dovete impostare le preferenze del vostro sito web",
-  "web.gfuc.your_default_site": "Il tuo sito predefinito è"
+  "web.gfuc.your_default_site": "Il tuo sito predefinito è",
+  "web.gfuc.preference_settings": "Preferenze del sito web",
+  "web.gfuc.your_default_timezone": "Il tuo fuso orario predefinito è",
+  "web.gfuc.your_default_language": "Il tuo linguaggio predefinito è"
 };

@@ -5,7 +5,7 @@ import { store } from "@/store";
 import { getUserInfo, postLogin, postUpdateUserInfo } from "@/api/user";
 import { Site, Timezone, UserBindStatus, type Lang } from "@/enums";
 import { useAppStore } from "./app";
-import { getInitialLang, loadI18nMap } from "@/lang";
+import { getInitialLang } from "@/lang";
 import { dataFinder } from "@/plugins/monitor/dataFinder";
 
 export interface UserInfo {
@@ -95,7 +95,6 @@ export const useUserStore = defineStore(
       if (res) {
         token.value = res.token;
         userInfo.value = res.userInfo;
-        await loadI18nMap();
         if (!appStore.site) {
           appStore.setSite(userInfo.value?.defaultSite || Site.fr);
         }

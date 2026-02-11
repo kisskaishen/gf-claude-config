@@ -65,5 +65,8 @@ export default {
     "To serve you better, you need to set your website preferences",
   "web.gfuc.your_default_site": "Your default site is",
   "web.gfuc.password_format_incorrect":
-    "Password error: must be 8-12 characters and contain letters, numbers, and symbols."
+    "Password error: must be 8-12 characters and contain letters, numbers, and symbols.",
+  "web.gfuc.preference_settings": "Preference settings",
+  "web.gfuc.your_default_timezone": "Your default timezone is",
+  "web.gfuc.your_default_language": "Your default language is"
 };

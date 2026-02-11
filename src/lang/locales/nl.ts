@@ -61,5 +61,8 @@ export default {
   "web.gfuc.confirm": "Bevestigen",
   "web.gfuc.preference_settings_description":
     "Om u beter van dienst te zijn, moet u uw websitevoorkeuren instellen",
-  "web.gfuc.your_default_site": "Uw standaardwebsite is"
+  "web.gfuc.your_default_site": "Uw standaardwebsite is",
+  "web.gfuc.preference_settings": "voorkeureninstellingen",
+  "web.gfuc.your_default_timezone": "Uw standaardtijdzone is",
+  "web.gfuc.your_default_language": "Uw standaardtaal is"
 };

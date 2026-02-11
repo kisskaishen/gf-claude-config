@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     v-model="visible"
-    :title="$t('gfuc.preference_settings' /** 偏好设置 **/)"
+    :title="$t('web.gfuc.preference_settings' /** 偏好设置 **/)"
     width="480px"
     :close-on-click-modal="false"
     :close-on-press-escape="false"
@@ -36,7 +36,7 @@
         </el-form-item>
 
         <el-form-item
-          :label="$t('gfuc.your_default_timezone' /** 您默认的时区是 **/)"
+          :label="$t('web.gfuc.your_default_timezone' /** 您默认的时区是 **/)"
         >
           <el-select v-model="form.timezone" class="full-width">
             <el-option
@@ -49,7 +49,7 @@
         </el-form-item>
 
         <el-form-item
-          :label="$t('gfuc.your_default_language' /** 您默认的语言是 **/)"
+          :label="$t('web.gfuc.your_default_language' /** 您默认的语言是 **/)"
         >
           <el-select v-model="form.lang" class="full-width">
             <el-option

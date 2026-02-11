@@ -82,12 +82,14 @@ import RegisterForm from "./components/RegisterForm.vue";
 import VerifyCodeForm from "./components/VerifyCodeForm.vue";
 import PreferenceModal from "./components/PreferenceModal.vue";
 import LangSelect from "@/components/LangSelect/index.vue";
+import { useAppStore } from "@/store/app";
 
 const { t } = useI18n();
 
 const router = useRouter();
 const route = useRoute();
 const userStore = useUserStore();
+const appStore = useAppStore();
 
 const showPreferenceModal = ref(false);
 
@@ -126,6 +128,7 @@ const handleSuccess = async (type: "login" | "register") => {
 };
 
 const redirectToHome = () => {
+  appStore.setLoadedI18nMap(false);
   const redirect = route.query.redirect as string;
   if (redirect && redirect !== "/login") {
     router.push(redirect);
