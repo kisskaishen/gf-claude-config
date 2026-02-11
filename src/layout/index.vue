@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onMounted, onUnmounted } from "vue";
 import { useAppStore } from "@/store/app";
 import Sidebar from "./components/Sidebar/index.vue";
 import NavBar from "./components/NavBar.vue";
@@ -30,6 +30,23 @@ import AppMain from "./components/AppMain.vue";
 
 const appStore = useAppStore();
 const isCollapse = computed(() => !appStore.sidebar.opened);
+
+const handleResize = () => {
+  if (window.innerWidth < 1200) {
+    appStore.sidebar.opened = false;
+  } else {
+    appStore.sidebar.opened = true;
+  }
+};
+
+onMounted(() => {
+  handleResize();
+  window.addEventListener("resize", handleResize);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
+});
 </script>
 <style lang="scss" scoped>
 .layout-container {
