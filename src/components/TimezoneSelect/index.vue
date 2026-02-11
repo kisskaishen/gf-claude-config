@@ -48,6 +48,7 @@ const currentTimezone = computed(() => {
 
 const handleSetTimezone = (val: any) => {
   appStore.setTimezone(val);
+  location.reload();
 };
 </script>
 
