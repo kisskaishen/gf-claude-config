@@ -11,6 +11,7 @@ import { useAppStore } from "@/store/app";
 import SelectDropdown from "@/components/SelectDropdown/index.vue";
 import { Site } from "@/enums";
 import { useI18n } from "vue-i18n";
+import { useUserStore } from "@/store/user";
 defineOptions({
   name: "SiteSelect"
 });
@@ -18,6 +19,8 @@ defineOptions({
 const { t } = useI18n();
 
 const appStore = useAppStore();
+
+const userStore = useUserStore();
 
 const options = [
   {
@@ -36,6 +39,7 @@ const options = [
 
 const handleSetSite = (val: any) => {
   appStore.setSite(val);
+  // userStore.isUserInfoUpdated = false;
   window.location.reload();
 };
 </script>

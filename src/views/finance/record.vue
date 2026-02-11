@@ -185,7 +185,7 @@ const searchForm = ref({
 
 const receiptMethodDict = useDict("fms.provider.paymentMode.type");
 
-const statusDict = useDict<Status>("fms.payable.verification.status");
+const statusDict = useDict<Status>("gfuc.fms.recharge.status");
 
 // --- 表格相关 ---
 const loading = ref(false);
