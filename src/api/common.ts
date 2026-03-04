@@ -24,7 +24,7 @@ export const getPublicKey = () => {
 // src/api/common.ts
 export const uploadFile = (data: FormData) => {
   return request({
-    url: "/file/upload", // 请根据实际后端接口地址修改
+    url: "/fms/file/upload", // 请根据实际后端接口地址修改
     method: "post",
     headers: {
       "Content-Type": "multipart/form-data"
