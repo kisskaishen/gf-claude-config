@@ -362,62 +362,76 @@ const userAgreementContent = `
 <p>10.2 本协议最终解释权及修订权在法律范围内归 GOFO 所有。</p>
 `;
 const userAgreementEnContent = `
-<h2>GOFO Terms of Use</h2>
-<p><span>Effective Date: 【2026-03-12】</span></p>
-<p><b>Dispute Resolution:</b> The European Commission provides an online dispute resolution (ODR) platform: <a href="https://ec.europa.eu/consumers/odr"><b>https://ec.europa.eu/consumers/odr</b></a></p>
-<p>This Terms of Use applies to your registration and use of the system (<a href="https://gfuc-eu.gofoexpress.com" style='background-color:yellow'><b>https://gfuc-eu.gofoexpress.com</b></a>). By clicking “Log in”, “Submit”, “Confirm” or “Register”, you acknowledge that you have read and agreed to this Agreement. If you do not accept any clause, please stop using the services.</p>
+<p>Effective Date:  2026-03-12</p>
+<p>The copyright of this publication belongs to 【GOFO】 (hereinafter referred to as “GOFO”, “we”, and “us”),
+</p>
+<p>Dispute Resolution: The European Commission provides an online dispute resolution (ODR) platform: <a href="https://ec.europa.eu/consumers/odr">https://ec.europa.eu/consumers/odr</a></p>
+<p>This Terms of Use (this Agreement) shall apply in relation to your registration and use of the system ( <a href="https://gfuc-eu.gofoexpress.com">https://gfuc-eu.gofoexpress.com </a> ). This Terms of Use is an agreement between you (“User”) and GOFO and should be read together with our Privacy Policy. If you click “Log in”, “Submit”, “Confirm” or “Register “on the system, it shall be deemed that you have read and agreed to this Agreement. If you do not accept this Agreement or any clause of it, please stop using the service.</p>
 <h2>1. Scope of this Agreement</h2>
-<p>1.1 This Agreement is a binding contract between you and GOFO.</p>
-<p>1.2 GOFO has subsidiaries and/or related legal entities that may provide services on behalf of GOFO. You agree they are entitled to provide services to you.</p>
-<p>1.3 This Agreement applies to your use of the system. Services provided by GOFO and its subsidiaries and/or related legal entities are subject to the specific contract(s) separately signed with you.</p>
-<p>1.4 GOFO may change or modify this Agreement to reflect legal or service changes and will announce updates on the system. Continued use after changes take effect means you have read, understood, and accepted the updated Agreement; otherwise, stop using the system.</p>
+<p>1.1 This agreement is an effective contract between you and GOFO.</p>
+<p>1.2 GOFO has subsidiaries and/or related legal entities. These subsidiaries and/or related legal entities may provide services to you on behalf of GOFO. You understand and agree that these subsidiaries and/or related legal entities have the right to provide services to you.</p>
+<p>1.3 This agreement applies to your use of the system. The services provided by GOFO and its subsidiaries and/or related legal entities to you are subject to the respective contract(s) signed separately between you and GOFO or its subsidiaries and/or related legal entities. </p>
+<p>1.4 GOFO reserves the right to change or modify this Agreement from time to time. For example, GOFO will modify this Agreement in accordance with legal changes or service changes. When GOFO makes changes or modifications to this Agreement, GOFO will announce it on the system. And you should regularly check the system to learn about the revision of this Agreement. If you continue to use the system after the change/modification, it shall be deemed that you have fully read, understood, and accepted the change/modification of this Agreement; if you do not agree with the change/modification, you should stop using the system.</p>
 <h2>2. User</h2>
-<p>2.1 If you are a natural person, you confirm you have the capacity for civil conduct before registering a GOFO account. Otherwise, stop registering or using the system; you and your guardian bear the resulting consequences.</p>
-<p>2.2 If you are a legal entity, you confirm you are legally established and qualified under applicable laws and that entering into and performing this Agreement does not violate applicable laws. Otherwise, stop registering or using GOFO services and bear the resulting consequences.</p>
+<p>2.1 In the case that you are a natural person, you confirm that you should have the capacity for civil conduct before you register an GOFO account. If not, please stop registering or stop using the system, otherwise you and your guardian shall be liable for all consequences arising therefrom.</p>
+<p>2.2 In the case that you are a legal entity, you confirm that before to your registration, you have been legally established in accordance with the applicable laws and regulations and have the appropriate qualifications to conduct business. You confirm that you would enter into this Agreement without violating applicable laws and regulations. If not, you shall stop registering or using the GOFO services, otherwise you shall be liable for all consequences arising therefrom.</p>
 <h2>3. Account and Password</h2>
-<p>3.1 To access the system and use services, register an account and provide complete, correct, and accurate information (e.g., name/company name, email, phone, country) and keep it updated. You are responsible for damages arising from false, incorrect, or incomplete information.</p>
-<p>3.2 If you set a username, it must not violate applicable laws and regulations; otherwise GOFO may deny or cancel your account. If false or improper information is discovered after registration, GOFO may require correction, suspend use, or cancel your account.</p>
-<p>3.3 Generally, each user may use only one GOFO account. If there is evidence or reason to believe improper registration/use of multiple accounts, GOFO may cancel accounts, refuse services, and terminate this Agreement; you are liable for losses caused.</p>
-<h2>4. Account Management</h2>
-<p>4.1 If you have a GOFO account, you may log in with your username and password. Your account is for your own use only. If you authorize others to use your account, you bear full responsibility for actions taken under your account. If use of your account may endanger account or information security, GOFO may refuse services or terminate this Agreement.</p>
-<p>4.2 GOFO will never proactively ask for your password. Keep your account and password secure. You are responsible for losses due to disclosure to third parties and for all actions under your account.</p>
-<p>4.3 If you lose or forget account information for personal reasons, provide legal, true, accurate and valid information for verification; otherwise, we cannot reset your password. We need reasonable time to act on requests and are not responsible for consequences of unauthorized use.</p>
-<p>4.4 GOFO may reclaim your account and terminate related services in the following cases:</p>
-<p>(1) You seriously violate obligations under a service contract with GOFO.</p>
-<p>(2) You fail to complete real‑name and/or qualification authentication as required.</p>
-<p>4.5 You must complete required real‑name and/or qualification authentication; otherwise you may be unable to access/log in or use services normally.</p>
-<p>4.6 You may transfer or grant your account only with GOFO’s consent; GOFO may require qualified documents from you and the recipient. Upon transfer, rights and obligations under the account and this Agreement transfer together. Otherwise, GOFO may pursue breach liability and you bear resulting responsibilities.</p>
-<p>4.7 To cancel your account, contact GOFO. Account cancellation is irreversible. After receiving your request, GOFO will verify your identity. GOFO will cancel your account if:</p>
-<p>(1) You apply for cancellation and follow GOFO procedures.</p>
-<p>(2) You remain responsible for actions prior to cancellation and GOFO may retain relevant information.</p>
-<p>(3) Your cancellation does not affect performance of other agreements with GOFO.</p>
-<p>(4) After successful cancellation, account information, records and related rights cannot be restored or provided.</p>
+<p>3.1 To access of the system and use the services, you shall register an account. You agree to provide complete, correct, and accurate information (including your name/company name/Business License, Email address, phone number, country, etc.) to GOFO and to maintain the accuracy of the information. You will be solely responsible for any damage or consequence that may arise from the false or incorrect or incomplete information.</p>
+<p>3.2 If you set up a username of your account, you should ensure that the username does not violate applicable laws and regulations, otherwise GOFO has the right to cancel your account. After registration, if it is found that you register your account with false information, or that there are immoral or illegal information provided by you, GOFO shall have the right to request you to correct the information, to suspend the use of your account and to cancel your account.</p>
+<p>3.3 Normally, GOFO allows each user to use only one GOFO account. If there is evidence or GOFO has reason to believe that user has improper registration or improper use of multiple GOFO accounts, GOFO has the right to cancel accounts, refuse to provide services, and terminate this Agreement. If a user causes losses to GOFO or related parties, the user should also be liable.</p>
+<h2>4. Account management</h2>
+<p>4.1 If you have already registered a GOFO account, you can use the GOFO account username and password to log in. Your GOFO account is for your own use only. If you authorize others to use your account, you shall be fully responsible for all actions of the authorized person using your account. If GOFO determines that the use of your GOFO account may endanger the security of your account and/or the information security, GOFO reserves the right to refuse to provide corresponding services or terminate this Agreement.</p>
+<p>4.2 You understand and agree that GOFO will not ask you to provide your password at any time. Therefore, it is recommended that you keep your GOFO account and password to your own. You shall be solely liable for the losses and consequences caused by your account disclosure to any third party. You shall be responsible for all actions under your account (including but not limited to signing agreements, providing information, using services, etc.).<p>
+<p>4.3 If your account information is lost or forgotten due to your personal reasons, please provide relevant information to us for verification and ensure that the provided information is legal, true, accurate and valid. Otherwise, we cannot help you to reset your password. You understand that it would take time for us to deal with your requests, and we shall not be responsible for any consequences arising out of any unauthorized use of your account.</p>
+<p>4.4 If the following situation exists, we have the right to terminate your account, and you will no longer be able to log into our system. The corresponding services will also be terminated:
+</p>
+<p>(1) You have seriously violated your obligations under the service contract signed with us.</p>
+<p>(2) You fail to carry out real-name authentication and/or qualification authentication in accordance with Article </p>
+<p>4.5 You understand and agree that you shall complete the real-name authentication and/or qualification authentication as required, otherwise you may not be able to access/log in our system or use the Service normally.</p>
+<p>4.6 You may transfer or grant your account only with GOFO’ consent. In such case, we have the right to require you, the assignee and the recipient to provide qualified documents. Upon transfer of your account, your rights and obligations under the account and under this Agreement shall be transferred together. In addition, your account shall not be transferred in any other way, otherwise we have the right to hold you liable for breach of this Agreement and all liabilities arising therefrom shall be borne by you.</p>
+<p>4.7 You can cancel your account by contacting us. Your account may be directly related to whether you can use our services normally, and account cancellation is not recoverable. Therefore, to ensure the security of your account and all services related to your account, after you submit an account cancellation application to us, we will check your account and verify your identity. If you agree to the following conditions, we will cancel your account:</p>
+<p>(1) You apply for the cancellation of your account and cancel it according to our procedures.</p>
+<p>(2) You shall still be responsible for your use of the system and our services before you cancel your account, and we may still save your information before you cancel your account.</p>
+<p>(3) Your cancellation does not affect the performance of the relevant agreements you have signed with us.</p>
+<p>(4) After successful cancellation, account information, subject information, transaction records, relevant rights, and interests, etc. cannot be recovered or provided.</p>
 <h2>5. Services</h2>
-<p>5.1 The system provides an online platform for services offered by GOFO. You may not enjoy all services shown; system information does not constitute a service commitment. Specific services are subject to the agreement(s) you sign with GOFO.</p>
-<p>5.2 Services and information are provided on an “as is” and “as available” basis. To the fullest extent permitted by law, GOFO disclaims all warranties and makes no representations as to accuracy, completeness, security or timeliness.</p>
-<p>5.3 GOFO is not liable for damages due to equipment maintenance, power failure, strikes, riots, fire, flood, storms, explosions, war, government actions, judicial/administrative orders, or failures of servers, computers, communications, or third‑party causes.</p>
-<p>5.4 The system may display content not belonging to GOFO; publishers bear responsibility. GOFO may review content and remove or refuse to display content that violates policies or laws, without obligation to review all content.</p>
+<p>5.1 GOFO provides you with an online platform that allows you to access services provided by GOFO to you. After registration, you may not necessarily enjoy all the services shown on the system, and the information on the system does not make a commitment to the service. The specific services provided to you are subject to the service agreement(s) signed by you and GOFO.</p>
+<p>5.2 The services and the information on the system are provided on an “as is” basis. GOFO, to the fullest extent permitted by law, disclaims all warranties, whether express, implied, statutory, or otherwise. GOFO makes no representations or warranties about the accuracy, completeness, security or timeliness of the services, content or information provided on or the system.</p>
+<p>5.3 GOFO shall not be liable for any damage caused to you due to network equipment maintenance, power failure, strike, riot, fire, flood, storm, explosion, war, government action, order of judicial administration authority or failure of servers, computers or communications. GOFO shall not be liable for any damage caused by any third party.</p>
+<p>5.4 The system may obtain some content that does not belong to GOFO, and the publisher bears full responsibility for this content. GOFO may review the content to determine whether it is illegal or violates GOFO’ policies; if there is reason to believe that the content violates GOFO’ policies or is illegal, GOFO can delete it or refuse to show this content. However, it does not mean that GOFO will necessarily or have the obligation to review relevant content.</p>
 <h2>6. Disclaimer</h2>
-<p>6.1 GOFO may change, interrupt, or terminate system functions without prior notice and does not guarantee uninterrupted operation, timeliness, security, or accuracy.</p>
-<p>6.2 GOFO is not responsible for interruptions due to: (1) maintenance/upgrade without prior notice; (2) force majeure; (3) your hardware/software failure; (4) viruses, attacks, congestion, instability, equipment/communication/power failures, banking reasons, third‑party defects, or government actions.</p>
-<p>6.3 GOFO will take reasonable actions to restore services.</p>
-<h2>7. Intellectual Property</h2>
-<p>Unless otherwise stated in writing, all rights in products, technologies, software, programs, data, text, images, audio, video, charts, layouts, electronic documents and any information or materials displayed on the system are owned by GOFO, including copyrights, trademarks, patents, trade secrets and other related rights. Without GOFO’s express written authorization, you may not use such content, including copying, disseminating, displaying, mirroring or downloading. Accessing or using the system grants no rights to any information or content.</p>
+<p>6.1 You understand and agree that GOFO may change, interrupt or terminate the functions of the system without prior notice. GOFO does not guarantee that the functions will not be interrupted, nor guarantee the timeliness, safety, and accuracy of functions.</p>
+<p>6.2 You understand and agree that GOFO shall not bear any responsibility for the interruption of the system and its functions due to the following circumstances:</p>
+<p>(1) GOFO reserves the right to suspend any part of the system for maintenance, upgrade, or other purposes without prior notice.</p>
+<p>(2) Force majeure such as typhoon, earthquake, flood, lightning, or terrorist attack.</p>
+<p>(3) Your computer hardware and software malfunction.</p>
+<p>(4) Due to virus, Trojan horse, malicious program attack, network congestion, system instability, system or equipment failure, communication failure, power failure, banking reasons, third-party defect or government behavior and other reasons.</p>
+<p>6.3 Despite the agreement in the preceding paragraph, GOFO will take reasonable actions to restore the system.</p>
+<h2>7. Intellectual property</h2>
+<p>Unless GOFO declares in writing, all rights to all products, technologies, software, programs, data, text, images, pictures, audios, videos, charts, colors, layouts, electronic documents and any information, content, and materials shown to you on the system, including but not limited to Copyright (software copyright), trademark rights, patent rights, trade secrets and all other related rights are owned by GOFO. Without the express written authorization of GOFO, you and anyone may not use it without authorization, including but not limited to copying, disseminating, displaying, mirroring, and downloading any content on the system. Accessing or using the system does not give you any rights to any information, content, or data in the system.</p>
 <h2>8. Termination</h2>
-<p>8.1 You may terminate this Agreement by: (1) stopping use of the system; (2) stopping use and expressly not accepting changes/modifications; (3) expressly notifying GOFO that you will not continue to use the system and meeting GOFO’s termination conditions.</p>
-<p>8.2 GOFO may terminate this Agreement if: (1) you violate laws or this Agreement or other agreements with GOFO; (2) you commit fraud, misuse accounts, make false transactions, or take improper advantage, or endanger transaction/account security; (3) you misuse GOFO services; (4) your account is cancelled under this Agreement; (5) other reasonable circumstances.</p>
-<p>8.3 Termination does not affect the validity of orders processed via the system or other agreements signed between you and GOFO.</p>
+<p>8.1 You have the right to terminate this Agreement in any of the following ways:</p>
+<p>(1) Stop using the system in accordance with this Agreement.</p>
+<p>(2) When GOFO changes and/or modifies this Agreement, you stop using and expressly do not accept the changes and/or modifications.</p>
+<p>(3) You clearly express to GOFO that you will not continue to use the system, and you meet the termination conditions of GOFO.</p>
+<p>8.2 In the following circumstances, GOFO has the right to notify you to terminate this Agreement:</p>
+<p>(1) You violate the provisions of relevant laws and regulations or violate this Agreement or other relevant agreements signed by you and GOFO.</p>
+<p>(2) You have committed fraud, misappropriation of other people’s accounts, making false transactions, suspected of smuggling crimes, or taking improper means for profit, or you have acts that endanger the security of others’ transactions or account security.</p>
+<p>(3) Misuse of the services provided by GOFO.</p>
+<p>(4) According to the relevant provisions of this Agreement, your account has been canceled by GOFO.</p>
+<p>(5) Other circumstances that GOFO has reason to terminate this Agreement.</p>
+<p>8.3 The termination of this Agreement does not affect the validity of orders and services you have already processed through the system or other agreements have been signed between you and GOFO.</p>
 <h2>9. Notice</h2>
-<p>9.1 GOFO may notify you via system messages or your provided contact information (email, phone, address). These notices may significantly affect your rights and obligations; keep your information updated. Electronic notices (SMS, email, system messages) are deemed served upon successful sending; written notices are deemed delivered on the fifth natural day after mailing to your address.</p>
-<p>9.2 For disputes arising from this Agreement, you agree judicial institutions may send legal documents to your provided phone, email or other contact details; the sending date is deemed the service date.</p>
-<p>9.3 You must ensure contact information is accurate, effective and updated in real time; otherwise, you bear consequences if notices cannot be delivered.</p>
+<p>9.1 GOFO will notify you by a system message or according to the contact information that you provide (including your email address, contact number, contact address, etc.). Such notices may have a significant impact on your rights and obligations, so please pay attention to them in time. If your contact information changes, you are obliged to update it in time. Electronic notifications, including sending text messages, sending emails, and sending system messages to you, shall be deemed to have been served upon successful delivery; a written notice shall be deemed to be delivered on the fifth natural day after it is mailed to the address provided by you.</p>
+<p>9.2 For any disputes arising out of this Agreement, you agree that judicial institutions (including but not limited to courts and arbitration institutions) could send legal documents to you through the telephone number, email, and other information you provided. The date on which the judiciary post legal documents to the above contact information shall be deemed to be the date of service.</p>
+<p>9.3 You should ensure that the contact information provided is accurate, effective, and updated in real time. If the contact information provided is inaccurate or the changed contact information is not notified in time, and the notification cannot be delivered or is not delivered in time, you shall bear the legal consequences that may arise.</p>
 <h2>10. Miscellaneous</h2>
-<p>10.1 If any provision is repealed, invalid or unenforceable, it is severable and does not affect the validity or enforceability of the remaining provisions.</p>
-<p>10.2 Within the scope permitted by applicable law, GOFO reserves the right of final interpretation and amendment of this Agreement.</p>
-`;
+<p>10.1If any provision of this Agreement is held to be repealed, invalid, or unenforceable, such provision shall be deemed severable and shall not affect the validity or enforceability of the remaining provisions of this Agreement.</p>
+<p>10.2Within the scope permitted by applicable law, GOFO reserves the right of final interpretation and amendment of this Agreement.
+</p>`;
 // 用户隐私政策内容
 const privacyPolicyContent = `
-  <h2>1. 引言</h2>
+<h2>1. 引言</h2>
 <p>我们很高兴您访问我们，并对本公司的业务、产品及服务表示关注。您的信任对我们至关重要。我们致力于在整个业务流程中的个人数据处理活动中，保护您的隐私以及任何可直接或间接识别自然人身份的信息（以下简称“个人数据”）的安全。为此，我们制定本《隐私声明》，以说明我们如何收集和使用您的个人<p>数据。</p>
 <p>最后更新日期：【2026/03/12】。</p>
 <p>本《隐私声明》中提及“公司”、“我们”或“我们的”，系指根据本声明决定您个人数据处理目的和方式的公司主体。</p>
@@ -591,122 +605,207 @@ const privacyPolicyContent = `
 <p><span style='background-color:yellow'>注：本隐私声明用中文、英文及相关当地语言版本书写并发布，如不同语言版本之间存在不一致或冲突之处，在法律允许的范围内，应以英文版本或当地语言版本为准。</span></p>
 `;
 const privacyPolicyEnContent = `
-<h2>1. Introduction</h2>
-<p>We are pleased that you are interested in our company, products and services. Your trust is important to us. We are committed to protecting your privacy and the security of information that can directly or indirectly identify a natural person (<span>“Personal Data”</span>) throughout our business processes. This Privacy Statement explains how we collect and use your Personal Data.</p>
-<p><b>Last updated:</b> <span>【2026/03/12】</span></p>
-<p>References in this Privacy Statement to <b>“GOFO”</b>, <b>“the Company”</b>, <b>“we”</b>, or <b>“us”</b> refer to the company that determines the purposes and means of processing your Personal Data under this Privacy Statement.</p>
-<p><b>Data Controller Information:</b></p>
-<p><b>Name:</b> <span>GOFO FRANCE</span></p>
-<p><b>Address:</b> <span>10 rue Eugène Pottier 95670 Marly-la-Ville</span></p>
-<p><b>Email:</b> <span>cs@mail.gofoexpress.fr</span></p>
-<p>The Company has appointed a Data Protection Officer. You can contact our DPO at <a href="mailto:dpo@gofoexpress.com"><b>dpo@gofoexpress.com</b></a>.</p>
+<h2>1. INTRODUCTION</h2>
+<p>We are pleased that you have came to us and are interested in our company, products and services. Your trust is important to us. We are committed to protecting your privacy and the security of information that can directly or indirectly be used to identify a natural person (hereinafter “Personal Data”) during the processing throughout the entire business process. We have created this Privacy Statement to explain how we collect and use your Personal Data. The Company collects Personal Data w</p>
+<p>Last updated: 【2026/03/12  】.<p>
+<p>When this Privacy Statement mentions “GOFO”, “the Company”, “we”, “us”, it is referring to the company that decides on the purposes and means of the processing of your Personal Data under this Privacy Statement. </p>
 
-<h2>2. Does This Privacy Statement Apply To You?</h2>
-<p>This Privacy Statement applies if you are a customer of the Company, if you contact us, for example by visiting <a href="https://gfuc-eu.gofoexpress.com"><b>https://gfuc-eu.gofoexpress.com</b></a> (including any pages and mobile apps, the “system”), or if you receive emails from us.</p>
-<p>Our system, products and services are for a general audience and are not aimed at children (the age threshold is determined by applicable laws in your place of residence). In principle, we do not collect Personal Data from children. If you are a child, please do not provide any Personal Data; if you want to use our services, please rely on a parent or guardian to assist you.</p>
-<p>If a child has disclosed Personal Data to us, a parent or guardian can contact us and we will remove the Personal Data if required.</p>
+<h2>2. DATA CONTROLLER INFORMATION</h2>
+<p>Name：【GOFO FRANCE】</p>
+<p>Address:【10 rue Eugène Pottier 95670 Marly-la-Ville】 </p>
+<p>Email:【 cs@mail.gofoexpress.fr                】      </p>
+<p>The Company has appointed a Data Protection Officer. You can contact our DPO at dpo@gofoexpress.com.</p>
 
-<h2>3. What Personal Data Do We Collect?</h2>
-<p><b>Contact Information.</b> Includes your name, address, email address and telephone number.</p>
-<p><b>Financial Information.</b> Includes your bank account number, payment status and invoices.</p>
-<p><b>Account Information.</b> Includes login information (user name, email address, telephone) and other information provided through your account.</p>
-<p><b>Shipper’s Information.</b> Includes shipper’s name, address, email address and telephone number.</p>
-<p><b>Recipient’s Information.</b> Includes recipient’s name, address, email address and telephone number.</p>
-<p><b>User Data and Preferences.</b> Includes shipment volumes, complaints, transaction history and related commercial activity, communications, survey information, and your preferences.</p>
-<p><b>Automatically Generated Information.</b> Includes IP address, unique device or user ID, system and browser type, date/time stamps, referring website, content and pages you access on our system or mobile apps, and location data.</p>
-<p>Depending on your interactions with us, we may also collect other information related to shipments and services, including tracking numbers, routing information, location data, shipment status, delivery location, packaging type, number of pieces, weight, prices, parcel images, proof of delivery, and customs information. If we become aware that a child’s Personal Data has been collected without parental or guardian consent, we will promptly delete such data.</p>
-<p>The Company does not intentionally collect or process special categories of personal data within the meaning of Article 9 GDPR (e.g., health data, political opinions, biometric data).</p>
+<h2>3. DOES THIS PRIVACY STATEMENT APPLY TO YOU?</h2>
+<p>This Privacy Statement applies to you if you are a customer of the Company or if you contact us, for instance, by visiting【https://gfuc-eu.gofoexpress.com 】including any pages and mobile apps (hereafter “system”), or if you receive emails from us.</p>
+<p>Our system, products and services are for a general audience and not aimed at children（The definition of the age threshold for children shall be determined in accordance with the applicable laws and regulations of the user’s place of residence）. In principle, we do not collect Personal Data from children.  If you are a child, you are requested not to provide any Personal Data, if you want to use our services, please rely on a parent or guardian to assist you.</p>
+<p>If a child may have disclosed Personal Data to us, the parent or guardian can contact us, and we will remove Personal Data if required.</p>
 
-<h2>4. How Do We Collect Personal Data?</h2>
-<p>We collect Personal Data when provided by the shipper or our contractual customer. If you are the shipper or our contractual customer, we receive your Personal Data directly from you. Examples include:</p>
-<p>- The shipper’s name, address and phone number.</p>
-<p>- The name, address, identity information, payment card information and account number of the person opening a GOFO account.</p>
-<p>If Personal Data of others is provided by the shipper or our contractual customer, we receive it indirectly. Examples include:</p>
-<p>- The recipient’s name, address and phone number.</p>
-<p>- The name, address, phone number, email address and identifying information of a director or representative of the shipper or account holder.</p>
-<p>- The actual shipper’s name and address when an order is placed on an online marketplace and we deliver to the address provided.</p>
-<p>When we receive Personal Data indirectly, we rely on the provider for accuracy and for the authority to provide such information to GOFO.</p>
+<h2>3. WHAT PERSONAL DATA DO WE COLLECT?</h2>
+<p>As a rule, the Personal Data that you provide directly or indirectly to the Company when using our services and visiting our system are:</p>
+<p>- Contact Information. This includes your name, address, email address and telephone number</p>
+<p>- Financial Information. This includes your bank account number, payment status and invoices;</p>
+<p>- Account Information. This includes login information, including your user name, email address, telephone and other information provided through your account;</p>
+<p>- Shipper’s Information. This includes shipper’s name, address, email address and telephone number;</p>
+<p>- Recipient’s Information. This includes recipient’s name, address, email address and telephone number;</p>
+<p>- User Data and Preferences. This includes, where applicable, shipment volumes, complaints, transaction history and related commercial activity, communications, survey information, and your preferences.</p>
+<p>- Automatically generated information. This includes IP address, unique device or user ID, system and browser type, date and time stamp, referring website address, content and pages you accessed on our system or mobile applications, date, time, and location actions. </p>
+<p>In addition to the above categories of Personal Data, depending on your interaction with us, we may collect other types of information that may or may not contain Personal Data. Such information related to shipments and services may include shipment tracking number, shipment routing information, location data, status of a shipment, delivery location, packaging type, number of pieces, weight, prices, picture of the parcel, proof of delivery and customs information. If we become aware that personal data of a child have been collected without the consent of the parent or legal guardian, we will promptly delete such data.</p>
+<p>The Company does not intentionally collect or process special categories of personal data as defined in Article 9 GDPR (e.g., health data, political opinions, biometric data, etc.).</p>
 
-<h2>5. Purposes And Legal Grounds</h2>
-<p>We collect, use, store and otherwise process Personal Data only when necessary within responsible, efficient and effective business management. We process Personal Data on the following legal grounds and related business purposes:</p>
-<p>- <b>Performance of a contract.</b> Delivery services, tracking, communications, responses to information requests, dispute resolution and agreement preparation.</p>
-<p>- <b>Product development and improvement.</b> Processing data to develop and improve products/services and to perform research and analysis.</p>
-<p>- <b>Relationship management and marketing.</b> Account management, customer service and targeted marketing; statistical analysis of Personal Data.</p>
-<p>- <b>Business process execution and internal management.</b> Asset management, audits and investigations, finance and accounting, business controls, central processing, and mergers/acquisitions/divestitures; management reporting and analysis.</p>
-<p>- <b>Security and protection.</b> Safeguarding the Company and its customers/partners and authenticating identities and access rights (online/offline).</p>
-<p>- <b>Vital interests.</b> Processing necessary to protect your vital interests or those of others.</p>
-<p>- <b>Legal obligations.</b> Compliance with applicable laws and regulations (e.g., sanctions screening, trade controls, AML/anti-corruption).</p>
-<p>Where processing is based on legitimate interests, we perform a balancing test to ensure your rights and freedoms are not overridden.</p>
+<h2>4. HOW DO WE COLLECT PERSONAL DATA?</h2>
+<p>The Company collects Personal Data when it is provided by the shipper or our contractual customer. If you are the shipper or our contractual customer, then we receive your Personal Data directly from you. Examples of situations where the Company collects Personal Data directly are:</p>
+<p>- The name, address, and phone number of a person tendering the shipment are listed as the shipper.</p>
+<p>- The name, address, identity information, payment card information, and account number of a person who opens the GOFO account, namely our contractual customer.</p>
+ 
+<p>If the shipper or our contractual customer provides Personal Data of others, then we receive that Personal Data indirectly. Examples of situations where the Company collects Personal Data indirectly are:</p>
+<p>- The name, address, and phone number of the recipient of the shipment.</p>
+<p>- The name, address, phone number, email address, identifying information of the shipper or account holder’s director or representatives. </p>
+<p>- The actual shipper’s name and address when the shipper places an order with an online market platform and the Company delivers the parcel to the address you provide.</p>
+ 
+<p>When the Company receives Personal Data indirectly, we rely on the provider of the Personal Data for the accuracy of the information and that the provider has the authority to provide that information to GOFO. </p>
 
-<h2>6. How Do We Use Cookies?</h2>
-<p>When you visit our system, we use cookies and similar technologies to ensure proper operation, analyze usage and, with your consent, personalize content and advertising. Your cookie preferences and consent records are stored as proof of compliance.</p>
-<p>In accordance with applicable laws (including the French Act No. 78-17, CNIL guidelines, Directive 2002/58/EC and the GDPR), we place non-essential cookies (e.g., analytics/marketing) only after you explicitly consent via our cookie banner.</p>
+<h2>5. FOR WHICH PURPOSES AND ON WHAT GROUNDS DO WE PROCESS YOUR PERSONAL DATA?</h2>
+<p>Personal Data shall be collected, used, stored, or otherwise processed when only necessary, within the framework of responsible, efficient and effective business management of GOFO. The Company processes Personal Data based on applicable legal grounds. The legal ground is often intrinsically linked to the business purpose. This means, for example, that the performance of an agreement can be both a legal ground and a business purpose for GOFO. Therefore, we will first clarify the legal ground on which the Company processes your Personal Data and, subsequently, the business purpose that we use your Personal Data for.</p>
+<p>In general, the Company processes your personal data on one of the following legal grounds:</p>
+<p>- The processing is necessary to fulfill an agreement,</p>
+<p>- The processing is necessary for us to comply with our legal obligations,</p>
+<p>- processing is necessary to protect your vital interests or those of another person,</p>
+<p>- The processing is necessary for GOFO’s legitimate interests, unless those interests are overridden by your interests or fundamental rights and freedoms, or</p>
+<p>- where appropriate and necessary, we will ask for your consent.</p>
+
+<p>The Company collects, uses or processes personal data only where the processing falls within the scope of one (or more) of the legitimate business purposes listed below: </p>
+<p>- Performing agreements. This includes delivery services, tracking services, communication with our contractual customer, shipper and other parties regarding services, responding to requests for further information, dispute resolution and preparing agreements.</p>
+<p>- Product development, research and improvement of products and/or services. the Company processes Personal Data as necessary for the development and improvement of products and/or services, research and development (e.g., analyze information related to the delivery and services to improve our services).</p>
+<p>- Relationship management and marketing for commercial activities. In general, the Company processes Personal Data as necessary for the development and improvement of products and/or services, account management, customer services and the performance of targeted marketing activities in order to establish a relationship with a customer and/or maintaining as well as extending a relationship with a customer or business partner and for performing analyses with respect to Personal Data for statistical purposes (e.g., send advertising, communications and content more specific to your interests to you). </p>
+<p>- Business process execution, internal management, and management reporting. This includes addressing activities such as managing company assets, conducting internal audits and investigations, finance and accounting, implementing business controls, providing central processing facilities for efficiency purposes, managing mergers, acquisitions, and divestitures, and Processing Personal Data for management reporting and analysis.</p>
+<p>- Security and Protection. The processing of data for processes such as those related to safety, protecting the Company and its customers, or business partners, and authenticating the status and access rights (e.g,. providing secure services for online and offline transactions) of customers or business partners.</p>
+<p>- Protecting the vital interests of individuals. This includes processing data when necessary to protect your vital interests or those of other individuals (e.g., for urgent safety reasons).</p>
+<p>- Compliance with legal obligations. This addresses the processing of Personal Data as necessary for compliance with laws and regulations to which the Company is subject (e.g., checking the names of customers and business partners against blacklists to avoid conflicts of interest, compliance with trade regulations, anti-money laundering and anti-corruption regulations and other policies, procedures and regulations).</p>
+<p>Where processing is based on our legitimate interests, we will conduct a balancing test to ensure that your rights and freedoms are not overridden.</p>
+<p>6. HOW DO WE USE COOKIES?</p>
+<p>When you visit our system, we use cookies and similar technologies to make our system work properly, to analyze how they are used, and if you agree to personalize content and advertising. Your cookie preferences and consent records are securely stored as proof of compliance.</p>
+<p>In accordance with the French Act No. 78-17 of 6 January 1978 on Information Technology, Data Files and Civil Liberties. , CNIL Guidelines and Recommandations on Cookies and Other Trackers on 17 Septembre 2020, Directive 2002/58/EC on privacy and electronic communications,   and the General Data Protection Regulation (GDPR), we will only place non-essential cookies (such as analytics or marketing cookies) after you have given your explicit consent through our cookie banner.</p>
 <p>Our cookie banner allows you to:</p>
-<p>- Accept all cookies;</p>
-<p>- Reject non-essential cookies; or</p>
-<p>- Manage preferences by category (e.g., functional, analytical, marketing).</p>
-<p>Cookies we use include:</p>
-<p>- Strictly necessary cookies — required for proper operation (no consent needed).</p>
-<p>- Analytical cookies — improve functionality and user experience (placed with consent).</p>
-<p>- Marketing/tracking cookies — personalize content/ads and measure campaign effectiveness (placed with consent).</p>
-<p>Our Cookie Notice describes for each category: purpose, provider, lifespan/storage duration, and whether data are shared with third parties and applicable safeguards (e.g., Standard Contractual Clauses). You can change or withdraw consent at any time via the banner or your browser settings.</p>
+<p>- Accept all cookies,</p>
+<p>- Reject non-essential cookies, or</p>
+<p>- Manage your preferences per category (e.g., functional, analytical, marketing).</p>
+<p>The types of cookies we use include:</p>
+<p>- Strictly necessary cookies – required for the proper functioning of the website and therefore do not require consent.</p>
+<p>- Analytical cookies – help us understand how visitors use our site so we can improve functionality and user experience. These are placed only with your consent.</p>
+<p>- Marketing and tracking cookies – used to personalise content and ads and to measure the effectiveness of our marketing campaigns. These are also placed only with your consent.</p>
+<p>For each cookie category, our Cookie Notice provides detailed information on:</p>
+<p>- The purpose of each cookie;</p>
+<p>- The provider (first or third party);</p>
+<p>- The lifespan or storage duration of the cookie; and</p>
+<p>- Whether data are shared with third parties and, if so, to which countries and under what safeguards (e.g., Standard Contractual Clauses).</p>
+<p>You can change or withdraw your consent at any time by adjusting your cookie settings via the cookie banner or through your browser settings.</p>
 
-<h2>7. How Do We Share Your Personal Data?</h2>
-<p><b>Internal recipients.</b> We share Personal Data within our affiliates, operating groups, subsidiaries and divisions where necessary. Employees are authorized to access Personal Data only to the extent necessary to perform their jobs.</p>
-<p><b>External recipients.</b> We share Personal Data with processors such as vendors or service providers acting on our behalf and under our instructions, with contractual, technical and organizational safeguards in place. Relevant third parties may include:</p>
-<p>- Customs agencies (customs formalities and declarations).</p>
-<p>- Last‑mile delivery service providers (deliveries to your destination).</p>
-<p>- IT service providers (system and software development/maintenance).</p>
-<p>- Cloud service providers (data storage on servers that may be located outside the country of collection).</p>
-<p>- Law enforcement, regulators and other parties for legal reasons (e.g., to comply with legal processes, protect rights and safety, or investigate fraud).</p>
-<p>Some third parties are located within the EEA. For transfers outside the EEA, we ensure compliance with applicable data protection laws, including adequacy decisions and, where needed, <span>Standard Contractual Clauses (SCCs)</span> or other recognized mechanisms. In exceptional cases and only where permitted by law, transfers may take place under Article 49 GDPR derogations.</p>
-<p>You may request information about international transfers, including copies of safeguards, by contacting our DPO at <a href="mailto:dpo@gofoexpress.com"><b>dpo@gofoexpress.com</b></a>.</p>
+<p>7. HOW DO WE SHARE YOUR PERSONAL DATA?</p>
+<p>The Company shares your Personal Data with third parties in the following circumstances:</p>
+<p>Internal Recipients:</p>
+<p>- Share your personal data within our affiliates, operating groups, subsidiaries and divisions if such is necessary for the purposes as listed above.</p>
+<p>- Our employees are authorized to access personal data only to the extent necessary to serve the applicable purpose and to perform their jobs. They are bound by confidentiality obligations and are required to keep your personal data secure.</p>
+<p>External Recipients:</p>
+<p>- Share your personal data with third parties to perform services on our behalf, such as processing payments, sending notifications, or providing customer support. In such cases, we will only share your personal data with these third parties to the extent necessary to perform the services and only in accordance with our instructions. When these third parties are given access to your personal data, we will take the required contractual, technical and organizational measures to ensure that your personal data are only processed to the extent that such processing is secured.</p>
+<p>- Share your personal data with data processors such as vendors or service providers processing Personal Data on our behalf. In such cases, these third parties only use your Personal Data for the purposes described above and only in accordance with our instructions. When these third parties are given access to your personal data, we will take the required contractual, technical and organizational measures to ensure that your personal data are only processed to the extent that such processing is secured. The following third parties have access to your personal data, where relevant, for the provisioning of their products or services to us.</p>
+<p>- Customs agency to perform customs formalities and declaration of your shipment.</p>
+<p>- Last-mile delivery service provider to deliver the shipment to the destination you are expecting. </p>
+<p>- IT services provider who develops, maintains our system and certain software.</p>
+<p>- Cloud services provider: We may store data on servers operated by a cloud service provider to us. Regardless of where you use our online services or provide data to us, the data may be transferred to and maintained on servers located outside the country in which the data was collected. </p>
+<p>- Law enforcement, regulators and other parties for legal reasons: We may also disclose your personal data to third parties as required by law, or if we reasonably believe that such action is necessary (a) to comply with a subpoena or other legal proceedings, legal actions or government agency requests; (b) when we believe in good faith that a disclosure is necessary to comply with the law and the reasonable requests of law enforcement; (c) to protect and exercise our legal claims, rights and property; (d) to protect your rights, property or personal safety or that of others; and (e) to investigate fraud.</p>
+ 
+<p>Some of the third parties with whom we share your personal data are located within the European Economic Area (EEA). Where we engage third parties located outside the EEA, we ensure that such transfers are carried out in compliance with applicable data protection laws.</p>
+<p>In particular:</p>
+<p>- Personal data transferred to countries for which the European Commission has adopted an adequacy decision (such as the United Kingdom, Switzerland or Canada) are protected under that decision, which confirms that these countries ensure an adequate level of data protection.</p>
+<p>- For transfers to other countries without an adequacy decision, the Company applies appropriate safeguards in accordance with Article 46 GDPR, including the use of the European Commission’s Standard Contractual Clauses (SCCs) or other legally recognized transfer mechanisms.</p>
 
-<h2>8. How Is Your Personal Data Secured?</h2>
-<p>We implement technical, physical and organizational measures to protect Personal Data against accidental or unlawful destruction, loss, damage, alteration, unauthorized disclosure or access and other unlawful processing. Measures include access controls, confidentiality, integrity and availability safeguards, and personnel training.</p>
-<p>No security measures are absolute. You play an important role: do not share your username or password and avoid re‑using passwords across systems. If you believe your Personal Data has been compromised, please contact us.</p>
+<p>In exceptional cases, and only where permitted by law, transfers may take place under the specific derogations of Article 49 GDPR (for example, where the transfer is necessary for the performance of a contract concluded with you or for the establishment, exercise or defense of legal claims).</p>
+<p>You may request further information about the international transfers of your personal data, including a copy of the relevant safeguards, by contacting our Data Protection Officer via dpo@gofoexpress.com.</p>
 
-<h2>9. How Long Is Your Personal Data Retained?</h2>
-<p>Except as permitted or required by law, we retain Personal Data only as long as necessary to fulfill the purposes for which it was collected, meet legal/accounting/reporting obligations or resolve disputes. We consider legal requirements, data volume/nature/sensitivity, risk from unauthorized use or disclosure, processing purposes, and whether those purposes can be achieved by other means.</p>
-<p>We may anonymize data so it is no longer associated with you and use such data for any legitimate business purpose without notice or consent.</p>
-<p><b>Main retention periods (illustrative):</b></p>
-<p>- Subscription and account creation: 3 years from last authentication or account deletion (if no active services remain).</p>
-<p>- Delivery preference management: 5 years from last update.</p>
-<p>- Customer service call recordings: 6 months from recording.</p>
-<p>- Fraud/cybercrime prevention: up to 12 months from fraud alert.</p>
-<p>- Requests to exercise rights: up to 5 years from processing (ID proofs retained for 1 year).</p>
-<p>- Accounting/financial records: 10 years from the end of the relevant financial year.</p>
+<p>8. HOW IS YOUR PERSONAL DATA SECURED?</p>
+<p>We have taken adequate safeguards to ensure the confidentiality and security of your personal data. We have implemented appropriate technical, physical and organizational measures to protect personal data against accidental or unlawful destruction or accidental loss, damage, alteration, unauthorized disclosure or access as well as all other forms of unlawful processing (including, but not limited to, unnecessary collection) or further processing, including protecting your Personal Data against unauthorized access, maintaining the confidentiality, integrity and availability of your Personal data, and training personnel on information security requirements.</p>
+<p>However, no security measure can guarantee against compromise. You also have an important role in protecting your Personal Data. You should not share your username and password with anyone, and you should not re-use passwords across more than one system. If you have a reason to believe that your Personal Data has been compromised, please contact us.</p>
 
-<h2>10. Where Do We Store Or Transfer Your Personal Data?</h2>
-<p>Generally, Personal Data legally collected by the Company is stored within EU Member States (France).</p>
-<p>Given our business nature and services, we may need to transfer Personal Data to affiliates or subsidiaries in other countries/regions to perform agreements or achieve the purposes described here. Any transfer is subject to appropriate safeguards not lower than those required by applicable EU and French data protection laws. Required procedures will be completed before cross‑border transfers or remote access.</p>
+<p>9. HOW LONG IS YOUR PERSONAL DATA RETAINED?</p>
+<p>Except as otherwise permitted or required by applicable law or regulation, we will only retain your personal data for as long as necessary to fulfill the purposes we collected it for, as required to satisfy any legal, accounting, or reporting obligations, or as necessary to resolve disputes. To determine the appropriate retention period for personal data, we consider applicable legal requirements, the amount, nature, and sensitivity of the personal data, the potential risk of harm from unauthorized use or disclosure of your personal data, the purposes we process your personal data for, and whether we can achieve those purposes through other means. </p>
+<p>Under some circumstances, we may anonymize your personal data so that it can no longer be associated with you. We reserve the right to use such anonymous and de-identified data for any legitimate business purpose without further notice to you or your consent. </p>
+<p>The following outlines the main retention periods for Personal Data held by GOFO:</p>
+<p>1. Customer Management and Products/Services Offered by GOFO or its Subsidiaries:</p>
+<p>- Subscription and Account Creation: Personal Data will be retained for a period of 3 years from the last authentication or the account deletion date, provided that no active services associated with your account remain.</p>
+<p>- Delivery Preferences Management: Personal Data will be retained for 5 years from the last update or change.</p>
+<p>2. Commercial Prospecting:</p>
+<p>- Personal Data for commercial prospecting purposes will be retained for 3 years from the last contact with the prospect or until the data subject withdraws consent.</p>
+<p>3. Recording of Telephone Conversations (Customer Service):</p>
+<p>- Telephone conversation recordings will be retained for 6 months from the date of recording.</p>
+<p>4. Fraud and Cybercrime Detection, Prevention, and Combat:</p>
+<p>- Data related to fraud detection and prevention will be retained for a maximum of 12 months from the date the fraud alert was recorded.</p>
+<p>5. Processing of Requests to Exercise Rights (e.g., data access, correction, deletion):</p>
+<p>- Personal Data related to requests for exercising rights will be retained for a maximum of 5 years from the date of processing, with the exception of identity proof documents, which will be retained for 1 year.</p>
+<p>6. Accounting and Financial Record-Keeping:</p>
+<p>- Personal Data related to accounting purposes will be retained for 10 years from the end of the financial year in which the relevant data was generated.</p>
 
-<h2>11. Your Rights</h2>
-<p>Depending on applicable law, you may have rights regarding your Personal Data. In some cases requests may be conditional or must be balanced against our rights and obligations and those of others. Rights may include:</p>
-<p><b>Right of access.</b> Obtain a copy of your Personal Data and information about its processing.</p>
-<p><b>Right to rectification.</b> Request correction of inaccurate or incomplete Personal Data.</p>
-<p><b>Right to erasure.</b> Request deletion of Personal Data, subject to exceptions such as legal obligations, contract performance or legal claims.</p>
-<p><b>Right to restriction.</b> Request temporary restriction of processing in certain circumstances.</p>
-<p><b>Right to data portability.</b> Request transfer of Personal Data you provided to a third party, when processed by automated means on the basis of consent or contract.</p>
-<p><b>Right to object.</b> Object to processing based on legitimate interests; object at any time to processing for direct marketing.</p>
-<p><b>Rights related to automated decision‑making.</b> Request human intervention, express your view and contest decisions; obtain an explanation of the logic involved; you may have the right not to be subject to decisions producing legal or similarly significant effects.</p>
-<p><b>Right to withdraw consent.</b> Where we rely on consent, you may withdraw it at any time without affecting prior lawful processing.</p>
-<p><b>How to exercise your rights:</b></p>
-<p>- Email: <a href="mailto:dpo@gofoexpress.com"><b>dpo@gofoexpress.com</b></a></p>
-<p>- Mail: <span>GOFO, 10 Rue Eugène Pottier, 95670 Marly‑la‑Ville, France</span></p>
-<p>Under Article 12 GDPR, you may be asked to provide proof of identity. If acting for a third party, provide appropriate authorization. If you believe your rights have not been respected, you may lodge a complaint with the CNIL: <span>3 Place de Fontenoy - TSA 80715 - 75334 Paris Cedex 07, France</span>, <span>+33 1 53 73 22 22</span>.</p>
+<h2>10. WHERE DO WE STORE OR TRANSFER YOUR PERSONAL DATA?</h2>
+<p>Generally, the Personal Data with respect to you legally collected by the Company will be stored in EU member states,France.</p>
+<p>Due to the nature of our business and the services we provide to you, the Company may need to transfer your Personal Data to its affiliates or subsidiaries located in other countries or regions in order to perform the agreements with you or achieve the purposes provided in this Statement. In any case where we transfer Personal Data, we shall ensure that such transfers are subject to appropriate safeguards not lower than the level of protection required by applicable data protection laws in the EU and the France. Before cross-border transmission or remote access, we will complete the necessary procedures in accordance with the relevant personal data protection laws and regulations.</p>
 
-<h2>12. California Consumers</h2>
-<p>California residents may make certain requests under California law, including to:</p>
-<p>- Request access to Personal Data we hold about you and categories of Personal Data shared for a business purpose;</p>
-<p>- Request deletion of your Personal Data;</p>
-<p>- Request that we stop selling your Personal Data.</p>
-<p>We do not discriminate for exercising these rights. Deletion may affect your ability to use our system and features.</p>
-<p><b>Shine The Light law.</b> California Civil Code §1798.83 permits California residents to request, once per year and free of charge, information about categories of personal data disclosed to third parties for direct marketing and the names/addresses of such third parties. Submit written requests using the contact information at the top of this Privacy Statement.</p>
-
-<h2>13. Updates To This Privacy Statement</h2>
-<p>The Company may update this Privacy Statement from time to time. If an amendment has a serious impact, we will endeavor to inform you proactively. An up‑to‑date Privacy Statement will always be available on the system, indicating the latest amendments.</p>
-`;
+<h2>11. WHAT RIGHTS CAN YOU EXERCISE IN RELATION TO YOUR PERSONAL DATA?</h2>
+<p>Based on the law applicable to the use of your Personal Data, you may have rights that you can exercise in relation to your Personal Data. Note that in some cases we are not required to completely comply with your request, as such rights may be conditional or because we have to balance your rights against our rights and obligations to process your Personal Data and to protect the rights and freedoms of others. A number of the rights you have in relation to your Personal Data, as applicable in the European Economic Area, the State of California, or other US or international geographic jurisdictions, are explained below:</p>
+<h3>Right of access</h3>
+<p>You may be entitled to a copy of the Personal Data we hold about you and receive details concerning its processing. Your Personal Data will usually be provided in  a structured, commonly used, and machine-readable format. </p>
+<h3>Right to rectification</h3>
+<p>We take reasonable steps to ensure that the Personal Data we hold about you is accurate and complete. However, if you believe this is not the case, you may have the right to request the rectification of any inaccurate or incomplete Personal Data .</p>
+<h3>Right to erasure</h3>
+<p>You may have the right to ask us to erase your Personal Data, provided that the retention of such data is not necessary for:</p>
+<p>- Compliance with a legal obligation;</p>
+<p>- The performance of a contract with you;</p>
+<p>- The establishment, exercise, or defense of legal claims;</p>
+<h3>Right to restriction of processing</h3>
+<p>You may be entitled to ask us to (temporarily) restrict the processing of your Personal Data (i.e., temporarily "freeze" its use) in certain circumstances, for example, where you think that the Personal Data we hold about you may be inaccurate or where you think that we no longer need to use your Personal Data.</p>
+<p>Right to data portability</p>
+<p>You may have the right to ask that we transfer Personal Data that you have provided to us to a third party of your choice. This right can only be exercised when you have provided the Personal Data to us, and when we are processing such data by automated means on the basis of your consent or in order to fulfil our obligations under a contract with you.</p>
+<p>Right to object</p>
+<p>You may have the right to object to processing which is based on our legitimate interests on grounds relating to your specific situation. We will cease the processing unless we can demonstrate compelling legitimate grounds for the processing which override your interests, rights, and freedoms, or for the establishment, exercise, or defense of legal claims. In the processing of Personal Data for marketing purposes, you have the right to object at any time. When you ask us to restrict to processing your Personal Data for marketing purposes, the Company will immediately cease to use your Personal Data for such purposes. Note, however, that we may not be able to provide certain services or benefits if we are unable to process the necessary Personal Data for that purpose.</p>
+<p>Right to automated decision-making</p>
+<p>The Company may use automated processing techniques, including profiling, in limited circumstances for two main purposes:</p>
+<p>(1) Marketing and Service Personalization</p>
+<p>The Company analyses certain aspects of your interaction with our system, emails, and services — such as browsing activity, clicks, purchase history, shipment patterns, and preferences to better understand your interests.</p>
+<p>This profiling helps us:</p>
+<p>- Provide more relevant and tailored content, offers, and advertisements;</p>
+<p>- Improve our system and service experience;</p>
+<p>- Measure and optimise the effectiveness of our marketing activities.</p>
+<p>The logic used in this profiling is based on observable patterns of behaviour and aggregated analytics data. These activities do not produce legal effects or similarly significantly affect you within the meaning of Article 22 GDPR.</p>
+<p>Right to withdraw consent</p>
+<p>You have the right to withdraw your consent at any time. The Company will stop further processing as soon as possible after the withdrawal of your consent. However, this does not affect the lawfulness of the processing before consent was withdrawn.</p>
+<p>You can object at any time to this type of profiling or direct marketing by adjusting your cookie and marketing settings. If you object, we will immediately restrict to processing your personal data for these purposes.</p>
+<h3>(2) Fraud Prevention and Risk Management</h3>
+<p>The Company may also use automated systems and scoring models to help detect and prevent fraudulent activities or misuse of our services. For example, automated systems may analyze shipment information, account activity, and transaction patterns to identify irregularities that could indicate fraud or security risks.</p>
+<p>Such automated processing is carried out to protect our legitimate interests (Article 6(1)(f) GDPR) and to comply with our legal obligations regarding fraud prevention, customs, and anti-money laundering.</p>
+<p>In these cases, automated tools may flag transactions or require manual review by authorized Company staff. We do not take any decisions solely based on automated processing that would produce legal effects concerning you or similarly significantly affect you without human involvement.</p>
+<p>You have the right to:</p>
+<p>- Request human intervention in any decision that involves automated processing;</p>
+<p>- Express your point of view and contest the decision; and</p>
+<p>- Obtain an explanation of the logic involved in such automated processing.</p>
+<p>You may have the right not to be subjected to automated decision-making, including profiling, which produces legal effect for you or has a similar significant effect.</p>
+<h3>Right to withdraw consent</h3>
+<p>We may ask for your consent to process your Personal Data in specific cases. When we do this, you have the right to withdraw your consent at any time. The Company will stop further processing as soon as possible after the withdrawal of your consent. However, this does not affect the lawfulness of the processing before consent was withdrawn.</p>
+<p>If you wish to excess your rights regarding your personal data, following the following procedure:</p>
+<p>a)The request may be sent:</p>
+<p>- by email to dpo@gofoexpress.com or </p>
+<p>- by letter directly to the GOFO’s office at 10 Rue Eugène Pottier, 95670 Marly-la-Ville, France </p>
+<p>b)In accordance with Article 12 of GDPR, you are required to provide the proof of identity by any means when exercising your rights. In the event that you are acting on behalf of a third party, you are required to provide a copy of the public deed of power of attorney or a simple power of attorney executed before two witnesses, as applicable. Additionally, you must present your original identification for visual verification by the recipient of the request.</p>
+<p>If, after contacting us, you believe that your rights regarding your Personal Data have not been adequately respected, you have the right to file a complaint with the Commission Nationale de l'Informatique et des Libertés (CNIL) at the following address:</p>
+<p>- 3 Place de Fontenoy - TSA 80715 - 75334 Paris Cedex 07, France</p>
+<p>- Tel: +33 1 53 73 22 22</p>
+<p>b) GOFO shall have a maximum period of twenty (20) calendar days, starting from the date on which it receives a request for exercising your rights, via the same means by which the request was submitted, to notify the data subject of the acceptance or refusal of such request. In the event that the request is accepted, GOFO shall have an additional period of fifteen (15) calendar days from the date of notification to the User to make the necessary modifications. The aforementioned timeframes may be extended only once for an equal period, provided that  provides a valid justification for the extension.</p>
+<p>c) Similarly, GOFO may deny a request to exercise your rights (including access, rectification, erasure, or objection) in the following circumstances:</p>
+<p>- The requesting person is not the owner of the personal data, or is unable to provide sufficient evidence that they are the duly accredited legal representative of the data subject;</p>
+<p>- Despite our reasonable efforts, we are unable to identify the data subject within our systems based on the information provided.</p>
+<p>- When there is a legal impediment, or the resolution of a competent authority, that restricts access to the User’s personal data, or does not allow their rectification, cancellation or opposition, and</p>
+<p>In all the above cases, GOFO will inform the requesting person, as the case may be, the reason for their decision by the same means by which the request was made, accompanying, where appropriate, the relevant justifications.</p>
+<h2>12. CALIFORNIA CONSUMERS</h2>
+<p>If you are a California resident, you can make certain requests regarding your Personal Data. We will fulfil each of these requests per the requirements of California law.</p>
+<p>You can request access to a copy of the Personal Data we have about you, including a list of categories of your Personal Data that we have shared with another company for a business purpose.</p>
+<p>You can request that we delete your Personal Data.</p>
+<p>You can request that we stop selling your Personal Data. </p>
+<p>More information on each of these requests is below.</p>
+<h3>Request access to Personal Data</h3>
+<p>If you make this request, which we also refer to as a Request to Access Information, we will return to you (to the extent required by law):</p>
+<p>- The categories of Personal Data we have collected about you.</p>
+<p>- The categories of sources from which we collect your Personal Data.</p>
+<p>- The business or commercial purpose for collecting or selling your Personal Data.</p>
+<p>- The categories of third parties with whom we share Personal Data.</p>
+<p>- The specific pieces of Personal Data we have collected about you.</p>
+<p>- A list of categories of Personal Data that we have disclosed for a business purpose, along with the category of any other company we shared with.</p>
+<p>You can ask us to provide you with this information up to two times in a rolling twelve-month period. When you make this request, the information provided may be limited to the Personal Data we collected about you in the previous 12 months.</p>
+<h3>Delete the Personal Data</h3>
+<p>You have the right to ask that we delete your Personal Data. Once we receive a request, we will delete the Personal Data (to the extent required by law) we hold about you as of the date of your request from our records and direct any service providers to do the same. In some cases, deletion may be accomplished through de-identification of the information. Choosing to delete your Personal Data may impact your ability to use our system and online features, including closure of your online account.</p>
+<p>No Discrimination</p>
+<p>We will not discriminate against you for exercising your rights. This generally means we will not deny you using our services, or provide a different level or quality of our services. Please know, if you ask us to delete your information, it may impact your experience with us, and you may not be able to participate in certain services that require the use of your Personal Data to function.</p>
+<p>Shine the light law</p>
+<p>California Civil Code Section 1798.83, also known as the “Shine The Light” law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal data (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us using the contact information provided at the top of this Privacy Statement.</p>
+<h2>13. HOW WILL THIS PRIVACY STATEMENT BE UPDATED?<h2>
+<p>The Company may update this Privacy Statement from time to time. If an amendment has a serious impact, the Company will endeavor to inform you about such amendments actively. The Company will publish an up-to-date Privacy Statement on the system at all times, indicating the latest amendments.</p>`;
 
 const handleAgreeChange = (val: CheckboxValueType) => {
   if (val) {
