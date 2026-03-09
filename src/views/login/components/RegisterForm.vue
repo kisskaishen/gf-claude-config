@@ -606,17 +606,16 @@ const privacyPolicyContent = `
 `;
 const privacyPolicyEnContent = `
 <h2>1. INTRODUCTION</h2>
-<p>We are pleased that you have came to us and are interested in our company, products and services. Your trust is important to us. We are committed to protecting your privacy and the security of information that can directly or indirectly be used to identify a natural person (hereinafter “Personal Data”) during the processing throughout the entire business process. We have created this Privacy Statement to explain how we collect and use your Personal Data. The Company collects Personal Data w</p>
-<p>Last updated: 【2026/03/12  】.<p>
+<p>We are pleased that you have came to us and are interested in our company, products and services. Your trust is important to us. We are committed to protecting your privacy and the security of information that can directly or indirectly be used to identify a natural person (hereinafter “Personal Data”) during the processing throughout the entire business process. We have created this Privacy Statement to explain how we collect and use your Personal Data. The Company collects Personal Data</p>
+<p>Last updated: 【2026/03/12】.<p>
 <p>When this Privacy Statement mentions “GOFO”, “the Company”, “we”, “us”, it is referring to the company that decides on the purposes and means of the processing of your Personal Data under this Privacy Statement. </p>
-
-<h2>2. DATA CONTROLLER INFORMATION</h2>
+<p>Data Controller Information:</p>
 <p>Name：【GOFO FRANCE】</p>
 <p>Address:【10 rue Eugène Pottier 95670 Marly-la-Ville】 </p>
-<p>Email:【 cs@mail.gofoexpress.fr                】      </p>
+<p>Email:【 cs@mail.gofoexpress.fr 】 </p>
 <p>The Company has appointed a Data Protection Officer. You can contact our DPO at dpo@gofoexpress.com.</p>
 
-<h2>3. DOES THIS PRIVACY STATEMENT APPLY TO YOU?</h2>
+<h2>2. DOES THIS PRIVACY STATEMENT APPLY TO YOU?</h2>
 <p>This Privacy Statement applies to you if you are a customer of the Company or if you contact us, for instance, by visiting【https://gfuc-eu.gofoexpress.com 】including any pages and mobile apps (hereafter “system”), or if you receive emails from us.</p>
 <p>Our system, products and services are for a general audience and not aimed at children（The definition of the age threshold for children shall be determined in accordance with the applicable laws and regulations of the user’s place of residence）. In principle, we do not collect Personal Data from children.  If you are a child, you are requested not to provide any Personal Data, if you want to use our services, please rely on a parent or guardian to assist you.</p>
 <p>If a child may have disclosed Personal Data to us, the parent or guardian can contact us, and we will remove Personal Data if required.</p>
@@ -731,16 +730,16 @@ const privacyPolicyEnContent = `
 
 <h2>11. WHAT RIGHTS CAN YOU EXERCISE IN RELATION TO YOUR PERSONAL DATA?</h2>
 <p>Based on the law applicable to the use of your Personal Data, you may have rights that you can exercise in relation to your Personal Data. Note that in some cases we are not required to completely comply with your request, as such rights may be conditional or because we have to balance your rights against our rights and obligations to process your Personal Data and to protect the rights and freedoms of others. A number of the rights you have in relation to your Personal Data, as applicable in the European Economic Area, the State of California, or other US or international geographic jurisdictions, are explained below:</p>
-<h3>Right of access</h3>
+<h2>Right of access</h2>
 <p>You may be entitled to a copy of the Personal Data we hold about you and receive details concerning its processing. Your Personal Data will usually be provided in  a structured, commonly used, and machine-readable format. </p>
-<h3>Right to rectification</h3>
+<h2>Right to rectification</h2>
 <p>We take reasonable steps to ensure that the Personal Data we hold about you is accurate and complete. However, if you believe this is not the case, you may have the right to request the rectification of any inaccurate or incomplete Personal Data .</p>
-<h3>Right to erasure</h3>
+<h2>Right to erasure</h2>
 <p>You may have the right to ask us to erase your Personal Data, provided that the retention of such data is not necessary for:</p>
 <p>- Compliance with a legal obligation;</p>
 <p>- The performance of a contract with you;</p>
 <p>- The establishment, exercise, or defense of legal claims;</p>
-<h3>Right to restriction of processing</h3>
+<h2>Right to restriction of processing</h2>
 <p>You may be entitled to ask us to (temporarily) restrict the processing of your Personal Data (i.e., temporarily "freeze" its use) in certain circumstances, for example, where you think that the Personal Data we hold about you may be inaccurate or where you think that we no longer need to use your Personal Data.</p>
 <p>Right to data portability</p>
 <p>You may have the right to ask that we transfer Personal Data that you have provided to us to a third party of your choice. This right can only be exercised when you have provided the Personal Data to us, and when we are processing such data by automated means on the basis of your consent or in order to fulfil our obligations under a contract with you.</p>
@@ -758,7 +757,7 @@ const privacyPolicyEnContent = `
 <p>Right to withdraw consent</p>
 <p>You have the right to withdraw your consent at any time. The Company will stop further processing as soon as possible after the withdrawal of your consent. However, this does not affect the lawfulness of the processing before consent was withdrawn.</p>
 <p>You can object at any time to this type of profiling or direct marketing by adjusting your cookie and marketing settings. If you object, we will immediately restrict to processing your personal data for these purposes.</p>
-<h3>(2) Fraud Prevention and Risk Management</h3>
+<h2>(2) Fraud Prevention and Risk Management</h2>
 <p>The Company may also use automated systems and scoring models to help detect and prevent fraudulent activities or misuse of our services. For example, automated systems may analyze shipment information, account activity, and transaction patterns to identify irregularities that could indicate fraud or security risks.</p>
 <p>Such automated processing is carried out to protect our legitimate interests (Article 6(1)(f) GDPR) and to comply with our legal obligations regarding fraud prevention, customs, and anti-money laundering.</p>
 <p>In these cases, automated tools may flag transactions or require manual review by authorized Company staff. We do not take any decisions solely based on automated processing that would produce legal effects concerning you or similarly significantly affect you without human involvement.</p>
@@ -767,7 +766,7 @@ const privacyPolicyEnContent = `
 <p>- Express your point of view and contest the decision; and</p>
 <p>- Obtain an explanation of the logic involved in such automated processing.</p>
 <p>You may have the right not to be subjected to automated decision-making, including profiling, which produces legal effect for you or has a similar significant effect.</p>
-<h3>Right to withdraw consent</h3>
+<h2>Right to withdraw consent</h2>
 <p>We may ask for your consent to process your Personal Data in specific cases. When we do this, you have the right to withdraw your consent at any time. The Company will stop further processing as soon as possible after the withdrawal of your consent. However, this does not affect the lawfulness of the processing before consent was withdrawn.</p>
 <p>If you wish to excess your rights regarding your personal data, following the following procedure:</p>
 <p>a)The request may be sent:</p>
@@ -789,7 +788,7 @@ const privacyPolicyEnContent = `
 <p>You can request that we delete your Personal Data.</p>
 <p>You can request that we stop selling your Personal Data. </p>
 <p>More information on each of these requests is below.</p>
-<h3>Request access to Personal Data</h3>
+<h2>Request access to Personal Data</h2>
 <p>If you make this request, which we also refer to as a Request to Access Information, we will return to you (to the extent required by law):</p>
 <p>- The categories of Personal Data we have collected about you.</p>
 <p>- The categories of sources from which we collect your Personal Data.</p>
@@ -798,13 +797,13 @@ const privacyPolicyEnContent = `
 <p>- The specific pieces of Personal Data we have collected about you.</p>
 <p>- A list of categories of Personal Data that we have disclosed for a business purpose, along with the category of any other company we shared with.</p>
 <p>You can ask us to provide you with this information up to two times in a rolling twelve-month period. When you make this request, the information provided may be limited to the Personal Data we collected about you in the previous 12 months.</p>
-<h3>Delete the Personal Data</h3>
+<h2>Delete the Personal Data</h2>
 <p>You have the right to ask that we delete your Personal Data. Once we receive a request, we will delete the Personal Data (to the extent required by law) we hold about you as of the date of your request from our records and direct any service providers to do the same. In some cases, deletion may be accomplished through de-identification of the information. Choosing to delete your Personal Data may impact your ability to use our system and online features, including closure of your online account.</p>
 <p>No Discrimination</p>
 <p>We will not discriminate against you for exercising your rights. This generally means we will not deny you using our services, or provide a different level or quality of our services. Please know, if you ask us to delete your information, it may impact your experience with us, and you may not be able to participate in certain services that require the use of your Personal Data to function.</p>
 <p>Shine the light law</p>
 <p>California Civil Code Section 1798.83, also known as the “Shine The Light” law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal data (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us using the contact information provided at the top of this Privacy Statement.</p>
-<h2>13. HOW WILL THIS PRIVACY STATEMENT BE UPDATED?<h2>
+<h2>13. HOW WILL THIS PRIVACY STATEMENT BE UPDATED?</h2>
 <p>The Company may update this Privacy Statement from time to time. If an amendment has a serious impact, the Company will endeavor to inform you about such amendments actively. The Company will publish an up-to-date Privacy Statement on the system at all times, indicating the latest amendments.</p>`;
 
 const handleAgreeChange = (val: CheckboxValueType) => {
