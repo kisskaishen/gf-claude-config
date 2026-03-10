@@ -685,7 +685,6 @@ const privacyPolicyEnContent = `
 <p>- Share your personal data within our affiliates, operating groups, subsidiaries and divisions if such is necessary for the purposes as listed above.</p>
 <p>- Our employees are authorized to access personal data only to the extent necessary to serve the applicable purpose and to perform their jobs. They are bound by confidentiality obligations and are required to keep your personal data secure.</p>
 <p>External Recipients:</p>
-<p>- Share your personal data with third parties to perform services on our behalf, such as processing payments, sending notifications, or providing customer support. In such cases, we will only share your personal data with these third parties to the extent necessary to perform the services and only in accordance with our instructions. When these third parties are given access to your personal data, we will take the required contractual, technical and organizational measures to ensure that your personal data are only processed to the extent that such processing is secured.</p>
 <p>- Share your personal data with data processors such as vendors or service providers processing Personal Data on our behalf. In such cases, these third parties only use your Personal Data for the purposes described above and only in accordance with our instructions. When these third parties are given access to your personal data, we will take the required contractual, technical and organizational measures to ensure that your personal data are only processed to the extent that such processing is secured. The following third parties have access to your personal data, where relevant, for the provisioning of their products or services to us.</p>
 <p>- Customs agency to perform customs formalities and declaration of your shipment.</p>
 <p>- Last-mile delivery service provider to deliver the shipment to the destination you are expecting. </p>
@@ -740,9 +739,9 @@ const privacyPolicyEnContent = `
 <p>- The establishment, exercise, or defense of legal claims;</p>
 <b>Right to restriction of processing</b>
 <p>You may be entitled to ask us to (temporarily) restrict the processing of your Personal Data (i.e., temporarily "freeze" its use) in certain circumstances, for example, where you think that the Personal Data we hold about you may be inaccurate or where you think that we no longer need to use your Personal Data.</p>
-<p>Right to data portability</p>
+<b>Right to data portability</b>
 <p>You may have the right to ask that we transfer Personal Data that you have provided to us to a third party of your choice. This right can only be exercised when you have provided the Personal Data to us, and when we are processing such data by automated means on the basis of your consent or in order to fulfil our obligations under a contract with you.</p>
-<p>Right to object</p>
+<b>Right to object</b>
 <p>You may have the right to object to processing which is based on our legitimate interests on grounds relating to your specific situation. We will cease the processing unless we can demonstrate compelling legitimate grounds for the processing which override your interests, rights, and freedoms, or for the establishment, exercise, or defense of legal claims. In the processing of Personal Data for marketing purposes, you have the right to object at any time. When you ask us to restrict to processing your Personal Data for marketing purposes, the Company will immediately cease to use your Personal Data for such purposes. Note, however, that we may not be able to provide certain services or benefits if we are unable to process the necessary Personal Data for that purpose.</p>
 <p>Right to automated decision-making</p>
 <p>The Company may use automated processing techniques, including profiling, in limited circumstances for two main purposes:</p>
