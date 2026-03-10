@@ -298,8 +298,8 @@ const isViewOnly = computed(() => registerData.agree1);
 const userAgreementContent = `
 <p><span>版本生效日期：【2026-3-12】</span></p>
 <p>本用户协议的所有权归属【GOFO】（以下简称“GOFO”、“我们”及“公司”），其定义如下：</p>
-<p><b>争议解决：</b>欧盟委员会提供在线争议解决（ODR）平台：<a href="https://ec.europa.eu/consumers/odr"><b>https://ec.europa.eu/consumers/odr</b></a></p>
-<p>本用户协议（下称“本协议”）适用您注册及使用用户中心系统（<a href="https://gfuc-eu.gofoexpress.com"><b>https://gfuc-eu.gofoexpress.com</b></a>）的行为。您在 GOFO 系统注册界面上点击“登录”、“提交”、“确认”或“注册”按钮，即视为已阅读并同意本协议。若您不接受本协议或其中任何条款，请立即停止使用服务。</p>
+<p><b>争议解决：</b>欧盟委员会提供在线争议解决（ODR）平台：<a target="_blank" href="https://ec.europa.eu/consumers/odr"><b>https://ec.europa.eu/consumers/odr</b></a></p>
+<p>本用户协议（下称“本协议”）适用您注册及使用用户中心系统（<a target="_blank" href="https://gfuc-eu.gofoexpress.com"><b>https://gfuc-eu.gofoexpress.com</b></a>）的行为。您在 GOFO 系统注册界面上点击“登录”、“提交”、“确认”或“注册”按钮，即视为已阅读并同意本协议。若您不接受本协议或其中任何条款，请立即停止使用服务。</p>
 <h2>一、协议范围</h2>
 <p>1.1 本协议由您与 GOFO 共同缔结，本协议对您与 GOFO 均具有合同效力。</p>
 <p>1.2 GOFO 拥有子公司和/或关联法律实体。这些子公司和/或关联法律实体可代表 GOFO 向您提供服务。您理解并同意这些子公司和/或关联法律实体有权向您提供服务。</p>
@@ -365,8 +365,8 @@ const userAgreementEnContent = `
 <p>Effective Date:  2026-03-12</p>
 <p>The copyright of this publication belongs to 【GOFO】 (hereinafter referred to as “GOFO”, “we”, and “us”),
 </p>
-<p>Dispute Resolution: The European Commission provides an online dispute resolution (ODR) platform: <a href="https://ec.europa.eu/consumers/odr">https://ec.europa.eu/consumers/odr</a></p>
-<p>This Terms of Use (this Agreement) shall apply in relation to your registration and use of the system ( <a href="https://gfuc-eu.gofoexpress.com">https://gfuc-eu.gofoexpress.com </a> ). This Terms of Use is an agreement between you (“User”) and GOFO and should be read together with our Privacy Policy. If you click “Log in”, “Submit”, “Confirm” or “Register “on the system, it shall be deemed that you have read and agreed to this Agreement. If you do not accept this Agreement or any clause of it, please stop using the service.</p>
+<p>Dispute Resolution: The European Commission provides an online dispute resolution (ODR) platform: <a target="_blank" href="https://ec.europa.eu/consumers/odr">https://ec.europa.eu/consumers/odr</a></p>
+<p>This Terms of Use (this Agreement) shall apply in relation to your registration and use of the system ( <a target="_blank" href="https://gfuc-eu.gofoexpress.com">https://gfuc-eu.gofoexpress.com </a> ). This Terms of Use is an agreement between you (“User”) and GOFO and should be read together with our Privacy Policy. If you click “Log in”, “Submit”, “Confirm” or “Register “on the system, it shall be deemed that you have read and agreed to this Agreement. If you do not accept this Agreement or any clause of it, please stop using the service.</p>
 <h2>1. Scope of this Agreement</h2>
 <p>1.1 This agreement is an effective contract between you and GOFO.</p>
 <p>1.2 GOFO has subsidiaries and/or related legal entities. These subsidiaries and/or related legal entities may provide services to you on behalf of GOFO. You understand and agree that these subsidiaries and/or related legal entities have the right to provide services to you.</p>
@@ -436,9 +436,9 @@ const privacyPolicyContent = `
 <p>最后更新日期：【2026/03/12】。</p>
 <p>本《隐私声明》中提及“公司”、“我们”或“我们的”，系指根据本声明决定您个人数据处理目的和方式的公司主体。</p>
 <p><b>数据控制者信息：</b><span style='background-color:yellow'>详见《隐私声明》英文及相关当地语言版本中的相关数据控制者的信息</span></p>
-<p>公司已指定一名数据保护官（Data Protection Officer，简称“DPO”）。您可通过以下邮箱与我们的DPO联系：dpo@gofoexpress.com。</p>
+<p>公司已指定一名数据保护官（Data Protection Officer，简称“DPO”）。您可通过以下邮箱与我们的DPO联系：<a href="mailto:dpo@gofoexpress.com">dpo@gofoexpress.com</a>。</p>
 <h2>2. 本隐私声明是否适用于您？</h2>
-<p>如您为本公司的客户，或通过访问<a href="https://gfuc-eu.gofoexpress.com">【https://gfuc-eu.gofoexpress.com】</a>（包括其任何页面及移动应用，以下统称“系统”）与我们联系，或接收我们发送的电子邮件，则本《隐私声明》适用于您。</p>
+<p>如您为本公司的客户，或通过访问<a target="_blank" href="https://gfuc-eu.gofoexpress.com">【https://gfuc-eu.gofoexpress.com】</a>（包括其任何页面及移动应用，以下统称“系统”）与我们联系，或接收我们发送的电子邮件，则本《隐私声明》适用于您。</p>
 <p>我们的系统、产品和服务面向一般公众，并非专门针对儿童（儿童年龄界限的定义以用户所在地适用的相关法律法规为准）。原则上，我们不会主动收集儿童的个人数据。如您为儿童，请勿向我们提供任何个人数据；如需使用我们的服务，请在父母或监护人的协助下进行。</p>
 <p>如我们可能已收集儿童的个人数据，其父母或监护人可与我们联系；在核实后，我们将根据要求删除相关个人数据。</p>
 <h2>3. 我们收集哪些个人数据？</h2>
@@ -516,7 +516,7 @@ const privacyPolicyContent = `
 <p>对于传输至其他未做出充分性决定的国家/地区的数据传输，本公司将根据《通用数据保护条例》(GDPR) 第 46 条采取适当的保障措施，包括使用欧盟委员会的标准合同条款 (SCC) 或其他法律认可的传输机制。</p>
 <p>在特殊情况下，且仅在法律允许的情况下，可根据 GDPR 第 49 条的特定例外情况进行数据传输（例如，当数据传输对于履行与您签订的合同或为了确立、行使或抗辩法律主张是必要的）。</p>
 
-<p>您可以联系我们的数据保护官（邮箱：dpo@gofoexpress.com）获取有关您的个人数据国际传输的更多信息，包括相关保障措施的副本。</p>
+<p>您可以联系我们的数据保护官（邮箱：<a href="mailto:dpo@gofoexpress.com">dpo@gofoexpress.com</a>）获取有关您的个人数据国际传输的更多信息，包括相关保障措施的副本。</p>
 
 <h2>8. 您的个人数据如何受到保护？</h2>
 <p>我们已采取充分的保护措施，确保您个人数据的保密性和安全性。我们已实施适当的技术、物理和组织措施，以保护个人数据免遭意外或非法销毁、意外丢失、损坏、更改、未经授权的披露或访问，以及所有其他形式的非法处理（包括但不限于不必要的收集）或进一步处理，包括保护您的个人数据免遭未经授权的访问、维护您个人数据的保密性、完整性和可用性，以及对员工进行信息安全要求方面的培训。</p>
@@ -556,7 +556,7 @@ const privacyPolicyContent = `
 <p>提供更相关、更个性化的内容、优惠和广告；</p>
 <p>改进我们的系统和服务体验；以及衡量并优化我们营销活动的有效性。</p>
 <p>用户画像中使用的逻辑基于可观察的行为模式和汇总的分析数据。这些活动不会产生法律效力，也不会根据《通用数据保护条例》(GDPR) 第 22 条的规定对您造成类似重大影响。</p>
-<p>您可以随时通过联系我们的数据保护官（邮箱：dpo@gofoexpress.com）或调整您的Cookie和营销设置，反对此类用户画像或直接营销。如果您提出反对，我们将立即停止将您的个人数据用于这些目的。</p>
+<p>您可以随时通过联系我们的数据保护官（邮箱：<a href="mailto:dpo@gofoexpress.com">dpo@gofoexpress.com</a>）或调整您的Cookie和营销设置，反对此类用户画像或直接营销。如果您提出反对，我们将立即停止将您的个人数据用于这些目的。</p>
 <p>（2）欺诈预防和风险管理</p>
 <p>本公司也可能使用自动化系统和评分模型来帮助检测和预防欺诈活动或滥用我们的服务。例如，自动化系统可能会分析包裹信息、账户活动和交易模式，以识别可能表明欺诈或安全风险的异常情况。</p>
 <p>进行此类自动化处理是为了保护我们的合法权益（GDPR 第 6 条第 1 款 (f) 项），并履行我们在欺诈预防、海关和反洗钱方面的法律义务。</p>
@@ -566,7 +566,7 @@ const privacyPolicyContent = `
 <p>表达您的观点并对该决定提出异议；以及</p>
 获得对此类自动化处理所涉逻辑的解释。</p>
 <p>您可能有权拒绝对您产生法律效力或类似重大影响的自动化决策，包括用户画像分析。</p>
-<p>如需行使这些权利或了解更多关于我们用户画像分析实践的信息，请联系我们的数据保护官，邮箱地址为 dpo@gofoexpress.com。</p>
+<p>如需行使这些权利或了解更多关于我们用户画像分析实践的信息，请联系我们的数据保护官，邮箱地址为 <a href="mailto:dpo@gofoexpress.com">dpo@gofoexpress.com</a>。</p>
 <p>撤回同意的权利</p>
 <p>在特定情况下，我们可能会征求您的同意以处理您的个人数据。在这种情况下，您有权随时撤回您的同意。公司将在您撤回同意后尽快停止进一步处理。但是，这并不影响撤回同意前处理的合法性。</p>
 <p>我们将根据 GDPR 第 12 条第 3 款的规定，在一个月内回复您的请求。
@@ -613,10 +613,10 @@ const privacyPolicyEnContent = `
 <p>Name：【GOFO FRANCE】</p>
 <p>Address:【10 rue Eugène Pottier 95670 Marly-la-Ville】 </p>
 <p>Email:【 cs@mail.gofoexpress.fr 】 </p>
-<p>The Company has appointed a Data Protection Officer. You can contact our DPO at dpo@gofoexpress.com.</p>
+<p>The Company has appointed a Data Protection Officer. You can contact our DPO at <a href="mailto:dpo@gofoexpress.com">dpo@gofoexpress.com</a>.</p>
 
 <h2>2. DOES THIS PRIVACY STATEMENT APPLY TO YOU?</h2>
-<p>This Privacy Statement applies to you if you are a customer of the Company or if you contact us, for instance, by visiting【https://gfuc-eu.gofoexpress.com 】including any pages and mobile apps (hereafter “system”), or if you receive emails from us.</p>
+<p>This Privacy Statement applies to you if you are a customer of the Company or if you contact us, for instance, by visiting【<a target="_blank" href="https://gfuc-eu.gofoexpress.com">https://gfuc-eu.gofoexpress.com</a> 】including any pages and mobile apps (hereafter “system”), or if you receive emails from us.</p>
 <p>Our system, products and services are for a general audience and not aimed at children（The definition of the age threshold for children shall be determined in accordance with the applicable laws and regulations of the user’s place of residence）. In principle, we do not collect Personal Data from children.  If you are a child, you are requested not to provide any Personal Data, if you want to use our services, please rely on a parent or guardian to assist you.</p>
 <p>If a child may have disclosed Personal Data to us, the parent or guardian can contact us, and we will remove Personal Data if required.</p>
 
@@ -662,7 +662,7 @@ const privacyPolicyEnContent = `
 <p>- Protecting the vital interests of individuals. This includes processing data when necessary to protect your vital interests or those of other individuals (e.g., for urgent safety reasons).</p>
 <p>- Compliance with legal obligations. This addresses the processing of Personal Data as necessary for compliance with laws and regulations to which the Company is subject (e.g., checking the names of customers and business partners against blacklists to avoid conflicts of interest, compliance with trade regulations, anti-money laundering and anti-corruption regulations and other policies, procedures and regulations).</p>
 <p>Where processing is based on our legitimate interests, we will conduct a balancing test to ensure that your rights and freedoms are not overridden.</p>
-<p>6. HOW DO WE USE COOKIES?</p>
+<h2>6. HOW DO WE USE COOKIES?</h2>
 <p>When you visit our system, we use cookies and similar technologies to make our system work properly, to analyze how they are used, and if you agree to personalize content and advertising. Your cookie preferences and consent records are securely stored as proof of compliance.</p>
 <p>In accordance with the French Act No. 78-17 of 6 January 1978 on Information Technology, Data Files and Civil Liberties. , CNIL Guidelines and Recommandations on Cookies and Other Trackers on 17 Septembre 2020, Directive 2002/58/EC on privacy and electronic communications,   and the General Data Protection Regulation (GDPR), we will only place non-essential cookies (such as analytics or marketing cookies) after you have given your explicit consent through our cookie banner.</p>
 <p>Our cookie banner allows you to:</p>
@@ -680,7 +680,7 @@ const privacyPolicyEnContent = `
 <p>- Whether data are shared with third parties and, if so, to which countries and under what safeguards (e.g., Standard Contractual Clauses).</p>
 <p>You can change or withdraw your consent at any time by adjusting your cookie settings via the cookie banner or through your browser settings.</p>
 
-<p>7. HOW DO WE SHARE YOUR PERSONAL DATA?</p>
+<h2>7. HOW DO WE SHARE YOUR PERSONAL DATA?</h2>
 <p>The Company shares your Personal Data with third parties in the following circumstances:</p>
 <p>Internal Recipients:</p>
 <p>- Share your personal data within our affiliates, operating groups, subsidiaries and divisions if such is necessary for the purposes as listed above.</p>
@@ -700,13 +700,13 @@ const privacyPolicyEnContent = `
 <p>- For transfers to other countries without an adequacy decision, the Company applies appropriate safeguards in accordance with Article 46 GDPR, including the use of the European Commission’s Standard Contractual Clauses (SCCs) or other legally recognized transfer mechanisms.</p>
 
 <p>In exceptional cases, and only where permitted by law, transfers may take place under the specific derogations of Article 49 GDPR (for example, where the transfer is necessary for the performance of a contract concluded with you or for the establishment, exercise or defense of legal claims).</p>
-<p>You may request further information about the international transfers of your personal data, including a copy of the relevant safeguards, by contacting our Data Protection Officer via dpo@gofoexpress.com.</p>
+<p>You may request further information about the international transfers of your personal data, including a copy of the relevant safeguards, by contacting our Data Protection Officer via <a href="mailto:dpo@gofoexpress.com">dpo@gofoexpress.com</a>.</p>
 
-<p>8. HOW IS YOUR PERSONAL DATA SECURED?</p>
+<h2>8. HOW IS YOUR PERSONAL DATA SECURED?</h2>
 <p>We have taken adequate safeguards to ensure the confidentiality and security of your personal data. We have implemented appropriate technical, physical and organizational measures to protect personal data against accidental or unlawful destruction or accidental loss, damage, alteration, unauthorized disclosure or access as well as all other forms of unlawful processing (including, but not limited to, unnecessary collection) or further processing, including protecting your Personal Data against unauthorized access, maintaining the confidentiality, integrity and availability of your Personal data, and training personnel on information security requirements.</p>
 <p>However, no security measure can guarantee against compromise. You also have an important role in protecting your Personal Data. You should not share your username and password with anyone, and you should not re-use passwords across more than one system. If you have a reason to believe that your Personal Data has been compromised, please contact us.</p>
 
-<p>9. HOW LONG IS YOUR PERSONAL DATA RETAINED?</p>
+<h2>9. HOW LONG IS YOUR PERSONAL DATA RETAINED?</h2>
 <p>Except as otherwise permitted or required by applicable law or regulation, we will only retain your personal data for as long as necessary to fulfill the purposes we collected it for, as required to satisfy any legal, accounting, or reporting obligations, or as necessary to resolve disputes. To determine the appropriate retention period for personal data, we consider applicable legal requirements, the amount, nature, and sensitivity of the personal data, the potential risk of harm from unauthorized use or disclosure of your personal data, the purposes we process your personal data for, and whether we can achieve those purposes through other means. </p>
 <p>Under some circumstances, we may anonymize your personal data so that it can no longer be associated with you. We reserve the right to use such anonymous and de-identified data for any legitimate business purpose without further notice to you or your consent. </p>
 <p>The following outlines the main retention periods for Personal Data held by GOFO:</p>
@@ -728,18 +728,18 @@ const privacyPolicyEnContent = `
 <p>Generally, the Personal Data with respect to you legally collected by the Company will be stored in EU member states,France.</p>
 <p>Due to the nature of our business and the services we provide to you, the Company may need to transfer your Personal Data to its affiliates or subsidiaries located in other countries or regions in order to perform the agreements with you or achieve the purposes provided in this Statement. In any case where we transfer Personal Data, we shall ensure that such transfers are subject to appropriate safeguards not lower than the level of protection required by applicable data protection laws in the EU and the France. Before cross-border transmission or remote access, we will complete the necessary procedures in accordance with the relevant personal data protection laws and regulations.</p>
 
-<h2>11. WHAT RIGHTS CAN YOU EXERCISE IN RELATION TO YOUR PERSONAL DATA?</h2>
+<h2>11.WHAT RIGHTS CAN YOU EXERCISE IN RELATION TO YOUR PERSONAL DATA?</h2>
 <p>Based on the law applicable to the use of your Personal Data, you may have rights that you can exercise in relation to your Personal Data. Note that in some cases we are not required to completely comply with your request, as such rights may be conditional or because we have to balance your rights against our rights and obligations to process your Personal Data and to protect the rights and freedoms of others. A number of the rights you have in relation to your Personal Data, as applicable in the European Economic Area, the State of California, or other US or international geographic jurisdictions, are explained below:</p>
-<h2>Right of access</h2>
+<b>Right of access</b>
 <p>You may be entitled to a copy of the Personal Data we hold about you and receive details concerning its processing. Your Personal Data will usually be provided in  a structured, commonly used, and machine-readable format. </p>
-<h2>Right to rectification</h2>
+<b>Right to rectification</b>
 <p>We take reasonable steps to ensure that the Personal Data we hold about you is accurate and complete. However, if you believe this is not the case, you may have the right to request the rectification of any inaccurate or incomplete Personal Data .</p>
-<h2>Right to erasure</h2>
+<b>Right to erasure</b>
 <p>You may have the right to ask us to erase your Personal Data, provided that the retention of such data is not necessary for:</p>
 <p>- Compliance with a legal obligation;</p>
 <p>- The performance of a contract with you;</p>
 <p>- The establishment, exercise, or defense of legal claims;</p>
-<h2>Right to restriction of processing</h2>
+<b>Right to restriction of processing</b>
 <p>You may be entitled to ask us to (temporarily) restrict the processing of your Personal Data (i.e., temporarily "freeze" its use) in certain circumstances, for example, where you think that the Personal Data we hold about you may be inaccurate or where you think that we no longer need to use your Personal Data.</p>
 <p>Right to data portability</p>
 <p>You may have the right to ask that we transfer Personal Data that you have provided to us to a third party of your choice. This right can only be exercised when you have provided the Personal Data to us, and when we are processing such data by automated means on the basis of your consent or in order to fulfil our obligations under a contract with you.</p>
@@ -757,7 +757,7 @@ const privacyPolicyEnContent = `
 <p>Right to withdraw consent</p>
 <p>You have the right to withdraw your consent at any time. The Company will stop further processing as soon as possible after the withdrawal of your consent. However, this does not affect the lawfulness of the processing before consent was withdrawn.</p>
 <p>You can object at any time to this type of profiling or direct marketing by adjusting your cookie and marketing settings. If you object, we will immediately restrict to processing your personal data for these purposes.</p>
-<h2>(2) Fraud Prevention and Risk Management</h2>
+<b>(2) Fraud Prevention and Risk Management</b>
 <p>The Company may also use automated systems and scoring models to help detect and prevent fraudulent activities or misuse of our services. For example, automated systems may analyze shipment information, account activity, and transaction patterns to identify irregularities that could indicate fraud or security risks.</p>
 <p>Such automated processing is carried out to protect our legitimate interests (Article 6(1)(f) GDPR) and to comply with our legal obligations regarding fraud prevention, customs, and anti-money laundering.</p>
 <p>In these cases, automated tools may flag transactions or require manual review by authorized Company staff. We do not take any decisions solely based on automated processing that would produce legal effects concerning you or similarly significantly affect you without human involvement.</p>
@@ -766,11 +766,11 @@ const privacyPolicyEnContent = `
 <p>- Express your point of view and contest the decision; and</p>
 <p>- Obtain an explanation of the logic involved in such automated processing.</p>
 <p>You may have the right not to be subjected to automated decision-making, including profiling, which produces legal effect for you or has a similar significant effect.</p>
-<h2>Right to withdraw consent</h2>
+<b>Right to withdraw consent</b>
 <p>We may ask for your consent to process your Personal Data in specific cases. When we do this, you have the right to withdraw your consent at any time. The Company will stop further processing as soon as possible after the withdrawal of your consent. However, this does not affect the lawfulness of the processing before consent was withdrawn.</p>
 <p>If you wish to excess your rights regarding your personal data, following the following procedure:</p>
 <p>a)The request may be sent:</p>
-<p>- by email to dpo@gofoexpress.com or </p>
+<p>- by email to <a href="mailto:dpo@gofoexpress.com">dpo@gofoexpress.com</a> or </p>
 <p>- by letter directly to the GOFO’s office at 10 Rue Eugène Pottier, 95670 Marly-la-Ville, France </p>
 <p>b)In accordance with Article 12 of GDPR, you are required to provide the proof of identity by any means when exercising your rights. In the event that you are acting on behalf of a third party, you are required to provide a copy of the public deed of power of attorney or a simple power of attorney executed before two witnesses, as applicable. Additionally, you must present your original identification for visual verification by the recipient of the request.</p>
 <p>If, after contacting us, you believe that your rights regarding your Personal Data have not been adequately respected, you have the right to file a complaint with the Commission Nationale de l'Informatique et des Libertés (CNIL) at the following address:</p>
@@ -788,7 +788,7 @@ const privacyPolicyEnContent = `
 <p>You can request that we delete your Personal Data.</p>
 <p>You can request that we stop selling your Personal Data. </p>
 <p>More information on each of these requests is below.</p>
-<h2>Request access to Personal Data</h2>
+<b>Request access to Personal Data</b>
 <p>If you make this request, which we also refer to as a Request to Access Information, we will return to you (to the extent required by law):</p>
 <p>- The categories of Personal Data we have collected about you.</p>
 <p>- The categories of sources from which we collect your Personal Data.</p>
@@ -797,7 +797,7 @@ const privacyPolicyEnContent = `
 <p>- The specific pieces of Personal Data we have collected about you.</p>
 <p>- A list of categories of Personal Data that we have disclosed for a business purpose, along with the category of any other company we shared with.</p>
 <p>You can ask us to provide you with this information up to two times in a rolling twelve-month period. When you make this request, the information provided may be limited to the Personal Data we collected about you in the previous 12 months.</p>
-<h2>Delete the Personal Data</h2>
+<b>Delete the Personal Data</b>
 <p>You have the right to ask that we delete your Personal Data. Once we receive a request, we will delete the Personal Data (to the extent required by law) we hold about you as of the date of your request from our records and direct any service providers to do the same. In some cases, deletion may be accomplished through de-identification of the information. Choosing to delete your Personal Data may impact your ability to use our system and online features, including closure of your online account.</p>
 <p>No Discrimination</p>
 <p>We will not discriminate against you for exercising your rights. This generally means we will not deny you using our services, or provide a different level or quality of our services. Please know, if you ask us to delete your information, it may impact your experience with us, and you may not be able to participate in certain services that require the use of your Personal Data to function.</p>
