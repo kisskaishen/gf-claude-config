@@ -752,10 +752,8 @@ const privacyPolicyEnContent = `
 <p>- Improve our system and service experience;</p>
 <p>- Measure and optimise the effectiveness of our marketing activities.</p>
 <p>The logic used in this profiling is based on observable patterns of behaviour and aggregated analytics data. These activities do not produce legal effects or similarly significantly affect you within the meaning of Article 22 GDPR.</p>
-<p>Right to withdraw consent</p>
-<p>You have the right to withdraw your consent at any time. The Company will stop further processing as soon as possible after the withdrawal of your consent. However, this does not affect the lawfulness of the processing before consent was withdrawn.</p>
 <p>You can object at any time to this type of profiling or direct marketing by adjusting your cookie and marketing settings. If you object, we will immediately restrict to processing your personal data for these purposes.</p>
-<b>(2) Fraud Prevention and Risk Management</b>
+<p>(2) Fraud Prevention and Risk Management</p>
 <p>The Company may also use automated systems and scoring models to help detect and prevent fraudulent activities or misuse of our services. For example, automated systems may analyze shipment information, account activity, and transaction patterns to identify irregularities that could indicate fraud or security risks.</p>
 <p>Such automated processing is carried out to protect our legitimate interests (Article 6(1)(f) GDPR) and to comply with our legal obligations regarding fraud prevention, customs, and anti-money laundering.</p>
 <p>In these cases, automated tools may flag transactions or require manual review by authorized Company staff. We do not take any decisions solely based on automated processing that would produce legal effects concerning you or similarly significantly affect you without human involvement.</p>
@@ -770,7 +768,7 @@ const privacyPolicyEnContent = `
 <p>a)The request may be sent:</p>
 <p>- by email to <a href="mailto:dpo@gofoexpress.com">dpo@gofoexpress.com</a> or </p>
 <p>- by letter directly to the GOFO’s office at 10 Rue Eugène Pottier, 95670 Marly-la-Ville, France </p>
-<p>b)In accordance with Article 12 of GDPR, you are required to provide the proof of identity by any means when exercising your rights. In the event that you are acting on behalf of a third party, you are required to provide a copy of the public deed of power of attorney or a simple power of attorney executed before two witnesses, as applicable. Additionally, you must present your original identification for visual verification by the recipient of the request.</p>
+<p>In accordance with Article 12 of GDPR, you are required to provide the proof of identity by any means when exercising your rights. In the event that you are acting on behalf of a third party, you are required to provide a copy of the public deed of power of attorney or a simple power of attorney executed before two witnesses, as applicable. Additionally, you must present your original identification for visual verification by the recipient of the request.</p>
 <p>If, after contacting us, you believe that your rights regarding your Personal Data have not been adequately respected, you have the right to file a complaint with the Commission Nationale de l'Informatique et des Libertés (CNIL) at the following address:</p>
 <p>- 3 Place de Fontenoy - TSA 80715 - 75334 Paris Cedex 07, France</p>
 <p>- Tel: +33 1 53 73 22 22</p>
@@ -788,12 +786,12 @@ const privacyPolicyEnContent = `
 <p>More information on each of these requests is below.</p>
 <b>Request access to Personal Data</b>
 <p>If you make this request, which we also refer to as a Request to Access Information, we will return to you (to the extent required by law):</p>
-<p>- The categories of Personal Data we have collected about you.</p>
-<p>- The categories of sources from which we collect your Personal Data.</p>
-<p>- The business or commercial purpose for collecting or selling your Personal Data.</p>
-<p>- The categories of third parties with whom we share Personal Data.</p>
-<p>- The specific pieces of Personal Data we have collected about you.</p>
-<p>- A list of categories of Personal Data that we have disclosed for a business purpose, along with the category of any other company we shared with.</p>
+<p>The categories of Personal Data we have collected about you.</p>
+<p>The categories of sources from which we collect your Personal Data.</p>
+<p>The business or commercial purpose for collecting or selling your Personal Data.</p>
+<p>The categories of third parties with whom we share Personal Data.</p>
+<p>The specific pieces of Personal Data we have collected about you.</p>
+<p>A list of categories of Personal Data that we have disclosed for a business purpose, along with the category of any other company we shared with.</p>
 <p>You can ask us to provide you with this information up to two times in a rolling twelve-month period. When you make this request, the information provided may be limited to the Personal Data we collected about you in the previous 12 months.</p>
 <b>Delete the Personal Data</b>
 <p>You have the right to ask that we delete your Personal Data. Once we receive a request, we will delete the Personal Data (to the extent required by law) we hold about you as of the date of your request from our records and direct any service providers to do the same. In some cases, deletion may be accomplished through de-identification of the information. Choosing to delete your Personal Data may impact your ability to use our system and online features, including closure of your online account.</p>
