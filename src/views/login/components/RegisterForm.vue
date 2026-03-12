@@ -469,8 +469,7 @@ const privacyPolicyContent = `
 <p>为履行合同所必需；</p>
 <p>为履行我们的法定义务所必需；</p>
 <p>为保护您或他人的重大利益所必需；</p>
-<p>为实现 GOFO 的合法利益所必需，但该等利益不应凌驾于您的利益或基本权</p><p>利与自由之上；</p>
-<p>在适当且必要的情况下，我们将征得您的同意。</p>
+<p>为实现 GOFO 的合法利益所必需，但该等利益不应凌驾于您的利益或基本权</p><p>利与自由之上；在适当且必要的情况下，我们将征得您的同意。</p>
 
 <p>公司仅在处理行为符合下列一项或多项合法业务目的范围内时，方会收集、使用或以其他方式处理个人数据：</p>
 <p><b>履行合同。</b> 包括提供派送服务、包裹追踪服务、就服务事项与我们的合同客户、寄件人及其他相关方进行沟通、回应信息请求、处理争议以及拟定和签署相关协议。</p>
@@ -491,8 +490,7 @@ const privacyPolicyContent = `
 <p>我们使用的 Cookies 类型包括：</p>
 <p>严格必要类Cookies ——为网站正常运行所必需，因此无需取得您的同意。</p>
 <p>分析类 Cookies ——帮助我们了解访客如何使用我们的网站，以便改进功能和提升用户体验。该类 Cookies 仅在您同意后设置。</p>
-<p>营销及追踪类 Cookies ——用于个性化内容和广告，并衡量营销活动的效果。</p>
-<p>该类 Cookies 亦仅在您同意后设置。</p>
+<p>营销及追踪类 Cookies ——用于个性化内容和广告，并衡量营销活动的效果。该类 Cookies 亦仅在您同意后设置。</p>
 <p>针对每一类 Cookies，我们的《Cookie 通知》将提供以下详细信息：
 <p>每项 Cookie 的具体用途；</p>
 <p>提供方（第一方或第三方）；</p>
@@ -536,19 +534,19 @@ const privacyPolicyContent = `
 
 <h2>11. 您可以就您的个人数据行使哪些权利？</h2>
 <p>根据适用于您个人数据处理的法律，您可能拥有与您的个人数据相关的权利。请注意，在某些情况下，我们无需完全满足您的请求，因为这些权利可能附带条件，或者因为我们必须平衡您的权利与我们处理您的个人数据以及保护他人权利和自由的权利和义务。以下解释了您在欧洲经济区、加利福尼亚州或其他美国或国际司法管辖区享有的部分个人数据权利：</p>
-<p>访问权</p>
+<b>访问权</b>
 <p>您有权获取我们持有的关于您的个人数据的副本，并了解我们如何使用这些数据的详细信息。您的个人数据通常会以电子方式提供给您。在提供所请求的信息之前，我们可能会要求您证明您的身份。</p>
-<p>更正权</p>
+<b>更正权</b>
 <p>我们会采取合理措施，确保我们持有的关于您的信息准确完整。但是，如果您认为情况并非如此，您有权要求我们更正任何关于您的不完整或不准确的个人数据。</p>
-<p>删除权</p>
+<b>删除权</b>
 <p>您有权要求我们删除您的个人数据，例如，当我们收集的个人数据不再用于最初目的、个人数据已过时或您撤回同意（如果我们基于您的同意处理您的个人数据）时。但是，这需要与其他因素进行权衡。例如，由于某些法律或监管义务，我们可能无法满足您的请求。</p>
-<p>限制处理权</p>
+<b>限制处理权</b>
 <p>您有权要求我们（暂时）停止使用您的个人数据，例如，当您认为我们持有的关于您的个人数据可能不准确或您认为我们不再需要使用您的个人数据时。
-<p>数据可携权</p>
+<b>数据可携权</b>
 <p>您有权要求我们将您提供给我们的个人数据传输给您指定的第三方。只有在您向我们提供个人数据，且我们基于您的同意或为了履行与您签订的合同项下的义务而通过自动化方式处理该数据时，您才能行使此项权利。</p>
-<p>反对权</p>
+<b>反对权</b>
 <p>您有权反对我们基于合法利益处理您的个人数据。对于出于营销目的处理您的个人数据，您有权随时提出反对。当您要求我们停止将您的个人数据用于营销目的时，我们将立即停止使用您的个人数据。对于基于我们合法利益的其他目的，如果您基于自身情况提出反对，我们将不再基于该目的处理您的个人数据，除非我们有令人信服的合法理由进行处理。但请注意，如果我们无法处理为特定目的所需的个人数据，我们可能无法向您提供某些服务或权益。</p>
-<p>与自动化决策相关的权利</p>
+<b>与自动化决策相关的权利</b>
 <p>本公司可能在特定情况下使用自动化处理技术（包括用户画像），主要用于以下两个目的：</p>
 <p>(1) 市场营销和服务个性化</p>
 <p>本公司会分析您与我们系统、电子邮件和服务互动中的某些方面，例如浏览活动、点击记录、购买历史、发货模式和偏好，以便更好地了解您的兴趣。</p>
@@ -572,10 +570,10 @@ const privacyPolicyContent = `
 如果您认为您的数据处理违反了 GDPR，您有权向当地主管数据保护机构提出投诉。</p>
 
 <h2>12. 加州消费者</h2>
-<p>如果您是加州居民，您可以就您的个人数据提出某些请求。我们将根据加州法律的要求满足您的每一项请求。</p>
-<p>您可以请求获取我们持有的关于您的个人数据副本，包括我们出于商业目的与其他公司共享的您的个人数据类别列表。</p>
-<p>您可以请求我们删除您的个人数据。</p>
-<p>您可以请求我们停止出售您的个人数据。</p>
+<b>如果您是加州居民，您可以就您的个人数据提出某些请求。我们将根据加州法律的要求满足您的每一项请求。</b>
+<b>您可以请求获取我们持有的关于您的个人数据副本，包括我们出于商业目的与其他公司共享的您的个人数据类别列表。</b>
+<b>您可以请求我们删除您的个人数据。</b>
+<b>您可以请求我们停止出售您的个人数据。</b>
 
 <p>以下是关于每项请求的更多信息。</p>
 <p>请求访问个人数据</p>
@@ -743,7 +741,7 @@ const privacyPolicyEnContent = `
 <p>You may have the right to ask that we transfer Personal Data that you have provided to us to a third party of your choice. This right can only be exercised when you have provided the Personal Data to us, and when we are processing such data by automated means on the basis of your consent or in order to fulfil our obligations under a contract with you.</p>
 <b>Right to object</b>
 <p>You may have the right to object to processing which is based on our legitimate interests on grounds relating to your specific situation. We will cease the processing unless we can demonstrate compelling legitimate grounds for the processing which override your interests, rights, and freedoms, or for the establishment, exercise, or defense of legal claims. In the processing of Personal Data for marketing purposes, you have the right to object at any time. When you ask us to restrict to processing your Personal Data for marketing purposes, the Company will immediately cease to use your Personal Data for such purposes. Note, however, that we may not be able to provide certain services or benefits if we are unable to process the necessary Personal Data for that purpose.</p>
-<p>Right to automated decision-making</p>
+<b>Right to automated decision-making</b>
 <p>The Company may use automated processing techniques, including profiling, in limited circumstances for two main purposes:</p>
 <p>(1) Marketing and Service Personalization</p>
 <p>The Company analyses certain aspects of your interaction with our system, emails, and services — such as browsing activity, clicks, purchase history, shipment patterns, and preferences to better understand your interests.</p>
@@ -795,9 +793,9 @@ const privacyPolicyEnContent = `
 <p>You can ask us to provide you with this information up to two times in a rolling twelve-month period. When you make this request, the information provided may be limited to the Personal Data we collected about you in the previous 12 months.</p>
 <b>Delete the Personal Data</b>
 <p>You have the right to ask that we delete your Personal Data. Once we receive a request, we will delete the Personal Data (to the extent required by law) we hold about you as of the date of your request from our records and direct any service providers to do the same. In some cases, deletion may be accomplished through de-identification of the information. Choosing to delete your Personal Data may impact your ability to use our system and online features, including closure of your online account.</p>
-<p>No Discrimination</p>
+<b>No Discrimination</b>
 <p>We will not discriminate against you for exercising your rights. This generally means we will not deny you using our services, or provide a different level or quality of our services. Please know, if you ask us to delete your information, it may impact your experience with us, and you may not be able to participate in certain services that require the use of your Personal Data to function.</p>
-<p>Shine the light law</p>
+<b>Shine the light law</b>
 <p>California Civil Code Section 1798.83, also known as the “Shine The Light” law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal data (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us using the contact information provided at the top of this Privacy Statement.</p>
 <h2>13. HOW WILL THIS PRIVACY STATEMENT BE UPDATED?</h2>
 <p>The Company may update this Privacy Statement from time to time. If an amendment has a serious impact, the Company will endeavor to inform you about such amendments actively. The Company will publish an up-to-date Privacy Statement on the system at all times, indicating the latest amendments.</p>`;
