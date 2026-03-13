@@ -42,7 +42,9 @@ const getDynamicBaseUrl = () => {
   const { protocol, hostname } = window.location;
   const parts = hostname.split(".");
   if (parts.length > 1) {
-    // 例如：sit-gfuc-eu.eminxing.com -> sit-gfuc-eu-api.eminxing.com
+    if (parts[0] === "gfuc-eu") {
+      return `${protocol}//gfuc-api-eu.${parts.slice(1).join(".")}${envBaseApi}`;
+    }
     return `${protocol}//${parts[0]}-api.${parts.slice(1).join(".")}${envBaseApi}`;
   }
 

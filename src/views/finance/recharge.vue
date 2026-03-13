@@ -349,6 +349,7 @@ const handleUpload = async (options: UploadRequestOptions) => {
   try {
     const data = new FormData();
     data.append("file", options.file);
+    data.append("modelFolder", "modelFolder");
     const res = await uploadFile(data);
     formData.attachmentKeys.push(res.filePath); // 假设返回结构中包含 url 字段
 
