@@ -158,9 +158,9 @@ onMounted(() => {
   height: 164px;
   font-size: var(--font-size-base);
   background-image:
-    linear-gradient(89.18deg, #ffffff 15.41%, #fffdfc 106.78%),
+    linear-gradient(89.18deg, #fff 15.41%, #fffdfc 106.78%),
     // 内容区背景（白色渐变）
-    linear-gradient(88.04deg, #ffffff 28.79%, #ffefe9 138.31%); // 边框渐变色
+    linear-gradient(88.04deg, #fff 28.79%, #ffefe9 138.31%); // 边框渐变色
 
   background-clip:
     padding-box, border-box; // 3. 关键：第一层背景裁切到内容区，第二层裁切到边框区
@@ -191,6 +191,10 @@ onMounted(() => {
       transform: translate(-50%, -50%);
     }
 
+    &:last-child::after {
+      display: none;
+    }
+
     .card-content {
       .label {
         display: flex;
@@ -206,7 +210,7 @@ onMounted(() => {
       .amount {
         font-family: "Source Han Sans CN", sans-serif;
         font-size: 20px;
-        font-size: clamp(16px, 10cqw, 24px);
+        font-size: clamp(24px, 10cqw, 24px);
         font-weight: 400;
         color: var(--text-color-regular);
         white-space: nowrap;
@@ -266,6 +270,7 @@ onMounted(() => {
       height: 40px;
       font-size: 32px;
       font-weight: 400;
+      line-height: 32px;
       color: var(--color-primary);
       content: attr(data-symbol);
       background: #fff;

@@ -79,7 +79,7 @@ const toggleCollapse = () => {
 
     .logo-text {
       font-size: var(--font-size-md);
-      font-weight: 500;
+      font-weight: 600;
       color: var(--text-color-primary);
       white-space: nowrap;
       transition: opacity 0.3s;

@@ -3,7 +3,7 @@
     <!-- 语言切换 -->
     <!-- <LangSelect /> -->
     <div class="right-top">
-      <svg-icon name="earth" />
+      <svg-icon class="icon-earth" name="earth" />
       <LangSelect />
     </div>
     <!-- 左侧装饰区 -->
@@ -79,7 +79,7 @@ import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
 import LoginForm from "./components/LoginForm.vue";
 import RegisterForm from "./components/RegisterForm.vue";
-import VerifyCodeForm from "./components/VerifyCodeForm.vue";
+import VerifyCodeForm from "./components/verifyCodeForm.vue";
 import PreferenceModal from "./components/PreferenceModal.vue";
 import LangSelect from "@/components/LangSelect/index.vue";
 import { useAppStore } from "@/store/app";
@@ -242,5 +242,9 @@ const redirectToHome = () => {
   align-items: center;
   font-size: 16px;
   color: var(--text-color-tertiary);
+
+  .icon-earth {
+    font-size: 20px;
+  }
 }
 </style>

@@ -144,7 +144,7 @@ const handleSubmit = async () => {
   .preference-content {
     .subtitle {
       margin-bottom: 24px;
-      color: var(--text-color-tertiary);
+      color: #191e23 !important;
     }
 
     .full-width {

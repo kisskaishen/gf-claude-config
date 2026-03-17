@@ -859,6 +859,7 @@ const handleAgreementCancel = () => {
 
   :deep(.el-form-item__label) {
     margin-bottom: 6px;
+    color: var(--form-item--label) !important;
   }
 
   :deep(.el-form-item) {
@@ -867,7 +868,7 @@ const handleAgreementCancel = () => {
 
   .email-input {
     :deep(.el-input__icon) {
-      font-size: 16px;
+      font-size: 20px;
       color: var(--color-success);
     }
   }
@@ -1002,7 +1003,7 @@ const handleAgreementCancel = () => {
     }
 
     .el-checkbox__label {
-      font-size: 12px;
+      font-size: 13px;
       line-height: 18px;
       color: var(--color);
     }

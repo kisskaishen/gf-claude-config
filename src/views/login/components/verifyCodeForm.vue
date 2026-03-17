@@ -270,7 +270,7 @@ const handleVerify = async () => {
   .verify-title {
     margin-bottom: 4px;
     font-size: var(--font-size-base);
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-color-secondary);
   }
 

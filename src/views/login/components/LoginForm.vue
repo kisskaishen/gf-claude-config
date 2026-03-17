@@ -189,6 +189,7 @@ refreshCaptcha();
 
   :deep(.el-form-item__label) {
     margin-bottom: 6px;
+    color: var(--form-item--label) !important;
   }
 
   :deep(.el-form-item) {

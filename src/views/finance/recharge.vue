@@ -398,6 +398,10 @@ const handleSubmit = async () => {
   display: inline-flex;
   gap: 4px;
   align-items: center;
+
+  .example-link {
+    font-weight: 600;
+  }
 }
 
 .upload-demo {
@@ -438,7 +442,7 @@ const handleSubmit = async () => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px;
+    padding: 6px 12px;
     background: #eff0f533;
     border-radius: 8px;
 
@@ -466,6 +470,10 @@ const handleSubmit = async () => {
       font-size: 16px;
       color: #909399;
       cursor: pointer;
+
+      &:hover {
+        color: #ff2503;
+      }
     }
   }
 }
