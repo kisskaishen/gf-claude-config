@@ -64,11 +64,13 @@
           prop="receiptAmount"
           :label="$t('gfuc.recharge_amount' /** 充值金额 **/)"
           min-width="120"
+          show-overflow-tooltip
         />
         <el-table-column
           prop="currency"
           :label="$t('gfuc.currency' /** 币种 **/)"
           min-width="80"
+          show-overflow-tooltip
         >
           <template #default="{ row }">
             {{
@@ -81,6 +83,7 @@
           prop="receiptMethod"
           :label="$t('gfuc.payment_method' /** 付款方式 **/)"
           min-width="120"
+          show-overflow-tooltip
         >
           <template #default="{ row }">
             {{ receiptMethodDict.getLabel(row.receiptMethod) ?? "-" }}
@@ -90,16 +93,19 @@
           prop="receiptDate"
           :label="$t('gfuc.recharge_date' /** 充值日期 **/)"
           min-width="120"
+          show-overflow-tooltip
         />
         <el-table-column
           prop="remark"
           :label="$t('gfuc.remark' /** 备注 **/)"
           min-width="150"
+          show-overflow-tooltip
         />
         <el-table-column
           prop="status"
           :label="$t('gfuc.status' /** 状态 **/)"
           min-width="100"
+          show-overflow-tooltip
         >
           <template #default="{ row }">
             <span :class="['status-tag', getStatusClass(row.status)]">
@@ -111,11 +117,13 @@
           prop="rejectionReason"
           :label="$t('gfuc.failure_reason' /** 失败原因 **/)"
           min-width="150"
+          show-overflow-tooltip
         />
         <el-table-column
           prop="createTimeStr"
           :label="$t('gfuc.submission_time' /** 提交时间 **/)"
           min-width="160"
+          show-overflow-tooltip
         />
       </template>
     </TableLayout>

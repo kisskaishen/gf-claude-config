@@ -111,10 +111,16 @@ const siteLinkageMap: Record<string, { timezone: Timezone; lang: Lang }> = {
   [Site.nl]: { timezone: Timezone.Europe_Amsterdam, lang: Lang.nl }
 };
 
+const defaultSite = appStore.site || Site.fr;
+const defaultTimezone =
+  appStore.timezone || siteLinkageMap[defaultSite]?.timezone || Timezone.Local;
+const defaultLang =
+  appStore.lang || siteLinkageMap[defaultSite]?.lang || Lang.zh;
+
 const form = reactive({
-  site: Site.fr,
-  timezone: siteLinkageMap[Site.fr]!.timezone,
-  lang: siteLinkageMap[Site.fr]!.lang
+  site: defaultSite,
+  timezone: defaultTimezone,
+  lang: defaultLang
 });
 
 const handleSiteChange = (val: string) => {

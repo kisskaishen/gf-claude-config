@@ -18,7 +18,7 @@
               :underline="false"
               @click="handleDownloadExample"
             >
-              {{ $t("gfuc.payment_proof_example" /** 支付凭证示例 **/) }}
+              {{ $t("gfuc.sample_image" /** 图片示例 **/) }}
             </el-link>
           </div>
         </template>
