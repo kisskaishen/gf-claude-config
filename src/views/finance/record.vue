@@ -156,10 +156,10 @@ const enum DateType {
 const enum Status {
   /** 充值中 */
   Recharging,
-  /** 充值成功 */
-  RechargeSuccess,
   /** 充值失败 */
-  RechargeFailed
+  RechargeFailed,
+  /** 充值成功 */
+  RechargeSuccess
 }
 
 /** 日期类型选项 */
@@ -206,10 +206,10 @@ const getStatusClass = (status: Status) => {
   switch (status) {
     case Status.Recharging:
       return "status-pending";
-    case Status.RechargeSuccess:
-      return "status-success";
     case Status.RechargeFailed:
       return "status-failed";
+    case Status.RechargeSuccess:
+      return "status-success";
     default:
       return "";
   }
