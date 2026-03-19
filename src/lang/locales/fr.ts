@@ -65,5 +65,6 @@ export default {
   "web.gfuc.your_default_site": "Votre site par défaut est",
   "web.gfuc.preference_settings": "Préférences du site web",
   "web.gfuc.your_default_timezone": "Votre fuseau horaire par défaut est",
-  "web.gfuc.your_default_language": "Votre langue par défaut est"
+  "web.gfuc.your_default_language": "Votre langue par défaut est",
+  "gfuc.no_data_available": "Aucune donnée disponible"
 };

@@ -62,5 +62,6 @@ export default {
     "密码错误，密码需8-12位，且包含字母、数字和符号。",
   "web.gfuc.preference_settings": "偏好设置",
   "web.gfuc.your_default_timezone": "你默认的时区是",
-  "web.gfuc.your_default_language": "你默认的语言是"
+  "web.gfuc.your_default_language": "你默认的语言是",
+  "gfuc.no_data_available": "暂无数据"
 };

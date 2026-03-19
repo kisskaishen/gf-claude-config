@@ -68,5 +68,6 @@ export default {
     "Password error: must be 8-12 characters and contain letters, numbers, and symbols.",
   "web.gfuc.preference_settings": "Preference settings",
   "web.gfuc.your_default_timezone": "Your default timezone is",
-  "web.gfuc.your_default_language": "Your default language is"
+  "web.gfuc.your_default_language": "Your default language is",
+  "gfuc.no_data_available": "No data available"
 };
