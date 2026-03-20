@@ -2,7 +2,7 @@
   <svg
     aria-hidden="true"
     class="svg-icon"
-    :style="{ width: size, height: size }"
+    :style="{ width: width ?? size, height: height ?? size }"
   >
     <use :xlink:href="symbolId" :fill="color" />
   </svg>
@@ -30,6 +30,14 @@ const props = defineProps({
   size: {
     type: String,
     default: "1em"
+  },
+  width: {
+    type: String,
+    default: undefined
+  },
+  height: {
+    type: String,
+    default: undefined
   }
 });
 

@@ -64,5 +64,6 @@ export default {
   "web.gfuc.your_default_site": "Uw standaardwebsite is",
   "web.gfuc.preference_settings": "voorkeureninstellingen",
   "web.gfuc.your_default_timezone": "Uw standaardtijdzone is",
-  "web.gfuc.your_default_language": "Uw standaardtaal is"
+  "web.gfuc.your_default_language": "Uw standaardtaal is",
+  "gfuc.no_data_available": "Geen gegevens beschikbaar"
 };

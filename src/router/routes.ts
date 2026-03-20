@@ -10,7 +10,7 @@ export const routes: RouteRecordRaw[] = [
   {
     path: "/",
     component: () => import("@/layout/index.vue"),
-    redirect: "/home",
+    redirect: "/finance/balance",
     meta: { showOnlyOneChild: true },
     children: [
       {
@@ -75,7 +75,7 @@ export const routes: RouteRecordRaw[] = [
   {
     path: "/finance",
     component: () => import("@/layout/index.vue"),
-    redirect: "/finance/recharge",
+    redirect: "/finance/balance",
     meta: {
       title: "财务管理",
       icon: "finance",
