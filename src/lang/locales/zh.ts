@@ -15,6 +15,8 @@ export default {
   "web.gfuc.register_agreement": "注册协议",
   "web.gfuc.privacy_policy": "隐私政策",
   "web.gfuc.agreement": "我同意GOFO的{register_agreement}和{privacy_policy}",
+  "web.gfuc.please_select_country": "请选择国家",
+  "web.gfuc.country": "走货国家",
   "web.gfuc.email": "邮箱",
   "web.gfuc.password": "密码",
   "web.gfuc.code": "验证码",
@@ -63,5 +65,8 @@ export default {
   "web.gfuc.preference_settings": "偏好设置",
   "web.gfuc.your_default_timezone": "你默认的时区是",
   "web.gfuc.your_default_language": "你默认的语言是",
-  "gfuc.no_data_available": "暂无数据"
+  "gfuc.no_data_available": "暂无数据",
+  "web.gfuc.country_FR": "法国",
+  "web.gfuc.country_IT": "意大利",
+  "web.gfuc.country_NL": "荷兰"
 };

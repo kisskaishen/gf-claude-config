@@ -15,6 +15,9 @@ export default {
   "web.gfuc.privacy_policy": "Politique de confidentialité",
   "web.gfuc.agreement":
     "Je suis d'accord avec le {register_agreement} et la {privacy_policy}",
+  "web.gfuc.please_select_country":
+    "Veuillez sélectionner votre pays d'origine",
+  "web.gfuc.country": "Pays d'origine",
   "web.gfuc.email": "Email",
   "web.gfuc.password": "Mot de passe",
   "web.gfuc.code": "Code",
@@ -66,5 +69,8 @@ export default {
   "web.gfuc.preference_settings": "Préférences du site web",
   "web.gfuc.your_default_timezone": "Votre fuseau horaire par défaut est",
   "web.gfuc.your_default_language": "Votre langue par défaut est",
-  "gfuc.no_data_available": "Aucune donnée disponible"
+  "gfuc.no_data_available": "Aucune donnée disponible",
+  "web.gfuc.country_FR": "France",
+  "web.gfuc.country_IT": "Italie",
+  "web.gfuc.country_NL": "Pays-B"
 };
