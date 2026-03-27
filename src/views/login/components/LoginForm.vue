@@ -80,12 +80,14 @@ import { useUserStore } from "@/store/user";
 import { rsaEncryptPwd } from "@/utils/crypto";
 import { getVerifyCode } from "@/api/user";
 import { Country } from "@/enums/index";
+import { useAppStore } from "@/store/app";
 
 const emit = defineEmits(["switch", "success"]);
 
 const { t } = useI18n();
 
 const userStore = useUserStore();
+const appStore = useAppStore();
 
 const props = defineProps({
   email: {
@@ -119,7 +121,7 @@ const codeUrl = computed(() =>
   verifyCodeData.image ? "data:image/gif;base64," + verifyCodeData.image : ""
 );
 const loginData = reactive({
-  country: Country.FR,
+  country: sessionStorage.getItem("setSite") || Country.FR,
   email: props.email || "",
   password: "",
   code: ""
@@ -182,13 +184,14 @@ const handleLogin = async () => {
       try {
         loading.value = true;
         await userStore.login({
-          country: loginData.country,
+          country: loginData.country as Country,
           email: loginData.email,
           password: await rsaEncryptPwd(loginData.password),
           code: loginData.code,
           uuid: verifyCodeData.uuid
         });
         await nextTick();
+        sessionStorage.removeItem("setSite");
         emit("success", "login");
       } catch (error: any) {
         console.error(error);
