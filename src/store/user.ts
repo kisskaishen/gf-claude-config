@@ -3,12 +3,14 @@ import { defineStore } from "pinia";
 import { useTagsViewStore } from "./tagsView";
 import { store } from "@/store";
 import { getUserInfo, postLogin, postUpdateUserInfo } from "@/api/user";
-import { Site, Timezone, UserBindStatus, type Lang } from "@/enums";
+import { Country, Site, Timezone, UserBindStatus, type Lang } from "@/enums";
 import { useAppStore } from "./app";
 import { getInitialLang } from "@/lang";
 import { dataFinder } from "@/plugins/monitor/dataFinder";
 
 export interface UserInfo {
+  /** 走货国家 */
+  country?: Country;
   /** 用户id */
   id: number;
   /** 用户名称 */
@@ -86,6 +88,7 @@ export const useUserStore = defineStore(
 
     // Actions
     const login = async (data: {
+      country: Country;
       email: string;
       password: string;
       uuid: string;

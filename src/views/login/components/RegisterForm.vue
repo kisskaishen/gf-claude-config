@@ -6,6 +6,16 @@
     label-position="top"
     class="form-body"
   >
+    <el-form-item
+      :label="$t('web.gfuc.country' /** 走货国家 */)"
+      prop="country"
+    >
+      <el-select
+        :options="countryOptions"
+        v-model="registerData.country"
+        :placeholder="$t('web.gfuc.please_select_country' /** 请选择国家 */)"
+      />
+    </el-form-item>
     <el-form-item :label="$t('web.gfuc.email' /** 邮箱 */)" prop="email">
       <el-input
         v-model="registerData.email"
@@ -168,6 +178,7 @@ import {
 import { useI18n } from "vue-i18n";
 import AgreementModal from "./AgreementModal.vue";
 import { postCheckAccount } from "@/api/user";
+import { Country } from "@/enums/index";
 
 const { t, locale } = useI18n();
 
@@ -176,12 +187,34 @@ const emit = defineEmits(["switch", "success"]);
 const props = defineProps({
   registerData: {
     type: Object,
-    default: () => ({ email: "", password: "", agree1: false, agree2: false })
+    default: () => ({
+      country: "",
+      email: "",
+      password: "",
+      agree1: false,
+      agree2: false
+    })
   }
 });
 
+const countryOptions = [
+  {
+    label: t("web.gfuc.country_FR" /** 法国 */),
+    value: Country.FR
+  },
+  {
+    label: t("web.gfuc.country_IT" /** 意大利 */),
+    value: Country.IT
+  },
+  {
+    label: t("web.gfuc.country_NL" /** 荷兰 */),
+    value: Country.NL
+  }
+];
+
 // --- 注册逻辑 ---
 const registerData = reactive({
+  country: props.registerData.country || "",
   email: props.registerData.email || "",
   password: props.registerData.password || "",
   agree1: props.registerData.agree1 || false,
@@ -228,6 +261,13 @@ const isEmailValid = computed(() => {
 });
 
 const registerRules = reactive<FormRules>({
+  country: [
+    {
+      required: true,
+      message: t("web.gfuc.please_select_country" /** 请选择国家 **/),
+      trigger: "change"
+    }
+  ],
   email: [
     {
       required: true,

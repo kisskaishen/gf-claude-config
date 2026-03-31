@@ -12,9 +12,13 @@ import SelectDropdown from "@/components/SelectDropdown/index.vue";
 import { Site } from "@/enums";
 import { useI18n } from "vue-i18n";
 import { useUserStore } from "@/store/user";
+import { useRouter } from "vue-router";
+
 defineOptions({
   name: "SiteSelect"
 });
+
+const router = useRouter();
 
 const { t } = useI18n();
 
@@ -40,7 +44,11 @@ const options = [
 const handleSetSite = (val: any) => {
   appStore.setSite(val);
   // userStore.isUserInfoUpdated = false;
-  window.location.reload();
+  // window.location.reload();
+  // 清空用户信息
+  userStore.logout();
+  sessionStorage.setItem("setSite", val);
+  router.push("/login");
 };
 </script>
 

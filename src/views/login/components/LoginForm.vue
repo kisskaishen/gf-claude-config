@@ -6,6 +6,20 @@
     label-position="top"
     class="form-body"
   >
+    <!-- 走货国家选择 -->
+    <el-form-item
+      :label="$t('web.gfuc.country' /** 走货国家 */)"
+      prop="country"
+    >
+      <el-select v-model="loginData.country" class="full-width">
+        <el-option
+          v-for="item in countryOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
+    </el-form-item>
     <el-form-item :label="$t('web.gfuc.email' /** 邮箱 */)" prop="email">
       <el-input
         v-model="loginData.email"
@@ -65,12 +79,15 @@ import { useI18n } from "vue-i18n";
 import { useUserStore } from "@/store/user";
 import { rsaEncryptPwd } from "@/utils/crypto";
 import { getVerifyCode } from "@/api/user";
+import { Country } from "@/enums/index";
+import { useAppStore } from "@/store/app";
 
 const emit = defineEmits(["switch", "success"]);
 
 const { t } = useI18n();
 
 const userStore = useUserStore();
+const appStore = useAppStore();
 
 const props = defineProps({
   email: {
@@ -85,10 +102,26 @@ const verifyCodeData = reactive({
   uuid: ""
 });
 
+const countryOptions = [
+  {
+    label: t("web.gfuc.country_FR" /** 法国 */),
+    value: Country.FR
+  },
+  {
+    label: t("web.gfuc.country_IT" /** 意大利 */),
+    value: Country.IT
+  },
+  {
+    label: t("web.gfuc.country_NL" /** 荷兰 */),
+    value: Country.NL
+  }
+];
+
 const codeUrl = computed(() =>
   verifyCodeData.image ? "data:image/gif;base64," + verifyCodeData.image : ""
 );
 const loginData = reactive({
+  country: sessionStorage.getItem("setSite") || Country.FR,
   email: props.email || "",
   password: "",
   code: ""
@@ -151,12 +184,14 @@ const handleLogin = async () => {
       try {
         loading.value = true;
         await userStore.login({
+          country: loginData.country as Country,
           email: loginData.email,
           password: await rsaEncryptPwd(loginData.password),
           code: loginData.code,
           uuid: verifyCodeData.uuid
         });
         await nextTick();
+        sessionStorage.removeItem("setSite");
         emit("success", "login");
       } catch (error: any) {
         console.error(error);

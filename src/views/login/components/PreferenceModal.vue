@@ -18,7 +18,8 @@
       </p>
 
       <el-form :model="form" label-position="top">
-        <el-form-item
+        <!-- 0416登录页面已经有走货国家，这里暂时隐藏，后期可删除 -->
+        <!-- <el-form-item
           :label="$t('web.gfuc.your_default_site' /** 你默认的站点是 **/)"
         >
           <el-select
@@ -33,7 +34,7 @@
               :value="item.value"
             />
           </el-select>
-        </el-form-item>
+        </el-form-item> -->
 
         <el-form-item
           :label="$t('web.gfuc.your_default_timezone' /** 您默认的时区是 **/)"
@@ -122,14 +123,6 @@ const form = reactive({
   timezone: defaultTimezone,
   lang: defaultLang
 });
-
-const handleSiteChange = (val: string) => {
-  const config = siteLinkageMap[val];
-  if (config) {
-    form.timezone = config.timezone;
-    form.lang = config.lang;
-  }
-};
 
 const handleSubmit = async () => {
   await appStore.setPreferences({

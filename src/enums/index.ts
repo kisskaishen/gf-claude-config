@@ -23,6 +23,13 @@ export enum Timezone {
   Local = "Local"
 }
 
+/**走国家选项 */
+export enum Country {
+  FR = "FR",
+  IT = "IT",
+  NL = "NL"
+}
+
 /** 是否绑定客户信息 */
 export enum UserBindStatus {
   /** 未绑定 */
