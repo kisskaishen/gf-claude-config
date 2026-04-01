@@ -59,7 +59,7 @@ export function postLogin(data: {
   /** 验证码 */ uuid: string; /*** 验证码UUID */
 }) {
   return request({
-    url: "/user/info",
+    url: "/user/login",
     method: "post",
     data
   });
@@ -67,7 +67,7 @@ export function postLogin(data: {
 /** 获取用户信息 */
 export function getUserInfo() {
   return request({
-    url: `/user/info`,
+    url: `/gfuc/userinfo`,
     method: "get"
   });
 }
