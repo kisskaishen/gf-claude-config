@@ -67,7 +67,7 @@ export function postLogin(data: {
 /** 获取用户信息 */
 export function getUserInfo() {
   return request({
-    url: `/user/info`,
+    url: `/gfuc/userinfo`,
     method: "get"
   });
 }
@@ -76,7 +76,7 @@ export function getUserInfo() {
  */
 export function postUpdateUserInfo(data: any) {
   return request({
-    url: "/userInfo/update",
+    url: "/userinfo/update",
     method: "post",
     data
   });

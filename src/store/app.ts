@@ -52,7 +52,6 @@ export const useAppStore = defineStore(
     }) => {
       await userStore.updateUserInfo({
         defaultLanguage: data.lang,
-        defaultSite: data.site,
         defaultTimeZone: data.timezone
       });
       site.value = data.site;

@@ -113,7 +113,7 @@ const handleSwitch = (
 
 const handleSuccess = async (type: "login" | "register") => {
   if (type === "login") {
-    if (userStore.hasSetPreference) {
+    if (userStore.hasSetPreference || appStore.timezone) {
       ElMessage.success(t("web.gfuc.login_successful" /** 登录成功 **/));
       redirectToHome();
     } else {
