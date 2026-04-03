@@ -76,7 +76,7 @@ export function getUserInfo() {
  */
 export function postUpdateUserInfo(data: any) {
   return request({
-    url: "/userInfo/update",
+    url: "/userinfo/update",
     method: "post",
     data
   });
