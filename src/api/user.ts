@@ -67,7 +67,7 @@ export function postLogin(data: {
 /** 获取用户信息 */
 export function getUserInfo() {
   return request({
-    url: `/gfuc/userinfo`,
+    url: `/userinfo`,
     method: "get"
   });
 }
