@@ -9,6 +9,8 @@ export function setupRouteGuard(router: Router) {
     const userStore = useUserStoreWithOut();
     const appStore = useAppStore();
 
+    console.log("+++", userStore, appStore);
+
     if (userStore.token && !userStore.isUserInfoUpdated) {
       await userStore.fetchUserInfo();
     }
@@ -18,9 +20,9 @@ export function setupRouteGuard(router: Router) {
       appStore.setLoadedI18nMap(true);
     }
 
-    if (userStore.token && userStore.hasSetPreference) {
+    if (userStore.token) {
       if (to.path === "/login") {
-        // 已登录，如果已设置偏好则跳转到首页，否则留在登录页设置偏好
+        // 已登录，跳转到首页
         next({ path: "/" });
       } else {
         next();
