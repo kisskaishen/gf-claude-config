@@ -15,6 +15,7 @@ export function postCheckAccount(data: { email: string }) {
  * 用户注册
  */
 export function postRegister(data: {
+  country: string;
   email: string;
   password: string;
   verificationCode: string;

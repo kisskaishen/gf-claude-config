@@ -95,16 +95,18 @@
   </el-form>
 </template>
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import { useI18n } from "vue-i18n";
 import { postRegister, postSendVerificationCode } from "@/api/user";
 import { rsaEncryptPwd } from "@/utils/crypto";
+import { useUserStore } from "@/store/user";
 
 const { t } = useI18n();
 
 const props = defineProps<{
-  registerData: { email: string; password: string };
+  registerData: { country: string; email: string; password: string };
 }>();
+const userStore = useUserStore();
 
 const emit = defineEmits(["switch", "success"]);
 
@@ -169,7 +171,8 @@ const handleVerify = async () => {
   try {
     const code = verifyCode.value.join("");
     const encryptedPwd = await rsaEncryptPwd(props.registerData.password);
-    await postRegister({
+    const res = await postRegister({
+      country: props.registerData.country,
       email: props.registerData.email,
       password: encryptedPwd,
       verificationCode: code,
@@ -180,7 +183,16 @@ const handleVerify = async () => {
         version: "1.0.0"
       })
     });
-    emit("success", "register");
+
+    if (res.token) {
+      userStore.setLoginInfo(res);
+    }
+
+    await nextTick();
+    sessionStorage.removeItem("setSite");
+    emit("success", "login");
+
+    // emit("success", "register");
   } catch (error) {
     // 错误处理已在 request.ts 中统一处理
   } finally {
