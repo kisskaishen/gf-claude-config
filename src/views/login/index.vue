@@ -95,6 +95,7 @@ const showPreferenceModal = ref(false);
 
 const mode = ref<"login" | "register" | "verify">("login");
 const registerData = ref({
+  country: "",
   email: "",
   password: "",
   agree1: false,
@@ -120,6 +121,7 @@ const handleSuccess = async (type: "login" | "register") => {
       showPreferenceModal.value = true;
     }
   } else {
+    // 这段pass了，因为注册完成后直接就默认登陆了
     ElMessage.success(
       t("web.gfuc.registration_success_please_login" /** 注册成功，请登录 **/)
     );

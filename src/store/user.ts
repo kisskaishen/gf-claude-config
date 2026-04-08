@@ -110,6 +110,10 @@ export const useUserStore = defineStore(
       code: string;
     }) => {
       const res = await postLogin(data);
+      setLoginInfo(res);
+    };
+
+    const setLoginInfo = (res: any) => {
       if (res) {
         token.value = res.token;
         userInfo.value = res.loginInfo.userInfo;
@@ -141,6 +145,7 @@ export const useUserStore = defineStore(
       userInfo,
       login,
       logout,
+      setLoginInfo,
       hasSetPreference,
       fetchUserInfo,
       updateUserInfo,
