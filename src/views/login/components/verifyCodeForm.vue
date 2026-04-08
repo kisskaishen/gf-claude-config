@@ -129,6 +129,7 @@ const startTimer = () => {
 
 const handleSendCode = async () => {
   await postSendVerificationCode({
+    country: props.registerData.country,
     email: props.registerData.email
   });
   startTimer();

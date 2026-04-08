@@ -315,7 +315,10 @@ const handleRegister = async () => {
       }
       loading.value = true;
       try {
-        await postCheckAccount({ email: registerData.email });
+        await postCheckAccount({
+          country: registerData.country,
+          email: registerData.email
+        });
         emit("switch", "verify", {
           ...registerData
         });

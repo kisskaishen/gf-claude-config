@@ -3,7 +3,7 @@ import request from "@/utils/request";
 /**
  * 用户注册-账号核对
  */
-export function postCheckAccount(data: { email: string }) {
+export function postCheckAccount(data: { country: string; email: string }) {
   return request({
     url: "/user/email/check",
     method: "post",
@@ -33,7 +33,10 @@ export function postRegister(data: {
  * 发送邮箱验证码
  */
 
-export function postSendVerificationCode(data: { email: string }) {
+export function postSendVerificationCode(data: {
+  country: string;
+  email: string;
+}) {
   return request({
     url: "/user/register/email/code",
     method: "post",
