@@ -74,11 +74,7 @@ export const useUserStore = defineStore(
     const isUserInfoUpdated = ref(false);
 
     const hasSetPreference = computed(() => {
-      return (
-        userInfo.value?.defaultLanguage &&
-        userInfo.value?.defaultSite &&
-        userInfo.value?.defaultTimeZone
-      );
+      return userInfo.value?.defaultLanguage && userInfo.value?.defaultTimeZone;
     });
     const fetchUserInfo = async () => {
       const res = await getUserInfo();
