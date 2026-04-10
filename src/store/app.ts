@@ -46,11 +46,15 @@ export const useAppStore = defineStore(
     };
 
     const setPreferences = async (data: {
+      country: string;
+      account: string;
       site: Site;
       timezone: string;
       lang: Lang;
     }) => {
       await userStore.updateUserInfo({
+        account: data.account,
+        country: data.country,
         defaultLanguage: data.lang,
         defaultTimeZone: data.timezone
       });

@@ -86,6 +86,10 @@ const props = defineProps({
   modelValue: {
     type: Boolean,
     default: false
+  },
+  loginOtherInfo: {
+    type: String,
+    default: ""
   }
 });
 const emit = defineEmits(["success", "update:modelValue"]);
@@ -126,6 +130,8 @@ const form = reactive({
 
 const handleSubmit = async () => {
   await appStore.setPreferences({
+    country: JSON.parse(props.loginOtherInfo).country,
+    account: JSON.parse(props.loginOtherInfo).email,
     site: form.site,
     timezone: form.timezone!,
     lang: form.lang!

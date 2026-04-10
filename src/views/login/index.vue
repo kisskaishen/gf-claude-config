@@ -65,6 +65,7 @@
     <PreferenceModal
       v-if="showPreferenceModal"
       v-model="showPreferenceModal"
+      :loginOtherInfo="loginOtherInfo"
       @success="redirectToHome"
     />
   </div>
@@ -102,6 +103,8 @@ const registerData = ref({
   agree2: false
 });
 
+const loginOtherInfo = ref("");
+
 const handleSwitch = (
   _mode: "login" | "register" | "verify",
   data?: typeof registerData.value
@@ -112,13 +115,14 @@ const handleSwitch = (
   mode.value = _mode;
 };
 
-const handleSuccess = async (type: "login" | "register") => {
+const handleSuccess = async (type: "login" | "register", otherInfo = "") => {
   console.log(userStore.hasSetPreference, "认证");
   if (type === "login") {
     if (userStore.hasSetPreference) {
       ElMessage.success(t("web.gfuc.login_successful" /** 登录成功 **/));
       redirectToHome();
     } else {
+      loginOtherInfo.value = otherInfo;
       showPreferenceModal.value = true;
     }
   } else {

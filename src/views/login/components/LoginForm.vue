@@ -192,7 +192,14 @@ const handleLogin = async () => {
         });
         await nextTick();
         sessionStorage.removeItem("setSite");
-        emit("success", "login");
+        emit(
+          "success",
+          "login",
+          JSON.stringify({
+            country: loginData.country,
+            email: loginData.email
+          })
+        );
       } catch (error: any) {
         console.error(error);
 
