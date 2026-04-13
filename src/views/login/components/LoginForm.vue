@@ -87,7 +87,6 @@ const emit = defineEmits(["switch", "success"]);
 const { t } = useI18n();
 
 const userStore = useUserStore();
-const appStore = useAppStore();
 
 const props = defineProps({
   email: {
