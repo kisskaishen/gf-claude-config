@@ -13,10 +13,19 @@
     >
       <el-select v-model="loginData.country" class="full-width">
         <el-option
-          v-for="item in countryOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
+          :key="Country.FR"
+          :label="$t('web.gfuc.country_FR' /** 法国 */)"
+          :value="Country.FR"
+        />
+        <el-option
+          :key="Country.IT"
+          :label="$t('web.gfuc.country_IT' /** 意大利 */)"
+          :value="Country.IT"
+        />
+        <el-option
+          :key="Country.NL"
+          :label="$t('web.gfuc.country_NL' /** 荷兰 */)"
+          :value="Country.NL"
         />
       </el-select>
     </el-form-item>
@@ -80,7 +89,6 @@ import { useUserStore } from "@/store/user";
 import { rsaEncryptPwd } from "@/utils/crypto";
 import { getVerifyCode } from "@/api/user";
 import { Country } from "@/enums/index";
-import { useAppStore } from "@/store/app";
 
 const emit = defineEmits(["switch", "success"]);
 
@@ -100,21 +108,6 @@ const verifyCodeData = reactive({
   image: "",
   uuid: ""
 });
-
-const countryOptions = ref([
-  {
-    label: t("web.france" /** 法国 */),
-    value: Country.FR
-  },
-  {
-    label: t("web.italy" /** 意大利 */),
-    value: Country.IT
-  },
-  {
-    label: t("web.netherlands" /** 荷兰 */),
-    value: Country.NL
-  }
-]);
 
 const codeUrl = computed(() =>
   verifyCodeData.image ? "data:image/gif;base64," + verifyCodeData.image : ""
