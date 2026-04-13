@@ -30,7 +30,7 @@ export enum Country {
   NL = "NL"
 }
 
-/** 是否绑定客户信息 */
+/** 是否绑定客户信息,废弃 */
 export enum UserBindStatus {
   /** 未绑定 */
   unbound = 0,

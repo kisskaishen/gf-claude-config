@@ -19,7 +19,7 @@ export const useAppStore = defineStore(
 
     const timezone = ref(userStore.userInfo?.defaultTimeZone);
 
-    const site = ref(userStore.userInfo?.defaultSite);
+    const site = ref(userStore.userInfo?.defaultSite || Site.fr);
 
     const loadedI18nMap = ref(false);
 

@@ -71,6 +71,12 @@ export const useUserStore = defineStore(
     const token = ref("");
 
     const userInfo = ref<UserInfo | null>(null);
+    const loginInfo = ref(
+      {} as {
+        userInfo: UserInfo;
+        shipperCustomerList: [];
+      }
+    );
     const isUserInfoUpdated = ref(false);
 
     const hasSetPreference = computed(() => {
@@ -112,6 +118,7 @@ export const useUserStore = defineStore(
     const setLoginInfo = (res: any) => {
       if (res) {
         token.value = res.token;
+        loginInfo.value = res.loginInfo;
         userInfo.value = res.loginInfo.userInfo;
         if (!appStore.site) {
           appStore.setSite(userInfo.value?.defaultSite || Site.fr);
@@ -139,6 +146,7 @@ export const useUserStore = defineStore(
     return {
       token,
       userInfo,
+      loginInfo,
       login,
       logout,
       setLoginInfo,
@@ -151,7 +159,7 @@ export const useUserStore = defineStore(
   {
     persist: {
       key: "csd-gfuc-web-user-state",
-      pick: ["token", "userInfo"]
+      pick: ["token", "userInfo", "loginInfo"]
     }
   }
 );
