@@ -73,7 +73,7 @@
   </el-form>
 </template>
 <script setup lang="ts">
-import { ref, reactive, computed, nextTick, watch, onMounted } from "vue";
+import { ref, reactive, computed, nextTick, watch } from "vue";
 import { type FormInstance, type FormRules } from "element-plus";
 import { useI18n } from "vue-i18n";
 import { useUserStore } from "@/store/user";
@@ -102,12 +102,20 @@ const verifyCodeData = reactive({
   uuid: ""
 });
 
-const countryOptions = ref<
+const countryOptions = ref([
   {
-    label: string;
-    value: Country;
-  }[]
->([]);
+    label: t("web.france" /** 法国 */),
+    value: Country.FR
+  },
+  {
+    label: t("web.italy" /** 意大利 */),
+    value: Country.IT
+  },
+  {
+    label: t("web.netherlands" /** 荷兰 */),
+    value: Country.NL
+  }
+]);
 
 const codeUrl = computed(() =>
   verifyCodeData.image ? "data:image/gif;base64," + verifyCodeData.image : ""
@@ -117,23 +125,6 @@ const loginData = reactive({
   email: props.email || "",
   password: "",
   code: ""
-});
-
-onMounted(() => {
-  countryOptions.value = [
-    {
-      label: t("web.france" /** 法国 */),
-      value: Country.FR
-    },
-    {
-      label: t("web.italy" /** 意大利 */),
-      value: Country.IT
-    },
-    {
-      label: t("web.netherlands" /** 荷兰 */),
-      value: Country.NL
-    }
-  ];
 });
 
 watch(
