@@ -34,11 +34,11 @@
               $t("web.gfuc.user_center" /** 用户中心 **/)
             }}</span>
           </div>
-
           <!-- 登录表单 -->
           <LoginForm
             v-if="mode === 'login'"
             :email="registerData.email"
+            :country="registerData.country"
             @success="handleSuccess"
             @switch="handleSwitch"
           />

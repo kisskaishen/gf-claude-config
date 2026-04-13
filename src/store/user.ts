@@ -120,17 +120,9 @@ export const useUserStore = defineStore(
         token.value = res.token;
         loginInfo.value = res.loginInfo;
         userInfo.value = res.loginInfo.userInfo;
-        if (!appStore.site) {
-          appStore.setSite(userInfo.value?.defaultSite || Site.fr);
-        }
-        if (!appStore.lang) {
-          appStore.setLang(userInfo.value?.defaultLanguage || getInitialLang());
-        }
-        if (!appStore.timezone) {
-          appStore.setTimezone(
-            userInfo.value?.defaultTimeZone || Timezone.Local
-          );
-        }
+        appStore.setSite(userInfo.value?.country);
+        appStore.setLang(userInfo.value?.defaultLanguage || getInitialLang());
+        appStore.setTimezone(userInfo.value?.defaultTimeZone || Timezone.Local);
       }
       dataFinder.initUser();
       isUserInfoUpdated.value = true;

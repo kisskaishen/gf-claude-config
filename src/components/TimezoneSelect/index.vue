@@ -15,6 +15,7 @@
       <div class="timezone-option">
         <img :src="item.icon" class="flag-icon-small" />
         <span>{{ item.label }}</span>
+        <span style="margin-left: 8px">{{ item.time }}</span>
       </div>
     </template>
   </select-dropdown>
@@ -24,7 +25,7 @@
 import { computed } from "vue";
 import { useAppStore } from "@/store/app";
 import SelectDropdown from "@/components/SelectDropdown/index.vue";
-import { Timezone } from "@/enums";
+import { Timezone, TimezoneArea } from "@/enums";
 
 const appStore = useAppStore();
 
@@ -35,6 +36,7 @@ const timezoneOptions = computed(() =>
     return {
       label: value,
       value,
+      time: TimezoneArea[key],
       // 使用 new URL 动态获取资源路径
       icon: new URL(`../../assets/timezones/${fileName}.png`, import.meta.url)
         .href

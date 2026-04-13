@@ -75,7 +75,12 @@
       <a
         href="javascript:;"
         class="link"
-        @click="$emit('switch', 'register', { email: loginData.email })"
+        @click="
+          $emit('switch', 'register', {
+            email: loginData.email,
+            country: loginData.country
+          })
+        "
         >{{ $t("web.gfuc.go_to_register" /** 去注册 */) }}</a
       >
     </div>

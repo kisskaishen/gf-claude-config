@@ -130,8 +130,10 @@ const form = reactive({
 
 const handleSubmit = async () => {
   await appStore.setPreferences({
-    country: JSON.parse(props.loginOtherInfo).country,
-    account: JSON.parse(props.loginOtherInfo).email,
+    country: props.loginOtherInfo
+      ? JSON.parse(props.loginOtherInfo).country
+      : "",
+    account: props.loginOtherInfo ? JSON.parse(props.loginOtherInfo).email : "",
     site: form.site,
     timezone: form.timezone!,
     lang: form.lang!

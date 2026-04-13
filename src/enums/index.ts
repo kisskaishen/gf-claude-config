@@ -23,6 +23,14 @@ export enum Timezone {
   Local = "Local"
 }
 
+export enum TimezoneArea {
+  Europe_Paris = "UTC +1",
+  Europe_Rome = "UTC +1 ",
+  Europe_Amsterdam = "UTC +1  ",
+  Asia_Shanghai = "UTC+8",
+  Local = ""
+}
+
 /**走国家选项 */
 export enum Country {
   FR = "FR",
