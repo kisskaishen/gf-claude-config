@@ -9,6 +9,7 @@
     <span class="menu-item timezone-item" v-if="currentTimezone">
       <img :src="currentTimezone.icon" class="flag-icon" alt="timezone" />
       {{ currentTimezone.label }}
+      <span style="margin-left: 4px">{{ currentTimezone.time }}</span>
     </span>
 
     <template #option="{ item }">
