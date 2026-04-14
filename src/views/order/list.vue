@@ -36,7 +36,6 @@
           :label="$t('gfuc.cancelled' /** 已取消 **/)"
           name="cancelled"
         />
-        />
       </el-tabs>
       <div class="order-content">
         <TableLayout
@@ -414,7 +413,7 @@ onMounted(() => {
   margin-bottom: 16px;
 
   :deep(.el-tabs__item) {
-    height: auto;
+    height: 28px;
   }
 
   :deep(.el-tabs__header) {
@@ -422,8 +421,10 @@ onMounted(() => {
     border-bottom: none;
   }
 
-  :deep(.el-tabs__nav-wrap::after) {
-    display: none;
+  :deep(.el-tabs__nav-wrap) {
+    &::after {
+      height: 1px;
+    }
   }
 }
 

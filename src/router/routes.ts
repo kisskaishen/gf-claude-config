@@ -26,52 +26,51 @@ export const routes: RouteRecordRaw[] = [
       }
     ]
   },
-  // {
-  //   path: "/order",
-  //   component: () => import("@/layout/index.vue"),
-  //   redirect: "/order/single",
-  //   meta: {
-  //     title: "订单管理",
-  //     icon: "order",
-  //     i18n: "web.gfuc.order_management",
-  //     requireAuth: true
-  //   },
-  //   children: [
-  //     {
-  //       path: "single",
-  //       name: "SingleOrder",
-  //       // component: () => import("@/views/order/single.vue"),
-  //       component: () => import("@/views/home/index.vue"),
-  //       meta: {
-  //         title: "单票下单",
-  //         i18n: "web.gfuc.single_ticket_order",
-  //         requireAuth: true
-  //       }
-  //     },
-  //     {
-  //       path: "batch",
-  //       name: "BatchOrder",
-  //       // component: () => import("@/views/order/batch.vue"),
-  //       component: () => import("@/views/home/index.vue"),
-  //       meta: {
-  //         title: "批量下单",
-  //         i18n: "web.gfuc.batch_order",
-  //         requireAuth: true
-  //       }
-  //     },
-  //     {
-  //       path: "list",
-  //       name: "OrderList",
-  //       // component: () => import("@/views/order/list.vue"),
-  //       component: () => import("@/views/home/index.vue"),
-  //       meta: {
-  //         title: "订单列表",
-  //         i18n: "web.gfuc.order_list",
-  //         requireAuth: true
-  //       }
-  //     }
-  //   ]
-  // },
+  {
+    path: "/order",
+    component: () => import("@/layout/index.vue"),
+    redirect: "/order/single",
+    meta: {
+      title: "订单管理",
+      icon: "order",
+      i18n: "web.gfuc.order_management",
+      requireAuth: true
+    },
+    children: [
+      {
+        path: "single",
+        name: "SingleOrder",
+        // component: () => import("@/views/order/single.vue"),
+        component: () => import("@/views/home/index.vue"),
+        meta: {
+          title: "单票下单",
+          i18n: "web.gfuc.single_ticket_order",
+          requireAuth: true
+        }
+      },
+      {
+        path: "batch",
+        name: "BatchOrder",
+        // component: () => import("@/views/order/batch.vue"),
+        component: () => import("@/views/home/index.vue"),
+        meta: {
+          title: "批量下单",
+          i18n: "web.gfuc.batch_order",
+          requireAuth: true
+        }
+      },
+      {
+        path: "list",
+        name: "OrderList",
+        component: () => import("@/views/order/list.vue"),
+        meta: {
+          title: "订单列表",
+          i18n: "web.gfuc.order_list",
+          requireAuth: true
+        }
+      }
+    ]
+  },
   {
     path: "/finance",
     component: () => import("@/layout/index.vue"),
