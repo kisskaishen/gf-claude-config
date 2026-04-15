@@ -85,7 +85,10 @@ export const useUserStore = defineStore(
     const fetchUserInfo = async () => {
       const res = await getUserInfo();
       if (res) {
-        userInfo.value = res;
+        console.log(res);
+        setLoginInfo(res);
+
+        // userInfo.value = res;
         isUserInfoUpdated.value = true;
       }
     };
@@ -117,7 +120,7 @@ export const useUserStore = defineStore(
 
     const setLoginInfo = (res: any) => {
       if (res) {
-        token.value = res.token;
+        token.value = res?.token;
         loginInfo.value = res.loginInfo;
         userInfo.value = res.loginInfo.userInfo;
         appStore.setSite(userInfo.value?.country);
