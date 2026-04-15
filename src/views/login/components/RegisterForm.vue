@@ -179,7 +179,9 @@ import { useI18n } from "vue-i18n";
 import AgreementModal from "./AgreementModal.vue";
 import { postCheckAccount } from "@/api/user";
 import { Country } from "@/enums/index";
+import { useAppStore } from "@/store/app";
 
+const appStore = useAppStore();
 const { t, locale } = useI18n();
 
 const emit = defineEmits(["switch", "success"]);
@@ -304,6 +306,7 @@ const strength = computed(() => {
 
 const handleRegister = async () => {
   if (!registerFormRef.value) return;
+  appStore.setSite(registerData.country);
 
   await registerFormRef.value.validate(async (valid) => {
     if (valid) {

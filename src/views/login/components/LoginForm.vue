@@ -94,7 +94,9 @@ import { useUserStore } from "@/store/user";
 import { rsaEncryptPwd } from "@/utils/crypto";
 import { getVerifyCode } from "@/api/user";
 import { Country } from "@/enums/index";
+import { useAppStore } from "@/store/app";
 
+const appStore = useAppStore();
 const emit = defineEmits(["switch", "success"]);
 
 const { t } = useI18n();
@@ -180,6 +182,7 @@ const handleLogin = async () => {
     if (valid) {
       try {
         loading.value = true;
+        appStore.setSite(loginData.country);
         await userStore.login({
           country: loginData.country as Country,
           email: loginData.email,
