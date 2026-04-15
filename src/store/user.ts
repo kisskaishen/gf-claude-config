@@ -87,7 +87,8 @@ export const useUserStore = defineStore(
       if (res) {
         console.log(res);
         setLoginInfo({
-          loginInfo: res
+          loginInfo: res,
+          token: token.value
         });
 
         // userInfo.value = res;
@@ -122,7 +123,7 @@ export const useUserStore = defineStore(
 
     const setLoginInfo = (res: any) => {
       if (res) {
-        token.value = res?.token;
+        token.value = res.token;
         loginInfo.value = res.loginInfo;
         userInfo.value = res.loginInfo.userInfo;
         appStore.setSite(userInfo.value?.country);
