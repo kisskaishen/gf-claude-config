@@ -100,7 +100,9 @@ import { useI18n } from "vue-i18n";
 import { postRegister, postSendVerificationCode } from "@/api/user";
 import { rsaEncryptPwd } from "@/utils/crypto";
 import { useUserStore } from "@/store/user";
+import { useAppStore } from "@/store/app";
 
+const appStore = useAppStore();
 const { t } = useI18n();
 
 const props = defineProps<{
@@ -170,6 +172,7 @@ const handleVerify = async () => {
   }
   loading.value = true;
   try {
+    appStore.setSite(props.registerData.country);
     const code = verifyCode.value.join("");
     const encryptedPwd = await rsaEncryptPwd(props.registerData.password);
     const res = await postRegister({
