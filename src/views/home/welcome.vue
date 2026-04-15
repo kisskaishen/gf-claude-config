@@ -1,5 +1,5 @@
 <template>
-  <div class="home-welcome">
+  <div class="welcome">
     <div class="slogan-container">
       <div class="img-container">
         <img :src="iconLeftCar" alt="" />Drive Efficiency,<br />
@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: "Home"
+  name: "Welcome"
 });
 
 import iconLeftCar from "@/assets/home/icon-left-car.png";
@@ -23,7 +23,7 @@ import imgWelcomeCar from "@/assets/home/img-welcome-car.png";
 </script>
 
 <style scoped lang="scss">
-.home-welcome {
+.welcome {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -34,44 +34,35 @@ import imgWelcomeCar from "@/assets/home/img-welcome-car.png";
   max-width: 1168px;
   min-height: calc(100vh - var(--header-height) - var(--tags-height) - 16px);
   margin: 0 auto;
+}
 
-  /* 文字容器，控制整体排版 */
-  .slogan-container {
+/* 文字容器，控制整体排版 */
+.slogan-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 300px;
+  margin-top: 80px;
+  margin-left: -520px;
+  font-size: 48px;
+  font-weight: 700;
+  color: #fc4c02;
+  text-align: center;
+
+  .img-container {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    min-width: 300px;
-    margin-top: 80px;
-    margin-left: -520px;
-    font-size: 48px;
-    font-weight: 700;
-    color: #fc4c02;
-    text-align: center;
-
-    .img-container {
-      display: flex;
-      align-items: center;
-    }
-  }
-
-  .welcome-bg-container {
-    margin-top: -200px;
-    margin-right: -340px;
-
-    img {
-      max-width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
+    align-items: center;
   }
 }
 
-.empty-icon {
-  flex: 0 0 auto;
-}
+.welcome-bg-container {
+  margin-top: -200px;
+  margin-right: -340px;
 
-.empty-text {
-  font-size: var(--font-size-base);
-  color: var(--text-color-tertiary);
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
 }
 </style>

@@ -1,77 +1,79 @@
 <template>
-  <div class="home-welcome">
-    <div class="slogan-container">
-      <div class="img-container">
-        <img :src="iconLeftCar" alt="" />Drive Efficiency,<br />
+  <div class="overview">
+    <div class="welcome">
+      <h1>您好：***</h1>
+    </div>
+    <div class="menu flex justify-center text-center">
+      <div class="menu-item amount-card flex-3">
+        <div class="card-title">总下单金额</div>
+        <div class="card-amount">€ 5,415,654.51</div>
+        <div class="divider"></div>
+        <div class="detail-link">查看明细</div>
       </div>
-      <span class="second-line">Deliver Trust.</span>
+      <div class="menu-item flex-1 text-yellow-500">我的</div>
+      <div class="menu-item flex-1">我的</div>
     </div>
-    <div class="welcome-bg-container">
-      <img :src="imgWelcomeCar" alt="" />
-    </div>
-    <!-- <div class="empty-text">{{ $t("gfuc.no_data_available") }}</div> -->
   </div>
 </template>
 
 <script setup lang="ts">
 defineOptions({
-  name: "Home"
+  name: "Overview"
 });
-
-import iconLeftCar from "@/assets/home/icon-left-car.png";
-import imgWelcomeCar from "@/assets/home/img-welcome-car.png";
 </script>
 
 <style scoped lang="scss">
-.home-welcome {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
+.menu {
+  padding: 20px;
+}
+
+.amount-card {
   width: 100%;
-  max-width: 1168px;
-  min-height: calc(100vh - var(--header-height) - var(--tags-height) - 16px);
-  margin: 0 auto;
-
-  /* 文字容器，控制整体排版 */
-  .slogan-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    min-width: 300px;
-    margin-top: 80px;
-    margin-left: -520px;
-    font-size: 48px;
-    font-weight: 700;
-    color: #fc4c02;
-    text-align: center;
-
-    .img-container {
-      display: flex;
-      align-items: center;
-    }
-  }
-
-  .welcome-bg-container {
-    margin-top: -200px;
-    margin-right: -340px;
-
-    img {
-      max-width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-  }
+  max-width: 1200px;
+  padding: 40px 32px;
+  background-color: #fff5f0; /* 浅粉色背景，匹配原图 */
+  border-left: 4px solid #ff5722; /* 左侧橙色竖线 */
+  border-radius: 16px;
 }
 
-.empty-icon {
-  flex: 0 0 auto;
+/* 标题文字 */
+.card-title {
+  margin-bottom: 24px;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #4a5568;
 }
 
-.empty-text {
-  font-size: var(--font-size-base);
-  color: var(--text-color-tertiary);
+/* 金额数字 */
+.card-amount {
+  margin-bottom: 32px;
+  font-size: 88px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-primary); /* 橙色主色 */
+  letter-spacing: 2px;
+}
+
+/* 分隔线 */
+.divider {
+  width: 100%;
+  height: 1px;
+  margin-bottom: 24px;
+  background-color: #ffccb3;
+}
+
+/* 查看明细按钮/文字 */
+.detail-link {
+  display: inline-block;
+  font-size: 48px;
+  font-weight: 600;
+  color: #ff5722;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 </style>
