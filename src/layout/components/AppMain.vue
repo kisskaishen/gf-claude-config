@@ -26,11 +26,7 @@ const tagsViewStore = useTagsViewStore();
 const cachedViews = computed(() => tagsViewStore.cachedViews);
 
 const checkPermission = (_route: RouteLocationNormalizedLoadedGeneric) => {
-  if (
-    _route.meta.requireAuth &&
-    loginInfo?.userInfo.userIdentity === 1 &&
-    loginInfo?.shipperCustomerList.length === 0
-  ) {
+  if (_route.meta.requireAuth && loginInfo?.shipperCustomerList.length === 0) {
     return false;
   }
   return true;
