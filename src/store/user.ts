@@ -86,7 +86,9 @@ export const useUserStore = defineStore(
       const res = await getUserInfo();
       if (res) {
         console.log(res);
-        setLoginInfo(res);
+        setLoginInfo({
+          loginInfo: res
+        });
 
         // userInfo.value = res;
         isUserInfoUpdated.value = true;
