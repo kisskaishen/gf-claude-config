@@ -73,5 +73,8 @@ export default {
   "gfuc.no_data_available": "Nessun dato disponibile",
   "web.gfuc.country_FR": "Francia",
   "web.gfuc.country_IT": "Italia",
-  "web.gfuc.country_NL": "Nederlandse"
+  "web.gfuc.country_NL": "Nederlandse",
+  "web.gfuc.french_site": "Stazione (Francia)",
+  "web.gfuc.italian_site": "Stazione (Italia)",
+  "web.gfuc.dutch_site": "Stazione (Paesi Bassi)"
 };

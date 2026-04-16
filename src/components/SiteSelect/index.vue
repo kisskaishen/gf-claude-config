@@ -26,20 +26,22 @@ const appStore = useAppStore();
 
 const userStore = useUserStore();
 
-const options = [
-  {
-    value: Site.fr,
-    label: t("gfuc.french_site" /** 法国站 **/)
-  },
-  {
-    value: Site.it,
-    label: t("gfuc.italian_site" /** 意大利站 **/)
-  },
-  {
-    value: Site.nl,
-    label: t("gfuc.dutch_site" /** 荷兰站 **/)
-  }
-];
+const options = computed(() => {
+  return [
+    {
+      value: Site.fr,
+      label: t("web.gfuc.french_site" /** 法国站 **/)
+    },
+    {
+      value: Site.it,
+      label: t("web.gfuc.italian_site" /** 意大利站 **/)
+    },
+    {
+      value: Site.nl,
+      label: t("web.gfuc.dutch_site" /** 荷兰站 **/)
+    }
+  ];
+});
 
 const handleSetSite = (val: any) => {
   appStore.setSite(val);
