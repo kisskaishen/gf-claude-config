@@ -163,13 +163,18 @@ const enum Status {
 }
 
 /** 日期类型选项 */
-const dateTypeOptions = [
-  { label: t("gfuc.submission_date" /** 提交日期 **/), value: DateType.Submit },
-  {
-    label: t("gfuc.recharge_date" /** 充值日期 **/),
-    value: DateType.Recharge
-  }
-];
+const dateTypeOptions = computed(() => {
+  return [
+    {
+      label: t("gfuc.submission_date" /** 提交日期 **/),
+      value: DateType.Submit
+    },
+    {
+      label: t("gfuc.recharge_date" /** 充值日期 **/),
+      value: DateType.Recharge
+    }
+  ];
+});
 
 /** 币种 */
 const enum Currency {
