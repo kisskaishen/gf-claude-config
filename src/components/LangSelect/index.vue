@@ -40,10 +40,10 @@ const options = [
   }
 ];
 const handleChange = (val: any) => {
-  appStore.setLang(val as Lang);
+  appStore.setLang(val);
   // 如果是在登录页面，就不刷新页面
   if (location.pathname !== "/login") {
-    location.reload();
+    // location.reload();
   }
 };
 </script>
