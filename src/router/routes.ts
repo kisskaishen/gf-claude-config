@@ -48,6 +48,16 @@ export const routes: RouteRecordRaw[] = [
         }
       },
       {
+        path: "detail",
+        name: "OrderDetail",
+        component: () => import("@/views/order/detail.vue"),
+        meta: {
+          title: "订单详情",
+          i18n: "web.gfuc.order_detail",
+          requireAuth: true
+        }
+      },
+      {
         path: "batch",
         name: "BatchOrder",
         // component: () => import("@/views/order/batch.vue"),

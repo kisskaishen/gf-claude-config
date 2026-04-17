@@ -15,7 +15,7 @@ export default {
         info: "#7a869a",
         text: {
           primary: "#fc4c02",
-          regular: "#364250",
+          regular: "#354250",
           secondary: "#4e5969",
           tertiary: "#7a869a",
           placeholder: "#bbbdbf"
@@ -28,6 +28,7 @@ export default {
         bg: {
           DEFAULT: "#f6f7fb",
           overlay: "#e6e8eb",
+          light: "#eff0f5",
           white: "#fff"
         }
       },
