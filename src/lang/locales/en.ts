@@ -74,5 +74,8 @@ export default {
   "gfuc.no_data_available": "No data available",
   "web.gfuc.country_FR": "France",
   "web.gfuc.country_IT": "Italy",
-  "web.gfuc.country_NL": "Netherlands"
+  "web.gfuc.country_NL": "Netherlands",
+  "web.gfuc.french_site": "France station",
+  "web.gfuc.italian_site": "Italy station",
+  "web.gfuc.dutch_site": "Netherlands station"
 };

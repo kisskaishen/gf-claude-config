@@ -11,10 +11,25 @@
       prop="country"
     >
       <el-select
-        :options="countryOptions"
         v-model="registerData.country"
         :placeholder="$t('web.gfuc.please_select_country' /** 请选择国家 */)"
-      />
+      >
+        <el-option
+          :key="Country.FR"
+          :label="$t('web.gfuc.country_FR' /** 法国 */)"
+          :value="Country.FR"
+        />
+        <el-option
+          :key="Country.IT"
+          :label="$t('web.gfuc.country_IT' /** 意大利 */)"
+          :value="Country.IT"
+        />
+        <el-option
+          :key="Country.NL"
+          :label="$t('web.gfuc.country_NL' /** 荷兰 */)"
+          :value="Country.NL"
+        />
+      </el-select>
     </el-form-item>
     <el-form-item :label="$t('web.gfuc.email' /** 邮箱 */)" prop="email">
       <el-input
@@ -198,21 +213,6 @@ const props = defineProps({
     })
   }
 });
-
-const countryOptions = [
-  {
-    label: t("web.gfuc.country_FR" /** 法国 */),
-    value: Country.FR
-  },
-  {
-    label: t("web.gfuc.country_IT" /** 意大利 */),
-    value: Country.IT
-  },
-  {
-    label: t("web.gfuc.country_NL" /** 荷兰 */),
-    value: Country.NL
-  }
-];
 
 // --- 注册逻辑 ---
 const registerData = reactive({

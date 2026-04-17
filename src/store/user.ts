@@ -85,7 +85,13 @@ export const useUserStore = defineStore(
     const fetchUserInfo = async () => {
       const res = await getUserInfo();
       if (res) {
-        userInfo.value = res;
+        console.log(res);
+        setLoginInfo({
+          loginInfo: res,
+          token: token.value
+        });
+
+        // userInfo.value = res;
         isUserInfoUpdated.value = true;
       }
     };

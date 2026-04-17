@@ -68,5 +68,9 @@ export default {
   "gfuc.no_data_available": "暂无数据",
   "web.gfuc.country_FR": "法国",
   "web.gfuc.country_IT": "意大利",
-  "web.gfuc.country_NL": "荷兰"
+  "web.gfuc.country_NL": "荷兰",
+
+  "web.gfuc.french_site": "法国站",
+  "web.gfuc.italian_site": "意大利站",
+  "web.gfuc.dutch_site": "荷兰站"
 };
