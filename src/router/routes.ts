@@ -40,8 +40,7 @@ export const routes: RouteRecordRaw[] = [
       {
         path: "single",
         name: "SingleOrder",
-        // component: () => import("@/views/order/single.vue"),
-        component: () => import("@/views/home/index.vue"),
+        component: () => import("@/views/order/single.vue"),
         meta: {
           title: "单票下单",
           i18n: "web.gfuc.single_ticket_order",

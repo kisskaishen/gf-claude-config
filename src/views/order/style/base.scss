@@ -1,0 +1,73 @@
+.step-container {
+  @apply flex;
+
+  .step-left {
+    @apply relative w-6;
+
+    .step-number,
+    .step-content-completed-icon {
+      @apply relative flex items-center justify-center rounded-full mt-[20px];
+
+      z-index: 2;
+      width: 24px;
+      height: 24px;
+      color: #fff;
+      background-color: #c0c4cc;
+    }
+
+    .step-line {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      z-index: 1;
+      width: 1px;
+      height: calc(100% + 20px);
+      border-right: 1px dashed #d4d6d9;
+      transform: translateX(-50%);
+    }
+
+    &.step-completed {
+      .step-number {
+        background-color: transparent !important;
+      }
+    }
+  }
+
+  .step-content {
+    @apply p-4 bg-white flex-1 rounded-lg;
+
+    .step-content-header {
+      @apply relative flex items-center justify-between mb-4 pl-2.5;
+
+      &::before {
+        @apply absolute top-1/2 -translate-y-1/2 left-0 w-1 h-[22px] bg-red-500 rounded-full;
+
+        content: "";
+      }
+
+      .step-content-header-title {
+        @apply text-lg font-bold relative;
+      }
+
+      .step-content-header-icon {
+        @apply w-5 h-5;
+      }
+    }
+
+    .form-actions {
+      text-align: left;
+    }
+  }
+
+  .summary-container {
+    @apply px-3;
+
+    .summary-content {
+      @apply flex text-sm gap-x-6 text-info;
+    }
+  }
+
+  .step-placeholder {
+    @apply text-sm gap-x-6 text-info;
+  }
+}
