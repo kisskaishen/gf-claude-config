@@ -80,7 +80,7 @@ import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
 import LoginForm from "./components/LoginForm.vue";
 import RegisterForm from "./components/RegisterForm.vue";
-import VerifyCodeForm from "./components/verifyCodeForm.vue";
+import VerifyCodeForm from "./components/VerifyCodeForm.vue";
 import PreferenceModal from "./components/PreferenceModal.vue";
 import LangSelect from "@/components/LangSelect/index.vue";
 import { useAppStore } from "@/store/app";
