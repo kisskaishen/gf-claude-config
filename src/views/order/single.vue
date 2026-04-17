@@ -66,6 +66,64 @@
         </div>
       </div>
     </div>
+
+    <el-dialog
+      v-model="successVisible"
+      :close-on-click-modal="false"
+      :close-on-press-escape="false"
+      width="480px"
+      class="success-dialog"
+    >
+      <div class="py-6 text-center">
+        <!-- 成功图标 -->
+        <div
+          class="inline-flex items-center justify-center w-20 h-20 mb-6 bg-green-100 rounded-full"
+        >
+          <svg
+            class="w-10 h-10 text-green-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
+
+        <!-- 标题 -->
+        <h3 class="mb-3 text-2xl font-bold text-gray-800">订单创建成功</h3>
+
+        <!-- 描述文本 -->
+        <p class="text-sm text-info">
+          您的订单已经创建成功，您可以查看订单或继续下单
+        </p>
+      </div>
+
+      <!-- 底部按钮 -->
+      <template #footer>
+        <div class="flex justify-center gap-4 py-4">
+          <el-button
+            size="large"
+            class="px-10 py-3 text-lg border-gray-300"
+            @click="handleViewOrder"
+          >
+            查看订单
+          </el-button>
+          <el-button
+            type="primary"
+            size="large"
+            class="px-10 py-3 text-lg"
+            @click="handleContinueBuy"
+          >
+            继续下单
+          </el-button>
+        </div>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -77,6 +135,9 @@ import RecipientInfo from "./components/RecipientInfo.vue";
 import ProductInfo from "./components/ProductInfo.vue";
 import ParcelInfo from "./components/ParcelInfo.vue";
 import SubmitOrder from "./components/SubmitOrder.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 defineOptions({
   name: "SingleOrder"
@@ -111,6 +172,8 @@ const formData = reactive({
   product: {},
   parcel: {}
 });
+
+const successVisible = ref(true);
 
 // 更新发件人数据
 const updateSenderData = (data) => {
@@ -156,8 +219,6 @@ const editStep = (step) => {
 
 // 提交订单
 const submitOrder = async () => {
-  console.log(parcelInfoRef.value, "====");
-
   // 先校验第四步的信息是否填写
   if (parcelInfoRef.value && parcelInfoRef.value.validate) {
     try {
@@ -193,6 +254,19 @@ const resetForm = () => {
   formData.recipient = {};
   formData.product = {};
   formData.parcel = {};
+};
+
+const handleViewOrder = () => {
+  successVisible.value = false;
+  router.push("/order/list");
+  // 重置表单
+  resetForm();
+};
+
+const handleContinueBuy = () => {
+  resetForm();
+
+  successVisible.value = false;
 };
 </script>
 

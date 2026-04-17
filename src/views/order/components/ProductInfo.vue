@@ -47,6 +47,7 @@
             :model="formData"
             :rules="rules"
             label-width="80px"
+            label-position="top"
           >
             <el-row>
               <el-col :span="24">
@@ -79,6 +80,28 @@
                       <div class="radio-content">我们将会提供自派送服务</div>
                     </el-radio>
                   </el-radio-group>
+                </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row
+              :gutter="20"
+              v-if="['pickup', 'delivery'].includes(formData.services)"
+            >
+              <el-col :span="8">
+                <el-form-item label="揽收开始时间" prop="pickupStartTime">
+                  <el-input
+                    v-model="formData.pickupStartTime"
+                    placeholder="请输入时间"
+                  />
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="揽收结束时间" prop="pickupEndTime">
+                  <el-input
+                    v-model="formData.pickupEndTime"
+                    placeholder="请输入时间"
+                  />
                 </el-form-item>
               </el-col>
             </el-row>
@@ -149,6 +172,8 @@ const rules = ref({
 const formData = ref({
   productType: "economy",
   services: "",
+  pickupStartTime: "",
+  pickupEndTime: "",
   ...props.initialData
 });
 

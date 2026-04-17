@@ -50,11 +50,22 @@
             label-position="top"
           >
             <el-row :gutter="20">
+              <!-- 成交客户的用户中心登录进去，下单需要选择下单账户
+走货账户的用户中心登录进去，隐藏下单账户选择。 -->
+              <el-col :span="8" v-if="isCj">
+                <el-form-item label="下单账户" prop="account">
+                  <el-input
+                    v-model="formData.account"
+                    placeholder="请输入下单账户"
+                  />
+                </el-form-item>
+              </el-col>
               <el-col :span="8">
                 <el-form-item label="名字" prop="firstName">
                   <el-input
                     v-model="formData.firstName"
                     placeholder="请输入名字"
+                    maxlength="100"
                   />
                 </el-form-item>
               </el-col>
@@ -74,34 +85,34 @@
                   />
                 </el-form-item>
               </el-col>
-            </el-row>
 
-            <el-row :gutter="20">
               <el-col :span="8">
                 <el-form-item label="邮箱" prop="email">
                   <el-input
                     v-model="formData.email"
                     type="email"
                     placeholder="请输入邮箱"
+                    maxlength="100"
                   />
                 </el-form-item>
               </el-col>
-              <el-col :span="16">
+              <el-col :span="isCj ? 8 : 16">
                 <el-form-item label="详细地址" prop="address">
                   <el-input
                     v-model="formData.address"
                     placeholder="请输入详细地址"
+                    maxlength="100"
                   />
                 </el-form-item>
               </el-col>
-            </el-row>
 
-            <el-row :gutter="20">
               <el-col :span="8">
                 <el-form-item label="邮编" prop="zipCode">
                   <el-input
                     v-model="formData.zipCode"
                     placeholder="请输入邮编"
+                    minlength="5"
+                    maxlength="12"
                   />
                 </el-form-item>
               </el-col>
@@ -129,9 +140,7 @@
                   </el-select>
                 </el-form-item>
               </el-col>
-            </el-row>
 
-            <el-row :gutter="20">
               <el-col :span="8">
                 <el-form-item label="州" prop="state">
                   <el-select v-model="formData.state" placeholder="请选择州">
@@ -216,7 +225,10 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["next", "edit", "update:formData"]);
+
 const senderFormRef = ref(null);
+
+const isCj = ref(true); // 是否是成交客户
 const formData = ref({
   firstName: "",
   lastName: "",

@@ -163,6 +163,12 @@
                 <el-input v-model="formData.serviceProviderTrackingNumber" placeholder="第三方服务商的跟踪号" />
               </el-form-item>
             </el-col>
+            <el-col :span="8">
+              <el-form-item label="渠道编码" prop="channelCode">
+                <el-input v-model="formData.channelCode" placeholder="第三方服务商的渠道编码" />
+              </el-form-item>
+            </el-col>
+            
           </el-row>
           
         </el-form>
@@ -244,6 +250,7 @@ const formData = ref({
   customerOrderNumber: '',
   referenceNumber: '',
   serviceProviderTrackingNumber: '',
+  channelCode: '',
   ...props.initialData
 });
 

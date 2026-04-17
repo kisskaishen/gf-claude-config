@@ -19,7 +19,7 @@
 
     <div class="step-content">
       <div class="step-content-header">
-        <h3 class="step-content-header-title">发件人信息</h3>
+        <h3 class="step-content-header-title">收件人信息</h3>
         <!-- 清除数据 -->
         <svg-icon
           name="order-clear"
@@ -54,6 +54,7 @@
                   <el-input
                     v-model="formData.firstName"
                     placeholder="请输入名字"
+                    maxlength="100"
                   />
                 </el-form-item>
               </el-col>
@@ -62,6 +63,7 @@
                   <el-input
                     v-model="formData.lastName"
                     placeholder="请输入姓氏"
+                    maxlength="100"
                   />
                 </el-form-item>
               </el-col>
@@ -73,34 +75,51 @@
                   />
                 </el-form-item>
               </el-col>
-            </el-row>
 
-            <el-row :gutter="20">
               <el-col :span="8">
                 <el-form-item label="邮箱" prop="email">
                   <el-input
                     v-model="formData.email"
                     type="email"
                     placeholder="请输入邮箱"
+                    maxlength="100"
                   />
                 </el-form-item>
               </el-col>
-              <el-col :span="16">
-                <el-form-item label="地址" prop="address">
+              <el-col :span="8">
+                <el-form-item label="地址1" prop="address">
                   <el-input
                     v-model="formData.address"
                     placeholder="请输入详细地址"
+                    maxlength="255"
                   />
                 </el-form-item>
               </el-col>
-            </el-row>
+              <el-col :span="8">
+                <el-form-item label="地址2" prop="address2">
+                  <el-input
+                    v-model="formData.address2"
+                    placeholder="请输入详细地址"
+                    maxlength="255"
+                  />
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="地址3" prop="address3">
+                  <el-input
+                    v-model="formData.address3"
+                    placeholder="请输入详细地址"
+                    maxlength="255"
+                  />
+                </el-form-item>
+              </el-col>
 
-            <el-row :gutter="20">
               <el-col :span="8">
                 <el-form-item label="内门牌号" prop="internalNumber">
                   <el-select
                     v-model="formData.internalNumber"
                     placeholder="请选择内门牌号"
+                    maxlength="20"
                   >
                     <el-option
                       v-for="item in doorNumbers"
@@ -116,6 +135,7 @@
                   <el-select
                     v-model="formData.externalNumber"
                     placeholder="请选择外门牌号"
+                    maxlength="20"
                   >
                     <el-option
                       v-for="item in doorNumbers"
@@ -131,12 +151,11 @@
                   <el-input
                     v-model="formData.zipCode"
                     placeholder="请输入邮编"
+                    @input="handleZipCodeInput"
                   />
                 </el-form-item>
               </el-col>
-            </el-row>
 
-            <el-row :gutter="20">
               <el-col :span="8">
                 <el-form-item label="城市" prop="city">
                   <el-select v-model="formData.city" placeholder="请选择城市">
@@ -162,10 +181,12 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
+                <!-- 国家默认显示当时配置站点的国家不允许更改。 -->
                 <el-form-item label="国家" prop="country">
                   <el-select
                     v-model="formData.country"
                     placeholder="请选择国家"
+                    disabled
                   >
                     <el-option
                       v-for="item in countries"
@@ -298,6 +319,11 @@ watch(
   },
   { deep: true }
 );
+
+const handleZipCodeInput = (val) => {
+  // formData.value.zipCode = val.replace(/\D/g, "");
+  // 填写邮编，带出省市区，支持编辑。
+};
 
 const onNext = () => {
   // recipientFormRef.value.validate().then(() => {
