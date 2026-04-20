@@ -4,14 +4,23 @@
     <div class="order-status-tracker">
       <div class="order-info">
         <div class="flex items-center">
-          <div class="flex flex-col items-center">
-            <svg-icon name="earth" width="50" height="48" />
-            <span class="text-sm text-[#909399]">状态</span>
+          <div class="flex flex-col items-center mr-6">
+            <svg-icon name="orderStatus" width="50" height="48" />
+            <div class="flex items-center w-full text-white bg-[#FFEAEC] mt-1">
+              <span class="text-sm text-[#FF3141] text-center flex-1"
+                >状态</span
+              >
+            </div>
           </div>
           <div class="section-item">
             <div class="label">
               <span>客户订单号</span>
-              <svg-icon name="earth" width="20" height="20" />
+              <svg-icon
+                name="copy"
+                width="20"
+                height="20"
+                @click="copyText('GFFR22530450977781')"
+              />
             </div>
             <span class="value">GFFR2253045097778</span>
           </div>
@@ -20,7 +29,12 @@
         <div class="section-item">
           <div class="label">
             <span>运单编号</span>
-            <svg-icon name="earth" width="20" height="20" />
+            <svg-icon
+              name="copy"
+              width="20"
+              height="20"
+              @click="copyText('GFFR22530450977782')"
+            />
           </div>
           <span class="value">GFFR2253045097778</span>
         </div>
@@ -83,11 +97,17 @@
 
         <!-- 发货和收件人信息 -->
         <div class="section shipping-section">
-          <h3 class="section-title">发货信息</h3>
+          <div class="flex items-center justify-between">
+            <h3 class="section-title">发货信息</h3>
+            <div class="flex items-center">
+              <svg-icon name="recipeType" width="24px" height="24px" />
+              <span class="ml-2">送货上门</span>
+            </div>
+          </div>
           <div class="flex items-center">
             <div class="flex flex-col ml-3">
               <div class="section-info-title">
-                <svg-icon name="earth" />
+                <svg-icon name="sender" width="24px" height="24px" />
                 <span>寄件人信息</span>
               </div>
               <div class="info-grid">
@@ -110,7 +130,7 @@
             <el-divider direction="vertical" />
             <div class="flex flex-col ml-3">
               <div class="section-info-title">
-                <svg-icon name="earth" />
+                <svg-icon name="recipient" width="24px" height="24px" />
                 <span>收件人信息</span>
               </div>
               <div class="info-grid">
@@ -218,8 +238,8 @@
                 :key="son.time"
               >
                 <div class="tracking-dot">
-                  <svg-icon name="earth" width="12" height="12" />
-                  <!-- <svg-icon name="home" width="12" height="12" /> -->
+                  <!-- <svg-icon name="locationStep" width="24" height="24" /> -->
+                  <svg-icon name="completedStep" width="24" height="24" />
                 </div>
                 <div class="tracking-content">
                   <div class="tracking-message">
@@ -254,6 +274,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import { copyText } from "@/utils/index";
 
 // 步骤数据
 const statusSteps = ref([
@@ -452,6 +473,9 @@ onMounted(() => {
 
   .section {
     @apply relative border p-4 rounded-lg bg-white;
+    .section-info-title {
+      @apply flex items-center gap-2;
+    }
 
     &.base-section {
       .info-grid {
@@ -466,7 +490,7 @@ onMounted(() => {
     &.shipping-section {
       .info-grid {
         .info-item {
-          @apply my-2;
+          @apply my-2 mx-8;
         }
       }
 
@@ -477,7 +501,7 @@ onMounted(() => {
 
     &.package-section {
       .info-grid {
-        @apply flex items-center border mt-5 px-4 py-2.5;
+        @apply flex items-center border mt-5 px-4 py-2.5 bg-bg;
       }
     }
 
@@ -548,7 +572,7 @@ onMounted(() => {
         gap: 14px;
 
         &::before {
-          @apply absolute top-5 -bottom-10 left-[5px] w-0.5 bg-bg;
+          @apply absolute top-5 -bottom-10 left-[11px] w-0.5 bg-bg;
 
           content: "";
         }

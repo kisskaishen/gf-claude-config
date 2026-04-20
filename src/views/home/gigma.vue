@@ -6,7 +6,7 @@
     <!-- 总金额和状态卡片 -->
     <div class="grid grid-cols-1 gap-4 mb-6 md:grid-cols-3">
       <!-- 总下单金额 -->
-      <div class="p-4 bg-orange-50 rounded-lg border-l-4 border-orange-500">
+      <div class="p-4 border-l-4 border-orange-500 rounded-lg bg-orange-50">
         <p class="mb-2 text-sm text-gray-600">总下单金额</p>
         <p class="text-2xl font-bold text-primary">€ 5,415,654.51</p>
         <div class="pt-4 mt-4 border-t border-orange-200">
@@ -18,7 +18,7 @@
 
       <!-- 派送中 -->
       <div
-        class="flex flex-col justify-center items-center p-4 bg-white rounded-lg border border-gray-200"
+        class="flex flex-col items-center justify-center p-4 bg-white border rounded-lg border-card"
       >
         <p class="mb-2 text-3xl font-bold text-center text-primary">0</p>
         <p class="text-center text-gray-600">派送中</p>
@@ -26,7 +26,7 @@
 
       <!-- 已签收 -->
       <div
-        class="flex flex-col justify-center items-center p-4 bg-white rounded-lg border border-gray-200"
+        class="flex flex-col items-center justify-center p-4 bg-white border rounded-lg border-card"
       >
         <p class="mb-2 text-3xl font-bold text-center text-primary">0</p>
         <p class="text-center text-gray-600">已签收</p>
@@ -35,27 +35,37 @@
 
     <!-- 运单号查询 -->
     <div class="flex mb-8">
-      <input
+      <!-- <input
         type="text"
         placeholder="请输入你的运单号"
-        class="flex-1 px-4 py-2 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
+        class="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary"
       />
       <button
-        class="px-6 py-2 text-white rounded-r-md transition-colors bg-primary hover:bg-primary-hover"
+        class="px-6 py-2 text-white transition-colors rounded-r-md bg-primary hover:bg-primary-hover"
       >
         查询
-      </button>
+      </button> -->
+      <el-input
+        v-model="trackingNo"
+        placeholder="请输入你的运单号"
+        class="flex-1 custom-input"
+      >
+        <template #append>
+          <!-- 追加按钮 -->
+          <el-button type="primary" class="custom-append-btn"> 查询 </el-button>
+        </template>
+      </el-input>
     </div>
 
     <!-- 功能卡片 -->
     <div class="grid grid-cols-1 gap-4 mb-8 md:grid-cols-3">
       <!-- 预报订单 -->
       <div
-        class="p-6 bg-white rounded-lg border border-gray-200 transition-shadow hover:shadow-md"
+        class="p-6 transition-shadow bg-white border rounded-lg border-card hover:shadow-md"
       >
         <div class="flex justify-center mb-4">
           <div
-            class="flex justify-center items-center w-16 h-16 rounded-full bg-primary-light"
+            class="flex items-center justify-center w-16 h-16 rounded-full bg-primary-light"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -83,11 +93,11 @@
 
       <!-- 问题件管理 -->
       <div
-        class="p-6 bg-white rounded-lg border border-gray-200 transition-shadow hover:shadow-md"
+        class="p-6 transition-shadow bg-white border rounded-lg border-card hover:shadow-md"
       >
         <div class="flex justify-center mb-4">
           <div
-            class="flex justify-center items-center w-16 h-16 rounded-full bg-primary-light"
+            class="flex items-center justify-center w-16 h-16 rounded-full bg-primary-light"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -115,11 +125,11 @@
 
       <!-- 查看账单 -->
       <div
-        class="p-6 bg-white rounded-lg border border-gray-200 transition-shadow hover:shadow-md"
+        class="p-6 transition-shadow bg-white border rounded-lg border-card hover:shadow-md"
       >
         <div class="flex justify-center mb-4">
           <div
-            class="flex justify-center items-center w-16 h-16 rounded-full bg-primary-light"
+            class="flex items-center justify-center w-16 h-16 rounded-full bg-primary-light"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -145,11 +155,11 @@
     </div>
 
     <!-- 流程步骤 -->
-    <div class="flex flex-wrap justify-between items-center mb-8">
+    <div class="flex flex-wrap items-center justify-between mb-8">
       <!-- 开通服务 -->
       <div class="flex flex-col items-center">
         <div
-          class="flex justify-center items-center mb-2 w-10 h-10 text-white rounded-full bg-primary"
+          class="flex items-center justify-center w-10 h-10 mb-2 text-white rounded-full bg-primary"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -170,12 +180,14 @@
       </div>
 
       <!-- 箭头 -->
-      <div class="my-2 text-gray-400">→</div>
+      <div class="my-2">
+        <svg-icon name="homeStep" width="32px" height="32px" />
+      </div>
 
       <!-- 预报订单 -->
       <div class="flex flex-col items-center">
         <div
-          class="flex justify-center items-center mb-2 w-10 h-10 rounded-full text-primary bg-primary-light"
+          class="flex items-center justify-center w-10 h-10 mb-2 rounded-full text-primary bg-primary-light"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -196,12 +208,14 @@
       </div>
 
       <!-- 箭头 -->
-      <div class="my-2 text-gray-400">→</div>
+      <div class="my-2">
+        <svg-icon name="homeStep" width="32px" height="32px" />
+      </div>
 
       <!-- 打印面单 -->
       <div class="flex flex-col items-center">
         <div
-          class="flex justify-center items-center mb-2 w-10 h-10 rounded-full text-primary bg-primary-light"
+          class="flex items-center justify-center w-10 h-10 mb-2 rounded-full text-primary bg-primary-light"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -222,12 +236,14 @@
       </div>
 
       <!-- 箭头 -->
-      <div class="my-2 text-gray-400">→</div>
+      <div class="my-2">
+        <svg-icon name="homeStep" width="32px" height="32px" />
+      </div>
 
       <!-- 发货运输 -->
       <div class="flex flex-col items-center">
         <div
-          class="flex justify-center items-center mb-2 w-10 h-10 rounded-full text-primary bg-primary-light"
+          class="flex items-center justify-center w-10 h-10 mb-2 rounded-full text-primary bg-primary-light"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -248,12 +264,14 @@
       </div>
 
       <!-- 箭头 -->
-      <div class="my-2 text-gray-400">→</div>
+      <div class="my-2">
+        <svg-icon name="homeStep" width="32px" height="32px" />
+      </div>
 
       <!-- 派送签收 -->
       <div class="flex flex-col items-center">
         <div
-          class="flex justify-center items-center mb-2 w-10 h-10 rounded-full text-primary bg-primary-light"
+          class="flex items-center justify-center w-10 h-10 mb-2 rounded-full text-primary bg-primary-light"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -275,10 +293,10 @@
     </div>
 
     <!-- 右侧帮助和反馈 -->
-    <div class="flex fixed right-4 bottom-4 flex-col gap-2">
+    <div class="fixed flex flex-col gap-2 right-4 bottom-4">
       <!-- 帮助 -->
       <button
-        class="flex justify-center items-center w-12 h-12 bg-white rounded-full shadow-md transition-shadow hover:shadow-lg"
+        class="flex items-center justify-center w-12 h-12 transition-shadow bg-white rounded-full shadow-md hover:shadow-lg"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -298,7 +316,7 @@
 
       <!-- 反馈 -->
       <button
-        class="flex justify-center items-center w-12 h-12 bg-white rounded-full shadow-md transition-shadow hover:shadow-lg"
+        class="flex items-center justify-center w-12 h-12 transition-shadow bg-white rounded-full shadow-md hover:shadow-lg"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -319,10 +337,51 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 // 这里可以添加组件逻辑
+import { ref } from "vue";
+
+const trackingNo = ref("");
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 /* 额外的样式可以在这里添加 */
+// .custom-input {
+//   --el-input-border-color: #ff7d00;
+//   --el-input-hover-border-color: #ff7d00;
+//   --el-input-focus-border-color: #ff7d00;
+// }
+
+.custom-input {
+  :deep(.el-input__wrapper) {
+    height: 48px;
+    padding: 0 18px;
+    border: 2px solid var(--color-primary);
+    border-radius: 24px 0 0 2px; /* 超大圆角 */
+    background-color: #fff;
+    box-shadow: none;
+    text-align: center;
+    .el-input__inner {
+      color: #333;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+  :deep(.el-input-group__append) {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+}
+
+.custom-append-btn {
+  height: 48px;
+  width: 94px;
+  border-radius: 0 2px 24px 0; /* 右侧圆角匹配 */
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff !important;
+  cursor: pointer !important;
+}
 </style>
