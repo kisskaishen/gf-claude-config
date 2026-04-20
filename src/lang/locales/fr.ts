@@ -5,6 +5,8 @@ export default {
   "web.gfuc.batch_order": "Commande en lot",
   "web.gfuc.order_list": "Liste des commandes",
   "web.gfuc.financial_management": "Gestion financière",
+  "web.gfuc.message_notification_settings":
+    "Paramètres de notifications de messages",
   "web.gfuc.recharge": "Recharge",
   "web.gfuc.recharge_record": "Historique des recharges",
   "web.gfuc.balance": "Solde",

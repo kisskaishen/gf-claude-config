@@ -9,6 +9,7 @@ export default {
   "web.gfuc.recharge_record": "充值记录",
   "web.gfuc.balance": "余额",
   "web.gfuc.bill": "账单",
+  "web.gfuc.message_notification_settings": "消息通知设置",
   "web.gfuc.problem_piece_management": "问题件管理",
   "web.gfuc.problem_piece_view": "问题件查看",
   "web.gfuc.daily": "每天",

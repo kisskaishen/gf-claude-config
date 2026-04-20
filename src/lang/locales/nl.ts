@@ -5,6 +5,7 @@ export default {
   "web.gfuc.batch_order": "Batchbestelling",
   "web.gfuc.order_list": "Orderlijst",
   "web.gfuc.financial_management": "Financieel beheer",
+  "web.gfuc.message_notification_settings": "Berichtnotificatie instellingen",
   "web.gfuc.recharge": "Opwaarderen",
   "web.gfuc.recharge_record": "Opwaarderingsgeschiedenis",
   "web.gfuc.balance": "Saldo",
