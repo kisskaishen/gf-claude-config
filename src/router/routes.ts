@@ -120,6 +120,25 @@ export const routes: RouteRecordRaw[] = [
       // }
     ]
   },
+  {
+    path: "/setting",
+    component: () => import("@/layout/index.vue"),
+    meta: { showOnlyOneChild: true },
+    redirect: "/setting/messageNotification",
+    children: [
+      {
+        path: "messageNotification",
+        name: "messageNotification",
+        component: () => import("@/views/setting/messageNotification.vue"),
+        meta: {
+          title: "消息通知设置",
+          icon: "home",
+          i18n: "web.gfuc.message_notification_settings",
+          affix: true
+        }
+      }
+    ]
+  },
   // {
   //   path: "/problem",
   //   redirect: "/problem/list",
