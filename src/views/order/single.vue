@@ -55,13 +55,7 @@
             />
 
             <!-- 第五步，提交订单 -->
-            <SubmitOrder
-              :step-number="5"
-              :is-active="currentStep === 5"
-              :is-completed="completedSteps.includes(5)"
-              :initial-data="formData.submit"
-              @submit="submitOrder"
-            />
+            <SubmitOrder :step-number="5" @submit="submitOrder" />
           </div>
         </div>
       </div>
@@ -128,13 +122,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted, nextTick } from "vue";
+import { ref, reactive } from "vue";
 
 import ShipperInfo from "./components/ShipperInfo.vue";
 import ConsigneeInfo from "./components/ConsigneeInfo.vue";
 import ProductInfo from "./components/ProductInfo.vue";
 import ParcelInfo from "./components/ParcelInfo.vue";
 import SubmitOrder from "./components/SubmitOrder.vue";
+
+import { createOrder } from "@/api/order";
+
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -156,7 +153,7 @@ interface Step {
 const parcelInfoRef = ref(null);
 
 // 当前步骤
-const currentStep = ref(4);
+const currentStep = ref(1);
 
 // 已完成的步骤
 const completedSteps = ref([]);
@@ -186,11 +183,14 @@ const updateConsigneeData = (data) => {
 
 // 更新产品数据
 const updateProductData = (data) => {
+  console.log(data, "====product");
+
   formData.product = data;
 };
 
 // 更新包裹数据
 const updateParcelData = (data) => {
+  console.log(data, "====parcel");
   formData.parcel = data;
 };
 
@@ -225,7 +225,33 @@ const submitOrder = async () => {
       await parcelInfoRef.value.validate();
 
       // 校验通过，继续提交订单逻辑
-      console.log("第四步表单校验通过，开始提交订单");
+      console.log("第四步表单校验通过，开始提交订单", formData);
+
+      // formData格式化
+      let data = {
+        orderShipper: formData.shipper,
+        orderConsignee: formData.consignee,
+
+        orderProduct: formData.product,
+
+        shippingType: formData.parcel?.shippingType,
+        services: formData.product?.services,
+
+        queryCollectStartTime: formData.parcel?.queryCollectStartTime,
+        queryCollectEndTime: formData.parcel?.queryCollectEndTime,
+
+        orderParcel: formData.parcel,
+        orderGoods: formData.parcel?.orderGoods,
+        orderItemList: formData.parcel?.orderItemList,
+
+        cOrderNo: formData.parcel?.cOrderNo,
+        declaredValue: formData.parcel?.declaredValue,
+        sOrderNo: formData.parcel?.sOrderNo,
+        referenceNo: formData.parcel?.referenceNo,
+        channelCode: formData.parcel?.channelCode
+      };
+
+      await createOrder(data);
 
       // 这里可以添加实际的提交逻辑
       // 例如：调用API提交订单数据
@@ -249,8 +275,8 @@ const submitOrder = async () => {
 const resetForm = () => {
   currentStep.value = 1;
   completedSteps.value = [];
-  formData.sender = {};
-  formData.recipient = {};
+  formData.shipper = {};
+  formData.consignee = {};
   formData.product = {};
   formData.parcel = {};
 };

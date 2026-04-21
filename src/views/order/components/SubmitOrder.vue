@@ -1,9 +1,6 @@
 <template>
   <div class="pt-5 step-container last-step-container">
-    <div
-      class="mr-4 step-left"
-      :class="{ 'step-completed': isCompleted, 'step-active': isActive }"
-    >
+    <div class="mr-4 step-left">
       <div class="step-number">{{ stepNumber }}</div>
       <div class="step-line"></div>
     </div>

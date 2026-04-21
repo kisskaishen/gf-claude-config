@@ -93,24 +93,24 @@
               <el-col :span="24">
                 <el-form-item label-width="0" required>
                   <el-table
-                    :data="formData.goods"
+                    :data="formData.orderItemList"
                     border
                     style="width: 100%"
                     class="goods-table"
                   >
                     <el-table-column
-                      prop="nameCn"
+                      prop="itemNameZh"
                       label="商品名称(CN)"
                       min-width="150"
                     >
                       <template #default="{ row, $index }">
                         <el-form-item
-                          :prop="`goods.${$index}.nameCn`"
-                          :rules="rules.tableItem.nameCn"
+                          :prop="`orderItemList.${$index}.itemNameZh`"
+                          :rules="rules.tableItem.itemNameZh"
                           class="table-form-item"
                         >
                           <el-input
-                            v-model="row.nameCn"
+                            v-model="row.itemNameZh"
                             placeholder="请填写商品名称(CN)"
                             maxlength="60"
                           />
@@ -118,19 +118,19 @@
                       </template>
                     </el-table-column>
                     <el-table-column
-                      prop="nameEn"
+                      prop="itemNameEn"
                       label="商品名称(EN)"
                       min-width="200"
                     >
                       <template #default="{ row, $index }">
                         <el-form-item
-                          :prop="`goods.${$index}.nameEn`"
-                          :rules="rules.tableItem.nameEn"
+                          :prop="`orderItemList.${$index}.itemNameEn`"
+                          :rules="rules.tableItem.itemNameEn"
                           class="table-form-item"
                           required
                         >
                           <el-input
-                            v-model="row.nameEn"
+                            v-model="row.itemNameEn"
                             placeholder="请填写商品名称(EN)"
                             maxlength="256"
                           />
@@ -138,22 +138,22 @@
                       </template>
                     </el-table-column>
                     <el-table-column
-                      prop="quantity"
+                      prop="itemQty"
                       label="数量"
                       min-width="100"
                     >
                       <template #default="{ row, $index }">
                         <el-form-item
-                          :prop="`goods.${$index}.quantity`"
-                          :rules="rules.tableItem.quantity"
+                          :prop="`orderItemList.${$index}.itemQty`"
+                          :rules="rules.tableItem.itemQty"
                           class="table-form-item"
                           required
                         >
                           <el-input-number
-                            v-model="row.quantity"
+                            v-model="row.itemQty"
                             placeholder="数量"
-                            min="1"
-                            max="9999"
+                            :min="1"
+                            :max="9999"
                           />
                         </el-form-item>
                       </template>
@@ -285,14 +285,14 @@ const formData = ref({
     width: undefined,
     height: undefined
   },
-  goods: [
+  orderItemList: [
     {
-      nameCn: "",
-      nameEn: "",
-      quantity: ""
+      itemNameZh: "",
+      itemNameEn: "",
+      itemQty: undefined
     }
   ],
-  declaredValue: "",
+  declaredValue: undefined,
   cOrderNo: "",
   referenceNo: "",
   sOrderNo: "",
@@ -332,14 +332,14 @@ const rules = reactive({
     { validator: validateDimensions, trigger: ["blur", "change"] }
   ],
   tableItem: {
-    nameEn: [
+    itemNameEn: [
       {
         required: true,
         message: "请输入商品名称(EN)",
         trigger: ["blur", "change"]
       }
     ],
-    quantity: [
+    itemQty: [
       { required: true, message: "请输入商品数量", trigger: ["blur", "change"] }
     ]
   }
@@ -354,18 +354,18 @@ watch(
 );
 
 const addGoods = () => {
-  if (formData.value.goods.length < 5) {
-    formData.value.goods.push({
-      nameCn: "",
-      nameEn: "",
-      quantity: ""
+  if (formData.value.orderItemList.length < 5) {
+    formData.value.orderItemList.push({
+      itemNameZh: "",
+      itemNameEn: "",
+      itemQty: undefined
     });
   }
 };
 
 const removeGoods = (index) => {
-  if (formData.value.goods.length > 1) {
-    formData.value.goods.splice(index, 1);
+  if (formData.value.orderItemList.length > 1) {
+    formData.value.orderItemList.splice(index, 1);
   }
 };
 
@@ -377,14 +377,14 @@ const onClear = () => {
       width: undefined,
       height: undefined
     },
-    goods: [
+    orderItemList: [
       {
-        nameCn: "",
-        nameEn: "",
-        quantity: ""
+        itemNameZh: "",
+        itemNameEn: "",
+        itemQty: undefined
       }
     ],
-    declaredValue: "",
+    declaredValue: undefined,
     cOrderNo: "",
     referenceNo: "",
     sOrderNo: "",

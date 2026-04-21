@@ -89,17 +89,17 @@
               v-if="['pickup', 'delivery'].includes(formData.services)"
             >
               <el-col :span="8">
-                <el-form-item label="揽收开始时间" prop="pickupStartTime">
+                <el-form-item label="揽收开始时间" prop="queryCollectStartTime">
                   <el-input
-                    v-model="formData.pickupStartTime"
+                    v-model="formData.queryCollectStartTime"
                     placeholder="请输入时间"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="揽收结束时间" prop="pickupEndTime">
+                <el-form-item label="揽收结束时间" prop="queryCollectEndTime">
                   <el-input
-                    v-model="formData.pickupEndTime"
+                    v-model="formData.queryCollectEndTime"
                     placeholder="请输入时间"
                   />
                 </el-form-item>
@@ -172,8 +172,8 @@ const rules = ref({
 const formData = ref({
   productType: "economy",
   services: "",
-  pickupStartTime: "",
-  pickupEndTime: "",
+  queryCollectStartTime: "",
+  queryCollectEndTime: "",
   ...props.initialData
 });
 
