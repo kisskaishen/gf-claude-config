@@ -36,6 +36,10 @@
           :label="$t('gfuc.cancelled' /** 已取消 **/)"
           name="cancelled"
         />
+        <el-tab-pane
+          :label="$t('gfuc.failed' /** 下单失败 **/)"
+          name="failed"
+        />
       </el-tabs>
       <div class="order-content">
         <TableLayout
@@ -75,6 +79,10 @@
                 <el-option
                   :label="$t('gfuc.ordered' /** 已下单 **/)"
                   value="ordered"
+                />
+                <el-option
+                  :label="$t('gfuc.failed' /** 下单失败 **/)"
+                  value="failed"
                 />
                 <el-option
                   :label="$t('gfuc.ready_to_dispatch' /** 准备派送 **/)"

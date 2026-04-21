@@ -8,27 +8,27 @@
         <div class="order-content">
           <div class="order-steps">
             <!-- 发件人信息 -->
-            <SenderInfo
-              ref="senderInfoRef"
+            <ShipperInfo
+              ref="shipperInfoRef"
               :step-number="1"
               :is-active="currentStep === 1"
               :is-completed="completedSteps.includes(1)"
-              :initial-data="formData.sender"
+              :initial-data="formData.shipper"
               @next="goToNextStep"
               @edit="editStep(1)"
-              @update:formData="updateSenderData"
+              @update:orderShipper="updateShipperData"
             />
 
             <!-- 收件人信息 -->
-            <RecipientInfo
-              ref="recipientInfoRef"
+            <ConsigneeInfo
+              ref="consigneeInfoRef"
               :step-number="2"
               :is-active="currentStep === 2"
               :is-completed="completedSteps.includes(2)"
-              :initial-data="formData.recipient"
+              :initial-data="formData.consignee"
               @next="goToNextStep"
               @edit="editStep(2)"
-              @update:formData="updateRecipientData"
+              @update:orderConsignee="updateConsigneeData"
             />
 
             <!-- 产品信息 -->
@@ -130,8 +130,8 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, nextTick } from "vue";
 
-import SenderInfo from "./components/SenderInfo.vue";
-import RecipientInfo from "./components/RecipientInfo.vue";
+import ShipperInfo from "./components/ShipperInfo.vue";
+import ConsigneeInfo from "./components/ConsigneeInfo.vue";
 import ProductInfo from "./components/ProductInfo.vue";
 import ParcelInfo from "./components/ParcelInfo.vue";
 import SubmitOrder from "./components/SubmitOrder.vue";
@@ -153,36 +153,35 @@ interface Step {
   description?: string;
 }
 
-// 引用步骤组件
-const senderInfoRef = ref(null);
-const recipientInfoRef = ref(null);
-const productInfoRef = ref(null);
 const parcelInfoRef = ref(null);
 
 // 当前步骤
-const currentStep = ref(1);
+const currentStep = ref(4);
 
 // 已完成的步骤
 const completedSteps = ref([]);
 
 // 表单数据
 const formData = reactive({
-  sender: {},
-  recipient: {},
+  shipper: {},
+  consignee: {},
   product: {},
   parcel: {}
 });
 
-const successVisible = ref(true);
+const successVisible = ref(false);
 
 // 更新发件人数据
-const updateSenderData = (data) => {
-  formData.sender = data;
+const updateShipperData = (data) => {
+  console.log(data, "====shipper");
+  formData.shipper = data;
 };
 
 // 更新收件人数据
-const updateRecipientData = (data) => {
-  formData.recipient = data;
+const updateConsigneeData = (data) => {
+  console.log(data, "====consignee");
+
+  formData.consignee = data;
 };
 
 // 更新产品数据

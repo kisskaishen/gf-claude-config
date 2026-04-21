@@ -28,188 +28,232 @@
           height="20"
           @click="onEdit"
           v-if="!isActive && isCompleted"
-
         />
-   
       </div>
 
       <div v-if="isActive || isCompleted" class="step-content-form">
-      <div v-if="isActive" class="form-container">
-        <el-form ref="formRef" :model="formData" :rules="rules" label-width="80px" label-position="top">  
-          <el-row :gutter="20">
-            <el-col :span="6">
-              <el-form-item label="总包裹重 (kg)" prop="totalWeight">
-                <el-input v-model.number="formData.totalWeight" placeholder="请填写包裹总重量" />
-              </el-form-item>
-            </el-col>
-            <el-col :span="6">
-              <el-form-item label="长(cm)" prop="length">
-                <el-input v-model.number="formData.length" placeholder="请填写包裹长度" />
-              </el-form-item>
-            </el-col>
-            <el-col :span="6">
-              <el-form-item label="宽(cm)" prop="width">
-                <el-input v-model.number="formData.width" placeholder="请填写包裹宽度" />
-              </el-form-item>
-            </el-col>
-            <el-col :span="6">
-              <el-form-item label="高(cm)" prop="height">
-                <el-input v-model.number="formData.height" placeholder="请填写包裹高度" />
-              </el-form-item>
-            </el-col>
-          </el-row>
-          
-          <el-row>
-            <el-col :span="24">
-              <el-form-item  label-width="0" required>
-                <el-table :data="formData.goods" border style="width: 100%" class="goods-table">
-                  <el-table-column prop="nameCn" label="商品名称(CN)" min-width="200">
-                    <template #default="{ row, $index }">
-                      <el-form-item 
-                        :prop="`goods.${$index}.nameCn`" 
-                        :rules="rules.tableItem.nameCn"
-                        class="table-form-item"
-                        required
-                      >
-                        <el-input 
-                          v-model="row.nameCn" 
-                          placeholder="请填写商品名称(CN)" 
-                        />
-                      </el-form-item>
-                    </template>
-                  </el-table-column>
-                  <el-table-column prop="nameEn" label="商品名称(EN)" min-width="200">
-                    <template #default="{ row, $index }">
-                      <el-form-item 
-                        :prop="`goods.${$index}.nameEn`" 
-                        :rules="rules.tableItem.nameEn"
-                        class="table-form-item"
-                        required
-                      >
-                        <el-input 
-                          v-model="row.nameEn" 
-                          placeholder="请填写商品名称(EN)" 
-                        />
-                      </el-form-item>
-                    </template>
-                  </el-table-column>
-                  <el-table-column prop="quantity" label="数量" width="120">
-                    <template #default="{ row, $index }">
-                      <el-form-item 
-                        :prop="`goods.${$index}.quantity`" 
-                        :rules="rules.tableItem.quantity"
-                        class="table-form-item"
-                        required
-                      >
-                        <el-input 
-                          v-model.number="row.quantity" 
-                          placeholder="数量" 
-                          type="number" 
-                          min="1" 
-                        />
-                      </el-form-item>
-                    </template>
-                  </el-table-column>
-                  <el-table-column label="操作" width="120" fixed="right">
-                    <template #default="{ $index }">
-                      <div class="table-actions">
-                        <el-button 
-                          size="small" 
-                          @click="addGoods" 
-                          circle
-                        >
-                          <svg-icon name="order-goods-add" class="step-content-header-icon" width="20" height="20" />
-                        </el-button>
-                        <el-button 
-                          size="small" 
-                          @click="removeGoods($index)" 
-                          circle
-                        >
-                          <svg-icon name="order-goods-reduce" class="step-content-header-icon" width="20" height="20" />
+        <div v-if="isActive" class="form-container">
+          <el-form
+            ref="formRef"
+            :model="formData"
+            :rules="rules"
+            label-width="80px"
+            label-position="top"
+          >
+            <el-row :gutter="20">
+              <el-col :span="6">
+                <el-form-item
+                  label="总包裹重 (kg)"
+                  prop="orderGoods.totalWeight"
+                >
+                  <el-input-number
+                    v-model="formData.orderGoods.totalWeight"
+                    :min="0.001"
+                    :max="50"
+                    placeholder="请填写包裹总重量"
+                  />
+                </el-form-item>
+              </el-col>
+              <el-col :span="6">
+                <el-form-item label="长(cm)" prop="orderGoods.length">
+                  <el-input-number
+                    v-model="formData.orderGoods.length"
+                    :precision="2"
+                    :min="1"
+                    :max="150"
+                    placeholder="请填写包裹长度"
+                  />
+                </el-form-item>
+              </el-col>
+              <el-col :span="6">
+                <el-form-item label="宽(cm)" prop="orderGoods.width">
+                  <el-input-number
+                    v-model="formData.orderGoods.width"
+                    :precision="2"
+                    :min="1"
+                    :max="150"
+                    placeholder="请填写包裹宽度"
+                  />
+                </el-form-item>
+              </el-col>
+              <el-col :span="6">
+                <el-form-item label="高(cm)" prop="orderGoods.height">
+                  <el-input-number
+                    v-model="formData.orderGoods.height"
+                    :precision="2"
+                    :min="1"
+                    :max="150"
+                    placeholder="请填写包裹高度"
+                  />
+                </el-form-item>
+              </el-col>
+            </el-row>
 
-                        </el-button>
-                      </div>
-                    </template>
-                  </el-table-column>
-                </el-table>
-                <!-- <div class="goods-table-tips">
+            <el-row>
+              <el-col :span="24">
+                <el-form-item label-width="0" required>
+                  <el-table
+                    :data="formData.goods"
+                    border
+                    style="width: 100%"
+                    class="goods-table"
+                  >
+                    <el-table-column
+                      prop="nameCn"
+                      label="商品名称(CN)"
+                      min-width="150"
+                    >
+                      <template #default="{ row, $index }">
+                        <el-form-item
+                          :prop="`goods.${$index}.nameCn`"
+                          :rules="rules.tableItem.nameCn"
+                          class="table-form-item"
+                        >
+                          <el-input
+                            v-model="row.nameCn"
+                            placeholder="请填写商品名称(CN)"
+                            maxlength="60"
+                          />
+                        </el-form-item>
+                      </template>
+                    </el-table-column>
+                    <el-table-column
+                      prop="nameEn"
+                      label="商品名称(EN)"
+                      min-width="200"
+                    >
+                      <template #default="{ row, $index }">
+                        <el-form-item
+                          :prop="`goods.${$index}.nameEn`"
+                          :rules="rules.tableItem.nameEn"
+                          class="table-form-item"
+                          required
+                        >
+                          <el-input
+                            v-model="row.nameEn"
+                            placeholder="请填写商品名称(EN)"
+                            maxlength="256"
+                          />
+                        </el-form-item>
+                      </template>
+                    </el-table-column>
+                    <el-table-column
+                      prop="quantity"
+                      label="数量"
+                      min-width="100"
+                    >
+                      <template #default="{ row, $index }">
+                        <el-form-item
+                          :prop="`goods.${$index}.quantity`"
+                          :rules="rules.tableItem.quantity"
+                          class="table-form-item"
+                          required
+                        >
+                          <el-input-number
+                            v-model="row.quantity"
+                            placeholder="数量"
+                            min="1"
+                            max="9999"
+                          />
+                        </el-form-item>
+                      </template>
+                    </el-table-column>
+                    <el-table-column label="操作" width="120" fixed="right">
+                      <template #default="{ $index }">
+                        <div class="table-actions">
+                          <el-button size="small" @click="addGoods" circle>
+                            <svg-icon
+                              name="order-goods-add"
+                              class="step-content-header-icon"
+                              width="20"
+                              height="20"
+                            />
+                          </el-button>
+                          <el-button
+                            size="small"
+                            @click="removeGoods($index)"
+                            circle
+                          >
+                            <svg-icon
+                              name="order-goods-reduce"
+                              class="step-content-header-icon"
+                              width="20"
+                              height="20"
+                            />
+                          </el-button>
+                        </div>
+                      </template>
+                    </el-table-column>
+                  </el-table>
+                  <!-- <div class="goods-table-tips">
                   <span>最多可添加5个商品</span>
                 </div> -->
-              </el-form-item>
-            </el-col>
-          </el-row>
-          
-          <el-row :gutter="20">
-            <el-col :span="12">
-              <el-form-item label="申报价值 (EUR)" prop="declaredValue">
-                <el-input v-model.number="formData.declaredValue" placeholder="请填写商品总申报价值" />
-              </el-form-item>
-            </el-col>
-          </el-row>
-          
-          <el-row :gutter="20">
-            <el-col :span="8">
-              <el-form-item label="客户单号" prop="customerOrderNumber">
-                <el-input v-model="formData.customerOrderNumber" placeholder="客户唯一的订单号" />
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item label="参考单号" prop="referenceNumber">
-                <el-input v-model="formData.referenceNumber" placeholder="平台参考号" />
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item label="服务商跟踪号" prop="serviceProviderTrackingNumber">
-                <el-input v-model="formData.serviceProviderTrackingNumber" placeholder="第三方服务商的跟踪号" />
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item label="渠道编码" prop="channelCode">
-                <el-input v-model="formData.channelCode" placeholder="第三方服务商的渠道编码" />
-              </el-form-item>
-            </el-col>
-            
-          </el-row>
-          
-        </el-form>
+                </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row :gutter="20">
+              <el-col :span="12">
+                <el-form-item label="申报价值 (EUR)" prop="declaredValue">
+                  <el-input-number
+                    v-model="formData.declaredValue"
+                    :precision="2"
+                    :min="0.0"
+                    :max="100.0"
+                    placeholder="请填写商品总申报价值"
+                  />
+                </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row :gutter="20">
+              <el-col :span="8">
+                <el-form-item label="客户单号" prop="cOrderNo">
+                  <el-input
+                    v-model="formData.cOrderNo"
+                    maxlength="30"
+                    placeholder="客户唯一的订单号"
+                  />
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="参考单号" prop="referenceNo">
+                  <el-input
+                    v-model="formData.referenceNo"
+                    placeholder="平台参考号"
+                  />
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="服务商跟踪号" prop="sOrderNo">
+                  <el-input
+                    v-model="formData.sOrderNo"
+                    placeholder="第三方服务商的跟踪号"
+                  />
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="渠道编码" prop="channelCode">
+                  <el-input
+                    v-model="formData.channelCode"
+                    placeholder="第三方服务商的渠道编码"
+                  />
+                </el-form-item>
+              </el-col>
+            </el-row>
+          </el-form>
+        </div>
       </div>
-      
-      <div v-else class="summary-container">
-        <el-card shadow="hover">
-          <template #header>
-            <div class="card-header">
-              <span>包裹信息&其他信息</span>
-            </div>
-          </template>
-          <div class="summary-content">
-            <p><strong>包裹尺寸：</strong>{{ formData.length }}cm × {{ formData.width }}cm × {{ formData.height }}cm</p>
-            <p><strong>总重量：</strong>{{ formData.totalWeight }}kg</p>
-            <p><strong>申报价值：</strong>{{ formData.declaredValue }} EUR</p>
-            <p v-if="formData.goods.length > 0">
-              <strong>商品信息：</strong>
-              <ul>
-                <li v-for="(item, index) in formData.goods" :key="index">
-                  {{ item.nameCn }} ({{ item.nameEn }}) - {{ item.quantity }}个
-                </li>
-              </ul>
-            </p>
-            <p v-if="formData.customerOrderNumber"><strong>客户单号：</strong>{{ formData.customerOrderNumber }}</p>
-            <p v-if="formData.referenceNumber"><strong>参考单号：</strong>{{ formData.referenceNumber }}</p>
-            <p v-if="formData.serviceProviderTrackingNumber"><strong>服务商跟踪号：</strong>{{ formData.serviceProviderTrackingNumber }}</p>
-          </div>
-        </el-card>
+
+      <div v-else class="step-placeholder">
+        <p>请填写包裹信息、重量、材质、品类信息等</p>
       </div>
     </div>
-    
-    <div v-else class="step-placeholder">
-      <p>请填写包裹信息、重量、材质、品类信息等</p>
-    </div>
-  </div>
   </div>
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch } from "vue";
 
 const props = defineProps({
   stepNumber: {
@@ -230,55 +274,91 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits(['edit', 'submit', 'update:formData']);
+const emit = defineEmits(["edit", "submit", "update:formData"]);
 
 const formRef = ref(null);
 
 const formData = ref({
-  totalWeight: '',
-  length: '',
-  width: '',
-  height: '',
+  orderGoods: {
+    totalWeight: undefined,
+    length: undefined,
+    width: undefined,
+    height: undefined
+  },
   goods: [
     {
-      nameCn: '',
-      nameEn: '',
-      quantity: ''
+      nameCn: "",
+      nameEn: "",
+      quantity: ""
     }
   ],
-  declaredValue: '',
-  customerOrderNumber: '',
-  referenceNumber: '',
-  serviceProviderTrackingNumber: '',
-  channelCode: '',
+  declaredValue: "",
+  cOrderNo: "",
+  referenceNo: "",
+  sOrderNo: "",
+  channelCode: "",
   ...props.initialData
 });
 
+// 自定义校验函数：包裹长宽高总和不超过150
+const validateDimensions = (rule, value, callback) => {
+  const length = parseFloat(formData.value.orderGoods.length) || 0;
+  const width = parseFloat(formData.value.orderGoods.width) || 0;
+  const height = parseFloat(formData.value.orderGoods.height) || 0;
 
+  const total = length + width + height;
+
+  if (total > 150) {
+    callback(new Error("包裹长宽高总和不能超过150"));
+  } else {
+    callback();
+  }
+};
 
 const rules = reactive({
-  totalWeight: [{ required: true, message: '请输入总包裹重', trigger: ['blur', 'change'] }],
-  length: [{ required: true, message: '请输入包裹长度', trigger: ['blur', 'change'] }],
-  width: [{ required: true, message: '请输入包裹宽度', trigger: ['blur', 'change'] }],
-  height: [{ required: true, message: '请输入包裹高度', trigger: ['blur', 'change'] }],
+  "orderGoods.totalWeight": [
+    { required: true, message: "请输入总包裹重", trigger: ["blur", "change"] }
+  ],
+  "orderGoods.length": [
+    { required: true, message: "请输入包裹长度", trigger: ["blur", "change"] },
+    { validator: validateDimensions, trigger: ["blur", "change"] }
+  ],
+  "orderGoods.width": [
+    { required: true, message: "请输入包裹宽度", trigger: ["blur", "change"] },
+    { validator: validateDimensions, trigger: ["blur", "change"] }
+  ],
+  "orderGoods.height": [
+    { required: true, message: "请输入包裹高度", trigger: ["blur", "change"] },
+    { validator: validateDimensions, trigger: ["blur", "change"] }
+  ],
   tableItem: {
-    nameCn: [{ required: true, message: '请输入商品名称(中文)', trigger: ['blur', 'change'] }],
-    nameEn: [{ required: true, message: '请输入商品名称(EN)', trigger: ['blur', 'change'] }],
-    quantity: [{ required: true, message: '请输入商品数量', trigger: ['blur', 'change'] }]
+    nameEn: [
+      {
+        required: true,
+        message: "请输入商品名称(EN)",
+        trigger: ["blur", "change"]
+      }
+    ],
+    quantity: [
+      { required: true, message: "请输入商品数量", trigger: ["blur", "change"] }
+    ]
   }
-
 });
 
-watch(formData, (newValue) => {
-  emit('update:formData', newValue);
-}, { deep: true });
+watch(
+  formData,
+  (newValue) => {
+    emit("update:formData", newValue);
+  },
+  { deep: true }
+);
 
 const addGoods = () => {
   if (formData.value.goods.length < 5) {
     formData.value.goods.push({
-      nameCn: '',
-      nameEn: '',
-      quantity: ''
+      nameCn: "",
+      nameEn: "",
+      quantity: ""
     });
   }
 };
@@ -291,26 +371,26 @@ const removeGoods = (index) => {
 
 const onClear = () => {
   formData.value = {
-    totalWeight: '',
-    length: '',
-    width: '',
-    height: '',
+    orderGoods: {
+      totalWeight: undefined,
+      length: undefined,
+      width: undefined,
+      height: undefined
+    },
     goods: [
       {
-        nameCn: '',
-        nameEn: '',
-        quantity: ''
+        nameCn: "",
+        nameEn: "",
+        quantity: ""
       }
     ],
-    declaredValue: '',
-    customerOrderNumber: '',
-    referenceNumber: '',
-    serviceProviderTrackingNumber: '',
+    declaredValue: "",
+    cOrderNo: "",
+    referenceNo: "",
+    sOrderNo: "",
     ...props.initialData
   };
 };
-
-
 
 const onEdit = () => {
   emit("edit");

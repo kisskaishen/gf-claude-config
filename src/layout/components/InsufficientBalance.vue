@@ -86,7 +86,7 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const visible = ref(true);
+const visible = ref(false);
 
 const handleClose = () => {
   visible.value = false;
