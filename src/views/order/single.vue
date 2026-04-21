@@ -222,13 +222,18 @@ const submitOrder = async () => {
   if (parcelInfoRef.value && parcelInfoRef.value.validate) {
     try {
       // 调用第四步组件的校验方法
-      await parcelInfoRef.value.validate();
+      let valid = await parcelInfoRef.value.validate();
+      if (!valid) {
+        return;
+      }
 
       // 校验通过，继续提交订单逻辑
       console.log("第四步表单校验通过，开始提交订单", formData);
 
       // formData格式化
       let data = {
+        customerId: formData.shipper?.customerId,
+
         orderShipper: formData.shipper,
         orderConsignee: formData.consignee,
 

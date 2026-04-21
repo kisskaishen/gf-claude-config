@@ -86,11 +86,6 @@ export default defineConfig({
         target: "https://sit-gfuc-eu-api.eminxing.com",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, "")
-      },
-      "/api/order": {
-        target: "https://sit-gfuc-eu-api.eminxing.com",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, "")
       }
     }
   }

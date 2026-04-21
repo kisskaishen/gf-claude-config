@@ -89,18 +89,48 @@
               v-if="['pickup', 'delivery'].includes(formData.services)"
             >
               <el-col :span="8">
-                <el-form-item label="揽收开始时间" prop="queryCollectStartTime">
-                  <el-input
+                <el-form-item
+                  label="揽收开始时间"
+                  prop="queryCollectStartTime"
+                  :rules="[
+                    {
+                      required:
+                        formData.queryCollectStartTime ||
+                        formData.queryCollectEndTime,
+                      message: '请输入揽收开始时间',
+                      trigger: 'blur'
+                    }
+                  ]"
+                >
+                  <el-date-picker
                     v-model="formData.queryCollectStartTime"
                     placeholder="请输入时间"
+                    type="datetime"
+                    style="width: 100%"
+                    format="YYYY-MM-DD HH:mm:ss"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="揽收结束时间" prop="queryCollectEndTime">
-                  <el-input
+                <el-form-item
+                  label="揽收结束时间"
+                  prop="queryCollectEndTime"
+                  :rules="[
+                    {
+                      required:
+                        formData.queryCollectStartTime ||
+                        formData.queryCollectEndTime,
+                      message: '请输入揽收结束时间',
+                      trigger: 'blur'
+                    }
+                  ]"
+                >
+                  <el-date-picker
                     v-model="formData.queryCollectEndTime"
                     placeholder="请输入时间"
+                    type="datetime"
+                    style="width: 100%"
+                    format="YYYY-MM-DD HH:mm:ss"
                   />
                 </el-form-item>
               </el-col>

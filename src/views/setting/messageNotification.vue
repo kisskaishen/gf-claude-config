@@ -36,7 +36,7 @@
             <div>
               <h2 class="text-xl font-semibold text-gray-800">余额不足提醒</h2>
               <p class="mt-1 text-gray-500">
-                当账户余额低于设定额度时发送邮件提醒
+                当可下单余额低于设定额度时发送邮件提醒
               </p>
             </div>
           </div>

@@ -144,23 +144,55 @@
                   />
                 </el-form-item>
               </el-col>
-
+              <el-col :span="8">
+                <el-form-item label="区" prop="consigneeArea">
+                  <el-select
+                    v-model="orderConsignee.consigneeArea"
+                    placeholder="请输入区"
+                    maxlength="50"
+                    filterable
+                  >
+                    <el-option
+                      v-for="area in areas"
+                      :key="area"
+                      :label="area"
+                      :value="area"
+                    />
+                  </el-select>
+                </el-form-item>
+              </el-col>
               <el-col :span="8">
                 <el-form-item label="城市" prop="consigneeCity">
-                  <el-input
+                  <el-select
                     v-model="orderConsignee.consigneeCity"
                     placeholder="请输入城市"
                     maxlength="50"
-                  />
+                    filterable
+                  >
+                    <el-option
+                      v-for="city in cities"
+                      :key="city"
+                      :label="city"
+                      :value="city"
+                    />
+                  </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="州/省" prop="consigneeState">
-                  <el-input
+                  <el-select
                     v-model="orderConsignee.consigneeState"
                     placeholder="请输入州/省"
                     maxlength="35"
-                  />
+                    filterable
+                  >
+                    <el-option
+                      v-for="state in states"
+                      :key="state"
+                      :label="state"
+                      :value="state"
+                    />
+                  </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
@@ -235,6 +267,12 @@ const props = defineProps({
 
 const emit = defineEmits(["next", "edit", "update:orderConsignee"]);
 
+const states = ref([]);
+
+const cities = ref([]);
+
+const areas = ref([]);
+
 const consigneeFormRef = ref(null);
 const orderConsignee = ref({
   consigneeName: "",
@@ -244,6 +282,7 @@ const orderConsignee = ref({
   internalNumber: "",
   externalNumber: "",
   consigneeCode: "",
+  consigneeArea: "",
   consigneeCity: "",
   consigneeState: "",
   consigneeCountry: "",
@@ -291,6 +330,7 @@ const onClear = () => {
     internalNumber: "",
     externalNumber: "",
     consigneeCode: "",
+    consigneeArea: "",
     consigneeCity: "",
     consigneeState: "",
     consigneeCountry: "",

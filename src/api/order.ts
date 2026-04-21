@@ -39,7 +39,7 @@ import request from "@/utils/request";
 // 3. 创建订单
 export function createOrder(data: any) {
   return request({
-    url: "/order/create",
+    url: "/oms/create/order",
     method: "post",
     data
   });
@@ -53,3 +53,11 @@ export function createOrder(data: any) {
 //     data
 //   });
 // }
+
+export function getAddressByCode(postcode: string) {
+  // @ts-ignore
+  return request({
+    url: `/system/address/getByCode/${postcode}`,
+    method: "get"
+  });
+}

@@ -59,15 +59,23 @@
                   :rules="[
                     {
                       required: isCj,
-                      message: '请输入下单账户',
+                      message: '请选择下单账户',
                       trigger: 'blur'
                     }
                   ]"
                 >
-                  <el-input
+                  <el-select
                     v-model="orderShipper.customerId"
-                    placeholder="请输入下单账户"
-                  />
+                    filterable
+                    placeholder="请选择下单账户"
+                  >
+                    <el-option
+                      v-for="item in shipperOptions"
+                      :key="item.customerId"
+                      :label="item.customerName"
+                      :value="item.customerId"
+                    />
+                  </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
@@ -128,6 +136,7 @@
                     placeholder="请输入邮编"
                     minlength="5"
                     maxlength="12"
+                    @blur="getAddressByCodeBlur"
                   />
                 </el-form-item>
               </el-col>
@@ -203,8 +212,10 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, computed, reactive, onMounted } from "vue";
 
+import { getAddressByCode } from "@/api/order";
+import { useUserStore } from "@/store/user";
 const props = defineProps({
   stepNumber: {
     type: Number,
@@ -228,7 +239,16 @@ const emit = defineEmits(["next", "edit", "update:orderShipper"]);
 
 const orderShipperRef = ref(null);
 
-const isCj = ref(true); // 是否是成交客户
+const userInfo = useUserStore();
+// userIdentity 用户身份：1-潜在客户 2-成交客户 3-走货账户
+console.log(userInfo.loginInfo?.shipperCustomerList, "====");
+const isCj = computed(() =>
+  userInfo.userInfo?.userIdentity === 2 ? true : false
+);
+const shipperOptions = computed(() => {
+  return userInfo.loginInfo?.shipperCustomerList || [];
+});
+
 const orderShipper = ref({
   customerId: "",
   shipperName: "",
@@ -268,6 +288,19 @@ const onNext = () => {
     }
   });
   // emit("next");
+};
+
+const getAddressByCodeBlur = async () => {
+  if (orderShipper.value.shipperCode) {
+    const res = await getAddressByCode(orderShipper.value.shipperCode);
+    console.log(res);
+    // if (res?.data === "success") {
+    //   orderShipper.value.shipperStreet = res?.data?.address1 || "";
+    //   orderShipper.value.shipperCity = res?.data?.city || "";
+    //   orderShipper.value.shipperState = res?.data?.state || "";
+    //   orderShipper.value.shipperCountry = res?.data?.country || "";
+    // }
+  }
 };
 
 const onClear = () => {
