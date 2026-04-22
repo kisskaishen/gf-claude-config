@@ -1,24 +1,24 @@
 <template>
-  <div class="container p-6 mx-auto">
+  <div class="container p-6">
     <!-- 欢迎信息 -->
     <h1 class="mb-6 text-xl font-medium">你好，xxx</h1>
 
     <!-- 总金额和状态卡片 -->
-    <div class="grid grid-cols-1 gap-4 mb-6 md:grid-cols-3">
+    <div class="flex justify-between gap-6 mb-6">
       <!-- 总下单金额 -->
-      <div class="p-4 border-l-4 border-orange-500 rounded-lg bg-orange-50">
+      <div
+        class="flex-1 p-4 border-l-4 border-orange-500 rounded-lg bg-orange-50"
+      >
         <p class="mb-2 text-sm text-gray-600">总下单金额</p>
         <p class="text-2xl font-bold text-primary">€ 5,415,654.51</p>
         <div class="pt-4 mt-4 border-t border-orange-200">
-          <a href="#" class="text-sm text-orange-500 hover:underline"
-            >查看明细</a
-          >
+          <a href="#" class="text-sm text-primary hover:underline">查看明细</a>
         </div>
       </div>
 
       <!-- 派送中 -->
       <div
-        class="flex flex-col items-center justify-center p-4 bg-white border rounded-lg border-card"
+        class="flex flex-col items-center justify-center p-4 bg-white border rounded-lg border-card min-w-[286px]"
       >
         <p class="mb-2 text-3xl font-bold text-center text-primary">0</p>
         <p class="text-center text-gray-600">派送中</p>
@@ -26,7 +26,7 @@
 
       <!-- 已签收 -->
       <div
-        class="flex flex-col items-center justify-center p-4 bg-white border rounded-lg border-card"
+        class="flex flex-col items-center justify-center p-4 bg-white border rounded-lg border-card min-w-[286px]"
       >
         <p class="mb-2 text-3xl font-bold text-center text-primary">0</p>
         <p class="text-center text-gray-600">已签收</p>
@@ -293,10 +293,12 @@
     </div>
 
     <!-- 右侧帮助和反馈 -->
-    <div class="fixed flex flex-col gap-2 right-4 bottom-4">
+    <div
+      class="fixed right-0 flex flex-col gap-2 -translate-y-1/2 bg-white shadow-md top-1/2 px-1.5 py-3"
+    >
       <!-- 帮助 -->
-      <button
-        class="flex items-center justify-center w-12 h-12 transition-shadow bg-white rounded-full shadow-md hover:shadow-lg"
+      <div
+        class="flex flex-col items-center justify-center w-12 transition-shadow bg-white cursor-pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -312,11 +314,12 @@
             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
           />
         </svg>
-      </button>
-
+        <span class="text-sm text-info">帮助</span>
+      </div>
+      <el-divider style="margin: 0" />
       <!-- 反馈 -->
-      <button
-        class="flex items-center justify-center w-12 h-12 transition-shadow bg-white rounded-full shadow-md hover:shadow-lg"
+      <div
+        class="flex flex-col items-center justify-center w-12 transition-shadow bg-white cursor-pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -332,7 +335,8 @@
             d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
           />
         </svg>
-      </button>
+        <span class="text-sm text-info">反馈</span>
+      </div>
     </div>
   </div>
 </template>
@@ -356,17 +360,19 @@ const trackingNo = ref("");
   :deep(.el-input__wrapper) {
     height: 48px;
     padding: 0 18px;
+    text-align: center;
+    background-color: #fff;
     border: 2px solid var(--color-primary);
     border-radius: 24px 0 0 2px; /* 超大圆角 */
-    background-color: #fff;
     box-shadow: none;
-    text-align: center;
+
     .el-input__inner {
-      color: #333;
       font-size: 16px;
+      color: #333;
       text-align: center;
     }
   }
+
   :deep(.el-input-group__append) {
     background-color: transparent !important;
     box-shadow: none !important;
@@ -374,14 +380,14 @@ const trackingNo = ref("");
 }
 
 .custom-append-btn {
-  height: 48px;
   width: 94px;
-  border-radius: 0 2px 24px 0; /* 右侧圆角匹配 */
-  background-color: var(--color-primary) !important;
-  border-color: var(--color-primary) !important;
+  height: 48px;
   font-size: 16px;
   font-weight: 500;
   color: #fff !important;
   cursor: pointer !important;
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  border-radius: 0 2px 24px 0; /* 右侧圆角匹配 */
 }
 </style>

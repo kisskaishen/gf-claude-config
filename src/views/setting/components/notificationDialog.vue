@@ -33,22 +33,21 @@
       class="config-form"
     >
       <!-- 提醒额度 -->
-      <el-form-item label="提醒额度" prop="amount" required>
+      <el-form-item label="提醒额度" prop="alertAmount" required>
         <div class="flex items-center">
-          <el-input
-            v-model.number="form.amount"
+          <el-input-number
+            v-model.number="form.alertAmount"
             placeholder="请输入金额"
             class="flex-1"
-            type="number"
           />
           <span class="ml-2 text-gray-600">€ 欧元</span>
         </div>
       </el-form-item>
 
       <!-- 提醒时间 -->
-      <el-form-item label="提醒时间" prop="time" required>
+      <el-form-item label="提醒时间" prop="alertHourMinute" required>
         <el-time-select
-          v-model="form.time"
+          v-model="form.alertHourMinute"
           class="w-full"
           start="00:00"
           step="01:00"
@@ -73,15 +72,20 @@
       </el-form-item>
 
       <!-- 时区 -->
-      <el-form-item label="时区" prop="timezone" required>
+      <el-form-item label="时区" prop="timeZone" required>
         <el-select
-          v-model="form.timezone"
+          v-model="form.timeZone"
           placeholder="请选择时区"
           class="w-full"
+          filterable
+          clearable
         >
-          <el-option label="GMT+1 柏林" value="GMT+1 柏林" />
-          <el-option label="GMT+8 北京" value="GMT+8 北京" />
-          <el-option label="GMT+0 伦敦" value="GMT+0 伦敦" />
+          <el-option
+            v-for="item in timezoneOptions"
+            :key="item.value"
+            :label="item.label + ' ' + item.time"
+            :value="item.value"
+          />
         </el-select>
         <template #prefix>
           <svg
@@ -101,9 +105,9 @@
       </el-form-item>
 
       <!-- 提醒邮箱 -->
-      <el-form-item label="提醒邮箱" prop="emails" required>
+      <el-form-item label="提醒邮箱" prop="email" required>
         <el-input
-          v-model="form.emails"
+          v-model="form.email"
           type="textarea"
           :rows="4"
           placeholder="请输入邮箱地址，多个邮箱请用逗号或换行分隔"
@@ -128,14 +132,18 @@
       </el-form-item>
 
       <!-- 邮件语言 -->
-      <el-form-item label="邮件语言" prop="language" required>
+      <el-form-item label="邮件语言" prop="emailLanguage" required>
         <el-select
-          v-model="form.language"
+          v-model="form.emailLanguage"
           placeholder="请选择语言"
           class="w-full"
         >
-          <el-option label="简体中文" value="zh-CN" />
-          <el-option label="English" value="en-US" />
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
         </el-select>
         <template #prefix>
           <svg
@@ -157,8 +165,14 @@
       <!-- 弹窗提醒 -->
       <el-form-item label="弹窗提醒">
         <div class="flex items-center">
-          <el-switch v-model="form.popupEnabled" active-color="#ff7d00" />
-          <span class="ml-2">开启</span>
+          <el-switch
+            v-model="form.popupSwitch"
+            active-color="#ff7d00"
+            :active-value="1"
+            :inactive-value="0"
+            active-text="开启"
+            inactive-text="关闭"
+          />
         </div>
         <div class="mt-1 ml-1 text-xs text-gray-500">
           开启后，余额不足时将在登录时弹出提醒窗口
@@ -197,15 +211,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { ElMessage } from "element-plus";
+import { ref, computed, watch } from "vue";
 
+import { ElMessage } from "element-plus";
+import { Timezone, TimezoneArea, Lang } from "@/enums";
+import { addBalanceAlertConfig, updateBalanceAlertConfig } from "@/api/finance";
+import { useUserStore } from "@/store/user";
+const userInfo = useUserStore();
 const emit = defineEmits(["update:visible"]);
 
 const props = defineProps({
   visible: {
     type: Boolean,
     default: false
+  },
+  balanceAlertConfig: {
+    type: Object,
+    default: () => ({})
+  },
+  balanceReminder: {
+    type: Number,
+    default: 0
   }
 });
 
@@ -213,19 +239,68 @@ const visible = ref(props.visible);
 watch(
   () => props.visible,
   (newVal) => {
+    if (newVal) {
+      form.value = { ...props.balanceAlertConfig };
+      form.value.email = props.balanceAlertConfig.alertEmails.join(",");
+      form.value.account = userInfo.userInfo?.account || "";
+      form.value.country = userInfo.userInfo?.country || "";
+      form.value.state = props.balanceReminder || 0;
+    }
     visible.value = newVal;
   }
 );
+
+const timezoneOptions = computed(() =>
+  Object.entries(Timezone).map(([key, value]) => {
+    const fileName = key.split("/").join("_");
+
+    return {
+      label: value,
+      value,
+      time: TimezoneArea[key],
+      // 使用 new URL 动态获取资源路径
+      icon: new URL(`../../assets/timezones/${fileName}.png`, import.meta.url)
+        .href
+    };
+  })
+);
+
+const options = [
+  {
+    value: Lang.zh,
+    label: "简体中文"
+  },
+  {
+    value: Lang.en,
+    label: "English"
+  },
+  {
+    value: Lang.fr,
+    label: "Français"
+  },
+  {
+    value: Lang.it,
+    label: "Italiano"
+  },
+  {
+    value: Lang.nl,
+    label: "Nederlands"
+  }
+];
 const formRef = ref(null);
 
 // 表单数据
 const form = ref({
-  amount: null,
-  time: "09:00",
-  timezone: "GMT+1 柏林",
-  emails: "",
-  language: "zh-CN",
-  popupEnabled: true
+  gfucLoginId: userInfo.userInfo?.id || "",
+  account: userInfo.userInfo?.account || "",
+  country: userInfo.userInfo?.country || "",
+  alertAmount: null,
+  alertHourMinute: "",
+  timeZone: "",
+  email: "",
+  emailLanguage: "",
+  popupSwitch: 1, // 首页弹窗开关：0-关闭 1-开启
+  state: props.balanceReminder || 0 // 余额提醒总开关 1-开启 0-关闭（默认关闭）
 });
 
 // 关闭弹窗
@@ -234,10 +309,28 @@ const handleClose = () => {
   emit("update:visible", false);
 };
 
+// 处理邮箱字符串 → 干净数组
+const parseEmails = (emailStr) => {
+  if (!emailStr) return [];
+
+  return emailStr
+    .replace(/\s+/g, ",") // 去掉所有空格、换行、制表符
+    .split(",") // 按逗号分割
+    .filter(Boolean); // 过滤空字符串
+};
+
 // 保存设置
-const handleSave = () => {
-  formRef.value?.validate((valid) => {
+const handleSave = async () => {
+  await formRef.value?.validate(async (valid) => {
     if (valid) {
+      form.value.alertEmails = parseEmails(form.value.email);
+
+      if (props.balanceAlertConfig?.id) {
+        form.value.id = props.balanceAlertConfig.id;
+        await updateBalanceAlertConfig(form.value);
+      } else {
+        await addBalanceAlertConfig(form.value);
+      }
       ElMessage.success("设置保存成功");
       handleClose();
     } else {

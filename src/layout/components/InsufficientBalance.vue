@@ -32,11 +32,15 @@
       <div class="flex justify-around mb-8">
         <div class="text-center">
           <div class="mb-2 text-lg text-gray-500">当前余额</div>
-          <div class="text-2xl font-bold text-primary">50 €</div>
+          <div class="text-2xl font-bold text-primary">
+            {{ balanceInfo.availableOrderAmount }} €
+          </div>
         </div>
         <div class="text-center">
           <div class="mb-2 text-lg text-gray-500">提醒额度</div>
-          <div class="text-2xl font-bold">1000 €</div>
+          <div class="text-2xl font-bold text-primary">
+            {{ balanceInfo.alertBalance }} €
+          </div>
         </div>
       </div>
 
@@ -80,9 +84,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { ElMessage } from "element-plus";
 import { useRouter } from "vue-router";
+import { getBalanceAlertInfo } from "@/api/finance";
 
 const router = useRouter();
 
@@ -97,6 +102,26 @@ const handleRecharge = () => {
   router.push({ name: "Recharge" });
   handleClose();
 };
+
+const balanceInfo = ref({
+  availableOrderAmount: undefined,
+  alertBalance: undefined
+});
+
+const getBalanceInfo = async () => {
+  const res = await getBalanceAlertInfo();
+  console.log(res, "=====+++");
+  if (res.code === 200) {
+    visible.value = res.needPopup;
+    balanceInfo.value = {
+      availableOrderAmount: res.availableOrderAmount,
+      alertBalance: res.alertBalance
+    };
+  }
+};
+onMounted(() => {
+  getBalanceInfo();
+});
 </script>
 
 <style scoped>
