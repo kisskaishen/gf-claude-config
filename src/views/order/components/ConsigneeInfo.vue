@@ -140,7 +140,7 @@
                   <el-input
                     v-model="orderConsignee.consigneeCode"
                     placeholder="请输入邮编"
-                    @input="handleZipCodeInput"
+                    @blur="handleZipCodeInput"
                   />
                 </el-form-item>
               </el-col>
@@ -245,6 +245,7 @@
 <script setup>
 import { ref, watch } from "vue";
 import { Edit } from "@element-plus/icons-vue";
+import { getAddressByCode, getListCityBySid } from "@/api/order";
 
 const props = defineProps({
   stepNumber: {
@@ -309,9 +310,20 @@ watch(
   { deep: true }
 );
 
-const handleZipCodeInput = (val) => {
-  // orderConsignee.value.consigneeCode = val.replace(/\D/g, "");
+const handleZipCodeInput = () => {
   // 填写邮编，带出省市区，支持编辑。
+  getAddressByCode(orderConsignee.value.consigneeCode).then((res) => {
+    console.log(res);
+    // orderConsignee.value.address1 = res.data?.Address || "";
+    // orderConsignee.value.consigneeArea = res.data?.Area || "";
+    // orderConsignee.value.consigneeCity = res.data?.City || "";
+    // orderConsignee.value.consigneeState = res.data?.State || "";
+  });
+  // 根据省份ID获取城市列表
+  // getListCityBySid(res.data?.State || "").then((res) => {
+  //   console.log(res);
+  //   cities.value = res.data || [];
+  // });
 };
 
 const onNext = () => {

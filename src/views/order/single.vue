@@ -153,7 +153,7 @@ interface Step {
 const parcelInfoRef = ref(null);
 
 // 当前步骤
-const currentStep = ref(1);
+const currentStep = ref(2);
 
 // 已完成的步骤
 const completedSteps = ref([]);
@@ -176,21 +176,16 @@ const updateShipperData = (data) => {
 
 // 更新收件人数据
 const updateConsigneeData = (data) => {
-  console.log(data, "====consignee");
-
   formData.consignee = data;
 };
 
 // 更新产品数据
 const updateProductData = (data) => {
-  console.log(data, "====product");
-
   formData.product = data;
 };
 
 // 更新包裹数据
 const updateParcelData = (data) => {
-  console.log(data, "====parcel");
   formData.parcel = data;
 };
 

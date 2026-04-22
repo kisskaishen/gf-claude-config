@@ -54,10 +54,49 @@ export function createOrder(data: any) {
 //   });
 // }
 
+//  根据邮政编码获取地址
 export function getAddressByCode(postcode: string) {
-  // @ts-ignore
   return request({
-    url: `/system/address/getByCode/${postcode}`,
+    url: `/delivery/system/getByCode/${postcode}`,
     method: "get"
+  });
+}
+
+//  根据省份ID获取城市列表
+export function getListCityBySid(stateId: string) {
+  return request({
+    url: `/delivery/system/listCityBySid/${stateId}`,
+    method: "get"
+  });
+}
+
+// 订单列表-产品
+export function getOrderProductList(params: { CountryCode: string }) {
+  return request({
+    url: "api-v1/product-config/gfuc-query-config",
+    method: "get",
+    params
+  });
+}
+
+// 列表操作模块
+
+// 打印
+export function getOrderLabelUrl(params: {
+  waybillNo: string;
+  customerId: string | number;
+}) {
+  return request({
+    url: "/oms/label/getOrderLabelUrl",
+    method: "get",
+    params
+  });
+}
+// 批量打印
+export function batchPrintOrderLabel(data: { waybillNos: string[] }) {
+  return request({
+    url: "/oms/label/batchPrintLabel",
+    method: "post",
+    data
   });
 }

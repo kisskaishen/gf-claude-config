@@ -9,6 +9,9 @@
           @search="handleSearch"
           @reset="handleReset"
         >
+          <template #action-left>
+            <slot name="action-left"></slot>
+          </template>
           <slot name="search"></slot>
         </SearchContainer>
       </el-form>
