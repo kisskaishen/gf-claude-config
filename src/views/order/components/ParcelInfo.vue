@@ -42,13 +42,10 @@
           >
             <el-row :gutter="20">
               <el-col :span="6">
-                <el-form-item
-                  label="总包裹重 (kg)"
-                  prop="orderGoods.totalWeight"
-                >
+                <el-form-item label="总包裹重 (kg)" prop="orderGoods.weight">
                   <el-input-number
                     :controls="false"
-                    v-model="formData.orderGoods.totalWeight"
+                    v-model="formData.orderGoods.weight"
                     :min="0.001"
                     :max="50"
                     placeholder="请填写包裹总重量"
@@ -231,9 +228,9 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="服务商跟踪号" prop="sOrderNo">
+                <el-form-item label="服务商跟踪号" prop="reference3">
                   <el-input
-                    v-model="formData.sOrderNo"
+                    v-model="formData.reference3"
                     placeholder="第三方服务商的跟踪号"
                   />
                 </el-form-item>
@@ -286,7 +283,7 @@ const formRef = ref(null);
 
 const formData = ref({
   orderGoods: {
-    totalWeight: undefined,
+    weight: undefined,
     length: undefined,
     width: undefined,
     height: undefined
@@ -301,7 +298,7 @@ const formData = ref({
   declaredValue: undefined,
   cOrderNo: "",
   referenceNo: "",
-  sOrderNo: "",
+  reference3: "",
   channelCode: "",
   ...props.initialData
 });
@@ -322,7 +319,7 @@ const validateDimensions = (rule, value, callback) => {
 };
 
 const rules = reactive({
-  "orderGoods.totalWeight": [
+  "orderGoods.weight": [
     { required: true, message: "请输入总包裹重", trigger: ["blur", "change"] }
   ],
   "orderGoods.length": [
@@ -378,7 +375,7 @@ const removeGoods = (index) => {
 const onClear = () => {
   formData.value = {
     orderGoods: {
-      totalWeight: undefined,
+      weight: undefined,
       length: undefined,
       width: undefined,
       height: undefined
@@ -393,7 +390,7 @@ const onClear = () => {
     declaredValue: undefined,
     cOrderNo: "",
     referenceNo: "",
-    sOrderNo: "",
+    reference3: "",
     ...props.initialData
   };
 };
@@ -402,15 +399,15 @@ const onEdit = () => {
   emit("edit");
 };
 
-const onSubmit = () => {
-  formRef.value.validate((valid) => {
-    if (valid) {
-      // emit('submit');
-    }
+const validate = () => {
+  return new Promise((resolve) => {
+    formRef.value.validate((valid) => {
+      resolve(valid);
+    });
   });
 };
 defineExpose({
-  validate: onSubmit
+  validate
 });
 </script>
 

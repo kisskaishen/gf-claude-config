@@ -153,7 +153,7 @@ interface Step {
 const parcelInfoRef = ref(null);
 
 // 当前步骤
-const currentStep = ref(2);
+const currentStep = ref(1);
 
 // 已完成的步骤
 const completedSteps = ref([]);
@@ -180,6 +180,7 @@ const updateConsigneeData = (data) => {
 
 // 更新产品数据
 const updateProductData = (data) => {
+  console.log(data);
   formData.product = data;
 };
 
@@ -213,10 +214,11 @@ const editStep = (step) => {
 // 提交订单
 const submitOrder = async () => {
   // 先校验第四步的信息是否填写
-  if (parcelInfoRef.value && parcelInfoRef.value.validate) {
+  if (parcelInfoRef.value) {
     try {
       // 调用第四步组件的校验方法
       let valid = await parcelInfoRef.value.validate();
+      console.log("第四步校验结果:", valid);
       if (!valid) {
         return;
       }
@@ -233,8 +235,10 @@ const submitOrder = async () => {
 
         orderProduct: formData.product,
 
-        shippingType: formData.parcel?.shippingType,
-        services: formData.product?.services,
+        shippingType: "HDN", // ZT/HDN
+        productName: formData.product?.productName,
+        productCode: formData.product?.productCode,
+        productType: formData.product?.productType,
 
         queryCollectStartTime: formData.parcel?.queryCollectStartTime,
         queryCollectEndTime: formData.parcel?.queryCollectEndTime,
@@ -245,7 +249,7 @@ const submitOrder = async () => {
 
         cOrderNo: formData.parcel?.cOrderNo,
         declaredValue: formData.parcel?.declaredValue,
-        sOrderNo: formData.parcel?.sOrderNo,
+        reference3: formData.parcel?.reference3,
         referenceNo: formData.parcel?.referenceNo,
         channelCode: formData.parcel?.channelCode
       };

@@ -53,8 +53,8 @@
               <el-col :span="24">
                 <el-form-item label-width="0">
                   <el-radio-group v-model="formData.productType">
-                    <el-radio value="economy">普惠</el-radio>
-                    <el-radio value="express">标快</el-radio>
+                    <el-radio value="ECO">特惠</el-radio>
+                    <el-radio value="EXP">标快</el-radio>
                   </el-radio-group>
                 </el-form-item>
               </el-col>
@@ -64,8 +64,9 @@
               <el-col :span="24">
                 <el-form-item label-width="0">
                   <el-radio-group
-                    v-model="formData.services"
+                    v-model="formData.productCode"
                     class="radio-group"
+                    @change="handleProductChange"
                   >
                     <el-radio
                       v-for="item in productList"
@@ -82,7 +83,7 @@
 
             <el-row
               :gutter="20"
-              v-if="['pickup', 'delivery'].includes(formData.services)"
+              v-if="formData.productName.indexOf('揽收') > -1"
             >
               <el-col :span="8">
                 <el-form-item
@@ -104,6 +105,7 @@
                     type="datetime"
                     style="width: 100%"
                     format="YYYY-MM-DD HH:mm:ss"
+                    value-format="YYYY-MM-DD HH:mm:ss"
                   />
                 </el-form-item>
               </el-col>
@@ -127,6 +129,7 @@
                     type="datetime"
                     style="width: 100%"
                     format="YYYY-MM-DD HH:mm:ss"
+                    value-format="YYYY-MM-DD HH:mm:ss"
                   />
                 </el-form-item>
               </el-col>
@@ -143,11 +146,11 @@
         <div v-else class="summary-container">
           <div class="flex-col summary-content">
             <p class="text-base">
-              {{ formData.productType === "economy" ? "普惠" : "标快" }}
+              {{ formData.productType === "ECO" ? "特惠" : "标快" }}
             </p>
             <div class="radio-group">
               <div class="radio-check">
-                <div class="radio-label">揽收&分拣</div>
+                <div class="radio-label">{{ formData.productCode }}</div>
                 <div class="radio-content">我们将会提供揽收分拣服务</div>
               </div>
             </div>
@@ -196,12 +199,15 @@ const rules = ref({
   productType: [
     { required: true, message: "请选择产品类型", trigger: "change" }
   ],
-  services: [{ required: true, message: "请选择增值服务", trigger: "change" }]
+  productCode: [
+    { required: true, message: "请选择增值服务", trigger: "change" }
+  ]
 });
 
 const formData = ref({
-  productType: "economy",
-  services: "",
+  productType: "ECO",
+  productCode: "",
+  productName: "",
   queryCollectStartTime: "",
   queryCollectEndTime: "",
   ...props.initialData
@@ -217,14 +223,20 @@ watch(
   { deep: true }
 );
 
+const handleProductChange = (val) => {
+  formData.value.productName =
+    productList.value.find((item) => item.code === val)?.name || "";
+};
+
 const onNext = () => {
   emit("next");
 };
 
 const onClear = () => {
   formData.value = {
-    productType: "economy",
-    services: "",
+    productType: "ECO",
+    productCode: "",
+    productName: "",
     ...props.initialData
   };
 };

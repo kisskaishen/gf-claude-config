@@ -173,7 +173,7 @@
                       v-for="city in cities"
                       :key="city.id"
                       :label="city.cityName"
-                      :value="city.id"
+                      :value="city.cityName"
                     />
                   </el-select>
                 </el-form-item>
@@ -321,9 +321,9 @@ const handleZipCodeInput = () => {
       getCityListData(res.city.stateId);
 
       setTimeout(() => {
-        orderConsignee.value.consigneeCity = res.city?.id || "";
+        orderConsignee.value.consigneeCity = res.city?.cityName || "";
 
-        orderConsignee.value.consigneeState = res.state?.id || "";
+        orderConsignee.value.consigneeState = res.state?.stateName || "";
       }, 200);
     }
   );

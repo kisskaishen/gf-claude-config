@@ -35,10 +35,10 @@
           <el-form-item
             v-if="[0, 888].includes(activeTab)"
             :label="$t('gfuc.order_status' /** 订单状态 **/)"
-            prop="status"
+            prop="orderStatusSet"
           >
             <el-select
-              v-model="searchForm.status"
+              v-model="searchForm.orderStatusSet"
               :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
               clearable
             >
@@ -52,39 +52,55 @@
           </el-form-item>
           <el-form-item
             :label="$t('gfuc.order_time' /** 下单时间 **/)"
-            prop="orderTime"
+            prop="orderTimeRange"
           >
-            <el-date-picker
-              v-model="searchForm.orderTime"
+            <!-- <el-date-picker
+              v-model="searchForm.orderTimeRange"
               type="daterange"
               :start-placeholder="$t('gfuc.start_date' /** 开始日期 **/)"
               :end-placeholder="$t('gfuc.end_date' /** 结束日期 **/)"
-              value-format="YYYY-MM-DD"
+              value-format="YYYY-MM-DD HH:mm:ss"
+              format="YYYY-MM-DD HH:mm:ss"
+            /> -->
+
+            <el-date-picker
+              v-model="searchForm.orderTimeRange"
+              type="daterange"
+              :disabled-date="disabledDate"
+              range-separator="至"
+              start-placeholder="开始时间"
+              end-placeholder="结束时间"
+              format="YYYY-MM-DD HH:mm:ss"
+              value-format="YYYY-MM-DD HH:mm:ss"
+              @change="handleChange"
             />
           </el-form-item>
           <el-form-item
             :label="$t('gfuc.recipient_postal_code' /** 收件人邮编 **/)"
-            prop="recipientPostcode"
+            prop="consigneeCodeList"
           >
             <el-input
-              v-model="searchForm.recipientPostcode"
+              v-model="searchForm.consigneeCodeList"
               :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
             />
           </el-form-item>
           <el-form-item
             :label="$t('gfuc.recipient_phone' /** 收件人电话 **/)"
-            prop="recipientPhone"
+            prop="shipperCodeList"
           >
             <el-select
-              v-model="searchForm.recipientPhone"
+              v-model="searchForm.shipperCodeList"
               :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
               clearable
             >
             </el-select>
           </el-form-item>
-          <el-form-item :label="$t('gfuc.product' /** 产品 **/)" prop="product">
+          <el-form-item
+            :label="$t('gfuc.product' /** 产品 **/)"
+            prop="productCodeList"
+          >
             <el-select
-              v-model="searchForm.product"
+              v-model="searchForm.productCodeList"
               :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
               clearable
               filterable
@@ -211,17 +227,17 @@ const exceptionOrderStatusOptions = computed(() => {
 
 const columns = [
   {
-    prop: "customerorderNumber",
+    prop: "orderNo",
     label: "gfuc.customer_order_number",
     minWidth: 180
   },
-  { prop: "waybillNo", label: "gfuc.waybill_number", minWidth: 180 },
-  { prop: "productName", label: "gfuc.product_name", minWidth: 120 },
-  { prop: "status", label: "gfuc.order_status", width: 100 },
+  { prop: "waybillNo", label: "gfuc.waybill_number", minWidth: 200 },
+  { prop: "productTypeName", label: "gfuc.product_name", minWidth: 120 },
+  { prop: "orderStatusName", label: "gfuc.order_status", width: 100 },
   { prop: "recipient", label: "gfuc.recipient", minWidth: 120 },
   { prop: "recipientPhone", label: "gfuc.recipient_phone", minWidth: 130 },
   { prop: "recipientAddress", label: "gfuc.recipient_address", minWidth: 200 },
-  { prop: "submitTime", label: "gfuc.submission_time", width: 180 }
+  { prop: "orderCreateTime", label: "gfuc.submission_time", width: 200 }
 ];
 
 const activeTab = ref(0);
@@ -229,7 +245,7 @@ const loading = ref(false);
 
 const defaultFormState = {
   orderNumber: "",
-  customerIdSet: [],
+  // customerIdSet: [],
   orderStatusSet: [],
   orderSource: undefined,
   consigneeCodeList: "",
@@ -237,11 +253,12 @@ const defaultFormState = {
   productCodeList: [],
   transferRequired: undefined,
   deliveryStationIdList: [],
-  customerCode: "",
-  orderTimeRange: [dayjs().startOf("day"), dayjs().endOf("day")]
+  // customerCode: "",
+  orderTimeRange: ["", ""]
 };
 
 const searchForm = reactive(cloneDeep(defaultFormState));
+console.log(searchForm, "searchForm");
 
 const pagination = reactive({
   currentPage: 1,
@@ -252,6 +269,55 @@ const pagination = reactive({
 const tableData = ref([]);
 
 const productList = ref([]);
+
+// 禁用日期逻辑
+const disabledDate = (time) => {
+  if (!searchForm.orderTimeRange || !searchForm.orderTimeRange[0]) {
+    // 未选择开始日期时，只禁用未来日期
+    return time.getTime() > Date.now();
+  }
+
+  const startTime = new Date(searchForm.orderTimeRange[0]).getTime();
+  const minTime = startTime - 30 * 24 * 3600 * 1000;
+  const maxTime = startTime + 30 * 24 * 3600 * 1000;
+
+  // 禁用超出30天范围或未来的日期
+  return (
+    time.getTime() < minTime ||
+    time.getTime() > maxTime ||
+    time.getTime() > Date.now()
+  );
+};
+
+// 设置默认值（前30天）
+const setDefaultRange = () => {
+  const end = new Date();
+  const start = new Date();
+  start.setTime(start.getTime() - 30 * 24 * 3600 * 1000);
+  // value-format="YYYY-MM-DD HH:mm:ss" 需要传入字符串格式的日期
+  searchForm.orderTimeRange = [
+    dayjs(start).format("YYYY-MM-DD HH:mm:ss"),
+    dayjs(end).format("YYYY-MM-DD HH:mm:ss")
+  ];
+};
+setDefaultRange();
+
+// 处理日期变化
+const handleChange = (value) => {
+  if (value && value[0] && value[1]) {
+    const start = dayjs(value[0]);
+    const end = dayjs(value[1]);
+    const diffDays = end.diff(start, "day");
+
+    if (diffDays > 30) {
+      // 超过30天时，自动调整结束日期
+      const newEnd = start.add(30, "day").toDate();
+      searchForm.orderTimeRange = [value[0], newEnd];
+      console.log("已自动调整为30天范围");
+    }
+  }
+  console.log("选择的日期范围:", value);
+};
 
 const getParams = () => {
   const {
@@ -267,11 +333,13 @@ const getParams = () => {
   // 处理单号
   if (orderNumber) {
     params.orderNumber = spliceArray(commaToArr(orderNumber), 500).join("\n");
+  } else {
+    params.orderNumber = "";
   }
   // 时间参数
   if (orderTimeRange?.length === 2) {
-    params.queryStartTime = orderTimeRange[0].format("YYYY-MM-DD HH:mm:ss");
-    params.queryEndTime = orderTimeRange[1].format("YYYY-MM-DD HH:mm:ss");
+    params.queryStartTime = orderTimeRange[0];
+    params.queryEndTime = orderTimeRange[1];
   }
   // 收件地邮编
   if (consigneeCodeList) {
@@ -281,28 +349,38 @@ const getParams = () => {
   if (shipperCodeList) {
     params.shipperCodeList = spliceArray(commaToArr(shipperCodeList), 100);
   }
+
+  params.orderType = "";
+
+  console.log(params, "查询参数");
+  params.customerIdList = userInfo.loginInfo?.shipperCustomerList?.map(
+    (item: any) => item.customerId
+  );
   return params;
 };
 const getOrderProductListData = async () => {
   const params = getParams();
 
   const res = await getOrderList({
-    ...params,
+    data: {
+      ...params
+    },
     pageNum: pagination.currentPage,
     pageSize: pagination.pageSize
   });
-  productList.value = res.data || [];
+  tableData.value = res.records || [];
 };
-
-getOrderProductListData();
 
 const fetchData = () => {
   loading.value = true;
+  getOrderProductListData();
+
   // 模拟接口请求
   setTimeout(() => {
     loading.value = false;
   }, 500);
 };
+fetchData();
 
 const handleView = (row: any) => {
   console.log("View", row);

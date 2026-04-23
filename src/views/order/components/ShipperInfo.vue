@@ -120,9 +120,9 @@
                 </el-form-item>
               </el-col>
               <el-col :span="isCj ? 8 : 16">
-                <el-form-item label="详细地址" prop="shipperArea">
+                <el-form-item label="详细地址" prop="shipperStreet">
                   <el-input
-                    v-model="orderShipper.shipperArea"
+                    v-model="orderShipper.shipperStreet"
                     placeholder="请输入详细地址"
                     maxlength="100"
                   />
@@ -141,9 +141,9 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="区域" prop="shipperStreet">
+                <el-form-item label="区域" prop="shipperArea">
                   <el-input
-                    v-model="orderShipper.shipperStreet"
+                    v-model="orderShipper.shipperArea"
                     placeholder="请输入区域"
                     maxlength="50"
                   />

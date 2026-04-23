@@ -50,6 +50,15 @@ export function getOrderList(data: {
   });
 }
 
+// 下单失败列表
+export function getOrderFailedList(data: any) {
+  return request({
+    url: "/oms/unusualOrderPageList",
+    method: "post",
+    data
+  });
+}
+
 // // 2. 根据订单编码获取详情
 // export function getOrderByCode(orderCode: string) {
 //   return request<OrderItem>({
@@ -80,9 +89,8 @@ export function createOrder(data: any) {
 //  根据邮政编码获取地址
 export function getAddressByCode(data: { postcode: string }) {
   return request({
-    url: `/delivery/system/getByCode`,
-    method: "post",
-    data
+    url: `/delivery/system/getByCode?postcode=${data.postcode}`,
+    method: "post"
   });
 }
 
