@@ -47,6 +47,7 @@
                   prop="orderGoods.totalWeight"
                 >
                   <el-input-number
+                    :controls="false"
                     v-model="formData.orderGoods.totalWeight"
                     :min="0.001"
                     :max="50"
@@ -57,6 +58,7 @@
               <el-col :span="6">
                 <el-form-item label="长(cm)" prop="orderGoods.length">
                   <el-input-number
+                    :controls="false"
                     v-model="formData.orderGoods.length"
                     :precision="2"
                     :min="1"
@@ -68,6 +70,7 @@
               <el-col :span="6">
                 <el-form-item label="宽(cm)" prop="orderGoods.width">
                   <el-input-number
+                    :controls="false"
                     v-model="formData.orderGoods.width"
                     :precision="2"
                     :min="1"
@@ -79,6 +82,7 @@
               <el-col :span="6">
                 <el-form-item label="高(cm)" prop="orderGoods.height">
                   <el-input-number
+                    :controls="false"
                     v-model="formData.orderGoods.height"
                     :precision="2"
                     :min="1"
@@ -150,6 +154,7 @@
                           required
                         >
                           <el-input-number
+                            :controls="false"
                             v-model="row.itemQty"
                             placeholder="数量"
                             :min="1"
@@ -196,6 +201,7 @@
               <el-col :span="12">
                 <el-form-item label="申报价值 (EUR)" prop="declaredValue">
                   <el-input-number
+                    :controls="false"
                     v-model="formData.declaredValue"
                     :precision="2"
                     :min="0.0"
@@ -414,6 +420,14 @@ defineExpose({
 .table-actions {
   .el-button {
     border: none;
+  }
+}
+
+:deep(.el-input-number) {
+  width: 100%;
+
+  .el-input__inner {
+    text-align: left;
   }
 }
 </style>

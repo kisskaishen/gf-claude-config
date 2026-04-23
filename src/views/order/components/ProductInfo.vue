@@ -67,17 +67,13 @@
                     v-model="formData.services"
                     class="radio-group"
                   >
-                    <el-radio value="pickup">
-                      <div class="radio-label">揽收&分拣</div>
-                      <div class="radio-content">我们将会提供揽收分拣服务</div>
-                    </el-radio>
-                    <el-radio value="delivery">
-                      <div class="radio-label">揽收&派送</div>
-                      <div class="radio-content">我们将会提供揽收派送服务</div>
-                    </el-radio>
-                    <el-radio value="selfService">
-                      <div class="radio-label">自派送服务</div>
-                      <div class="radio-content">我们将会提供自派送服务</div>
+                    <el-radio
+                      v-for="item in productList"
+                      :key="item.code"
+                      :value="item.code"
+                    >
+                      <div class="radio-label">{{ item.name }}</div>
+                      <div class="radio-content">{{ item.desc }}</div>
                     </el-radio>
                   </el-radio-group>
                 </el-form-item>
@@ -168,7 +164,11 @@
 
 <script setup>
 import { ref, watch, computed } from "vue";
-
+import { getOrderProductList } from "@/api/order";
+import { useUserStore } from "@/store/user";
+import { useAppStore } from "@/store/app";
+const userStore = useUserStore();
+const appStore = useAppStore();
 const props = defineProps({
   stepNumber: {
     type: Number,
@@ -207,11 +207,7 @@ const formData = ref({
   ...props.initialData
 });
 
-const serviceMap = {
-  pickup: "提取&分拣",
-  delivery: "提取&派送",
-  selfService: "自派送服务"
-};
+const productList = ref([]);
 
 watch(
   formData,
@@ -236,6 +232,27 @@ const onClear = () => {
 const onEdit = () => {
   emit("edit");
 };
+
+const toPascalCase = (str) => {
+  return str
+    .replace(/[_-](\w)/g, (_, char) => char.toUpperCase())
+    .replace(/^\w/, (firstChar) => firstChar.toUpperCase());
+};
+
+const getProductList = async () => {
+  const res = await getOrderProductList({
+    countryCode: userStore.userInfo?.country || ""
+  });
+  productList.value = res.map((item) => ({
+    ...item,
+    name: item.name,
+    desc:
+      item["description" + toPascalCase(appStore.site.toLocaleLowerCase())] ||
+      "暂无描述"
+  }));
+};
+
+getProductList();
 </script>
 
 <style scoped lang="scss">

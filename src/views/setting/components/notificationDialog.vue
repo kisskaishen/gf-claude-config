@@ -29,13 +29,15 @@
     <el-form
       ref="formRef"
       :model="form"
+      :rules="rules"
       label-width="100px"
       class="config-form"
     >
       <!-- 提醒额度 -->
-      <el-form-item label="提醒额度" prop="alertAmount" required>
+      <el-form-item label="提醒额度" prop="alertAmount">
         <div class="flex items-center">
           <el-input-number
+            :controls="false"
             v-model.number="form.alertAmount"
             placeholder="请输入金额"
             class="flex-1"
@@ -45,7 +47,7 @@
       </el-form-item>
 
       <!-- 提醒时间 -->
-      <el-form-item label="提醒时间" prop="alertHourMinute" required>
+      <el-form-item label="提醒时间" prop="alertHourMinute">
         <el-time-select
           v-model="form.alertHourMinute"
           class="w-full"
@@ -72,7 +74,7 @@
       </el-form-item>
 
       <!-- 时区 -->
-      <el-form-item label="时区" prop="timeZone" required>
+      <el-form-item label="时区" prop="timeZone">
         <el-select
           v-model="form.timeZone"
           placeholder="请选择时区"
@@ -105,7 +107,7 @@
       </el-form-item>
 
       <!-- 提醒邮箱 -->
-      <el-form-item label="提醒邮箱" prop="email" required>
+      <el-form-item label="提醒邮箱" prop="email">
         <el-input
           v-model="form.email"
           type="textarea"
@@ -132,7 +134,7 @@
       </el-form-item>
 
       <!-- 邮件语言 -->
-      <el-form-item label="邮件语言" prop="emailLanguage" required>
+      <el-form-item label="邮件语言" prop="emailLanguage">
         <el-select
           v-model="form.emailLanguage"
           placeholder="请选择语言"
@@ -241,7 +243,7 @@ watch(
   (newVal) => {
     if (newVal) {
       form.value = { ...props.balanceAlertConfig };
-      form.value.email = props.balanceAlertConfig.alertEmails.join(",");
+      form.value.email = props.balanceAlertConfig?.alertEmails.join(",");
       form.value.account = userInfo.userInfo?.account || "";
       form.value.country = userInfo.userInfo?.country || "";
       form.value.state = props.balanceReminder || 0;
@@ -303,6 +305,44 @@ const form = ref({
   state: props.balanceReminder || 0 // 余额提醒总开关 1-开启 0-关闭（默认关闭）
 });
 
+// 邮箱格式校验函数
+const validateEmail = (rule, value, callback) => {
+  if (!value) {
+    callback();
+    return;
+  }
+
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const emails = parseEmails(value);
+
+  for (const email of emails) {
+    if (!emailRegex.test(email.trim())) {
+      callback(new Error(`邮箱格式不正确: ${email}`));
+      return;
+    }
+  }
+
+  callback();
+};
+
+const rules = reactive({
+  alertAmount: [{ required: true, message: "请输入提醒额度", trigger: "blur" }],
+  alertHourMinute: [
+    { required: true, message: "请选择提醒时间", trigger: "change" }
+  ],
+  timeZone: [{ required: true, message: "请选择时区", trigger: "change" }],
+  email: [
+    { required: true, message: "请输入邮箱", trigger: "blur" },
+    { validator: validateEmail, trigger: "blur" }
+  ],
+  emailLanguage: [
+    { required: true, message: "请选择邮箱语言", trigger: "change" }
+  ],
+  popupSwitch: [
+    { required: true, message: "请选择弹窗提醒", trigger: "change" }
+  ]
+});
+
 // 关闭弹窗
 const handleClose = () => {
   visible.value = false;
@@ -323,7 +363,8 @@ const parseEmails = (emailStr) => {
 const handleSave = async () => {
   await formRef.value?.validate(async (valid) => {
     if (valid) {
-      form.value.alertEmails = parseEmails(form.value.email);
+      form.value.alertEmails = parseEmails(form.value?.email) || "";
+      form.value.gfucLoginId = userInfo.userInfo?.id || "";
 
       if (props.balanceAlertConfig?.id) {
         form.value.id = props.balanceAlertConfig.id;
@@ -364,7 +405,11 @@ const handleSave = async () => {
   left: 10px;
 }
 
-.config-form :deep(.el-input__wrapper) {
-  padding-left: 30px;
+:deep(.el-input-number) {
+  width: 100%;
+
+  .el-input__inner {
+    text-align: left;
+  }
 }
 </style>

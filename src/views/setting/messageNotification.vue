@@ -72,7 +72,11 @@
                 已开启
               </span>
             </div>
-            <div v-if="balanceAlertConfig?.state === 0">
+            <div
+              v-if="
+                balanceAlertConfig === null || balanceAlertConfig?.state === 0
+              "
+            >
               <span
                 class="inline-flex items-center px-3 py-1 mr-3 text-sm font-medium text-gray-500 bg-gray-100 rounded-full"
               >
@@ -126,9 +130,9 @@ const handleBalanceReminderChange = async (val: boolean) => {
     // await getBalanceConfig();
     ElMessage.success("已关闭余额不足提醒");
   }
-  showBalanceReminderDialog.value = val;
+  showBalanceReminderDialog.value = val === 1;
 
-  balanceReminder.value = val ? 1 : 0;
+  balanceReminder.value = val;
 };
 
 watch(
@@ -145,7 +149,7 @@ const balanceAlertConfig = ref(null);
 const getBalanceConfig = async () => {
   const res = await getBalanceAlertConfig(userInfo.userInfo?.id);
   balanceAlertConfig.value = res;
-  balanceReminder.value = res.state;
+  balanceReminder.value = res?.state || 0;
 };
 
 onMounted(() => {

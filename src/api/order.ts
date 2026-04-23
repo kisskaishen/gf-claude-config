@@ -14,18 +14,41 @@ import request from "@/utils/request";
 //   stock: number;
 // }
 
-// // 1. 获取订单列表 (分页)
-// export function getOrderList(params: {
-//   pageNum: number;
-//   pageSize: number;
-//   keyword?: string;
-// }) {
-//   return request<OrderItem>({
-//     url: "/v1/dbu_oms/order/list",
-//     method: "post",
-//     params
-//   });
-// }
+// 1. 获取订单列表 (分页)
+export function getOrderList(data: {
+  data: {
+    /** 单号 */
+    orderNumber?: string;
+
+    /** 客户名称集合 */
+    customerNameSet?: string[];
+
+    /** 订单状态集合 */
+    orderStatusSet?: string[];
+
+    /** 订单来源 */
+
+    /** 收件地邮编 */
+    consigneeCodeList?: string[];
+
+    /** 产品编码 */
+    productCodeList?: string[];
+
+    /** 开始时间 */
+    queryStartTime?: string;
+
+    /** 结束时间 */
+    queryEndTime?: string;
+  };
+  pageNum: number;
+  pageSize: number;
+}) {
+  return request({
+    url: "/oms/order/pageList",
+    method: "post",
+    data
+  });
+}
 
 // // 2. 根据订单编码获取详情
 // export function getOrderByCode(orderCode: string) {
@@ -55,27 +78,36 @@ export function createOrder(data: any) {
 // }
 
 //  根据邮政编码获取地址
-export function getAddressByCode(postcode: string) {
+export function getAddressByCode(data: { postcode: string }) {
   return request({
-    url: `/delivery/system/getByCode/${postcode}`,
-    method: "get"
+    url: `/delivery/system/getByCode`,
+    method: "post",
+    data
   });
 }
 
 //  根据省份ID获取城市列表
-export function getListCityBySid(stateId: string) {
+export function getListCityBySid(data: { stateId: string }) {
   return request({
-    url: `/delivery/system/listCityBySid/${stateId}`,
-    method: "get"
+    url: `/delivery/system/listCityBySid?stateId=${data.stateId}`,
+    method: "post"
+  });
+}
+
+// 获取州/省的地址
+export function getStateList() {
+  return request({
+    url: "/delivery/system/selectSysStateCode",
+    method: "post"
   });
 }
 
 // 订单列表-产品
-export function getOrderProductList(params: { CountryCode: string }) {
+export function getOrderProductList(data: { countryCode: string }) {
   return request({
-    url: "api-v1/product-config/gfuc-query-config",
-    method: "get",
-    params
+    url: "/plm/product/query-config",
+    method: "post",
+    data
   });
 }
 

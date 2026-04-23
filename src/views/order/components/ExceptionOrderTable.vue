@@ -60,12 +60,19 @@
             />
           </el-form-item>
           <el-form-item label="异常类型" prop="unusualType">
-            <el-input
+            <el-select
               v-model="searchForm.unusualType"
               :placeholder="
                 $t('gfuc.please_enter_unusual_type' /** 请输入异常类型 **/)
               "
-            />
+            >
+              <el-option
+                v-for="item in unusualTypeOptions.options.value"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
           </el-form-item>
           <el-form-item label="用户时区" prop="userTimeZone">
             <el-input
@@ -126,7 +133,10 @@
 import { ref, reactive, onMounted } from "vue";
 import { View } from "@element-plus/icons-vue";
 import TableLayout from "@/components/TableLayout/index.vue";
+import { useDict } from "@/hooks/useDict";
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n();
 defineOptions({
   name: "ExceptionOrderTable"
 });
@@ -196,6 +206,8 @@ const pagination = reactive({
 });
 
 const tableData = ref([]);
+
+const unusualTypeOptions = useDict("UnusualOrderType");
 
 const fetchData = () => {
   loading.value = true;

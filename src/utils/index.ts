@@ -29,3 +29,26 @@ export const copyText = async (text) => {
     return true;
   }
 };
+/** 按长度截取数组 */
+export const spliceArray = (arr: any[], length: number) => {
+  if (arr.length <= length) {
+    return arr;
+  } else {
+    return arr.slice(0, length);
+  }
+};
+
+/** 支持空格和换行符转成数组 */
+export const spacesOrLineToArr = (str: string) => {
+  const modifiedStr = str.replace(/ /g, "\n");
+  const arr = modifiedStr.split(/\n+/).filter(Boolean);
+  return arr;
+};
+/**
+ * 逗号转数组
+ * @param str
+ * @returns
+ */
+export const commaToArr = (str: string) => {
+  return str.split(",").filter((it) => !!it);
+};

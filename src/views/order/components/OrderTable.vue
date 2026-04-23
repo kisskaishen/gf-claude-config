@@ -21,10 +21,10 @@
           <!-- Search Fields -->
           <el-form-item
             :label="$t('gfuc.tracking_number' /** 单号 **/)"
-            prop="orderNo"
+            prop="orderNumber"
           >
             <el-input
-              v-model="searchForm.orderNo"
+              v-model="searchForm.orderNumber"
               :placeholder="
                 $t(
                   'gfuc.please_enter_order_or_tracking_number' /** 请输入订单号或运单号 **/
@@ -167,6 +167,8 @@
 
 <script setup lang="ts">
 import { ref, reactive, onMounted } from "vue";
+import { spliceArray, commaToArr } from "@/utils/index";
+
 import {
   View,
   Edit,
@@ -175,7 +177,7 @@ import {
   CopyDocument
 } from "@element-plus/icons-vue";
 import {
-  getOrderProductList,
+  getOrderList,
   getOrderLabelUrl,
   batchPrintOrderLabel
 } from "@/api/order";
@@ -184,6 +186,8 @@ import { useDict } from "@/hooks/useDict";
 
 import download from "download-file-by-url";
 import { useUserStore } from "@/store/user";
+import { cloneDeep, debounce } from "lodash-es";
+import dayjs from "dayjs";
 
 const userInfo = useUserStore();
 
@@ -207,7 +211,7 @@ const exceptionOrderStatusOptions = computed(() => {
 
 const columns = [
   {
-    prop: "customerOrderNo",
+    prop: "customerorderNumber",
     label: "gfuc.customer_order_number",
     minWidth: 180
   },
@@ -223,14 +227,21 @@ const columns = [
 const activeTab = ref(0);
 const loading = ref(false);
 
-const searchForm = reactive({
-  orderNo: "",
-  status: "",
-  orderTime: [],
-  recipientPostcode: "",
-  recipientPhone: "",
-  product: ""
-});
+const defaultFormState = {
+  orderNumber: "",
+  customerIdSet: [],
+  orderStatusSet: [],
+  orderSource: undefined,
+  consigneeCodeList: "",
+  shipperCodeList: "",
+  productCodeList: [],
+  transferRequired: undefined,
+  deliveryStationIdList: [],
+  customerCode: "",
+  orderTimeRange: [dayjs().startOf("day"), dayjs().endOf("day")]
+};
+
+const searchForm = reactive(cloneDeep(defaultFormState));
 
 const pagination = reactive({
   currentPage: 1,
@@ -241,9 +252,44 @@ const pagination = reactive({
 const tableData = ref([]);
 
 const productList = ref([]);
+
+const getParams = () => {
+  const {
+    orderNumber,
+    shipperCodeList,
+    consigneeCodeList,
+    orderTimeRange,
+    ...args
+  } = searchForm;
+  const params: any = {
+    ...args
+  };
+  // 处理单号
+  if (orderNumber) {
+    params.orderNumber = spliceArray(commaToArr(orderNumber), 500).join("\n");
+  }
+  // 时间参数
+  if (orderTimeRange?.length === 2) {
+    params.queryStartTime = orderTimeRange[0].format("YYYY-MM-DD HH:mm:ss");
+    params.queryEndTime = orderTimeRange[1].format("YYYY-MM-DD HH:mm:ss");
+  }
+  // 收件地邮编
+  if (consigneeCodeList) {
+    params.consigneeCodeList = spliceArray(commaToArr(consigneeCodeList), 100);
+  }
+  // 寄件地邮编
+  if (shipperCodeList) {
+    params.shipperCodeList = spliceArray(commaToArr(shipperCodeList), 100);
+  }
+  return params;
+};
 const getOrderProductListData = async () => {
-  const res = await getOrderProductList({
-    CountryCode: userInfo.userInfo?.country || ""
+  const params = getParams();
+
+  const res = await getOrderList({
+    ...params,
+    pageNum: pagination.currentPage,
+    pageSize: pagination.pageSize
   });
   productList.value = res.data || [];
 };

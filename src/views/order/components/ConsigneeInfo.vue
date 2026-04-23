@@ -152,12 +152,12 @@
                     maxlength="50"
                     filterable
                   >
-                    <el-option
+                    <!-- <el-option
                       v-for="area in areas"
                       :key="area"
                       :label="area"
                       :value="area"
-                    />
+                    /> -->
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -171,9 +171,9 @@
                   >
                     <el-option
                       v-for="city in cities"
-                      :key="city"
-                      :label="city"
-                      :value="city"
+                      :key="city.id"
+                      :label="city.cityName"
+                      :value="city.id"
                     />
                   </el-select>
                 </el-form-item>
@@ -188,9 +188,9 @@
                   >
                     <el-option
                       v-for="state in states"
-                      :key="state"
-                      :label="state"
-                      :value="state"
+                      :key="state.id"
+                      :label="state.state_name"
+                      :value="state.state_name"
                     />
                   </el-select>
                 </el-form-item>
@@ -245,7 +245,7 @@
 <script setup>
 import { ref, watch } from "vue";
 import { Edit } from "@element-plus/icons-vue";
-import { getAddressByCode, getListCityBySid } from "@/api/order";
+import { getAddressByCode, getListCityBySid, getStateList } from "@/api/order";
 
 const props = defineProps({
   stepNumber: {
@@ -311,19 +311,22 @@ watch(
 );
 
 const handleZipCodeInput = () => {
+  if (!orderConsignee.value.consigneeCode) {
+    return;
+  }
   // 填写邮编，带出省市区，支持编辑。
-  getAddressByCode(orderConsignee.value.consigneeCode).then((res) => {
-    console.log(res);
-    // orderConsignee.value.address1 = res.data?.Address || "";
-    // orderConsignee.value.consigneeArea = res.data?.Area || "";
-    // orderConsignee.value.consigneeCity = res.data?.City || "";
-    // orderConsignee.value.consigneeState = res.data?.State || "";
-  });
-  // 根据省份ID获取城市列表
-  // getListCityBySid(res.data?.State || "").then((res) => {
-  //   console.log(res);
-  //   cities.value = res.data || [];
-  // });
+  getAddressByCode({ postcode: orderConsignee.value.consigneeCode }).then(
+    (res) => {
+      console.log(res, "====");
+      getCityListData(res.city.stateId);
+
+      setTimeout(() => {
+        orderConsignee.value.consigneeCity = res.city?.id || "";
+
+        orderConsignee.value.consigneeState = res.state?.id || "";
+      }, 200);
+    }
+  );
 };
 
 const onNext = () => {
@@ -353,6 +356,22 @@ const onClear = () => {
 const onEdit = () => {
   emit("edit");
 };
+
+// 获取州/省列表
+const getStateListData = () => {
+  getStateList().then((res) => {
+    console.log(res);
+    states.value = res || [];
+  });
+};
+// 城市列表
+const getCityListData = (stateId) => {
+  getListCityBySid({ stateId }).then((res) => {
+    cities.value = res || [];
+  });
+};
+
+getStateListData();
 </script>
 
 <style scoped lang="scss">
