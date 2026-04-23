@@ -54,15 +54,6 @@
             :label="$t('gfuc.order_time' /** 下单时间 **/)"
             prop="orderTimeRange"
           >
-            <!-- <el-date-picker
-              v-model="searchForm.orderTimeRange"
-              type="daterange"
-              :start-placeholder="$t('gfuc.start_date' /** 开始日期 **/)"
-              :end-placeholder="$t('gfuc.end_date' /** 结束日期 **/)"
-              value-format="YYYY-MM-DD HH:mm:ss"
-              format="YYYY-MM-DD HH:mm:ss"
-            /> -->
-
             <el-date-picker
               v-model="searchForm.orderTimeRange"
               type="daterange"
@@ -205,7 +196,7 @@ import { useUserStore } from "@/store/user";
 import { cloneDeep, debounce } from "lodash-es";
 import dayjs from "dayjs";
 
-const userInfo = useUserStore();
+const userStore = useUserStore();
 
 defineOptions({
   name: "OrderList"
@@ -234,9 +225,9 @@ const columns = [
   { prop: "waybillNo", label: "gfuc.waybill_number", minWidth: 200 },
   { prop: "productTypeName", label: "gfuc.product_name", minWidth: 120 },
   { prop: "orderStatusName", label: "gfuc.order_status", width: 100 },
-  { prop: "recipient", label: "gfuc.recipient", minWidth: 120 },
-  { prop: "recipientPhone", label: "gfuc.recipient_phone", minWidth: 130 },
-  { prop: "recipientAddress", label: "gfuc.recipient_address", minWidth: 200 },
+  { prop: "consigneeName", label: "gfuc.recipient", minWidth: 120 },
+  { prop: "consigneePhone", label: "gfuc.recipient_phone", minWidth: 130 },
+  { prop: "consigneeAddress", label: "gfuc.recipient_address", minWidth: 200 },
   { prop: "orderCreateTime", label: "gfuc.submission_time", width: 200 }
 ];
 
@@ -353,7 +344,7 @@ const getParams = () => {
   params.orderType = "";
 
   console.log(params, "查询参数");
-  params.customerIdList = userInfo.loginInfo?.shipperCustomerList?.map(
+  params.customerIdList = userStore.loginInfo?.shipperCustomerList?.map(
     (item: any) => item.customerId
   );
   return params;
@@ -369,6 +360,7 @@ const getOrderProductListData = async () => {
     pageSize: pagination.pageSize
   });
   tableData.value = res.records || [];
+  pagination.total = res.total || 0;
 };
 
 const fetchData = () => {

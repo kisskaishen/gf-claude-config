@@ -17,16 +17,15 @@
             :label="$t('gfuc.tracking_number' /** 单号 **/)"
             prop="orderNo"
           >
-            <template #label>
+            <!-- <template #label>
               <el-radio-group v-model="searchForm.searchType">
                 <el-radio label="cusOrderNumList">客户单号</el-radio>
                 <el-radio label="waybillNoList">运单号</el-radio>
                 <el-radio label="referenceNumber">参考号</el-radio>
               </el-radio-group>
-              <!-- {{ $t('gfuc.tracking_number' /** 单号 **/) }} -->
-            </template>
+            </template> -->
             <el-input
-              v-model="searchForm.searchValue"
+              v-model="searchForm.orderNo"
               :placeholder="
                 $t(
                   'gfuc.please_enter_order_or_tracking_number' /** 请输入订单号或运单号 **/
@@ -42,18 +41,18 @@
               "
             />
           </el-form-item>
-          <el-form-item label="客户名称" prop="customerNameSet">
+          <el-form-item label="客户名称" prop="customerName">
             <el-input
-              v-model="searchForm.customerNameSet"
+              v-model="searchForm.customerName"
               :placeholder="
-                $t('gfuc.please_enter_postal_code' /** 请输入邮编 **/)
+                $t('gfuc.please_enter_customer_name' /** 请输入客户名称 **/)
               "
             />
           </el-form-item>
 
           <el-form-item label="订单来源" prop="orderSource">
             <el-input
-              v-model="searchForm.orderSourceSet"
+              v-model="searchForm.orderSource"
               :placeholder="
                 $t('gfuc.please_enter_order_source' /** 请输入订单来源 **/)
               "
@@ -74,24 +73,21 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item label="用户时区" prop="userTimeZone">
-            <el-input
-              v-model="searchForm.userTimeZone"
-              :placeholder="
-                $t('gfuc.please_enter_user_time_zone' /** 请输入用户时区 **/)
-              "
-            />
-          </el-form-item>
+
           <el-form-item
             :label="$t('gfuc.order_time' /** 下单时间 **/)"
             prop="orderTime"
           >
             <el-date-picker
-              v-model="searchForm.orderTime"
+              v-model="searchForm.orderTimeRange"
               type="daterange"
-              :start-placeholder="$t('gfuc.start_date' /** 开始日期 **/)"
-              :end-placeholder="$t('gfuc.end_date' /** 结束日期 **/)"
-              value-format="YYYY-MM-DD"
+              :disabled-date="disabledDate"
+              range-separator="至"
+              start-placeholder="开始时间"
+              end-placeholder="结束时间"
+              format="YYYY-MM-DD HH:mm:ss"
+              value-format="YYYY-MM-DD HH:mm:ss"
+              @change="handleChange"
             />
           </el-form-item>
         </template>
@@ -108,7 +104,7 @@
 
           <el-table-column
             :label="$t('gfuc.operation' /** 操作 **/)"
-            width="180"
+            width="80"
             fixed="right"
           >
             <template #default="{ row }">
@@ -134,24 +130,53 @@ import { ref, reactive, onMounted } from "vue";
 import { View } from "@element-plus/icons-vue";
 import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
+import { getExceptionOrderList } from "@/api/order";
+import { spliceArray, commaToArr } from "@/utils/index";
 import { useI18n } from "vue-i18n";
-
+import { cloneDeep } from "lodash-es";
+import dayjs from "dayjs";
 const { t } = useI18n();
+
+import { useUserStore } from "@/store/user";
+const userStore = useUserStore();
+
 defineOptions({
   name: "ExceptionOrderTable"
 });
 
+const defaultFormData = {
+  consigneeCodeList: [],
+  orderNo: "",
+  cusOrderNumList: [],
+
+  customerName: "",
+  customerNameSet: [],
+
+  orderSource: "",
+
+  pageNum: 0,
+  pageSize: 0,
+
+  orderTimeRange: [],
+  queryEndTime: "",
+  queryStartTime: "",
+  referenceNoList: [],
+  unusualType: "",
+  userTimeZone: "",
+  waybillNoList: []
+};
+
 const exceptionOrderColumns = [
   { prop: "customerName", label: "客户名称", minWidth: "120" },
   { prop: "orderSource", label: "订单来源", width: "100" },
-  { prop: "waybillNo", label: "运单号", minWidth: "160" },
+  { prop: "waybillNo", label: "运单号", minWidth: "200" },
   { prop: "cusOrderNo", label: "客户单号", minWidth: "160" },
   { prop: "consigneeCode", label: "收件邮编", width: "110" },
   { prop: "unusualTypeValue", label: "异常类型值", width: "120" },
   {
     prop: "describe",
     label: "描述",
-    minWidth: "180",
+    minWidth: "240",
     showOverflowTooltip: true
   },
   { prop: "unusualField", label: "异常字段", minWidth: "140" },
@@ -167,7 +192,7 @@ const exceptionOrderColumns = [
     minWidth: "200",
     showOverflowTooltip: true
   },
-  { prop: "orderCreateTime", label: "下单时间", width: "160" },
+  { prop: "orderCreateTime", label: "下单时间", width: "200" },
   {
     prop: "requestBody",
     label: "请求参数",
@@ -185,19 +210,7 @@ const exceptionOrderColumns = [
 
 const loading = ref(false);
 
-const searchForm = reactive({
-  searchValue: "",
-  cusOrderNumList: "",
-  waybillNoList: "",
-  referenceNumber: "",
-  searchType: "cusOrderNumList",
-
-  customerNameSet: "",
-  orderSourceSet: "",
-  unusualType: "",
-  userTimeZone: "",
-  orderTime: []
-});
+const searchForm = reactive(cloneDeep(defaultFormData));
 
 const pagination = reactive({
   currentPage: 1,
@@ -205,17 +218,115 @@ const pagination = reactive({
   total: 320
 });
 
+// 禁用日期逻辑
+const disabledDate = (time) => {
+  if (!searchForm.orderTimeRange || !searchForm.orderTimeRange[0]) {
+    // 未选择开始日期时，只禁用未来日期
+    return time.getTime() > Date.now();
+  }
+
+  const startTime = new Date(searchForm.orderTimeRange[0]).getTime();
+  const minTime = startTime - 30 * 24 * 3600 * 1000;
+  const maxTime = startTime + 30 * 24 * 3600 * 1000;
+
+  // 禁用超出30天范围或未来的日期
+  return (
+    time.getTime() < minTime ||
+    time.getTime() > maxTime ||
+    time.getTime() > Date.now()
+  );
+};
+
+// 设置默认值（前30天）
+const setDefaultRange = () => {
+  const end = new Date();
+  const start = new Date();
+  start.setTime(start.getTime() - 30 * 24 * 3600 * 1000);
+  // value-format="YYYY-MM-DD HH:mm:ss" 需要传入字符串格式的日期
+  searchForm.orderTimeRange = [
+    dayjs(start).format("YYYY-MM-DD HH:mm:ss"),
+    dayjs(end).format("YYYY-MM-DD HH:mm:ss")
+  ];
+};
+setDefaultRange();
+
+// 处理日期变化
+const handleChange = (value) => {
+  if (value && value[0] && value[1]) {
+    const start = dayjs(value[0]);
+    const end = dayjs(value[1]);
+    const diffDays = end.diff(start, "day");
+
+    if (diffDays > 30) {
+      // 超过30天时，自动调整结束日期
+      const newEnd = start.add(30, "day").toDate();
+      searchForm.orderTimeRange = [value[0], newEnd];
+      console.log("已自动调整为30天范围");
+    }
+  }
+  console.log("选择的日期范围:", value);
+};
 const tableData = ref([]);
 
 const unusualTypeOptions = useDict("UnusualOrderType");
 
+const getParams = () => {
+  const { orderNo, consigneeCodeList, orderTimeRange, ...args } = searchForm;
+  const params: any = {
+    ...args
+  };
+  // 处理单号
+  if (orderNo) {
+    params.orderNo = spliceArray(commaToArr(orderNo), 500).join("\n");
+  } else {
+    params.orderNo = "";
+  }
+  // 时间参数
+  if (orderTimeRange?.length === 2) {
+    params.queryStartTime = orderTimeRange[0];
+    params.queryEndTime = orderTimeRange[1];
+  }
+  // // 收件地邮编
+  // if (consigneeCodeList) {
+  //   params.consigneeCodeList = spliceArray(commaToArr(consigneeCodeList), 100);
+  // }
+  // // 寄件地邮编
+  // if (shipperCodeList) {
+  //   params.shipperCodeList = spliceArray(commaToArr(shipperCodeList), 100);
+  // }
+
+  params.orderType = "";
+
+  console.log(params, "查询参数");
+  params.customerIdList = userStore.loginInfo?.shipperCustomerList?.map(
+    (item: any) => item.customerId
+  );
+  return params;
+};
+const getOrderProductListData = async () => {
+  const params = getParams();
+
+  const res = await getExceptionOrderList({
+    data: {
+      ...params
+    },
+    pageNum: pagination.currentPage,
+    pageSize: pagination.pageSize
+  });
+  tableData.value = res.records || [];
+  pagination.total = res.total || 0;
+};
+
 const fetchData = () => {
   loading.value = true;
+  getOrderProductListData();
+
   // 模拟接口请求
   setTimeout(() => {
     loading.value = false;
   }, 500);
 };
+fetchData();
 
 const handleView = (row: any) => {
   console.log("View", row);
@@ -248,6 +359,7 @@ onMounted(() => {
 
 .order-content {
   flex: 1;
+  height: calc(100vh - 200px);
   overflow: hidden;
 }
 </style>

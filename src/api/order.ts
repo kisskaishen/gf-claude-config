@@ -51,7 +51,7 @@ export function getOrderList(data: {
 }
 
 // 下单失败列表
-export function getOrderFailedList(data: any) {
+export function getExceptionOrderList(data: any) {
   return request({
     url: "/oms/unusualOrderPageList",
     method: "post",
