@@ -6,6 +6,29 @@
     label-position="top"
     class="form-body"
   >
+    <!-- 走货国家选择 -->
+    <el-form-item
+      :label="$t('web.gfuc.country' /** 走货国家 */)"
+      prop="country"
+    >
+      <el-select v-model="loginData.country" class="full-width">
+        <el-option
+          :key="Country.FR"
+          :label="$t('web.gfuc.country_FR' /** 法国 */)"
+          :value="Country.FR"
+        />
+        <el-option
+          :key="Country.IT"
+          :label="$t('web.gfuc.country_IT' /** 意大利 */)"
+          :value="Country.IT"
+        />
+        <el-option
+          :key="Country.NL"
+          :label="$t('web.gfuc.country_NL' /** 荷兰 */)"
+          :value="Country.NL"
+        />
+      </el-select>
+    </el-form-item>
     <el-form-item :label="$t('web.gfuc.email' /** 邮箱 */)" prop="email">
       <el-input
         v-model="loginData.email"
@@ -52,7 +75,12 @@
       <a
         href="javascript:;"
         class="link"
-        @click="$emit('switch', 'register', { email: loginData.email })"
+        @click="
+          $emit('switch', 'register', {
+            email: loginData.email,
+            country: loginData.country
+          })
+        "
         >{{ $t("web.gfuc.go_to_register" /** 去注册 */) }}</a
       >
     </div>
@@ -65,7 +93,10 @@ import { useI18n } from "vue-i18n";
 import { useUserStore } from "@/store/user";
 import { rsaEncryptPwd } from "@/utils/crypto";
 import { getVerifyCode } from "@/api/user";
+import { Country } from "@/enums/index";
+import { useAppStore } from "@/store/app";
 
+const appStore = useAppStore();
 const emit = defineEmits(["switch", "success"]);
 
 const { t } = useI18n();
@@ -89,6 +120,7 @@ const codeUrl = computed(() =>
   verifyCodeData.image ? "data:image/gif;base64," + verifyCodeData.image : ""
 );
 const loginData = reactive({
+  country: sessionStorage.getItem("setSite") || Country.FR,
   email: props.email || "",
   password: "",
   code: ""
@@ -150,14 +182,24 @@ const handleLogin = async () => {
     if (valid) {
       try {
         loading.value = true;
+        appStore.setSite(loginData.country);
         await userStore.login({
+          country: loginData.country as Country,
           email: loginData.email,
           password: await rsaEncryptPwd(loginData.password),
           code: loginData.code,
           uuid: verifyCodeData.uuid
         });
         await nextTick();
-        emit("success", "login");
+        sessionStorage.removeItem("setSite");
+        emit(
+          "success",
+          "login",
+          JSON.stringify({
+            country: loginData.country,
+            email: loginData.email
+          })
+        );
       } catch (error: any) {
         console.error(error);
 

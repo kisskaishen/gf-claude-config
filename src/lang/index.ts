@@ -75,6 +75,19 @@ export const setI18nLang = (lang: Lang) => {
 };
 
 export const loadI18nMap = async () => {
-  const i18nMap = await getI18nMap();
-  i18n.global.mergeLocaleMessage(i18n.global.locale.value, i18nMap);
+  try {
+    console.log("开始加载多语言词条，当前语言:", i18n.global.locale.value);
+    const i18nMap = await getI18nMap();
+    console.log("API返回的多语言词条:", i18nMap);
+
+    if (!i18nMap || Object.keys(i18nMap).length === 0) {
+      console.warn("API返回的多语言词条为空，使用本地词条");
+      return;
+    }
+
+    i18n.global.mergeLocaleMessage(i18n.global.locale.value, i18nMap);
+    console.log("多语言词条加载完成");
+  } catch (error) {
+    console.error("加载多语言词条失败:", error);
+  }
 };

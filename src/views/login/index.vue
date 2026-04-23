@@ -34,11 +34,11 @@
               $t("web.gfuc.user_center" /** 用户中心 **/)
             }}</span>
           </div>
-
           <!-- 登录表单 -->
           <LoginForm
             v-if="mode === 'login'"
             :email="registerData.email"
+            :country="registerData.country"
             @success="handleSuccess"
             @switch="handleSwitch"
           />
@@ -65,6 +65,7 @@
     <PreferenceModal
       v-if="showPreferenceModal"
       v-model="showPreferenceModal"
+      :loginOtherInfo="loginOtherInfo"
       @success="redirectToHome"
     />
   </div>
@@ -79,7 +80,7 @@ import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
 import LoginForm from "./components/LoginForm.vue";
 import RegisterForm from "./components/RegisterForm.vue";
-import VerifyCodeForm from "./components/verifyCodeForm.vue";
+import VerifyCodeForm from "./components/VerifyCodeForm.vue";
 import PreferenceModal from "./components/PreferenceModal.vue";
 import LangSelect from "@/components/LangSelect/index.vue";
 import { useAppStore } from "@/store/app";
@@ -95,11 +96,14 @@ const showPreferenceModal = ref(false);
 
 const mode = ref<"login" | "register" | "verify">("login");
 const registerData = ref({
+  country: "",
   email: "",
   password: "",
   agree1: false,
   agree2: false
 });
+
+const loginOtherInfo = ref("");
 
 const handleSwitch = (
   _mode: "login" | "register" | "verify",
@@ -111,15 +115,18 @@ const handleSwitch = (
   mode.value = _mode;
 };
 
-const handleSuccess = async (type: "login" | "register") => {
+const handleSuccess = async (type: "login" | "register", otherInfo = "") => {
+  console.log(userStore.hasSetPreference, "认证");
   if (type === "login") {
     if (userStore.hasSetPreference) {
       ElMessage.success(t("web.gfuc.login_successful" /** 登录成功 **/));
       redirectToHome();
     } else {
+      loginOtherInfo.value = otherInfo;
       showPreferenceModal.value = true;
     }
   } else {
+    // 这段pass了，因为注册完成后直接就默认登陆了
     ElMessage.success(
       t("web.gfuc.registration_success_please_login" /** 注册成功，请登录 **/)
     );

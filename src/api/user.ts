@@ -3,7 +3,7 @@ import request from "@/utils/request";
 /**
  * 用户注册-账号核对
  */
-export function postCheckAccount(data: { email: string }) {
+export function postCheckAccount(data: { country: string; email: string }) {
   return request({
     url: "/user/email/check",
     method: "post",
@@ -15,6 +15,7 @@ export function postCheckAccount(data: { email: string }) {
  * 用户注册
  */
 export function postRegister(data: {
+  country: string;
   email: string;
   password: string;
   verificationCode: string;
@@ -32,7 +33,10 @@ export function postRegister(data: {
  * 发送邮箱验证码
  */
 
-export function postSendVerificationCode(data: { email: string }) {
+export function postSendVerificationCode(data: {
+  country: string;
+  email: string;
+}) {
   return request({
     url: "/user/register/email/code",
     method: "post",
@@ -67,7 +71,7 @@ export function postLogin(data: {
 /** 获取用户信息 */
 export function getUserInfo() {
   return request({
-    url: `/user/info`,
+    url: `/userinfo`,
     method: "get"
   });
 }
@@ -76,7 +80,7 @@ export function getUserInfo() {
  */
 export function postUpdateUserInfo(data: any) {
   return request({
-    url: "/userInfo/update",
+    url: "/userinfo/update",
     method: "post",
     data
   });

@@ -15,6 +15,8 @@ export default {
   "web.gfuc.privacy_policy": "Privacybeleid",
   "web.gfuc.agreement":
     "Ik accepteer de {register_agreement} en {privacy_policy}",
+  "web.gfuc.please_select_country": "Selecteer uw land van afkomst",
+  "web.gfuc.country": "Land van afkomst",
   "web.gfuc.email": "E-mail",
   "web.gfuc.password": "Wachtwoord",
   "web.gfuc.code": "Code",
@@ -65,5 +67,11 @@ export default {
   "web.gfuc.preference_settings": "voorkeureninstellingen",
   "web.gfuc.your_default_timezone": "Uw standaardtijdzone is",
   "web.gfuc.your_default_language": "Uw standaardtaal is",
-  "gfuc.no_data_available": "Geen gegevens beschikbaar"
+  "gfuc.no_data_available": "Geen gegevens beschikbaar",
+  "web.gfuc.country_FR": "Frans",
+  "web.gfuc.country_IT": "Italië",
+  "web.gfuc.country_NL": "Nederlandse",
+  "web.gfuc.french_site": "Station (Frankrijk)",
+  "web.gfuc.italian_site": "Station (Italië)",
+  "web.gfuc.dutch_site": "Station (Nederland)"
 };

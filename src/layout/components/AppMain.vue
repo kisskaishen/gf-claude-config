@@ -19,18 +19,14 @@ import { type RouteLocationNormalizedLoadedGeneric } from "vue-router";
 import { useTagsViewStore } from "@/store/tagsView";
 import AuthView from "@/components/AuthView/index.vue";
 import { useUserStore } from "@/store/user";
-import { UserBindStatus } from "@/enums";
-const { userInfo } = useUserStore();
+const { userInfo, loginInfo } = useUserStore();
 
 const tagsViewStore = useTagsViewStore();
 
 const cachedViews = computed(() => tagsViewStore.cachedViews);
 
 const checkPermission = (_route: RouteLocationNormalizedLoadedGeneric) => {
-  if (
-    _route.meta.requireAuth &&
-    userInfo?.bindStatus !== UserBindStatus.bound
-  ) {
+  if (_route.meta.requireAuth && loginInfo?.shipperCustomerList.length === 0) {
     return false;
   }
   return true;
