@@ -9,7 +9,10 @@
     "preview": "vite preview",
     "prepare": "husky",
     "lint": "eslint --ext .js,.ts,.vue src",
-    "lint:fix": "eslint --ext .js,.ts,.vue src --fix"
+    "lint:fix": "eslint --ext .js,.ts,.vue src --fix",
+    "stylelint": "stylelint \"src/**/*.{vue,scss,css}\"",
+    "stylelint:fix": "stylelint \"src/**/*.{vue,scss,css}\" --fix",
+    "type-check": "vue-tsc --noEmit -p tsconfig --skipLibCheck"
   },
   "dependencies": {
     "@datarangers/sdk-javascript": "^0.1.4",

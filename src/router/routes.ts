@@ -38,7 +38,7 @@ export const routes: RouteRecordRaw[] = [
     },
     children: [
       {
-        path: "single",
+        path: "single/:orderId?/:type?",
         name: "SingleOrder",
         component: () => import("@/views/order/single.vue"),
         meta: {
@@ -54,7 +54,8 @@ export const routes: RouteRecordRaw[] = [
         meta: {
           title: "订单详情",
           i18n: "web.gfuc.order_detail",
-          requireAuth: true
+          requireAuth: true,
+          hidden: true // 订单详情页不在菜单显示
         }
       },
       {
@@ -65,7 +66,8 @@ export const routes: RouteRecordRaw[] = [
         meta: {
           title: "批量下单",
           i18n: "web.gfuc.batch_order",
-          requireAuth: true
+          requireAuth: true,
+          hidden: true // 批量下单页不在菜单显示
         }
       },
       {

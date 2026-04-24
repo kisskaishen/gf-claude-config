@@ -213,6 +213,18 @@ const formData = ref({
   ...props.initialData
 });
 
+// 监听 initialData 变化，当父组件数据加载完成后更新表单数据
+watch(
+  () => props.initialData,
+  (newInitialData) => {
+    if (newInitialData && Object.keys(newInitialData).length > 0) {
+      // 合并现有数据和新的初始数据
+      Object.assign(formData.value, newInitialData);
+    }
+  },
+  { immediate: true, deep: true }
+);
+
 const productList = ref([]);
 
 watch(

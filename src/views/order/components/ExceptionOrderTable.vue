@@ -115,7 +115,7 @@
                   :icon="View"
                   @click="handleView(row)"
                 />
-                <el-button link type="primary" @click="handleView(row)"
+                <el-button link type="primary" @click="handleReOrder(row)"
                   >重新下单</el-button
                 >
               </div>
@@ -175,7 +175,7 @@ const defaultFormData = {
 const exceptionOrderColumns = [
   { prop: "customerName", label: "客户名称", minWidth: "120" },
   { prop: "orderSource", label: "订单来源", width: "100" },
-  { prop: "waybillNo", label: "运单号", minWidth: "200" },
+  { prop: "waybillNo", label: "系统单号", minWidth: "200" },
   { prop: "cusOrderNo", label: "客户单号", minWidth: "160" },
   { prop: "consigneeCode", label: "收件邮编", width: "110" },
   { prop: "unusualTypeValue", label: "异常类型值", width: "120" },
@@ -338,6 +338,10 @@ const handleView = (row: any) => {
   console.log("View", row);
 
   router.push(`/order/detail/${row.id}/exception`);
+};
+
+const handleReOrder = (row: any) => {
+  router.push(`/order/single/${row.id}/exception`);
 };
 
 onMounted(() => {

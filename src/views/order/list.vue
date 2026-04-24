@@ -15,8 +15,11 @@
           :name="item.value"
         />
       </el-tabs>
-      <ExceptionOrderTable v-if="activeTab === 999" />
-      <OrderTable v-else />
+      <ExceptionOrderTable
+        v-model:status="activeTab"
+        v-if="activeTab === 999"
+      />
+      <OrderTable v-model:status="activeTab" v-else />
     </div>
   </PageContainer>
 </template>
@@ -43,7 +46,9 @@ const orderStatusOptions = computed(() => {
 
 const activeTab = ref(0);
 
-const handleTabClick = () => {};
+const handleTabClick = (tab: any, event: Event) => {
+  console.log(tab.props.label, tab.props.name);
+};
 </script>
 
 <style lang="scss" scoped>

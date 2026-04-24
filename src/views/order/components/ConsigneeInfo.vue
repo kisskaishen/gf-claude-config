@@ -280,6 +280,8 @@ const orderConsignee = ref({
   consigneePhone: "",
   consigneeEmail: "",
   address1: "",
+  address2: "",
+  address3: "",
   internalNumber: "",
   externalNumber: "",
   consigneeCode: "",
@@ -289,6 +291,18 @@ const orderConsignee = ref({
   consigneeCountry: "",
   ...props.initialData
 });
+
+// 监听 initialData 变化，当父组件数据加载完成后更新表单数据
+watch(
+  () => props.initialData,
+  (newInitialData) => {
+    if (newInitialData && Object.keys(newInitialData).length > 0) {
+      // 合并现有数据和新的初始数据
+      Object.assign(orderConsignee.value, newInitialData);
+    }
+  },
+  { immediate: true, deep: true }
+);
 
 const rules = reactive({
   consigneeName: [{ required: true, message: "请输入姓名", trigger: "blur" }],
@@ -342,6 +356,8 @@ const onClear = () => {
     consigneePhone: "",
     consigneeEmail: "",
     address1: "",
+    address2: "",
+    address3: "",
     internalNumber: "",
     externalNumber: "",
     consigneeCode: "",

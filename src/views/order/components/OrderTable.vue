@@ -25,6 +25,7 @@
           >
             <el-input
               v-model="searchForm.orderNumber"
+              clearable
               :placeholder="
                 $t(
                   'gfuc.please_enter_order_or_tracking_number' /** 请输入订单号或运单号 **/
@@ -33,12 +34,12 @@
             />
           </el-form-item>
           <el-form-item
-            v-if="[0, 888].includes(activeTab)"
+            v-if="currentStatus === 888"
             :label="$t('gfuc.order_status' /** 订单状态 **/)"
             prop="orderStatusSet"
           >
             <el-select
-              v-model="searchForm.orderStatusSet"
+              v-model="searchForm.orderStatus"
               :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
               clearable
             >
@@ -72,6 +73,7 @@
           >
             <el-input
               v-model="searchForm.consigneeCodeList"
+              clearable
               :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
             />
           </el-form-item>
@@ -173,7 +175,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from "vue";
+import { ref, reactive, onMounted, watch, computed } from "vue";
 import { spliceArray, commaToArr } from "@/utils/index";
 
 import {
@@ -205,6 +207,15 @@ defineOptions({
   name: "OrderList"
 });
 
+const props = defineProps({
+  status: {
+    type: Number,
+    default: 0
+  }
+});
+
+const currentStatus = computed(() => props.status);
+
 const orderStatusDict = useDict("order_status");
 
 const orderStatusOptions = computed(() => {
@@ -234,12 +245,12 @@ const columns = [
   { prop: "orderCreateTime", label: "gfuc.submission_time", width: 200 }
 ];
 
-const activeTab = ref(0);
 const loading = ref(false);
 
 const defaultFormState = {
   orderNumber: "",
   // customerIdSet: [],
+  orderStatus: "",
   orderStatusSet: [],
   orderSource: undefined,
   consigneeCodeList: "",
@@ -312,7 +323,23 @@ const handleChange = (value) => {
   }
   console.log("选择的日期范围:", value);
 };
+// 处理订单状态集合
+const handleOrderStatusSet = () => {
+  const status = currentStatus.value;
 
+  // 异常订单：不传状态，置空
+  if (status === 0) {
+    return [];
+  }
+
+  // 综合查询：888 走自定义逻辑
+  if (status === 888) {
+    return searchForm.orderStatus ? [searchForm.orderStatus] : [6, 7, 8];
+  }
+
+  // 其他状态：直接使用当前值
+  return [status];
+};
 const getParams = () => {
   const {
     orderNumber,
@@ -345,6 +372,8 @@ const getParams = () => {
   }
 
   params.orderType = "";
+  // 赋值
+  params.orderStatusSet = handleOrderStatusSet();
 
   console.log(params, "查询参数");
   params.customerIdList = userStore.loginInfo?.shipperCustomerList?.map(
@@ -352,6 +381,7 @@ const getParams = () => {
   );
   return params;
 };
+
 const getOrderProductListData = async () => {
   const params = getParams();
 
@@ -375,7 +405,6 @@ const fetchData = () => {
     loading.value = false;
   }, 500);
 };
-fetchData();
 
 const handleView = (row: any) => {
   console.log("View", row);
@@ -427,6 +456,17 @@ const handleBatchPrint = () => {
 
   ElMessage.success(`已开始批量打印 ${selectedOrders.length} 个订单`);
 };
+
+onMounted(() => {
+  fetchData();
+});
+
+watch(
+  () => currentStatus.value,
+  () => {
+    fetchData();
+  }
+);
 </script>
 
 <style lang="scss" scoped>

@@ -134,11 +134,16 @@ import ProductInfo from "./components/ProductInfo.vue";
 import ParcelInfo from "./components/ParcelInfo.vue";
 import SubmitOrder from "./components/SubmitOrder.vue";
 
-import { createOrder } from "@/api/order";
+import {
+  createOrder,
+  getOrderDetail,
+  getExceptionOrderDetail
+} from "@/api/order";
 
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
 const router = useRouter();
+const route = useRoute();
 
 defineOptions({
   name: "SingleOrder"
@@ -177,7 +182,6 @@ const updateConsigneeData = (data) => {
 
 // 更新产品数据
 const updateProductData = (data) => {
-  console.log(data);
   formData.product = data;
 };
 
@@ -208,7 +212,6 @@ const submitOrder = async () => {
     try {
       // 调用第四步组件的校验方法
       let valid = await parcelInfoRef.value.validate();
-      console.log("第四步校验结果:", valid);
       if (!valid) {
         return;
       }
@@ -270,10 +273,129 @@ const submitOrder = async () => {
   }
 };
 
-// // 重置表单
-// resetForm();
+onMounted(() => {
+  if (route.params.orderId) {
+    fetchOrderDetail();
+  }
+});
 
-// 重置表单
+const fetchOrderDetail = async () => {
+  try {
+    let orderId = route.params.orderId;
+    let orderType = route.query.orderType;
+    let response = {};
+    if (orderType === "order") {
+      // 普通订单详情
+      response = await getOrderDetail({ id: orderId });
+      // formData = response;
+    } else {
+      // 异常订单详情
+      response = await getExceptionOrderDetail({ unusualOrderId: orderId });
+      let data = JSON.parse(response?.requestBody || "{}");
+      console.log(data, "订单详情数据");
+      // 格式化回显数据，确保数据结构与组件期望一致
+      if (data.customerId) {
+        sessionStorage.setItem("createOrderCustomerId", data.customerId);
+      }
+      formData.shipper =
+        formatShipperData(data.orderShipper, data.customerId) || {};
+      formData.consignee = formatConsigneeData(data.orderConsignee) || {};
+      formData.product = formatProductData(data) || {};
+
+      formData.parcel = formatParcelData(data) || {};
+
+      // // 强制更新子组件的初始数据
+      // nextTick(() => {
+      //   shipperInfoRef.value?.updateFormData?.(formData.shipper);
+      //   consigneeInfoRef.value?.updateFormData?.(formData.consignee);
+      //   productInfoRef.value?.updateFormData?.(formData.product);
+      //   parcelInfoRef.value?.updateFormData?.(formData.parcel);
+      // });
+    }
+  } catch (error) {
+    console.error("Failed to fetch order detail:", error);
+  }
+};
+
+// 格式化发件人数据
+const formatShipperData = (shipperData: any, customerId: string) => {
+  if (!shipperData) return {};
+
+  return {
+    customerId: customerId || "",
+    shipperName: shipperData.shipperName || "",
+    shipperPhone: shipperData.shipperPhone || "",
+    shipperEmail: shipperData.shipperEmail || "",
+    shipperStreet: shipperData.shipperStreet || "",
+    shipperCity: shipperData.shipperCity || "",
+    shipperState: shipperData.shipperState || "",
+    shipperPostcode: shipperData.postcode || "",
+    shipperCountry: shipperData.shipperCountry || "",
+    shipperCode: shipperData.shipperCode || ""
+  };
+};
+
+// 格式化收件人数据
+const formatConsigneeData = (consigneeData: any) => {
+  if (!consigneeData) return {};
+
+  return {
+    consigneeName: consigneeData.consigneeName || "",
+    consigneePhone: consigneeData.consigneePhone || "",
+    consigneeEmail: consigneeData.consigneeEmail || "",
+    address1: consigneeData.address1 || "",
+    address2: consigneeData?.address2 || "",
+    address3: consigneeData?.address3 || "",
+    internalNumber: consigneeData.internalNumber || "",
+    externalNumber: consigneeData.externalNumber || "",
+    consigneeCode: consigneeData.consigneeCode || "",
+    consigneeArea: consigneeData.consigneeArea || "",
+    consigneeCity: consigneeData.consigneeCity || "",
+    consigneeState: consigneeData.consigneeState || "",
+    consigneeCountry: consigneeData.consigneeCountry || ""
+  };
+};
+
+// 格式化产品数据
+const formatProductData = (productData: any) => {
+  if (!productData) return {};
+
+  return {
+    productType: productData.productType || "",
+    productCode: productData.productCode || "",
+    productName: productData.productName || "",
+    queryCollectStartTime: productData?.queryCollectStartTime || "",
+    queryCollectEndTime: productData?.queryCollectEndTime || ""
+  };
+};
+
+// 格式化包裹数据
+const formatParcelData = (parcelData: any) => {
+  if (!parcelData) return {};
+  // 这里的highth是后端接口拼写错误，保持和接口一致
+  return {
+    orderGoods: {
+      weight: parcelData.orderGoods.weight || undefined,
+      length: parcelData.orderGoods.length || undefined,
+      width: parcelData.orderGoods.width || undefined,
+      height: parcelData.orderGoods.heigth || undefined
+    },
+    orderItemList: parcelData.orderItemList || [
+      {
+        itemNameZh: "",
+        itemNameEn: "",
+        itemQty: undefined
+      }
+    ],
+    declaredValue: parcelData.declaredValue || undefined,
+    cOrderNo: parcelData?.cOrderNo || "",
+    referenceNo: parcelData?.referenceNo || "",
+    reference3: parcelData?.reference3 || "",
+    channelCode: parcelData?.channelCode || ""
+  };
+};
+
+//// 重置表单
 const resetForm = () => {
   currentStep.value = 1;
   completedSteps.value = [];

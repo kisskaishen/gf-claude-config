@@ -6,7 +6,10 @@
         <div class="flex items-center">
           <div class="flex flex-col items-center mr-6">
             <svg-icon name="orderStatus" width="50" height="48" />
-            <div class="flex items-center w-full text-white bg-[#FFEAEC] mt-1">
+            <div
+              class="flex items-center w-full text-white bg-[#FFEAEC] mt-1"
+              v-if="orderType === 'order'"
+            >
               <span class="text-sm text-[#FF3141] text-center flex-1">{{
                 orderData?.orderStatusName || orderData?.orderStatus || "-"
               }}</span>
@@ -532,6 +535,7 @@ const fetchOrderDetail = async () => {
 
   .section {
     @apply relative border p-4 rounded-lg bg-white;
+
     .section-info-title {
       @apply flex items-center gap-2;
     }
