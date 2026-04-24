@@ -318,7 +318,7 @@ const handleZipCodeInput = () => {
   getAddressByCode({ postcode: orderConsignee.value.consigneeCode }).then(
     (res) => {
       console.log(res, "====");
-      getCityListData(res.city.stateId);
+      getCityListData(res?.city?.stateId);
 
       setTimeout(() => {
         orderConsignee.value.consigneeCity = res.city?.cityName || "";
@@ -348,9 +348,12 @@ const onClear = () => {
     consigneeArea: "",
     consigneeCity: "",
     consigneeState: "",
-    consigneeCountry: "",
-    ...props.initialData
+    consigneeCountry: ""
   };
+};
+
+const resetForm = () => {
+  onClear();
 };
 
 const onEdit = () => {
@@ -372,6 +375,10 @@ const getCityListData = (stateId) => {
 };
 
 getStateListData();
+
+defineExpose({
+  resetForm
+});
 </script>
 
 <style scoped lang="scss">

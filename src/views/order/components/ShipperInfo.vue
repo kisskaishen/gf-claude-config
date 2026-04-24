@@ -315,8 +315,7 @@ const onClear = () => {
     shipperStreet: "",
     shipperCity: "",
     shipperState: "",
-    shipperCountry: "",
-    ...props.initialData
+    shipperCountry: ""
   };
 };
 
@@ -328,6 +327,13 @@ const handleCustomerChange = (val) => {
 const onEdit = () => {
   emit("edit");
 };
+const resetForm = () => {
+  onClear();
+};
+
+defineExpose({
+  resetForm
+});
 </script>
 
 <style scoped lang="scss">

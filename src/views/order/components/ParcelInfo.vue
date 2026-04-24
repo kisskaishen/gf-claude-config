@@ -246,6 +246,12 @@
             </el-row>
           </el-form>
         </div>
+
+        <div v-else class="summary-container" @click="onEdit">
+          <div class="summary-content">
+            这里预览的逻辑先不写，因为第四步确实还没有完成呢
+          </div>
+        </div>
       </div>
 
       <div v-else class="step-placeholder">
@@ -390,8 +396,7 @@ const onClear = () => {
     declaredValue: undefined,
     cOrderNo: "",
     referenceNo: "",
-    reference3: "",
-    ...props.initialData
+    reference3: ""
   };
 };
 
@@ -406,8 +411,13 @@ const validate = () => {
     });
   });
 };
+
+const resetForm = () => {
+  onClear();
+};
 defineExpose({
-  validate
+  validate,
+  resetForm
 });
 </script>
 

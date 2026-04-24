@@ -167,7 +167,7 @@
 
 <script setup>
 import { ref, watch, computed } from "vue";
-import { getOrderProductList } from "@/api/order";
+import { getOrderProductList, getProductStepInfo } from "@/api/order";
 import { useUserStore } from "@/store/user";
 import { useAppStore } from "@/store/app";
 const userStore = useUserStore();
@@ -237,8 +237,13 @@ const onClear = () => {
     productType: "ECO",
     productCode: "",
     productName: "",
-    ...props.initialData
+    queryCollectStartTime: "",
+    queryCollectEndTime: ""
   };
+};
+
+const resetForm = () => {
+  onClear();
 };
 
 const onEdit = () => {
@@ -252,17 +257,34 @@ const toPascalCase = (str) => {
 };
 
 const getProductList = async (customerId) => {
-  const res = await getOrderProductList({
-    countryCode: userStore.userInfo?.country || "",
+  const res = await getProductStepInfo({
+    country: userStore.userInfo?.country || "",
     customerId: customerId || ""
   });
-  productList.value = res.map((item) => ({
+
+  const res2 = await getOrderProductList({
+    countryCode: userStore.userInfo?.country || ""
+  });
+
+  // res的数据和res2数据对比，然后根据productCode合并数据
+  const mergedRes = res.map((item) => ({
     ...item,
-    name: item.name,
+    ...res2.find((item2) => item2.code === item.productCode)
+  }));
+
+  productList.value = mergedRes.map((item) => ({
+    ...item,
+    name: item.productName,
+    code: item.productCode,
     desc:
       item["description" + toPascalCase(appStore.site.toLocaleLowerCase())] ||
       "暂无描述"
   }));
+
+  if (productList.value.length === 1) {
+    formData.value.productCode = productList.value[0].code;
+    formData.value.productName = productList.value[0].name;
+  }
 };
 
 watch(
@@ -276,6 +298,9 @@ watch(
     }
   }
 );
+defineExpose({
+  resetForm
+});
 </script>
 
 <style scoped lang="scss">

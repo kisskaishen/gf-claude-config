@@ -110,15 +110,24 @@ export function getStateList() {
   });
 }
 
-// 订单列表-产品
-export function getOrderProductList(data: {
-  countryCode: string;
-  customerId: string | number;
-}) {
+// 订单列表-产品(列表页筛选，以及下面所需要的详情描述)
+export function getOrderProductList(data: { countryCode: string }) {
   return request({
     url: "/plm/product/query-config",
     method: "post",
     data
+  });
+}
+
+// 创建产品时需要对应的第三步产品信息
+export function getProductStepInfo(params: {
+  country: string;
+  customerId: string | number;
+}) {
+  return request({
+    url: "cos/customer/customerProductList",
+    method: "get",
+    params
   });
 }
 

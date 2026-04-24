@@ -8,7 +8,12 @@
     <div class="step-content">
       <el-row>
         <el-col :span="24" class="form-actions">
-          <el-button type="primary" @click="onSubmit">提交订单</el-button>
+          <el-button
+            :type="currentStep < 4 ? 'default' : 'primary'"
+            @click="onSubmit"
+            :disabled="currentStep < 4"
+            >提交订单</el-button
+          >
         </el-col>
       </el-row>
     </div>
@@ -20,8 +25,15 @@ const props = defineProps({
   stepNumber: {
     type: Number,
     default: 5
+  },
+  currentStep: {
+    type: Number,
+    default: 1
   }
 });
+
+const currentStep = computed(() => props.currentStep);
+
 const emit = defineEmits(["submit"]);
 
 const onSubmit = () => {

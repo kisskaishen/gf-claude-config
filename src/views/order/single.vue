@@ -55,7 +55,11 @@
             />
 
             <!-- 第五步，提交订单 -->
-            <SubmitOrder :step-number="5" @submit="submitOrder" />
+            <SubmitOrder
+              :step-number="5"
+              :currentStep="currentStep"
+              @submit="submitOrder"
+            />
           </div>
         </div>
       </div>
@@ -140,16 +144,9 @@ defineOptions({
   name: "SingleOrder"
 });
 
-// 步骤配置
-interface Step {
-  number: number;
-  title: string;
-  active: boolean;
-  completed?: boolean;
-  disabled?: boolean;
-  description?: string;
-}
-
+const shipperInfoRef = ref(null);
+const consigneeInfoRef = ref(null);
+const productInfoRef = ref(null);
 const parcelInfoRef = ref(null);
 
 // 当前步骤
@@ -196,13 +193,6 @@ const goToNextStep = () => {
   }
   if (currentStep.value < 4) {
     currentStep.value++;
-  }
-};
-
-// 回到上一步
-const goToPrevStep = () => {
-  if (currentStep.value > 1) {
-    currentStep.value--;
   }
 };
 
@@ -291,6 +281,11 @@ const resetForm = () => {
   formData.consignee = {};
   formData.product = {};
   formData.parcel = {};
+
+  shipperInfoRef.value?.resetForm();
+  consigneeInfoRef.value?.resetForm();
+  productInfoRef.value?.resetForm();
+  parcelInfoRef.value?.resetForm();
 };
 
 const handleViewOrder = () => {
