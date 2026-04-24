@@ -137,10 +137,14 @@ import { spliceArray, commaToArr } from "@/utils/index";
 import { useI18n } from "vue-i18n";
 import { cloneDeep } from "lodash-es";
 import dayjs from "dayjs";
+import { useRouter } from "vue-router";
+
 const { t } = useI18n();
 
 import { useUserStore } from "@/store/user";
 const userStore = useUserStore();
+
+const router = useRouter();
 
 defineOptions({
   name: "ExceptionOrderTable"
@@ -332,6 +336,8 @@ fetchData();
 
 const handleView = (row: any) => {
   console.log("View", row);
+
+  router.push(`/order/detail/${row.id}/exception`);
 };
 
 onMounted(() => {

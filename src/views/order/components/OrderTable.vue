@@ -195,8 +195,11 @@ import { useDict } from "@/hooks/useDict";
 import { useUserStore } from "@/store/user";
 import { cloneDeep } from "lodash-es";
 import dayjs from "dayjs";
+import { useRouter } from "vue-router";
 
 const userStore = useUserStore();
+
+const router = useRouter();
 
 defineOptions({
   name: "OrderList"
@@ -376,6 +379,7 @@ fetchData();
 
 const handleView = (row: any) => {
   console.log("View", row);
+  router.push(`/order/detail/${row.orderId}/order`);
 };
 
 const handlePrint = (row: any) => {

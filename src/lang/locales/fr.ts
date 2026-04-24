@@ -77,5 +77,6 @@ export default {
   "web.gfuc.country_NL": "Pays-B",
   "web.gfuc.french_site": "Station (France)",
   "web.gfuc.italian_site": "Station (Italie)",
-  "web.gfuc.dutch_site": "Station (Pays-Bas)"
+  "web.gfuc.dutch_site": "Station (Pays-Bas)",
+  "web.gfuc.order_detail": "Détails de la commande"
 };

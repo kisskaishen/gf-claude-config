@@ -73,5 +73,7 @@ export default {
 
   "web.gfuc.french_site": "法国站",
   "web.gfuc.italian_site": "意大利站",
-  "web.gfuc.dutch_site": "荷兰站"
+  "web.gfuc.dutch_site": "荷兰站",
+
+  "web.gfuc.order_detail": "订单详情"
 };

@@ -59,14 +59,23 @@ export function getExceptionOrderList(data: any) {
   });
 }
 
-// // 2. 根据订单编码获取详情
-// export function getOrderByCode(orderCode: string) {
-//   return request<OrderItem>({
-//     url: "/v1/dbu_oms/product/getByProductCode",
-//     method: "get",
-//     params: { productCode }
-//   });
-// }
+// 2. 根据订单编码获取详情
+export function getOrderDetail(params: { id: string }) {
+  return request({
+    url: "/oms/order/detail",
+    method: "get",
+    params
+  });
+}
+
+// 3. 根据订单编码获取详情--异常订单
+export function getExceptionOrderDetail(params: { unusualOrderId: string }) {
+  return request({
+    url: "/oms/getRequestDetail",
+    method: "get",
+    params
+  });
+}
 
 // 3. 创建订单
 export function createOrder(data: any) {

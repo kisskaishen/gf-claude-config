@@ -48,7 +48,7 @@ export const routes: RouteRecordRaw[] = [
         }
       },
       {
-        path: "detail",
+        path: "detail/:orderId/:type?",
         name: "OrderDetail",
         component: () => import("@/views/order/detail.vue"),
         meta: {

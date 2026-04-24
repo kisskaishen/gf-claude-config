@@ -7,22 +7,23 @@
           <div class="flex flex-col items-center mr-6">
             <svg-icon name="orderStatus" width="50" height="48" />
             <div class="flex items-center w-full text-white bg-[#FFEAEC] mt-1">
-              <span class="text-sm text-[#FF3141] text-center flex-1"
-                >状态</span
-              >
+              <span class="text-sm text-[#FF3141] text-center flex-1">{{
+                orderData?.orderStatusName || orderData?.orderStatus || "-"
+              }}</span>
             </div>
           </div>
           <div class="section-item">
             <div class="label">
               <span>客户订单号</span>
               <svg-icon
+                v-if="orderData?.orderNo"
                 name="copy"
                 width="20"
                 height="20"
-                @click="copyText('GFFR22530450977781')"
+                @click="copyText(orderData?.orderNo)"
               />
             </div>
-            <span class="value">GFFR2253045097778</span>
+            <span class="value">{{ orderData?.orderNo || "-" }}</span>
           </div>
         </div>
         <el-divider direction="vertical" />
@@ -30,18 +31,19 @@
           <div class="label">
             <span>运单编号</span>
             <svg-icon
+              v-if="orderData?.waybillNo"
               name="copy"
               width="20"
               height="20"
-              @click="copyText('GFFR22530450977782')"
+              @click="copyText(orderData?.waybillNo)"
             />
           </div>
-          <span class="value">GFFR2253045097778</span>
+          <span class="value">{{ orderData?.waybillNo || "-" }}</span>
         </div>
-        <el-divider direction="vertical" />
+        <el-divider direction="vertical" v-if="orderType === 'order'" />
       </div>
       <!-- 进度条容器 -->
-      <div class="status-steps">
+      <div class="status-steps" v-if="orderType === 'order'">
         <!-- 步骤背景（带箭头） -->
         <div
           v-for="(step, index) in statusSteps"
@@ -75,22 +77,28 @@
           <div class="info-grid">
             <div class="info-item">
               <span class="info-label">参考单号</span>
-              <span class="info-value">autotest_ad_FRA</span>
+              <span class="info-value">{{
+                orderData?.referenceNo || "-"
+              }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="info-item">
               <span class="info-label">第三方跟踪号</span>
-              <span class="info-value">-</span>
+              <span class="info-value">{{ orderData?.reference3 || "-" }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="info-item">
               <span class="info-label">产品类型</span>
-              <span class="info-value">autotest_ad_FRA</span>
+              <span class="info-value">{{
+                orderData?.productType === "ECO" ? "特惠" : "标快" || "-"
+              }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="info-item">
               <span class="info-label">产品</span>
-              <span class="info-value">……</span>
+              <span class="info-value">{{
+                orderData?.productName || "-"
+              }}</span>
             </div>
           </div>
         </div>
@@ -105,7 +113,7 @@
             </div>
           </div>
           <div class="flex items-center">
-            <div class="flex flex-col ml-3">
+            <div class="flex flex-col flex-1 ml-3">
               <div class="section-info-title">
                 <svg-icon name="sender" width="24px" height="24px" />
                 <span>寄件人信息</span>
@@ -113,22 +121,26 @@
               <div class="info-grid">
                 <div class="info-item full-width">
                   <span class="info-label">寄件人姓名</span>
-                  <span class="info-value">test</span>
+                  <span class="info-value">{{
+                    orderData?.orderShipper?.shipperName || "-"
+                  }}</span>
                 </div>
                 <div class="info-item full-width">
                   <span class="info-label">寄件人地址</span>
-                  <span class="info-value"
-                    >207 TELLURIDE DR GEORGETOWN, TX 78626-7103, China.</span
-                  >
+                  <span class="info-value">{{
+                    orderData?.orderShipper?.shipperStreet || "-"
+                  }}</span>
                 </div>
                 <div class="info-item">
                   <span class="info-label">寄件人电话</span>
-                  <span class="info-value">5860698233</span>
+                  <span class="info-value">{{
+                    orderData?.orderShipper?.shipperPhone || "-"
+                  }}</span>
                 </div>
               </div>
             </div>
             <el-divider direction="vertical" />
-            <div class="flex flex-col ml-3">
+            <div class="flex flex-col flex-1 ml-3">
               <div class="section-info-title">
                 <svg-icon name="recipient" width="24px" height="24px" />
                 <span>收件人信息</span>
@@ -136,17 +148,21 @@
               <div class="info-grid">
                 <div class="info-item full-width">
                   <span class="info-label">收件人姓名</span>
-                  <span class="info-value">test</span>
+                  <span class="info-value">{{
+                    orderData?.orderConsignee?.consigneeName || "-"
+                  }}</span>
                 </div>
                 <div class="info-item full-width">
                   <span class="info-label">收件人地址</span>
-                  <span class="info-value"
-                    >207 TELLURIDE DR GEORGETOWN, TX 78626-7103, China.</span
-                  >
+                  <span class="info-value">{{
+                    orderData?.orderConsignee?.address1 || "-"
+                  }}</span>
                 </div>
                 <div class="info-item">
                   <span class="info-label">收件人电话</span>
-                  <span class="info-value">5860698233</span>
+                  <span class="info-value">{{
+                    orderData?.orderConsignee?.consigneePhone || "-"
+                  }}</span>
                 </div>
               </div>
             </div>
@@ -157,36 +173,32 @@
         <div class="section package-section">
           <h3 class="section-title">包裹信息</h3>
           <el-table
-            :data="orderData.packageInfo.goods"
+            :data="orderData.orderItemList"
             border
             style="width: 100%"
             class="goods-table"
           >
-            <el-table-column prop="nameCn" label="商品名称(CN)" min-width="200">
+            <el-table-column
+              prop="itemNameZh"
+              label="商品名称(CN)"
+              min-width="200"
+            >
               <template #default="{ row, $index }">
-                <el-form-item
-                  :prop="`goods.${$index}.nameCn`"
-                  class="table-form-item"
-                >
-                </el-form-item>
+                {{ row.itemNameZh || "-" }}
               </template>
             </el-table-column>
-            <el-table-column prop="nameEn" label="商品名称(EN)" min-width="200">
+            <el-table-column
+              prop="itemNameEn"
+              label="商品名称(EN)"
+              min-width="200"
+            >
               <template #default="{ row, $index }">
-                <el-form-item
-                  :prop="`goods.${$index}.nameEn`"
-                  class="table-form-item"
-                >
-                </el-form-item>
+                {{ row.itemNameEn || "-" }}
               </template>
             </el-table-column>
-            <el-table-column prop="quantity" label="数量" width="120">
+            <el-table-column prop="itemQty" label="数量" width="120">
               <template #default="{ row, $index }">
-                <el-form-item
-                  :prop="`goods.${$index}.quantity`"
-                  class="table-form-item"
-                >
-                </el-form-item>
+                {{ row.itemQty || "-" }}
               </template>
             </el-table-column>
           </el-table>
@@ -194,27 +206,42 @@
           <div class="info-grid">
             <div class="info-item">
               <span class="info-label">总数量</span>
-              <span class="info-value">2</span>
+              <span class="info-value">{{
+                orderData?.orderItemList?.reduce(
+                  (acc, cur) => acc + cur.itemQty,
+                  0
+                ) || "-"
+              }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="info-item">
               <span class="info-label">申报价值 (EUR)</span>
-              <span class="info-value">2312</span>
+              <span class="info-value">{{
+                orderData?.declaredValue || "-"
+              }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="info-item">
               <span class="info-label">总重量 (kg)</span>
-              <span class="info-value">1.4</span>
+              <span class="info-value">{{
+                orderData?.orderGoods?.weight || "-"
+              }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="info-item">
               <span class="info-label">包裹体积</span>
-              <span class="info-value">10*10*10 CM</span>
+              <span class="info-value">{{
+                orderData?.orderGoods?.width *
+                  orderData?.orderGoods?.height *
+                  orderData?.orderGoods?.length || "-"
+              }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="info-item">
               <span class="info-label">计费重量 (kg)</span>
-              <span class="info-value">1.25</span>
+              <span class="info-value">{{
+                orderData?.orderGoods?.weight || "-"
+              }}</span>
             </div>
           </div>
         </div>
@@ -258,12 +285,16 @@
           <div class="service-info">
             <div class="service-item">
               <span class="service-label">保险金额 (EUR)</span>
-              <span class="service-value">120</span>
+              <span class="service-value">{{
+                orderData?.orderCod?.currency || "-"
+              }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="service-item">
               <span class="service-label">COD金额 (EUR)</span>
-              <span class="service-value">110</span>
+              <span class="service-value">{{
+                orderData?.orderCod?.codAmount || "-"
+              }}</span>
             </div>
           </div>
         </div>
@@ -275,6 +306,13 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { copyText } from "@/utils/index";
+import { getOrderDetail, getExceptionOrderDetail } from "@/api/order";
+// import { useDict } from "@/hooks/useDict";
+
+import { useRoute } from "vue-router";
+const route = useRoute();
+
+// const orderStatusDict = useDict("order_status");
 
 // 步骤数据
 const statusSteps = ref([
@@ -286,6 +324,8 @@ const statusSteps = ref([
 
 // 当前步骤（从0开始，对应数组索引）
 const currentStep = ref(1);
+
+const orderType = ref(route.params.type);
 
 // 模拟数据
 const orderData = ref({
@@ -316,10 +356,10 @@ const orderData = ref({
   },
   packageInfo: {
     goods: [
-      { nameCN: "连衣裙", nameEN: "dress", quantity: 1 },
-      { nameCN: "鞋子", nameEN: "shoes", quantity: 1 }
+      { itemNameZh: "连衣裙", itemNameEn: "dress", itemQty: 1 },
+      { itemNameZh: "鞋子", itemNameEn: "shoes", itemQty: 1 }
     ],
-    totalQuantity: 2,
+    totalitemQty: 2,
     declaredValue: 2312,
     totalWeight: 1.4,
     volume: "10*10*10 CM",
@@ -369,9 +409,27 @@ const orderData = ref({
 });
 
 onMounted(() => {
-  // 可以在这里添加获取订单数据的逻辑
-  console.log("Order detail component mounted");
+  fetchOrderDetail();
 });
+
+const fetchOrderDetail = async () => {
+  try {
+    console.log(route);
+    let orderId = route.params.orderId;
+    let response = {};
+    if (orderType.value === "order") {
+      // 普通订单详情
+      response = await getOrderDetail({ id: orderId });
+      orderData.value = response;
+    } else {
+      // 异常订单详情
+      response = await getExceptionOrderDetail({ unusualOrderId: orderId });
+      orderData.value = JSON.parse(response?.requestBody || "{}");
+    }
+  } catch (error) {
+    console.error("Failed to fetch order detail:", error);
+  }
+};
 </script>
 
 <style scoped lang="scss">
