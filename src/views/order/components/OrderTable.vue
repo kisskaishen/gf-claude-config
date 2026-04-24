@@ -138,7 +138,7 @@
                 />
 
                 <!-- 已下单: 打印、编辑、取消 -->
-                <template v-if="row.status === '已下单'">
+                <template v-if="row.orderStatus === 1">
                   <el-button
                     link
                     type="primary"
@@ -423,12 +423,12 @@ const handlePrint = (row: any) => {
     customerId: row.customerId
   }).then((res) => {
     console.log(res, "+++++");
-    // download(res.data, 'order-label')
+    // download(res.data, "order-label");
   });
 };
 
 const handleEdit = (row: any) => {
-  console.log("Edit", row);
+  router.push(`/order/single/${row.orderId}/order`);
 };
 
 const handleCancel = (row: any) => {

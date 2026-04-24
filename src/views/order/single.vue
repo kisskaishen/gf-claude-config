@@ -274,20 +274,40 @@ const submitOrder = async () => {
 };
 
 onMounted(() => {
+  console.log(route.params, "========12312321312");
   if (route.params.orderId) {
     fetchOrderDetail();
   }
 });
 
+watch(
+  () => route.params.orderId,
+  (newVal) => {
+    if (newVal) {
+      fetchOrderDetail();
+    }
+  }
+);
+
 const fetchOrderDetail = async () => {
   try {
     let orderId = route.params.orderId;
-    let orderType = route.query.orderType;
+    let orderType = route.params.orderType;
     let response = {};
     if (orderType === "order") {
       // 普通订单详情
       response = await getOrderDetail({ id: orderId });
-      // formData = response;
+      console.log(response, "订单详情数据");
+      // 格式化回显数据，确保数据结构与组件期望一致
+      if (response.customerId) {
+        sessionStorage.setItem("createOrderCustomerId", response.customerId);
+      }
+      formData.shipper =
+        formatShipperData(response.orderShipper, response.customerId) || {};
+      formData.consignee = formatConsigneeData(response.orderConsignee) || {};
+      formData.product = formatProductData(response) || {};
+
+      formData.parcel = formatParcelData(response) || {};
     } else {
       // 异常订单详情
       response = await getExceptionOrderDetail({ unusualOrderId: orderId });
@@ -303,14 +323,6 @@ const fetchOrderDetail = async () => {
       formData.product = formatProductData(data) || {};
 
       formData.parcel = formatParcelData(data) || {};
-
-      // // 强制更新子组件的初始数据
-      // nextTick(() => {
-      //   shipperInfoRef.value?.updateFormData?.(formData.shipper);
-      //   consigneeInfoRef.value?.updateFormData?.(formData.consignee);
-      //   productInfoRef.value?.updateFormData?.(formData.product);
-      //   parcelInfoRef.value?.updateFormData?.(formData.parcel);
-      // });
     }
   } catch (error) {
     console.error("Failed to fetch order detail:", error);

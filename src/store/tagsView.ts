@@ -19,6 +19,30 @@ export const useTagsViewStore = defineStore(
 
     // 添加访问过的视图
     const addVisitedView = (route: RouteLocationNormalizedLoaded) => {
+      // 单票下单路由特殊处理：单例模式
+      if (
+        route.name === "SingleOrder" ||
+        route.name === "SingleOrderWithParams"
+      ) {
+        // 查找是否已存在单票下单标签页
+        const existingSingleOrderIndex = visitedViews.value.findIndex(
+          (v) => v.name === "SingleOrder" || v.name === "SingleOrderWithParams"
+        );
+
+        if (existingSingleOrderIndex !== -1) {
+          // 如果已存在，覆盖现有标签页
+          visitedViews.value[existingSingleOrderIndex] = {
+            name: route.name as string,
+            path: route.path,
+            title: (route.meta?.title as string) || "no-name",
+            query: route.query,
+            params: route.params,
+            meta: route.meta
+          };
+          return;
+        }
+      }
+
       // 订单详情路由特殊处理：单例模式
       if (route.name === "OrderDetail") {
         // 查找是否已存在订单详情标签页

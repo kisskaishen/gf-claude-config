@@ -48,7 +48,7 @@ export const routes: RouteRecordRaw[] = [
         }
       },
       {
-        path: "single/:orderId/:type?",
+        path: "single/:orderId?/:orderType?",
         name: "SingleOrderWithParams",
         component: () => import("@/views/order/single.vue"),
         meta: {
@@ -59,7 +59,7 @@ export const routes: RouteRecordRaw[] = [
         }
       },
       {
-        path: "detail/:orderId/:type?",
+        path: "detail/:orderId/:orderType?",
         name: "OrderDetail",
         component: () => import("@/views/order/detail.vue"),
         meta: {

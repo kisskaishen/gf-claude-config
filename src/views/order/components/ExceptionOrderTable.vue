@@ -304,9 +304,7 @@ const getOrderProductListData = async () => {
   const params = getParams();
 
   const res = await getExceptionOrderList({
-    data: {
-      ...params
-    },
+    ...params,
     pageNum: pagination.currentPage,
     pageSize: pagination.pageSize
   });
