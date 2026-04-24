@@ -47,6 +47,7 @@
         <!-- 步骤背景（带箭头） -->
         <div
           v-for="(step, index) in statusSteps"
+          :key="index"
           class="step-item"
           :class="{
             'step-active': index == currentStep,
@@ -183,7 +184,7 @@
               label="商品名称(CN)"
               min-width="200"
             >
-              <template #default="{ row, $index }">
+              <template #default="{ row }">
                 {{ row.itemNameZh || "-" }}
               </template>
             </el-table-column>
@@ -192,12 +193,12 @@
               label="商品名称(EN)"
               min-width="200"
             >
-              <template #default="{ row, $index }">
+              <template #default="{ row }">
                 {{ row.itemNameEn || "-" }}
               </template>
             </el-table-column>
             <el-table-column prop="itemQty" label="数量" width="120">
-              <template #default="{ row, $index }">
+              <template #default="{ row }">
                 {{ row.itemQty || "-" }}
               </template>
             </el-table-column>
