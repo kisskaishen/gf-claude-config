@@ -111,7 +111,10 @@ export function getStateList() {
 }
 
 // 订单列表-产品
-export function getOrderProductList(data: { countryCode: string }) {
+export function getOrderProductList(data: {
+  countryCode: string;
+  customerId: string | number;
+}) {
   return request({
     url: "/plm/product/query-config",
     method: "post",

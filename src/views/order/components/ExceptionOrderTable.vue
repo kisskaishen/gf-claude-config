@@ -104,18 +104,20 @@
 
           <el-table-column
             :label="$t('gfuc.operation' /** 操作 **/)"
-            width="80"
+            width="160"
             fixed="right"
           >
             <template #default="{ row }">
               <div class="table-actions">
-                <!-- 查看 (所有状态都有) -->
                 <el-button
                   link
                   type="primary"
                   :icon="View"
                   @click="handleView(row)"
                 />
+                <el-button link type="primary" @click="handleView(row)"
+                  >重新下单</el-button
+                >
               </div>
             </template>
           </el-table-column>

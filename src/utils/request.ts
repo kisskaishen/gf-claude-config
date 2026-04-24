@@ -15,6 +15,7 @@ export interface Result<T = any> {
   code: number;
   status: number; // 1-成功, 0-失败
   message: string;
+  msg?: string; // 兼容旧版 API
   data: T;
   requestId?: string;
 }
@@ -115,7 +116,7 @@ service.interceptors.response.use(
     // status: 接口业务处理状态码：1-成功，0-失败
     if (res.status !== 1) {
       ElMessage({
-        message: res.message || "Error",
+        message: res.message || res.msg || "Error",
         type: "error",
         duration: 5 * 1000
       });

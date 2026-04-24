@@ -191,9 +191,9 @@ import {
 import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
 
-import download from "download-file-by-url";
+// import download from "download-file-by-url";
 import { useUserStore } from "@/store/user";
-import { cloneDeep, debounce } from "lodash-es";
+import { cloneDeep } from "lodash-es";
 import dayjs from "dayjs";
 
 const userStore = useUserStore();

@@ -375,5 +375,5 @@ getStateListData();
 </script>
 
 <style scoped lang="scss">
-@import "@/views/order/style/base";
+@use "@/views/order/style/base";
 </style>

@@ -251,9 +251,10 @@ const toPascalCase = (str) => {
     .replace(/^\w/, (firstChar) => firstChar.toUpperCase());
 };
 
-const getProductList = async () => {
+const getProductList = async (customerId) => {
   const res = await getOrderProductList({
-    countryCode: userStore.userInfo?.country || ""
+    countryCode: userStore.userInfo?.country || "",
+    customerId: customerId || ""
   });
   productList.value = res.map((item) => ({
     ...item,
@@ -264,11 +265,21 @@ const getProductList = async () => {
   }));
 };
 
-getProductList();
+watch(
+  () => props.isActive,
+  (value) => {
+    if (value) {
+      if (sessionStorage.getItem("createOrderCustomerId")) {
+        let customerId = sessionStorage.getItem("createOrderCustomerId");
+        getProductList(customerId);
+      }
+    }
+  }
+);
 </script>
 
 <style scoped lang="scss">
-@import "@/views/order/style/base";
+@use "@/views/order/style/base";
 
 .step-content-form {
   @apply -mt-2;

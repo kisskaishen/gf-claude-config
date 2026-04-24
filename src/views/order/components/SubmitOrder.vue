@@ -30,7 +30,7 @@ const onSubmit = () => {
 </script>
 
 <style scoped lang="scss">
-@import "@/views/order/style/base";
+@use "@/views/order/style/base";
 
 .last-step-container {
   @apply flex items-baseline;

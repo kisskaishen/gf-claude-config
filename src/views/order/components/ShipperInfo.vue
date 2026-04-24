@@ -68,6 +68,7 @@
                     v-model="orderShipper.customerId"
                     filterable
                     placeholder="请选择下单账户"
+                    @change="handleCustomerChange"
                   >
                     <el-option
                       v-for="item in shipperOptions"
@@ -305,6 +306,7 @@ const getAddressByCodeBlur = async () => {
 
 const onClear = () => {
   orderShipper.value = {
+    customerId: "",
     shipperName: "",
     shipperPhone: "",
     shipperEmail: "",
@@ -318,11 +320,16 @@ const onClear = () => {
   };
 };
 
+const handleCustomerChange = (val) => {
+  orderShipper.value.customerId = val;
+  sessionStorage.setItem("createOrderCustomerId", val);
+};
+
 const onEdit = () => {
   emit("edit");
 };
 </script>
 
 <style scoped lang="scss">
-@import "@/views/order/style/base";
+@use "@/views/order/style/base";
 </style>

@@ -254,7 +254,16 @@ const submitOrder = async () => {
         channelCode: formData.parcel?.channelCode
       };
 
-      await createOrder(data);
+      const res = await createOrder(data);
+      let customerId = sessionStorage.getItem("createOrderCustomerId");
+      if (customerId) {
+        sessionStorage.removeItem("createOrderCustomerId");
+      }
+      if (res.waybillNo) {
+        successVisible.value = true;
+      } else {
+        ElMessage.error("订单创建失败，请重试");
+      }
 
       // 这里可以添加实际的提交逻辑
       // 例如：调用API提交订单数据
@@ -299,7 +308,7 @@ const handleContinueBuy = () => {
 </script>
 
 <style scoped lang="scss">
-@import "@/views/order/style/base";
+@use "@/views/order/style/base";
 
 .order-form {
   background-color: var(--bg-color);
