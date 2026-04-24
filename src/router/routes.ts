@@ -38,13 +38,24 @@ export const routes: RouteRecordRaw[] = [
     },
     children: [
       {
-        path: "single/:orderId?/:type?",
+        path: "single",
         name: "SingleOrder",
         component: () => import("@/views/order/single.vue"),
         meta: {
           title: "单票下单",
           i18n: "web.gfuc.single_ticket_order",
           requireAuth: true
+        }
+      },
+      {
+        path: "single/:orderId/:type?",
+        name: "SingleOrderWithParams",
+        component: () => import("@/views/order/single.vue"),
+        meta: {
+          title: "单票下单",
+          i18n: "web.gfuc.single_ticket_order",
+          requireAuth: true,
+          hidden: true // 带参数的路由不在菜单显示
         }
       },
       {

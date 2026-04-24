@@ -33,9 +33,9 @@
               "
             />
           </el-form-item>
-          <el-form-item label="邮编" prop="consigneeCodeList">
+          <el-form-item label="邮编" prop="consigneeCode">
             <el-input
-              v-model="searchForm.consigneeCodeList"
+              v-model="searchForm.consigneeCode"
               :placeholder="
                 $t('gfuc.please_enter_postal_code' /** 请输入邮编 **/)
               "
@@ -50,14 +50,6 @@
             />
           </el-form-item>
 
-          <el-form-item label="订单来源" prop="orderSource">
-            <el-input
-              v-model="searchForm.orderSource"
-              :placeholder="
-                $t('gfuc.please_enter_order_source' /** 请输入订单来源 **/)
-              "
-            />
-          </el-form-item>
           <el-form-item label="异常类型" prop="unusualType">
             <el-select
               v-model="searchForm.unusualType"
@@ -151,14 +143,13 @@ defineOptions({
 });
 
 const defaultFormData = {
+  consigneeCode: "",
   consigneeCodeList: [],
   orderNo: "",
   cusOrderNumList: [],
 
   customerName: "",
   customerNameSet: [],
-
-  orderSource: "",
 
   pageNum: 0,
   pageSize: 0,
@@ -277,7 +268,7 @@ const tableData = ref([]);
 const unusualTypeOptions = useDict("UnusualOrderType");
 
 const getParams = () => {
-  const { orderNo, consigneeCodeList, orderTimeRange, ...args } = searchForm;
+  const { orderNo, consigneeCode, orderTimeRange, ...args } = searchForm;
   const params: any = {
     ...args
   };
@@ -292,10 +283,10 @@ const getParams = () => {
     params.queryStartTime = orderTimeRange[0];
     params.queryEndTime = orderTimeRange[1];
   }
-  // // 收件地邮编
-  // if (consigneeCodeList) {
-  //   params.consigneeCodeList = spliceArray(commaToArr(consigneeCodeList), 100);
-  // }
+  // 收件地邮编
+  if (consigneeCode) {
+    params.consigneeCodeList = [consigneeCode];
+  }
   // // 寄件地邮编
   // if (shipperCodeList) {
   //   params.shipperCodeList = spliceArray(commaToArr(shipperCodeList), 100);

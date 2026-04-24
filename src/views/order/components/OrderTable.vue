@@ -81,12 +81,15 @@
             :label="$t('gfuc.recipient_phone' /** 收件人电话 **/)"
             prop="shipperCodeList"
           >
-            <el-select
-              v-model="searchForm.shipperCodeList"
-              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+            <el-input
+              v-model="searchForm.shipperPhone"
               clearable
-            >
-            </el-select>
+              :placeholder="
+                $t(
+                  'gfuc.please_enter_order_or_tracking_number' /** 请输入订单号或运单号 **/
+                )
+              "
+            />
           </el-form-item>
           <el-form-item
             :label="$t('gfuc.product' /** 产品 **/)"
@@ -100,9 +103,9 @@
             >
               <el-option
                 v-for="item in productList"
-                :key="item.ProductCode"
-                :label="item.ProductName"
-                :value="item.ProductCode"
+                :key="item.code"
+                :label="item.name"
+                :value="item.code"
               />
             </el-select>
           </el-form-item>
@@ -188,7 +191,8 @@ import {
 import {
   getOrderList,
   getOrderLabelUrl,
-  batchPrintOrderLabel
+  batchPrintOrderLabel,
+  getOrderProductList
 } from "@/api/order";
 import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
@@ -456,8 +460,16 @@ const handleBatchPrint = () => {
 
   ElMessage.success(`已开始批量打印 ${selectedOrders.length} 个订单`);
 };
+// 获取产品列表select数据
+const getProductList = async () => {
+  const res = await getOrderProductList({
+    countryCode: userStore.userInfo?.country || ""
+  });
+  productList.value = res || [];
+};
 
 onMounted(() => {
+  getProductList();
   fetchData();
 });
 
