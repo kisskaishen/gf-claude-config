@@ -108,6 +108,7 @@ export default {
   "web.gfuc.please_enter_postal_code_validation": "Please enter postal code",
   "web.gfuc.please_select_city": "Please select city",
   "web.gfuc.please_select_state": "Please select state",
+  "web.gfuc.please_enter_shipper_info": "Please enter shipper information",
 
   // Recipient Information Component
   "web.order.consignee_info_title": "Recipient Information",
@@ -124,5 +125,51 @@ export default {
   "web.gfuc.edit_button_title": "Edit",
 
   "web.gfuc.consignee_info_placeholder":
-    "Please fill in the recipient information"
+    "Please fill in the recipient information",
+
+  "web.gfuc.product_info": "Product Information",
+  "web.gfuc.express_delivery": "Express",
+  "web.gfuc.standard_delivery": "Standard",
+  "web.gfuc.collection_start_time": "Collection Start Time",
+  "web.gfuc.collection_end_time": "Collection End Time",
+  "web.gfuc.please_enter_collection_start_time":
+    "Please enter collection start time",
+  "web.gfuc.please_enter_collection_end_time":
+    "Please enter collection end time",
+  "web.gfuc.please_select_product_type": "Please select product type",
+  "web.gfuc.please_select_product_info":
+    "Please select logistics product information",
+
+  "web.gfuc.parcel_info": "Parcel Information & Other Info",
+  "web.gfuc.total_parcel_weight": "Total Parcel Weight (kg)",
+  "web.gfuc.parcel_length": "Length (cm)",
+  "web.gfuc.parcel_width": "Width (cm)",
+  "web.gfuc.parcel_height": "Height (cm)",
+  "web.gfuc.total_parcel_weight_placeholder":
+    "Please enter total parcel weight (kg)",
+  "web.gfuc.parcel_length_placeholder": "Please enter parcel length (cm)",
+  "web.gfuc.parcel_width_placeholder": "Please enter parcel width (cm)",
+  "web.gfuc.parcel_height_placeholder": "Please enter parcel height (cm)",
+  "web.gfuc.product_name_cn": "Product Name (CN)",
+  "web.gfuc.product_name_en": "Product Name (EN)",
+  "web.gfuc.quantity": "Quantity",
+  "web.gfuc.declared_value": "Declared Value (EUR)",
+  "web.gfuc.customer_order_no": "Customer Order No.",
+  "web.gfuc.reference_no": "Reference No.",
+  "web.gfuc.service_provider_tracking_no": "Service Provider Tracking No.",
+  "web.gfuc.enter_product_name_cn": "Please enter product name (CN)",
+  "web.gfuc.enter_product_name_en": "Please enter product name (EN)",
+  "web.gfuc.enter_product_quantity": "Please enter product quantity",
+  "web.gfuc.enter_total_declared_value": "Please enter total declared value",
+  "web.gfuc.unique_customer_order_no": "Unique customer order number",
+  "web.gfuc.platform_reference_no": "Platform reference number",
+  "web.gfuc.enter_parcel_weight": "Please enter parcel weight",
+  "web.gfuc.enter_parcel_length": "Please enter parcel length",
+  "web.gfuc.enter_parcel_width": "Please enter parcel width",
+  "web.gfuc.enter_parcel_height": "Please enter parcel height",
+  "web.gfuc.fill_parcel_info":
+    "Please fill in parcel information, weight, material, category info, etc.",
+  "web.gfuc.channel_code": "Channel Code",
+  "web.gfuc.enter_channel_code": "Please enter channel code",
+  "web.gfuc.submit_order": "Submit Order"
 };

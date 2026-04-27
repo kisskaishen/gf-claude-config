@@ -103,6 +103,7 @@ export default {
   "web.gfuc.please_enter_postal_code_validation": "Vul de postcode in",
   "web.gfuc.please_select_city": "Selecteer de stad",
   "web.gfuc.please_select_state": "Selecteer de staat",
+  "web.gfuc.please_enter_shipper_info": "Vul de zender informatie in",
 
   // Ontvanger Informatie Component
   "web.order.consignee_info_title": "Informatie ontvanger",
@@ -118,5 +119,49 @@ export default {
   "web.gfuc.clear_button_title": "Wissen",
   "web.gfuc.edit_button_title": "Bewerken",
 
-  "web.gfuc.consignee_info_placeholder": "Vul de ontvangergegevens in"
+  "web.gfuc.consignee_info_placeholder": "Vul de ontvangergegevens in",
+
+  "web.gfuc.product_info": "Productinformatie",
+  "web.gfuc.express_delivery": "Express",
+  "web.gfuc.standard_delivery": "Standaard",
+  "web.gfuc.collection_start_time": "Ophaal starttijd",
+  "web.gfuc.collection_end_time": "Ophaal eindtijd",
+  "web.gfuc.please_enter_collection_start_time": "Voer de ophaal starttijd in",
+  "web.gfuc.please_enter_collection_end_time": "Voer de ophaal eindtijd in",
+  "web.gfuc.please_select_product_type": "Selecteer het producttype",
+  "web.gfuc.please_select_product_info":
+    "Selecteer de logistieke productinformatie",
+
+  "web.gfuc.parcel_info": "Pakketinformatie & overige info",
+  "web.gfuc.total_parcel_weight": "Totaal pakketgewicht (kg)",
+  "web.gfuc.parcel_length": "Lengte (cm)",
+  "web.gfuc.parcel_width": "Breedte (cm)",
+  "web.gfuc.parcel_height": "Hoogte (cm)",
+  "web.gfuc.total_parcel_weight_placeholder":
+    "Voer het totale pakketgewicht in (kg)",
+  "web.gfuc.parcel_length_placeholder": "Voer de pakketlengte in (cm)",
+  "web.gfuc.parcel_width_placeholder": "Voer de pakketbreedte in (cm)",
+  "web.gfuc.parcel_height_placeholder": "Voer de pakkethoogte in (cm)",
+  "web.gfuc.product_name_cn": "Productnaam (CN)",
+  "web.gfuc.product_name_en": "Productnaam (EN)",
+  "web.gfuc.quantity": "Aantal",
+  "web.gfuc.declared_value": "Aangegeven waarde (EUR)",
+  "web.gfuc.customer_order_no": "Klantordernummer",
+  "web.gfuc.reference_no": "Referentienummer",
+  "web.gfuc.service_provider_tracking_no": "Trackingnummer dienstverlener",
+  "web.gfuc.enter_product_name_cn": "Voer de productnaam in (CN)",
+  "web.gfuc.enter_product_name_en": "Voer de productnaam in (EN)",
+  "web.gfuc.enter_product_quantity": "Voer het productaantal in",
+  "web.gfuc.enter_total_declared_value": "Voer de totale aangegeven waarde in",
+  "web.gfuc.unique_customer_order_no": "Uniek klantordernummer",
+  "web.gfuc.platform_reference_no": "Platform referentienummer",
+  "web.gfuc.enter_parcel_weight": "Voer het pakketgewicht in",
+  "web.gfuc.enter_parcel_length": "Voer de pakketlengte in",
+  "web.gfuc.enter_parcel_width": "Voer de pakketbreedte in",
+  "web.gfuc.enter_parcel_height": "Voer de pakkethoogte in",
+  "web.gfuc.fill_parcel_info":
+    "Vul pakketinformatie, gewicht, materiaal, categoriegegevens enz. in",
+  "web.gfuc.channel_code": "Kanaalcode",
+  "web.gfuc.enter_channel_code": "Voer de kanaalcode in",
+  "web.gfuc.submit_order": "Bestel order"
 };

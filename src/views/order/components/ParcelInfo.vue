@@ -10,7 +10,9 @@
 
     <div class="step-content">
       <div class="step-content-header">
-        <h3 class="step-content-header-title">包裹信息&其他信息</h3>
+        <h3 class="step-content-header-title">
+          {{ $t("web.gfuc.parcel_info") }}
+        </h3>
         <!-- 清除数据 -->
         <svg-icon
           name="order-clear"
@@ -42,49 +44,63 @@
           >
             <el-row :gutter="20">
               <el-col :span="6">
-                <el-form-item label="总包裹重 (kg)" prop="orderGoods.weight">
+                <el-form-item
+                  :label="$t('web.gfuc.total_parcel_weight')"
+                  prop="orderGoods.weight"
+                >
                   <el-input-number
                     :controls="false"
                     v-model="formData.orderGoods.weight"
                     :min="0.001"
                     :max="50"
-                    placeholder="请填写包裹总重量"
+                    :placeholder="
+                      $t('web.gfuc.total_parcel_weight_placeholder')
+                    "
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="6">
-                <el-form-item label="长(cm)" prop="orderGoods.length">
+                <el-form-item
+                  :label="$t('web.gfuc.parcel_length')"
+                  prop="orderGoods.length"
+                >
                   <el-input-number
                     :controls="false"
                     v-model="formData.orderGoods.length"
                     :precision="2"
                     :min="1"
                     :max="150"
-                    placeholder="请填写包裹长度"
+                    :placeholder="$t('web.gfuc.parcel_length_placeholder')"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="6">
-                <el-form-item label="宽(cm)" prop="orderGoods.width">
+                <el-form-item
+                  :label="$t('web.gfuc.parcel_width')"
+                  prop="orderGoods.width"
+                >
                   <el-input-number
                     :controls="false"
                     v-model="formData.orderGoods.width"
                     :precision="2"
                     :min="1"
                     :max="150"
-                    placeholder="请填写包裹宽度"
+                    :placeholder="$t('web.gfuc.parcel_width_placeholder')"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="6">
-                <el-form-item label="高(cm)" prop="orderGoods.height">
+                <el-form-item
+                  :label="$t('web.gfuc.parcel_height')"
+                  prop="orderGoods.height"
+                >
                   <el-input-number
                     :controls="false"
                     v-model="formData.orderGoods.height"
                     :precision="2"
                     :min="1"
                     :max="150"
-                    placeholder="请填写包裹高度"
+                    :placeholder="$t('web.gfuc.parcel_height_placeholder')"
                   />
                 </el-form-item>
               </el-col>
@@ -101,7 +117,7 @@
                   >
                     <el-table-column
                       prop="itemNameZh"
-                      label="商品名称(CN)"
+                      :label="$t('web.gfuc.product_name_cn')"
                       min-width="150"
                     >
                       <template #default="{ row, $index }">
@@ -112,7 +128,7 @@
                         >
                           <el-input
                             v-model="row.itemNameZh"
-                            placeholder="请填写商品名称(CN)"
+                            :placeholder="$t('web.gfuc.enter_product_name_cn')"
                             maxlength="60"
                           />
                         </el-form-item>
@@ -120,7 +136,7 @@
                     </el-table-column>
                     <el-table-column
                       prop="itemNameEn"
-                      label="商品名称(EN)"
+                      :label="$t('web.gfuc.product_name_en')"
                       min-width="200"
                     >
                       <template #default="{ row, $index }">
@@ -132,7 +148,7 @@
                         >
                           <el-input
                             v-model="row.itemNameEn"
-                            placeholder="请填写商品名称(EN)"
+                            :placeholder="$t('web.gfuc.enter_product_name_en')"
                             maxlength="256"
                           />
                         </el-form-item>
@@ -140,7 +156,7 @@
                     </el-table-column>
                     <el-table-column
                       prop="itemQty"
-                      label="数量"
+                      :label="$t('web.gfuc.quantity')"
                       min-width="100"
                     >
                       <template #default="{ row, $index }">
@@ -153,14 +169,18 @@
                           <el-input-number
                             :controls="false"
                             v-model="row.itemQty"
-                            placeholder="数量"
+                            :placeholder="$t('web.gfuc.enter_product_quantity')"
                             :min="1"
                             :max="9999"
                           />
                         </el-form-item>
                       </template>
                     </el-table-column>
-                    <el-table-column label="操作" width="120" fixed="right">
+                    <el-table-column
+                      :label="$t('web.gfuc.actions')"
+                      width="120"
+                      fixed="right"
+                    >
                       <template #default="{ $index }">
                         <div class="table-actions">
                           <el-button size="small" @click="addGoods" circle>
@@ -196,14 +216,17 @@
 
             <el-row :gutter="20">
               <el-col :span="12">
-                <el-form-item label="申报价值 (EUR)" prop="declaredValue">
+                <el-form-item
+                  :label="$t('web.gfuc.declared_value')"
+                  prop="declaredValue"
+                >
                   <el-input-number
                     :controls="false"
                     v-model="formData.declaredValue"
                     :precision="2"
                     :min="0.0"
                     :max="100.0"
-                    placeholder="请填写商品总申报价值"
+                    :placeholder="$t('web.gfuc.enter_total_declared_value')"
                   />
                 </el-form-item>
               </el-col>
@@ -211,35 +234,47 @@
 
             <el-row :gutter="20">
               <el-col :span="8">
-                <el-form-item label="客户单号" prop="cOrderNo">
+                <el-form-item
+                  :label="$t('web.gfuc.customer_order_no')"
+                  prop="cOrderNo"
+                >
                   <el-input
                     v-model="formData.cOrderNo"
                     maxlength="30"
-                    placeholder="客户唯一的订单号"
+                    :placeholder="$t('web.gfuc.unique_customer_order_no')"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="参考单号" prop="referenceNo">
+                <el-form-item
+                  :label="$t('web.gfuc.reference_no')"
+                  prop="referenceNo"
+                >
                   <el-input
                     v-model="formData.referenceNo"
-                    placeholder="平台参考号"
+                    :placeholder="$t('web.gfuc.platform_reference_no')"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="服务商跟踪号" prop="reference3">
+                <el-form-item
+                  :label="$t('web.gfuc.service_provider_tracking_no')"
+                  prop="reference3"
+                >
                   <el-input
                     v-model="formData.reference3"
-                    placeholder="第三方服务商的跟踪号"
+                    :placeholder="$t('web.gfuc.service_provider_tracking_no')"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="渠道编码" prop="channelCode">
+                <el-form-item
+                  :label="$t('web.gfuc.channel_code')"
+                  prop="channelCode"
+                >
                   <el-input
                     v-model="formData.channelCode"
-                    placeholder="第三方服务商的渠道编码"
+                    :placeholder="$t('web.gfuc.enter_channel_code')"
                   />
                 </el-form-item>
               </el-col>
@@ -255,7 +290,7 @@
       </div>
 
       <div v-else class="step-placeholder">
-        <p>请填写包裹信息、重量、材质、品类信息等</p>
+        <p>{{ $t("web.gfuc.fill_parcel_info") }}</p>
       </div>
     </div>
   </div>
@@ -263,6 +298,9 @@
 
 <script setup>
 import { ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const props = defineProps({
   stepNumber: {
@@ -336,35 +374,55 @@ const validateDimensions = (rule, value, callback) => {
   }
 };
 
-const rules = reactive({
+const rules = computed(() => ({
   "orderGoods.weight": [
-    { required: true, message: "请输入总包裹重", trigger: ["blur", "change"] }
+    {
+      required: true,
+      message: t("web.gfuc.enter_parcel_weight"),
+      trigger: ["blur", "change"]
+    }
   ],
   "orderGoods.length": [
-    { required: true, message: "请输入包裹长度", trigger: ["blur", "change"] },
+    {
+      required: true,
+      message: t("web.gfuc.enter_parcel_length"),
+      trigger: ["blur", "change"]
+    },
     { validator: validateDimensions, trigger: ["blur", "change"] }
   ],
   "orderGoods.width": [
-    { required: true, message: "请输入包裹宽度", trigger: ["blur", "change"] },
+    {
+      required: true,
+      message: t("web.gfuc.enter_parcel_width"),
+      trigger: ["blur", "change"]
+    },
     { validator: validateDimensions, trigger: ["blur", "change"] }
   ],
   "orderGoods.height": [
-    { required: true, message: "请输入包裹高度", trigger: ["blur", "change"] },
+    {
+      required: true,
+      message: t("web.gfuc.enter_parcel_height"),
+      trigger: ["blur", "change"]
+    },
     { validator: validateDimensions, trigger: ["blur", "change"] }
   ],
   tableItem: {
     itemNameEn: [
       {
         required: true,
-        message: "请输入商品名称(EN)",
+        message: t("web.gfuc.enter_product_name_en"),
         trigger: ["blur", "change"]
       }
     ],
     itemQty: [
-      { required: true, message: "请输入商品数量", trigger: ["blur", "change"] }
+      {
+        required: true,
+        message: t("web.gfuc.enter_product_quantity"),
+        trigger: ["blur", "change"]
+      }
     ]
   }
-});
+}));
 
 watch(
   formData,

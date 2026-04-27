@@ -19,7 +19,9 @@
 
     <div class="step-content">
       <div class="step-content-header">
-        <h3 class="step-content-header-title">产品信息</h3>
+        <h3 class="step-content-header-title">
+          {{ $t("web.gfuc.product_info") }}
+        </h3>
         <!-- 清除数据 -->
         <svg-icon
           name="order-clear"
@@ -53,8 +55,12 @@
               <el-col :span="24">
                 <el-form-item label-width="0">
                   <el-radio-group v-model="formData.productType">
-                    <el-radio value="ECO">特惠</el-radio>
-                    <el-radio value="EXP">标快</el-radio>
+                    <el-radio value="ECO">{{
+                      $t("web.gfuc.express_delivery")
+                    }}</el-radio>
+                    <el-radio value="EXP">{{
+                      $t("web.gfuc.standard_delivery")
+                    }}</el-radio>
                   </el-radio-group>
                 </el-form-item>
               </el-col>
@@ -87,21 +93,23 @@
             >
               <el-col :span="8">
                 <el-form-item
-                  label="揽收开始时间"
+                  label="{{ $t('web.gfuc.collection_start_time') }}"
                   prop="queryCollectStartTime"
                   :rules="[
                     {
                       required:
                         formData.queryCollectStartTime ||
                         formData.queryCollectEndTime,
-                      message: '请输入揽收开始时间',
+                      message: $t(
+                        'web.gfuc.please_enter_collection_start_time'
+                      ),
                       trigger: 'blur'
                     }
                   ]"
                 >
                   <el-date-picker
                     v-model="formData.queryCollectStartTime"
-                    placeholder="请输入时间"
+                    placeholder="{{ $t('web.gfuc.please_enter_collection_start_time') }}"
                     type="datetime"
                     style="width: 100%"
                     format="YYYY-MM-DD HH:mm:ss"
@@ -111,21 +119,21 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item
-                  label="揽收结束时间"
+                  label="{{ $t('web.gfuc.collection_end_time') }}"
                   prop="queryCollectEndTime"
                   :rules="[
                     {
                       required:
                         formData.queryCollectStartTime ||
                         formData.queryCollectEndTime,
-                      message: '请输入揽收结束时间',
+                      message: $t('web.gfuc.please_enter_collection_end_time'),
                       trigger: 'blur'
                     }
                   ]"
                 >
                   <el-date-picker
                     v-model="formData.queryCollectEndTime"
-                    placeholder="请输入时间"
+                    placeholder="{{ $t('web.gfuc.please_enter_collection_end_time') }}"
                     type="datetime"
                     style="width: 100%"
                     format="YYYY-MM-DD HH:mm:ss"
@@ -137,7 +145,9 @@
 
             <el-row>
               <el-col :span="24" class="form-actions">
-                <el-button type="primary" @click="onNext">下一步</el-button>
+                <el-button type="primary" @click="onNext">{{
+                  $t("web.gfuc.next_step")
+                }}</el-button>
               </el-col>
             </el-row>
           </el-form>
@@ -146,12 +156,16 @@
         <div v-else class="summary-container">
           <div class="flex-col summary-content">
             <p class="text-base">
-              {{ formData.productType === "ECO" ? "特惠" : "标快" }}
+              {{
+                formData.productType === "ECO"
+                  ? $t("web.gfuc.express_delivery")
+                  : $t("web.gfuc.standard_delivery")
+              }}
             </p>
             <div class="radio-group">
               <div class="radio-check">
                 <div class="radio-label">{{ formData.productCode }}</div>
-                <div class="radio-content">我们将会提供揽收分拣服务</div>
+                <!-- <div class="radio-content">{{ formData.productName }}</div> -->
               </div>
             </div>
           </div>
@@ -159,7 +173,7 @@
       </div>
 
       <div v-else class="step-placeholder">
-        <p>请选择物流产品信息</p>
+        <p>{{ $t("web.gfuc.please_select_product_info") }}</p>
       </div>
     </div>
   </div>

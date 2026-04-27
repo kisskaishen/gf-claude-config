@@ -53,9 +53,9 @@
           :key="index"
           class="step-item"
           :class="{
-            'step-active': index == currentStep,
-            'step-complated': index < currentStep,
-            'step-default': index > currentStep
+            'step-active': step.status == orderData.orderStatus,
+            'step-complated': step.status < orderData.orderStatus,
+            'step-default': step.status > orderData.orderStatus
           }"
         >
           <span class="step-text">{{ step.label }}</span>
@@ -65,8 +65,8 @@
             v-if="index < statusSteps.length - 1"
             class="step-arrow"
             :class="{
-              'arrow-active': index <= currentStep,
-              'arrow-default': index > currentStep
+              'arrow-active': step.status <= orderData.orderStatus,
+              'arrow-default': step.status > orderData.orderStatus
             }"
           />
         </div>
@@ -257,16 +257,16 @@
         <div class="sidebar-section tracking-section">
           <h3 class="sidebar-title">轨迹信息</h3>
           <div class="tracking-info">
-            <div v-for="item in orderData.trackingInfo" :key="item.processTime">
+            <div v-for="item in orderData.trackingInfo" :key="item.trackDate">
               <div class="tracking-date">
                 <el-divider content-position="center">
-                  {{ item.processTime }}
+                  {{ item.trackDate }}
                 </el-divider>
               </div>
               <div
                 class="tracking-item active"
-                v-for="son in item.events"
-                :key="son.time"
+                v-for="son in item.trackDetailItemList"
+                :key="son.processTime"
               >
                 <div class="tracking-dot">
                   <!-- <svg-icon name="locationStep" width="24" height="24" /> -->
@@ -274,9 +274,9 @@
                 </div>
                 <div class="tracking-content">
                   <div class="tracking-message">
-                    {{ son.message }}
+                    {{ son.externalTrackContent }}
                   </div>
-                  <div class="tracking-time">{{ son.time }}</div>
+                  <div class="tracking-time">{{ son.processTime }}</div>
                 </div>
               </div>
             </div>
@@ -284,7 +284,7 @@
         </div>
 
         <!-- 增值服务 -->
-        <div class="sidebar-section service-section">
+        <div class="sidebar-section service-section" v-if="orderData?.orderCod">
           <h3 class="sidebar-title">增值服务</h3>
           <div class="service-info">
             <div class="service-item">
@@ -324,14 +324,13 @@ const route = useRoute();
 
 // 步骤数据
 const statusSteps = ref([
-  { label: "提交订单" },
-  { label: "包裹收货" },
-  { label: "派送中" },
-  { label: "已签收" }
+  { label: "提交订单", status: "1" },
+  { label: "包裹收货", status: "2" },
+  { label: "派送中", status: "3" },
+  { label: "已签收", status: "4" }
 ]);
 
 // 当前步骤（从0开始，对应数组索引）
-const currentStep = ref(1);
 
 const orderType = ref(route.params.orderType);
 
@@ -375,37 +374,12 @@ const orderData = ref({
   },
   trackingInfo: [
     {
-      processTime: "2 Dec.2025",
-      events: [
+      trackDate: "2 Dec.2025",
+      trackDetailItemList: [
         {
-          time: "12:00:00",
-          message: "Le Havre,76600,FR / package is delivered",
+          processTime: "12:00:00",
+          externalTrackContent: "Le Havre,76600,FR / package is delivered",
           active: true
-        },
-        {
-          time: "12:00:00",
-          message: "Le Havre,76600,FR / package is delivered",
-          active: false
-        }
-      ]
-    },
-    {
-      date: "1 Dec.2025",
-      events: [
-        {
-          time: "12:00:00",
-          message: "Le Havre,76600,FR / package is delivered",
-          active: false
-        },
-        {
-          time: "12:00:00",
-          message: "Le Havre,76600,FR / package is delivered",
-          active: false
-        },
-        {
-          time: "12:00:00",
-          message: "Le Havre,76600,FR / package is delivered",
-          active: false
         }
       ]
     }
@@ -641,7 +615,7 @@ const fetchOrderDetail = async () => {
       }
 
       .tracking-item {
-        @apply relative flex items-baseline mb-6;
+        @apply relative flex mb-6;
 
         gap: 14px;
 

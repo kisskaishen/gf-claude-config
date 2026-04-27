@@ -111,6 +111,8 @@ export default {
     "Veuillez entrer le code postal",
   "web.gfuc.please_select_city": "Veuillez sélectionner la ville",
   "web.gfuc.please_select_state": "Veuillez sélectionner l'état",
+  "web.gfuc.please_enter_shipper_info":
+    "Veuillez entrer les informations de l'expéditeur",
 
   // Composant Informations du destinataire
   "web.order.consignee_info_title": "Informations du destinataire",
@@ -127,5 +129,56 @@ export default {
   "web.gfuc.edit_button_title": "Modifier",
 
   "web.gfuc.consignee_info_placeholder":
-    "Veuillez remplir les informations du destinataire"
+    "Veuillez remplir les informations du destinataire",
+
+  "web.gfuc.product_info": "Informations produit",
+  "web.gfuc.express_delivery": "Express",
+  "web.gfuc.standard_delivery": "Standard",
+  "web.gfuc.collection_start_time": "Heure de début d'enlèvement",
+  "web.gfuc.collection_end_time": "Heure de fin d'enlèvement",
+  "web.gfuc.please_enter_collection_start_time":
+    "Veuillez entrer l'heure de début d'enlèvement",
+  "web.gfuc.please_enter_collection_end_time":
+    "Veuillez entrer l'heure de fin d'enlèvement",
+  "web.gfuc.please_select_product_type":
+    "Veuillez sélectionner le type de produit",
+  "web.gfuc.please_select_product_info":
+    "Veuillez sélectionner les informations du produit logistique",
+
+  "web.gfuc.parcel_info": "Informations du colis & autres infos",
+  "web.gfuc.total_parcel_weight": "Poids total du colis (kg)",
+  "web.gfuc.parcel_length": "Longueur (cm)",
+  "web.gfuc.parcel_width": "Largeur (cm)",
+  "web.gfuc.parcel_height": "Hauteur (cm)",
+  "web.gfuc.total_parcel_weight_placeholder":
+    "Veuillez entrer le poids total du colis (kg)",
+  "web.gfuc.parcel_length_placeholder":
+    "Veuillez entrer la longueur du colis (cm)",
+  "web.gfuc.parcel_width_placeholder":
+    "Veuillez entrer la largeur du colis (cm)",
+  "web.gfuc.parcel_height_placeholder":
+    "Veuillez entrer la hauteur du colis (cm)",
+  "web.gfuc.product_name_cn": "Nom du produit (CN)",
+  "web.gfuc.product_name_en": "Nom du produit (EN)",
+  "web.gfuc.quantity": "Quantité",
+  "web.gfuc.declared_value": "Valeur déclarée (EUR)",
+  "web.gfuc.customer_order_no": "Numéro de commande client",
+  "web.gfuc.reference_no": "Numéro de référence",
+  "web.gfuc.service_provider_tracking_no": "Numéro de suivi du prestataire",
+  "web.gfuc.enter_product_name_cn": "Veuillez entrer le nom du produit (CN)",
+  "web.gfuc.enter_product_name_en": "Veuillez entrer le nom du produit (EN)",
+  "web.gfuc.enter_product_quantity": "Veuillez entrer la quantité du produit",
+  "web.gfuc.enter_total_declared_value":
+    "Veuillez entrer la valeur déclarée totale",
+  "web.gfuc.unique_customer_order_no": "Numéro de commande client unique",
+  "web.gfuc.platform_reference_no": "Numéro de référence de la plateforme",
+  "web.gfuc.enter_parcel_weight": "Veuillez entrer le poids du colis",
+  "web.gfuc.enter_parcel_length": "Veuillez entrer la longueur du colis",
+  "web.gfuc.enter_parcel_width": "Veuillez entrer la largeur du colis",
+  "web.gfuc.enter_parcel_height": "Veuillez entrer la hauteur du colis",
+  "web.gfuc.fill_parcel_info":
+    "Veuillez remplir les informations du colis, poids, matériau, catégorie, etc.",
+  "web.gfuc.channel_code": "Code canal",
+  "web.gfuc.enter_channel_code": "Veuillez entrer le code canal",
+  "web.gfuc.submit_order": "Soumettre la commande"
 };
