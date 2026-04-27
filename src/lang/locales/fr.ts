@@ -19,7 +19,7 @@ export default {
     "Je suis d'accord avec le {register_agreement} et la {privacy_policy}",
   "web.gfuc.please_select_country":
     "Veuillez sélectionner votre pays d'origine",
-  "web.gfuc.country": "Pays d'origine",
+  "web.gfuc.country_zh": "Pays d'origine",
   "web.gfuc.email": "Email",
   "web.gfuc.password": "Mot de passe",
   "web.gfuc.code": "Code",
@@ -78,5 +78,54 @@ export default {
   "web.gfuc.french_site": "Station (France)",
   "web.gfuc.italian_site": "Station (Italie)",
   "web.gfuc.dutch_site": "Station (Pays-Bas)",
-  "web.gfuc.order_detail": "Détails de la commande"
+  "web.gfuc.order_detail": "Détails de la commande",
+
+  // Composant d'information de l'expéditeur
+  "web.gfuc.shipper_info": "Informations de l'expéditeur",
+  "web.gfuc.please_fill_shipper_info":
+    "Veuillez remplir les informations de l'expéditeur",
+  "web.gfuc.order_account": "Compte de commande",
+  "web.gfuc.please_select_order_account":
+    "Veuillez sélectionner le compte de commande",
+  "web.gfuc.name": "Nom",
+  "web.gfuc.please_enter_name": "Veuillez entrer le nom",
+  "web.gfuc.phone": "Numéro de téléphone",
+  "web.gfuc.please_enter_phone": "Veuillez entrer le numéro de téléphone",
+  "web.gfuc.address": "Adresse",
+  "web.gfuc.please_enter_address": "Veuillez entrer l'adresse",
+  "web.gfuc.detailed_address": "Adresse détaillée",
+  "web.gfuc.please_enter_detailed_address":
+    "Veuillez entrer l'adresse détaillée",
+  "web.gfuc.postal_code": "Code postal",
+  "web.gfuc.please_enter_postal_code": "Veuillez entrer le code postal",
+  "web.gfuc.area": "Région",
+  "web.gfuc.please_enter_area": "Veuillez entrer la région",
+  "web.gfuc.city": "Ville",
+  "web.gfuc.please_enter_city": "Veuillez entrer la ville",
+  "web.gfuc.state": "État",
+  "web.gfuc.please_enter_state": "Veuillez entrer l'état",
+  "web.gfuc.country": "Pays",
+  "web.gfuc.please_enter_country": "Veuillez entrer le pays",
+  "web.gfuc.next_step": "Étape suivante",
+  "web.gfuc.please_enter_postal_code_validation":
+    "Veuillez entrer le code postal",
+  "web.gfuc.please_select_city": "Veuillez sélectionner la ville",
+  "web.gfuc.please_select_state": "Veuillez sélectionner l'état",
+
+  // Composant Informations du destinataire
+  "web.order.consignee_info_title": "Informations du destinataire",
+
+  "web.gfuc.address2": "Adresse ligne 2",
+  "web.gfuc.address3": "Adresse ligne 3",
+
+  "web.gfuc.internal_number": "Numéro interne",
+  "web.gfuc.internal_number_placeholder": "Veuillez entrer le numéro interne",
+  "web.gfuc.external_number": "Numéro externe",
+  "web.gfuc.external_number_placeholder": "Veuillez entrer le numéro externe",
+
+  "web.gfuc.clear_button_title": "Effacer",
+  "web.gfuc.edit_button_title": "Modifier",
+
+  "web.gfuc.consignee_info_placeholder":
+    "Veuillez remplir les informations du destinataire"
 };

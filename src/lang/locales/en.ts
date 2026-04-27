@@ -18,7 +18,7 @@ export default {
   "web.gfuc.agreement":
     "I agree to the {register_agreement} and {privacy_policy}",
   "web.gfuc.please_select_country": "Please select your country",
-  "web.gfuc.country": "Country of Origin",
+  "web.gfuc.country_zh": "Country of Origin",
   "web.gfuc.email": "Email",
   "web.gfuc.password": "Password",
   "web.gfuc.code": "Code",
@@ -79,5 +79,50 @@ export default {
   "web.gfuc.french_site": "France station",
   "web.gfuc.italian_site": "Italy station",
   "web.gfuc.dutch_site": "Netherlands station",
-  "web.gfuc.order_detail": "Order Detail"
+  "web.gfuc.order_detail": "Order Detail",
+
+  // Shipper information component
+  "web.gfuc.shipper_info": "Shipper Information",
+  "web.gfuc.please_fill_shipper_info": "Please fill in shipper information",
+  "web.gfuc.order_account": "Order Account",
+  "web.gfuc.please_select_order_account": "Please select order account",
+  "web.gfuc.name": "Name",
+  "web.gfuc.please_enter_name": "Please enter name",
+  "web.gfuc.phone": "Phone",
+  "web.gfuc.please_enter_phone": "Please enter phone",
+  "web.gfuc.address": "Address",
+  "web.gfuc.please_enter_address": "Please enter address",
+  "web.gfuc.detailed_address": "Detailed Address",
+  "web.gfuc.please_enter_detailed_address": "Please enter detailed address",
+  "web.gfuc.postal_code": "Postal Code",
+  "web.gfuc.please_enter_postal_code": "Please enter postal code",
+  "web.gfuc.area": "Area",
+  "web.gfuc.please_enter_area": "Please enter area",
+  "web.gfuc.city": "City",
+  "web.gfuc.please_enter_city": "Please enter city",
+  "web.gfuc.state": "State",
+  "web.gfuc.please_enter_state": "Please enter state",
+  "web.gfuc.country": "Country",
+  "web.gfuc.please_enter_country": "Please enter country",
+  "web.gfuc.next_step": "Next Step",
+  "web.gfuc.please_enter_postal_code_validation": "Please enter postal code",
+  "web.gfuc.please_select_city": "Please select city",
+  "web.gfuc.please_select_state": "Please select state",
+
+  // Recipient Information Component
+  "web.order.consignee_info_title": "Recipient Information",
+
+  "web.gfuc.address2": "Address Line 2",
+  "web.gfuc.address3": "Address Line 3",
+
+  "web.gfuc.internal_number": "Internal Number",
+  "web.gfuc.internal_number_placeholder": "Please enter internal number",
+  "web.gfuc.external_number": "External Number",
+  "web.gfuc.external_number_placeholder": "Please enter external number",
+
+  "web.gfuc.clear_button_title": "Clear",
+  "web.gfuc.edit_button_title": "Edit",
+
+  "web.gfuc.consignee_info_placeholder":
+    "Please fill in the recipient information"
 };

@@ -17,7 +17,7 @@ export default {
   "web.gfuc.privacy_policy": "隐私政策",
   "web.gfuc.agreement": "我同意GOFO的{register_agreement}和{privacy_policy}",
   "web.gfuc.please_select_country": "请选择国家",
-  "web.gfuc.country": "走货国家",
+  "web.gfuc.country_zh": "走货国家",
   "web.gfuc.email": "邮箱",
   "web.gfuc.password": "密码",
   "web.gfuc.code": "验证码",
@@ -75,5 +75,55 @@ export default {
   "web.gfuc.italian_site": "意大利站",
   "web.gfuc.dutch_site": "荷兰站",
 
-  "web.gfuc.order_detail": "订单详情"
+  "web.gfuc.order_detail": "订单详情",
+
+  // 单票下单页面
+  "web.gfuc.order_created_success": "订单创建成功",
+  "web.gfuc.order_created_success_message":
+    "您的订单已经创建成功，您可以查看订单或继续下单",
+  "web.gfuc.view_order": "查看订单",
+  "web.gfuc.continue_order": "继续下单",
+
+  // 发件人信息组件
+  "web.gfuc.shipper_info": "发件人信息",
+  "web.gfuc.please_fill_shipper_info": "请填写发件人信息",
+  "web.gfuc.order_account": "下单账户",
+  "web.gfuc.please_select_order_account": "请选择下单账户",
+  "web.gfuc.name": "姓名",
+  "web.gfuc.please_enter_name": "请输入姓名",
+  "web.gfuc.phone": "电话号码",
+  "web.gfuc.please_enter_phone": "请输入电话号码",
+  "web.gfuc.address": "地址",
+  "web.gfuc.please_enter_address": "请输入地址",
+  "web.gfuc.detailed_address": "详细地址",
+  "web.gfuc.please_enter_detailed_address": "请输入详细地址",
+  "web.gfuc.postal_code": "邮编",
+  "web.gfuc.please_enter_postal_code": "请输入邮编",
+  "web.gfuc.area": "区域",
+  "web.gfuc.please_enter_area": "请输入区域",
+  "web.gfuc.city": "城市",
+  "web.gfuc.please_enter_city": "请输入城市",
+  "web.gfuc.state": "州",
+  "web.gfuc.please_enter_state": "请输入州",
+  "web.gfuc.country": "国家",
+  "web.gfuc.please_enter_country": "请输入国家",
+  "web.gfuc.next_step": "下一步",
+  "web.gfuc.please_select_city": "请选择城市",
+  "web.gfuc.please_select_state": "请选择州",
+
+  // 收件人信息组件
+  "web.order.consignee_info_title": "收件人信息",
+
+  "web.gfuc.address2": "地址2",
+  "web.gfuc.address3": "地址3",
+
+  "web.gfuc.internal_number": "内门牌号",
+  "web.gfuc.internal_number_placeholder": "请输入内门牌号",
+  "web.gfuc.external_number": "外门牌号",
+  "web.gfuc.external_number_placeholder": "请输入外门牌号",
+
+  "web.gfuc.clear_button_title": "清除数据",
+  "web.gfuc.edit_button_title": "编辑数据",
+
+  "web.gfuc.consignee_info_placeholder": "请填写收件人信息"
 };

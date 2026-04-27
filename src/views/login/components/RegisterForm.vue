@@ -7,7 +7,7 @@
     class="form-body"
   >
     <el-form-item
-      :label="$t('web.gfuc.country' /** 走货国家 */)"
+      :label="$t('web.gfuc.country_zh' /** 走货国家 */)"
       prop="country"
     >
       <el-select

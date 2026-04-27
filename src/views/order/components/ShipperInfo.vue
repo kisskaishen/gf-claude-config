@@ -19,7 +19,9 @@
 
     <div class="step-content">
       <div class="step-content-header">
-        <h3 class="step-content-header-title">发件人信息</h3>
+        <h3 class="step-content-header-title">
+          {{ $t("web.gfuc.shipper_info") }}
+        </h3>
         <!-- 清除数据 -->
         <svg-icon
           name="order-clear"
@@ -54,12 +56,12 @@
 走货账户的用户中心登录进去，隐藏下单账户选择。 -->
               <el-col :span="8" v-if="isCj">
                 <el-form-item
-                  label="下单账户"
+                  :label="$t('web.gfuc.order_account')"
                   prop="customerId"
                   :rules="[
                     {
                       required: isCj,
-                      message: '请选择下单账户',
+                      message: $t('web.gfuc.please_select_order_account'),
                       trigger: 'blur'
                     }
                   ]"
@@ -67,7 +69,7 @@
                   <el-select
                     v-model="orderShipper.customerId"
                     filterable
-                    placeholder="请选择下单账户"
+                    :placeholder="$t('web.gfuc.please_select_order_account')"
                     @change="handleCustomerChange"
                   >
                     <el-option
@@ -80,10 +82,10 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="姓名" prop="shipperName">
+                <el-form-item :label="$t('web.gfuc.name')" prop="shipperName">
                   <el-select
                     v-model="orderShipper.shipperName"
-                    placeholder="请输入姓名"
+                    :placeholder="$t('web.gfuc.please_enter_name')"
                     maxlength="100"
                     filterable
                     allow-create
@@ -97,23 +99,23 @@
                       :value="item.shipperName"
                     >
                       <template v-slot:default>
-<div class="flex flex-col" >
-                        <span>{{ item.shipperName }}</span>
-                        <span class="text-xs text-info">
-                          {{ item.shipperStreet }}
-                        </span>
-                      </div>
-</template>
+                        <div class="flex flex-col">
+                          <span>{{ item.shipperName }}</span>
+                          <span class="text-xs text-info">
+                            {{ item.shipperStreet }}
+                          </span>
+                        </div>
+                      </template>
                     </el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
 
               <el-col :span="8">
-                <el-form-item label="电话号码" prop="shipperPhone">
+                <el-form-item :label="$t('web.gfuc.phone')" prop="shipperPhone">
                   <el-input
                     v-model="orderShipper.shipperPhone"
-                    placeholder="请输入电话号码"
+                    :placeholder="$t('web.gfuc.please_enter_phone')"
                     maxlength="30"
                   />
                 </el-form-item>
@@ -121,13 +123,13 @@
 
               <el-col :span="8">
                 <el-form-item
-                  label="邮箱"
+                  :label="$t('web.gfuc.email')"
                   prop="shipperEmail"
                   :rules="[
                     {
                       required: orderShipper.shipperEmail,
                       type: 'email',
-                      message: '请输入邮箱',
+                      message: $t('web.gfuc.please_enter_email'),
                       trigger: 'blur'
                     }
                   ]"
@@ -135,26 +137,32 @@
                   <el-input
                     v-model="orderShipper.shipperEmail"
                     type="email"
-                    placeholder="请输入邮箱"
+                    :placeholder="$t('web.gfuc.please_enter_email')"
                     maxlength="100"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="isCj ? 8 : 16">
-                <el-form-item label="详细地址" prop="shipperStreet">
+                <el-form-item
+                  :label="t('web.gfuc.address')"
+                  prop="shipperStreet"
+                >
                   <el-input
                     v-model="orderShipper.shipperStreet"
-                    placeholder="请输入详细地址"
+                    :placeholder="$t('web.gfuc.please_enter_address')"
                     maxlength="100"
                   />
                 </el-form-item>
               </el-col>
 
               <el-col :span="8">
-                <el-form-item label="邮编" prop="shipperCode">
+                <el-form-item
+                  :label="$t('web.gfuc.postal_code')"
+                  prop="shipperCode"
+                >
                   <el-input
                     v-model="orderShipper.shipperCode"
-                    placeholder="请输入邮编"
+                    :placeholder="$t('web.gfuc.please_enter_postal_code')"
                     minlength="5"
                     maxlength="12"
                     @blur="getAddressByCodeBlur"
@@ -162,38 +170,41 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="区域" prop="shipperArea">
+                <el-form-item :label="$t('web.gfuc.area')" prop="shipperArea">
                   <el-input
                     v-model="orderShipper.shipperArea"
-                    placeholder="请输入区域"
+                    :placeholder="$t('web.gfuc.please_enter_area')"
                     maxlength="50"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="城市" prop="shipperCity">
+                <el-form-item :label="$t('web.gfuc.city')" prop="shipperCity">
                   <el-input
                     v-model="orderShipper.shipperCity"
-                    placeholder="请输入城市"
+                    :placeholder="$t('web.gfuc.please_enter_city')"
                     maxlength="50"
                   />
                 </el-form-item>
               </el-col>
 
               <el-col :span="8">
-                <el-form-item label="州" prop="shipperState">
+                <el-form-item :label="$t('web.gfuc.state')" prop="shipperState">
                   <el-input
                     v-model="orderShipper.shipperState"
-                    placeholder="请输入州"
+                    :placeholder="$t('web.gfuc.please_enter_state')"
                     maxlength="50"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="国家" prop="shipperCountry">
+                <el-form-item
+                  :label="$t('web.gfuc.country')"
+                  prop="shipperCountry"
+                >
                   <el-input
                     v-model="orderShipper.shipperCountry"
-                    placeholder="请输入国家"
+                    :placeholder="$t('web.gfuc.please_enter_country')"
                     maxlength="20"
                   />
                 </el-form-item>
@@ -202,7 +213,9 @@
 
             <el-row>
               <el-col :span="24" class="form-actions">
-                <el-button type="primary" @click="onNext">下一步</el-button>
+                <el-button type="primary" @click="onNext">
+                  {{ $t("web.gfuc.next_step") }}
+                </el-button>
               </el-col>
             </el-row>
           </el-form>
@@ -226,7 +239,7 @@
       </div>
 
       <div v-else class="step-content-placeholder">
-        <p>请填写发件人信息</p>
+        <p>{{ $t("web.gfuc.please_enter_shipper_info") }}</p>
       </div>
     </div>
   </div>
@@ -237,6 +250,10 @@ import { ref, watch, computed, reactive, onMounted } from "vue";
 
 import { getAddressByCode, getSenderName } from "@/api/order";
 import { useUserStore } from "@/store/user";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+
 const props = defineProps({
   stepNumber: {
     type: Number,
@@ -298,15 +315,43 @@ watch(
   { immediate: true, deep: true }
 );
 
-const rules = reactive({
+const rules = computed(() => ({
   shipperName: [
-    { required: true, message: "请输入姓名", trigger: ["blur", "change"] }
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_name"),
+      trigger: ["blur", "change"]
+    }
   ],
-  shipperCode: [{ required: true, message: "请输入邮政编码", trigger: "blur" }],
-  shipperCity: [{ required: true, message: "请选择城市", trigger: "change" }],
-  shipperState: [{ required: true, message: "请选择州", trigger: "change" }],
-  shipperCountry: [{ required: true, message: "请选择国家", trigger: "change" }]
-});
+  shipperCode: [
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_postal_code"),
+      trigger: "blur"
+    }
+  ],
+  shipperCity: [
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_city"),
+      trigger: "change"
+    }
+  ],
+  shipperState: [
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_state"),
+      trigger: "change"
+    }
+  ],
+  shipperCountry: [
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_country"),
+      trigger: "change"
+    }
+  ]
+}));
 
 watch(
   orderShipper,

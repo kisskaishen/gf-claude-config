@@ -19,7 +19,7 @@ export default {
     "I agree to the {register_agreement} and {privacy_policy}",
   "web.gfuc.please_select_country":
     "Veuillez sélectionner votre pays d'origine",
-  "web.gfuc.country": "Pays d'origine",
+  "web.gfuc.country_zh": "Pays d'origine",
   "web.gfuc.email": "Email",
   "web.gfuc.password": "Password",
   "web.gfuc.code": "Codice",
@@ -78,5 +78,49 @@ export default {
   "web.gfuc.french_site": "Stazione (Francia)",
   "web.gfuc.italian_site": "Stazione (Italia)",
   "web.gfuc.dutch_site": "Stazione (Paesi Bassi)",
-  "web.gfuc.order_detail": "Dettagli dell'ordine"
+  "web.gfuc.order_detail": "Dettagli dell'ordine",
+
+  "web.gfuc.shipper_info": "Informazioni mittente",
+  "web.gfuc.please_fill_shipper_info": "Compila le informazioni mittente",
+  "web.gfuc.order_account": "Account ordine",
+  "web.gfuc.please_select_order_account": "Seleziona account ordine",
+  "web.gfuc.name": "Nome",
+  "web.gfuc.please_enter_name": "Inserisci nome",
+  "web.gfuc.phone": "Numero di mittente",
+  "web.gfuc.please_enter_phone": "Inserisci numero di mittente",
+  "web.gfuc.address": "Indirizzo",
+  "web.gfuc.please_enter_address": "Inserisci indirizzo",
+  "web.gfuc.detailed_address": "Indirizzo dettagliato",
+  "web.gfuc.please_enter_detailed_address": "Inserisci indirizzo dettagliato",
+  "web.gfuc.postal_code": "Codice postale",
+  "web.gfuc.please_enter_postal_code": "Inserisci codice postale",
+  "web.gfuc.area": "Area",
+  "web.gfuc.please_enter_area": "Inserisci area",
+  "web.gfuc.city": "Città",
+  "web.gfuc.please_enter_city": "Inserisci città",
+  "web.gfuc.state": "Stato",
+  "web.gfuc.please_enter_state": "Inserisci stato",
+  "web.gfuc.country": "Paese",
+  "web.gfuc.please_enter_country": "Inserisci paese",
+  "web.gfuc.next_step": "Passo successivo",
+  "web.gfuc.please_enter_postal_code_validation": "Inserisci codice postale",
+  "web.gfuc.please_select_city": "Seleziona città",
+  "web.gfuc.please_select_state": "Seleziona stato",
+
+  // Componente Informazioni del destinatario
+  "web.order.consignee_info_title": "Informazioni del destinatario",
+
+  "web.gfuc.address2": "Indirizzo riga 2",
+  "web.gfuc.address3": "Indirizzo riga 3",
+
+  "web.gfuc.internal_number": "Numero interno",
+  "web.gfuc.internal_number_placeholder": "Inserisci il numero interno",
+  "web.gfuc.external_number": "Numero esterno",
+  "web.gfuc.external_number_placeholder": "Inserisci il numero esterno",
+
+  "web.gfuc.clear_button_title": "Cancella",
+  "web.gfuc.edit_button_title": "Modifica",
+
+  "web.gfuc.consignee_info_placeholder":
+    "Si prega di compilare le informazioni del destinatario"
 };

@@ -157,13 +157,13 @@
                   }}</span>
                 </div>
                 <div class="info-item full-width">
-                  <span class="info-label">收件人地址</span>
+                  <span class="info-label">{{ $t("web.gfuc.address") }}</span>
                   <span class="info-value">{{
                     orderData?.orderConsignee?.address1 || "-"
                   }}</span>
                 </div>
                 <div class="info-item">
-                  <span class="info-label">收件人电话</span>
+                  <span class="info-label">{{ $t("web.gfuc.phone") }}</span>
                   <span class="info-value">{{
                     orderData?.orderConsignee?.consigneePhone || "-"
                   }}</span>

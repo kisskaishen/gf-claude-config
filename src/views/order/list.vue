@@ -40,7 +40,7 @@ const orderStatusDict = useDict("order_status");
 
 const orderStatusOptions = computed(() => {
   return orderStatusDict.options.value.filter(
-    (item: any) => !["查没", "派送失败", "异常完结"].includes(item.label)
+    (item: any) => ![6, 7, 8].includes(item.value)
   );
 });
 

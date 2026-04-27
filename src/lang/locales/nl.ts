@@ -17,7 +17,7 @@ export default {
   "web.gfuc.agreement":
     "Ik accepteer de {register_agreement} en {privacy_policy}",
   "web.gfuc.please_select_country": "Selecteer uw land van afkomst",
-  "web.gfuc.country": "Land van afkomst",
+  "web.gfuc.country_zh": "Land van afkomst",
   "web.gfuc.email": "E-mail",
   "web.gfuc.password": "Wachtwoord",
   "web.gfuc.code": "Code",
@@ -75,5 +75,48 @@ export default {
   "web.gfuc.french_site": "Station (Frankrijk)",
   "web.gfuc.italian_site": "Station (Italië)",
   "web.gfuc.dutch_site": "Station (Nederland)",
-  "web.gfuc.order_detail": "Orderdetails"
+  "web.gfuc.order_detail": "Orderdetails",
+
+  "web.gfuc.shipper_info": "Zender informatie",
+  "web.gfuc.please_fill_shipper_info": "Vul de zender informatie in",
+  "web.gfuc.order_account": "Orderaccount",
+  "web.gfuc.please_select_order_account": "Selecteer een orderaccount",
+  "web.gfuc.name": "Naam",
+  "web.gfuc.please_enter_name": "Vul de naam in",
+  "web.gfuc.phone": "Telefoonnummer",
+  "web.gfuc.please_enter_phone": "Vul het telefoonnummer in",
+  "web.gfuc.address": "Adres",
+  "web.gfuc.please_enter_address": "Vul het adres in",
+  "web.gfuc.detailed_address": "Detailadres",
+  "web.gfuc.please_enter_detailed_address": "Vul het detailadres in",
+  "web.gfuc.postal_code": "Postcode",
+  "web.gfuc.please_enter_postal_code": "Vul de postcode in",
+  "web.gfuc.area": "Gebied",
+  "web.gfuc.please_enter_area": "Vul het gebied in",
+  "web.gfuc.city": "Stad",
+  "web.gfuc.please_enter_city": "Vul de stad in",
+  "web.gfuc.state": "Staat",
+  "web.gfuc.please_enter_state": "Vul de staat in",
+  "web.gfuc.country": "Land",
+  "web.gfuc.please_enter_country": "Vul het land in",
+  "web.gfuc.next_step": "Volgende stap",
+  "web.gfuc.please_enter_postal_code_validation": "Vul de postcode in",
+  "web.gfuc.please_select_city": "Selecteer de stad",
+  "web.gfuc.please_select_state": "Selecteer de staat",
+
+  // Ontvanger Informatie Component
+  "web.order.consignee_info_title": "Informatie ontvanger",
+
+  "web.gfuc.address2": "Adresregel 2",
+  "web.gfuc.address3": "Adresregel 3",
+
+  "web.gfuc.internal_number": "Intern nummer",
+  "web.gfuc.internal_number_placeholder": "Voer het interne nummer in",
+  "web.gfuc.external_number": "Extern nummer",
+  "web.gfuc.external_number_placeholder": "Voer het externe nummer in",
+
+  "web.gfuc.clear_button_title": "Wissen",
+  "web.gfuc.edit_button_title": "Bewerken",
+
+  "web.gfuc.consignee_info_placeholder": "Vul de ontvangergegevens in"
 };

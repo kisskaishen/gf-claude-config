@@ -226,8 +226,8 @@ const orderStatusDict = useDict("order_status");
 
 // 异常订单状态
 const exceptionOrderStatusOptions = computed(() => {
-  return orderStatusDict.options.value.filter((item: any) =>
-    ["查没", "派送失败", "异常完结"].includes(item.label)
+  return orderStatusDict.options.value.filter(
+    (item: any) => ![6, 7, 8].includes(item.value)
   );
 });
 

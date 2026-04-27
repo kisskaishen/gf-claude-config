@@ -19,7 +19,9 @@
 
     <div class="step-content">
       <div class="step-content-header">
-        <h3 class="step-content-header-title">收件人信息</h3>
+        <h3 class="step-content-header-title">
+          {{ $t("web.order.consignee_info_title") }}
+        </h3>
         <!-- 清除数据 -->
         <svg-icon
           name="order-clear"
@@ -50,20 +52,23 @@
           >
             <el-row :gutter="20">
               <el-col :span="8">
-                <el-form-item label="名字" prop="consigneeName">
+                <el-form-item :label="$t('web.gfuc.name')" prop="consigneeName">
                   <el-input
                     v-model="orderConsignee.consigneeName"
-                    placeholder="请输入名字"
+                    :placeholder="$t('web.gfuc.name_placeholder')"
                     maxlength="100"
                   />
                 </el-form-item>
               </el-col>
 
               <el-col :span="8">
-                <el-form-item label="电话号码" prop="consigneePhone">
+                <el-form-item
+                  :label="$t('web.gfuc.phone')"
+                  prop="consigneePhone"
+                >
                   <el-input
                     v-model="orderConsignee.consigneePhone"
-                    placeholder="请输入电话号码"
+                    :placeholder="$t('web.gfuc.phone_placeholder')"
                     maxlength="30"
                   />
                 </el-form-item>
@@ -71,12 +76,12 @@
 
               <el-col :span="8">
                 <el-form-item
-                  label="邮箱"
+                  :label="$t('web.gfuc.email')"
                   prop="consigneeEmail"
                   :rules="[
                     {
                       required: orderConsignee.consigneeEmail,
-                      message: '请输入邮箱',
+                      message: $t('web.gfuc.email_format_incorrect'),
                       trigger: 'blur'
                     }
                   ]"
@@ -84,71 +89,80 @@
                   <el-input
                     v-model="orderConsignee.consigneeEmail"
                     type="email"
-                    placeholder="请输入邮箱"
+                    :placeholder="$t('web.gfuc.email_placeholder')"
                     maxlength="70"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="地址1" prop="address1">
+                <el-form-item :label="$t('web.gfuc.address')" prop="address1">
                   <el-input
                     v-model="orderConsignee.address1"
-                    placeholder="请输入详细地址"
+                    :placeholder="$t('web.gfuc.please_enter_address')"
                     maxlength="255"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="地址2" prop="address2">
+                <el-form-item :label="$t('web.gfuc.address2')" prop="address2">
                   <el-input
                     v-model="orderConsignee.address2"
-                    placeholder="请输入详细地址"
+                    :placeholder="$t('web.gfuc.please_enter_address')"
                     maxlength="255"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="地址3" prop="address3">
+                <el-form-item :label="$t('web.gfuc.address3')" prop="address3">
                   <el-input
                     v-model="orderConsignee.address3"
-                    placeholder="请输入详细地址"
+                    :placeholder="$t('web.gfuc.please_enter_address')"
                     maxlength="255"
                   />
                 </el-form-item>
               </el-col>
 
               <el-col :span="8">
-                <el-form-item label="内门牌号" prop="internalNumber">
+                <el-form-item
+                  :label="$t('web.gfuc.internal_number')"
+                  prop="internalNumber"
+                >
                   <el-input
                     v-model="orderConsignee.internalNumber"
-                    placeholder="请输入内门牌号"
+                    :placeholder="$t('web.gfuc.internal_number_placeholder')"
                     maxlength="20"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="外门牌号" prop="externalNumber">
+                <el-form-item
+                  :label="$t('web.gfuc.external_number')"
+                  prop="externalNumber"
+                >
                   <el-input
                     v-model="orderConsignee.externalNumber"
-                    placeholder="请输入外门牌号"
+                    :placeholder="$t('web.gfuc.external_number_placeholder')"
                     maxlength="20"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="邮编" prop="consigneeCode">
+                <el-form-item
+                  :label="$t('web.gfuc.postal_code')"
+                  prop="consigneeCode"
+                >
                   <el-input
                     v-model="orderConsignee.consigneeCode"
-                    placeholder="请输入邮编"
+                    :placeholder="$t('web.gfuc.please_enter_postal_code')"
                     @blur="handleZipCodeInput"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="区" prop="consigneeArea">
+                <el-form-item :label="$t('web.gfuc.area')" prop="consigneeArea">
                   <el-select
                     v-model="orderConsignee.consigneeArea"
-                    placeholder="请输入区"
+                    :placeholder="$t('web.gfuc.area_placeholder')"
                     maxlength="50"
                     filterable
                   >
@@ -162,10 +176,10 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="城市" prop="consigneeCity">
+                <el-form-item :label="$t('web.gfuc.city')" prop="consigneeCity">
                   <el-select
                     v-model="orderConsignee.consigneeCity"
-                    placeholder="请输入城市"
+                    :placeholder="$t('web.gfuc.city_placeholder')"
                     maxlength="50"
                     filterable
                   >
@@ -179,10 +193,13 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="州/省" prop="consigneeState">
+                <el-form-item
+                  :label="$t('web.gfuc.state')"
+                  prop="consigneeState"
+                >
                   <el-select
                     v-model="orderConsignee.consigneeState"
-                    placeholder="请输入州/省"
+                    :placeholder="$t('web.gfuc.please_enter_state')"
                     maxlength="35"
                     filterable
                   >
@@ -197,10 +214,13 @@
               </el-col>
               <el-col :span="8">
                 <!-- 国家默认显示当时配置站点的国家不允许更改。 -->
-                <el-form-item label="国家" prop="consigneeCountry">
+                <el-form-item
+                  :label="$t('web.gfuc.country')"
+                  prop="consigneeCountry"
+                >
                   <el-input
                     v-model="orderConsignee.consigneeCountry"
-                    placeholder="请输入国家"
+                    :placeholder="$t('web.gfuc.please_enter_country')"
                     maxlength="20"
                   />
                 </el-form-item>
@@ -209,7 +229,9 @@
 
             <el-row>
               <el-col :span="24" class="form-actions">
-                <el-button type="primary" @click="onNext">下一步</el-button>
+                <el-button type="primary" @click="onNext">
+                  {{ $t("web.order.next_step") }}
+                </el-button>
               </el-col>
             </el-row>
           </el-form>
@@ -236,7 +258,7 @@
       </div>
 
       <div v-else class="step-placeholder">
-        <p>请填写包裹的收件人信息</p>
+        <p>{{ $t("web.gfuc.consignee_info_placeholder") }}</p>
       </div>
     </div>
   </div>
@@ -246,6 +268,9 @@
 import { ref, watch } from "vue";
 import { Edit } from "@element-plus/icons-vue";
 import { getAddressByCode, getListCityBySid, getStateList } from "@/api/order";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const props = defineProps({
   stepNumber: {
@@ -304,17 +329,43 @@ watch(
   { immediate: true, deep: true }
 );
 
-const rules = reactive({
-  consigneeName: [{ required: true, message: "请输入姓名", trigger: "blur" }],
-  address1: [{ required: true, message: "请输入地址", trigger: "blur" }],
-  consigneeCode: [
-    { required: true, message: "请输入邮政编码", trigger: "blur" }
+const rules = computed(() => ({
+  consigneeName: [
+    {
+      required: true,
+      message: t("web.gfuc.name_placeholder"),
+      trigger: "blur"
+    }
   ],
-  consigneeCity: [{ required: true, message: "请选择城市", trigger: "change" }],
+  address1: [
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_address"),
+      trigger: "blur"
+    }
+  ],
+  consigneeCode: [
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_postal_code"),
+      trigger: "blur"
+    }
+  ],
+  consigneeCity: [
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_city"),
+      trigger: "change"
+    }
+  ],
   consigneeCountry: [
-    { required: true, message: "请选择国家", trigger: "change" }
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_country"),
+      trigger: "change"
+    }
   ]
-});
+}));
 
 watch(
   orderConsignee,
@@ -344,10 +395,9 @@ const handleZipCodeInput = () => {
 };
 
 const onNext = () => {
-  // consigneeFormRef.value.validate().then(() => {
-  //   emit("next");
-  // });
-  emit("next");
+  consigneeFormRef.value.validate().then(() => {
+    emit("next");
+  });
 };
 
 const onClear = () => {
