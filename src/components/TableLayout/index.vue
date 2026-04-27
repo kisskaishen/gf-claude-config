@@ -35,6 +35,7 @@
         height="100%"
         v-bind="mergeTableConfig"
         @cell-dblclick="handleCellDblClick"
+        @selection-change="handleSelectionChange"
       >
         <slot name="columns"></slot>
 
@@ -98,6 +99,11 @@ const handleCellDblClick = (row: any, column: any, cell: any, event: Event) => {
   }
 };
 
+// 处理选择变化事件
+const handleSelectionChange = (val: any) => {
+  emit("selection-change", val);
+};
+
 // 2. 定义 Emits
 const emit = defineEmits<{
   (e: "search"): void;
@@ -105,6 +111,7 @@ const emit = defineEmits<{
   (e: "update:currentPage", value: number): void;
   (e: "update:pageSize", value: number): void;
   (e: "update:searchFormModel", value: any): void;
+  (e: "selection-change", value: any): void;
 }>();
 
 // 3. 初始化可重置的表单引用

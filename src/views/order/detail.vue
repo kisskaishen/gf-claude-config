@@ -329,7 +329,7 @@ const statusSteps = ref([
 // 当前步骤（从0开始，对应数组索引）
 const currentStep = ref(1);
 
-const orderType = ref(route.params.type);
+const orderType = ref(route.params.orderType);
 
 // 模拟数据
 const orderData = ref({

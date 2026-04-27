@@ -10,6 +10,7 @@
         :loading="loading"
         :searchConfig="{ cols: 3, rowNum: 1 }"
         @search="fetchData"
+        @selection-change="handleSelectionChange"
       >
         <template #action-left>
           <el-button type="primary" @click="handleBatchPrint">
@@ -160,7 +161,7 @@
                 </template>
 
                 <!-- 取消: 复制订单 -->
-                <template v-if="row.status === '已取消'">
+                <template v-if="row.orderStatus === 2">
                   <el-button
                     link
                     type="primary"
@@ -192,7 +193,8 @@ import {
   getOrderList,
   getOrderLabelUrl,
   batchPrintOrderLabel,
-  getOrderProductList
+  getOrderProductList,
+  cancelOrder
 } from "@/api/order";
 import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
@@ -433,32 +435,64 @@ const handleEdit = (row: any) => {
 
 const handleCancel = (row: any) => {
   console.log("Cancel", row);
+  // 这里可以调用取消订单的接口，成功后刷新列表
+  ElMessageBox.confirm("您将操作取消订单，是否确定取消？", "温馨提示", {
+    confirmButtonText: "确认",
+    cancelButtonText: "取消"
+  }).then(async () => {
+    await cancelOrder({
+      orderId: row.orderId,
+      orderNo: row.orderNo
+    });
+    ElMessage.success("订单取消成功");
+    await fetchData();
+  });
 };
 
 const handleCopy = (row: any) => {
-  console.log("Copy", row);
+  router.push(`/order/single/${row.orderId}/order`);
+};
+
+const selectedOrders = ref([]);
+
+const handleSelectionChange = (val: any) => {
+  console.log("选择变化:", val);
+
+  selectedOrders.value = val.map((item: any) => ({
+    waybillNo: item.waybillNo,
+    orderId: item.orderId,
+    customerId: item.customerId
+  }));
 };
 
 // 批量打印
 const handleBatchPrint = () => {
   // 获取选中的订单
-  const selectedOrders = tableData.value.filter((item: any) => item.selected);
 
-  if (selectedOrders.length === 0) {
+  if (selectedOrders.value.length === 0) {
     ElMessage.warning("请先选择要打印的订单");
     return;
   }
 
-  console.log("批量打印订单:", selectedOrders);
+  ElMessageBox.confirm(
+    `您将进行打印面单的操作，已勾选${selectedOrders.value.length}单，是否确认打印？`,
+    "温馨提示",
+    {
+      confirmButtonText: "确认",
+      cancelButtonText: "取消"
+    }
+  ).then(() => {
+    console.log("批量打印订单:", selectedOrders.value);
 
-  batchPrintOrderLabel({
-    waybillNos: selectedOrders.map((item: any) => item.waybillNo)
-  }).then((res) => {
-    console.log(res);
-    // download(res.data, 'order-label')
+    batchPrintOrderLabel({
+      waybillNos: selectedOrders.value.map((item: any) => item.waybillNo)
+    }).then((res) => {
+      console.log(res);
+      // download(res.data, 'order-label')
+    });
+
+    ElMessage.success(`已开始批量打印 ${selectedOrders.value.length} 个订单`);
   });
-
-  ElMessage.success(`已开始批量打印 ${selectedOrders.length} 个订单`);
 };
 // 获取产品列表select数据
 const getProductList = async () => {

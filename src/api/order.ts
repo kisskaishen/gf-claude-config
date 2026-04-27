@@ -161,3 +161,17 @@ export function batchPrintOrderLabel(data: { waybillNos: string[] }) {
     data
   });
 }
+
+// 订单取消
+export function cancelOrder(data: {
+  cancelReason?: string;
+  orderId?: string;
+  orderNo?: string;
+  remarks?: string;
+}) {
+  return request({
+    url: "/oms/cancel",
+    method: "post",
+    data
+  });
+}

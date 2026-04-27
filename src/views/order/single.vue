@@ -384,13 +384,16 @@ const formatProductData = (productData: any) => {
 // 格式化包裹数据
 const formatParcelData = (parcelData: any) => {
   if (!parcelData) return {};
-  // 这里的highth是后端接口拼写错误，保持和接口一致
+  // 这里的highth是后端接口拼写错误，保持和接口一致,但是另一个详情接口又是height，所以这里都兼容一下
   return {
     orderGoods: {
       weight: parcelData.orderGoods.weight || undefined,
       length: parcelData.orderGoods.length || undefined,
       width: parcelData.orderGoods.width || undefined,
-      height: parcelData.orderGoods.heigth || undefined
+      height:
+        parcelData.orderGoods.heigth ||
+        parcelData.orderGoods.height ||
+        undefined
     },
     orderItemList: parcelData.orderItemList || [
       {
