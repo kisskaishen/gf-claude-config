@@ -55,7 +55,7 @@
                 <el-form-item :label="$t('web.gfuc.name')" prop="consigneeName">
                   <el-input
                     v-model="orderConsignee.consigneeName"
-                    :placeholder="$t('web.gfuc.name_placeholder')"
+                    :placeholder="$t('web.gfuc.please_enter_name')"
                     maxlength="100"
                   />
                 </el-form-item>
@@ -68,7 +68,7 @@
                 >
                   <el-input
                     v-model="orderConsignee.consigneePhone"
-                    :placeholder="$t('web.gfuc.phone_placeholder')"
+                    :placeholder="$t('web.gfuc.please_enter_phone')"
                     maxlength="30"
                   />
                 </el-form-item>
@@ -89,7 +89,7 @@
                   <el-input
                     v-model="orderConsignee.consigneeEmail"
                     type="email"
-                    :placeholder="$t('web.gfuc.email_placeholder')"
+                    :placeholder="$t('web.gfuc.please_enter_email')"
                     maxlength="70"
                   />
                 </el-form-item>
@@ -162,7 +162,7 @@
                 <el-form-item :label="$t('web.gfuc.area')" prop="consigneeArea">
                   <el-select
                     v-model="orderConsignee.consigneeArea"
-                    :placeholder="$t('web.gfuc.area_placeholder')"
+                    :placeholder="$t('web.gfuc.please_enter_area')"
                     maxlength="50"
                     filterable
                   >
@@ -179,7 +179,7 @@
                 <el-form-item :label="$t('web.gfuc.city')" prop="consigneeCity">
                   <el-select
                     v-model="orderConsignee.consigneeCity"
-                    :placeholder="$t('web.gfuc.city_placeholder')"
+                    :placeholder="$t('web.gfuc.please_enter_city')"
                     maxlength="50"
                     filterable
                   >
@@ -230,7 +230,7 @@
             <el-row>
               <el-col :span="24" class="form-actions">
                 <el-button type="primary" @click="onNext">
-                  {{ $t("web.order.next_step") }}
+                  {{ $t("web.gfuc.next_step") }}
                 </el-button>
               </el-col>
             </el-row>

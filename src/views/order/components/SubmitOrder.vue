@@ -12,7 +12,7 @@
             :type="currentStep < 4 ? 'default' : 'primary'"
             @click="onSubmit"
             :disabled="currentStep < 4"
-            >{{ $t("gfuc.submit_order") }}</el-button
+            >{{ $t("web.gfuc.submit_order") }}</el-button
           >
         </el-col>
       </el-row>

@@ -163,7 +163,7 @@
         @click="handleSubmit"
         :loading="loading"
       >
-        {{ $t("web.gfuc.submit" /** 提交 **/) }}
+        {{ $t("web.gfuc.submit_order" /** 提交 **/) }}
       </el-button>
     </el-form>
   </page-container>
