@@ -257,10 +257,10 @@
         <div class="sidebar-section tracking-section">
           <h3 class="sidebar-title">轨迹信息</h3>
           <div class="tracking-info">
-            <div v-for="item in orderData.trackingInfo" :key="item.date">
+            <div v-for="item in orderData.trackingInfo" :key="item.processTime">
               <div class="tracking-date">
                 <el-divider content-position="center">
-                  {{ item.date }}
+                  {{ item.processTime }}
                 </el-divider>
               </div>
               <div
@@ -310,7 +310,11 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { copyText } from "@/utils/index";
-import { getOrderDetail, getExceptionOrderDetail } from "@/api/order";
+import {
+  getOrderDetail,
+  getExceptionOrderDetail,
+  getOrderTracking
+} from "@/api/order";
 // import { useDict } from "@/hooks/useDict";
 
 import { useRoute } from "vue-router";
@@ -371,7 +375,7 @@ const orderData = ref({
   },
   trackingInfo: [
     {
-      date: "2 Dec.2025",
+      processTime: "2 Dec.2025",
       events: [
         {
           time: "12:00:00",
@@ -418,7 +422,6 @@ onMounted(() => {
 
 const fetchOrderDetail = async () => {
   try {
-    console.log(route);
     let orderId = route.params.orderId;
     let response = {};
     if (orderType.value === "order") {
@@ -429,6 +432,14 @@ const fetchOrderDetail = async () => {
       // 异常订单详情
       response = await getExceptionOrderDetail({ unusualOrderId: orderId });
       orderData.value = JSON.parse(response?.requestBody || "{}");
+    }
+
+    // 获取订单轨迹信息
+    if (orderData.value?.waybillNo) {
+      let data = await getOrderTracking({
+        orderNumber: orderData.value?.waybillNo
+      });
+      orderData.value.trackingInfo = data[0].trackDetailItemList || [];
     }
   } catch (error) {
     console.error("Failed to fetch order detail:", error);

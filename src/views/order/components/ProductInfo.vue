@@ -289,7 +289,7 @@ const getProductList = async (customerId) => {
     name: item.productName,
     code: item.productCode,
     desc:
-      item["description" + toPascalCase(appStore.site.toLocaleLowerCase())] ||
+      item["description" + toPascalCase(appStore.lang.toLocaleLowerCase())] ||
       "暂无描述"
   }));
 

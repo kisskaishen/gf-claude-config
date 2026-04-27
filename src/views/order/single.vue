@@ -436,6 +436,8 @@ const handleContinueBuy = () => {
   resetForm();
 
   successVisible.value = false;
+
+  router.replace("/order/single");
 };
 </script>
 

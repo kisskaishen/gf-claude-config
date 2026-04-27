@@ -77,6 +77,15 @@ export function getExceptionOrderDetail(params: { unusualOrderId: string }) {
   });
 }
 
+// 轨迹查询
+export function getOrderTracking(data: { orderNumber: string }) {
+  return request({
+    url: "/dlts/track/query",
+    method: "post",
+    data
+  });
+}
+
 // 3. 创建订单
 export function createOrder(data: any) {
   return request({
@@ -94,6 +103,15 @@ export function createOrder(data: any) {
 //     data
 //   });
 // }
+
+// 获取发件人姓名
+export function getSenderName(params: { customerId: string | number }) {
+  return request({
+    url: "userShipper/selectUserShipperInfoByCustomerId",
+    method: "get",
+    params
+  });
+}
 
 //  根据邮政编码获取地址
 export function getAddressByCode(data: { postcode: string }) {
@@ -154,7 +172,7 @@ export function getOrderLabelUrl(params: {
   });
 }
 // 批量打印
-export function batchPrintOrderLabel(data: { waybillNos: string[] }) {
+export function batchPrintOrderLabel(data: any) {
   return request({
     url: "/oms/label/batchPrintLabel",
     method: "post",

@@ -60,7 +60,7 @@
         </el-button>
         <el-button
           type="primary"
-          class="flex items-center gap-2 px-12 py-3 text-lg bg-orange-500 border-orange-500 hover:bg-orange-600"
+          class="flex items-center gap-2 px-12 py-3 text-lg text-white bg-primary border-primary hover:bg-primary-600"
           @click="handleRecharge"
         >
           <svg
@@ -95,6 +95,7 @@ const visible = ref(false);
 
 const handleClose = () => {
   visible.value = false;
+  sessionStorage.setItem("balanceAlertNotShown", "true");
 };
 
 const handleRecharge = () => {
@@ -110,12 +111,13 @@ const balanceInfo = ref({
 
 const getBalanceInfo = async () => {
   const res = await getBalanceAlertInfo();
-  console.log(res, "=====+++");
-  if (res.code === 200) {
-    visible.value = res.needPopup;
+  if (res.needPopup) {
+    visible.value =
+      res.needPopup &&
+      sessionStorage.getItem("balanceAlertNotShown") !== "true";
     balanceInfo.value = {
       availableOrderAmount: res.availableOrderAmount,
-      alertBalance: res.alertBalance
+      alertBalance: res.alertAmount
     };
   }
 };

@@ -101,6 +101,7 @@
               :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
               clearable
               filterable
+              multiple
             >
               <el-option
                 v-for="item in productList"
@@ -181,7 +182,7 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, watch, computed } from "vue";
 import { spliceArray, commaToArr } from "@/utils/index";
-
+import { downloadFile } from "@/utils/download";
 import {
   View,
   Edit,
@@ -199,7 +200,6 @@ import {
 import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
 
-// import download from "download-file-by-url";
 import { useUserStore } from "@/store/user";
 import { cloneDeep } from "lodash-es";
 import dayjs from "dayjs";
@@ -224,11 +224,6 @@ const currentStatus = computed(() => props.status);
 
 const orderStatusDict = useDict("order_status");
 
-const orderStatusOptions = computed(() => {
-  return orderStatusDict.options.value.filter(
-    (item: any) => !["查没", "派送失败", "异常完结"].includes(item.label)
-  );
-});
 // 异常订单状态
 const exceptionOrderStatusOptions = computed(() => {
   return orderStatusDict.options.value.filter((item: any) =>
@@ -245,9 +240,21 @@ const columns = [
   { prop: "waybillNo", label: "gfuc.waybill_number", minWidth: 200 },
   { prop: "productTypeName", label: "gfuc.product_name", minWidth: 120 },
   { prop: "orderStatusName", label: "gfuc.order_status", width: 100 },
-  { prop: "consigneeName", label: "gfuc.recipient", minWidth: 120 },
-  { prop: "consigneePhone", label: "gfuc.recipient_phone", minWidth: 130 },
-  { prop: "consigneeAddress", label: "gfuc.recipient_address", minWidth: 200 },
+  {
+    prop: "orderConsigneeVO.consigneeName",
+    label: "gfuc.recipient",
+    minWidth: 120
+  },
+  {
+    prop: "orderConsigneeVO.consigneePhone",
+    label: "gfuc.recipient_phone",
+    minWidth: 130
+  },
+  {
+    prop: "orderConsigneeVO.address1",
+    label: "gfuc.recipient_address",
+    minWidth: 200
+  },
   { prop: "orderCreateTime", label: "gfuc.submission_time", width: 200 }
 ];
 
@@ -424,8 +431,7 @@ const handlePrint = (row: any) => {
     waybillNo: row.waybillNo,
     customerId: row.customerId
   }).then((res) => {
-    console.log(res, "+++++");
-    // download(res.data, "order-label");
+    downloadFile(res.url, "面单打印");
   });
 };
 
@@ -483,12 +489,15 @@ const handleBatchPrint = () => {
     }
   ).then(() => {
     console.log("批量打印订单:", selectedOrders.value);
+    let formData = new FormData();
+    formData.append(
+      "waybillNos",
+      JSON.stringify(selectedOrders.value.map((item: any) => item.waybillNo))
+    );
 
-    batchPrintOrderLabel({
-      waybillNos: selectedOrders.value.map((item: any) => item.waybillNo)
-    }).then((res) => {
+    batchPrintOrderLabel(formData).then((res) => {
       console.log(res);
-      // download(res.data, 'order-label')
+      // download(res.data, '面单打印')
     });
 
     ElMessage.success(`已开始批量打印 ${selectedOrders.value.length} 个订单`);
@@ -529,6 +538,7 @@ watch(
 
 .order-content {
   flex: 1;
+  height: calc(100vh - 200px);
   overflow: hidden;
 }
 </style>

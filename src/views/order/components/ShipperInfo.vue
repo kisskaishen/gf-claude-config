@@ -81,11 +81,31 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="姓名" prop="shipperName">
-                  <el-input
+                  <el-select
                     v-model="orderShipper.shipperName"
                     placeholder="请输入姓名"
                     maxlength="100"
-                  />
+                    filterable
+                    allow-create
+                    clearable
+                    @change="shipperNameChange"
+                  >
+                    <el-option
+                      v-for="item in shipperNameList"
+                      :key="item.id"
+                      :label="item.shipperName"
+                      :value="item.shipperName"
+                    >
+                      <template v-slot:default>
+<div class="flex flex-col" >
+                        <span>{{ item.shipperName }}</span>
+                        <span class="text-xs text-info">
+                          {{ item.shipperStreet }}
+                        </span>
+                      </div>
+</template>
+                    </el-option>
+                  </el-select>
                 </el-form-item>
               </el-col>
 
@@ -215,7 +235,7 @@
 <script setup>
 import { ref, watch, computed, reactive, onMounted } from "vue";
 
-import { getAddressByCode } from "@/api/order";
+import { getAddressByCode, getSenderName } from "@/api/order";
 import { useUserStore } from "@/store/user";
 const props = defineProps({
   stepNumber: {
@@ -279,7 +299,9 @@ watch(
 );
 
 const rules = reactive({
-  shipperName: [{ required: true, message: "请输入姓名", trigger: "blur" }],
+  shipperName: [
+    { required: true, message: "请输入姓名", trigger: ["blur", "change"] }
+  ],
   shipperCode: [{ required: true, message: "请输入邮政编码", trigger: "blur" }],
   shipperCity: [{ required: true, message: "请选择城市", trigger: "change" }],
   shipperState: [{ required: true, message: "请选择州", trigger: "change" }],
@@ -303,6 +325,45 @@ const onNext = () => {
     }
   });
   // emit("next");
+};
+
+// 获取发件人姓名列表
+const shipperNameList = ref([]);
+const getSenderNameList = async () => {
+  if (orderShipper.value.customerId) {
+    const res = await getSenderName({
+      customerId:
+        shipperOptions.value.length > 0
+          ? orderShipper.value.customerId
+          : shipperOptions.value[0]?.customerId || ""
+    });
+    shipperNameList.value = res;
+  }
+};
+
+watch(
+  () => orderShipper.value.customerId,
+  (newCustomerId) => {
+    if (newCustomerId) {
+      getSenderNameList();
+    }
+  }
+);
+
+const shipperNameChange = (val) => {
+  const selected = shipperNameList.value.find(
+    (item) => item.shipperName === val
+  );
+  if (selected) {
+    orderShipper.value.shipperPhone = selected.shipperPhone || "";
+    orderShipper.value.shipperEmail = selected.shipperEmail || "";
+    orderShipper.value.shipperArea = selected.shipperArea || "";
+    orderShipper.value.shipperCity = selected.shipperCity || "";
+    orderShipper.value.shipperState = selected.shipperState || "";
+    orderShipper.value.shipperCountry = selected.shipperCountry || "";
+    orderShipper.value.shipperCode = selected.shipperCode || "";
+    orderShipper.value.shipperStreet = selected.shipperStreet || "";
+  }
 };
 
 const getAddressByCodeBlur = async () => {
