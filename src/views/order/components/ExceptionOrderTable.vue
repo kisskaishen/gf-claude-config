@@ -10,6 +10,7 @@
         :loading="loading"
         :searchConfig="{ cols: 3, rowNum: 2 }"
         @search="fetchData"
+        @reset="handleReset"
       >
         <template #order-number>
           <el-form-item
@@ -141,7 +142,7 @@ defineOptions({
 const defaultFormData = {
   consigneeCode: "",
   consigneeCodeList: [],
-  orderNo: "",
+  orderNumber: "",
   cusOrderNumList: [],
 
   customerName: "",
@@ -264,17 +265,25 @@ const tableData = ref([]);
 const unusualTypeOptions = useDict("UnusualOrderType");
 
 const getParams = () => {
-  const { orderNo, consigneeCode, orderTimeRange, ...args } = searchForm;
+  const { orderNumber, consigneeCode, orderTimeRange, ...args } = searchForm;
   const params: any = {
     ...args
   };
   // 处理单号
-  if (orderNo) {
-    params.orderNo = spliceArray(commaToArr(orderNo), 500).join("\n");
-    params.orderNumberList = [orderNo];
+  if (orderNumber) {
+    params.orderNumber = spliceArray(commaToArr(orderNumber), 500).join("\n");
+    params.orderNumberList = [orderNumber];
   } else {
-    params.orderNo = "";
+    params.orderNumber = "";
     params.orderNumberList = [];
+  }
+  // 客户名称
+  if (searchForm.customerName) {
+    params.customerNameSet = [searchForm.customerName];
+  } else {
+    params.customerName = "";
+
+    params.customerNameSet = [];
   }
   // 时间参数
   if (orderTimeRange?.length === 2) {
@@ -320,6 +329,12 @@ const fetchData = () => {
   }, 500);
 };
 fetchData();
+
+const handleReset = () => {
+  searchForm.orderNumber = "";
+  searchForm.orderNumberList = [];
+  setDefaultRange();
+};
 
 const handleView = (row: any) => {
   console.log("View", row);

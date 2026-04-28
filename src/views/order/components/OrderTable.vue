@@ -10,6 +10,7 @@
         :loading="loading"
         :searchConfig="{ cols: 3, rowNum: 2 }"
         @search="fetchData"
+        @reset="handleReset"
         @selection-change="handleSelectionChange"
       >
         <template #action-left>
@@ -158,6 +159,7 @@
                     :icon="Edit"
                     @click="handleEdit(row)"
                     :title="$t('web.gfuc.edit_order' /** 编辑订单 **/)"
+                    v-if="row.orderUpdateFlag"
                   />
                   <el-button
                     link
@@ -231,11 +233,6 @@ const props = defineProps({
 const currentStatus = computed(() => props.status);
 
 const orderStatusDict = useDict("order_status");
-
-// // 是否有权限编辑
-// const orderUpdateFlag = computed(() => {
-//   return userStore.loginInfo
-// })
 
 // 异常订单状态
 const exceptionOrderStatusOptions = computed(() => {
@@ -409,6 +406,11 @@ const getParams = () => {
   return params;
 };
 
+const handleResetForm = () => {
+  searchForm.orderNumber = "";
+  // Object.assign(searchForm, initialFormState);
+  // setDefaultRange();
+};
 const getOrderProductListData = async () => {
   const params = getParams();
 
@@ -419,7 +421,15 @@ const getOrderProductListData = async () => {
     pageNum: pagination.currentPage,
     pageSize: pagination.pageSize
   });
-  tableData.value = res.records || [];
+  tableData.value = res.records.map((item: any) => ({
+    ...item,
+    orderUpdateFlag:
+      userStore.loginInfo.shipperCustomerList.find(
+        (v: any) => v.customerId === item.customerId
+      )?.orderUpdateFlag === 1
+        ? true
+        : false
+  }));
   pagination.total = res.total || 0;
 };
 
