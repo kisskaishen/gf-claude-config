@@ -8,8 +8,9 @@
         :data="tableData"
         :total="pagination.total"
         :loading="loading"
-        :searchConfig="{ cols: 3, rowNum: 1 }"
+        :searchConfig="{ cols: 3, rowNum: 2 }"
         @search="fetchData"
+        @reset="handleReset"
         @selection-change="handleSelectionChange"
       >
         <template #action-left>
@@ -132,6 +133,7 @@
                   type="primary"
                   :icon="View"
                   @click="handleView(row)"
+                  :title="$t('web.gfuc.view_order' /** 查看订单 **/)"
                 />
 
                 <!-- 已下单: 打印、编辑、取消 -->
@@ -141,18 +143,21 @@
                     type="primary"
                     :icon="Printer"
                     @click="handlePrint(row)"
+                    :title="$t('web.gfuc.print_order' /** 打印订单 **/)"
                   />
                   <el-button
                     link
                     type="primary"
                     :icon="Edit"
                     @click="handleEdit(row)"
+                    :title="$t('web.gfuc.edit_order' /** 编辑订单 **/)"
                   />
                   <el-button
                     link
                     type="danger"
                     :icon="Delete"
                     @click="handleCancel(row)"
+                    :title="$t('web.gfuc.cancel_order' /** 取消订单 **/)"
                   />
                 </template>
 
@@ -163,6 +168,7 @@
                     type="primary"
                     :icon="CopyDocument"
                     @click="handleCopy(row)"
+                    :title="$t('web.gfuc.copy_order' /** 复制订单 **/)"
                   />
                 </template>
               </div>
@@ -219,6 +225,11 @@ const currentStatus = computed(() => props.status);
 
 const orderStatusDict = useDict("order_status");
 
+// // 是否有权限编辑
+// const orderUpdateFlag = computed(() => {
+//   return userStore.loginInfo
+// })
+
 // 异常订单状态
 const exceptionOrderStatusOptions = computed(() => {
   return orderStatusDict.options.value.filter(
@@ -255,9 +266,9 @@ const columns = [
 
 const loading = ref(false);
 
-const defaultFormState = {
+// 初始表单状态
+const initialFormState = {
   orderNumber: "",
-  // customerIdSet: [],
   orderStatus: "",
   orderStatusSet: [],
   orderSource: undefined,
@@ -266,25 +277,18 @@ const defaultFormState = {
   productCodeList: [],
   transferRequired: undefined,
   deliveryStationIdList: [],
-  // customerCode: "",
   orderTimeRange: ["", ""]
 };
 
-const searchForm = reactive({
-  orderNumber: "",
-  // customerIdSet: [],
-  orderStatus: "",
-  orderStatusSet: [],
-  orderSource: undefined,
-  consigneeCodeList: "",
-  shipperCodeList: "",
-  productCodeList: [],
-  transferRequired: undefined,
-  deliveryStationIdList: [],
-  // customerCode: "",
-  orderTimeRange: ["", ""]
-});
-console.log(searchForm, "searchForm");
+const searchForm = reactive({ ...initialFormState });
+
+// 重置表单函数
+const handleResetForm = () => {
+  Object.assign(searchForm, JSON.parse(JSON.stringify(initialFormState)));
+  console.log(searchForm, "重置表单");
+  // 重新设置默认日期范围
+  setDefaultRange();
+};
 
 const pagination = reactive({
   currentPage: 1,
@@ -396,7 +400,6 @@ const getParams = () => {
   // 赋值
   params.orderStatusSet = handleOrderStatusSet();
 
-  console.log(params, "查询参数");
   params.customerIdList = userStore.loginInfo?.shipperCustomerList?.map(
     (item: any) => item.customerId
   );
@@ -479,6 +482,12 @@ const handleSelectionChange = (val: any) => {
   }));
 };
 
+// 处理重置事件
+const handleReset = () => {
+  handleResetForm();
+  fetchData();
+};
+
 // 批量打印
 const handleBatchPrint = () => {
   // 获取选中的订单
@@ -495,20 +504,19 @@ const handleBatchPrint = () => {
       confirmButtonText: "确认",
       cancelButtonText: "取消"
     }
-  ).then(() => {
-    console.log("批量打印订单:", selectedOrders.value);
-    let formData = new FormData();
-    formData.append(
-      "waybillNos",
-      JSON.stringify(selectedOrders.value.map((item: any) => item.waybillNo))
+  ).then(async () => {
+    console.log(
+      "批量打印订单:",
+      selectedOrders.value.map((item: any) => item.waybillNo)
     );
 
-    batchPrintOrderLabel(formData).then((res) => {
-      console.log(res);
-      // download(res.data, '面单打印')
-    });
+    const res = await batchPrintOrderLabel(
+      selectedOrders.value.map((item: any) => item.waybillNo)
+    );
 
     ElMessage.success(`已开始批量打印 ${selectedOrders.value.length} 个订单`);
+
+    downloadFile(res.url, "面单打印");
   });
 };
 // 获取产品列表select数据

@@ -228,6 +228,66 @@ const rules = ref({
   ],
   productCode: [
     { required: true, message: "请选择增值服务", trigger: "change" }
+  ],
+  queryCollectStartTime: [
+    {
+      validator: (rule, value, callback) => {
+        if (!value && !formData.value.queryCollectEndTime) {
+          callback();
+          return;
+        }
+        if (!value && formData.value.queryCollectEndTime) {
+          callback(new Error(t("web.gfuc.please_enter_collection_start_time")));
+          return;
+        }
+        if (value && formData.value.queryCollectEndTime) {
+          const startTime = new Date(value);
+          const endTime = new Date(formData.value.queryCollectEndTime);
+          if (startTime >= endTime) {
+            callback(
+              new Error(
+                t(
+                  "web.gfuc.collection_start_time_must_be_earlier_than_end_time"
+                )
+              )
+            );
+            return;
+          }
+        }
+        callback();
+      },
+      trigger: "blur"
+    }
+  ],
+  queryCollectEndTime: [
+    {
+      validator: (rule, value, callback) => {
+        if (!value && !formData.value.queryCollectStartTime) {
+          callback();
+          return;
+        }
+        if (!value && formData.value.queryCollectStartTime) {
+          callback(new Error(t("web.gfuc.please_enter_collection_end_time")));
+          return;
+        }
+        if (value && formData.value.queryCollectStartTime) {
+          const startTime = new Date(formData.value.queryCollectStartTime);
+          const endTime = new Date(value);
+          if (startTime >= endTime) {
+            callback(
+              new Error(
+                t(
+                  "web.gfuc.collection_start_time_must_be_earlier_than_end_time"
+                )
+              )
+            );
+            return;
+          }
+        }
+        callback();
+      },
+      trigger: "blur"
+    }
   ]
 });
 

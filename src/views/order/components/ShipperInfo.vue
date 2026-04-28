@@ -98,14 +98,17 @@
                       :label="item.shipperName"
                       :value="item.shipperName"
                     >
-                      <template v-slot:default>
-                        <div class="flex flex-col">
-                          <span>{{ item.shipperName }}</span>
-                          <span class="text-xs text-info">
-                            {{ item.shipperStreet }}
-                          </span>
-                        </div>
-                      </template>
+                      <div class="shipperNameOption">
+                        <span
+                          class="max-w-[200px] overflow-hidden whitespace-nowrap text-ellipsis"
+                          >{{ item.shipperName }}</span
+                        >
+                        <span
+                          class="text-xs text-info w-[200px] overflow-hidden whitespace-nowrap text-ellipsis text-right"
+                        >
+                          {{ item.shipperStreet }}
+                        </span>
+                      </div>
                     </el-option>
                   </el-select>
                 </el-form-item>
@@ -323,10 +326,24 @@ const rules = computed(() => ({
       trigger: ["blur", "change"]
     }
   ],
+  shipperPhone: [
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_phone"),
+      trigger: "blur"
+    }
+  ],
   shipperCode: [
     {
       required: true,
       message: t("web.gfuc.please_enter_postal_code"),
+      trigger: "blur"
+    }
+  ],
+  shipperStreet: [
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_address"),
       trigger: "blur"
     }
   ],
@@ -458,4 +475,8 @@ defineExpose({
 
 <style scoped lang="scss">
 @use "@/views/order/style/base";
+.shipperNameOption {
+  display: flex;
+  justify-content: space-between;
+}
 </style>

@@ -222,6 +222,7 @@
                     v-model="orderConsignee.consigneeCountry"
                     :placeholder="$t('web.gfuc.please_enter_country')"
                     maxlength="20"
+                    disabled
                   />
                 </el-form-item>
               </el-col>
@@ -268,9 +269,11 @@
 import { ref, watch } from "vue";
 import { Edit } from "@element-plus/icons-vue";
 import { getAddressByCode, getListCityBySid, getStateList } from "@/api/order";
+import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
+const userStore = useUserStore();
 
 const props = defineProps({
   stepNumber: {
@@ -313,7 +316,7 @@ const orderConsignee = ref({
   consigneeArea: "",
   consigneeCity: "",
   consigneeState: "",
-  consigneeCountry: "",
+  consigneeCountry: userStore.userInfo?.country || "",
   ...props.initialData
 });
 
@@ -333,7 +336,14 @@ const rules = computed(() => ({
   consigneeName: [
     {
       required: true,
-      message: t("web.gfuc.name_placeholder"),
+      message: t("web.gfuc.please_enter_name"),
+      trigger: "blur"
+    }
+  ],
+  consigneePhone: [
+    {
+      required: true,
+      message: t("web.gfuc.please_enter_phone"),
       trigger: "blur"
     }
   ],
@@ -417,7 +427,7 @@ const onClear = () => {
     consigneeArea: "",
     consigneeCity: "",
     consigneeState: "",
-    consigneeCountry: ""
+    consigneeCountry: userStore.userInfo?.country || ""
   };
 };
 

@@ -146,6 +146,8 @@ export default {
     "Please enter collection start time",
   "web.gfuc.please_enter_collection_end_time":
     "Please enter collection end time",
+  "web.gfuc.collection_start_time_must_be_earlier_than_end_time":
+    "Collection start time must be earlier than collection end time",
   "web.gfuc.please_select_product_type": "Please select product type",
   "web.gfuc.please_select_product_info":
     "Please select logistics product information",
@@ -183,5 +185,10 @@ export default {
   "web.gfuc.channel_code": "Channel Code",
   "web.gfuc.enter_channel_code": "Please enter channel code",
   "web.gfuc.submit_order": "Submit Order",
-  "web.gfuc.please_enter": "Please enter"
+  "web.gfuc.please_enter": "Please enter",
+  "web.gfuc.print_order": "Print Order",
+  "web.gfuc.edit_order": "Edit Order",
+  "web.gfuc.cancel_order": "Cancel Order",
+  "web.gfuc.copy_order": "Copy Order",
+  "web.gfuc.re_order": "Re-order"
 };

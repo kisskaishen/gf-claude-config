@@ -137,6 +137,8 @@ export default {
   "web.gfuc.collection_end_time": "Ophaal eindtijd",
   "web.gfuc.please_enter_collection_start_time": "Voer de ophaal starttijd in",
   "web.gfuc.please_enter_collection_end_time": "Voer de ophaal eindtijd in",
+  "web.gfuc.collection_start_time_must_be_earlier_than_end_time":
+    "Ophaal starttijd moet eerder zijn dan ophaal eindtijd",
   "web.gfuc.please_select_product_type": "Selecteer het producttype",
   "web.gfuc.please_select_product_info":
     "Selecteer de logistieke productinformatie",
@@ -174,5 +176,10 @@ export default {
   "web.gfuc.channel_code": "Kanaalcode",
   "web.gfuc.enter_channel_code": "Voer de kanaalcode in",
   "web.gfuc.submit_order": "Bestel order",
-  "web.gfuc.please_enter": "Voer"
+  "web.gfuc.please_enter": "Voer",
+  "web.gfuc.print_order": "Print order",
+  "web.gfuc.edit_order": "Bewerk order",
+  "web.gfuc.cancel_order": "Annuleer order",
+  "web.gfuc.copy_order": "Kopie order",
+  "web.gfuc.re_order": "Ricreeer order"
 };

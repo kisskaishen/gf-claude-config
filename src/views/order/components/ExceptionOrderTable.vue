@@ -98,10 +98,14 @@
                   type="primary"
                   :icon="View"
                   @click="handleView(row)"
+                  :title="$t('web.gfuc.view_order' /** 查看订单 **/)"
                 />
-                <el-button link type="primary" @click="handleReOrder(row)"
-                  >重新下单</el-button
-                >
+                <el-button
+                  link
+                  type="primary"
+                  @click="handleReOrder(row)"
+                  :title="$t('web.gfuc.re_order' /** 重新下单 **/)"
+                />
               </div>
             </template>
           </el-table-column>

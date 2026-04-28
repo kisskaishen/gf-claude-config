@@ -143,6 +143,8 @@ export default {
   "web.gfuc.please_enter_collection_start_time":
     "Inserisci l'ora di inizio ritiro",
   "web.gfuc.please_enter_collection_end_time": "Inserisci l'ora di fine ritiro",
+  "web.gfuc.collection_start_time_must_be_earlier_than_end_time":
+    "L'ora di inizio ritiro deve essere anteriore a quella di fine ritiro",
   "web.gfuc.please_select_product_type": "Seleziona il tipo di prodotto",
   "web.gfuc.please_select_product_info":
     "Seleziona le informazioni del prodotto logistico",
@@ -182,5 +184,10 @@ export default {
   "web.gfuc.channel_code": "Codice canale",
   "web.gfuc.enter_channel_code": "Inserisci il codice canale",
   "web.gfuc.submit_order": "Invia ordine",
-  "web.gfuc.please_enter": "Inserisci"
+  "web.gfuc.please_enter": "Inserisci",
+  "web.gfuc.print_order": "Stampa ordine",
+  "web.gfuc.edit_order": "Modifica ordine",
+  "web.gfuc.cancel_order": "Annulla ordine",
+  "web.gfuc.copy_order": "Cia ordine",
+  "web.gfuc.re_order": "Ricrea ordine"
 };

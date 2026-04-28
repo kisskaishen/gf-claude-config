@@ -138,6 +138,8 @@ export default {
   "web.gfuc.collection_end_time": "揽收结束时间",
   "web.gfuc.please_enter_collection_start_time": "请输入揽收开始时间",
   "web.gfuc.please_enter_collection_end_time": "请输入揽收结束时间",
+  "web.gfuc.collection_start_time_must_be_earlier_than_end_time":
+    "揽收开始时间必须早于揽收结束时间",
   "web.gfuc.please_select_product_type": "请选择产品类型",
   "web.gfuc.please_select_product_info": "请选择物流产品信息",
 
@@ -173,5 +175,11 @@ export default {
   "web.gfuc.enter_channel_code": "请输入渠道编码",
   "web.gfuc.submit_order": "提交订单",
 
-  "web.gfuc.please_enter": "请输入"
+  "web.gfuc.please_enter": "请输入",
+
+  "web.gfuc.print_order": "打印订单",
+  "web.gfuc.edit_order": "编辑订单",
+  "web.gfuc.cancel_order": "取消订单",
+  "web.gfuc.copy_order": "复制订单",
+  "web.gfuc.re_order": "重新下单"
 };

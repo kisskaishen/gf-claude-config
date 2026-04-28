@@ -149,6 +149,8 @@ export default {
     "Veuillez entrer l'heure de début d'enlèvement",
   "web.gfuc.please_enter_collection_end_time":
     "Veuillez entrer l'heure de fin d'enlèvement",
+  "web.gfuc.collection_start_time_must_be_earlier_than_end_time":
+    "L'heure de début d'enlèvement doit être antérieure à l'heure de fin d'enlèvement",
   "web.gfuc.please_select_product_type":
     "Veuillez sélectionner le type de produit",
   "web.gfuc.please_select_product_info":
@@ -191,5 +193,10 @@ export default {
   "web.gfuc.channel_code": "Code canal",
   "web.gfuc.enter_channel_code": "Veuillez entrer le code canal",
   "web.gfuc.submit_order": "Soumettre la commande",
-  "web.gfuc.please_enter": "Veuillez entrer"
+  "web.gfuc.please_enter": "Veuillez entrer",
+  "web.gfuc.print_order": "Imprimer la commande",
+  "web.gfuc.edit_order": "Modifier la commande",
+  "web.gfuc.cancel_order": "Annuler la commande",
+  "web.gfuc.copy_order": "Copier la commande",
+  "web.gfuc.re_order": "Re-order"
 };

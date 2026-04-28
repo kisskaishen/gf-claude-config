@@ -43,10 +43,16 @@
           </div>
           <span class="value">{{ orderData?.waybillNo || "-" }}</span>
         </div>
-        <el-divider direction="vertical" v-if="orderType === 'order'" />
+        <el-divider
+          direction="vertical"
+          v-if="orderType === 'order' && orderData?.orderStatus != 2"
+        />
       </div>
       <!-- 进度条容器 -->
-      <div class="status-steps" v-if="orderType === 'order'">
+      <div
+        class="status-steps"
+        v-if="orderType === 'order' && orderData?.orderStatus != 2"
+      >
         <!-- 步骤背景（带箭头） -->
         <div
           v-for="(step, index) in statusSteps"
