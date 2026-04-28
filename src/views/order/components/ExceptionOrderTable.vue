@@ -27,35 +27,27 @@
             <el-input
               v-model="searchForm.orderNo"
               :placeholder="
-                $t(
-                  'gfuc.please_enter_order_or_tracking_number' /** 请输入订单号或运单号 **/
-                )
+                $t('web.gfuc.please_enter' /** 请输入订单号或运单号 **/)
               "
             />
           </el-form-item>
           <el-form-item label="邮编" prop="consigneeCode">
             <el-input
               v-model="searchForm.consigneeCode"
-              :placeholder="
-                $t('gfuc.please_enter_postal_code' /** 请输入邮编 **/)
-              "
+              :placeholder="$t('web.gfuc.please_enter' /** 请输入邮编 **/)"
             />
           </el-form-item>
           <el-form-item label="客户名称" prop="customerName">
             <el-input
               v-model="searchForm.customerName"
-              :placeholder="
-                $t('gfuc.please_enter_customer_name' /** 请输入客户名称 **/)
-              "
+              :placeholder="$t('web.gfuc.please_enter' /** 请输入客户名称 **/)"
             />
           </el-form-item>
 
           <el-form-item label="异常类型" prop="unusualType">
             <el-select
               v-model="searchForm.unusualType"
-              :placeholder="
-                $t('gfuc.please_enter_unusual_type' /** 请输入异常类型 **/)
-              "
+              :placeholder="$t('web.gfuc.please_enter' /** 请输入异常类型 **/)"
             >
               <el-option
                 v-for="item in unusualTypeOptions.options.value"
@@ -275,8 +267,10 @@ const getParams = () => {
   // 处理单号
   if (orderNo) {
     params.orderNo = spliceArray(commaToArr(orderNo), 500).join("\n");
+    params.orderNumberList = [orderNo];
   } else {
     params.orderNo = "";
+    params.orderNumberList = [];
   }
   // 时间参数
   if (orderTimeRange?.length === 2) {

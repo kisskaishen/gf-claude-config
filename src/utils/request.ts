@@ -123,6 +123,10 @@ service.interceptors.response.use(
 
       // 特殊错误码处理，例如：Token 失效
       if (res.code === 401) {
+        ElMessage({
+          message: "Token 失效，请重新登录",
+          type: "error"
+        });
         const userStore = useUserStoreWithOut();
         userStore.logout();
         location.reload();

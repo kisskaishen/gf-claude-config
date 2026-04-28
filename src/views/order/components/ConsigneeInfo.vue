@@ -383,6 +383,9 @@ const handleZipCodeInput = () => {
   getAddressByCode({ postcode: orderConsignee.value.consigneeCode }).then(
     (res) => {
       console.log(res, "====");
+      if (!res?.city?.stateId) {
+        return;
+      }
       getCityListData(res?.city?.stateId);
 
       setTimeout(() => {

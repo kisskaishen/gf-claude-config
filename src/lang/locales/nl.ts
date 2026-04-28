@@ -163,5 +163,6 @@ export default {
     "Vul pakketinformatie, gewicht, materiaal, categoriegegevens enz. in",
   "web.gfuc.channel_code": "Kanaalcode",
   "web.gfuc.enter_channel_code": "Voer de kanaalcode in",
-  "web.gfuc.submit_order": "Bestel order"
+  "web.gfuc.submit_order": "Bestel order",
+  "web.gfuc.please_enter": "Voer"
 };

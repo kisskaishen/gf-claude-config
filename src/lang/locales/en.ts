@@ -171,5 +171,6 @@ export default {
     "Please fill in parcel information, weight, material, category info, etc.",
   "web.gfuc.channel_code": "Channel Code",
   "web.gfuc.enter_channel_code": "Please enter channel code",
-  "web.gfuc.submit_order": "Submit Order"
+  "web.gfuc.submit_order": "Submit Order",
+  "web.gfuc.please_enter": "Please enter"
 };

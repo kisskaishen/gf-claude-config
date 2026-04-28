@@ -167,5 +167,7 @@ export default {
   "web.gfuc.fill_parcel_info": "请填写包裹信息、重量、材质、品类信息等",
   "web.gfuc.channel_code": "渠道编码",
   "web.gfuc.enter_channel_code": "请输入渠道编码",
-  "web.gfuc.submit_order": "提交订单"
+  "web.gfuc.submit_order": "提交订单",
+
+  "web.gfuc.please_enter": "请输入"
 };

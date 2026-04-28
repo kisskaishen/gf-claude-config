@@ -292,6 +292,8 @@ const getProductList = async (customerId) => {
     countryCode: userStore.userInfo?.country || ""
   });
 
+  console.log(res, res2, "+++++");
+
   // res的数据和res2数据对比，然后根据productCode合并数据
   const mergedRes = res.map((item) => ({
     ...item,

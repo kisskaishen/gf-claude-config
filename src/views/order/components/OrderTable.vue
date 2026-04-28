@@ -28,9 +28,7 @@
               v-model="searchForm.orderNumber"
               clearable
               :placeholder="
-                $t(
-                  'gfuc.please_enter_order_or_tracking_number' /** 请输入订单号或运单号 **/
-                )
+                $t('web.gfuc.please_enter' /** 请输入订单号或运单号 **/)
               "
             />
           </el-form-item>
@@ -85,11 +83,7 @@
             <el-input
               v-model="searchForm.shipperPhone"
               clearable
-              :placeholder="
-                $t(
-                  'gfuc.please_enter_order_or_tracking_number' /** 请输入订单号或运单号 **/
-                )
-              "
+              :placeholder="$t('web.gfuc.please_enter' /** 请输入 **/)"
             />
           </el-form-item>
           <el-form-item
@@ -102,6 +96,7 @@
               clearable
               filterable
               multiple
+              collapse-tags
             >
               <el-option
                 v-for="item in productList"
@@ -275,7 +270,20 @@ const defaultFormState = {
   orderTimeRange: ["", ""]
 };
 
-const searchForm = reactive(cloneDeep(defaultFormState));
+const searchForm = reactive({
+  orderNumber: "",
+  // customerIdSet: [],
+  orderStatus: "",
+  orderStatusSet: [],
+  orderSource: undefined,
+  consigneeCodeList: "",
+  shipperCodeList: "",
+  productCodeList: [],
+  transferRequired: undefined,
+  deliveryStationIdList: [],
+  // customerCode: "",
+  orderTimeRange: ["", ""]
+});
 console.log(searchForm, "searchForm");
 
 const pagination = reactive({

@@ -180,5 +180,6 @@ export default {
     "Veuillez remplir les informations du colis, poids, matériau, catégorie, etc.",
   "web.gfuc.channel_code": "Code canal",
   "web.gfuc.enter_channel_code": "Veuillez entrer le code canal",
-  "web.gfuc.submit_order": "Soumettre la commande"
+  "web.gfuc.submit_order": "Soumettre la commande",
+  "web.gfuc.please_enter": "Veuillez entrer"
 };

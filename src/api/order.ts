@@ -152,7 +152,7 @@ export function getProductStepInfo(params: {
   customerId: string | number;
 }) {
   return request({
-    url: "cos/customer/customerProductList",
+    url: "/cos/customer/customerProductList",
     method: "get",
     params
   });

@@ -171,5 +171,6 @@ export default {
     "Inserisci le informazioni del pacco, peso, materiale, categoria, ecc.",
   "web.gfuc.channel_code": "Codice canale",
   "web.gfuc.enter_channel_code": "Inserisci il codice canale",
-  "web.gfuc.submit_order": "Invia ordine"
+  "web.gfuc.submit_order": "Invia ordine",
+  "web.gfuc.please_enter": "Inserisci"
 };
