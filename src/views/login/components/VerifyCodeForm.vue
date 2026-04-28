@@ -103,7 +103,7 @@ import { rsaEncryptPwd } from "@/utils/crypto";
 const { t } = useI18n();
 
 const props = defineProps<{
-  registerData: { email: string; password: string };
+  registerData: { country: string; email: string; password: string };
 }>();
 
 const emit = defineEmits(["switch", "success"]);
@@ -127,6 +127,7 @@ const startTimer = () => {
 
 const handleSendCode = async () => {
   await postSendVerificationCode({
+    country: props.registerData.country,
     email: props.registerData.email
   });
   startTimer();
@@ -170,6 +171,7 @@ const handleVerify = async () => {
     const code = verifyCode.value.join("");
     const encryptedPwd = await rsaEncryptPwd(props.registerData.password);
     await postRegister({
+      country: props.registerData.country,
       email: props.registerData.email,
       password: encryptedPwd,
       verificationCode: code,

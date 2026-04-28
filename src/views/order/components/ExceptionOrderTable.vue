@@ -8,29 +8,28 @@
         :data="tableData"
         :total="pagination.total"
         :loading="loading"
-        :searchConfig="{ cols: 3, rowNum: 1 }"
+        :searchConfig="{ cols: 3, rowNum: 2 }"
         @search="fetchData"
       >
-        <template #search>
-          <!-- Search Fields -->
+        <template #order-number>
           <el-form-item
             :label="$t('gfuc.tracking_number' /** 单号 **/)"
-            prop="orderNo"
+            prop="orderNumber"
+            class="order-number-item"
+            :span="8"
           >
-            <!-- <template #label>
-              <el-radio-group v-model="searchForm.searchType">
-                <el-radio label="cusOrderNumList">客户单号</el-radio>
-                <el-radio label="waybillNoList">运单号</el-radio>
-                <el-radio label="referenceNumber">参考号</el-radio>
-              </el-radio-group>
-            </template> -->
             <el-input
-              v-model="searchForm.orderNo"
+              v-model="searchForm.orderNumber"
+              type="textarea"
+              clearable
+              :rows="5"
               :placeholder="
                 $t('web.gfuc.please_enter' /** 请输入订单号或运单号 **/)
               "
             />
           </el-form-item>
+        </template>
+        <template #search>
           <el-form-item label="邮编" prop="consigneeCode">
             <el-input
               v-model="searchForm.consigneeCode"
@@ -84,6 +83,7 @@
             :label="$t(item.label)"
             :width="item?.width || undefined"
             :min-width="item?.minWidth || undefined"
+            show-overflow-tooltip
           />
 
           <el-table-column

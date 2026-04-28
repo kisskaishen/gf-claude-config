@@ -10,7 +10,6 @@
         :loading="loading"
         :searchConfig="{ cols: 3, rowNum: 2 }"
         @search="fetchData"
-        @reset="handleReset"
         @selection-change="handleSelectionChange"
       >
         <template #action-left>
@@ -19,20 +18,27 @@
             批量打印
           </el-button>
         </template>
-        <template #search>
-          <!-- Search Fields -->
+        <template #order-number>
           <el-form-item
             :label="$t('gfuc.tracking_number' /** 单号 **/)"
             prop="orderNumber"
+            class="order-number-item"
+            :span="8"
           >
             <el-input
               v-model="searchForm.orderNumber"
+              type="textarea"
               clearable
+              :rows="5"
               :placeholder="
                 $t('web.gfuc.please_enter' /** 请输入订单号或运单号 **/)
               "
             />
           </el-form-item>
+        </template>
+        <template #search>
+          <!-- Search Fields -->
+
           <el-form-item
             v-if="currentStatus === 888"
             :label="$t('gfuc.order_status' /** 订单状态 **/)"
@@ -118,6 +124,7 @@
             :label="$t(item.label)"
             :width="item.width || undefined"
             :min-width="item.minWidth || undefined"
+            show-overflow-tooltip
           />
 
           <el-table-column
@@ -243,7 +250,11 @@ const columns = [
     label: "gfuc.customer_order_number",
     minWidth: 180
   },
-  { prop: "waybillNo", label: "gfuc.waybill_number", minWidth: 200 },
+  {
+    prop: "waybillNo",
+    label: "gfuc.waybill_number",
+    minWidth: 200
+  },
   { prop: "productTypeName", label: "gfuc.product_name", minWidth: 120 },
   { prop: "orderStatusName", label: "gfuc.order_status", width: 100 },
   {
@@ -281,14 +292,6 @@ const initialFormState = {
 };
 
 const searchForm = reactive({ ...initialFormState });
-
-// 重置表单函数
-const handleResetForm = () => {
-  Object.assign(searchForm, JSON.parse(JSON.stringify(initialFormState)));
-  console.log(searchForm, "重置表单");
-  // 重新设置默认日期范围
-  setDefaultRange();
-};
 
 const pagination = reactive({
   currentPage: 1,

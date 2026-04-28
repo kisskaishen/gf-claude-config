@@ -12,6 +12,10 @@
           <template #action-left>
             <slot name="action-left"></slot>
           </template>
+          <template #order-number>
+            <slot name="order-number"></slot>
+          </template>
+
           <slot name="search"></slot>
         </SearchContainer>
       </el-form>
@@ -78,6 +82,7 @@ const props = withDefaults(defineProps<TableLayoutProps>(), {
   currentPage: 1,
   pageSize: 10,
   showSearch: true,
+  searchFormModel: () => ({}),
   searchConfig: () => ({ cols: 3, rowNum: 1 }),
   tableConfig: () => ({}),
   paginationConfig: () => ({})

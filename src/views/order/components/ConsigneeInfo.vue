@@ -125,10 +125,10 @@
               <el-col :span="8">
                 <el-form-item
                   :label="$t('web.gfuc.internal_number')"
-                  prop="internalNumber"
+                  prop="consigneeNumIn"
                 >
                   <el-input
-                    v-model="orderConsignee.internalNumber"
+                    v-model="orderConsignee.consigneeNumIn"
                     :placeholder="$t('web.gfuc.internal_number_placeholder')"
                     maxlength="20"
                   />
@@ -137,10 +137,10 @@
               <el-col :span="8">
                 <el-form-item
                   :label="$t('web.gfuc.external_number')"
-                  prop="externalNumber"
+                  prop="consigneeNumExt"
                 >
                   <el-input
-                    v-model="orderConsignee.externalNumber"
+                    v-model="orderConsignee.consigneeNumExt"
                     :placeholder="$t('web.gfuc.external_number_placeholder')"
                     maxlength="20"
                   />
@@ -251,8 +251,8 @@
               {{ orderConsignee.consigneeCountry }}
             </p>
             <p>
-              {{ orderConsignee.internalNumber }}
-              {{ orderConsignee.externalNumber }}
+              {{ orderConsignee.consigneeNumIn }}
+              {{ orderConsignee.consigneeNumExt }}
             </p>
           </div>
         </div>
@@ -310,8 +310,8 @@ const orderConsignee = ref({
   address1: "",
   address2: "",
   address3: "",
-  internalNumber: "",
-  externalNumber: "",
+  consigneeNumIn: "",
+  consigneeNumExt: "",
   consigneeCode: "",
   consigneeArea: "",
   consigneeCity: "",
@@ -421,8 +421,8 @@ const onClear = () => {
     address1: "",
     address2: "",
     address3: "",
-    internalNumber: "",
-    externalNumber: "",
+    consigneeNumIn: "",
+    consigneeNumExt: "",
     consigneeCode: "",
     consigneeArea: "",
     consigneeCity: "",
