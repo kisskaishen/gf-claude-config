@@ -93,7 +93,7 @@
             >
               <el-col :span="8">
                 <el-form-item
-                  label="{{ $t('web.gfuc.collection_start_time') }}"
+                  :label="$t('web.gfuc.collection_start_time')"
                   prop="queryCollectStartTime"
                   :rules="[
                     {
@@ -109,7 +109,9 @@
                 >
                   <el-date-picker
                     v-model="formData.queryCollectStartTime"
-                    placeholder="{{ $t('web.gfuc.please_enter_collection_start_time') }}"
+                    :placeholder="
+                      $t('web.gfuc.please_enter_collection_start_time')
+                    "
                     type="datetime"
                     style="width: 100%"
                     format="YYYY-MM-DD HH:mm:ss"
@@ -119,7 +121,7 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item
-                  label="{{ $t('web.gfuc.collection_end_time') }}"
+                  :label="$t('web.gfuc.collection_end_time')"
                   prop="queryCollectEndTime"
                   :rules="[
                     {
@@ -133,7 +135,9 @@
                 >
                   <el-date-picker
                     v-model="formData.queryCollectEndTime"
-                    placeholder="{{ $t('web.gfuc.please_enter_collection_end_time') }}"
+                    :placeholder="
+                      $t('web.gfuc.please_enter_collection_end_time')
+                    "
                     type="datetime"
                     style="width: 100%"
                     format="YYYY-MM-DD HH:mm:ss"
@@ -164,8 +168,14 @@
             </p>
             <div class="radio-group">
               <div class="radio-check">
-                <div class="radio-label">{{ formData.productCode }}</div>
-                <!-- <div class="radio-content">{{ formData.productName }}</div> -->
+                <div class="radio-label">{{ formData.productName }}</div>
+                <div class="radio-content">
+                  {{
+                    productList.find(
+                      (item) => item.code === formData.productCode
+                    )?.desc || t("gfuc.no_data_available")
+                  }}
+                </div>
               </div>
             </div>
           </div>
@@ -184,6 +194,9 @@ import { ref, watch, computed } from "vue";
 import { getOrderProductList, getProductStepInfo } from "@/api/order";
 import { useUserStore } from "@/store/user";
 import { useAppStore } from "@/store/app";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 const userStore = useUserStore();
 const appStore = useAppStore();
 const props = defineProps({
@@ -306,7 +319,7 @@ const getProductList = async (customerId) => {
     code: item.productCode,
     desc:
       item["description" + toPascalCase(appStore.lang.toLocaleLowerCase())] ||
-      "暂无描述"
+      t("gfuc.no_data_available")
   }));
 
   if (productList.value.length === 1) {

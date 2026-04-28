@@ -81,6 +81,9 @@ export default {
   "web.gfuc.order_created_success": "订单创建成功",
   "web.gfuc.order_created_success_message":
     "您的订单已经创建成功，您可以查看订单或继续下单",
+  "web.gfuc.order_update_success": "订单更新成功",
+  "web.gfuc.order_update_success_message":
+    "您的订单已经更新成功，您可以查看订单或继续下单",
   "web.gfuc.view_order": "查看订单",
   "web.gfuc.continue_order": "继续下单",
 
@@ -147,6 +150,7 @@ export default {
   "web.gfuc.parcel_length_placeholder": "请输入包裹长度(cm)",
   "web.gfuc.parcel_width_placeholder": "请输入包裹宽度(cm)",
   "web.gfuc.parcel_height_placeholder": "请输入包裹高度(cm)",
+  "web.gfuc.actions": "操作",
   "web.gfuc.product_name_cn": "商品名称(CN)",
   "web.gfuc.product_name_en": "商品名称(EN)",
   "web.gfuc.quantity": "数量",

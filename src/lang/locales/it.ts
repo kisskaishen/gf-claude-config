@@ -80,6 +80,15 @@ export default {
   "web.gfuc.dutch_site": "Stazione (Paesi Bassi)",
   "web.gfuc.order_detail": "Dettagli dell'ordine",
 
+  "web.gfuc.order_created_success": "Ordine creato con successo",
+  "web.gfuc.order_created_success_message":
+    "Il tuo ordine è stato creato con successo. Puoi visualizzare l'ordine o continuare ad effettuare ordini",
+  "web.gfuc.order_update_success": "Ordine aggiornato con successo",
+  "web.gfuc.order_update_success_message":
+    "Il tuo ordine è stato aggiornato con successo. Puoi visualizzare l'ordine o continuare ad effettuare ordini",
+  "web.gfuc.view_order": "Visualizza ordine",
+  "web.gfuc.continue_order": "Continua l'ordine",
+
   "web.gfuc.shipper_info": "Informazioni mittente",
   "web.gfuc.please_fill_shipper_info": "Compila le informazioni mittente",
   "web.gfuc.order_account": "Account ordine",
@@ -148,6 +157,7 @@ export default {
   "web.gfuc.parcel_length_placeholder": "Inserisci la lunghezza del pacco (cm)",
   "web.gfuc.parcel_width_placeholder": "Inserisci la larghezza del pacco (cm)",
   "web.gfuc.parcel_height_placeholder": "Inserisci l'altezza del pacco (cm)",
+  "web.gfuc.actions": "Azioni",
   "web.gfuc.product_name_cn": "Nome prodotto (CN)",
   "web.gfuc.product_name_en": "Nome prodotto (EN)",
   "web.gfuc.quantity": "Quantità",

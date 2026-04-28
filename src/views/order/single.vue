@@ -93,11 +93,21 @@
         </div>
 
         <!-- 标题 -->
-        <h3 class="mb-3 text-2xl font-bold text-gray-800">订单创建成功</h3>
+        <h3 class="mb-3 text-2xl font-bold text-gray-800">
+          {{
+            isEdit
+              ? $t("web.gfuc.order_update_success")
+              : $t("web.gfuc.order_created_success")
+          }}
+        </h3>
 
         <!-- 描述文本 -->
         <p class="text-sm text-info">
-          您的订单已经创建成功，您可以查看订单或继续下单
+          {{
+            isEdit
+              ? $t("web.gfuc.order_update_success_message")
+              : $t("web.gfuc.order_created_success_message")
+          }}
         </p>
       </div>
 
@@ -109,7 +119,7 @@
             class="px-10 py-3 text-lg border-gray-300"
             @click="handleViewOrder"
           >
-            查看订单
+            {{ $t("web.gfuc.view_order") }}
           </el-button>
           <el-button
             type="primary"
@@ -117,7 +127,7 @@
             class="px-10 py-3 text-lg"
             @click="handleContinueBuy"
           >
-            继续下单
+            {{ $t("web.gfuc.continue_order") }}
           </el-button>
         </div>
       </template>
@@ -144,6 +154,8 @@ import { useRouter, useRoute } from "vue-router";
 
 const router = useRouter();
 const route = useRoute();
+
+const isEdit = computed(() => route.params.orderId);
 
 defineOptions({
   name: "SingleOrder"
@@ -274,7 +286,6 @@ const submitOrder = async () => {
 };
 
 onMounted(() => {
-  console.log(route.params, "========12312321312");
   if (route.params.orderId) {
     fetchOrderDetail();
   }

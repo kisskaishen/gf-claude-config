@@ -77,6 +77,15 @@ export default {
   "web.gfuc.dutch_site": "Station (Nederland)",
   "web.gfuc.order_detail": "Orderdetails",
 
+  "web.gfuc.order_created_success": "Bestelling succesvol aangemaakt",
+  "web.gfuc.order_created_success_message":
+    "Uw bestelling is succesvol aangemaakt. U kunt de bestelling bekijken of doorgaan met bestellen",
+  "web.gfuc.order_update_success": "Bestelling succesvol bijgewerkt",
+  "web.gfuc.order_update_success_message":
+    "Uw bestelling is succesvol bijgewerkt. U kunt de bestelling bekijken of doorgaan met bestellen",
+  "web.gfuc.view_order": "Bekijk bestelling",
+  "web.gfuc.continue_order": "Doorgaan met bestellen",
+
   "web.gfuc.shipper_info": "Zender informatie",
   "web.gfuc.please_fill_shipper_info": "Vul de zender informatie in",
   "web.gfuc.order_account": "Orderaccount",
@@ -142,6 +151,7 @@ export default {
   "web.gfuc.parcel_length_placeholder": "Voer de pakketlengte in (cm)",
   "web.gfuc.parcel_width_placeholder": "Voer de pakketbreedte in (cm)",
   "web.gfuc.parcel_height_placeholder": "Voer de pakkethoogte in (cm)",
+  "web.gfuc.actions": "Acties",
   "web.gfuc.product_name_cn": "Productnaam (CN)",
   "web.gfuc.product_name_en": "Productnaam (EN)",
   "web.gfuc.quantity": "Aantal",

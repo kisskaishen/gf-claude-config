@@ -81,6 +81,16 @@ export default {
   "web.gfuc.dutch_site": "Netherlands station",
   "web.gfuc.order_detail": "Order Detail",
 
+  // 单票下单页面
+  "web.gfuc.order_created_success": "Order Created Successfully",
+  "web.gfuc.order_created_success_message":
+    "Your order has been created successfully, you can view the order or continue to order",
+  "web.gfuc.order_update_success": "Order Updated Successfully",
+  "web.gfuc.order_update_success_message":
+    "Your order has been updated successfully, you can view the order or continue to order",
+  "web.gfuc.view_order": "View Order",
+  "web.gfuc.continue_order": "Continue Order",
+
   // Shipper information component
   "web.gfuc.shipper_info": "Shipper Information",
   "web.gfuc.please_fill_shipper_info": "Please fill in shipper information",
@@ -150,6 +160,7 @@ export default {
   "web.gfuc.parcel_length_placeholder": "Please enter parcel length (cm)",
   "web.gfuc.parcel_width_placeholder": "Please enter parcel width (cm)",
   "web.gfuc.parcel_height_placeholder": "Please enter parcel height (cm)",
+  "web.gfuc.actions": "Actions",
   "web.gfuc.product_name_cn": "Product Name (CN)",
   "web.gfuc.product_name_en": "Product Name (EN)",
   "web.gfuc.quantity": "Quantity",
