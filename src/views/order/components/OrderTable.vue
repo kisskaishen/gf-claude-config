@@ -252,7 +252,7 @@ const columns = [
     label: "gfuc.waybill_number",
     minWidth: 200
   },
-  { prop: "productTypeName", label: "gfuc.product_name", minWidth: 120 },
+  { prop: "productName", label: "gfuc.product_name", minWidth: 120 },
   { prop: "orderStatusName", label: "gfuc.order_status", width: 100 },
   {
     prop: "orderConsigneeVO.consigneeName",
