@@ -455,7 +455,7 @@ const handlePrint = (row: any) => {
     waybillNo: row.waybillNo,
     customerId: row.customerId
   }).then((res) => {
-    downloadFile(res.url, "面单打印");
+    downloadFile(res.url, row.waybillNo);
   });
 };
 
@@ -529,7 +529,7 @@ const handleBatchPrint = () => {
 
     ElMessage.success(`已开始批量打印 ${selectedOrders.value.length} 个订单`);
 
-    downloadFile(res.url, "面单打印");
+    downloadFile(res[0].url, "面单打印");
   });
 };
 // 获取产品列表select数据

@@ -56,7 +56,7 @@ const handleTabClick = (tab: any, event: Event) => {
   margin-bottom: 16px;
 
   :deep(.el-tabs__item) {
-    height: 28px;
+    height: 32px;
   }
 
   :deep(.el-tabs__header) {

@@ -232,7 +232,7 @@
             />
           </svg>
         </div>
-        <p class="text-sm text-gray-600">打印面单</p>
+        <p class="text-sm text-info">打印面单</p>
       </div>
 
       <!-- 箭头 -->

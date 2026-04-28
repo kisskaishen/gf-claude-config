@@ -226,6 +226,16 @@
                   />
                 </el-form-item>
               </el-col>
+
+              <el-col :span="16">
+                <el-form-item :label="$t('gfuc.remark')" prop="remarks">
+                  <el-input
+                    v-model="orderConsignee.remarks"
+                    :placeholder="$t('web.gfuc.please_enter')"
+                    maxlength="100"
+                  />
+                </el-form-item>
+              </el-col>
             </el-row>
 
             <el-row>
@@ -317,6 +327,7 @@ const orderConsignee = ref({
   consigneeCity: "",
   consigneeState: "",
   consigneeCountry: userStore.userInfo?.country || "",
+  remarks: "",
   ...props.initialData
 });
 
@@ -427,7 +438,8 @@ const onClear = () => {
     consigneeArea: "",
     consigneeCity: "",
     consigneeState: "",
-    consigneeCountry: userStore.userInfo?.country || ""
+    consigneeCountry: userStore.userInfo?.country || "",
+    remarks: ""
   };
 };
 

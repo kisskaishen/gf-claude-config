@@ -43,36 +43,51 @@
           </div>
           <span class="value">{{ orderData?.waybillNo || "-" }}</span>
         </div>
-        <el-divider
-          direction="vertical"
-          v-if="orderType === 'order' && orderData?.orderStatus != 2"
-        />
+        <el-divider direction="vertical" />
       </div>
       <!-- 进度条容器 -->
-      <div
-        class="status-steps"
-        v-if="orderType === 'order' && orderData?.orderStatus != 2"
-      >
+      <div class="status-steps">
         <!-- 步骤背景（带箭头） -->
         <div
           v-for="(step, index) in statusSteps"
           :key="index"
           class="step-item"
           :class="{
-            'step-active': step.status == orderData.orderStatus,
-            'step-complated': step.status < orderData.orderStatus,
-            'step-default': step.status > orderData.orderStatus
+            'step-disabled':
+              orderData?.orderStatus == 2 || orderType === 'exception',
+            'step-active':
+              orderData?.orderStatus !== 2 &&
+              orderType !== 'exception' &&
+              step.status == orderData.orderStatus,
+            'step-complated':
+              orderData?.orderStatus !== 2 &&
+              orderType !== 'exception' &&
+              step.status < orderData.orderStatus,
+            'step-default':
+              orderData?.orderStatus !== 2 &&
+              orderType !== 'exception' &&
+              step.status > orderData.orderStatus
           }"
         >
           <span class="step-text">{{ step.label }}</span>
 
           <!-- 箭头 -->
           <div
-            v-if="index < statusSteps.length - 1"
+            v-if="shouldShowArrow(index)"
             class="step-arrow"
             :class="{
-              'arrow-active': step.status <= orderData.orderStatus,
-              'arrow-default': step.status > orderData.orderStatus
+              'arrow-active':
+                orderData?.orderStatus !== 2 &&
+                orderType !== 'exception' &&
+                step.status == orderData.orderStatus,
+              'arrow-complated':
+                orderData?.orderStatus !== 2 &&
+                orderType !== 'exception' &&
+                step.status < orderData.orderStatus,
+              'arrow-default':
+                orderData?.orderStatus !== 2 &&
+                orderType !== 'exception' &&
+                step.status > orderData.orderStatus
             }"
           />
         </div>
@@ -321,22 +336,48 @@ import {
   getExceptionOrderDetail,
   getOrderTracking
 } from "@/api/order";
-// import { useDict } from "@/hooks/useDict";
+import { useDict } from "@/hooks/useDict";
 
 import { useRoute } from "vue-router";
 const route = useRoute();
 
-// const orderStatusDict = useDict("order_status");
+const orderStatusDict = useDict("order_status");
 
 // 步骤数据
-const statusSteps = ref([
-  { label: "提交订单", status: "1" },
-  { label: "包裹收货", status: "2" },
-  { label: "派送中", status: "3" },
-  { label: "已签收", status: "4" }
-]);
+const statusSteps = computed(() => {
+  let arr = [1, 3, 4, 5];
+  if ([6, 7, 8].includes(orderData.value?.orderStatus)) {
+    arr[4] = orderData.value?.orderStatus;
+  }
+  return orderStatusDict.options.value
+    .filter((item) => arr.includes(item.value))
+    .map((item) => ({
+      label: item.label,
+      status: item.value
+    }));
+});
 
 // 当前步骤（从0开始，对应数组索引）
+
+// 判断是否显示箭头（只在相邻节点之间显示）
+const shouldShowArrow = (index) => {
+  if (index >= statusSteps.value.length - 1) {
+    return false; // 最后一个节点不显示箭头
+  }
+
+  const currentStatus = orderData.value?.orderStatus;
+  if (!currentStatus) return false;
+
+  // 找到当前状态在步骤数组中的索引
+  const currentStepIndex = statusSteps.value.findIndex(
+    (step) => step.status === currentStatus
+  );
+  if (currentStepIndex === -1) return false;
+
+  // 箭头只在当前节点的前后相邻节点之间显示
+  // 即：箭头在索引为currentStepIndex-1和currentStepIndex之间，或者currentStepIndex和currentStepIndex+1之间
+  return index === currentStepIndex - 1 || index === currentStepIndex;
+};
 
 const orderType = ref(route.params.orderType);
 
@@ -346,10 +387,10 @@ const orderData = ref({
   trackingNumber: "GFFR2253045097778",
   status: "包裹收货",
   statusSteps: [
-    { name: "提交订单", completed: true },
-    { name: "包裹收货", completed: true, active: true },
-    { name: "派送中", completed: false },
-    { name: "已签收", completed: false }
+    // { name: "提交订单", completed: true },
+    // { name: "包裹收货", completed: true, active: true },
+    // { name: "派送中", completed: false },
+    // { name: "已签收", completed: false }
   ],
   basicInfo: {
     referenceNumber: "autotest_ad_FRA",
@@ -419,7 +460,7 @@ const fetchOrderDetail = async () => {
       let data = await getOrderTracking({
         orderNumber: orderData.value?.waybillNo
       });
-      orderData.value.trackingInfo = data[0].trackDetailItemList || [];
+      orderData.value.trackingInfo = data[0]?.trackDetailItemList || [];
     }
   } catch (error) {
     console.error("Failed to fetch order detail:", error);
@@ -455,7 +496,7 @@ const fetchOrderDetail = async () => {
   }
 
   .status-steps {
-    @apply flex items-center gap-8 flex-1;
+    @apply flex items-center flex-1;
 
     .step-item {
       &:first-child {
@@ -464,15 +505,15 @@ const fetchOrderDetail = async () => {
     }
 
     .step-item {
-      @apply h-14 flex items-center justify-center relative  bg-bg -ml-[31px] pl-[31px];
+      @apply h-14 flex-1 flex items-center justify-center relative  bg-bg;
     }
 
     .step-text {
-      @apply text-sm font-medium  px-10 text-text-regular;
+      @apply text-sm font-medium  text-text-regular;
     }
 
     .step-arrow {
-      @apply absolute -right-[30px] top-0 w-0 h-0 border-t-[28px] border-b-[28px] border-l-[30px] border-transparent;
+      @apply absolute right-0 top-0 w-0 h-0 border-t-[28px] border-b-[28px] border-l-[31px] border-transparent;
     }
 
     /* 激活状态 */
@@ -502,6 +543,16 @@ const fetchOrderDetail = async () => {
 
       .step-arrow {
         @apply border-l-primary;
+      }
+    }
+
+    .arrow-complated {
+      @apply bg-primary;
+
+      z-index: 1;
+
+      .step-arrow {
+        @apply border-l-[#fd7c28];
       }
     }
 

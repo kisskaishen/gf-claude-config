@@ -222,14 +222,16 @@ const submitOrder = async () => {
   // 先校验第四步的信息是否填写
   if (parcelInfoRef.value) {
     try {
-      // 调用第四步组件的校验方法
-      let valid = await parcelInfoRef.value.validate();
-      if (!valid) {
-        return;
-      }
+      if (!isEdit.value) {
+        // 调用第四步组件的校验方法
+        let valid = await parcelInfoRef.value.validate();
+        if (!valid) {
+          return;
+        }
 
-      // 校验通过，继续提交订单逻辑
-      console.log("第四步表单校验通过，开始提交订单", formData);
+        // 校验通过，继续提交订单逻辑
+        console.log("第四步表单校验通过，开始提交订单", formData);
+      }
 
       // formData格式化
       let data = {
@@ -288,6 +290,8 @@ const submitOrder = async () => {
 onMounted(() => {
   if (route.params.orderId) {
     fetchOrderDetail();
+    currentStep.value = 4;
+    completedSteps.value = [1, 2, 3, 4];
   }
 });
 
@@ -375,7 +379,8 @@ const formatConsigneeData = (consigneeData: any) => {
     consigneeArea: consigneeData.consigneeArea || "",
     consigneeCity: consigneeData.consigneeCity || "",
     consigneeState: consigneeData.consigneeState || "",
-    consigneeCountry: consigneeData.consigneeCountry || ""
+    consigneeCountry: consigneeData.consigneeCountry || "",
+    remarks: consigneeData.remarks || ""
   };
 };
 

@@ -9,9 +9,11 @@
       <el-row>
         <el-col :span="24" class="form-actions">
           <el-button
-            :type="currentStep < 4 ? 'default' : 'primary'"
+            :type="
+              currentStep < 4 && !$route.params.orderId ? 'default' : 'primary'
+            "
             @click="onSubmit"
-            :disabled="currentStep < 4"
+            :disabled="currentStep < 4 && !$route.params.orderId"
             >{{ $t("web.gfuc.submit_order") }}</el-button
           >
         </el-col>

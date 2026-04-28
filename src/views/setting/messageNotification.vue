@@ -129,6 +129,7 @@ const handleBalanceReminderChange = async (val: boolean) => {
     });
     // await getBalanceConfig();
     ElMessage.success("已关闭余额不足提醒");
+    await getBalanceConfig();
   }
   showBalanceReminderDialog.value = val === 1;
 
