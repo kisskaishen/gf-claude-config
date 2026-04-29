@@ -235,7 +235,10 @@ const submitOrder = async () => {
 
       // formData格式化
       let data = {
-        customerId: formData.shipper?.customerId,
+        customerId:
+          formData.shipper?.customerId ||
+          sessionStorage.getItem("createOrderCustomerId") ||
+          "",
 
         orderShipper: formData.shipper,
         orderConsignee: formData.consignee,

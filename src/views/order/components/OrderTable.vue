@@ -39,7 +39,6 @@
         </template>
         <template #search>
           <!-- Search Fields -->
-
           <el-form-item
             v-if="currentStatus === 888"
             :label="$t('gfuc.order_status' /** 订单状态 **/)"
@@ -111,6 +110,25 @@
                 :key="item.code"
                 :label="item.name"
                 :value="item.code"
+              />
+            </el-select>
+          </el-form-item>
+          <el-form-item
+            :label="$t('web.gfuc.customer_name' /** 下单客户 **/)"
+            prop="customerName"
+            v-if="customerNameList.length > 1"
+          >
+            <el-select
+              v-model="searchForm.customerName"
+              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+              clearable
+              filterable
+            >
+              <el-option
+                v-for="item in customerNameList"
+                :key="item.customerId"
+                :label="item.customerName"
+                :value="item.customerName"
               />
             </el-select>
           </el-form-item>
@@ -283,10 +301,15 @@ const initialFormState = {
   consigneeCodeList: "",
   shipperCodeList: "",
   productCodeList: [],
+  customerName: "",
   transferRequired: undefined,
   deliveryStationIdList: [],
   orderTimeRange: ["", ""]
 };
+
+const customerNameList = computed(() => {
+  return userStore.loginInfo?.shipperCustomerList || [];
+});
 
 const searchForm = reactive({ ...initialFormState });
 

@@ -404,6 +404,7 @@ const handleZipCodeInput = () => {
   getAddressByCode({ postcode: orderConsignee.value.consigneeCode }).then(
     (res) => {
       console.log(res, "====");
+      getStateListData();
       if (!res?.city?.stateId) {
         return;
       }
@@ -464,8 +465,6 @@ const getCityListData = (stateId) => {
     cities.value = res || [];
   });
 };
-
-getStateListData();
 
 defineExpose({
   resetForm

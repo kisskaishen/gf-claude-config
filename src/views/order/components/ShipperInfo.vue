@@ -475,6 +475,7 @@ defineExpose({
 
 <style scoped lang="scss">
 @use "@/views/order/style/base";
+
 .shipperNameOption {
   display: flex;
   justify-content: space-between;

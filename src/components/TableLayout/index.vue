@@ -12,7 +12,7 @@
           <template #action-left>
             <slot name="action-left"></slot>
           </template>
-          <template #order-number>
+          <template #order-number v-if="hasOrderNumberSlot">
             <slot name="order-number"></slot>
           </template>
 
@@ -65,7 +65,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick } from "vue";
+import { computed, nextTick, useSlots } from "vue";
 import SearchContainer from "@/components/SearchContainer/index.vue";
 import { useResetableRef } from "@/hooks/useResetableRef";
 import type { TableLayoutProps } from "./types";
@@ -73,6 +73,10 @@ import { copyText } from "@/utils/index";
 defineOptions({
   name: "TableLayout"
 });
+
+const slots = useSlots();
+
+const hasOrderNumberSlot = computed(() => !!slots["order-number"]);
 
 // 1. 使用 TS 定义 Props 及其默认值
 const props = withDefaults(defineProps<TableLayoutProps>(), {

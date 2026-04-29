@@ -181,5 +181,6 @@ export default {
   "web.gfuc.edit_order": "编辑订单",
   "web.gfuc.cancel_order": "取消订单",
   "web.gfuc.copy_order": "复制订单",
-  "web.gfuc.re_order": "重新下单"
+  "web.gfuc.re_order": "重新下单",
+  "web.gfuc.customer_name": "下单客户"
 };

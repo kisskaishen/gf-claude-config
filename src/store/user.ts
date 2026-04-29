@@ -91,6 +91,12 @@ export const useUserStore = defineStore(
           token: token.value
         });
 
+        if (res.shipperCustomerList && res.shipperCustomerList.length === 1) {
+          sessionStorage.setItem(
+            "createOrderCustomerId",
+            res.shipperCustomerList[0].customerId || ""
+          );
+        }
         // userInfo.value = res;
         isUserInfoUpdated.value = true;
       }

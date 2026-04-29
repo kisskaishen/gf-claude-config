@@ -181,5 +181,6 @@ export default {
   "web.gfuc.edit_order": "Bewerk order",
   "web.gfuc.cancel_order": "Annuleer order",
   "web.gfuc.copy_order": "Kopie order",
-  "web.gfuc.re_order": "Ricreeer order"
+  "web.gfuc.re_order": "Ricreeer order",
+  "web.gfuc.customer_name": "Klantnaam"
 };

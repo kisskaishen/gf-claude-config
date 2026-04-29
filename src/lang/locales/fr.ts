@@ -198,5 +198,6 @@ export default {
   "web.gfuc.edit_order": "Modifier la commande",
   "web.gfuc.cancel_order": "Annuler la commande",
   "web.gfuc.copy_order": "Copier la commande",
-  "web.gfuc.re_order": "Re-order"
+  "web.gfuc.re_order": "Re-order",
+  "web.gfuc.customer_name": "Nom du client"
 };

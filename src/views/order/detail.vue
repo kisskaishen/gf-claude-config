@@ -19,14 +19,14 @@
             <div class="label">
               <span>客户订单号</span>
               <svg-icon
-                v-if="orderData?.orderNo"
+                v-if="orderData?.cOrderNo"
                 name="copy"
                 width="20"
                 height="20"
-                @click="copyText(orderData?.orderNo)"
+                @click="copyText(orderData?.cOrderNo)"
               />
             </div>
-            <span class="value">{{ orderData?.orderNo || "-" }}</span>
+            <span class="value">{{ orderData?.cOrderNo || "-" }}</span>
           </div>
         </div>
         <el-divider direction="vertical" />
@@ -640,9 +640,6 @@ const fetchOrderDetail = async () => {
 
   .tracking-section {
     @apply flex-1;
-  }
-
-  .service-section {
   }
 
   .sidebar-section {
