@@ -136,7 +136,11 @@ export const routes: RouteRecordRaw[] = [
   {
     path: "/setting",
     component: () => import("@/layout/index.vue"),
-    meta: { showOnlyOneChild: true },
+    meta: {
+      title: "设置",
+      icon: "setting",
+      i18n: "web.gfuc.setting"
+    },
     redirect: "/setting/messageNotification",
     children: [
       {
@@ -145,9 +149,7 @@ export const routes: RouteRecordRaw[] = [
         component: () => import("@/views/setting/messageNotification.vue"),
         meta: {
           title: "消息通知设置",
-          icon: "home",
-          i18n: "web.gfuc.message_notification_settings",
-          affix: true
+          i18n: "web.gfuc.message_notification_settings"
         }
       }
     ]

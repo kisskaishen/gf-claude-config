@@ -124,7 +124,7 @@ export default {
     "Veuillez entrer les informations de l'expéditeur",
 
   // Composant Informations du destinataire
-  "web.order.consignee_info_title": "Informations du destinataire",
+  "web.gfuc.consignee_info_title": "Informations du destinataire",
 
   "web.gfuc.address2": "Adresse ligne 2",
   "web.gfuc.address3": "Adresse ligne 3",
@@ -199,5 +199,21 @@ export default {
   "web.gfuc.cancel_order": "Annuler la commande",
   "web.gfuc.copy_order": "Copier la commande",
   "web.gfuc.re_order": "Re-order",
-  "web.gfuc.customer_name": "Nom du client"
+  "web.gfuc.customer_name": "Nom du client",
+  "web.gfuc.setting": "Paramètres",
+  "web.gfuc.waybill_no": "Numéro de waybill",
+  "web.gfuc.basic_info": "Informations de base",
+  "web.gfuc.product_type": "Type de produit",
+  "web.gfuc.shipment_info": "Informations de shipment",
+  "web.gfuc.delivery_info": "Information de livraison",
+  "web.gfuc.third_party_tracking": "Numéro de tracking tiers",
+  "web.gfuc.product": "Produit",
+  "web.gfuc.total_quantity": "Quantité totale",
+  "web.gfuc.total_weight": "Poids total",
+  "web.gfuc.parcel_volume": "Volume du colis",
+  "web.gfuc.charging_weight": "Poids de facturation",
+  "web.gfuc.tracking_info": "Suivi informations",
+  "web.gfuc.additional_services": "Services supplémentaires",
+  "web.gfuc.insurance_amount": "Montant de protection (EUR)",
+  "web.gfuc.cod_amount": "COD montant (EUR)"
 };

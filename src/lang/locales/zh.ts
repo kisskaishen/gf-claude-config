@@ -88,8 +88,8 @@ export default {
   "web.gfuc.continue_order": "继续下单",
 
   // 发件人信息组件
-  "web.gfuc.shipper_info": "发件人信息",
-  "web.gfuc.please_fill_shipper_info": "请填写发件人信息",
+  "web.gfuc.shipper_info": "寄件人信息",
+  "web.gfuc.please_fill_shipper_info": "请填写寄件人信息",
   "web.gfuc.order_account": "下单账户",
   "web.gfuc.please_select_order_account": "请选择下单账户",
   "web.gfuc.name": "姓名",
@@ -116,7 +116,7 @@ export default {
   "web.gfuc.please_enter_shipper_info": "请输入发件人信息",
 
   // 收件人信息组件
-  "web.order.consignee_info_title": "收件人信息",
+  "web.gfuc.consignee_info_title": "收件人信息",
 
   "web.gfuc.address2": "地址2",
   "web.gfuc.address3": "地址3",
@@ -182,5 +182,22 @@ export default {
   "web.gfuc.cancel_order": "取消订单",
   "web.gfuc.copy_order": "复制订单",
   "web.gfuc.re_order": "重新下单",
-  "web.gfuc.customer_name": "下单客户"
+  "web.gfuc.customer_name": "下单客户",
+  "web.gfuc.setting": "设置",
+
+  "web.gfuc.waybill_no": "运单编号",
+  "web.gfuc.basic_info": "基本信息",
+  "web.gfuc.product_type": "产品类型",
+  "web.gfuc.shipment_info": "发货信息",
+  "web.gfuc.delivery_info": "送货上门",
+  "web.gfuc.third_party_tracking": "第三方跟踪号",
+  "web.gfuc.product": "产品",
+  "web.gfuc.total_quantity": "总数量",
+  "web.gfuc.total_weight": "总重量",
+  "web.gfuc.parcel_volume": "包裹体积",
+  "web.gfuc.charging_weight": "计费重量",
+  "web.gfuc.tracking_info": "轨迹信息",
+  "web.gfuc.additional_services": "增值服务",
+  "web.gfuc.insurance_amount": "保险金额 (EUR)",
+  "web.gfuc.cod_amount": "COD金额 (EUR)"
 };

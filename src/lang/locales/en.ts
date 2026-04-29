@@ -121,7 +121,7 @@ export default {
   "web.gfuc.please_enter_shipper_info": "Please enter shipper information",
 
   // Recipient Information Component
-  "web.order.consignee_info_title": "Recipient Information",
+  "web.gfuc.consignee_info_title": "Recipient Information",
 
   "web.gfuc.address2": "Address Line 2",
   "web.gfuc.address3": "Address Line 3",
@@ -191,5 +191,22 @@ export default {
   "web.gfuc.cancel_order": "Cancel Order",
   "web.gfuc.copy_order": "Copy Order",
   "web.gfuc.re_order": "Re-order",
-  "web.gfuc.customer_name": "Customer Name"
+  "web.gfuc.customer_name": "Customer Name",
+  "web.gfuc.setting": "Setting",
+
+  "web.gfuc.waybill_no": "Waybill No",
+  "web.gfuc.basic_info": "Basic Information",
+  "web.gfuc.product_type": "Product Type",
+  "web.gfuc.shipment_info": "Shipment Information",
+  "web.gfuc.delivery_info": "Delivery Information",
+  "web.gfuc.third_party_tracking": "Third Party Tracking No",
+  "web.gfuc.product": "Product",
+  "web.gfuc.total_quantity": "Total Quantity",
+  "web.gfuc.total_weight": "Total Weight",
+  "web.gfuc.parcel_volume": "Parcel Volume",
+  "web.gfuc.charging_weight": "Charging Weight",
+  "web.gfuc.tracking_info": "Tracking Information",
+  "web.gfuc.additional_services": "Additional Services",
+  "web.gfuc.insurance_amount": "Insurance Amount (EUR)",
+  "web.gfuc.cod_amount": "COD Amount (EUR)"
 };

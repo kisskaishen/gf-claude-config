@@ -115,7 +115,7 @@ export default {
   "web.gfuc.please_enter_shipper_info": "Vul de zender informatie in",
 
   // Ontvanger Informatie Component
-  "web.order.consignee_info_title": "Informatie ontvanger",
+  "web.gfuc.consignee_info_title": "Informatie ontvanger",
 
   "web.gfuc.address2": "Adresregel 2",
   "web.gfuc.address3": "Adresregel 3",
@@ -182,5 +182,21 @@ export default {
   "web.gfuc.cancel_order": "Annuleer order",
   "web.gfuc.copy_order": "Kopie order",
   "web.gfuc.re_order": "Ricreeer order",
-  "web.gfuc.customer_name": "Klantnaam"
+  "web.gfuc.customer_name": "Klantnaam",
+  "web.gfuc.setting": "Instellingen",
+  "web.gfuc.waybill_no": "Nummer waybill",
+  "web.gfuc.basic_info": "Informations base",
+  "web.gfuc.product_type": "Type product",
+  "web.gfuc.shipment_info": "Informations shipment",
+  "web.gfuc.delivery_info": "Informations livraison",
+  "web.gfuc.third_party_tracking": "Numéro tracking tiers",
+  "web.gfuc.product": "Product",
+  "web.gfuc.total_quantity": "Aantal totale",
+  "web.gfuc.total_weight": "Poids total",
+  "web.gfuc.parcel_volume": "Volume pakket",
+  "web.gfuc.charging_weight": "Poids de facturation",
+  "web.gfuc.tracking_info": "Suivi informations",
+  "web.gfuc.additional_services": "Services supplémentaires",
+  "web.gfuc.insurance_amount": "Montant de protection (EUR)",
+  "web.gfuc.cod_amount": "COD montant (EUR)"
 };

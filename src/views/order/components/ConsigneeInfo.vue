@@ -20,7 +20,7 @@
     <div class="step-content">
       <div class="step-content-header">
         <h3 class="step-content-header-title">
-          {{ $t("web.order.consignee_info_title") }}
+          {{ $t("web.gfuc.consignee_info_title") }}
         </h3>
         <!-- 清除数据 -->
         <svg-icon

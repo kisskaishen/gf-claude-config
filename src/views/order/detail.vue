@@ -17,7 +17,7 @@
           </div>
           <div class="section-item">
             <div class="label">
-              <span>客户订单号</span>
+              <span>{{ $t("web.gfuc.customer_order_no") }}</span>
               <svg-icon
                 v-if="orderData?.cOrderNo"
                 name="copy"
@@ -32,7 +32,7 @@
         <el-divider direction="vertical" />
         <div class="section-item">
           <div class="label">
-            <span>运单编号</span>
+            <span>{{ $t("web.gfuc.waybill_no") }}</span>
             <svg-icon
               v-if="orderData?.waybillNo"
               name="copy"
@@ -98,29 +98,33 @@
       <div class="mr-3 order-content">
         <!-- 基本信息 -->
         <div class="section base-section">
-          <h3 class="section-title">基本信息</h3>
+          <h3 class="section-title">{{ $t("web.gfuc.basic_info") }}</h3>
           <div class="info-grid">
             <div class="info-item">
-              <span class="info-label">参考单号</span>
+              <span class="info-label">{{ $t("web.gfuc.reference_no") }}</span>
               <span class="info-value">{{
                 orderData?.referenceNo || "-"
               }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="info-item">
-              <span class="info-label">第三方跟踪号</span>
+              <span class="info-label">{{
+                $t("web.gfuc.third_party_tracking")
+              }}</span>
               <span class="info-value">{{ orderData?.reference3 || "-" }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="info-item">
-              <span class="info-label">产品类型</span>
+              <span class="info-label">{{ $t("web.gfuc.product_type") }}</span>
               <span class="info-value">{{
-                orderData?.productType === "ECO" ? "特惠" : "标快" || "-"
+                orderData?.productType === "ECO"
+                  ? $t("web.gfuc.express_delivery") || "-"
+                  : $t("web.gfuc.standard_delivery") || "-"
               }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="info-item">
-              <span class="info-label">产品</span>
+              <span class="info-label">{{ $t("web.gfuc.product") }}</span>
               <span class="info-value">{{
                 orderData?.productName || "-"
               }}</span>
@@ -131,33 +135,33 @@
         <!-- 发货和收件人信息 -->
         <div class="section shipping-section">
           <div class="flex items-center justify-between">
-            <h3 class="section-title">发货信息</h3>
+            <h3 class="section-title">{{ $t("web.gfuc.shipment_info") }}</h3>
             <div class="flex items-center">
               <svg-icon name="recipeType" width="24px" height="24px" />
-              <span class="ml-2">送货上门</span>
+              <span class="ml-2">{{ $t("web.gfuc.delivery_info") }}</span>
             </div>
           </div>
           <div class="flex items-center">
             <div class="flex flex-col flex-1 ml-3">
               <div class="section-info-title">
                 <svg-icon name="sender" width="24px" height="24px" />
-                <span>寄件人信息</span>
+                <span>{{ $t("web.gfuc.shipper_info") }}</span>
               </div>
               <div class="info-grid">
                 <div class="info-item full-width">
-                  <span class="info-label">寄件人姓名</span>
+                  <span class="info-label">{{ $t("web.gfuc.name") }}</span>
                   <span class="info-value">{{
                     orderData?.orderShipper?.shipperName || "-"
                   }}</span>
                 </div>
                 <div class="info-item full-width">
-                  <span class="info-label">寄件人地址</span>
+                  <span class="info-label">{{ $t("web.gfuc.address") }}</span>
                   <span class="info-value">{{
                     orderData?.orderShipper?.shipperStreet || "-"
                   }}</span>
                 </div>
                 <div class="info-item">
-                  <span class="info-label">寄件人电话</span>
+                  <span class="info-label">{{ $t("web.gfuc.phone") }}</span>
                   <span class="info-value">{{
                     orderData?.orderShipper?.shipperPhone || "-"
                   }}</span>
@@ -168,11 +172,11 @@
             <div class="flex flex-col flex-1 ml-3">
               <div class="section-info-title">
                 <svg-icon name="recipient" width="24px" height="24px" />
-                <span>收件人信息</span>
+                <span>{{ $t("web.gfuc.consignee_info_title") }}</span>
               </div>
               <div class="info-grid">
                 <div class="info-item full-width">
-                  <span class="info-label">收件人姓名</span>
+                  <span class="info-label">{{ $t("web.gfuc.name") }}</span>
                   <span class="info-value">{{
                     orderData?.orderConsignee?.consigneeName || "-"
                   }}</span>
@@ -196,7 +200,7 @@
 
         <!-- 包裹信息 -->
         <div class="section package-section">
-          <h3 class="section-title">包裹信息</h3>
+          <h3 class="section-title">{{ $t("web.gfuc.parcel_info") }}</h3>
           <el-table
             :data="orderData.orderItemList"
             border
@@ -205,7 +209,7 @@
           >
             <el-table-column
               prop="itemNameZh"
-              label="商品名称(CN)"
+              :label="$t('web.gfuc.product_name_cn')"
               min-width="200"
             >
               <template #default="{ row }">
@@ -214,14 +218,18 @@
             </el-table-column>
             <el-table-column
               prop="itemNameEn"
-              label="商品名称(EN)"
+              :label="$t('web.gfuc.product_name_en')"
               min-width="200"
             >
               <template #default="{ row }">
                 {{ row.itemNameEn || "-" }}
               </template>
             </el-table-column>
-            <el-table-column prop="itemQty" label="数量" width="120">
+            <el-table-column
+              prop="itemQty"
+              :label="$t('web.gfuc.quantity')"
+              width="120"
+            >
               <template #default="{ row }">
                 {{ row.itemQty || "-" }}
               </template>
@@ -230,7 +238,9 @@
 
           <div class="info-grid">
             <div class="info-item">
-              <span class="info-label">总数量</span>
+              <span class="info-label">{{
+                $t("web.gfuc.total_quantity")
+              }}</span>
               <span class="info-value">{{
                 orderData?.orderItemList?.reduce(
                   (acc, cur) => acc + cur.itemQty,
@@ -240,30 +250,39 @@
             </div>
             <el-divider direction="vertical" />
             <div class="info-item">
-              <span class="info-label">申报价值 (EUR)</span>
+              <span class="info-label">{{
+                $t("web.gfuc.declared_value")
+              }}</span>
               <span class="info-value">{{
                 orderData?.declaredValue || "-"
               }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="info-item">
-              <span class="info-label">总重量 (kg)</span>
+              <span class="info-label"
+                >{{ $t("web.gfuc.total_weight") }}(kg)</span
+              >
               <span class="info-value">{{
                 orderData?.orderGoods?.weight || "-"
               }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="info-item">
-              <span class="info-label">包裹体积</span>
+              <span class="info-label">{{ $t("web.gfuc.parcel_volume") }}</span>
               <span class="info-value">{{
-                orderData?.orderGoods?.width *
-                  orderData?.orderGoods?.height *
-                  orderData?.orderGoods?.length || "-"
+                orderData?.orderGoods?.width +
+                  "*" +
+                  orderData?.orderGoods?.height +
+                  "*" +
+                  orderData?.orderGoods?.length +
+                  "CM" || "-"
               }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="info-item">
-              <span class="info-label">计费重量 (kg)</span>
+              <span class="info-label"
+                >{{ $t("web.gfuc.charging_weight") }}(kg)</span
+              >
               <span class="info-value">{{
                 orderData?.orderGoods?.weight || "-"
               }}</span>
@@ -276,7 +295,7 @@
       <div class="order-sidebar">
         <!-- 轨迹信息 -->
         <div class="sidebar-section tracking-section">
-          <h3 class="sidebar-title">轨迹信息</h3>
+          <h3 class="sidebar-title">{{ $t("web.gfuc.tracking_info") }}</h3>
           <div class="tracking-info">
             <div v-for="item in orderData.trackingInfo" :key="item.trackDate">
               <div class="tracking-date">
@@ -306,17 +325,21 @@
 
         <!-- 增值服务 -->
         <div class="sidebar-section service-section" v-if="orderData?.orderCod">
-          <h3 class="sidebar-title">增值服务</h3>
+          <h3 class="sidebar-title">
+            {{ $t("web.gfuc.additional_services") }}
+          </h3>
           <div class="service-info">
             <div class="service-item">
-              <span class="service-label">保险金额 (EUR)</span>
+              <span class="service-label">{{
+                $t("web.gfuc.insurance_amount")
+              }}</span>
               <span class="service-value">{{
                 orderData?.orderCod?.currency || "-"
               }}</span>
             </div>
             <el-divider direction="vertical" />
             <div class="service-item">
-              <span class="service-label">COD金额 (EUR)</span>
+              <span class="service-label">{{ $t("web.gfuc.cod_amount") }}</span>
               <span class="service-value">{{
                 orderData?.orderCod?.codAmount || "-"
               }}</span>
