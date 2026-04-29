@@ -9,8 +9,6 @@ export function setupRouteGuard(router: Router) {
     const userStore = useUserStoreWithOut();
     const appStore = useAppStore();
 
-    console.log("+++", userStore, appStore);
-
     if (userStore.token && !userStore.isUserInfoUpdated) {
       await userStore.fetchUserInfo();
     }

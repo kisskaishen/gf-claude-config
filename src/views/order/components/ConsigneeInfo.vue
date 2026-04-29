@@ -414,7 +414,6 @@ const handleZipCodeInput = () => {
   // 填写邮编，带出省市区，支持编辑。
   getAddressByCode({ postcode: orderConsignee.value.consigneeCode }).then(
     (res) => {
-      console.log(res, "====");
       getStateListData();
       if (!res?.city?.stateId) {
         return;
@@ -466,7 +465,6 @@ const onEdit = () => {
 // 获取州/省列表
 const getStateListData = () => {
   getStateList().then((res) => {
-    console.log(res);
     states.value = res || [];
   });
 };

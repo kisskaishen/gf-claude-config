@@ -278,10 +278,8 @@ const handleChange = (value) => {
       // 超过30天时，自动调整结束日期
       const newEnd = start.add(30, "day").toDate();
       searchForm.orderTimeRange = [value[0], newEnd];
-      console.log("已自动调整为30天范围");
     }
   }
-  console.log("选择的日期范围:", value);
 };
 const tableData = ref([]);
 
@@ -324,7 +322,6 @@ const getParams = () => {
 
   params.orderType = "";
 
-  console.log(params, "查询参数");
   params.customerIdList = userStore.loginInfo?.shipperCustomerList?.map(
     (item: any) => item.customerId
   );
@@ -360,8 +357,6 @@ const handleReset = () => {
 };
 
 const handleView = (row: any) => {
-  console.log("View", row);
-
   router.push(`/order/detail/${row.id}/exception`);
 };
 

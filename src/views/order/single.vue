@@ -185,6 +185,7 @@ const successVisible = ref(false);
 
 // 更新发件人数据
 const updateShipperData = (data) => {
+  console.log(data, "updateShipperData");
   formData.shipper = data;
 };
 

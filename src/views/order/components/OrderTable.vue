@@ -367,10 +367,8 @@ const handleChange = (value) => {
       // 超过30天时，自动调整结束日期
       const newEnd = start.add(30, "day").toDate();
       searchForm.orderTimeRange = [value[0], newEnd];
-      console.log("已自动调整为30天范围");
     }
   }
-  console.log("选择的日期范围:", value);
 };
 // 处理订单状态集合
 const handleOrderStatusSet = () => {
@@ -472,12 +470,10 @@ const fetchData = () => {
 };
 
 const handleView = (row: any) => {
-  console.log("View", row);
   router.push(`/order/detail/${row.orderId}/order`);
 };
 
 const handlePrint = (row: any) => {
-  console.log("Print", row);
   // 打印订单
   getOrderLabelUrl({
     waybillNo: row.waybillNo,
@@ -492,7 +488,6 @@ const handleEdit = (row: any) => {
 };
 
 const handleCancel = (row: any) => {
-  console.log("Cancel", row);
   // 这里可以调用取消订单的接口，成功后刷新列表
   ElMessageBox.confirm("您将操作取消订单，是否确定取消？", "温馨提示", {
     confirmButtonText: "确认",
@@ -514,8 +509,6 @@ const handleCopy = (row: any) => {
 const selectedOrders = ref([]);
 
 const handleSelectionChange = (val: any) => {
-  console.log("选择变化:", val);
-
   selectedOrders.value = val.map((item: any) => ({
     waybillNo: item.waybillNo,
     orderId: item.orderId,
@@ -546,11 +539,6 @@ const handleBatchPrint = () => {
       cancelButtonText: "取消"
     }
   ).then(async () => {
-    console.log(
-      "批量打印订单:",
-      selectedOrders.value.map((item: any) => item.waybillNo)
-    );
-
     const res = await batchPrintOrderLabel(
       selectedOrders.value.map((item: any) => item.waybillNo)
     );

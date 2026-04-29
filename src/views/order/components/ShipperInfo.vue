@@ -293,6 +293,7 @@ import { ref, watch, computed, reactive, onMounted } from "vue";
 
 import { getAddressByCode, getSenderName } from "@/api/order";
 import { useUserStore } from "@/store/user";
+import { useAppStore } from "@/store/app";
 import { useI18n } from "vue-i18n";
 import { useDict } from "@/hooks/useDict";
 
@@ -322,8 +323,9 @@ const emit = defineEmits(["next", "edit", "update:orderShipper"]);
 const orderShipperRef = ref(null);
 
 const userInfo = useUserStore();
+const appStore = useAppStore();
+
 // userIdentity 用户身份：1-潜在客户 2-成交客户 3-走货账户
-console.log(userInfo.loginInfo?.shipperCustomerList, "====");
 const isCj = computed(() =>
   userInfo.userInfo?.userIdentity === 2 ? true : false
 );
@@ -331,6 +333,16 @@ const shipperOptions = computed(() => {
   return userInfo.loginInfo?.shipperCustomerList || [];
 });
 const countryList = useDict("gfuc.send.country");
+
+const lang = computed(() => appStore.lang);
+
+watch(
+  () => lang.value,
+  (val) => {
+    countryList.refresh();
+  }
+);
+
 const orderShipper = ref({
   customerId: "",
   shipperName: "",
@@ -354,10 +366,19 @@ watch(
     if (newInitialData && Object.keys(newInitialData).length > 0) {
       // 合并现有数据和新的初始数据
       Object.assign(orderShipper.value, newInitialData);
+      // 立即同步数据到父组件
+      emit("update:orderShipper", orderShipper.value);
     }
   },
   { immediate: true, deep: true }
 );
+
+// 组件挂载时立即同步数据到父组件
+onMounted(() => {
+  if (Object.keys(orderShipper.value).length > 0) {
+    emit("update:orderShipper", orderShipper.value);
+  }
+});
 
 const rules = computed(() => ({
   shipperName: [
@@ -461,7 +482,6 @@ watch(
 );
 
 const shipperNameChange = (val) => {
-  console.log(val, "val");
   orderShipper.value.shipperName = val;
 
   const selected = shipperNameList.value.find(
@@ -482,7 +502,6 @@ const shipperNameChange = (val) => {
 const getAddressByCodeBlur = async () => {
   if (orderShipper.value.shipperCode) {
     const res = await getAddressByCode(orderShipper.value.shipperCode);
-    console.log(res);
     // if (res?.data === "success") {
     //   orderShipper.value.shipperStreet = res?.data?.address1 || "";
     //   orderShipper.value.shipperCity = res?.data?.city || "";
