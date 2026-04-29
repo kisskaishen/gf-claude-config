@@ -111,7 +111,7 @@ service.interceptors.response.use(
     }
 
     const res = response.data as Result;
-
+    // /oms/aceert / order;
     // 3.5 响应数据格式规范
     // status: 接口业务处理状态码：1-成功，0-失败
     if (res.status !== 1) {
@@ -123,13 +123,20 @@ service.interceptors.response.use(
 
       // 特殊错误码处理，例如：Token 失效
       if (res.code === 401) {
-        ElMessage({
-          message: "Token 失效，请重新登录",
-          type: "error"
-        });
-        const userStore = useUserStoreWithOut();
-        userStore.logout();
-        location.reload();
+        if (response.config.url === "/oms/create/order") {
+          ElMessage({
+            message: "下单Token失效，请联系客服",
+            type: "error"
+          });
+        } else {
+          ElMessage({
+            message: "Token 失效，请重新登录",
+            type: "error"
+          });
+          const userStore = useUserStoreWithOut();
+          userStore.logout();
+          location.reload();
+        }
       }
       return Promise.reject(new Error(res.message || "Error"));
     } else {

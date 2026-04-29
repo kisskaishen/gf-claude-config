@@ -199,5 +199,6 @@ export default {
   "web.gfuc.tracking_info": "轨迹信息",
   "web.gfuc.additional_services": "增值服务",
   "web.gfuc.insurance_amount": "保险金额 (EUR)",
-  "web.gfuc.cod_amount": "COD金额 (EUR)"
+  "web.gfuc.cod_amount": "COD金额 (EUR)",
+  "web.gfuc.phone_length": "手机号长度必须在8-14位之间"
 };

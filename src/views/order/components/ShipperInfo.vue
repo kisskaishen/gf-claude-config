@@ -83,7 +83,44 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item :label="$t('web.gfuc.name')" prop="shipperName">
-                  <el-select
+                  <el-dropdown
+                    trigger="hover"
+                    max-height="300px"
+                    style="width: 100%"
+                    @command="shipperNameChange"
+                  >
+                    <el-input
+                      v-model="orderShipper.shipperName"
+                      :placeholder="$t('web.gfuc.please_enter_name')"
+                      maxlength="100"
+                      filterable
+                      allow-create
+                      clearable
+                      style="width: 100%"
+                    />
+                    <template #dropdown>
+                      <el-dropdown-menu>
+                        <el-dropdown-item
+                          v-for="item in shipperNameList"
+                          :key="item.id"
+                          :command="item.shipperName"
+                        >
+                          <div class="shipperNameOption">
+                            <span
+                              class="max-w-[300px] overflow-hidden whitespace-nowrap text-ellipsis"
+                              >{{ item.shipperName }}</span
+                            >
+                            <span
+                              class="text-xs text-info w-[300px] overflow-hidden whitespace-nowrap text-ellipsis text-right"
+                            >
+                              {{ item.shipperStreet }}
+                            </span>
+                          </div>
+                        </el-dropdown-item>
+                      </el-dropdown-menu>
+                    </template>
+                  </el-dropdown>
+                  <!-- <el-select
                     v-model="orderShipper.shipperName"
                     :placeholder="$t('web.gfuc.please_enter_name')"
                     maxlength="100"
@@ -98,19 +135,9 @@
                       :label="item.shipperName"
                       :value="item.shipperName"
                     >
-                      <div class="shipperNameOption">
-                        <span
-                          class="max-w-[200px] overflow-hidden whitespace-nowrap text-ellipsis"
-                          >{{ item.shipperName }}</span
-                        >
-                        <span
-                          class="text-xs text-info w-[200px] overflow-hidden whitespace-nowrap text-ellipsis text-right"
-                        >
-                          {{ item.shipperStreet }}
-                        </span>
-                      </div>
+                      
                     </el-option>
-                  </el-select>
+                  </el-select> -->
                 </el-form-item>
               </el-col>
 
@@ -119,7 +146,8 @@
                   <el-input
                     v-model="orderShipper.shipperPhone"
                     :placeholder="$t('web.gfuc.please_enter_phone')"
-                    maxlength="30"
+                    maxlength="14"
+                    minlength="8"
                   />
                 </el-form-item>
               </el-col>
@@ -131,8 +159,12 @@
                   :rules="[
                     {
                       required: orderShipper.shipperEmail,
-                      type: 'email',
                       message: $t('web.gfuc.please_enter_email'),
+                      trigger: 'blur'
+                    },
+                    {
+                      type: 'email',
+                      message: $t('gfuc.please_enter_correct_email_format'),
                       trigger: 'blur'
                     }
                   ]"
@@ -205,11 +237,19 @@
                   :label="$t('web.gfuc.country')"
                   prop="shipperCountry"
                 >
-                  <el-input
+                  <el-select
                     v-model="orderShipper.shipperCountry"
+                    filterable
                     :placeholder="$t('web.gfuc.please_enter_country')"
                     maxlength="20"
-                  />
+                  >
+                    <el-option
+                      v-for="item in countryList.options.value"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    />
+                  </el-select>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -254,6 +294,7 @@ import { ref, watch, computed, reactive, onMounted } from "vue";
 import { getAddressByCode, getSenderName } from "@/api/order";
 import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
+import { useDict } from "@/hooks/useDict";
 
 const { t } = useI18n();
 
@@ -289,7 +330,7 @@ const isCj = computed(() =>
 const shipperOptions = computed(() => {
   return userInfo.loginInfo?.shipperCustomerList || [];
 });
-
+const countryList = useDict("gfuc.send.country");
 const orderShipper = ref({
   customerId: "",
   shipperName: "",
@@ -330,6 +371,13 @@ const rules = computed(() => ({
     {
       required: true,
       message: t("web.gfuc.please_enter_phone"),
+
+      trigger: "blur"
+    },
+    {
+      min: 8,
+      max: 14,
+      message: t("web.gfuc.phone_length"),
       trigger: "blur"
     }
   ],
@@ -413,6 +461,9 @@ watch(
 );
 
 const shipperNameChange = (val) => {
+  console.log(val, "val");
+  orderShipper.value.shipperName = val;
+
   const selected = shipperNameList.value.find(
     (item) => item.shipperName === val
   );
@@ -477,7 +528,10 @@ defineExpose({
 @use "@/views/order/style/base";
 
 .shipperNameOption {
-  display: flex;
-  justify-content: space-between;
+  @apply flex justify-between w-full;
+}
+
+.el-dropdown-menu__item {
+  width: 100%;
 }
 </style>

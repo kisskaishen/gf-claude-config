@@ -4,7 +4,16 @@
       class="mr-4 step-left"
       :class="{ 'step-completed': isCompleted, 'step-active': isActive }"
     >
-      <div class="step-number">{{ stepNumber }}</div>
+      <div class="step-number" v-if="!isCompleted">
+        {{ stepNumber }}
+      </div>
+      <svg-icon
+        name="order-step-complated"
+        class="step-content-completed-icon"
+        width="24"
+        height="24"
+        v-if="isCompleted"
+      />
       <div class="step-line"></div>
     </div>
 
@@ -34,7 +43,7 @@
       </div>
 
       <div v-if="isActive || isCompleted" class="step-content-form">
-        <div v-if="isActive" class="form-container">
+        <div v-if="isActive || isCompleted" class="form-container">
           <el-form
             ref="formRef"
             :model="formData"
@@ -282,11 +291,11 @@
           </el-form>
         </div>
 
-        <div v-else class="summary-container" @click="onEdit">
+        <!-- <div v-else class="summary-container" @click="onEdit">
           <div class="summary-content">
             这里预览的逻辑先不写，因为第四步确实还没有完成呢
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div v-else class="step-placeholder">

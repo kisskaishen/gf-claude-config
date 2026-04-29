@@ -83,6 +83,11 @@
                       required: orderConsignee.consigneeEmail,
                       message: $t('web.gfuc.email_format_incorrect'),
                       trigger: 'blur'
+                    },
+                    {
+                      type: 'email',
+                      message: $t('gfuc.please_enter_correct_email_format'),
+                      trigger: 'blur'
                     }
                   ]"
                 >

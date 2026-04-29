@@ -198,5 +198,7 @@ export default {
   "web.gfuc.tracking_info": "Suivi informations",
   "web.gfuc.additional_services": "Services supplémentaires",
   "web.gfuc.insurance_amount": "Montant de protection (EUR)",
-  "web.gfuc.cod_amount": "COD montant (EUR)"
+  "web.gfuc.cod_amount": "COD montant (EUR)",
+  "web.gfuc.phone_length":
+    "Lengte van het telefoonnummer moet tussen tussen 8 en 14 karakters zijn"
 };

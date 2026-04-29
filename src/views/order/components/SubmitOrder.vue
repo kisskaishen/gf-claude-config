@@ -10,10 +10,18 @@
         <el-col :span="24" class="form-actions">
           <el-button
             :type="
-              currentStep < 4 && !$route.params.orderId ? 'default' : 'primary'
+              !completedSteps.includes(4) &&
+              currentStep.value < 4 &&
+              !$route.params.orderId
+                ? 'default'
+                : 'primary'
             "
             @click="onSubmit"
-            :disabled="currentStep < 4 && !$route.params.orderId"
+            :disabled="
+              !completedSteps.includes(4) &&
+              currentStep.value < 4 &&
+              !$route.params.orderId
+            "
             >{{ $t("web.gfuc.submit_order") }}</el-button
           >
         </el-col>
@@ -31,10 +39,15 @@ const props = defineProps({
   currentStep: {
     type: Number,
     default: 1
+  },
+  completedSteps: {
+    type: Array,
+    default: () => []
   }
 });
 
 const currentStep = computed(() => props.currentStep);
+const completedSteps = computed(() => props.completedSteps);
 
 const emit = defineEmits(["submit"]);
 

@@ -57,6 +57,7 @@
             <!-- 第五步，提交订单 -->
             <SubmitOrder
               :step-number="5"
+              :completedSteps="completedSteps"
               :currentStep="currentStep"
               @submit="submitOrder"
             />
@@ -214,6 +215,12 @@ const goToNextStep = () => {
 
 // 编辑步骤
 const editStep = (step) => {
+  console.log(step, currentStep.value);
+  if (currentStep.value != step) {
+    completedSteps.value.push(currentStep.value);
+
+    console.log(completedSteps.value);
+  }
   currentStep.value = step;
 };
 

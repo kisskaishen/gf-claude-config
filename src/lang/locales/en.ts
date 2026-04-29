@@ -208,5 +208,6 @@ export default {
   "web.gfuc.tracking_info": "Tracking Information",
   "web.gfuc.additional_services": "Additional Services",
   "web.gfuc.insurance_amount": "Insurance Amount (EUR)",
-  "web.gfuc.cod_amount": "COD Amount (EUR)"
+  "web.gfuc.cod_amount": "COD Amount (EUR)",
+  "web.gfuc.phone_length": "Phone number length must be between 8-14 characters"
 };

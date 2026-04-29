@@ -206,5 +206,7 @@ export default {
   "web.gfuc.tracking_info": "Suivi informazioni",
   "web.gfuc.additional_services": "Servizi aggiuntivi",
   "web.gfuc.insurance_amount": "Montant de protection (EUR)",
-  "web.gfuc.cod_amount": "COD montant (EUR)"
+  "web.gfuc.cod_amount": "COD montant (EUR)",
+  "web.gfuc.phone_length":
+    "Lunghezza del numero di telefono deve essere tra 8 e 14 caratteri"
 };
