@@ -4,7 +4,7 @@
       <!-- 左侧步骤条，融合在右侧里面 -->
 
       <!-- 右侧表单内容 -->
-      <div class="flex-1 overflow-auto">
+      <div class="overflow-auto flex-1">
         <div class="order-content">
           <div class="order-steps">
             <!-- 发件人信息 -->
@@ -76,7 +76,7 @@
       <div class="py-6 text-center">
         <!-- 成功图标 -->
         <div
-          class="inline-flex items-center justify-center w-20 h-20 mb-6 bg-green-100 rounded-full"
+          class="inline-flex justify-center items-center mb-6 w-20 h-20 bg-green-100 rounded-full"
         >
           <svg
             class="w-10 h-10 text-green-600"
@@ -114,7 +114,7 @@
 
       <!-- 底部按钮 -->
       <template #footer>
-        <div class="flex justify-center gap-4 py-4">
+        <div class="flex gap-4 justify-center py-4">
           <el-button
             size="large"
             class="px-10 py-3 text-lg border-gray-300"
@@ -137,7 +137,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted, onActivated, watch } from "vue";
 
 import ShipperInfo from "./components/ShipperInfo.vue";
 import ConsigneeInfo from "./components/ConsigneeInfo.vue";
@@ -162,6 +162,8 @@ defineOptions({
   name: "SingleOrder"
 });
 
+const STORAGE_KEY = "single_order_form_data";
+
 const shipperInfoRef = ref(null);
 const consigneeInfoRef = ref(null);
 const productInfoRef = ref(null);
@@ -180,6 +182,43 @@ const formData = reactive({
   product: {},
   parcel: {}
 });
+
+// 从 sessionStorage 恢复数据
+const restoreFormData = () => {
+  try {
+    const savedData = sessionStorage.getItem(STORAGE_KEY);
+    if (savedData) {
+      const parsed = JSON.parse(savedData);
+      if (parsed.formData) {
+        Object.assign(formData, parsed.formData);
+      }
+      if (parsed.currentStep) {
+        currentStep.value = parsed.currentStep;
+      }
+      if (parsed.completedSteps) {
+        completedSteps.value = parsed.completedSteps;
+      }
+    }
+  } catch (e) {
+    console.error("Failed to restore form data:", e);
+  }
+};
+
+// 保存数据到 sessionStorage
+const saveFormData = () => {
+  try {
+    sessionStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        formData,
+        currentStep: currentStep.value,
+        completedSteps: completedSteps.value
+      })
+    );
+  } catch (e) {
+    console.error("Failed to save form data:", e);
+  }
+};
 
 const successVisible = ref(false);
 
@@ -303,6 +342,14 @@ onMounted(() => {
     fetchOrderDetail();
     currentStep.value = 4;
     completedSteps.value = [1, 2, 3, 4];
+  } else {
+    restoreFormData();
+  }
+});
+
+onActivated(() => {
+  if (!route.params.orderId) {
+    restoreFormData();
   }
 });
 
@@ -313,6 +360,16 @@ watch(
       fetchOrderDetail();
     }
   }
+);
+
+watch(
+  formData,
+  () => {
+    if (!route.params.orderId) {
+      saveFormData();
+    }
+  },
+  { deep: true }
 );
 
 const fetchOrderDetail = async () => {
@@ -450,6 +507,8 @@ const resetForm = () => {
   consigneeInfoRef.value?.resetForm();
   productInfoRef.value?.resetForm();
   parcelInfoRef.value?.resetForm();
+
+  sessionStorage.removeItem(STORAGE_KEY);
 };
 
 const handleViewOrder = () => {
