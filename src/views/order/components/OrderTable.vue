@@ -115,11 +115,11 @@
           </el-form-item>
           <el-form-item
             :label="$t('web.gfuc.customer_name' /** 下单客户 **/)"
-            prop="customerName"
+            prop="customerId"
             v-if="customerNameList.length > 1"
           >
             <el-select
-              v-model="searchForm.customerName"
+              v-model="searchForm.customerId"
               :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
               clearable
               filterable
@@ -128,7 +128,7 @@
                 v-for="item in customerNameList"
                 :key="item.customerId"
                 :label="item.customerName"
-                :value="item.customerName"
+                :value="item.customerId"
               />
             </el-select>
           </el-form-item>
@@ -302,6 +302,7 @@ const initialFormState = {
   shipperCodeList: "",
   productCodeList: [],
   customerName: "",
+  customerId: "",
   transferRequired: undefined,
   deliveryStationIdList: [],
   orderTimeRange: ["", ""]
@@ -423,9 +424,13 @@ const getParams = () => {
   // 赋值
   params.orderStatusSet = handleOrderStatusSet();
 
-  params.customerIdList = userStore.loginInfo?.shipperCustomerList?.map(
-    (item: any) => item.customerId
-  );
+  if (searchForm.customerId) {
+    params.customerIdList = [searchForm.customerId];
+  } else {
+    params.customerIdList = userStore.loginInfo?.shipperCustomerList?.map(
+      (item: any) => item.customerId
+    );
+  }
   return params;
 };
 
