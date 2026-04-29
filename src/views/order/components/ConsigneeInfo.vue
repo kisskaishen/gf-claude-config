@@ -361,6 +361,12 @@ const rules = computed(() => ({
       required: true,
       message: t("web.gfuc.please_enter_phone"),
       trigger: "blur"
+    },
+    {
+      min: 8,
+      max: 14,
+      message: t("web.gfuc.phone_length"),
+      trigger: "blur"
     }
   ],
   address1: [
