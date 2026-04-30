@@ -253,13 +253,14 @@ import { cloneDeep } from "lodash-es";
 import dayjs from "dayjs";
 import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
+import { useAppStore } from "@/store/app";
 
 const userStore = useUserStore();
 
 const router = useRouter();
 
 const { t } = useI18n();
-
+const appStore = useAppStore();
 defineOptions({
   name: "OrderList"
 });
@@ -271,14 +272,23 @@ const props = defineProps({
   }
 });
 
+const lang = computed(() => appStore.lang);
+
+watch(
+  () => lang.value,
+  (val) => {
+    getProductList();
+  }
+);
+
 const currentStatus = computed(() => props.status);
 
 const orderStatusDict = useDict("order_status");
 
 // 异常订单状态
 const exceptionOrderStatusOptions = computed(() => {
-  return orderStatusDict.options.value.filter(
-    (item: any) => ![6, 7, 8].includes(item.value)
+  return orderStatusDict.options.value.filter((item: any) =>
+    [6, 7, 8].includes(item.value)
   );
 });
 
