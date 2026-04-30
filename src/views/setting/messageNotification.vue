@@ -3,9 +3,11 @@
     <div class="p-6 mx-auto">
       <!-- 标题区域 -->
       <div class="mb-8">
-        <h1 class="mb-2 text-xl font-bold text-gray-800">消息通知订阅配置</h1>
+        <h1 class="mb-2 text-xl font-bold text-gray-800">
+          {{ $t("web.gfuc.message_notification") }}
+        </h1>
         <p class="text-sm text-info">
-          配置余额不足提醒和账单邮件提醒，及时掌握账户动态
+          {{ $t("web.gfuc.balance_low_reminder_tip") }}
         </p>
       </div>
 
@@ -34,9 +36,11 @@
               </svg>
             </div>
             <div>
-              <h2 class="text-lg font-semibold text-gray-800">余额不足提醒</h2>
+              <h2 class="text-lg font-semibold text-gray-800">
+                {{ $t("web.gfuc.balance_low_reminder") }}
+              </h2>
               <p class="mt-1 text-sm text-info">
-                当可下单余额低于设定额度时发送邮件提醒
+                {{ $t("web.gfuc.balance_low_reminder_email") }}
               </p>
             </div>
           </div>
@@ -64,12 +68,12 @@
                     d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                   />
                 </svg>
-                编辑
+                {{ $t("web.gfuc.edit") }}
               </el-button>
               <span
                 class="inline-flex items-center px-3 py-1 mr-3 text-sm font-medium text-orange-500 rounded-full bg-orange-50"
               >
-                已开启
+                {{ $t("web.gfuc.enabled") }}
               </span>
             </div>
             <div
@@ -80,7 +84,7 @@
               <span
                 class="inline-flex items-center px-3 py-1 mr-3 text-sm font-medium text-gray-500 bg-gray-100 rounded-full"
               >
-                已关闭
+                {{ $t("web.gfuc.disabled") }}
               </span>
             </div>
             <!-- 开关 -->
@@ -111,7 +115,11 @@ import { updateBalanceAlertConfig } from "@/api/finance";
 
 import { getBalanceAlertConfig } from "@/api/finance";
 import { useUserStore } from "@/store/user";
+import { useI18n } from "vue-i18n";
+
 const userInfo = useUserStore();
+
+const t = useI18n().t;
 
 const balanceReminder = ref(0);
 
@@ -128,7 +136,7 @@ const handleBalanceReminderChange = async (val: boolean) => {
       }
     });
     // await getBalanceConfig();
-    ElMessage.success("已关闭余额不足提醒");
+    ElMessage.success(t("web.gfuc.disabled_balance_low_reminder"));
     await getBalanceConfig();
   }
   showBalanceReminderDialog.value = val === 1;

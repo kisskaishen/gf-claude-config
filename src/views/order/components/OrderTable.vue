@@ -16,7 +16,7 @@
         <template #action-left>
           <el-button type="primary" @click="handleBatchPrint">
             <el-icon><Printer /></el-icon>
-            批量打印
+            {{ $t("web.gfuc.batch_print") }}
           </el-button>
         </template>
         <template #order-number>
@@ -63,12 +63,12 @@
           >
             <el-date-picker
               v-model="searchForm.orderTimeRange"
-              type="daterange"
+              type="datetimerange"
               :disabled-date="disabledDate"
-              range-separator="至"
-              start-placeholder="开始时间"
-              end-placeholder="结束时间"
-              format="YYYY-MM-DD HH:mm:ss"
+              range-separator="~"
+              :start-placeholder="$t('web.gfuc.start_time')"
+              :end-placeholder="$t('web.gfuc.end_time')"
+              format="YYYY-MM-DD"
               value-format="YYYY-MM-DD HH:mm:ss"
               @change="handleChange"
             />
@@ -154,49 +154,69 @@
             <template #default="{ row }">
               <div class="table-actions">
                 <!-- 查看 (所有状态都有) -->
-                <el-button
-                  link
-                  type="primary"
-                  :icon="View"
-                  @click="handleView(row)"
-                  :title="$t('web.gfuc.view_order' /** 查看订单 **/)"
-                />
+                <el-tooltip
+                  :content="$t('web.gfuc.view_order')"
+                  placement="top"
+                >
+                  <el-button
+                    link
+                    type="primary"
+                    :icon="View"
+                    @click="handleView(row)"
+                  />
+                </el-tooltip>
 
                 <!-- 已下单: 打印、编辑、取消 -->
                 <template v-if="row.orderStatus === 1">
-                  <el-button
-                    link
-                    type="primary"
-                    :icon="Printer"
-                    @click="handlePrint(row)"
-                    :title="$t('web.gfuc.print_order' /** 打印订单 **/)"
-                  />
-                  <el-button
-                    link
-                    type="primary"
-                    :icon="Edit"
-                    @click="handleEdit(row)"
-                    :title="$t('web.gfuc.edit_order' /** 编辑订单 **/)"
+                  <el-tooltip
+                    :content="$t('web.gfuc.print_order')"
+                    placement="top"
+                  >
+                    <el-button
+                      link
+                      type="primary"
+                      :icon="Printer"
+                      @click="handlePrint(row)"
+                    />
+                  </el-tooltip>
+                  <el-tooltip
+                    :content="$t('web.gfuc.edit_order')"
+                    placement="top"
                     v-if="row.orderUpdateFlag"
-                  />
-                  <el-button
-                    link
-                    type="danger"
-                    :icon="Delete"
-                    @click="handleCancel(row)"
-                    :title="$t('web.gfuc.cancel_order' /** 取消订单 **/)"
-                  />
+                  >
+                    <el-button
+                      link
+                      type="primary"
+                      :icon="Edit"
+                      @click="handleEdit(row)"
+                    />
+                  </el-tooltip>
+                  <el-tooltip
+                    :content="$t('web.gfuc.cancel_order')"
+                    placement="top"
+                  >
+                    <el-button
+                      link
+                      type="danger"
+                      :icon="Delete"
+                      @click="handleCancel(row)"
+                    />
+                  </el-tooltip>
                 </template>
 
                 <!-- 取消: 复制订单 -->
                 <template v-if="row.orderStatus === 2">
-                  <el-button
-                    link
-                    type="primary"
-                    :icon="CopyDocument"
-                    @click="handleCopy(row)"
-                    :title="$t('web.gfuc.copy_order' /** 复制订单 **/)"
-                  />
+                  <el-tooltip
+                    :content="$t('web.gfuc.copy_order')"
+                    placement="top"
+                  >
+                    <el-button
+                      link
+                      type="primary"
+                      :icon="CopyDocument"
+                      @click="handleCopy(row)"
+                    />
+                  </el-tooltip>
                 </template>
               </div>
             </template>
@@ -232,10 +252,13 @@ import { useUserStore } from "@/store/user";
 import { cloneDeep } from "lodash-es";
 import dayjs from "dayjs";
 import { useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
 
 const userStore = useUserStore();
 
 const router = useRouter();
+
+const { t } = useI18n();
 
 defineOptions({
   name: "OrderList"
@@ -489,15 +512,15 @@ const handleEdit = (row: any) => {
 
 const handleCancel = (row: any) => {
   // 这里可以调用取消订单的接口，成功后刷新列表
-  ElMessageBox.confirm("您将操作取消订单，是否确定取消？", "温馨提示", {
-    confirmButtonText: "确认",
-    cancelButtonText: "取消"
+  ElMessageBox.confirm(t("web.gfuc.order_cancel_confirm"), t("web.gfuc.tip"), {
+    confirmButtonText: t("web.gfuc.confirm"),
+    cancelButtonText: t("web.gfuc.cancel")
   }).then(async () => {
     await cancelOrder({
       orderId: row.orderId,
       orderNo: row.orderNo
     });
-    ElMessage.success("订单取消成功");
+    ElMessage.success(t("web.gfuc.order_cancel_success"));
     await fetchData();
   });
 };
@@ -527,23 +550,25 @@ const handleBatchPrint = () => {
   // 获取选中的订单
 
   if (selectedOrders.value.length === 0) {
-    ElMessage.warning("请先选择要打印的订单");
+    ElMessage.warning(t("web.gfuc.select_orders_first"));
     return;
   }
 
   ElMessageBox.confirm(
-    `您将进行打印面单的操作，已勾选${selectedOrders.value.length}单，是否确认打印？`,
-    "温馨提示",
+    t("web.gfuc.batch_print_confirm", { count: selectedOrders.value.length }),
+    t("web.gfuc.tip"),
     {
-      confirmButtonText: "确认",
-      cancelButtonText: "取消"
+      confirmButtonText: t("web.gfuc.confirm"),
+      cancelButtonText: t("web.gfuc.cancel")
     }
   ).then(async () => {
     const res = await batchPrintOrderLabel(
       selectedOrders.value.map((item: any) => item.waybillNo)
     );
 
-    ElMessage.success(`已开始批量打印 ${selectedOrders.value.length} 个订单`);
+    ElMessage.success(
+      t("web.gfuc.batch_print_success", { count: selectedOrders.value.length })
+    );
 
     downloadFile(res[0].url, "面单打印");
   });

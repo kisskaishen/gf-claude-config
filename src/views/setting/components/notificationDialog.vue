@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    title="余额不足提醒配置"
+    :title="$t('web.gfuc.balance_low_reminder')"
     v-model="visible"
     @close="handleClose"
     width="700px"
@@ -22,7 +22,9 @@
             d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
           />
         </svg>
-        <span class="text-lg font-medium">余额不足提醒配置</span>
+        <span class="text-lg font-medium">{{
+          $t("web.gfuc.balance_low_reminder")
+        }}</span>
       </div>
     </template>
 
@@ -30,24 +32,30 @@
       ref="formRef"
       :model="form"
       :rules="rules"
-      label-width="100px"
+      label-width="120px"
       class="config-form"
     >
       <!-- 提醒额度 -->
-      <el-form-item label="提醒额度" prop="alertAmount">
+      <el-form-item
+        :label="$t('web.gfuc.balance_low_reminder_amount')"
+        prop="alertAmount"
+      >
         <div class="flex items-center">
           <el-input-number
             :controls="false"
             v-model.number="form.alertAmount"
-            placeholder="请输入金额"
+            :placeholder="$t('gfuc.please_enter')"
             class="flex-1"
           />
-          <span class="ml-2 text-gray-600">€ 欧元</span>
+          <span class="ml-2 text-gray-600">{{ $t("web.gfuc.eur") }}</span>
         </div>
       </el-form-item>
 
       <!-- 提醒时间 -->
-      <el-form-item label="提醒时间" prop="alertHourMinute">
+      <el-form-item
+        :label="$t('web.gfuc.balance_low_reminder_time')"
+        prop="alertHourMinute"
+      >
         <el-time-select
           v-model="form.alertHourMinute"
           class="w-full"
@@ -74,10 +82,13 @@
       </el-form-item>
 
       <!-- 时区 -->
-      <el-form-item label="时区" prop="timeZone">
+      <el-form-item
+        :label="$t('web.gfuc.balance_low_reminder_timezone')"
+        prop="timeZone"
+      >
         <el-select
           v-model="form.timeZone"
-          placeholder="请选择时区"
+          :placeholder="$t('gfuc.please_select')"
           class="w-full"
           filterable
           clearable
@@ -107,15 +118,17 @@
       </el-form-item>
 
       <!-- 提醒邮箱 -->
-      <el-form-item label="提醒邮箱" prop="email">
+      <el-form-item :label="$t('web.gfuc.reminder_email')" prop="email">
         <el-input
           v-model="form.email"
           type="textarea"
           :rows="4"
-          placeholder="请输入邮箱地址，多个邮箱请用逗号或换行分隔"
+          :placeholder="$t('web.gfuc.reminder_email_placeholder')"
           class="w-full"
         />
-        <div class="mt-1 text-xs text-gray-500">多个邮箱请用逗号或换行分隔</div>
+        <div class="mt-1 text-xs text-gray-500">
+          {{ $t("web.gfuc.reminder_email_placeholder_tip") }}
+        </div>
         <template #prefix>
           <svg
             class="w-4 h-4 text-gray-400"
@@ -134,10 +147,13 @@
       </el-form-item>
 
       <!-- 邮件语言 -->
-      <el-form-item label="邮件语言" prop="emailLanguage">
+      <el-form-item
+        :label="$t('web.gfuc.balance_low_reminder_email_language')"
+        prop="emailLanguage"
+      >
         <el-select
           v-model="form.emailLanguage"
-          placeholder="请选择语言"
+          :placeholder="$t('gfuc.please_select')"
           class="w-full"
         >
           <el-option
@@ -165,19 +181,22 @@
       </el-form-item>
 
       <!-- 弹窗提醒 -->
-      <el-form-item label="弹窗提醒">
+      <el-form-item
+        :label="$t('web.gfuc.balance_low_reminder_popup')"
+        prop="popupSwitch"
+      >
         <div class="flex items-center">
           <el-switch
             v-model="form.popupSwitch"
             active-color="#ff7d00"
             :active-value="1"
             :inactive-value="0"
-            active-text="开启"
-            inactive-text="关闭"
+            :active-text="$t('web.gfuc.enable')"
+            :inactive-text="$t('web.gfuc.disable')"
           />
         </div>
         <div class="mt-1 ml-1 text-xs text-gray-500">
-          开启后，余额不足时将在登录时弹出提醒窗口
+          {{ $t("web.gfuc.balance_low_reminder_popup_tip") }}
         </div>
         <template #prefix>
           <svg
@@ -199,13 +218,13 @@
 
     <template #footer>
       <div class="flex justify-end gap-3">
-        <el-button @click="handleClose">取消</el-button>
+        <el-button @click="handleClose">{{ $t("web.gfuc.cancel") }}</el-button>
         <el-button
           type="primary"
           class="bg-orange-500 border-orange-500 hover:bg-orange-600"
           @click="handleSave"
         >
-          保存设置
+          {{ $t("web.gfuc.save") }}
         </el-button>
       </div>
     </template>
@@ -219,6 +238,9 @@ import { ElMessage } from "element-plus";
 import { Timezone, TimezoneArea, Lang } from "@/enums";
 import { addBalanceAlertConfig, updateBalanceAlertConfig } from "@/api/finance";
 import { useUserStore } from "@/store/user";
+import { useI18n } from "vue-i18n";
+
+const t = useI18n().t;
 const userInfo = useUserStore();
 const emit = defineEmits(["update:visible"]);
 
@@ -317,7 +339,7 @@ const validateEmail = (rule, value, callback) => {
 
   for (const email of emails) {
     if (!emailRegex.test(email.trim())) {
-      callback(new Error(`邮箱格式不正确: ${email}`));
+      callback(new Error(`${t("web.gfuc.email_format_error")}: ${email}`));
       return;
     }
   }
@@ -326,20 +348,24 @@ const validateEmail = (rule, value, callback) => {
 };
 
 const rules = reactive({
-  alertAmount: [{ required: true, message: "请输入提醒额度", trigger: "blur" }],
-  alertHourMinute: [
-    { required: true, message: "请选择提醒时间", trigger: "change" }
+  alertAmount: [
+    { required: true, message: t("web.gfuc.please_enter"), trigger: "blur" }
   ],
-  timeZone: [{ required: true, message: "请选择时区", trigger: "change" }],
+  alertHourMinute: [
+    { required: true, message: t("web.gfuc.please_select"), trigger: "change" }
+  ],
+  timeZone: [
+    { required: true, message: t("web.gfuc.please_select"), trigger: "change" }
+  ],
   email: [
-    { required: true, message: "请输入邮箱", trigger: "blur" },
+    { required: true, message: t("web.gfuc.please_enter"), trigger: "blur" },
     { validator: validateEmail, trigger: "blur" }
   ],
   emailLanguage: [
-    { required: true, message: "请选择邮箱语言", trigger: "change" }
+    { required: true, message: t("web.gfuc.please_select"), trigger: "change" }
   ],
   popupSwitch: [
-    { required: true, message: "请选择弹窗提醒", trigger: "change" }
+    { required: true, message: t("web.gfuc.please_select"), trigger: "change" }
   ]
 });
 
@@ -372,10 +398,10 @@ const handleSave = async () => {
       } else {
         await addBalanceAlertConfig(form.value);
       }
-      ElMessage.success("设置保存成功");
+      ElMessage.success(t("web.gfuc.setting_save_success"));
       handleClose();
     } else {
-      ElMessage.error("请检查表单填写是否正确");
+      ElMessage.error(t("web.gfuc.please_check_form"));
     }
   });
 };
@@ -399,6 +425,7 @@ const handleSave = async () => {
 .config-form :deep(.el-form-item__label) {
   display: flex;
   align-items: center;
+  line-height: 1;
 }
 
 .config-form :deep(.el-input__prefix) {

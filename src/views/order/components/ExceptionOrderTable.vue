@@ -64,12 +64,12 @@
           >
             <el-date-picker
               v-model="searchForm.orderTimeRange"
-              type="daterange"
+              type="datetimerange"
               :disabled-date="disabledDate"
-              range-separator="至"
+              range-separator="~"
               start-placeholder="开始时间"
               end-placeholder="结束时间"
-              format="YYYY-MM-DD HH:mm:ss"
+              format="YYYY-MM-DD"
               value-format="YYYY-MM-DD HH:mm:ss"
               @change="handleChange"
             />

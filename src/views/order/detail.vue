@@ -156,9 +156,7 @@
                 </div>
                 <div class="info-item full-width">
                   <span class="info-label">{{ $t("web.gfuc.address") }}</span>
-                  <span class="info-value">{{
-                    orderData?.orderShipper?.shipperStreet || "-"
-                  }}</span>
+                  <span class="info-value">{{ shipperAddress || "-" }}</span>
                 </div>
                 <div class="info-item">
                   <span class="info-label">{{ $t("web.gfuc.phone") }}</span>
@@ -183,9 +181,7 @@
                 </div>
                 <div class="info-item full-width">
                   <span class="info-label">{{ $t("web.gfuc.address") }}</span>
-                  <span class="info-value">{{
-                    orderData?.orderConsignee?.address1 || "-"
-                  }}</span>
+                  <span class="info-value">{{ consigneeAddress }}</span>
                 </div>
                 <div class="info-item">
                   <span class="info-label">{{ $t("web.gfuc.phone") }}</span>
@@ -489,6 +485,32 @@ const fetchOrderDetail = async () => {
     console.error("Failed to fetch order detail:", error);
   }
 };
+
+const shipperAddress = computed(() => {
+  return [
+    orderData.value?.orderShipper?.shipperCountry,
+    orderData.value?.orderShipper?.shipperCity,
+    orderData.value?.orderShipper?.shipperArea,
+    orderData.value?.orderShipper?.shipperStreet
+  ]
+    .filter(Boolean) // 过滤掉 undefined/null/空字符串
+    .join(" "); // 用空格连接
+});
+
+const consigneeAddress = computed(() => {
+  return [
+    orderData.value?.orderConsignee?.consigneeCountry,
+    orderData.value?.orderConsignee?.consigneeCity,
+    orderData.value?.orderConsignee?.consigneeArea,
+    orderData.value?.orderConsignee?.address1,
+    orderData.value?.orderConsignee?.address2,
+    orderData.value?.orderConsignee?.address3,
+    orderData.value?.orderConsignee?.consigneeNumExt,
+    orderData.value?.orderConsignee?.consigneeNumIn
+  ]
+    .filter(Boolean) // 过滤掉 undefined/null/空字符串
+    .join(" "); // 用空格连接
+});
 </script>
 
 <style scoped lang="scss">

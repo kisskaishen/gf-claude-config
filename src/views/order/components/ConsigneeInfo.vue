@@ -285,9 +285,13 @@ import { ref, watch } from "vue";
 import { Edit } from "@element-plus/icons-vue";
 import { getAddressByCode, getListCityBySid, getStateList } from "@/api/order";
 import { useUserStore } from "@/store/user";
+import { useAppStore } from "@/store/app";
+
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
+const appStore = useAppStore();
+
 const userStore = useUserStore();
 
 const props = defineProps({
@@ -331,10 +335,19 @@ const orderConsignee = ref({
   consigneeArea: "",
   consigneeCity: "",
   consigneeState: "",
-  consigneeCountry: userStore.userInfo?.country || "",
+  consigneeCountry: appStore.site,
   remarks: "",
   ...props.initialData
 });
+const site = computed(() => {
+  return appStore.site || "";
+});
+watch(
+  () => site.value,
+  (newSite) => {
+    orderConsignee.value.consigneeCountry = newSite;
+  }
+);
 
 // 监听 initialData 变化，当父组件数据加载完成后更新表单数据
 watch(
@@ -449,7 +462,7 @@ const onClear = () => {
     consigneeArea: "",
     consigneeCity: "",
     consigneeState: "",
-    consigneeCountry: userStore.userInfo?.country || "",
+    consigneeCountry: appStore.site || "",
     remarks: ""
   };
 };

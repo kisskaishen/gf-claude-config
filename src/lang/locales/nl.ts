@@ -200,5 +200,53 @@ export default {
   "web.gfuc.insurance_amount": "Montant de protection (EUR)",
   "web.gfuc.cod_amount": "COD montant (EUR)",
   "web.gfuc.phone_length":
-    "Lengte van het telefoonnummer moet tussen tussen 8 en 14 karakters zijn"
+    "Lengte van het telefoonnummer moet tussen tussen 8 en 14 karakters zijn",
+
+  "web.gfuc.message_notification": "Meldingen abonnement",
+  "web.gfuc.balance_low_reminder_tip":
+    "Configureer herinneringen voor laag saldo en factuurmail om uw accountstatus bij te houden",
+  "web.gfuc.balance_low_reminder": "Herinnering laag saldo",
+  "web.gfuc.balance_low_reminder_email":
+    "Stuur een e-mailherinnering wanneer het beschikbare bestelsaldo onder het ingestelde bedrag komt",
+  "web.gfuc.balance_low_reminder_amount": "Herinneringsbedrag",
+  "web.gfuc.balance_low_reminder_time": "Herinneringstijd",
+  "web.gfuc.balance_low_reminder_timezone": "Tijdzone",
+  "web.gfuc.reminder_email": "Herinneringse-mail",
+  "web.gfuc.reminder_email_placeholder":
+    "Voer het e-mailadres in. Gebruik komma's of regeleinden voor meerdere e-mails",
+  "web.gfuc.reminder_email_placeholder_tip":
+    "Scheid meerdere e-mails met komma's of regeleinden",
+  "web.gfuc.balance_low_reminder_email_language": "E-mailtaal",
+  "web.gfuc.balance_low_reminder_popup": "Popup herinnering",
+  "web.gfuc.enable": "Inschakelen",
+  "web.gfuc.disable": "Uitschakelen",
+  "web.gfuc.balance_low_reminder_popup_tip":
+    "Popup herinnering verschijnt wanneer het saldo laag is na inschakeling",
+  "web.gfuc.eur": "Euro",
+  "web.gfuc.save.": "Opslaan",
+  "web.gfuc.edit": "Bewerken",
+  "web.gfuc.enabled": "Ingeschakeld",
+  "web.gfuc.disabled": "Uitgeschakeld",
+  "web.gfuc.disabled_balance_low_reminder":
+    "Herinnering laag saldo uitgeschakeld",
+  "web.gfuc.email_format_error": "Ongeldig e-mailformaat",
+  "web.gfuc.setting_save_success": "Instellingen succesvol opgeslagen",
+  "web.gfuc.please_check_form":
+    "Controleer of het formulier correct is ingevuld",
+  "web.gfuc.please_select": "Selecteer",
+
+  // OrderTable.vue 页面新增翻译
+  "web.gfuc.start_time": "Starttijd",
+  "web.gfuc.end_time": "Eindtijd",
+  "web.gfuc.tip": "Tip",
+  "web.gfuc.batch_print": "Batch afdrukken",
+  "web.gfuc.order_cancel_confirm":
+    "U staat op het punt de bestelling te annuleren, weet u zeker dat u wilt annuleren?",
+  "web.gfuc.order_cancel_success": "Bestelling succesvol geannuleerd",
+  "web.gfuc.batch_print_confirm":
+    "U staat op het punt verzendetiketten af te drukken, {count} bestellingen geselecteerd, afdrukken bevestigen?",
+  "web.gfuc.batch_print_success":
+    "Gestart met batch afdrukken van {count} bestellingen",
+  "web.gfuc.select_orders_first":
+    "Selecteer eerst bestellingen om af te drukken"
 };

@@ -222,7 +222,7 @@ const emit = defineEmits(["next", "edit", "update:formData"]);
 
 const formRef = ref(null);
 
-const rules = ref({
+const rules = reactive({
   productType: [
     { required: true, message: "请选择产品类型", trigger: "change" }
   ],
@@ -256,7 +256,7 @@ const rules = ref({
         }
         callback();
       },
-      trigger: "blur"
+      trigger: "change"
     }
   ],
   queryCollectEndTime: [
@@ -286,7 +286,7 @@ const rules = ref({
         }
         callback();
       },
-      trigger: "blur"
+      trigger: "change"
     }
   ]
 });
@@ -299,6 +299,15 @@ const formData = ref({
   queryCollectEndTime: "",
   ...props.initialData
 });
+
+const lang = computed(() => appStore.lang);
+
+watch(
+  () => lang.value,
+  (val) => {
+    getProductList();
+  }
+);
 
 // 监听 initialData 变化，当父组件数据加载完成后更新表单数据
 watch(
@@ -328,7 +337,11 @@ const handleProductChange = (val) => {
 };
 
 const onNext = () => {
-  emit("next");
+  formRef.value.validate((valid) => {
+    if (valid) {
+      emit("next");
+    }
+  });
 };
 
 const onClear = () => {
@@ -355,10 +368,10 @@ const toPascalCase = (str) => {
     .replace(/^\w/, (firstChar) => firstChar.toUpperCase());
 };
 
-const getProductList = async (customerId) => {
+const getProductList = async () => {
   const res = await getProductStepInfo({
     country: userStore.userInfo?.country || "",
-    customerId: customerId || ""
+    customerId: sessionStorage.getItem("createOrderCustomerId") || ""
   });
 
   const res2 = await getOrderProductList({
@@ -393,8 +406,7 @@ watch(
   (value) => {
     if (value) {
       if (sessionStorage.getItem("createOrderCustomerId")) {
-        let customerId = sessionStorage.getItem("createOrderCustomerId");
-        getProductList(customerId);
+        getProductList();
       }
     }
   }

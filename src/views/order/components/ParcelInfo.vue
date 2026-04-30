@@ -143,11 +143,11 @@
                         </el-form-item>
                       </template>
                     </el-table-column>
-                    <el-table-column
-                      prop="itemNameEn"
-                      :label="$t('web.gfuc.product_name_en')"
-                      min-width="200"
-                    >
+                    <el-table-column prop="itemNameEn" min-width="200">
+                      <template #header>
+                        <span class="text-[#ff0014] mr-1">*</span>
+                        <span> {{ $t("web.gfuc.product_name_en") }}</span>
+                      </template>
                       <template #default="{ row, $index }">
                         <el-form-item
                           :prop="`orderItemList.${$index}.itemNameEn`"
@@ -168,6 +168,10 @@
                       :label="$t('web.gfuc.quantity')"
                       min-width="100"
                     >
+                      <template #header>
+                        <span class="text-[#ff0014] mr-1">*</span>
+                        <span> {{ $t("web.gfuc.quantity") }}</span>
+                      </template>
                       <template #default="{ row, $index }">
                         <el-form-item
                           :prop="`orderItemList.${$index}.itemQty`"
@@ -384,6 +388,13 @@ const validateDimensions = (rule, value, callback) => {
 };
 
 const rules = computed(() => ({
+  declaredValue: [
+    {
+      required: true,
+      message: t("web.gfuc.enter_total_declared_value"),
+      trigger: "blur"
+    }
+  ],
   "orderGoods.weight": [
     {
       required: true,

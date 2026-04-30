@@ -47,6 +47,12 @@ const handleSetSite = (val: any) => {
   appStore.setSite(val);
   // userStore.isUserInfoUpdated = false;
   // window.location.reload();
+  if (sessionStorage.getItem("balanceAlertNotShown")) {
+    sessionStorage.removeItem("balanceAlertNotShown");
+  }
+  if (sessionStorage.getItem("single_order_form_data")) {
+    sessionStorage.removeItem("single_order_form_data");
+  }
   // 清空用户信息
   userStore.logout();
   sessionStorage.setItem("setSite", val);

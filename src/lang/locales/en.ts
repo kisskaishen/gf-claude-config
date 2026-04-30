@@ -209,5 +209,51 @@ export default {
   "web.gfuc.additional_services": "Additional Services",
   "web.gfuc.insurance_amount": "Insurance Amount (EUR)",
   "web.gfuc.cod_amount": "COD Amount (EUR)",
-  "web.gfuc.phone_length": "Phone number length must be between 8-14 characters"
+  "web.gfuc.phone_length":
+    "Phone number length must be between 8-14 characters",
+
+  "web.gfuc.message_notification": "Message Notification Subscription",
+  "web.gfuc.balance_low_reminder_tip":
+    "Configure low balance reminder and billing email reminder to keep track of your account status",
+  "web.gfuc.balance_low_reminder": "Low Balance Reminder",
+  "web.gfuc.balance_low_reminder_email":
+    "Send email reminder when available order balance falls below the set amount",
+  "web.gfuc.balance_low_reminder_amount": "Reminder Amount",
+  "web.gfuc.balance_low_reminder_time": "Reminder Time",
+  "web.gfuc.balance_low_reminder_timezone": "Timezone",
+  "web.gfuc.reminder_email": "Reminder Email",
+  "web.gfuc.reminder_email_placeholder":
+    "Please enter email address(es). For multiple emails, separate with commas or line breaks",
+  "web.gfuc.reminder_email_placeholder_tip":
+    "Separate multiple emails with commas or line breaks",
+  "web.gfuc.balance_low_reminder_email_language": "Email Language",
+  "web.gfuc.balance_low_reminder_popup": "Popup Reminder",
+  "web.gfuc.enable": "Enable",
+  "web.gfuc.disable": "Disable",
+  "web.gfuc.balance_low_reminder_popup_tip":
+    "Popup reminder will appear when balance is low after enabled",
+  "web.gfuc.eur": "Euro",
+  "web.gfuc.save.": "Save",
+  "web.gfuc.edit": "Edit",
+  "web.gfuc.enabled": "Enabled",
+  "web.gfuc.disabled": "Disabled",
+  "web.gfuc.disabled_balance_low_reminder": "Low Balance Reminder Disabled",
+  "web.gfuc.email_format_error": "Invalid email format",
+  "web.gfuc.setting_save_success": "Settings saved successfully",
+  "web.gfuc.please_check_form":
+    "Please check if the form is filled out correctly",
+  "web.gfuc.please_select": "Please select",
+
+  // OrderTable.vue 页面新增翻译
+  "web.gfuc.start_time": "Start Time",
+  "web.gfuc.end_time": "End Time",
+  "web.gfuc.tip": "Tip",
+  "web.gfuc.batch_print": "Batch Print",
+  "web.gfuc.order_cancel_confirm":
+    "You are about to cancel the order, are you sure you want to cancel?",
+  "web.gfuc.order_cancel_success": "Order cancelled successfully",
+  "web.gfuc.batch_print_confirm":
+    "You are about to print shipping labels, {count} orders selected, confirm to print?",
+  "web.gfuc.batch_print_success": "Started batch printing {count} orders",
+  "web.gfuc.select_orders_first": "Please select orders to print first"
 };

@@ -217,5 +217,53 @@ export default {
   "web.gfuc.insurance_amount": "Montant de protection (EUR)",
   "web.gfuc.cod_amount": "COD montant (EUR)",
   "web.gfuc.phone_length":
-    "Longueur du numéro de téléphone doit être entre 8 et 14 caractères"
+    "Longueur du numéro de téléphone doit être entre 8 et 14 caractères",
+
+  "web.gfuc.message_notification": "Abonnement aux notifications",
+  "web.gfuc.balance_low_reminder_tip":
+    "Configurez les rappels de solde insuffisant et les rappels de facture par e-mail pour suivre l'état de votre compte",
+  "web.gfuc.balance_low_reminder": "Rappel de solde insuffisant",
+  "web.gfuc.balance_low_reminder_email":
+    "Envoyer un rappel par e-mail lorsque le solde disponible pour les commandes est inférieur au montant défini",
+  "web.gfuc.balance_low_reminder_amount": "Montant du rappel",
+  "web.gfuc.balance_low_reminder_time": "Heure du rappel",
+  "web.gfuc.balance_low_reminder_timezone": "Fuseau horaire",
+  "web.gfuc.reminder_email": "E-mail de rappel",
+  "web.gfuc.reminder_email_placeholder":
+    "Veuillez entrer l'adresse e-mail. Pour plusieurs e-mails, séparez par des virgules ou des sauts de ligne",
+  "web.gfuc.reminder_email_placeholder_tip":
+    "Séparez plusieurs e-mails par des virgules ou des sauts de ligne",
+  "web.gfuc.balance_low_reminder_email_language": "Langue de l'e-mail",
+  "web.gfuc.balance_low_reminder_popup": "Rappel contextuel",
+  "web.gfuc.enable": "Activer",
+  "web.gfuc.disable": "Désactiver",
+  "web.gfuc.balance_low_reminder_popup_tip":
+    "Un rappel contextuel apparaîtra lorsque le solde est insuffisant après activation",
+  "web.gfuc.eur": "Euro",
+  "web.gfuc.save.": "Enregistrer",
+  "web.gfuc.edit": "Modifier",
+  "web.gfuc.enabled": "Activé",
+  "web.gfuc.disabled": "Désactivé",
+  "web.gfuc.disabled_balance_low_reminder":
+    "Rappel de solde insuffisant désactivé",
+  "web.gfuc.email_format_error": "Format d'e-mail incorrect",
+  "web.gfuc.setting_save_success": "Paramètres enregistrés avec succès",
+  "web.gfuc.please_check_form":
+    "Veuillez vérifier si le formulaire est correctement rempli",
+  "web.gfuc.please_select": "Veuillez sélectionner",
+
+  // OrderTable.vue 页面新增翻译
+  "web.gfuc.start_time": "Heure de début",
+  "web.gfuc.end_time": "Heure de fin",
+  "web.gfuc.tip": "Conseil",
+  "web.gfuc.batch_print": "Impression par lot",
+  "web.gfuc.order_cancel_confirm":
+    "Vous êtes sur le point d'annuler la commande, êtes-vous sûr de vouloir annuler ?",
+  "web.gfuc.order_cancel_success": "Commande annulée avec succès",
+  "web.gfuc.batch_print_confirm":
+    "Vous êtes sur le point d'imprimer des étiquettes d'expédition, {count} commandes sélectionnées, confirmer l'impression ?",
+  "web.gfuc.batch_print_success":
+    "Impression par lot de {count} commandes démarrée",
+  "web.gfuc.select_orders_first":
+    "Veuillez d'abord sélectionner les commandes à imprimer"
 };

@@ -208,5 +208,52 @@ export default {
   "web.gfuc.insurance_amount": "Montant de protection (EUR)",
   "web.gfuc.cod_amount": "COD montant (EUR)",
   "web.gfuc.phone_length":
-    "Lunghezza del numero di telefono deve essere tra 8 e 14 caratteri"
+    "Lunghezza del numero di telefono deve essere tra 8 e 14 caratteri",
+
+  "web.gfuc.message_notification": "Sottoscrizione notifiche",
+  "web.gfuc.balance_low_reminder_tip":
+    "Configura promemoria di saldo insufficiente e promemoria fattura via email per tenere traccia dello stato del tuo account",
+  "web.gfuc.balance_low_reminder": "Promemoria saldo insufficiente",
+  "web.gfuc.balance_low_reminder_email":
+    "Invia promemoria email quando il saldo disponibile per gli ordini scende al di sotto dell'importo impostato",
+  "web.gfuc.balance_low_reminder_amount": "Importo del promemoria",
+  "web.gfuc.balance_low_reminder_time": "Orario del promemoria",
+  "web.gfuc.balance_low_reminder_timezone": "Fuso orario",
+  "web.gfuc.reminder_email": "Email di promemoria",
+  "web.gfuc.reminder_email_placeholder":
+    "Inserisci l'indirizzo email. Per più email, separa con virgole o interruzioni di riga",
+  "web.gfuc.reminder_email_placeholder_tip":
+    "Separa più email con virgole o interruzioni di riga",
+  "web.gfuc.balance_low_reminder_email_language": "Lingua dell'email",
+  "web.gfuc.balance_low_reminder_popup": "Promemoria popup",
+  "web.gfuc.enable": "Attiva",
+  "web.gfuc.disable": "Disattiva",
+  "web.gfuc.balance_low_reminder_popup_tip":
+    "Il promemoria popup apparirà quando il saldo è insufficiente dopo l'attivazione",
+  "web.gfuc.eur": "Euro",
+  "web.gfuc.save.": "Salva",
+  "web.gfuc.edit": "Modifica",
+  "web.gfuc.enabled": "Attivato",
+  "web.gfuc.disabled": "Disattivato",
+  "web.gfuc.disabled_balance_low_reminder":
+    "Promemoria saldo insufficiente disattivato",
+  "web.gfuc.email_format_error": "Formato email non valido",
+  "web.gfuc.setting_save_success": "Impostazioni salvate con successo",
+  "web.gfuc.please_check_form":
+    "Controlla se il modulo è compilato correttamente",
+  "web.gfuc.please_select": "Seleziona",
+
+  // OrderTable.vue 页面新增翻译
+  "web.gfuc.start_time": "Ora di inizio",
+  "web.gfuc.end_time": "Ora di fine",
+  "web.gfuc.tip": "Suggerimento",
+  "web.gfuc.batch_print": "Stampa in batch",
+  "web.gfuc.order_cancel_confirm":
+    "Stai per annullare l'ordine, sei sicuro di voler annullare?",
+  "web.gfuc.order_cancel_success": "Ordine annullato con successo",
+  "web.gfuc.batch_print_confirm":
+    "Stai per stampare le etichette di spedizione, {count} ordini selezionati, confermare la stampa?",
+  "web.gfuc.batch_print_success":
+    "Avviata la stampa in batch di {count} ordini",
+  "web.gfuc.select_orders_first": "Seleziona prima gli ordini da stampare"
 };

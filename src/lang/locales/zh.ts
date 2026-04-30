@@ -56,7 +56,6 @@ export default {
   "web.gfuc.return_to_refill": "返回重新填写",
   "web.gfuc.authentication": "认证",
   "web.gfuc.login_successful": "登录成功",
-  "web.gfuc.registration_success_please_login": "注册成功，请登录",
   "web.gfuc.confirm": "确定",
   "web.gfuc.preference_settings_description":
     "为了更好的服务，您需要设置您的网站偏好",
@@ -77,6 +76,23 @@ export default {
 
   "web.gfuc.order_detail": "订单详情",
 
+  // OrderTable.vue 页面新增翻译
+  "web.gfuc.start_time": "开始时间",
+  "web.gfuc.end_time": "结束时间",
+  "web.gfuc.tip": "温馨提示",
+  "web.gfuc.batch_print": "批量打印",
+  "web.gfuc.print_order": "打印订单",
+  "web.gfuc.edit_order": "编辑订单",
+  "web.gfuc.cancel_order": "取消订单",
+  "web.gfuc.copy_order": "复制订单",
+  "web.gfuc.view_order": "查看订单",
+  "web.gfuc.order_cancel_confirm": "您将操作取消订单，是否确定取消？",
+  "web.gfuc.order_cancel_success": "订单取消成功",
+  "web.gfuc.batch_print_confirm":
+    "您将进行打印面单的操作，已勾选{count}单，是否确认打印？",
+  "web.gfuc.batch_print_success": "已开始批量打印 {count} 个订单",
+  "web.gfuc.select_orders_first": "请先选择要打印的订单",
+
   // 单票下单页面
   "web.gfuc.order_created_success": "订单创建成功",
   "web.gfuc.order_created_success_message":
@@ -84,7 +100,6 @@ export default {
   "web.gfuc.order_update_success": "订单更新成功",
   "web.gfuc.order_update_success_message":
     "您的订单已经更新成功，您可以查看订单或继续下单",
-  "web.gfuc.view_order": "查看订单",
   "web.gfuc.continue_order": "继续下单",
 
   // 发件人信息组件
@@ -177,10 +192,6 @@ export default {
 
   "web.gfuc.please_enter": "请输入",
 
-  "web.gfuc.print_order": "打印订单",
-  "web.gfuc.edit_order": "编辑订单",
-  "web.gfuc.cancel_order": "取消订单",
-  "web.gfuc.copy_order": "复制订单",
   "web.gfuc.re_order": "重新下单",
   "web.gfuc.customer_name": "下单客户",
   "web.gfuc.setting": "设置",
@@ -200,5 +211,36 @@ export default {
   "web.gfuc.additional_services": "增值服务",
   "web.gfuc.insurance_amount": "保险金额 (EUR)",
   "web.gfuc.cod_amount": "COD金额 (EUR)",
-  "web.gfuc.phone_length": "手机号长度必须在8-14位之间"
+  "web.gfuc.phone_length": "手机号长度必须在8-14位之间",
+
+  "web.gfuc.message_notification": "消息通知订阅",
+  "web.gfuc.balance_low_reminder_tip":
+    "配置余额不足提醒和账单邮件提醒，及时掌握账户动态",
+  "web.gfuc.balance_low_reminder": "余额不足提醒",
+  "web.gfuc.balance_low_reminder_email":
+    "当可下单余额低于设定额度时发送邮件提醒",
+  "web.gfuc.balance_low_reminder_amount": "提醒额度",
+  "web.gfuc.balance_low_reminder_time": "提醒时间",
+  "web.gfuc.balance_low_reminder_timezone": "时区",
+  "web.gfuc.reminder_email": "提醒邮箱",
+  "web.gfuc.reminder_email_placeholder":
+    "请输入邮箱地址，多个邮箱请用逗号或换行分隔",
+  "web.gfuc.reminder_email_placeholder_tip": "多个邮箱请用逗号或换行分隔",
+  "web.gfuc.balance_low_reminder_email_language": "邮件语言",
+  "web.gfuc.balance_low_reminder_popup": "弹窗提醒",
+  "web.gfuc.enable": "开启",
+  "web.gfuc.disable": "关闭",
+  "web.gfuc.balance_low_reminder_popup_tip":
+    "gfuc.enable_after_balance_low_reminder_tip",
+  "web.gfuc.eur": "欧元",
+  "web.gfuc.save.": "保存",
+  "web.gfuc.edit": "编辑",
+  "web.gfuc.enabled": "已开启",
+  "web.gfuc.disabled": "已关闭",
+  // 已关闭余额不足提醒
+  "web.gfuc.disabled_balance_low_reminder": "已关闭余额不足提醒",
+  "web.gfuc.email_format_error": "邮箱格式不正确",
+  "web.gfuc.setting_save_success": "设置保存成功",
+  "web.gfuc.please_check_form": "请检查表单填写是否正确",
+  "web.gfuc.please_select": "请选择"
 };
