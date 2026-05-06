@@ -531,11 +531,10 @@ const getAddress = (obj: any) => {
   } else {
     return [
       obj?.consigneeCountry,
+      obj?.consigneeCode,
       obj?.consigneeState,
       obj?.consigneeCity,
       obj?.consigneeArea,
-      obj?.consigneeCode,
-
       obj?.address1,
       obj?.address2,
       obj?.address3,

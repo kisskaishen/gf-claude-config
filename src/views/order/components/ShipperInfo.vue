@@ -272,14 +272,7 @@
             <p>{{ orderShipper.shipperPhone }}</p>
             <p>{{ orderShipper.shipperEmail }}</p>
             <p>
-              {{ orderShipper.shipperArea }}{{ orderShipper.shipperCity
-              }}{{ orderShipper.shipperState }}
-              {{ orderShipper.shipperCode }}
-              {{
-                countryList.options.value.find(
-                  (item) => item.value === orderShipper.shipperCountry
-                )?.label || orderShipper.shipperCountry
-              }}
+              {{ shipperAddress(orderShipper) }}
             </p>
           </div>
         </div>
@@ -448,6 +441,39 @@ watch(
   },
   { deep: true }
 );
+
+// 法国：地址1，邮编，区域，城市，洲，国家
+// 意大利：地址1，邮编，区域，城市，国家
+// 荷兰：地址1邮编，区域，城市，洲，国家
+const shipperAddress = (obj) => {
+  if (obj?.shipperCountry !== "ZH") {
+    return [
+      obj?.shipperStreet,
+      obj?.shipperCode,
+      obj?.shipperArea,
+      obj?.shipperCity,
+      obj?.shipperState,
+      countryList.options.value.find(
+        (item) => item.value === obj.shipperCountry
+      )?.label
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  } else {
+    return [
+      countryList.options.value.find(
+        (item) => item.value === obj.shipperCountry
+      )?.label,
+      obj?.shipperState,
+      obj?.shipperCity,
+      obj?.shipperArea,
+      obj?.shipperStreet,
+      obj?.shipperCode
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  }
+};
 
 const onNext = () => {
   // 验证表单

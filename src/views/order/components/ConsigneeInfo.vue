@@ -261,13 +261,7 @@
             <p>{{ orderConsignee.consigneePhone }}</p>
             <p>{{ orderConsignee.consigneeEmail }}</p>
             <p>
-              {{ orderConsignee.address1 }}{{ orderConsignee.consigneeCity
-              }}{{ orderConsignee.consigneeState }}
-              {{ orderConsignee.consigneeCountry }}
-            </p>
-            <p>
-              {{ orderConsignee.consigneeNumIn }}
-              {{ orderConsignee.consigneeNumExt }}
+              {{ consigneeAddress(orderConsignee) }}
             </p>
           </div>
         </div>
@@ -487,7 +481,74 @@ const getCityListData = (stateId) => {
     cities.value = res || [];
   });
 };
+// 法国：外门牌 地址1，地址2，地址3，内门牌，邮编，区域，城市，洲，国家
+// 意大利：地址1，外门牌，内门牌， 地址2，地址3，邮编，区域，城市，国家
+// 荷兰：地址1，地址2，地址3，外门牌，内门牌，邮编，区域，城市，洲，国家
+const consigneeAddress = (obj) => {
+  if (obj?.consigneeCountry === "FR") {
+    return [
+      obj?.consigneeNumExt,
+      obj?.address1,
+      obj?.address2,
+      obj?.address3,
+      obj?.consigneeNumIn,
+      obj?.consigneeCode,
+      obj?.consigneeArea,
+      obj?.consigneeCity,
+      obj?.consigneeState,
+      obj?.consigneeCountry
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  } else if (obj?.consigneeCountry === "IT") {
+    return [
+      obj?.address1,
+      obj?.consigneeNumExt,
+      obj?.consigneeNumIn,
+      obj?.address2,
+      obj?.address3,
+      obj?.consigneeCode,
+      obj?.consigneeArea,
+      obj?.consigneeCity,
+      obj?.consigneeState,
+      obj?.consigneeCountry
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  } else if (obj?.consigneeCountry === "NL") {
+    return [
+      obj?.address1,
+      obj?.address2,
+      obj?.address3,
+      obj?.consigneeNumExt,
+      obj?.consigneeNumIn,
+      obj?.consigneeCode,
+      obj?.consigneeArea,
+      obj?.consigneeCity,
+      obj?.consigneeState,
+      obj?.consigneeCountry
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  } else {
+    return [
+      obj?.consigneeCountry,
+      obj?.consigneeCode,
 
+      obj?.consigneeState,
+      obj?.consigneeCity,
+      obj?.consigneeArea,
+
+      obj?.address1,
+      obj?.address2,
+      obj?.address3,
+      obj?.consigneeNumExt,
+      obj?.consigneeNumIn
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  }
+};
 defineExpose({
   resetForm
 });
