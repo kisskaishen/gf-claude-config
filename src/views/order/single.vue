@@ -4,7 +4,7 @@
       <!-- 左侧步骤条，融合在右侧里面 -->
 
       <!-- 右侧表单内容 -->
-      <div class="overflow-auto flex-1">
+      <div class="flex-1 overflow-auto">
         <div class="order-content">
           <div class="order-steps">
             <!-- 发件人信息 -->
@@ -76,7 +76,7 @@
       <div class="py-6 text-center">
         <!-- 成功图标 -->
         <div
-          class="inline-flex justify-center items-center mb-6 w-20 h-20 bg-green-100 rounded-full"
+          class="inline-flex items-center justify-center w-20 h-20 mb-6 bg-green-100 rounded-full"
         >
           <svg
             class="w-10 h-10 text-green-600"
@@ -114,7 +114,7 @@
 
       <!-- 底部按钮 -->
       <template #footer>
-        <div class="flex gap-4 justify-center py-4">
+        <div class="flex justify-center gap-4 py-4">
           <el-button
             size="large"
             class="px-10 py-3 text-lg border-gray-300"
@@ -152,12 +152,13 @@ import {
 } from "@/api/order";
 
 import { useRouter, useRoute } from "vue-router";
+import { useAppStore } from "@/store/app";
 
 const router = useRouter();
 const route = useRoute();
 
 const isEdit = computed(() => route.params.orderId);
-
+const appStore = useAppStore();
 defineOptions({
   name: "SingleOrder"
 });
@@ -297,8 +298,11 @@ const submitOrder = async () => {
         productCode: formData.product?.productCode,
         productType: formData.product?.productType,
 
-        queryCollectStartTime: formData.parcel?.queryCollectStartTime,
-        queryCollectEndTime: formData.parcel?.queryCollectEndTime,
+        orderTimeZone:
+          appStore.timezone === "Local" ? undefined : appStore.timezone,
+
+        queryCollectStartTime: formData.product?.queryCollectStartTime,
+        queryCollectEndTime: formData.product?.queryCollectEndTime,
 
         orderParcel: formData.parcel,
         orderGoods: formData.parcel?.orderGoods,
