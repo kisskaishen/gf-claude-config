@@ -369,7 +369,7 @@ const orderStatusDict = useDict("order_status");
 
 // 步骤数据
 const statusSteps = computed(() => {
-  let arr = [1, 3, 4, 5];
+  let arr = [1, 3, 4];
   if ([6, 7, 8].includes(orderData.value?.orderStatus)) {
     arr[4] = orderData.value?.orderStatus;
   }
@@ -502,16 +502,72 @@ const shipperAddress = computed(() => {
     .join(" "); // 用空格连接
 });
 
+// 法国：外门牌 地址1，地址2，地址3，内门牌，邮编，区域，城市，洲，国家
+// 意大利：地址1，外门牌，内门牌， 地址2，地址3，邮编，区域，城市，国家
+// 荷兰：地址1，地址2，地址3，外门牌，内门牌，邮编，区域，城市，洲，国家
 const consigneeAddress = computed(() => {
-  return [
-    orderData.value?.orderConsignee?.consigneeCountry,
-    orderData.value?.orderConsignee?.consigneeState,
-    orderData.value?.orderConsignee?.consigneeCity,
-    orderData.value?.orderConsignee?.consigneeArea,
-    orderData.value?.orderConsignee?.consigneeStreet
-  ]
-    .filter(Boolean) // 过滤掉 undefined/null/空字符串
-    .join(" "); // 用空格连接
+  if (orderData.value?.orderConsignee?.consigneeCountry === "FR") {
+    return [
+      orderData.value?.orderConsignee?.consigneeNumExt,
+      orderData.value?.orderConsignee?.address1,
+      orderData.value?.orderConsignee?.address2,
+      orderData.value?.orderConsignee?.address3,
+      orderData.value?.orderConsignee?.consigneeNumIn,
+      orderData.value?.orderConsignee?.consigneeCode,
+      orderData.value?.orderConsignee?.consigneeArea,
+      orderData.value?.orderConsignee?.consigneeCity,
+      orderData.value?.orderConsignee?.consigneeState,
+      orderData.value?.orderConsignee?.consigneeCountry
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  } else if (orderData.value?.orderConsignee?.consigneeCountry === "IT") {
+    return [
+      orderData.value?.orderConsignee?.address1,
+      orderData.value?.orderConsignee?.consigneeNumExt,
+      orderData.value?.orderConsignee?.consigneeNumIn,
+      orderData.value?.orderConsignee?.address2,
+      orderData.value?.orderConsignee?.address3,
+      orderData.value?.orderConsignee?.consigneeCode,
+      orderData.value?.orderConsignee?.consigneeArea,
+      orderData.value?.orderConsignee?.consigneeCity,
+      orderData.value?.orderConsignee?.consigneeState,
+      orderData.value?.orderConsignee?.consigneeCountry
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  } else if (orderData.value?.orderConsignee?.consigneeCountry === "NL") {
+    return [
+      orderData.value?.orderConsignee?.address1,
+      orderData.value?.orderConsignee?.address2,
+      orderData.value?.orderConsignee?.address3,
+      orderData.value?.orderConsignee?.consigneeNumExt,
+      orderData.value?.orderConsignee?.consigneeNumIn,
+      orderData.value?.orderConsignee?.consigneeCode,
+      orderData.value?.orderConsignee?.consigneeArea,
+      orderData.value?.orderConsignee?.consigneeCity,
+      orderData.value?.orderConsignee?.consigneeState,
+      orderData.value?.orderConsignee?.consigneeCountry
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  } else {
+    return [
+      orderData.value?.orderConsignee?.consigneeCountry,
+      orderData.value?.orderConsignee?.consigneeState,
+      orderData.value?.orderConsignee?.consigneeCity,
+      orderData.value?.orderConsignee?.consigneeArea,
+      orderData.value?.orderConsignee?.consigneeCode,
+
+      orderData.value?.orderConsignee?.address1,
+      orderData.value?.orderConsignee?.address2,
+      orderData.value?.orderConsignee?.address3,
+      orderData.value?.orderConsignee?.consigneeNumExt,
+      orderData.value?.orderConsignee?.consigneeNumIn
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  }
 });
 </script>
 
@@ -525,9 +581,11 @@ const consigneeAddress = computed(() => {
 /* 订单状态跟踪 */
 .order-status-tracker {
   @apply flex items-center bg-white rounded-lg p-6 gap-8;
+
   .el-divider {
     height: 40px;
   }
+
   .order-info {
     @apply flex items-center gap-8;
 

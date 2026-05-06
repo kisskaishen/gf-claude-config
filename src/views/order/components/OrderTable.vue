@@ -428,10 +428,10 @@ const handleChange = (value) => {
 
 // 处理订单状态集合
 const handleOrderStatusSet = (status?: number) => {
+  console.log(status, "++++++");
   if (currentStatus.value === 888) {
     return searchForm.orderStatus ? [searchForm.orderStatus] : [6, 7, 8];
   } else {
-    // 异常订单：不传状态，置空
     if (status === 0 || !status) {
       return [];
     } else if (status === 888) {
@@ -475,7 +475,10 @@ const getParams = () => {
 
   params.orderType = "";
   // 赋值
-  params.orderStatusSet = handleOrderStatusSet(orderStatus);
+  params.orderStatusSet = handleOrderStatusSet(
+    orderStatus || currentStatus.value
+  );
+  console.log(params.orderStatusSet, "++++====");
 
   if (searchForm.customerId) {
     params.customerIdList = [searchForm.customerId];
