@@ -247,13 +247,7 @@
 import { ref, reactive, onMounted, watch, computed } from "vue";
 import { spliceArray, commaToArr } from "@/utils/index";
 import { downloadFile } from "@/utils/download";
-import {
-  View,
-  Edit,
-  Delete,
-  Printer,
-  CopyDocument
-} from "@element-plus/icons-vue";
+import { Printer } from "@element-plus/icons-vue";
 import {
   getOrderList,
   getOrderLabelUrl,

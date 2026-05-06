@@ -147,7 +147,6 @@
 
 <script setup lang="ts">
 import { ref, reactive, onMounted } from "vue";
-import { View } from "@element-plus/icons-vue";
 import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
 import { getExceptionOrderList } from "@/api/order";
