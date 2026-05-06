@@ -16,7 +16,6 @@
       />
       <div class="step-line"></div>
     </div>
-
     <div class="step-content">
       <div class="step-content-header">
         <h3 class="step-content-header-title">
@@ -254,7 +253,7 @@
                     v-model="formData.cOrderNo"
                     maxlength="30"
                     :placeholder="$t('web.gfuc.unique_customer_order_no')"
-                    :disabled="$route.params.orderId"
+                    :disabled="isEdit"
                   />
                 </el-form-item>
               </el-col>
@@ -312,9 +311,9 @@
 <script setup>
 import { ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
-
+import { useRoute } from "vue-router";
 const { t } = useI18n();
-
+const route = useRoute();
 const props = defineProps({
   stepNumber: {
     type: Number,
@@ -386,6 +385,8 @@ const validateDimensions = (rule, value, callback) => {
     callback();
   }
 };
+
+const isEdit = computed(() => !!route.params?.orderId);
 
 const rules = computed(() => ({
   declaredValue: [
@@ -475,7 +476,7 @@ onMounted(() => {
   const updateTableWidth = () => {
     const container = document.querySelector(".step-content");
     if (container) {
-      tableWidth.value = `${container.clientWidth - 32}px`;
+      tableWidth.value = `${container.clientWidth - 48}px`;
     }
   };
 

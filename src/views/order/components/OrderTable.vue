@@ -150,15 +150,7 @@
               #default="{ row }"
               v-if="item.prop === 'orderConsigneeVO.address1'"
             >
-              {{
-                row.orderConsigneeVO.consigneeCountry +
-                  " " +
-                  row.orderConsigneeVO.consigneeState +
-                  " " +
-                  row.orderConsigneeVO.consigneeCity +
-                  " " +
-                  row.orderConsigneeVO.consigneeStreet || "-"
-              }}
+              {{ getAddress(row.orderConsigneeVO) }}
             </template>
           </el-table-column>
 
@@ -488,6 +480,71 @@ const getParams = () => {
     );
   }
   return params;
+};
+
+const getAddress = (obj: any) => {
+  if (obj?.consigneeCountry === "FR") {
+    return [
+      obj?.consigneeNumExt,
+      obj?.address1,
+      obj?.address2,
+      obj?.address3,
+      obj?.consigneeNumIn,
+      obj?.consigneeCode,
+      obj?.consigneeArea,
+      obj?.consigneeCity,
+      obj?.consigneeState,
+      obj?.consigneeCountry
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  } else if (obj?.consigneeCountry === "IT") {
+    return [
+      obj?.address1,
+      obj?.consigneeNumExt,
+      obj?.consigneeNumIn,
+      obj?.address2,
+      obj?.address3,
+      obj?.consigneeCode,
+      obj?.consigneeArea,
+      obj?.consigneeCity,
+      obj?.consigneeState,
+      obj?.consigneeCountry
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  } else if (obj?.consigneeCountry === "NL") {
+    return [
+      obj?.address1,
+      obj?.address2,
+      obj?.address3,
+      obj?.consigneeNumExt,
+      obj?.consigneeNumIn,
+      obj?.consigneeCode,
+      obj?.consigneeArea,
+      obj?.consigneeCity,
+      obj?.consigneeState,
+      obj?.consigneeCountry
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  } else {
+    return [
+      obj?.consigneeCountry,
+      obj?.consigneeState,
+      obj?.consigneeCity,
+      obj?.consigneeArea,
+      obj?.consigneeCode,
+
+      obj?.address1,
+      obj?.address2,
+      obj?.address3,
+      obj?.consigneeNumExt,
+      obj?.consigneeNumIn
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  }
 };
 
 const handleResetForm = () => {

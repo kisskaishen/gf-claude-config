@@ -66,7 +66,7 @@
             'step-default':
               orderData?.orderStatus !== 2 &&
               orderType !== 'exception' &&
-              step.status > orderData.orderStatus
+              step.status > orderData?.orderStatus
           }"
         >
           <span class="step-text">{{ step.label }}</span>
@@ -87,7 +87,7 @@
               'arrow-default':
                 orderData?.orderStatus !== 2 &&
                 orderType !== 'exception' &&
-                step.status > orderData.orderStatus
+                step.status > orderData?.orderStatus
             }"
           />
         </div>
@@ -156,7 +156,9 @@
                 </div>
                 <div class="info-item full-width">
                   <span class="info-label">{{ $t("web.gfuc.address") }}</span>
-                  <span class="info-value">{{ shipperAddress || "-" }}</span>
+                  <span class="info-value">{{
+                    shipperAddress(orderData?.orderShipper) || "-"
+                  }}</span>
                 </div>
                 <div class="info-item">
                   <span class="info-label">{{ $t("web.gfuc.phone") }}</span>
@@ -181,7 +183,9 @@
                 </div>
                 <div class="info-item full-width">
                   <span class="info-label">{{ $t("web.gfuc.address") }}</span>
-                  <span class="info-value">{{ consigneeAddress }}</span>
+                  <span class="info-value">{{
+                    consigneeAddress(orderData?.orderConsignee)
+                  }}</span>
                 </div>
                 <div class="info-item">
                   <span class="info-label">{{ $t("web.gfuc.phone") }}</span>
@@ -490,85 +494,102 @@ const fetchOrderDetail = async () => {
     console.error("Failed to fetch order detail:", error);
   }
 };
-
-const shipperAddress = computed(() => {
-  return [
-    orderData.value?.orderShipper?.shipperCountry,
-    orderData.value?.orderShipper?.shipperCity,
-    orderData.value?.orderShipper?.shipperArea,
-    orderData.value?.orderShipper?.shipperStreet
-  ]
-    .filter(Boolean) // 过滤掉 undefined/null/空字符串
-    .join(" "); // 用空格连接
-});
-
-// 法国：外门牌 地址1，地址2，地址3，内门牌，邮编，区域，城市，洲，国家
-// 意大利：地址1，外门牌，内门牌， 地址2，地址3，邮编，区域，城市，国家
-// 荷兰：地址1，地址2，地址3，外门牌，内门牌，邮编，区域，城市，洲，国家
-const consigneeAddress = computed(() => {
-  if (orderData.value?.orderConsignee?.consigneeCountry === "FR") {
+// 法国：地址1，邮编，区域，城市，洲，国家
+// 意大利：地址1，邮编，区域，城市，国家
+// 荷兰：地址1邮编，区域，城市，洲，国家
+const shipperAddress = (obj: any) => {
+  if (obj?.shipperCountry !== "ZH") {
     return [
-      orderData.value?.orderConsignee?.consigneeNumExt,
-      orderData.value?.orderConsignee?.address1,
-      orderData.value?.orderConsignee?.address2,
-      orderData.value?.orderConsignee?.address3,
-      orderData.value?.orderConsignee?.consigneeNumIn,
-      orderData.value?.orderConsignee?.consigneeCode,
-      orderData.value?.orderConsignee?.consigneeArea,
-      orderData.value?.orderConsignee?.consigneeCity,
-      orderData.value?.orderConsignee?.consigneeState,
-      orderData.value?.orderConsignee?.consigneeCountry
-    ]
-      .filter(Boolean) // 过滤掉 undefined/null/空字符串
-      .join(" "); // 用空格连接
-  } else if (orderData.value?.orderConsignee?.consigneeCountry === "IT") {
-    return [
-      orderData.value?.orderConsignee?.address1,
-      orderData.value?.orderConsignee?.consigneeNumExt,
-      orderData.value?.orderConsignee?.consigneeNumIn,
-      orderData.value?.orderConsignee?.address2,
-      orderData.value?.orderConsignee?.address3,
-      orderData.value?.orderConsignee?.consigneeCode,
-      orderData.value?.orderConsignee?.consigneeArea,
-      orderData.value?.orderConsignee?.consigneeCity,
-      orderData.value?.orderConsignee?.consigneeState,
-      orderData.value?.orderConsignee?.consigneeCountry
-    ]
-      .filter(Boolean) // 过滤掉 undefined/null/空字符串
-      .join(" "); // 用空格连接
-  } else if (orderData.value?.orderConsignee?.consigneeCountry === "NL") {
-    return [
-      orderData.value?.orderConsignee?.address1,
-      orderData.value?.orderConsignee?.address2,
-      orderData.value?.orderConsignee?.address3,
-      orderData.value?.orderConsignee?.consigneeNumExt,
-      orderData.value?.orderConsignee?.consigneeNumIn,
-      orderData.value?.orderConsignee?.consigneeCode,
-      orderData.value?.orderConsignee?.consigneeArea,
-      orderData.value?.orderConsignee?.consigneeCity,
-      orderData.value?.orderConsignee?.consigneeState,
-      orderData.value?.orderConsignee?.consigneeCountry
+      obj?.shipperStreet,
+      obj?.shipperCode,
+      obj?.shipperArea,
+      obj?.shipperCity,
+      obj?.shipperState,
+      obj?.shipperCountry
     ]
       .filter(Boolean) // 过滤掉 undefined/null/空字符串
       .join(" "); // 用空格连接
   } else {
     return [
-      orderData.value?.orderConsignee?.consigneeCountry,
-      orderData.value?.orderConsignee?.consigneeState,
-      orderData.value?.orderConsignee?.consigneeCity,
-      orderData.value?.orderConsignee?.consigneeArea,
-      orderData.value?.orderConsignee?.consigneeCode,
-
-      orderData.value?.orderConsignee?.address1,
-      orderData.value?.orderConsignee?.address2,
-      orderData.value?.orderConsignee?.address3,
-      orderData.value?.orderConsignee?.consigneeNumExt,
-      orderData.value?.orderConsignee?.consigneeNumIn
+      obj?.shipperCountry,
+      obj?.shipperState,
+      obj?.shipperCity,
+      obj?.shipperArea,
+      obj?.shipperStreet,
+      obj?.shipperCode
     ]
       .filter(Boolean) // 过滤掉 undefined/null/空字符串
       .join(" "); // 用空格连接
   }
-});
+};
+
+// 法国：外门牌 地址1，地址2，地址3，内门牌，邮编，区域，城市，洲，国家
+// 意大利：地址1，外门牌，内门牌， 地址2，地址3，邮编，区域，城市，国家
+// 荷兰：地址1，地址2，地址3，外门牌，内门牌，邮编，区域，城市，洲，国家
+const consigneeAddress = (obj: any) => {
+  if (obj?.consigneeCountry === "FR") {
+    return [
+      obj?.consigneeNumExt,
+      obj?.address1,
+      obj?.address2,
+      obj?.address3,
+      obj?.consigneeNumIn,
+      obj?.consigneeCode,
+      obj?.consigneeArea,
+      obj?.consigneeCity,
+      obj?.consigneeState,
+      obj?.consigneeCountry
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  } else if (obj?.consigneeCountry === "IT") {
+    return [
+      obj?.address1,
+      obj?.consigneeNumExt,
+      obj?.consigneeNumIn,
+      obj?.address2,
+      obj?.address3,
+      obj?.consigneeCode,
+      obj?.consigneeArea,
+      obj?.consigneeCity,
+      obj?.consigneeState,
+      obj?.consigneeCountry
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  } else if (obj?.consigneeCountry === "NL") {
+    return [
+      obj?.address1,
+      obj?.address2,
+      obj?.address3,
+      obj?.consigneeNumExt,
+      obj?.consigneeNumIn,
+      obj?.consigneeCode,
+      obj?.consigneeArea,
+      obj?.consigneeCity,
+      obj?.consigneeState,
+      obj?.consigneeCountry
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  } else {
+    return [
+      obj?.consigneeCountry,
+      obj?.consigneeState,
+      obj?.consigneeCity,
+      obj?.consigneeArea,
+      obj?.consigneeCode,
+
+      obj?.address1,
+      obj?.address2,
+      obj?.address3,
+      obj?.consigneeNumExt,
+      obj?.consigneeNumIn
+    ]
+      .filter(Boolean) // 过滤掉 undefined/null/空字符串
+      .join(" "); // 用空格连接
+  }
+};
 </script>
 
 <style scoped lang="scss">
