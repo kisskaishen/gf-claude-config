@@ -15,7 +15,7 @@
       >
         <template #action-left>
           <el-button type="primary" @click="handleBatchPrint">
-            <el-icon><Printer /></el-icon>
+            <el-icon class="mr-1.5"><Printer /></el-icon>
             {{ $t("web.gfuc.batch_print") }}
           </el-button>
         </template>
@@ -174,10 +174,10 @@
                   :content="$t('web.gfuc.view_order')"
                   placement="top"
                 >
-                  <el-button
-                    link
-                    type="primary"
-                    :icon="View"
+                  <svg-icon
+                    name="order-view"
+                    width="24"
+                    height="24"
                     @click="handleView(row)"
                   />
                 </el-tooltip>
@@ -200,10 +200,10 @@
                     placement="top"
                     v-if="row.orderUpdateFlag"
                   >
-                    <el-button
-                      link
-                      type="primary"
-                      :icon="Edit"
+                    <svg-icon
+                      name="order-list-edit"
+                      width="24"
+                      height="24"
                       @click="handleEdit(row)"
                     />
                   </el-tooltip>
@@ -211,10 +211,10 @@
                     :content="$t('web.gfuc.cancel_order')"
                     placement="top"
                   >
-                    <el-button
-                      link
-                      type="danger"
-                      :icon="Delete"
+                    <svg-icon
+                      name="order-delete"
+                      width="24"
+                      height="24"
                       @click="handleCancel(row)"
                     />
                   </el-tooltip>

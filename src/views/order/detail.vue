@@ -136,7 +136,7 @@
         <div class="section shipping-section">
           <div class="flex items-center justify-between">
             <h3 class="section-title">{{ $t("web.gfuc.shipment_info") }}</h3>
-            <div class="flex items-center">
+            <div class="flex items-center text-[#4e5965] font-semibold">
               <svg-icon name="recipeType" width="24px" height="24px" />
               <span class="ml-2">{{ $t("web.gfuc.delivery_info") }}</span>
             </div>
@@ -306,7 +306,12 @@
               >
                 <div class="tracking-dot">
                   <!-- <svg-icon name="locationStep" width="24" height="24" /> -->
-                  <svg-icon name="completedStep" width="24" height="24" />
+                  <svg-icon
+                    name="completedStep"
+                    width="24"
+                    height="24"
+                    color="#D9D9D9"
+                  />
                 </div>
                 <div class="tracking-content">
                   <div class="tracking-message">
@@ -519,8 +524,10 @@ const consigneeAddress = computed(() => {
 
 /* 订单状态跟踪 */
 .order-status-tracker {
-  @apply flex items-center bg-white rounded-lg p-6 border gap-8;
-
+  @apply flex items-center bg-white rounded-lg p-6 gap-8;
+  .el-divider {
+    height: 40px;
+  }
   .order-info {
     @apply flex items-center gap-8;
 
@@ -547,7 +554,7 @@ const consigneeAddress = computed(() => {
     }
 
     .step-item {
-      @apply h-14 flex-1 flex items-center justify-center relative  bg-bg;
+      @apply h-14 flex-1 flex items-center justify-center relative  bg-bg text-base;
     }
 
     .step-text {
@@ -563,7 +570,7 @@ const consigneeAddress = computed(() => {
       @apply bg-primary;
 
       .step-text {
-        @apply text-white;
+        @apply text-white font-semibold;
       }
     }
 
@@ -618,7 +625,7 @@ const consigneeAddress = computed(() => {
   @apply flex flex-col gap-3 flex-1;
 
   .section {
-    @apply relative border p-4 rounded-lg bg-white;
+    @apply relative  p-4 rounded-lg bg-white;
 
     .section-info-title {
       @apply flex items-center gap-2;
@@ -648,12 +655,12 @@ const consigneeAddress = computed(() => {
 
     &.package-section {
       .info-grid {
-        @apply flex items-center border mt-5 px-4 py-2.5 bg-bg;
+        @apply flex items-center  mt-5 px-4 py-2.5 bg-bg;
       }
     }
 
     .section-title {
-      @apply relative flex items-center justify-between mb-4 pl-2.5 text-lg;
+      @apply relative flex items-center justify-between mb-4 pl-2.5 text-lg font-semibold text-[#4e5965];
 
       &::before {
         @apply absolute top-1/2 -translate-y-1/2 left-0 w-1 h-[22px] bg-primary rounded-full;
@@ -666,11 +673,11 @@ const consigneeAddress = computed(() => {
       @apply flex-1 flex flex-col mx-4;
 
       .info-label {
-        @apply text-info text-sm;
+        @apply text-info text-base;
       }
 
       .info-value {
-        @apply text-text-regular text-sm;
+        @apply text-text-regular text-base;
       }
     }
   }
@@ -685,10 +692,10 @@ const consigneeAddress = computed(() => {
   }
 
   .sidebar-section {
-    @apply bg-white p-4 rounded-lg border;
+    @apply bg-white p-4 rounded-lg;
 
     .sidebar-title {
-      @apply relative flex items-center justify-between mb-4 pl-2.5 text-lg;
+      @apply relative flex items-center justify-between mb-4 pl-2.5 text-[18px] font-semibold text-text-regular;
 
       &::before {
         @apply absolute top-1/2 -translate-y-1/2 left-0 w-1 h-[22px] bg-primary rounded-full;
@@ -726,18 +733,18 @@ const consigneeAddress = computed(() => {
         }
 
         .tracking-dot {
-          @apply relative;
+          @apply relative text-[#BBBDBF];
         }
 
         .tracking-content {
           @apply flex-1;
 
           .tracking-time {
-            @apply text-text-regular text-sm mt-1;
+            @apply text-[#7a869a] text-sm mt-1;
           }
 
           .tracking-message {
-            @apply text-text-secondary text-sm;
+            @apply text-[#4e5965] text-base font-semibold;
           }
         }
       }
@@ -751,11 +758,11 @@ const consigneeAddress = computed(() => {
         @apply flex flex-col;
 
         .service-label {
-          @apply text-sm text-info;
+          @apply text-base text-info;
         }
 
         .service-value {
-          @apply text-sm text-text-regular;
+          @apply text-base text-text-regular;
         }
       }
     }

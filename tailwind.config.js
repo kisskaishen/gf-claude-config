@@ -21,7 +21,7 @@ export default {
           placeholder: "#bbbdbf"
         },
         border: {
-          DEFAULT: "#e6e8eb",
+          DEFAULT: "#eff0f5",
           light: "#eff0f5",
           form: "#ff8755"
         },

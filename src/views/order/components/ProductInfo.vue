@@ -88,7 +88,7 @@
             </el-row>
 
             <el-row
-              :gutter="20"
+              :gutter="12"
               v-if="formData.productName.indexOf('揽收') > -1"
             >
               <el-col :span="8">

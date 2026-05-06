@@ -51,5 +51,6 @@ const symbolId = computed(() => `#${props.prefix}-${props.name}`);
   vertical-align: -0.15em; /* 因icon大小被设置为1em，因次通过该样式微调对齐 */
   outline: none;
   fill: currentcolor; /* 建议使用 currentColor 以便随文字颜色变化 */
+  cursor: pointer;
 }
 </style>

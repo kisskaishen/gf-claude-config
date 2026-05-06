@@ -51,7 +51,7 @@
             label-width="80px"
             label-position="top"
           >
-            <el-row :gutter="20">
+            <el-row :gutter="12">
               <!-- 成交客户的用户中心登录进去，下单需要选择下单账户
 走货账户的用户中心登录进去，隐藏下单账户选择。 -->
               <el-col :span="8" v-if="isCj">

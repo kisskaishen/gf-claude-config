@@ -40,17 +40,22 @@
       @apply relative flex items-center justify-between mb-4 pl-2.5;
 
       &::before {
-        @apply absolute top-1/2 -translate-y-1/2 left-0 w-1 h-[22px] bg-red-500 rounded-full;
+        @apply absolute top-1/2 -translate-y-1/2 left-0 w-1 h-[22px] bg-primary rounded-full;
 
         content: "";
       }
 
       .step-content-header-title {
-        @apply text-lg font-bold relative;
+        @apply text-[18px] font-bold relative text-text-regular;
       }
 
       .step-content-header-icon {
         @apply w-5 h-5;
+      }
+    }
+    .step-content-form {
+      .form-container {
+        @apply px-2;
       }
     }
 

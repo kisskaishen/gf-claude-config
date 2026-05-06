@@ -51,7 +51,7 @@
             label-width="80px"
             label-position="top"
           >
-            <el-row :gutter="20">
+            <el-row :gutter="12">
               <el-col :span="6">
                 <el-form-item
                   :label="$t('web.gfuc.total_parcel_weight')"
@@ -199,27 +199,22 @@
                       fixed="right"
                     >
                       <template #default="{ $index }">
-                        <div class="table-actions">
-                          <el-button size="small" @click="addGoods" circle>
-                            <svg-icon
-                              name="order-goods-add"
-                              class="step-content-header-icon"
-                              width="20"
-                              height="20"
-                            />
-                          </el-button>
-                          <el-button
-                            size="small"
+                        <div class="flex items-center table-actions">
+                          <svg-icon
+                            name="order-goods-add"
+                            class="mr-2 cursor-pointer step-content-header-icon"
+                            width="24"
+                            height="24"
+                            @click="addGoods"
+                          />
+
+                          <svg-icon
+                            name="order-goods-reduce"
+                            class="cursor-pointer step-content-header-icon"
+                            width="24"
+                            height="24"
                             @click="removeGoods($index)"
-                            circle
-                          >
-                            <svg-icon
-                              name="order-goods-reduce"
-                              class="step-content-header-icon"
-                              width="20"
-                              height="20"
-                            />
-                          </el-button>
+                          />
                         </div>
                       </template>
                     </el-table-column>
@@ -231,7 +226,7 @@
               </el-col>
             </el-row>
 
-            <el-row :gutter="20">
+            <el-row :gutter="12">
               <el-col :span="12">
                 <el-form-item
                   :label="$t('web.gfuc.declared_value')"
@@ -249,7 +244,7 @@
               </el-col>
             </el-row>
 
-            <el-row :gutter="20">
+            <el-row :gutter="12">
               <el-col :span="8">
                 <el-form-item
                   :label="$t('web.gfuc.customer_order_no')"
@@ -534,9 +529,6 @@ defineExpose({
 @use "@/views/order/style/base";
 
 .table-actions {
-  .el-button {
-    border: none;
-  }
 }
 
 :deep(.el-input-number) {
