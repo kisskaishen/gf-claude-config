@@ -254,6 +254,7 @@
                     v-model="formData.cOrderNo"
                     maxlength="30"
                     :placeholder="$t('web.gfuc.unique_customer_order_no')"
+                    :disabled="$route.params.orderId"
                   />
                 </el-form-item>
               </el-col>

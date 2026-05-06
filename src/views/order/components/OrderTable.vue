@@ -414,28 +414,15 @@ setDefaultRange();
 // 处理日期变化
 const handleChange = (value) => {
   if (value && value[0] && value[1]) {
-    // 确保开始时间为00:00:00，结束时间为23:59:59
-    const start = dayjs(value[0]).startOf("day");
-    const end = dayjs(value[1]).endOf("day");
+    const start = dayjs(value[0]);
+    const end = dayjs(value[1]);
     const diffDays = end.diff(start, "day");
 
     if (diffDays > 30) {
       // 超过30天时，自动调整结束日期
-      const newEnd = start.add(30, "day").endOf("day");
-      searchForm.orderTimeRange = [
-        start.format("YYYY-MM-DD HH:mm:ss"),
-        newEnd.format("YYYY-MM-DD HH:mm:ss")
-      ];
-    } else {
-      // 正常范围内，设置正确的时间格式
-      searchForm.orderTimeRange = [
-        start.format("YYYY-MM-DD HH:mm:ss"),
-        end.format("YYYY-MM-DD HH:mm:ss")
-      ];
+      const newEnd = start.add(30, "day").toDate();
+      searchForm.orderTimeRange = [value[0], newEnd];
     }
-  } else if (!value) {
-    // 清空选择时，重置时间范围
-    searchForm.orderTimeRange = ["", ""];
   }
 };
 
