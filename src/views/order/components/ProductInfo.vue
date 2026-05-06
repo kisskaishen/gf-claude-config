@@ -178,6 +178,20 @@
                 </div>
               </div>
             </div>
+
+            <div
+              class="flex gap-4 mt-2"
+              v-if="formData.productName.indexOf('揽收') > -1"
+            >
+              <div class="flex flex-col">
+                <p>{{ $t("web.gfuc.collection_start_time") }}</p>
+                <p>{{ formData.queryCollectStartTime }}</p>
+              </div>
+              <div class="flex flex-col">
+                <p>{{ $t("web.gfuc.collection_end_time") }}</p>
+                <p>{{ formData.queryCollectEndTime }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

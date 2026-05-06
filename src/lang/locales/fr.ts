@@ -265,5 +265,19 @@ export default {
   "web.gfuc.batch_print_success":
     "Impression par lot de {count} commandes démarrée",
   "web.gfuc.select_orders_first":
-    "Veuillez d'abord sélectionner les commandes à imprimer"
+    "Veuillez d'abord sélectionner les commandes à imprimer",
+  "web.gfuc.unusual_type": "Type anomalo",
+
+  "web.gfuc.customer_name2": "Nom du client",
+  "web.gfuc.order_source": "Origine ordine",
+  "web.gfuc.system_order_no": "Numero ordine système",
+  "web.gfuc.consignee_postal_code": "Codice postale destinatario",
+  "web.gfuc.unusual_type_value": "Valore type anomalo",
+  "web.gfuc.description": "Descriptionrizione",
+  "web.gfuc.unusual_field": "Campo anomalo",
+  "web.gfuc.unusual_field_value": "Valore campo anomalo",
+  "web.gfuc.field_validation_rule": "Regole di validazione campo",
+  "web.gfuc.order_time": "Orario ordine",
+  "web.gfuc.request_parameters": "Requesti parametri",
+  "web.gfuc.response_message": "Response message"
 };

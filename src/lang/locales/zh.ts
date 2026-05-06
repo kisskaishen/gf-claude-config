@@ -242,5 +242,19 @@ export default {
   "web.gfuc.email_format_error": "邮箱格式不正确",
   "web.gfuc.setting_save_success": "设置保存成功",
   "web.gfuc.please_check_form": "请检查表单填写是否正确",
-  "web.gfuc.please_select": "请选择"
+  "web.gfuc.please_select": "请选择",
+  "web.gfuc.unusual_type": "异常类型",
+
+  "web.gfuc.customer_name2": "客户名称",
+  "web.gfuc.order_source": "订单来源",
+  "web.gfuc.system_order_no": "系统单号",
+  "web.gfuc.consignee_postal_code": "收件邮编",
+  "web.gfuc.unusual_type_value": "异常类型值",
+  "web.gfuc.description": "描述",
+  "web.gfuc.unusual_field": "异常字段",
+  "web.gfuc.unusual_field_value": "异常字段值",
+  "web.gfuc.field_validation_rule": "字段校验规则",
+  "web.gfuc.order_time": "下单时间",
+  "web.gfuc.request_parameters": "请求参数",
+  "web.gfuc.response_message": "相应报文"
 };

@@ -248,5 +248,19 @@ export default {
   "web.gfuc.batch_print_success":
     "Gestart met batch afdrukken van {count} bestellingen",
   "web.gfuc.select_orders_first":
-    "Selecteer eerst bestellingen om af te drukken"
+    "Selecteer eerst bestellingen om af te drukken",
+  "web.gfuc.unusual_type": "Type anomalo",
+
+  "web.gfuc.customer_name2": "Klantnaam",
+  "web.gfuc.order_source": "Origine ordine",
+  "web.gfuc.system_order_no": "Numero ordine sistema",
+  "web.gfuc.consignee_postal_code": "Codice postale destinatario",
+  "web.gfuc.unusual_type_value": "Valore tipo anomalo",
+  "web.gfuc.description": "Descrizione",
+  "web.gfuc.unusual_field": "Campo anomalo",
+  "web.gfuc.unusual_field_value": "Valore campo anomalo",
+  "web.gfuc.field_validation_rule": "Regole validazione campo",
+  "web.gfuc.order_time": "Orario ordine",
+  "web.gfuc.request_parameters": "Parameters richiesta",
+  "web.gfuc.response_message": "Message risposta"
 };

@@ -255,5 +255,19 @@ export default {
     "Stai per stampare le etichette di spedizione, {count} ordini selezionati, confermare la stampa?",
   "web.gfuc.batch_print_success":
     "Avviata la stampa in batch di {count} ordini",
-  "web.gfuc.select_orders_first": "Seleziona prima gli ordini da stampare"
+  "web.gfuc.select_orders_first": "Seleziona prima gli ordini da stampare",
+  "web.gfuc.unusual_type": "Tipo anomalo",
+
+  "web.gfuc.customer_name2": "Nome cliente",
+  "web.gfuc.order_source": "Origine ordine",
+  "web.gfuc.system_order_no": "Numero ordine sistema",
+  "web.gfuc.consignee_postal_code": "Codice postale destinatario",
+  "web.gfuc.unusual_type_value": "Valore tipo anomalo",
+  "web.gfuc.description": "Descrizione",
+  "web.gfuc.unusual_field": "Campo anomalo",
+  "web.gfuc.unusual_field_value": "Valore campo anomalo",
+  "web.gfuc.field_validation_rule": "Regole di validazione campo",
+  "web.gfuc.order_time": "Orario ordine",
+  "web.gfuc.request_parameters": "Parametri richiesta",
+  "web.gfuc.response_message": "Messposta"
 };

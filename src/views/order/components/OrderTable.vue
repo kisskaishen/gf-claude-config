@@ -144,7 +144,22 @@
             :width="item.width || undefined"
             :min-width="item.minWidth || undefined"
             show-overflow-tooltip
-          />
+          >
+            <template
+              #default="{ row }"
+              v-if="item.prop === 'orderConsigneeVO.address1'"
+            >
+              {{
+                row.orderConsigneeVO.consigneeCountry +
+                  " " +
+                  row.orderConsigneeVO.consigneeState +
+                  " " +
+                  row.orderConsigneeVO.consigneeCity +
+                  " " +
+                  row.orderConsigneeVO.consigneeStreet || "-"
+              }}
+            </template>
+          </el-table-column>
 
           <el-table-column
             :label="$t('gfuc.operation' /** 操作 **/)"
@@ -394,6 +409,7 @@ const handleChange = (value) => {
   if (value && value[0] && value[1]) {
     const start = dayjs(value[0]);
     const end = dayjs(value[1]);
+
     const diffDays = end.diff(start, "day");
 
     if (diffDays > 30) {

@@ -31,7 +31,10 @@
           </el-form-item>
         </template>
         <template #search>
-          <el-form-item label="邮编" prop="consigneeCode">
+          <el-form-item
+            :label="$t('web.gfuc.postal_code')"
+            prop="consigneeCode"
+          >
             <el-input
               v-model="searchForm.consigneeCode"
               :placeholder="$t('web.gfuc.please_enter' /** 请输入邮编 **/)"
@@ -44,7 +47,7 @@
             />
           </el-form-item> -->
 
-          <el-form-item label="异常类型" prop="unusualType">
+          <el-form-item :label="$t('web.gfuc.unusual_type')" prop="unusualType">
             <el-select
               v-model="searchForm.unusualType"
               :placeholder="$t('web.gfuc.please_enter' /** 请输入异常类型 **/)"
@@ -183,47 +186,67 @@ const defaultFormData = {
   waybillNoList: []
 };
 
-const exceptionOrderColumns = [
-  { prop: "customerName", label: "客户名称", minWidth: "120" },
-  { prop: "orderSource", label: "订单来源", width: "100" },
-  { prop: "waybillNo", label: "系统单号", minWidth: "200" },
-  { prop: "cusOrderNo", label: "客户单号", minWidth: "160" },
-  { prop: "consigneeCode", label: "收件邮编", width: "110" },
-  { prop: "unusualTypeValue", label: "异常类型值", width: "120" },
+const exceptionOrderColumns = computed(() => [
+  {
+    prop: "customerName",
+    label: t("web.gfuc.customer_name2"),
+    minWidth: "120"
+  },
+  { prop: "orderSource", label: t("web.gfuc.order_source"), width: "100" },
+  {
+    prop: "waybillNo",
+    label: t("web.gfuc.system_order_no"),
+    minWidth: "200"
+  },
+  {
+    prop: "cusOrderNo",
+    label: t("web.gfuc.customer_order_no"),
+    minWidth: "160"
+  },
+  {
+    prop: "consigneeCode",
+    label: t("web.gfuc.consignee_postal_code"),
+    width: "110"
+  },
+  {
+    prop: "unusualTypeValue",
+    label: t("web.gfuc.unusual_type_value"),
+    width: "120"
+  },
   {
     prop: "describe",
-    label: "描述",
+    label: t("web.gfuc.description"),
     minWidth: "240",
     showOverflowTooltip: true
   },
-  { prop: "unusualField", label: "异常字段", minWidth: "140" },
+  { prop: "unusualField", label: t("web.gfuc.unusual_field"), minWidth: "140" },
   {
     prop: "fieldValue",
-    label: "异常字段值",
+    label: t("web.gfuc.unusual_field_value"),
     minWidth: "200",
     showOverflowTooltip: true
   },
   {
     prop: "rule",
-    label: "字段校验规则",
+    label: t("web.gfuc.field_validation_rule"),
     minWidth: "200",
     showOverflowTooltip: true
   },
-  { prop: "orderCreateTime", label: "下单时间", width: "200" },
+  { prop: "orderCreateTime", label: t("web.gfuc.order_time"), width: "200" },
   {
     prop: "requestBody",
-    label: "请求参数",
+    label: t("web.gfuc.request_parameters"),
     minWidth: "220",
     showOverflowTooltip: true
   },
   {
     prop: "responseBody",
-    label: "响应报文",
+    label: t("web.gfuc.response_message"),
     minWidth: "220",
     showOverflowTooltip: true
   },
-  { prop: "referenceNo", label: "参考号", minWidth: "150" }
-];
+  { prop: "referenceNo", label: t("web.gfuc.reference_no"), minWidth: "150" }
+]);
 
 const loading = ref(false);
 

@@ -98,7 +98,7 @@
                       clearable
                       style="width: 100%"
                     />
-                    <template #dropdown>
+                    <template #dropdown v-if="shipperNameList.length > 0">
                       <el-dropdown-menu>
                         <el-dropdown-item
                           v-for="item in shipperNameList"
@@ -357,8 +357,6 @@ const orderShipper = ref({
   ...props.initialData
 });
 
-console.log(orderShipper.value, "orderShipper", props.initialData);
-
 // 监听 initialData 变化，当父组件数据加载完成后更新表单数据
 watch(
   () => props.initialData,
@@ -471,6 +469,19 @@ const getSenderNameList = async () => {
     shipperNameList.value = res;
   }
 };
+
+watch(
+  () => shipperOptions.value,
+  (val) => {
+    if (val.length === 1) {
+      orderShipper.value.customerId = val[0]?.customerId || "";
+      getSenderNameList();
+    }
+  },
+  {
+    immediate: true
+  }
+);
 
 watch(
   () => orderShipper.value.customerId,

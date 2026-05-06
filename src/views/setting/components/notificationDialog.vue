@@ -271,6 +271,8 @@ watch(
       form.value.state = props.balanceReminder || 0;
     }
     visible.value = newVal;
+    // 重置表单
+    formRef.value?.resetFields();
   }
 );
 

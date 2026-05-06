@@ -255,5 +255,19 @@ export default {
   "web.gfuc.batch_print_confirm":
     "You are about to print shipping labels, {count} orders selected, confirm to print?",
   "web.gfuc.batch_print_success": "Started batch printing {count} orders",
-  "web.gfuc.select_orders_first": "Please select orders to print first"
+  "web.gfuc.select_orders_first": "Please select orders to print first",
+  "web.gfuc.unusual_type": "Exceptional Type",
+
+  "web.gfuc.customer_name2": "Customer Name",
+  "web.gfuc.order_source": "Order Source",
+  "web.gfuc.system_order_no": "System Order No",
+  "web.gfuc.consignee_postal_code": "Consignee Postal Code",
+  "web.gfuc.unusual_type_value": "Exceptional Type Value",
+  "web.gfuc.description": "Description",
+  "web.gfuc.unusual_field": "Exceptional Field",
+  "web.gfuc.unusual_field_value": "Exceptional Field Value",
+  "web.gfuc.field_validation_rule": "Field Validation Rule",
+  "web.gfuc.order_time": "Order Time",
+  "web.gfuc.request_parameters": "Request Parameters",
+  "web.gfuc.response_message": "Response Message"
 };

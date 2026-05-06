@@ -266,11 +266,11 @@
             <div class="info-item">
               <span class="info-label">{{ $t("web.gfuc.parcel_volume") }}</span>
               <span class="info-value">{{
-                orderData?.orderGoods?.width +
+                orderData?.orderGoods?.length +
+                  "*" +
+                  orderData?.orderGoods?.width +
                   "*" +
                   orderData?.orderGoods?.height +
-                  "*" +
-                  orderData?.orderGoods?.length +
                   "CM" || "-"
               }}</span>
             </div>
@@ -500,13 +500,10 @@ const shipperAddress = computed(() => {
 const consigneeAddress = computed(() => {
   return [
     orderData.value?.orderConsignee?.consigneeCountry,
+    orderData.value?.orderConsignee?.consigneeState,
     orderData.value?.orderConsignee?.consigneeCity,
     orderData.value?.orderConsignee?.consigneeArea,
-    orderData.value?.orderConsignee?.address1,
-    orderData.value?.orderConsignee?.address2,
-    orderData.value?.orderConsignee?.address3,
-    orderData.value?.orderConsignee?.consigneeNumExt,
-    orderData.value?.orderConsignee?.consigneeNumIn
+    orderData.value?.orderConsignee?.consigneeStreet
   ]
     .filter(Boolean) // 过滤掉 undefined/null/空字符串
     .join(" "); // 用空格连接
@@ -558,7 +555,7 @@ const consigneeAddress = computed(() => {
     }
 
     .step-arrow {
-      @apply absolute right-0 top-0 w-0 h-0 border-t-[28px] border-b-[28px] border-l-[31px] border-transparent;
+      @apply absolute right-0 top-0 w-0 h-0 border-t-[28px] border-b-[28px] border-l-[32px] border-transparent;
     }
 
     /* 激活状态 */
@@ -603,7 +600,7 @@ const consigneeAddress = computed(() => {
 
     /* 默认状态 */
     .step-default {
-      @apply bg-bg  -ml-[31px];
+      @apply bg-bg  -ml-[32px];
 
       // .step-arrow {
       //   @apply border-l-[#FFEDE6];
