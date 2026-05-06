@@ -188,10 +188,10 @@
                     :content="$t('web.gfuc.print_order')"
                     placement="top"
                   >
-                    <el-button
-                      link
-                      type="primary"
-                      :icon="Printer"
+                    <svg-icon
+                      name="order-printer"
+                      width="24"
+                      height="24"
                       @click="handlePrint(row)"
                     />
                   </el-tooltip>
@@ -226,10 +226,10 @@
                     :content="$t('web.gfuc.copy_order')"
                     placement="top"
                   >
-                    <el-button
-                      link
-                      type="primary"
-                      :icon="CopyDocument"
+                    <svg-icon
+                      name="order-copy"
+                      width="24"
+                      height="24"
                       @click="handleCopy(row)"
                     />
                   </el-tooltip>

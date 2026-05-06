@@ -117,19 +117,25 @@
           >
             <template #default="{ row }">
               <div class="table-actions">
-                <el-button
-                  link
-                  type="primary"
-                  :icon="View"
-                  @click="handleView(row)"
-                  :title="$t('web.gfuc.view_order' /** 查看订单 **/)"
-                />
-                <el-button
-                  link
-                  type="primary"
-                  @click="handleReOrder(row)"
-                  :title="$t('web.gfuc.re_order' /** 重新下单 **/)"
-                />
+                <el-tooltip
+                  :content="$t('web.gfuc.view_order')"
+                  placement="top"
+                >
+                  <svg-icon
+                    name="order-view"
+                    width="24"
+                    height="24"
+                    @click="handleView(row)"
+                  />
+                </el-tooltip>
+                <el-tooltip :content="$t('web.gfuc.re_order')" placement="top">
+                  <svg-icon
+                    name="order-copy"
+                    width="24"
+                    height="24"
+                    @click="handleReOrder(row)"
+                  />
+                </el-tooltip>
               </div>
             </template>
           </el-table-column>
