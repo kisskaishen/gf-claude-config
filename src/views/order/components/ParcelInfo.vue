@@ -116,12 +116,16 @@
             </el-row>
 
             <el-row>
-              <el-col :span="24">
-                <el-form-item label-width="0" required>
+              <el-col
+                :span="24"
+                class="flex justify-between w-full"
+                style="min-width: 0"
+              >
+                <el-form-item label-width="0" required class="w-full">
                   <el-table
                     :data="formData.orderItemList"
                     border
-                    style="width: 100%"
+                    :style="{ width: tableWidth, minWidth: 0 }"
                     class="goods-table"
                   >
                     <el-table-column
@@ -467,6 +471,21 @@ const removeGoods = (index) => {
     formData.value.orderItemList.splice(index, 1);
   }
 };
+
+const tableWidth = ref("100%");
+
+// 监听窗口大小变化
+onMounted(() => {
+  const updateTableWidth = () => {
+    const container = document.querySelector(".step-content");
+    if (container) {
+      tableWidth.value = `${container.clientWidth - 32}px`;
+    }
+  };
+
+  window.addEventListener("resize", updateTableWidth);
+  updateTableWidth();
+});
 
 const onClear = () => {
   formData.value = {

@@ -208,8 +208,8 @@ export default {
   "web.gfuc.balance_low_reminder": "Herinnering laag saldo",
   "web.gfuc.balance_low_reminder_email":
     "Stuur een e-mailherinnering wanneer het beschikbare bestelsaldo onder het ingestelde bedrag komt",
-  "web.gfuc.balance_low_reminder_amount": "Herinneringsbedrag",
-  "web.gfuc.balance_low_reminder_time": "Herinneringstijd",
+  "web.gfuc.balance_low_reminder_amount": "Herinnering sbedrag",
+  "web.gfuc.balance_low_reminder_time": "Herinnering stijd",
   "web.gfuc.balance_low_reminder_timezone": "Tijdzone",
   "web.gfuc.reminder_email": "Herinneringse-mail",
   "web.gfuc.reminder_email_placeholder":

@@ -275,7 +275,11 @@
               {{ orderShipper.shipperArea }}{{ orderShipper.shipperCity
               }}{{ orderShipper.shipperState }}
               {{ orderShipper.shipperCode }}
-              {{ orderShipper.shipperCountry }}
+              {{
+                countryList.options.value.find(
+                  (item) => item.value === orderShipper.shipperCountry
+                )?.label || orderShipper.shipperCountry
+              }}
             </p>
           </div>
         </div>

@@ -40,7 +40,7 @@
         <template #search>
           <!-- Search Fields -->
           <el-form-item
-            v-if="currentStatus === 888"
+            v-if="[0, 888].includes(currentStatus)"
             :label="$t('gfuc.order_status' /** 订单状态 **/)"
             prop="orderStatusSet"
           >
@@ -68,8 +68,9 @@
               range-separator="~"
               :start-placeholder="$t('web.gfuc.start_time')"
               :end-placeholder="$t('web.gfuc.end_time')"
-              format="YYYY-MM-DD"
+              format="YYYY-MM-DD HH:mm:ss"
               value-format="YYYY-MM-DD HH:mm:ss"
+              :default-time="defaultTime"
               @change="handleChange"
             />
           </el-form-item>
@@ -280,6 +281,10 @@ defineOptions({
   name: "OrderList"
 });
 
+const defaultTime = [
+  new Date(2000, 1, 1, 0, 0, 0), // 开始时间默认00:00:00
+  new Date(2000, 1, 1, 23, 59, 59) // 结束时间默认23:59:59
+];
 const props = defineProps({
   status: {
     type: Number,
@@ -302,9 +307,15 @@ const orderStatusDict = useDict("order_status");
 
 // 异常订单状态
 const exceptionOrderStatusOptions = computed(() => {
-  return orderStatusDict.options.value.filter((item: any) =>
-    [6, 7, 8].includes(item.value)
-  );
+  let arr = [];
+  if (currentStatus.value === 0) {
+    arr = orderStatusDict.options.value;
+  } else if (currentStatus.value === 888) {
+    arr = orderStatusDict.options.value.filter((item: any) =>
+      [6, 7, 8].includes(item.value)
+    );
+  }
+  return arr;
 });
 
 const columns = [
@@ -396,45 +407,58 @@ const setDefaultRange = () => {
   const end = new Date();
   const start = new Date();
   start.setTime(start.getTime() - 30 * 24 * 3600 * 1000);
-  // value-format="YYYY-MM-DD HH:mm:ss" 需要传入字符串格式的日期
-  searchForm.orderTimeRange = [
-    dayjs(start).format("YYYY-MM-DD HH:mm:ss"),
-    dayjs(end).format("YYYY-MM-DD HH:mm:ss")
-  ];
+
+  // 设置开始时间为00:00:00，结束时间为23:59:59
+  const startDate = dayjs(start).startOf("day").format("YYYY-MM-DD HH:mm:ss");
+  const endDate = dayjs(end).endOf("day").format("YYYY-MM-DD HH:mm:ss");
+
+  searchForm.orderTimeRange = [startDate, endDate];
 };
+
 setDefaultRange();
 
 // 处理日期变化
 const handleChange = (value) => {
   if (value && value[0] && value[1]) {
-    const start = dayjs(value[0]);
-    const end = dayjs(value[1]);
-
+    // 确保开始时间为00:00:00，结束时间为23:59:59
+    const start = dayjs(value[0]).startOf("day");
+    const end = dayjs(value[1]).endOf("day");
     const diffDays = end.diff(start, "day");
 
     if (diffDays > 30) {
       // 超过30天时，自动调整结束日期
-      const newEnd = start.add(30, "day").toDate();
-      searchForm.orderTimeRange = [value[0], newEnd];
+      const newEnd = start.add(30, "day").endOf("day");
+      searchForm.orderTimeRange = [
+        start.format("YYYY-MM-DD HH:mm:ss"),
+        newEnd.format("YYYY-MM-DD HH:mm:ss")
+      ];
+    } else {
+      // 正常范围内，设置正确的时间格式
+      searchForm.orderTimeRange = [
+        start.format("YYYY-MM-DD HH:mm:ss"),
+        end.format("YYYY-MM-DD HH:mm:ss")
+      ];
     }
+  } else if (!value) {
+    // 清空选择时，重置时间范围
+    searchForm.orderTimeRange = ["", ""];
   }
 };
+
 // 处理订单状态集合
-const handleOrderStatusSet = () => {
-  const status = currentStatus.value;
-
-  // 异常订单：不传状态，置空
-  if (status === 0) {
-    return [];
-  }
-
-  // 综合查询：888 走自定义逻辑
-  if (status === 888) {
+const handleOrderStatusSet = (status?: number) => {
+  if (currentStatus.value === 888) {
     return searchForm.orderStatus ? [searchForm.orderStatus] : [6, 7, 8];
+  } else {
+    // 异常订单：不传状态，置空
+    if (status === 0 || !status) {
+      return [];
+    } else if (status === 888) {
+      return [6, 7, 8];
+    } else {
+      return [status];
+    }
   }
-
-  // 其他状态：直接使用当前值
-  return [status];
 };
 const getParams = () => {
   const {
@@ -442,6 +466,7 @@ const getParams = () => {
     shipperCodeList,
     consigneeCodeList,
     orderTimeRange,
+    orderStatus,
     ...args
   } = searchForm;
   const params: any = {
@@ -469,7 +494,7 @@ const getParams = () => {
 
   params.orderType = "";
   // 赋值
-  params.orderStatusSet = handleOrderStatusSet();
+  params.orderStatusSet = handleOrderStatusSet(orderStatus);
 
   if (searchForm.customerId) {
     params.customerIdList = [searchForm.customerId];

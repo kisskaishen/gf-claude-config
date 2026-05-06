@@ -74,6 +74,7 @@
               end-placeholder="结束时间"
               format="YYYY-MM-DD"
               value-format="YYYY-MM-DD HH:mm:ss"
+              :default-time="defaultTime"
               @change="handleChange"
             />
           </el-form-item>
@@ -164,6 +165,11 @@ defineOptions({
 const customerNameList = computed(() => {
   return userStore.loginInfo?.shipperCustomerList || [];
 });
+
+const defaultTime = [
+  new Date(2000, 1, 1, 0, 0, 0), // 开始时间默认00:00:00
+  new Date(2000, 1, 1, 23, 59, 59) // 结束时间默认23:59:59
+];
 
 const defaultFormData = {
   consigneeCode: "",
@@ -282,26 +288,41 @@ const setDefaultRange = () => {
   const end = new Date();
   const start = new Date();
   start.setTime(start.getTime() - 30 * 24 * 3600 * 1000);
-  // value-format="YYYY-MM-DD HH:mm:ss" 需要传入字符串格式的日期
-  searchForm.orderTimeRange = [
-    dayjs(start).format("YYYY-MM-DD HH:mm:ss"),
-    dayjs(end).format("YYYY-MM-DD HH:mm:ss")
-  ];
+
+  // 设置开始时间为00:00:00，结束时间为23:59:59
+  const startDate = dayjs(start).startOf("day").format("YYYY-MM-DD HH:mm:ss");
+  const endDate = dayjs(end).endOf("day").format("YYYY-MM-DD HH:mm:ss");
+
+  searchForm.orderTimeRange = [startDate, endDate];
 };
+
 setDefaultRange();
 
 // 处理日期变化
 const handleChange = (value) => {
   if (value && value[0] && value[1]) {
-    const start = dayjs(value[0]);
-    const end = dayjs(value[1]);
+    // 确保开始时间为00:00:00，结束时间为23:59:59
+    const start = dayjs(value[0]).startOf("day");
+    const end = dayjs(value[1]).endOf("day");
     const diffDays = end.diff(start, "day");
 
     if (diffDays > 30) {
       // 超过30天时，自动调整结束日期
-      const newEnd = start.add(30, "day").toDate();
-      searchForm.orderTimeRange = [value[0], newEnd];
+      const newEnd = start.add(30, "day").endOf("day");
+      searchForm.orderTimeRange = [
+        start.format("YYYY-MM-DD HH:mm:ss"),
+        newEnd.format("YYYY-MM-DD HH:mm:ss")
+      ];
+    } else {
+      // 正常范围内，设置正确的时间格式
+      searchForm.orderTimeRange = [
+        start.format("YYYY-MM-DD HH:mm:ss"),
+        end.format("YYYY-MM-DD HH:mm:ss")
+      ];
     }
+  } else if (!value) {
+    // 清空选择时，重置时间范围
+    searchForm.orderTimeRange = ["", ""];
   }
 };
 const tableData = ref([]);

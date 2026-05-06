@@ -62,7 +62,7 @@
           start="00:00"
           step="01:00"
           end="23:00"
-          placeholder="Select time"
+          :placeholder="$t('gfuc.please_select')"
         />
         <template #prefix>
           <svg
