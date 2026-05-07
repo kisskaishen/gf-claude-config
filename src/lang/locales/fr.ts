@@ -37,13 +37,13 @@ export default {
   "web.gfuc.please_enter_email": "Veuillez entrer votre email",
   "web.gfuc.security_authentication": "Veiligheidsverzekerings",
   "web.gfuc.security_authentication_tip":
-    "Om uw account veilig te houden, moet uw wachtwoord verschillende elementen bevatten",
-  "web.gfuc.lowercase": "Kleine letters",
-  "web.gfuc.uppercase": "Grote letters",
-  "web.gfuc.special": "Speciale tekens",
-  "web.gfuc.length": "8-12 tekens",
+    "Pour la sécurité de votre compte, votre mot de passe doit comporter les éléments suivants :",
+  "web.gfuc.lowercase": "des lettres minuscules",
+  "web.gfuc.uppercase": "des lettres majuscules",
+  "web.gfuc.special": "des caractères spéciaux",
+  "web.gfuc.length": "entre 8 et 12 caractères de long",
   "web.gfuc.agreement2":
-    "Door deze optie te selecteren, ga ik akkoord met het ontvangen van marketingberichten via SMS van GOFO. Er kunnen kosten voor SMS en data worden in rekening gebracht. Door mijn telefoonnummer te verstrekken, ga ik akkoord met het ontvangen van transactiegerelateerde berichten van GOFO via SMS, inclusief bestelnotificaties en verificatiecodes.",
+    "En cochant cette case, j’accepte expressément de recevoir des messages marketing de la part de GOFO par SMS. Des frais de SMS et de données peuvent s’appliquer. En fournissant mon numéro de mobile, j’accepte de recevoir des messages transactionnels de GOFO par SMS, y compris les notifications de commande et les codes de vérification.",
   "web.gfuc.already_have_account": "Heeft u al een account?",
   "web.gfuc.go_to_login": "Ga naar login",
   "web.gfuc.submit": "Soumettre",
@@ -279,5 +279,9 @@ export default {
   "web.gfuc.field_validation_rule": "Regole di validazione campo",
   "web.gfuc.order_time": "Orario ordine",
   "web.gfuc.request_parameters": "Requesti parametri",
-  "web.gfuc.response_message": "Response message"
+  "web.gfuc.response_message": "Response message",
+  "web.gfuc.weight_range": "Poids du colis doit être entre 0.001-50kg",
+  "web.gfuc.dimension_range": "Rang doit être entre 1-150cm",
+  "web.gfuc.total_range":
+    "Longueur, largeur et hauteur totales doivent être inférieures à 150cm"
 };
