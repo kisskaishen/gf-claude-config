@@ -223,7 +223,7 @@ export default {
   "web.gfuc.balance_low_reminder_popup_tip":
     "Popup herinnering verschijnt wanneer het saldo laag is na inschakeling",
   "web.gfuc.eur": "Euro",
-  "web.gfuc.save.": "Opslaan",
+  "web.gfuc.save": "Opslaan",
   "web.gfuc.edit": "Bewerken",
   "web.gfuc.enabled": "Ingeschakeld",
   "web.gfuc.disabled": "Uitgeschakeld",
