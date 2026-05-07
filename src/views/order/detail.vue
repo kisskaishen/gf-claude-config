@@ -376,6 +376,8 @@ const statusSteps = computed(() => {
   let arr = [1, 3, 4];
   if ([6, 7, 8].includes(orderData.value?.orderStatus)) {
     arr[4] = orderData.value?.orderStatus;
+  } else {
+    arr.push(5);
   }
   return orderStatusDict.options.value
     .filter((item) => arr.includes(item.value))
