@@ -240,7 +240,7 @@ export default {
   "web.gfuc.balance_low_reminder_popup_tip":
     "Un rappel contextuel apparaîtra lorsque le solde est insuffisant après activation",
   "web.gfuc.eur": "Euro",
-  "web.gfuc.save.": "Enregistrer",
+  "web.gfuc.save": "Enregistrer",
   "web.gfuc.edit": "Modifier",
   "web.gfuc.enabled": "Activé",
   "web.gfuc.disabled": "Désactivé",

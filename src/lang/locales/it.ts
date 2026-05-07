@@ -231,7 +231,7 @@ export default {
   "web.gfuc.balance_low_reminder_popup_tip":
     "Il promemoria popup apparirà quando il saldo è insufficiente dopo l'attivazione",
   "web.gfuc.eur": "Euro",
-  "web.gfuc.save.": "Salva",
+  "web.gfuc.save": "Salva",
   "web.gfuc.edit": "Modifica",
   "web.gfuc.enabled": "Attivato",
   "web.gfuc.disabled": "Disattivato",

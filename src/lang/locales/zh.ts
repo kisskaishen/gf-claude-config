@@ -231,9 +231,9 @@ export default {
   "web.gfuc.enable": "开启",
   "web.gfuc.disable": "关闭",
   "web.gfuc.balance_low_reminder_popup_tip":
-    "gfuc.enable_after_balance_low_reminder_tip",
+    "当可下单余额低于设定额度时弹窗提醒",
   "web.gfuc.eur": "欧元",
-  "web.gfuc.save.": "保存",
+  "web.gfuc.save": "保存",
   "web.gfuc.edit": "编辑",
   "web.gfuc.enabled": "已开启",
   "web.gfuc.disabled": "已关闭",
