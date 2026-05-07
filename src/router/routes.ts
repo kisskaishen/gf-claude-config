@@ -72,13 +72,11 @@ export const routes: RouteRecordRaw[] = [
       {
         path: "batch",
         name: "BatchOrder",
-        // component: () => import("@/views/order/batch.vue"),
-        component: () => import("@/views/home/index.vue"),
+        component: () => import("@/views/order/batch.vue"),
         meta: {
           title: "批量下单",
           i18n: "web.gfuc.batch_order",
-          requireAuth: true,
-          hidden: true // 批量下单页不在菜单显示
+          requireAuth: true
         }
       },
       {
