@@ -273,5 +273,21 @@ export default {
   "web.gfuc.weight_range": "Parcel weight must be between 0.001-50kg",
   "web.gfuc.dimension_range": "Range must be between 1-150cm",
   "web.gfuc.total_range":
-    "Total length, width, and height must be less than 150cm"
+    "Total length, width, and height must be less than 150cm",
+
+  // 批量下单
+  "web.gfuc.batch_order_template_download": "Batch Order Template Download",
+  "web.gfuc.upload_task": "Upload Task",
+  "web.gfuc.upload_task_tip":
+    "Please ensure the downloaded template file format is correct, otherwise it will cause order creation to fail.",
+  "web.gfuc.upload_task_file_format_tip":
+    "Support xls, xlsx format, file size up to 10MB, max 500 orders per upload",
+  "web.gfuc.upload_task_total_prefix": "Total orders uploaded",
+  "web.gfuc.upload_task_suffix": "orders",
+  "web.gfuc.upload_task_success_prefix": "Success",
+  "web.gfuc.upload_task_failed_prefix": "Failed",
+  "web.gfuc.upload_task_button_text": "Click to upload file",
+  "web.gfuc.download_error_data": "Download error data",
+  "web.gfuc.row_number": "Uploaded row number",
+  "web.gfuc.error_message": "Error message"
 };

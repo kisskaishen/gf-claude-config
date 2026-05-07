@@ -259,5 +259,21 @@ export default {
   "web.gfuc.response_message": "相应报文",
   "web.gfuc.weight_range": "包裹重量必须在0.001-50kg之间",
   "web.gfuc.dimension_range": "范围必须在1-150cm之间",
-  "web.gfuc.total_range": "包裹长宽高总和不能超过150cm"
+  "web.gfuc.total_range": "包裹长宽高总和不能超过150cm",
+
+  // 批量下单
+  "web.gfuc.batch_order_template_download": "批量下单模板下载",
+  "web.gfuc.upload_task": "上传任务",
+  "web.gfuc.upload_task_tip":
+    "请确保下载的模板文件格式正确，否则会导致订单创建失败。",
+  "web.gfuc.upload_task_file_format_tip":
+    "支持xls、xlsx格式，文件最大不超过10M，每个文件最多上传500条订单",
+  "web.gfuc.upload_task_total_prefix": "一共上传订单数据",
+  "web.gfuc.upload_task_suffix": "条",
+  "web.gfuc.upload_task_success_prefix": "成功",
+  "web.gfuc.upload_task_failed_prefix": "失败",
+  "web.gfuc.upload_task_button_text": "点击上传文件",
+  "web.gfuc.download_error_data": "下载错误数据",
+  "web.gfuc.row_number": "行号",
+  "web.gfuc.error_message": "错误信息"
 };

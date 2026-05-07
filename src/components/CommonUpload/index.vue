@@ -112,7 +112,9 @@
       >
         <template #trigger>
           <svg-icon name="upload" width="36" height="32"></svg-icon>
-          <div class="el-upload__text text-sm text-[#7A869A]">点击上传文件</div>
+          <div class="text-sm text-[#7A869A] font-normal">
+            {{ buttonText }}
+          </div>
         </template>
 
         <template #tip>

@@ -9,9 +9,9 @@
             height="24"
             class="mr-2"
           />
-          批量下单模板下载
+          {{ $t("web.gfuc.batch_order_template_download") }}
         </el-button>
-        <el-tooltip
+        <!-- <el-tooltip
           content="上传任务可以查看所有历史上传的记录"
           placement="bottom"
         >
@@ -22,12 +22,12 @@
               height="20"
               class="mr-2"
             />
-            上传任务
+            {{ $t("web.gfuc.upload_task") }}
           </el-button>
-        </el-tooltip>
+        </el-tooltip> -->
       </div>
       <div class="tips text-sm text-[#BBBDBF] mt-2">
-        请确保下载的模板文件格式正确，否则会导致订单创建失败。
+        {{ $t("web.gfuc.upload_task_tip") }}
       </div>
       <div class="mt-2">
         <el-form
@@ -75,8 +75,9 @@
         drag
         :multiple="true"
         :limit="10"
+        :buttonText="$t('web.gfuc.upload_task_button_text')"
         accept=".xls,.xlsx"
-        hint="支持xls、xlsx格式，文件最大不超过100M"
+        :hint="$t('web.gfuc.upload_task_file_format_tip')"
       />
     </div>
 
@@ -97,15 +98,21 @@
           {{ $t("web.gfuc.upload_task_suffix") }}
         </div>
 
-        <el-button type="primary" link @click="downloadErrorData"
-          >下载错误数据</el-button
-        >
+        <el-button type="primary" link @click="downloadErrorData">{{
+          $t("web.gfuc.download_error_data")
+        }}</el-button>
       </div>
 
       <el-table :data="tableData" class="mt-4" border max-height="300px">
-        <el-table-column label="行号" prop="orderNo" />
-        <el-table-column label="客户订单号" prop="orderStatus" />
-        <el-table-column label="错误信息" prop="createTime" />
+        <el-table-column :label="$t('web.gfuc.row_number')" prop="orderNo" />
+        <el-table-column
+          :label="$t('web.gfuc.customer_order_no')"
+          prop="orderStatus"
+        />
+        <el-table-column
+          :label="$t('web.gfuc.error_message')"
+          prop="createTime"
+        />
       </el-table>
     </div>
   </div>
