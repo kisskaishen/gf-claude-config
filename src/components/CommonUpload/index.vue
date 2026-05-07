@@ -128,12 +128,14 @@
           <slot name="file" :file="file">
             <div class="relative file-item">
               <svg-icon name="upload-file" width="40" height="48"></svg-icon>
-              <div
-                class="absolute text-sm font-normal text-white left-2 top-5.5"
-              >
-                {{ file.name.split(".")[1] }}
+              <div class="absolute left-0 h-12 w-9 top-2">
+                <div
+                  class="h-12 text-sm font-normal text-center text-white leading-[48px]"
+                >
+                  {{ file.name.split(".")[1] }}
+                </div>
               </div>
-              <div class="flex flex-col w-full">
+              <div class="flex flex-col flex-1">
                 <!-- 文件名 -->
                 <div>
                   <span class="file-name">{{ file.name }}</span>
@@ -158,6 +160,9 @@
                   <!-- <el-progress :percentage="file.percent" status="active" /> -->
                 </div>
               </div>
+              <el-button link @click="handleRefresh">
+                <el-icon><Refresh /></el-icon>
+              </el-button>
             </div>
           </slot>
         </template>
@@ -183,7 +188,8 @@ import {
   Document,
   Picture,
   VideoCameraFilled,
-  WarningFilled
+  WarningFilled,
+  Refresh
 } from "@element-plus/icons-vue";
 
 const props = defineProps({

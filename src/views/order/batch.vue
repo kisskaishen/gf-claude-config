@@ -9,7 +9,7 @@
             height="24"
             class="mr-2"
           />
-          批量下单下载
+          批量下单模板下载
         </el-button>
         <el-tooltip
           content="上传任务可以查看所有历史上传的记录"
@@ -82,9 +82,19 @@
 
     <div class="mt-6 table-list">
       <div class="flex items-center justify-between">
+        <!-- 调试步骤 -->
         <div class="text-sm font-normal text-text-placeholder">
-          一共上传订单数据  100条，成功<em class="text-success">23</em
-          >条，失败<em class="text-danger">77</em>条
+          {{ $t("web.gfuc.upload_task_total_prefix") }}
+          <span class="font-normal">100</span>
+          {{ $t("web.gfuc.upload_task_suffix") }}，
+
+          {{ $t("web.gfuc.upload_task_success_prefix") }}
+          <span class="font-normal text-success">23</span>
+          {{ $t("web.gfuc.upload_task_suffix") }}，
+
+          {{ $t("web.gfuc.upload_task_failed_prefix") }}
+          <span class="font-normal text-danger">77</span>
+          {{ $t("web.gfuc.upload_task_suffix") }}
         </div>
 
         <el-button type="primary" link @click="downloadErrorData"
@@ -110,7 +120,9 @@ import CommonUpload from "@/components/CommonUpload/index.vue";
 import { downloadFile } from "@/utils/download";
 
 import { useUserStore } from "@/store/user";
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n();
 const tableData = ref([]);
 
 const fileList = ref([]);
@@ -125,6 +137,31 @@ const shipperOptions = computed(() => {
 const formRef = ref(null);
 const form = reactive({
   customerId: ""
+});
+
+// 在脚本部分添加
+const totalTip = computed(() => {
+  const text = $t("web.gfuc.upload_task_total_tip");
+  return text.replace(
+    "{count}",
+    '<span style="color:#007AFF;font-weight:bold">100</span>'
+  );
+});
+
+const successTip = computed(() => {
+  const text = $t("web.gfuc.upload_task_success_tip");
+  return text.replace(
+    "{count}",
+    '<span style="color:#52C41A;font-weight:bold">23</span>'
+  );
+});
+
+const failedTip = computed(() => {
+  const text = $t("web.gfuc.upload_task_failed_tip");
+  return text.replace(
+    "{count}",
+    '<span style="color:#FF4D4F;font-weight:bold">77</span>'
+  );
 });
 
 const handleCustomerChange = (val: string) => {
