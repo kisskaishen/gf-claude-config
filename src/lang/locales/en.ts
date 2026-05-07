@@ -233,7 +233,7 @@ export default {
   "web.gfuc.balance_low_reminder_popup_tip":
     "Popup reminder will appear when balance is low after enabled",
   "web.gfuc.eur": "Euro",
-  "web.gfuc.save.": "Save",
+  "web.gfuc.save": "Save",
   "web.gfuc.edit": "Edit",
   "web.gfuc.enabled": "Enabled",
   "web.gfuc.disabled": "Disabled",
