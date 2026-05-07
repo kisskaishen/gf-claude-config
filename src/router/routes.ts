@@ -26,52 +26,73 @@ export const routes: RouteRecordRaw[] = [
       }
     ]
   },
-  // {
-  //   path: "/order",
-  //   component: () => import("@/layout/index.vue"),
-  //   redirect: "/order/single",
-  //   meta: {
-  //     title: "订单管理",
-  //     icon: "order",
-  //     i18n: "web.gfuc.order_management",
-  //     requireAuth: true
-  //   },
-  //   children: [
-  //     {
-  //       path: "single",
-  //       name: "SingleOrder",
-  //       // component: () => import("@/views/order/single.vue"),
-  //       component: () => import("@/views/home/index.vue"),
-  //       meta: {
-  //         title: "单票下单",
-  //         i18n: "web.gfuc.single_ticket_order",
-  //         requireAuth: true
-  //       }
-  //     },
-  //     {
-  //       path: "batch",
-  //       name: "BatchOrder",
-  //       // component: () => import("@/views/order/batch.vue"),
-  //       component: () => import("@/views/home/index.vue"),
-  //       meta: {
-  //         title: "批量下单",
-  //         i18n: "web.gfuc.batch_order",
-  //         requireAuth: true
-  //       }
-  //     },
-  //     {
-  //       path: "list",
-  //       name: "OrderList",
-  //       // component: () => import("@/views/order/list.vue"),
-  //       component: () => import("@/views/home/index.vue"),
-  //       meta: {
-  //         title: "订单列表",
-  //         i18n: "web.gfuc.order_list",
-  //         requireAuth: true
-  //       }
-  //     }
-  //   ]
-  // },
+  {
+    path: "/order",
+    component: () => import("@/layout/index.vue"),
+    redirect: "/order/single",
+    meta: {
+      title: "订单管理",
+      icon: "order",
+      i18n: "web.gfuc.order_management",
+      requireAuth: true
+    },
+    children: [
+      {
+        path: "single",
+        name: "SingleOrder",
+        component: () => import("@/views/order/single.vue"),
+        meta: {
+          title: "单票下单",
+          i18n: "web.gfuc.single_ticket_order",
+          requireAuth: true
+        }
+      },
+      {
+        path: "single/:orderId?/:orderType?",
+        name: "SingleOrderWithParams",
+        component: () => import("@/views/order/single.vue"),
+        meta: {
+          title: "单票下单",
+          i18n: "web.gfuc.single_ticket_order",
+          requireAuth: true,
+          hidden: true // 带参数的路由不在菜单显示
+        }
+      },
+      {
+        path: "detail/:orderId/:orderType?",
+        name: "OrderDetail",
+        component: () => import("@/views/order/detail.vue"),
+        meta: {
+          title: "订单详情",
+          i18n: "web.gfuc.order_detail",
+          requireAuth: true,
+          hidden: true // 订单详情页不在菜单显示
+        }
+      },
+      {
+        path: "batch",
+        name: "BatchOrder",
+        // component: () => import("@/views/order/batch.vue"),
+        component: () => import("@/views/home/index.vue"),
+        meta: {
+          title: "批量下单",
+          i18n: "web.gfuc.batch_order",
+          requireAuth: true,
+          hidden: true // 批量下单页不在菜单显示
+        }
+      },
+      {
+        path: "list",
+        name: "OrderList",
+        component: () => import("@/views/order/list.vue"),
+        meta: {
+          title: "订单列表",
+          i18n: "web.gfuc.order_list",
+          requireAuth: true
+        }
+      }
+    ]
+  },
   {
     path: "/finance",
     component: () => import("@/layout/index.vue"),
@@ -110,6 +131,27 @@ export const routes: RouteRecordRaw[] = [
       //   component: () => import("@/views/home/index.vue"),
       //   meta: { title: "账单", requireAuth: true, i18n: "web.gfuc.bill" }
       // }
+    ]
+  },
+  {
+    path: "/setting",
+    component: () => import("@/layout/index.vue"),
+    meta: {
+      title: "设置",
+      icon: "setting",
+      i18n: "web.gfuc.setting"
+    },
+    redirect: "/setting/messageNotification",
+    children: [
+      {
+        path: "messageNotification",
+        name: "messageNotification",
+        component: () => import("@/views/setting/messageNotification.vue"),
+        meta: {
+          title: "消息通知设置",
+          i18n: "web.gfuc.message_notification_settings"
+        }
+      }
     ]
   },
   // {

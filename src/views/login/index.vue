@@ -118,6 +118,9 @@ const handleSwitch = (
 const handleSuccess = async (type: "login" | "register", otherInfo = "") => {
   console.log(userStore.hasSetPreference, "认证");
   if (type === "login") {
+    // 登录成功后清理订单相关的sessionStorage数据
+    sessionStorage.removeItem("single_order_form_data");
+
     if (userStore.hasSetPreference) {
       ElMessage.success(t("web.gfuc.login_successful" /** 登录成功 **/));
       redirectToHome();

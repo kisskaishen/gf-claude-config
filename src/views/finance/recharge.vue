@@ -7,68 +7,6 @@
       label-position="top"
       class="recharge-form"
     >
-      <!-- 支付截图 -->
-      <el-form-item prop="attachmentKeys">
-        <template #label>
-          <div class="label-with-link">
-            <span>{{ $t("gfuc.payment_screenshot" /** 支付截图 **/) }}</span>
-            <el-link
-              type="primary"
-              class="example-link"
-              :underline="false"
-              @click="handleDownloadExample"
-            >
-              {{ $t("gfuc.sample_image" /** 图片示例 **/) }}
-            </el-link>
-          </div>
-        </template>
-        <div>
-          <el-upload
-            class="upload-demo"
-            action="#"
-            accept=".pdf,.jpg,.png,.jpeg"
-            v-model:file-list="fileList"
-            :show-file-list="false"
-            :before-upload="handleBeforeUpload"
-            :http-request="handleUpload"
-            drag
-          >
-            <div class="upload-placeholder">
-              <img src="@/assets/upload.png" alt="upload" class="upload-icon" />
-              <div class="upload__text">
-                {{ $t("gfuc.click_to_upload_file" /** 点击上传文件 **/) }}
-              </div>
-            </div>
-          </el-upload>
-
-          <div class="form-tip">
-            {{
-              $t(
-                "gfuc.file_format_restrictions" /** 只支持pdf/jpg/png/jpeg 文件，单个大小不能超过10MB **/
-              )
-            }}
-          </div>
-
-          <!-- 自定义文件列表显示 -->
-          <div v-if="fileList.length > 0" class="custom-file-list">
-            <div v-for="file in fileList" :key="file.uid" class="file-item">
-              <div class="file-info">
-                <img
-                  class="file-icon"
-                  :src="fileIconMap[file.raw?.type || '']"
-                />
-                <a class="file-name" @click="handleFilePreview(file)">
-                  {{ file.name }}
-                </a>
-              </div>
-              <el-icon class="delete-icon" @click="handleFileRemove(file)">
-                <svg-icon name="trash" />
-              </el-icon>
-            </div>
-          </div>
-        </div>
-      </el-form-item>
-
       <el-row :gutter="24">
         <!-- 充值金额 -->
         <el-col :span="12">
@@ -141,6 +79,68 @@
         </el-col>
       </el-row>
 
+      <!-- 支付截图 -->
+      <el-form-item prop="attachmentKeys">
+        <template #label>
+          <div class="label-with-link">
+            <span>{{ $t("gfuc.payment_screenshot" /** 支付截图 **/) }}</span>
+            <el-link
+              type="primary"
+              class="example-link"
+              :underline="false"
+              @click="handleDownloadExample"
+            >
+              {{ $t("gfuc.sample_image" /** 图片示例 **/) }}
+            </el-link>
+          </div>
+        </template>
+        <div>
+          <el-upload
+            class="upload-demo"
+            action="#"
+            accept=".pdf,.jpg,.png,.jpeg"
+            v-model:file-list="fileList"
+            :show-file-list="false"
+            :before-upload="handleBeforeUpload"
+            :http-request="handleUpload"
+            drag
+          >
+            <div class="upload-placeholder">
+              <img src="@/assets/upload.png" alt="upload" class="upload-icon" />
+              <div class="upload__text">
+                {{ $t("gfuc.click_to_upload_file" /** 点击上传文件 **/) }}
+              </div>
+            </div>
+          </el-upload>
+
+          <div class="form-tip">
+            {{
+              $t(
+                "gfuc.file_format_restrictions" /** 只支持pdf/jpg/png/jpeg 文件，单个大小不能超过10MB **/
+              )
+            }}
+          </div>
+
+          <!-- 自定义文件列表显示 -->
+          <div v-if="fileList.length > 0" class="custom-file-list">
+            <div v-for="file in fileList" :key="file.uid" class="file-item">
+              <div class="file-info">
+                <img
+                  class="file-icon"
+                  :src="fileIconMap[file.raw?.type || '']"
+                />
+                <a class="file-name" @click="handleFilePreview(file)">
+                  {{ file.name }}
+                </a>
+              </div>
+              <el-icon class="delete-icon" @click="handleFileRemove(file)">
+                <svg-icon name="trash" />
+              </el-icon>
+            </div>
+          </div>
+        </div>
+      </el-form-item>
+
       <!-- 备注 -->
       <el-form-item :label="$t('gfuc.remark' /** 备注 **/)" prop="remark">
         <el-input
@@ -163,7 +163,7 @@
         @click="handleSubmit"
         :loading="loading"
       >
-        {{ $t("web.gfuc.submit" /** 提交 **/) }}
+        {{ $t("web.gfuc.submit_order" /** 提交 **/) }}
       </el-button>
     </el-form>
   </page-container>

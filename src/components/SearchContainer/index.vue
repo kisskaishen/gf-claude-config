@@ -1,11 +1,24 @@
 <template>
   <div class="search-container">
-    <el-row :gutter="gutter">
-      <template v-for="item in visibleSlots" :key="item.vnode">
-        <el-col v-show="isExpanded || item.visible" v-bind="item.colProps">
-          <component :is="item.vnode" />
-        </el-col>
-      </template>
+    <el-row :gutter="gutter" type="flex">
+      <!-- 单号模块独立列 -->
+      <el-col
+        v-if="hasOrderNumberSlot"
+        :span="orderNumberSpan"
+        class="order-number-col"
+      >
+        <slot name="order-number"></slot>
+      </el-col>
+      <el-col :span="24 - orderNumberSpan">
+        <el-row :gutter="gutter">
+          <!-- 其他搜索项 -->
+          <template v-for="item in visibleSlots" :key="item.vnode">
+            <el-col v-show="isExpanded || item.visible" v-bind="item.colProps">
+              <component :is="item.vnode" />
+            </el-col>
+          </template>
+        </el-row>
+      </el-col>
     </el-row>
 
     <div class="operation-bar">
@@ -68,6 +81,14 @@ const TOTAL_SPAN = 24;
 
 // 逻辑计算逻辑
 const defaultItemSpan = computed(() => Math.floor(TOTAL_SPAN / props.cols));
+
+// 单号模块相关计算
+const hasOrderNumberSlot = computed(() => !!slots["order-number"]);
+const orderNumberSpan = computed(() => {
+  // 单号模块默认占据1列，可根据需要调整
+  return Math.floor(TOTAL_SPAN / props.cols);
+});
+
 const visibleSlots = computed(() => {
   const rawSlots = (slots.default ? slots.default() : []) as VNode[];
   const flattened = rawSlots
@@ -75,7 +96,9 @@ const visibleSlots = computed(() => {
       vnode.type === Symbol.for("v-fgt") ? (vnode.children as VNode[]) : [vnode]
     )
     .filter((vnode) => vnode.type !== Comment && vnode.type !== Text);
-  let currentSpanSum = 0;
+
+  let currentSpanSum = hasOrderNumberSlot.value ? orderNumberSpan.value : 0;
+
   return flattened.map((vnode) => {
     const span = (
       vnode.props?.span ? Number(vnode.props.span) : defaultItemSpan.value
@@ -90,10 +113,14 @@ const visibleSlots = computed(() => {
   });
 });
 const needsCollapse = computed(() => {
-  const totalSpan = visibleSlots.value.reduce(
+  const orderNumberSpanValue = hasOrderNumberSlot.value
+    ? orderNumberSpan.value
+    : 0;
+  const otherSlotsSpan = visibleSlots.value.reduce(
     (sum, item) => sum + item.span,
     0
   );
+  const totalSpan = orderNumberSpanValue + otherSlotsSpan;
   return totalSpan > props.rowNum * TOTAL_SPAN;
 });
 

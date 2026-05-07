@@ -9,8 +9,6 @@ export function setupRouteGuard(router: Router) {
     const userStore = useUserStoreWithOut();
     const appStore = useAppStore();
 
-    console.log("+++", userStore, appStore);
-
     if (userStore.token && !userStore.isUserInfoUpdated) {
       await userStore.fetchUserInfo();
     }
@@ -33,8 +31,13 @@ export function setupRouteGuard(router: Router) {
         // 在免登录白名单，直接进入
         next();
       } else {
+        console.log(to, "====");
         // 否则全部重定向到登录页
-        next(`/login?redirect=${to.path}`);
+        if (["OrderDetail", "SingleOrderWithParams"].includes(to.name)) {
+          next(`/login?redirect=/order/list`);
+        } else {
+          next(`/login?redirect=${to.path}`);
+        }
       }
     }
   });

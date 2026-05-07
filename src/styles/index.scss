@@ -1,3 +1,7 @@
 @use "./reset";
 @use "./var";
+@use "./element";
 @use "./element-override";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

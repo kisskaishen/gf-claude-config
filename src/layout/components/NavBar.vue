@@ -54,7 +54,12 @@ const handleLogout = async () => {
         type: "warning"
       }
     );
-
+    if (sessionStorage.getItem("balanceAlertNotShown")) {
+      sessionStorage.removeItem("balanceAlertNotShown");
+    }
+    if (sessionStorage.getItem("single_order_form_data")) {
+      sessionStorage.removeItem("single_order_form_data");
+    }
     userStore.logout();
     router.push("/login");
     ElMessage.success(t("gfuc.logged_out" /** 已退出登录 **/));
