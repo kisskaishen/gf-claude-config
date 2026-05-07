@@ -152,13 +152,11 @@ import {
 } from "@/api/order";
 
 import { useRouter, useRoute } from "vue-router";
-import { useAppStore } from "@/store/app";
 
 const router = useRouter();
 const route = useRoute();
 
 const isEdit = computed(() => route.params.orderId);
-const appStore = useAppStore();
 defineOptions({
   name: "SingleOrder"
 });
@@ -297,9 +295,6 @@ const submitOrder = async () => {
         productName: formData.product?.productName,
         productCode: formData.product?.productCode,
         productType: formData.product?.productType,
-
-        orderTimeZone:
-          appStore.timezone === "Local" ? undefined : appStore.timezone,
 
         queryCollectStartTime: formData.product?.queryCollectStartTime,
         queryCollectEndTime: formData.product?.queryCollectEndTime,
