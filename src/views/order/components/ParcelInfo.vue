@@ -56,11 +56,8 @@
                   :label="$t('web.gfuc.total_parcel_weight')"
                   prop="orderGoods.weight"
                 >
-                  <el-input-number
-                    :controls="false"
+                  <el-input
                     v-model="formData.orderGoods.weight"
-                    :min="0.001"
-                    :max="50"
                     :placeholder="
                       $t('web.gfuc.total_parcel_weight_placeholder')
                     "
@@ -76,8 +73,6 @@
                     :controls="false"
                     v-model="formData.orderGoods.length"
                     :precision="2"
-                    :min="1"
-                    :max="150"
                     :placeholder="$t('web.gfuc.parcel_length_placeholder')"
                   />
                 </el-form-item>
@@ -91,8 +86,6 @@
                     :controls="false"
                     v-model="formData.orderGoods.width"
                     :precision="2"
-                    :min="1"
-                    :max="150"
                     :placeholder="$t('web.gfuc.parcel_width_placeholder')"
                   />
                 </el-form-item>
@@ -106,8 +99,6 @@
                     :controls="false"
                     v-model="formData.orderGoods.height"
                     :precision="2"
-                    :min="1"
-                    :max="150"
                     :placeholder="$t('web.gfuc.parcel_height_placeholder')"
                   />
                 </el-form-item>
@@ -371,16 +362,25 @@ watch(
   { immediate: true, deep: true }
 );
 
-// 自定义校验函数：包裹长宽高总和不超过150
+// 自定义校验函数：包裹长宽高总和不超过150,且每个维度不能小于1不能超过150
+// 自定义校验函数：包裹长宽高校验
 const validateDimensions = (rule, value, callback) => {
+  const numValue = parseFloat(value) || 0;
+
+  // 校验单个维度范围：1-150
+  if (numValue < 1 || numValue > 150) {
+    callback(new Error(t("web.gfuc.dimension_range")));
+    return;
+  }
+
+  // 校验长宽高总和不超过150
   const length = parseFloat(formData.value.orderGoods.length) || 0;
   const width = parseFloat(formData.value.orderGoods.width) || 0;
   const height = parseFloat(formData.value.orderGoods.height) || 0;
-
   const total = length + width + height;
 
   if (total > 150) {
-    callback(new Error("包裹长宽高总和不能超过150"));
+    callback(new Error(t("web.gfuc.total_range")));
   } else {
     callback();
   }
@@ -388,18 +388,28 @@ const validateDimensions = (rule, value, callback) => {
 
 const isEdit = computed(() => !!route.params?.orderId);
 
+const validateWeight = (rule, value, callback) => {
+  if (!value) {
+    callback(new Error(t("web.gfuc.enter_parcel_weight")));
+  } else if (value < 0.001 || value > 50) {
+    callback(new Error(t("web.gfuc.weight_range")));
+  } else {
+    callback();
+  }
+};
+
 const rules = computed(() => ({
   declaredValue: [
     {
       required: true,
       message: t("web.gfuc.enter_total_declared_value"),
-      trigger: "blur"
+      trigger: ["blur", "change"]
     }
   ],
   "orderGoods.weight": [
     {
       required: true,
-      message: t("web.gfuc.enter_parcel_weight"),
+      validator: validateWeight,
       trigger: ["blur", "change"]
     }
   ],

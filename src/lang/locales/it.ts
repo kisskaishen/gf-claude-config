@@ -36,13 +36,13 @@ export default {
   "web.gfuc.please_enter_email": "Inserisci la tua email",
   "web.gfuc.security_authentication": "Veiligheidsverzekerings",
   "web.gfuc.security_authentication_tip":
-    "Om uw account veilig te houden, moet uw wachtwoord verschillende elementen bevatten",
-  "web.gfuc.lowercase": "Kleine letters",
-  "web.gfuc.uppercase": "Grote letters",
-  "web.gfuc.special": "Speciale tekens",
-  "web.gfuc.length": "8-12 tekens",
+    "Per la sicurezza del tuo account, la tua password deve includere i seguenti elementi:",
+  "web.gfuc.lowercase": "lettere minuscole",
+  "web.gfuc.uppercase": "lettere maiuscole",
+  "web.gfuc.special": "caratteri speciali",
+  "web.gfuc.length": "da 8 a 12 caratteri di lunghezza",
   "web.gfuc.agreement2":
-    "Door deze optie te selecteren, ga ik akkoord met het ontvangen van marketingberichten via SMS van GOFO. Er kunnen kosten voor SMS en data worden in rekening gebracht. Door mijn telefoonnummer te verstrekken, ga ik akkoord met het ontvangen van transactiegerelateerde berichten van GOFO via SMS, inclusief bestelnotificaties en verificatiecodes.",
+    "Selezionando questa casella, acconsento espressamente a ricevere messaggi di marketing da GOFO via SMS. Potrebbero essere applicati costi per SMS e dati. Fornendo il mio numero di cellulare, accetto di ricevere da GOFO messaggi transazionali via SMS, inclusi notifiche degli ordini e codici di verifica.",
   "web.gfuc.already_have_account": "Heeft u al een account?",
   "web.gfuc.go_to_login": "Ga naar login",
   "web.gfuc.submit": "Invia",
@@ -269,5 +269,9 @@ export default {
   "web.gfuc.field_validation_rule": "Regole di validazione campo",
   "web.gfuc.order_time": "Orario ordine",
   "web.gfuc.request_parameters": "Parametri richiesta",
-  "web.gfuc.response_message": "Messposta"
+  "web.gfuc.response_message": "Messposta",
+  "web.gfuc.weight_range": "Poids del colis deve essere tra 0.001-50kg",
+  "web.gfuc.dimension_range": "Rang deve essere tra 1-150cm",
+  "web.gfuc.total_range":
+    "Lunghezza, larghezza e altezza totalali devono essere inferiore a 150cm"
 };

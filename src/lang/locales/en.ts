@@ -36,13 +36,13 @@ export default {
   "web.gfuc.please_enter_email": "Please enter your email",
   "web.gfuc.security_authentication": "Security Authentication",
   "web.gfuc.security_authentication_tip":
-    "To ensure the security of your account, your password must contain the following elements",
-  "web.gfuc.lowercase": "Lowercase",
-  "web.gfuc.uppercase": "Uppercase",
+    "For your account security, your password must include the following:",
+  "web.gfuc.lowercase": "Lowercase letters",
+  "web.gfuc.uppercase": "Uppercase letters",
   "web.gfuc.special": "Special characters",
-  "web.gfuc.length": "8-12 characters",
+  "web.gfuc.length": "between 8 and 12 characters long",
   "web.gfuc.agreement2":
-    "By checking this box, I explicitly agree to receive marketing messages from GOFO via SMS. There may be charges for SMS and data. By providing my phone number, I agree to receive transaction-related messages from GOFO via SMS, including order notifications and verification codes.",
+    "By checking this box, I expressly consent to receiving marketing messages from GOFO via SMS. Message and data rates may apply. By providing my mobile number, I agree to receive transactional messages from GOFO via SMS, including order notifications and verification codes.",
   "web.gfuc.already_have_account": "Already have an account?",
   "web.gfuc.go_to_login": "Go to login",
   "web.gfuc.submit": "Submit",
@@ -269,5 +269,9 @@ export default {
   "web.gfuc.field_validation_rule": "Field Validation Rule",
   "web.gfuc.order_time": "Order Time",
   "web.gfuc.request_parameters": "Request Parameters",
-  "web.gfuc.response_message": "Response Message"
+  "web.gfuc.response_message": "Response Message",
+  "web.gfuc.weight_range": "Parcel weight must be between 0.001-50kg",
+  "web.gfuc.dimension_range": "Range must be between 1-150cm",
+  "web.gfuc.total_range":
+    "Total length, width, and height must be less than 150cm"
 };
