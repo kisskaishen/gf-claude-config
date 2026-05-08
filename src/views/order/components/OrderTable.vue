@@ -89,7 +89,7 @@
             prop="shipperCodeList"
           >
             <el-input
-              v-model="searchForm.shipperPhone"
+              v-model="searchForm.consigneePhone"
               clearable
               :placeholder="$t('web.gfuc.please_enter' /** 请输入 **/)"
             />
@@ -348,6 +348,7 @@ const initialFormState = {
   productCodeList: [],
   customerName: "",
   customerId: "",
+  consigneePhone: "",
   transferRequired: undefined,
   deliveryStationIdList: [],
   orderTimeRange: ["", ""]
