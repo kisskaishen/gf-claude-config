@@ -48,7 +48,7 @@ export const routes: RouteRecordRaw[] = [
         }
       },
       {
-        path: "single/:orderId?/:orderType?",
+        path: "single/:orderId?/:orderType?/:editType?", // orderType：order | exception ，editType: copy | reorder
         name: "SingleOrderWithParams",
         component: () => import("@/views/order/single.vue"),
         meta: {

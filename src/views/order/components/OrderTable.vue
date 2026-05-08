@@ -618,7 +618,7 @@ const handleCancel = (row: any) => {
 };
 
 const handleCopy = (row: any) => {
-  router.push(`/order/single/${row.orderId}/order`);
+  router.push(`/order/single/${row.orderId}/order/copy`);
 };
 
 const selectedOrders = ref([]);
