@@ -239,7 +239,15 @@ const fetchData = async () => {
           })
     });
     if (res) {
-      tableData.value = res.items || [];
+      tableData.value =
+        res.items.map((item) => ({
+          ...item,
+          status: [1, 3].includes(item.status)
+            ? 1
+            : [4, 5].includes(item.status)
+              ? 5
+              : item.status
+        })) || [];
       total.value = res.totalCount || 0;
     }
   } finally {
