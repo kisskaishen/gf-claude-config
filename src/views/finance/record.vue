@@ -222,12 +222,26 @@ const getStatusClass = (status: Status) => {
 
 const fetchData = async () => {
   loading.value = true;
+  console.log(
+    searchForm.value.status.find((item) => item === 1),
+    "======"
+  );
+  let status = [];
+  status.push(...searchForm.value.status);
+  if (searchForm.value.status.find((item) => item === 1) > -1) {
+    status.push(3);
+  }
+  if (searchForm.value.status.find((item) => item === 5) > -1) {
+    status.push(4);
+  }
+
+  console.log(status, searchForm.value.status);
   try {
     const res = await getRechargeRecord({
       pageNumber: currentPage.value,
       pageSize: pageSize.value,
       receiptMethod: searchForm.value.paymentMethod,
-      status: searchForm.value.status,
+      status: status,
       ...(searchForm.value.dateType === DateType.Submit
         ? {
             submitStart: searchForm.value.dateRange?.[0] || "",
