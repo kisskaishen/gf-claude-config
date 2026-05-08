@@ -244,7 +244,7 @@
                     v-model="formData.cOrderNo"
                     maxlength="30"
                     :placeholder="$t('web.gfuc.unique_customer_order_no')"
-                    :disabled="isEdit"
+                    :disabled="isEdit && !isCopyOrReorder"
                   />
                 </el-form-item>
               </el-col>
@@ -385,8 +385,12 @@ const validateDimensions = (rule, value, callback) => {
     callback();
   }
 };
-
+// 编辑
 const isEdit = computed(() => !!route.params?.orderId);
+// 是复制或者重新下单进来的
+const isCopyOrReorder = computed(() =>
+  ["copy", "reorder"].includes(route.params.editType)
+);
 
 const validateWeight = (rule, value, callback) => {
   if (!value) {

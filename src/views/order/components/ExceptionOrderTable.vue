@@ -397,7 +397,7 @@ const handleView = (row: any) => {
 };
 
 const handleReOrder = (row: any) => {
-  router.push(`/order/single/${row.id}/exception`);
+  router.push(`/order/single/${row.id}/exception/reorder`);
 };
 
 onMounted(() => {
