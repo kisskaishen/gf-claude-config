@@ -109,7 +109,21 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item :label="$t('web.gfuc.address2')" prop="address2">
+                <el-form-item prop="address2">
+                  <template #label>
+                    <div class="flex items-center gap-1">
+                      {{ $t("web.gfuc.address2") }}
+                      <el-tooltip
+                        :content="$t('web.gfuc.address2_tip' /** 补充地址1 **/)"
+                        placement="top"
+                      >
+                        <el-icon class="tip-icon">
+                          <svg-icon name="question" />
+                        </el-icon>
+                      </el-tooltip>
+                    </div>
+                  </template>
+
                   <el-input
                     v-model="orderConsignee.address2"
                     :placeholder="$t('web.gfuc.please_enter_address')"
@@ -118,7 +132,20 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item :label="$t('web.gfuc.address3')" prop="address3">
+                <el-form-item prop="address3">
+                  <template #label>
+                    <div class="flex items-center gap-1">
+                      {{ $t("web.gfuc.address3") }}
+                      <el-tooltip
+                        :content="$t('web.gfuc.address3_tip' /** 补充地址2 **/)"
+                        placement="top"
+                      >
+                        <el-icon class="tip-icon">
+                          <svg-icon name="question" />
+                        </el-icon>
+                      </el-tooltip>
+                    </div>
+                  </template>
                   <el-input
                     v-model="orderConsignee.address3"
                     :placeholder="$t('web.gfuc.please_enter_address')"
