@@ -644,7 +644,7 @@ const consigneeAddress = (obj: any) => {
     }
 
     .step-arrow {
-      @apply absolute right-0 top-0 w-0 h-0 border-t-[28px] border-b-[28px] border-l-[32px] border-transparent;
+      @apply absolute right-0 top-0 w-0 h-0 border-t-[28px] border-b-[28px] border-l-[33px] border-transparent;
     }
 
     /* 激活状态 */

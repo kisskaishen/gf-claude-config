@@ -94,7 +94,7 @@
             </el-link>
           </div>
         </template>
-        <div>
+        <div v-loading="uploadLoading">
           <el-upload
             class="upload-demo"
             action="#"
@@ -212,6 +212,8 @@ defineOptions({
 
 const { t } = useI18n();
 const loading = ref(false);
+const uploadLoading = ref(false);
+
 const formRef = ref<FormInstance>();
 const fileList = ref<UploadFile[]>([]);
 
@@ -347,6 +349,7 @@ const handleBeforeUpload = (rawFile: UploadRawFile) => {
 
 const handleUpload = async (options: UploadRequestOptions) => {
   try {
+    uploadLoading.value = true;
     const data = new FormData();
     data.append("file", options.file);
     data.append("modelFolder", "modelFolder");
@@ -359,9 +362,11 @@ const handleUpload = async (options: UploadRequestOptions) => {
       file.url = res.url;
       file.status = "success";
     }
-
+    uploadLoading.value = false;
     formRef.value?.clearValidate("file");
   } catch (error) {
+    uploadLoading.value = false;
+
     ElMessage.error(t("gfuc.upload_failed_retry" /** 上传失败，请重试 **/));
     // 上传失败移除文件
     const index = fileList.value.findIndex((f) => f.uid === options.file.uid);
