@@ -121,8 +121,8 @@ export default {
   "web.gfuc.please_enter_area": "请输入区域",
   "web.gfuc.city": "城市",
   "web.gfuc.please_enter_city": "请输入城市",
-  "web.gfuc.state": "州",
-  "web.gfuc.please_enter_state": "请输入州",
+  "web.gfuc.state": "州/省",
+  "web.gfuc.please_enter_state": "请输入州/省",
   "web.gfuc.country": "国家",
   "web.gfuc.please_enter_country": "请输入国家",
   "web.gfuc.next_step": "下一步",
@@ -133,18 +133,22 @@ export default {
   // 收件人信息组件
   "web.gfuc.consignee_info_title": "收件人信息",
 
-  "web.gfuc.address2": "地址2",
-  "web.gfuc.address3": "地址3",
+  "web.gfuc.street": "街道",
+  "web.gfuc.address2": "补充地址1",
+  "web.gfuc.address2_tip": "公司名/偏远地区地名补充/工业区/商业活动",
+  "web.gfuc.address3": "补充地址2",
+  "web.gfuc.address3_tip": "住宅小区名称/楼道号",
 
-  "web.gfuc.internal_number": "内门牌号",
-  "web.gfuc.internal_number_placeholder": "请输入内门牌号",
-  "web.gfuc.external_number": "外门牌号",
-  "web.gfuc.external_number_placeholder": "请输入外门牌号",
+  "web.gfuc.internal_number": "内门牌号（房间号）",
+  "web.gfuc.internal_number_placeholder": "请输入内门牌号（房间号）",
+  "web.gfuc.external_number": "外门牌号（街道号）",
+  "web.gfuc.external_number_placeholder": "请输入外门牌号（街道号）",
 
   "web.gfuc.clear_button_title": "清除数据",
   "web.gfuc.edit_button_title": "编辑数据",
 
   "web.gfuc.consignee_info_placeholder": "请填写收件人信息",
+  "web.gfuc.remark": "附加信息",
 
   "web.gfuc.product_info": "产品信息",
   "web.gfuc.express_delivery": "特惠",
@@ -275,5 +279,7 @@ export default {
   "web.gfuc.upload_task_button_text": "点击上传文件",
   "web.gfuc.download_error_data": "下载错误数据",
   "web.gfuc.row_number": "行号",
-  "web.gfuc.error_message": "错误信息"
+  "web.gfuc.error_message": "错误信息",
+  // 复制成功
+  "web.gfuc.copy_success": "复制成功"
 };

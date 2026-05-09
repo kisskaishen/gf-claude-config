@@ -233,7 +233,7 @@
               </el-col>
 
               <el-col :span="16">
-                <el-form-item :label="$t('gfuc.remark')" prop="remarks">
+                <el-form-item :label="$t('web.gfuc.remark')" prop="remarks">
                   <el-input
                     v-model="orderConsignee.remarks"
                     :placeholder="$t('web.gfuc.please_enter')"

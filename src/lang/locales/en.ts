@@ -110,8 +110,8 @@ export default {
   "web.gfuc.please_enter_area": "Please enter area",
   "web.gfuc.city": "City",
   "web.gfuc.please_enter_city": "Please enter city",
-  "web.gfuc.state": "State",
-  "web.gfuc.please_enter_state": "Please enter state",
+  "web.gfuc.state": "State/Province",
+  "web.gfuc.please_enter_state": "Please enter state/province",
   "web.gfuc.country": "Country",
   "web.gfuc.please_enter_country": "Please enter country",
   "web.gfuc.next_step": "Next Step",
@@ -122,20 +122,26 @@ export default {
 
   // Recipient Information Component
   "web.gfuc.consignee_info_title": "Recipient Information",
+  "web.gfuc.street": "Street",
+  "web.gfuc.address2": "Supplemental Address 1",
+  "web.gfuc.address2_tip":
+    "Company Name/Remote Area Name Supplement/Industrial Area/Commercial Activity",
+  "web.gfuc.address3": "Supplemental Address 2",
+  "web.gfuc.address3_tip": "Residential Community Name/Building Number",
 
-  "web.gfuc.address2": "Address Line 2",
-  "web.gfuc.address3": "Address Line 3",
-
-  "web.gfuc.internal_number": "Internal Number",
-  "web.gfuc.internal_number_placeholder": "Please enter internal number",
-  "web.gfuc.external_number": "External Number",
-  "web.gfuc.external_number_placeholder": "Please enter external number",
+  "web.gfuc.internal_number": "Internal Number (Room Number)",
+  "web.gfuc.internal_number_placeholder":
+    "Please enter internal number (Room Number)",
+  "web.gfuc.external_number": "External Number (Street Number)",
+  "web.gfuc.external_number_placeholder":
+    "Please enter external number (Street Number)",
 
   "web.gfuc.clear_button_title": "Clear",
   "web.gfuc.edit_button_title": "Edit",
 
   "web.gfuc.consignee_info_placeholder":
     "Please fill in the recipient information",
+  "web.gfuc.remark": "Remark",
 
   "web.gfuc.product_info": "Product Information",
   "web.gfuc.express_delivery": "Express",
@@ -289,5 +295,6 @@ export default {
   "web.gfuc.upload_task_button_text": "Click to upload file",
   "web.gfuc.download_error_data": "Download error data",
   "web.gfuc.row_number": "Uploaded row number",
-  "web.gfuc.error_message": "Error message"
+  "web.gfuc.error_message": "Error message",
+  "web.gfuc.copy_success": "Copy success"
 };

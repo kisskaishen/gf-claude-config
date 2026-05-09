@@ -20,7 +20,7 @@
         <div v-if="searchable" class="search-container">
           <el-input
             v-model="searchValue"
-            :placeholder="placeholder"
+            :placeholder="displayPlaceholder"
             :prefix-icon="Search"
             clearable
           />
@@ -37,7 +37,7 @@
             </slot>
           </el-dropdown-item>
           <div v-if="filteredOptions.length === 0" class="no-data">
-            暂无数据
+            {{ $t("web.gfuc.no_data") }}
           </div>
         </el-dropdown-menu>
       </div>
@@ -47,7 +47,10 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from "vue";
+import { useI18n } from "vue-i18n";
 import { Search, ArrowDown } from "@element-plus/icons-vue";
+const { t } = useI18n();
+
 defineOptions({
   name: "SelectDropdown"
 });
@@ -68,12 +71,16 @@ const props = withDefaults(
     showArrow?: boolean;
   }>(),
   {
-    placeholder: "请输入",
+    placeholder: "",
     searchable: false,
     popperClass: "",
     showArrow: true
   }
 );
+// 处理多语言的 placeholder
+const displayPlaceholder = computed(() => {
+  return props.placeholder || t("web.gfuc.please_enter" /** 请输入 **/);
+});
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: string | number): void;

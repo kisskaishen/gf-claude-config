@@ -111,8 +111,8 @@ export default {
   "web.gfuc.please_enter_area": "Veuillez entrer la région",
   "web.gfuc.city": "Ville",
   "web.gfuc.please_enter_city": "Veuillez entrer la ville",
-  "web.gfuc.state": "État",
-  "web.gfuc.please_enter_state": "Veuillez entrer l'état",
+  "web.gfuc.state": "État/Province",
+  "web.gfuc.please_enter_state": "Veuillez entrer l'état/province",
   "web.gfuc.country": "Pays",
   "web.gfuc.please_enter_country": "Veuillez entrer le pays",
   "web.gfuc.next_step": "Étape suivante",
@@ -125,20 +125,27 @@ export default {
 
   // Composant Informations du destinataire
   "web.gfuc.consignee_info_title": "Informations du destinataire",
+  "web.gfuc.street": "Rue",
 
-  "web.gfuc.address2": "Adresse ligne 2",
-  "web.gfuc.address3": "Adresse ligne 3",
+  "web.gfuc.address2": "Complément d'adresse 1",
+  "web.gfuc.address2_tip":
+    "Nom de l'entreprise/Complément d'adresse pour zone isolée/Zone industrielle/Activité commerciale",
+  "web.gfuc.address3": "Complément d'adresse 2",
+  "web.gfuc.address3_tip": "Nom du lotissement/Numéro de bâtiment/de couloir",
 
-  "web.gfuc.internal_number": "Numéro interne",
-  "web.gfuc.internal_number_placeholder": "Veuillez entrer le numéro interne",
-  "web.gfuc.external_number": "Numéro externe",
-  "web.gfuc.external_number_placeholder": "Veuillez entrer le numéro externe",
+  "web.gfuc.internal_number": "Numéro interne（Numéro de commande）",
+  "web.gfuc.internal_number_placeholder":
+    "Veuillez entrer le numéro interne（Numéro de commande）",
+  "web.gfuc.external_number": "Numéro externe（Numéro de commande）",
+  "web.gfuc.external_number_placeholder":
+    "Veuillez entrer le numéro externe（Numéro de commande）",
 
   "web.gfuc.clear_button_title": "Effacer",
   "web.gfuc.edit_button_title": "Modifier",
 
   "web.gfuc.consignee_info_placeholder":
     "Veuillez remplir les informations du destinataire",
+  "web.gfuc.remark": "Remarque",
 
   "web.gfuc.product_info": "Informations produit",
   "web.gfuc.express_delivery": "Express",
@@ -300,5 +307,6 @@ export default {
   "web.gfuc.upload_task_button_text": "Cliquer pour uploader le fichier",
   "web.gfuc.download_error_data": "Télécharger les données d'erreur uploadées",
   "web.gfuc.row_number": "Numéro de ligne uploadée",
-  "web.gfuc.error_message": "Message d'erreur"
+  "web.gfuc.error_message": "Message d'erreur",
+  "web.gfuc.copy_success": "Copie réussie"
 };

@@ -107,8 +107,8 @@ export default {
   "web.gfuc.please_enter_area": "Inserisci area",
   "web.gfuc.city": "Città",
   "web.gfuc.please_enter_city": "Inserisci città",
-  "web.gfuc.state": "Stato",
-  "web.gfuc.please_enter_state": "Inserisci stato",
+  "web.gfuc.state": "Stato/Provincia",
+  "web.gfuc.please_enter_state": "Inserisci stato/provincia",
   "web.gfuc.country": "Paese",
   "web.gfuc.please_enter_country": "Inserisci paese",
   "web.gfuc.next_step": "Passo successivo",
@@ -120,20 +120,28 @@ export default {
 
   // Componente Informazioni del destinatario
   "web.gfuc.consignee_info_title": "Informazioni del destinatario",
+  "web.gfuc.street": "Via",
 
-  "web.gfuc.address2": "Indirizzo riga 2",
-  "web.gfuc.address3": "Indirizzo riga 3",
+  "web.gfuc.address2": "Complemento indirizzo 1",
+  "web.gfuc.address2_tip":
+    "Nome azienda/Integrazione indirizzo zona remota/Zona industriale/Attività commerciale",
+  "web.gfuc.address3": "Complemento indirizzo 2",
+  "web.gfuc.address3_tip":
+    "Nome complesso residenziale/Numero edificio/corridoio",
 
-  "web.gfuc.internal_number": "Numero interno",
-  "web.gfuc.internal_number_placeholder": "Inserisci il numero interno",
-  "web.gfuc.external_number": "Numero esterno",
-  "web.gfuc.external_number_placeholder": "Inserisci il numero esterno",
+  "web.gfuc.internal_number": "Numero interno（Numero ordine）",
+  "web.gfuc.internal_number_placeholder":
+    "Inserisci il numero interno（Numero ordine）",
+  "web.gfuc.external_number": "Numero esterno（Numero ordine）",
+  "web.gfuc.external_number_placeholder":
+    "Inserisci il numero esterno（Numero ordine）",
 
   "web.gfuc.clear_button_title": "Cancella",
   "web.gfuc.edit_button_title": "Modifica",
 
   "web.gfuc.consignee_info_placeholder":
     "Si prega di compilare le informazioni del destinatario",
+  "web.gfuc.remark": "Note",
 
   "web.gfuc.product_info": "Informazioni prodotto",
   "web.gfuc.express_delivery": "Espresso",
@@ -290,5 +298,6 @@ export default {
   "web.gfuc.upload_task_button_text": "Cliquer pour uploader le fichier",
   "web.gfuc.download_error_data": "Télécharger les données d'erreur uploadées",
   "web.gfuc.row_number": "Numéro de ligne uploadée",
-  "web.gfuc.error_message": "Message d'erreur"
+  "web.gfuc.error_message": "Message d'erreur",
+  "web.gfuc.copy_success": "Copie réussie"
 };

@@ -222,10 +222,7 @@ const getStatusClass = (status: Status) => {
 
 const fetchData = async () => {
   loading.value = true;
-  console.log(
-    searchForm.value.status.find((item) => item === 1),
-    "======"
-  );
+
   let status = [];
   status.push(...searchForm.value.status);
   if (searchForm.value.status.find((item) => item === 1) > -1) {

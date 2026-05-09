@@ -104,8 +104,8 @@ export default {
   "web.gfuc.please_enter_area": "Vul het gebied in",
   "web.gfuc.city": "Stad",
   "web.gfuc.please_enter_city": "Vul de stad in",
-  "web.gfuc.state": "Staat",
-  "web.gfuc.please_enter_state": "Vul de staat in",
+  "web.gfuc.state": "Staat/Provincie",
+  "web.gfuc.please_enter_state": "Vul de staat/provincie in",
   "web.gfuc.country": "Land",
   "web.gfuc.please_enter_country": "Vul het land in",
   "web.gfuc.next_step": "Volgende stap",
@@ -116,19 +116,25 @@ export default {
 
   // Ontvanger Informatie Component
   "web.gfuc.consignee_info_title": "Informatie ontvanger",
-
+  "web.gfuc.street": "Straat",
   "web.gfuc.address2": "Adresregel 2",
+  "web.gfuc.address2_tip":
+    "Bedrijfsnaam/Aanvulling afgelegen gebied/Industriezone/Commerciële activiteit",
   "web.gfuc.address3": "Adresregel 3",
+  "web.gfuc.address3_tip": "Wooncomplexnaam/Gangnummer/Portieknummer",
 
-  "web.gfuc.internal_number": "Intern nummer",
-  "web.gfuc.internal_number_placeholder": "Voer het interne nummer in",
-  "web.gfuc.external_number": "Extern nummer",
-  "web.gfuc.external_number_placeholder": "Voer het externe nummer in",
+  "web.gfuc.internal_number": "Intern nummer（Nummer bestelling）",
+  "web.gfuc.internal_number_placeholder":
+    "Voer het interne nummer in（Nummer bestelling）",
+  "web.gfuc.external_number": "Extern nummer（Nummer bestelling）",
+  "web.gfuc.external_number_placeholder":
+    "Voer het externe nummer in（Nummer bestelling）",
 
   "web.gfuc.clear_button_title": "Wissen",
   "web.gfuc.edit_button_title": "Bewerken",
 
   "web.gfuc.consignee_info_placeholder": "Vul de ontvangergegevens in",
+  "web.gfuc.remark": "Aanmerking",
 
   "web.gfuc.product_info": "Productinformatie",
   "web.gfuc.express_delivery": "Express",
@@ -283,5 +289,6 @@ export default {
   "web.gfuc.upload_task_button_text": "Klik om upload bestand te upload",
   "web.gfuc.download_error_data": "Télécharger les données d'erreur uploadées",
   "web.gfuc.row_number": "Numéro de ligne uploadée",
-  "web.gfuc.error_message": "Message d'erreur"
+  "web.gfuc.error_message": "Message d'erreur",
+  "web.gfuc.copy_success": "Copie réussie"
 };
