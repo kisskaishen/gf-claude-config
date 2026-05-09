@@ -296,5 +296,6 @@ export default {
   "web.gfuc.download_error_data": "Download error data",
   "web.gfuc.row_number": "Uploaded row number",
   "web.gfuc.error_message": "Error message",
-  "web.gfuc.copy_success": "Copy success"
+  "web.gfuc.copy_success": "Copy success",
+  "web.gfuc.upload_result": "Upload result"
 };

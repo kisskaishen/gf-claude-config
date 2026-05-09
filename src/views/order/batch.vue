@@ -67,7 +67,7 @@
       </div>
       <common-upload
         v-model="fileList"
-        action="/api/upload"
+        :http-request="customHttpRequest"
         type="file"
         :width="380"
         :dragAreaWidth="380"
@@ -78,6 +78,7 @@
         :buttonText="$t('web.gfuc.upload_task_button_text')"
         accept=".xls,.xlsx"
         :hint="$t('web.gfuc.upload_task_file_format_tip')"
+        @change="handleChange"
       />
     </div>
 
@@ -125,9 +126,11 @@ defineOptions({
 import CommonUpload from "@/components/CommonUpload/index.vue";
 
 import { downloadFile } from "@/utils/download";
-
+import { downloadOrderTemplate, uploadOrder } from "@/api/order";
+import { useAppStore } from "@/store/app";
 import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
+const appStore = useAppStore();
 
 const { t } = useI18n();
 const tableData = ref([]);
@@ -141,6 +144,7 @@ const isCj = computed(() =>
 const shipperOptions = computed(() => {
   return userInfo.loginInfo?.shipperCustomerList || [];
 });
+const site = computed(() => appStore.site);
 const formRef = ref(null);
 const form = reactive({
   customerId: ""
@@ -176,26 +180,49 @@ const handleCustomerChange = (val: string) => {
 };
 
 // 下载模板文件
-const downloadTemplate = (url) => {
-  downloadFile(url, "模板文件");
+const downloadTemplate = async () => {
+  const res = await downloadOrderTemplate();
+  await downloadFile(res, `模板文件-${site.value}`);
 };
 
 const downloadErrorData = (url) => {
   downloadFile(url, "错误数据");
 };
 
-const uploadSubmit = async () => {
+// 上传文件
+const handleChange = (val) => {
+  fileList.value = val;
+};
+
+const customHttpRequest = async (options) => {
   const valid = await formRef.value.validate();
   if (!valid) {
     return;
   }
-  if (fileList.value.length === 0) {
-    ElMessage.error("请上传文件");
-    return;
-  }
-  // const formData = new FormData();
-  // formData.append("file", fileList.value[0]);
-  // formData.append("customerId", form.customerId);
-  // const res = await uploadOrder(formData);
+  console.log(options, "======");
+  const formData = new FormData();
+  formData.append("file", options.file);
+  formData.append("customerId", form.customerId);
+  console.log(formData, "======");
+
+  const res = await uploadOrder(formData);
+  console.log(res, "======");
+  options.onProgress(res);
+  options.onSuccess(res);
 };
+
+// const uploadSubmit = async () => {
+//   const valid = await formRef.value.validate();
+//   if (!valid) {
+//     return;
+//   }
+//   if (fileList.value.length === 0) {
+//     ElMessage.error("请上传文件");
+//     return;
+//   }
+//   // const formData = new FormData();
+//   // formData.append("file", fileList.value[0]);
+//   // formData.append("customerId", form.customerId);
+//   // const res = await uploadOrder(formData);
+// };
 </script>

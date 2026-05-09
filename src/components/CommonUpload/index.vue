@@ -125,7 +125,7 @@
         </template>
 
         <template #file="{ file }">
-          <div>上传结果</div>
+          <div class="text-info">{{ $t("web.gfuc.upload_result") }}</div>
 
           <slot name="file" :file="file">
             <div class="relative file-item">
@@ -614,6 +614,7 @@ const checkImageDimensions = (file) => {
 watch(
   () => props.modelValue,
   (newVal) => {
+    console.log("外部modelValue变化", newVal);
     if (JSON.stringify(newVal) !== JSON.stringify(fileList.value)) {
       fileList.value = [...newVal];
     }
@@ -742,6 +743,10 @@ const formatFileSize = (size) => {
   if (size < 1024) return `${size} B`;
   if (size < 1024 * 1024) return `${(size / 1024).toFixed(2)} KB`;
   return `${(size / (1024 * 1024)).toFixed(2)} MB`;
+};
+
+const handleRefresh = () => {
+  console.log("刷新");
 };
 
 // 获取文件图标

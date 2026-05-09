@@ -193,3 +193,21 @@ export function cancelOrder(data: {
     data
   });
 }
+
+// 批量下单
+
+// 下载模板
+export function downloadOrderTemplate() {
+  return request({
+    url: "/oms/order/downloadTemplate",
+    method: "get"
+  });
+}
+// 上传订单并下单
+export function uploadOrder(data: any) {
+  return request({
+    url: "/oms/order/importExcel",
+    method: "post",
+    data
+  });
+}

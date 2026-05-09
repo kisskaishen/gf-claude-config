@@ -281,5 +281,6 @@ export default {
   "web.gfuc.row_number": "行号",
   "web.gfuc.error_message": "错误信息",
   // 复制成功
-  "web.gfuc.copy_success": "复制成功"
+  "web.gfuc.copy_success": "复制成功",
+  "web.gfuc.upload_result": "上传结果"
 };
