@@ -12,7 +12,7 @@ export default {
   "web.gfuc.bill": "Factuur",
   "web.gfuc.problem_piece_management": "Beheer probleemzendingen",
   "web.gfuc.problem_piece_view": "Probleemzendingen bekijken",
-  "web.gfuc.register_agreement": "Aanmeldingsovereenkomst",
+  "web.gfuc.register_agreement": "Gebruikersovereenkomst",
   "web.gfuc.privacy_policy": "Privacybeleid",
   "web.gfuc.agreement":
     "Ik accepteer de {register_agreement} en {privacy_policy}",
@@ -293,5 +293,7 @@ export default {
   "web.gfuc.copy_success": "Copie réussie",
   "web.gfuc.upload_result": "Upload resultaat",
   "web.gfuc.upload_success": "Upload succesvol",
-  "web.gfuc.uploading": "Uploaden"
+  "web.gfuc.uploading": "Uploaden",
+  "web.gfuc.please_agree_and_check_the_agreement":
+    "Ga akkoord en vink de overeenkomst aan"
 };

@@ -13,7 +13,7 @@ export default {
   "web.gfuc.problem_piece_management": "问题件管理",
   "web.gfuc.problem_piece_view": "问题件查看",
   "web.gfuc.daily": "每天",
-  "web.gfuc.register_agreement": "注册协议",
+  "web.gfuc.register_agreement": "用户协议",
   "web.gfuc.privacy_policy": "隐私政策",
   "web.gfuc.agreement": "我同意GOFO的{register_agreement}和{privacy_policy}",
   "web.gfuc.please_select_country": "请选择国家",
@@ -284,5 +284,7 @@ export default {
   "web.gfuc.copy_success": "复制成功",
   "web.gfuc.upload_result": "上传结果",
   "web.gfuc.upload_success": "上传完成",
-  "web.gfuc.uploading": "上传中"
+  "web.gfuc.uploading": "上传中",
+
+  "web.gfuc.please_agree_and_check_the_agreement": "请同意并勾选协议"
 };

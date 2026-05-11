@@ -68,7 +68,7 @@
               range-separator="~"
               :start-placeholder="$t('web.gfuc.start_time')"
               :end-placeholder="$t('web.gfuc.end_time')"
-              format="YYYY-MM-DD HH:mm:ss"
+              format="YYYY-MM-DD"
               value-format="YYYY-MM-DD HH:mm:ss"
               :default-time="defaultTime"
               @change="handleChange"
@@ -421,7 +421,6 @@ const handleChange = (value) => {
 
 // 处理订单状态集合
 const handleOrderStatusSet = (status?: number) => {
-  console.log(status, "++++++");
   if (currentStatus.value === 888) {
     return searchForm.orderStatus ? [searchForm.orderStatus] : [6, 7, 8];
   } else {

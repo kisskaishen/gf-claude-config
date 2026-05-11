@@ -13,7 +13,7 @@ export default {
   "web.gfuc.problem_piece_management": "Problem Piece Management",
   "web.gfuc.problem_piece_view": "Problem Piece View",
   "web.gfuc.daily": "Daliy",
-  "web.gfuc.register_agreement": "Register Agreement",
+  "web.gfuc.register_agreement": "User Agreement",
   "web.gfuc.privacy_policy": "Privacy Policy",
   "web.gfuc.agreement":
     "I agree to the {register_agreement} and {privacy_policy}",
@@ -299,5 +299,7 @@ export default {
   "web.gfuc.copy_success": "Copy success",
   "web.gfuc.upload_result": "Upload result",
   "web.gfuc.upload_success": "Upload success",
-  "web.gfuc.uploading": "Uploading"
+  "web.gfuc.uploading": "Uploading",
+  "web.gfuc.please_agree_and_check_the_agreement":
+    "Please agree and check the agreement"
 };

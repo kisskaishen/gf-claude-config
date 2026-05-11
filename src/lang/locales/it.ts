@@ -13,7 +13,7 @@ export default {
   "web.gfuc.bill": "Fattura",
   "web.gfuc.problem_piece_management": "Gestione colli problematici",
   "web.gfuc.problem_piece_view": "Visualizza colli problematici",
-  "web.gfuc.register_agreement": "Contratto di iscrizione",
+  "web.gfuc.register_agreement": "Contratto con l'utente",
   "web.gfuc.privacy_policy": "Politica di privacy",
   "web.gfuc.agreement":
     "I agree to the {register_agreement} and {privacy_policy}",
@@ -302,5 +302,7 @@ export default {
   "web.gfuc.copy_success": "Copie réussie",
   "web.gfuc.upload_result": "Résultat de l'upload",
   "web.gfuc.upload_success": "Upload réussiie",
-  "web.gfuc.uploading": "Upload en cours"
+  "web.gfuc.uploading": "Upload en cours",
+  "web.gfuc.please_agree_and_check_the_agreement":
+    "Si prega di accettare e spuntare il contratto"
 };

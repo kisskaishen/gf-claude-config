@@ -59,7 +59,7 @@ onUnmounted(() => {
     position: relative;
     z-index: 10;
     width: 270px;
-    overflow: hidden;
+    overflow: visible;
     background-color: #fff;
     box-shadow: 0 6px 15px 0 #0000000f;
     transition: width 0.3s;
