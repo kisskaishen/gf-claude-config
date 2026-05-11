@@ -176,6 +176,32 @@ export const routes: RouteRecordRaw[] = [
   //     }
   //   ]
   // },
+
+  {
+    path: "/task",
+    redirect: "/task/list",
+    component: () => import("@/layout/index.vue"),
+
+    meta: {
+      title: "任务管理",
+      icon: "task",
+      i18n: "web.gfuc.task_management",
+      width: 18,
+      height: 18
+    },
+    children: [
+      {
+        path: "list",
+        name: "TaskList",
+        component: () => import("@/views/task/list.vue"),
+        meta: {
+          title: "历史上传下载任务",
+          i18n: "web.gfuc.task_list",
+          requireAuth: true
+        }
+      }
+    ]
+  },
   {
     path: "/redirect",
     component: () => import("@/layout/index.vue"),

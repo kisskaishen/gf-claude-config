@@ -11,11 +11,11 @@
           />
           {{ $t("web.gfuc.batch_order_template_download") }}
         </el-button>
-        <!-- <el-tooltip
-          content="上传任务可以查看所有历史上传的记录"
+        <el-tooltip
+          :content="$t('web.gfuc.upload_task_tooltip')"
           placement="bottom"
         >
-          <el-button @click="uploadSubmit">
+          <el-button @click="goTaskList">
             <svg-icon
               name="upload-submit"
               width="20"
@@ -24,7 +24,7 @@
             />
             {{ $t("web.gfuc.upload_task") }}
           </el-button>
-        </el-tooltip> -->
+        </el-tooltip>
       </div>
       <div class="tips text-sm text-[#BBBDBF] mt-2">
         {{ $t("web.gfuc.upload_task_tip") }}
@@ -134,6 +134,8 @@ import {
 } from "@/api/order";
 import { useAppStore } from "@/store/app";
 import { useUserStore } from "@/store/user";
+import { useRouter } from "vue-router";
+const router = useRouter();
 const appStore = useAppStore();
 const { t } = useI18n();
 
@@ -236,4 +238,8 @@ watch(
     formRef.value.resetFields();
   }
 );
+
+const goTaskList = () => {
+  router.push("/task/list");
+};
 </script>

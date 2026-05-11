@@ -301,5 +301,17 @@ export default {
   "web.gfuc.upload_success": "Upload success",
   "web.gfuc.uploading": "Uploading",
   "web.gfuc.please_agree_and_check_the_agreement":
-    "Please agree and check the agreement"
+    "Please agree and check the agreement",
+  "web.gfuc.task_management": "Task Management",
+  "web.gfuc.task_list": "Download History",
+  "web.gfuc.file_name": "File Name",
+  "web.gfuc.date": "Date",
+  "web.gfuc.type": "Type",
+  "web.gfuc.status": "Status",
+  "web.gfuc.total_orders": "Total Orders",
+  "web.gfuc.success": "Success",
+  "web.gfuc.error": "Error",
+  "web.gfuc.download": "Download",
+  "web.gfuc.upload_task_tooltip":
+    "Upload tasks allows you to view all historical upload records"
 };

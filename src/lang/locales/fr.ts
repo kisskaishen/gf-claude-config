@@ -314,5 +314,17 @@ export default {
   "web.gfuc.upload_success": "Upload réussiie",
   "web.gfuc.uploading": "Upload en cours",
   "web.gfuc.please_agree_and_check_the_agreement":
-    "Veuillez accepter et cocher la convention"
+    "Veuillez accepter et cocher la convention",
+  "web.gfuc.task_management": "Gestion des tâches",
+  "web.gfuc.task_list": "Historique des téléchargements",
+  "web.gfuc.file_name": "Nom du fichier",
+  "web.gfuc.date": "Date",
+  "web.gfuc.type": "Type",
+  "web.gfuc.status": "Statut",
+  "web.gfuc.total_orders": "Commandes totales",
+  "web.gfuc.success": "Succès",
+  "web.gfuc.error": "Erreur",
+  "web.gfuc.download": "Télécharger",
+  "web.gfuc.upload_task_tooltip":
+    "Les tâches de téléchargement vous permettent de consulter tous les historiques de téléchargement"
 };

@@ -18,7 +18,11 @@
     <el-sub-menu v-else :index="item.path">
       <template #title>
         <el-icon v-if="item.meta?.icon">
-          <svg-icon :name="item.meta?.icon" />
+          <svg-icon
+            :name="item.meta?.icon"
+            :width="item.meta?.width || 20"
+            :height="item.meta?.height || 24"
+          />
         </el-icon>
         <span class="sidebar-title" :title="getI18nTitle(item.meta)">{{
           getI18nTitle(item.meta)

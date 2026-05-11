@@ -286,5 +286,17 @@ export default {
   "web.gfuc.upload_success": "上传完成",
   "web.gfuc.uploading": "上传中",
 
-  "web.gfuc.please_agree_and_check_the_agreement": "请同意并勾选协议"
+  "web.gfuc.please_agree_and_check_the_agreement": "请同意并勾选协议",
+
+  "web.gfuc.task_management": "任务管理",
+  "web.gfuc.task_list": "历史下载任务",
+  "web.gfuc.file_name": "文件名",
+  "web.gfuc.date": "日期",
+  "web.gfuc.type": "类型",
+  "web.gfuc.status": "状态",
+  "web.gfuc.total_orders": "总订单",
+  "web.gfuc.success": "成功",
+  "web.gfuc.error": "错误",
+  "web.gfuc.download": "下载",
+  "web.gfuc.upload_task_tooltip": "上传任务可以查看所有历史上传的记录"
 };

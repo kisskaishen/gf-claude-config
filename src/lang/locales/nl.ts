@@ -295,5 +295,17 @@ export default {
   "web.gfuc.upload_success": "Upload succesvol",
   "web.gfuc.uploading": "Uploaden",
   "web.gfuc.please_agree_and_check_the_agreement":
-    "Ga akkoord en vink de overeenkomst aan"
+    "Ga akkoord en vink de overeenkomst aan",
+  "web.gfuc.task_management": "Taakbeheer",
+  "web.gfuc.task_list": "Downloadgeschiedenis",
+  "web.gfuc.file_name": "Bestandsnaam",
+  "web.gfuc.date": "Datum",
+  "web.gfuc.type": "Type",
+  "web.gfuc.status": "Status",
+  "web.gfuc.total_orders": "Totaal aantal bestellingen",
+  "web.gfuc.success": "Succes",
+  "web.gfuc.error": "Fout",
+  "web.gfuc.download": "Downloaden",
+  "web.gfuc.upload_task_tooltip":
+    "Uploadtaken geven u de mogelijkheid om alle historische uploadrecords te bekijken"
 };

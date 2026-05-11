@@ -304,5 +304,17 @@ export default {
   "web.gfuc.upload_success": "Upload réussiie",
   "web.gfuc.uploading": "Upload en cours",
   "web.gfuc.please_agree_and_check_the_agreement":
-    "Si prega di accettare e spuntare il contratto"
+    "Si prega di accettare e spuntare il contratto",
+  "web.gfuc.task_management": "Gestione attività",
+  "web.gfuc.task_list": "Cronologia download",
+  "web.gfuc.file_name": "Nome file",
+  "web.gfuc.date": "Data",
+  "web.gfuc.type": "Tipo",
+  "web.gfuc.status": "Stato",
+  "web.gfuc.total_orders": "Ordini totali",
+  "web.gfuc.success": "Successo",
+  "web.gfuc.error": "Errore",
+  "web.gfuc.download": "Scarica",
+  "web.gfuc.upload_task_tooltip":
+    "Le attività di caricamento consentono di visualizzare tutti i record di caricamento storici"
 };
