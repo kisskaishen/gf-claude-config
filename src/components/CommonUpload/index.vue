@@ -145,17 +145,21 @@
                 <!-- 进度和状态 -->
                 <div class="flex items-center gap-2">
                   <!-- <span class="text-sm text-[#7A869A]">{{ file.status }}</span> -->
-                  <span class="text-xs text-[#7A869A] font-normal">100%</span>
-                  <span class="text-xs text-[#7A869A] font-normal"
-                    >上传完成</span
-                  >
+                  <span class="text-xs text-[#7A869A] font-normal">{{
+                    currentProgress + "%"
+                  }}</span>
+                  <span class="text-xs text-[#7A869A] font-normal">{{
+                    currentProgress === 100
+                      ? $t("web.gfuc.upload_success")
+                      : $t("web.gfuc.uploading")
+                  }}</span>
                   <span class="file-size text-xs text-[#7A869A] font-normal">{{
                     formatFileSize(file.size)
                   }}</span>
                 </div>
                 <div class="relative w-full h-1">
                   <el-progress
-                    :percentage="50"
+                    :percentage="currentProgress"
                     :show-text="false"
                     class="w-full"
                   />
@@ -193,6 +197,9 @@ import {
   WarningFilled,
   Refresh
 } from "@element-plus/icons-vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const props = defineProps({
   // 上传类型：image-图片，file-文件
@@ -203,8 +210,7 @@ const props = defineProps({
   },
   // 上传地址
   action: {
-    type: String,
-    required: true
+    type: String
   },
   // 按钮文字
   buttonText: {
@@ -387,6 +393,12 @@ const props = defineProps({
   maxHeight: {
     type: Number,
     default: null
+  },
+
+  // 上传进度
+  progress: {
+    type: Number,
+    default: 0
   }
 });
 
@@ -396,7 +408,8 @@ const emit = defineEmits([
   "error",
   "remove",
   "exceed",
-  "before-upload"
+  "before-upload",
+  "refresh"
 ]);
 
 const uploadRef = ref(null);
@@ -404,7 +417,45 @@ const fileList = ref([]);
 const previewVisible = ref(false);
 const previewUrl = ref("");
 const currentPreviewDimension = ref(null);
+const currentProgress = ref(0);
+let animationTimer = null;
 
+// 监听 progress 变化
+watch(
+  () => props.progress,
+  (newProgress) => {
+    // 清除之前的动画
+    if (animationTimer) {
+      clearInterval(animationTimer);
+      animationTimer = null;
+    }
+
+    if (newProgress === 0) {
+      currentProgress.value = 0;
+    } else if (newProgress === 2) {
+      // 直接显示100%
+      currentProgress.value = 100;
+    } else {
+      // 3秒内从0到80%的动画
+      const duration = 3000; // 3秒
+      const target = 80;
+      const startTime = Date.now();
+
+      animationTimer = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min((elapsed / duration) * target, target);
+        currentProgress.value = Math.round(progress);
+
+        if (elapsed >= duration) {
+          currentProgress.value = target;
+          clearInterval(animationTimer);
+          animationTimer = null;
+        }
+      }, 16); // 约60fps
+    }
+  },
+  { immediate: true }
+);
 // 计算容器样式
 const containerStyle = computed(() => {
   const style = {};
@@ -615,9 +666,6 @@ watch(
   () => props.modelValue,
   (newVal) => {
     console.log("外部modelValue变化", newVal);
-    if (JSON.stringify(newVal) !== JSON.stringify(fileList.value)) {
-      fileList.value = [...newVal];
-    }
   },
   { deep: true, immediate: true }
 );
@@ -695,14 +743,14 @@ const handleBeforeUpload = async (file) => {
 
 // 上传成功
 const handleSuccess = (response, file, fileListData) => {
-  ElMessage.success(`文件 ${file.name} 上传成功`);
+  ElMessage.success(`${file.name} ${t("web.gfuc.upload_success")}`);
   fileList.value = fileListData;
   emit("success", response, file, fileListData);
 };
 
 // 上传失败
 const handleError = (error, file, fileListData) => {
-  ElMessage.error(`文件 ${file.name} 上传失败`);
+  ElMessage.error(`${file.name} ${$t("web.gfuc.upload_failed")}`);
   emit("error", error, file, fileListData);
 };
 
@@ -746,7 +794,7 @@ const formatFileSize = (size) => {
 };
 
 const handleRefresh = () => {
-  console.log("刷新");
+  emit("refresh");
 };
 
 // 获取文件图标

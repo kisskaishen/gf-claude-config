@@ -40,13 +40,7 @@
           <el-form-item
             :label="$t('web.gfuc.order_account')"
             prop="customerId"
-            :rules="[
-              {
-                required: isCj,
-                message: $t('web.gfuc.please_select_order_account'),
-                trigger: 'blur'
-              }
-            ]"
+            :rules="customerRules"
           >
             <el-select
               v-model="form.customerId"
@@ -75,44 +69,49 @@
         drag
         :multiple="true"
         :limit="10"
+        :progress="taskStatus"
         :buttonText="$t('web.gfuc.upload_task_button_text')"
         accept=".xls,.xlsx"
         :hint="$t('web.gfuc.upload_task_file_format_tip')"
-        @change="handleChange"
+        @refresh="handleRefresh"
       />
     </div>
 
-    <div class="mt-6 table-list">
+    <div class="mt-6 table-list" v-if="totalCount > 0">
       <div class="flex items-center justify-between">
         <!-- 调试步骤 -->
         <div class="text-sm font-normal text-text-placeholder">
           {{ $t("web.gfuc.upload_task_total_prefix") }}
-          <span class="font-normal">100</span>
+          <span class="font-normal">{{ totalCount }}</span>
           {{ $t("web.gfuc.upload_task_suffix") }}，
 
           {{ $t("web.gfuc.upload_task_success_prefix") }}
-          <span class="font-normal text-success">23</span>
+          <span class="font-normal text-success">{{ successCount }}</span>
           {{ $t("web.gfuc.upload_task_suffix") }}，
 
           {{ $t("web.gfuc.upload_task_failed_prefix") }}
-          <span class="font-normal text-danger">77</span>
+          <span class="font-normal text-danger">{{ failCount }}</span>
           {{ $t("web.gfuc.upload_task_suffix") }}
         </div>
 
-        <el-button type="primary" link @click="downloadErrorData">{{
-          $t("web.gfuc.download_error_data")
-        }}</el-button>
+        <el-button
+          type="primary"
+          link
+          @click="downloadErrorData"
+          v-if="errorFileUrl"
+          >{{ $t("web.gfuc.download_error_data") }}</el-button
+        >
       </div>
 
       <el-table :data="tableData" class="mt-4" border max-height="300px">
-        <el-table-column :label="$t('web.gfuc.row_number')" prop="orderNo" />
+        <el-table-column :label="$t('web.gfuc.row_number')" prop="rowNum" />
         <el-table-column
           :label="$t('web.gfuc.customer_order_no')"
-          prop="orderStatus"
+          prop="customerOrderNo"
         />
         <el-table-column
           :label="$t('web.gfuc.error_message')"
-          prop="createTime"
+          prop="errorMsg"
         />
       </el-table>
     </div>
@@ -125,15 +124,25 @@ defineOptions({
 });
 import CommonUpload from "@/components/CommonUpload/index.vue";
 
+import { useI18n } from "vue-i18n";
 import { downloadFile } from "@/utils/download";
-import { downloadOrderTemplate, uploadOrder } from "@/api/order";
+import {
+  downloadOrderTemplate,
+  uploadOrder,
+  getOrderImportResult,
+  downloadFailedOrderData
+} from "@/api/order";
 import { useAppStore } from "@/store/app";
 import { useUserStore } from "@/store/user";
-import { useI18n } from "vue-i18n";
 const appStore = useAppStore();
-
 const { t } = useI18n();
+
 const tableData = ref([]);
+const totalCount = ref(0);
+const successCount = ref(0);
+const failCount = ref(0);
+const errorFileUrl = ref("");
+const taskStatus = ref(0);
 
 const fileList = ref([]);
 
@@ -144,35 +153,20 @@ const isCj = computed(() =>
 const shipperOptions = computed(() => {
   return userInfo.loginInfo?.shipperCustomerList || [];
 });
+// 表单验证规则 - 使用 computed 使其响应语言切换
+const customerRules = computed(() => [
+  {
+    required: isCj.value,
+    message: t("web.gfuc.please_select_order_account"),
+    trigger: ["blur", "change"]
+  }
+]);
+const currentLang = computed(() => appStore.lang);
+
 const site = computed(() => appStore.site);
 const formRef = ref(null);
 const form = reactive({
   customerId: ""
-});
-
-// 在脚本部分添加
-const totalTip = computed(() => {
-  const text = $t("web.gfuc.upload_task_total_tip");
-  return text.replace(
-    "{count}",
-    '<span style="color:#007AFF;font-weight:bold">100</span>'
-  );
-});
-
-const successTip = computed(() => {
-  const text = $t("web.gfuc.upload_task_success_tip");
-  return text.replace(
-    "{count}",
-    '<span style="color:#52C41A;font-weight:bold">23</span>'
-  );
-});
-
-const failedTip = computed(() => {
-  const text = $t("web.gfuc.upload_task_failed_tip");
-  return text.replace(
-    "{count}",
-    '<span style="color:#FF4D4F;font-weight:bold">77</span>'
-  );
 });
 
 const handleCustomerChange = (val: string) => {
@@ -182,47 +176,64 @@ const handleCustomerChange = (val: string) => {
 // 下载模板文件
 const downloadTemplate = async () => {
   const res = await downloadOrderTemplate();
-  await downloadFile(res, `模板文件-${site.value}`);
+  const blob = new Blob([res], {
+    type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+  });
+  await downloadFile(blob, `模板文件-${site.value}`);
 };
 
-const downloadErrorData = (url) => {
-  downloadFile(url, "错误数据");
+const downloadErrorData = async () => {
+  const res = await downloadFailedOrderData(errorFileUrl.value);
+  if (!res) {
+    return;
+  }
+  await downloadFile(res, "错误数据");
 };
 
-// 上传文件
-const handleChange = (val) => {
-  fileList.value = val;
-};
+const importTaskId = ref();
 
 const customHttpRequest = async (options) => {
   const valid = await formRef.value.validate();
   if (!valid) {
     return;
   }
-  console.log(options, "======");
   const formData = new FormData();
   formData.append("file", options.file);
   formData.append("customerId", form.customerId);
-  console.log(formData, "======");
 
   const res = await uploadOrder(formData);
-  console.log(res, "======");
-  options.onProgress(res);
-  options.onSuccess(res);
+  importTaskId.value = res;
+  if (importTaskId.value) {
+    getImportResult();
+  }
 };
 
-// const uploadSubmit = async () => {
-//   const valid = await formRef.value.validate();
-//   if (!valid) {
-//     return;
-//   }
-//   if (fileList.value.length === 0) {
-//     ElMessage.error("请上传文件");
-//     return;
-//   }
-//   // const formData = new FormData();
-//   // formData.append("file", fileList.value[0]);
-//   // formData.append("customerId", form.customerId);
-//   // const res = await uploadOrder(formData);
-// };
+// 刷新上传结果
+const handleRefresh = async () => {
+  if (importTaskId.value) {
+    getImportResult();
+  }
+};
+
+// 文件上传结果监听
+const getImportResult = async () => {
+  const res = await getOrderImportResult(importTaskId.value);
+  tableData.value = res.errorItems || [];
+  totalCount.value = res?.totalCount || 0;
+  successCount.value = res?.successCount || 0;
+  failCount.value = res?.failCount || 0;
+  errorFileUrl.value = res?.errorFileUrl || "";
+  taskStatus.value = res?.taskStatus || 0;
+};
+
+//
+// const resetForm = () => {
+// }
+
+watch(
+  () => currentLang.value,
+  () => {
+    formRef.value.resetFields();
+  }
+);
 </script>

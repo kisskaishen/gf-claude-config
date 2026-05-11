@@ -3,10 +3,16 @@
  * @param url 文件链接
  * @param fileName 文件名（可选）
  */
-export const downloadFile = async (url: string, fileName?: string) => {
+export const downloadFile = async (url: string | Blob, fileName?: string) => {
   try {
-    const response = await fetch(url);
-    const blob = await response.blob();
+    let blob: Blob;
+    if (typeof url === "string") {
+      const response = await fetch(url);
+
+      blob = await response.blob();
+    } else {
+      blob = url;
+    }
     const objectUrl = window.URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = objectUrl;

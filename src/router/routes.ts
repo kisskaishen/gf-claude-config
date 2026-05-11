@@ -10,7 +10,7 @@ export const routes: RouteRecordRaw[] = [
   {
     path: "/",
     component: () => import("@/layout/index.vue"),
-    redirect: "/finance/balance",
+    redirect: "/home",
     meta: { showOnlyOneChild: true },
     children: [
       {

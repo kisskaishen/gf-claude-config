@@ -200,7 +200,8 @@ export function cancelOrder(data: {
 export function downloadOrderTemplate() {
   return request({
     url: "/oms/order/downloadTemplate",
-    method: "get"
+    method: "get",
+    responseType: "blob"
   });
 }
 // 上传订单并下单
@@ -209,5 +210,20 @@ export function uploadOrder(data: any) {
     url: "/oms/order/importExcel",
     method: "post",
     data
+  });
+}
+// 上传结果以及数据查询
+export function getOrderImportResult(taskId: string) {
+  return request({
+    url: `/taskCenter/getOrderImportItem?taskId=${taskId}`,
+    method: "get"
+  });
+}
+
+// 下载失败订单数据
+export function downloadFailedOrderData(fileKey: string) {
+  return request({
+    url: `/file/download?fileKey=${fileKey}`,
+    method: "get"
   });
 }

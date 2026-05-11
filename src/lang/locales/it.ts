@@ -300,5 +300,7 @@ export default {
   "web.gfuc.row_number": "Numéro de ligne uploadée",
   "web.gfuc.error_message": "Message d'erreur",
   "web.gfuc.copy_success": "Copie réussie",
-  "web.gfuc.upload_result": "Résultat de l'upload"
+  "web.gfuc.upload_result": "Résultat de l'upload",
+  "web.gfuc.upload_success": "Upload réussiie",
+  "web.gfuc.uploading": "Upload en cours"
 };
