@@ -117,6 +117,7 @@ export default {
   // Ontvanger Informatie Component
   "web.gfuc.consignee_info_title": "Informatie ontvanger",
   "web.gfuc.street": "Straat",
+  "web.gfuc.please_enter_street": "Voer de straat in",
   "web.gfuc.address2": "Adresregel 2",
   "web.gfuc.address2_tip":
     "Bedrijfsnaam/Aanvulling afgelegen gebied/Industriezone/Commerciële activiteit",

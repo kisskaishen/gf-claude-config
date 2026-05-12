@@ -135,6 +135,7 @@ export default {
   "web.gfuc.consignee_info_title": "收件人信息",
 
   "web.gfuc.street": "街道",
+  "web.gfuc.please_enter_street": "请输入街道",
   "web.gfuc.address2": "补充地址1",
   "web.gfuc.address2_tip": "公司名/偏远地区地名补充/工业区/商业活动",
   "web.gfuc.address3": "补充地址2",

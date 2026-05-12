@@ -121,6 +121,7 @@ export default {
   // Componente Informazioni del destinatario
   "web.gfuc.consignee_info_title": "Informazioni del destinatario",
   "web.gfuc.street": "Via",
+  "web.gfuc.please_enter_street": "Inserisci la via",
 
   "web.gfuc.address2": "Complemento indirizzo 1",
   "web.gfuc.address2_tip":

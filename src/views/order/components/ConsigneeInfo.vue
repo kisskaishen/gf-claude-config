@@ -100,10 +100,10 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item :label="$t('web.gfuc.address')" prop="address1">
+                <el-form-item :label="$t('web.gfuc.street')" prop="address1">
                   <el-input
                     v-model="orderConsignee.address1"
-                    :placeholder="$t('web.gfuc.please_enter_address')"
+                    :placeholder="$t('web.gfuc.please_enter_street')"
                     maxlength="255"
                   />
                 </el-form-item>
@@ -190,7 +190,7 @@
                   />
                 </el-form-item>
               </el-col>
-              <el-col :span="8" v-if="site !== 'IT'">
+              <el-col :span="8">
                 <el-form-item :label="$t('web.gfuc.area')" prop="consigneeArea">
                   <el-select
                     v-model="orderConsignee.consigneeArea"
@@ -208,12 +208,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item
-                  :label="
-                    site === 'IT' ? $t('web.gfuc.state') : $t('web.gfuc.city')
-                  "
-                  prop="consigneeCity"
-                >
+                <el-form-item :label="$t('web.gfuc.city')" prop="consigneeCity">
                   <el-select
                     v-model="orderConsignee.consigneeCity"
                     :placeholder="$t('web.gfuc.please_enter_city')"
@@ -232,9 +227,7 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item
-                  :label="
-                    site === 'IT' ? $t('web.gfuc.area') : $t('web.gfuc.state')
-                  "
+                  :label="$t('web.gfuc.state')"
                   prop="consigneeState"
                 >
                   <el-select

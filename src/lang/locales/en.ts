@@ -123,6 +123,7 @@ export default {
   // Recipient Information Component
   "web.gfuc.consignee_info_title": "Recipient Information",
   "web.gfuc.street": "Street",
+  "web.gfuc.please_enter_street": "Please enter street",
   "web.gfuc.address2": "Supplemental Address 1",
   "web.gfuc.address2_tip":
     "Company Name/Remote Area Name Supplement/Industrial Area/Commercial Activity",
