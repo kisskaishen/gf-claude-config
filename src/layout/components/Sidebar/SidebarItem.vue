@@ -20,8 +20,8 @@
         <el-icon v-if="item.meta?.icon">
           <svg-icon
             :name="item.meta?.icon"
-            :width="item.meta?.width || 20"
-            :height="item.meta?.height || 24"
+            :width="item.meta?.width || '20px'"
+            :height="item.meta?.height || '24px'"
           />
         </el-icon>
         <span class="sidebar-title" :title="getI18nTitle(item.meta)">{{

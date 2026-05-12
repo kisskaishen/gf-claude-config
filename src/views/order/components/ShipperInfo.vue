@@ -278,7 +278,7 @@
         </div>
       </div>
 
-      <div v-else class="step-content-placeholder">
+      <div v-else class="step-content-placeholder" @click="onEdit">
         <p>{{ $t("web.gfuc.please_enter_shipper_info") }}</p>
       </div>
     </div>

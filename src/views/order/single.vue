@@ -11,10 +11,10 @@
             <ShipperInfo
               ref="shipperInfoRef"
               :step-number="1"
-              :is-active="currentStep === 1"
+              :is-active="currentStep === 1 || openStep.includes(1)"
               :is-completed="completedSteps.includes(1)"
               :initial-data="formData.shipper"
-              @next="goToNextStep"
+              @next="goToNextStep(1)"
               @edit="editStep(1)"
               @update:orderShipper="updateShipperData"
             />
@@ -23,10 +23,10 @@
             <ConsigneeInfo
               ref="consigneeInfoRef"
               :step-number="2"
-              :is-active="currentStep === 2"
+              :is-active="currentStep === 2 || openStep.includes(2)"
               :is-completed="completedSteps.includes(2)"
               :initial-data="formData.consignee"
-              @next="goToNextStep"
+              @next="goToNextStep(2)"
               @edit="editStep(2)"
               @update:orderConsignee="updateConsigneeData"
             />
@@ -35,10 +35,10 @@
             <ProductInfo
               ref="productInfoRef"
               :step-number="3"
-              :is-active="currentStep === 3"
+              :is-active="currentStep === 3 || openStep.includes(3)"
               :is-completed="completedSteps.includes(3)"
               :initial-data="formData.product"
-              @next="goToNextStep"
+              @next="goToNextStep(3)"
               @edit="editStep(3)"
               @update:formData="updateProductData"
             />
@@ -47,9 +47,10 @@
             <ParcelInfo
               ref="parcelInfoRef"
               :step-number="4"
-              :is-active="currentStep === 4"
+              :is-active="currentStep === 4 || openStep.includes(4)"
               :is-completed="completedSteps.includes(4)"
               :initial-data="formData.parcel"
+              :productCode="formData.product?.productCode"
               @edit="editStep(4)"
               @update:formData="updateParcelData"
             />
@@ -130,6 +131,9 @@ const currentStep = ref(1);
 // 已完成的步骤
 const completedSteps = ref([]);
 
+// 需要打开的表单
+const openStep = ref([1]);
+
 // 表单数据
 const formData = reactive({
   shipper: {},
@@ -198,12 +202,13 @@ const updateParcelData = (data) => {
 };
 
 // 进入下一步
-const goToNextStep = () => {
+const goToNextStep = (val) => {
   if (!completedSteps.value.includes(currentStep.value)) {
     completedSteps.value.push(currentStep.value);
   }
+  openStep.value.splice(openStep.value.indexOf(val), 1);
   if (currentStep.value < 4) {
-    currentStep.value++;
+    currentStep.value = val + 1;
   }
 };
 
@@ -212,6 +217,7 @@ const editStep = (step) => {
   if (currentStep.value != step) {
     completedSteps.value.push(currentStep.value);
   }
+  openStep.value.push(step);
   currentStep.value = step;
 };
 

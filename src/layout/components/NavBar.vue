@@ -14,7 +14,7 @@
       <TimezoneSelect />
 
       <!-- 用户头像 -->
-      <el-tooltip :content="`登录账号：${userAccount}`" placement="bottom">
+      <el-tooltip :content="`${userAccount}`" placement="bottom">
         <el-avatar :size="30" :src="avatarImg"></el-avatar>
       </el-tooltip>
 

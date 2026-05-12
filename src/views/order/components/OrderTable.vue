@@ -283,6 +283,7 @@ const props = defineProps({
 });
 
 const lang = computed(() => appStore.lang);
+const timezone = computed(() => appStore.timezone);
 
 watch(
   () => lang.value,
@@ -291,7 +292,12 @@ watch(
     fetchData();
   }
 );
-
+watch(
+  () => timezone.value,
+  (val) => {
+    fetchData();
+  }
+);
 const currentStatus = computed(() => props.status);
 
 const orderStatusDict = useDict("order_status");

@@ -178,13 +178,7 @@ const props = defineProps({
 });
 
 const lang = computed(() => appStore.lang);
-
-// watch(
-//   () => lang.value,
-//   (val) => {
-//     getProductList();
-//   }
-// );
+const timezone = computed(() => appStore.timezone);
 
 const currentStatus = computed(() => props.status);
 
@@ -342,6 +336,13 @@ const fetchData = () => {
 
 watch(
   () => lang.value,
+  (val) => {
+    fetchData();
+  }
+);
+
+watch(
+  () => timezone.value,
   (val) => {
     fetchData();
   }

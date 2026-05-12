@@ -115,7 +115,7 @@
         class="mt-4"
         border
         max-height="300px"
-        v-if="taskStatus === 2"
+        v-if="taskStatus === 2 && successCount !== totalCount"
       >
         <el-table-column :label="$t('web.gfuc.row_number')" prop="rowNum" />
         <el-table-column

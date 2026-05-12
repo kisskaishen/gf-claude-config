@@ -137,6 +137,9 @@ import PageContainer from "@/components/PageContainer/index.vue";
 import { useI18n } from "vue-i18n";
 import { useDict } from "@/hooks/useDict";
 import { getRechargeRecord } from "@/api/finance";
+import { useAppStore } from "@/store/app";
+
+const appStore = useAppStore();
 
 defineOptions({
   name: "RechargeRecord"
@@ -220,6 +223,13 @@ const getStatusClass = (status: Status) => {
   }
 };
 
+const timezone = computed(() => appStore.timezone);
+watch(
+  () => timezone.value,
+  (val) => {
+    fetchData();
+  }
+);
 const fetchData = async () => {
   loading.value = true;
 

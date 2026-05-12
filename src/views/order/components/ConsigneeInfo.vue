@@ -296,7 +296,7 @@
         </div>
       </div>
 
-      <div v-else class="step-placeholder">
+      <div v-else class="step-placeholder" @click="onEdit">
         <p>{{ $t("web.gfuc.consignee_info_placeholder") }}</p>
       </div>
     </div>

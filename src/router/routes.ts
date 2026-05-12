@@ -186,8 +186,8 @@ export const routes: RouteRecordRaw[] = [
       title: "任务管理",
       icon: "task",
       i18n: "web.gfuc.task_management",
-      width: 18,
-      height: 18
+      width: "18px",
+      height: "18px"
     },
     children: [
       {

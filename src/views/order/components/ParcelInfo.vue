@@ -274,6 +274,13 @@
                 <el-form-item
                   :label="$t('web.gfuc.channel_code')"
                   prop="channelCode"
+                  :rules="[
+                    {
+                      required: productCode === 'EU003',
+                      message: $t('web.gfuc.enter_channel_code'),
+                      trigger: ['blur', 'change']
+                    }
+                  ]"
                 >
                   <el-select
                     v-model="formData.channelCode"
@@ -300,7 +307,7 @@
         </div> -->
       </div>
 
-      <div v-else class="step-placeholder">
+      <div v-else class="step-placeholder" @click="onEdit">
         <p>{{ $t("web.gfuc.fill_parcel_info") }}</p>
       </div>
     </div>
@@ -329,6 +336,11 @@ const props = defineProps({
   initialData: {
     type: Object,
     default: () => ({})
+  },
+  // 产品编码EU003需要展示揽收时间，产品编码必填
+  productCode: {
+    type: String,
+    default: ""
   }
 });
 import { queryProductChannelCode } from "@/api/order";
@@ -474,14 +486,7 @@ const rules = computed(() => ({
         trigger: ["blur", "change"]
       }
     ]
-  },
-  channelCode: [
-    {
-      required: true,
-      message: t("web.gfuc.enter_channel_code"),
-      trigger: ["blur", "change"]
-    }
-  ]
+  }
 }));
 
 watch(

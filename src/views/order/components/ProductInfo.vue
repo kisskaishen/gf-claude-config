@@ -87,10 +87,7 @@
               </el-col>
             </el-row>
 
-            <el-row
-              :gutter="12"
-              v-if="formData.productName.indexOf('揽收') > -1"
-            >
+            <el-row :gutter="12" v-if="formData.productCode === 'EU003'">
               <el-col :span="8">
                 <el-form-item
                   :label="$t('web.gfuc.collection_start_time')"
@@ -181,7 +178,8 @@
 
             <div
               class="flex gap-4 mt-2"
-              v-if="formData.productName.indexOf('揽收') > -1"
+              v-if="formData.productCode === 'EU003'"
+              @click="onEdit"
             >
               <div class="flex flex-col">
                 <p>{{ $t("web.gfuc.collection_start_time") }}</p>
@@ -196,7 +194,7 @@
         </div>
       </div>
 
-      <div v-else class="step-placeholder">
+      <div v-else class="step-placeholder" @click="onEdit">
         <p>{{ $t("web.gfuc.please_select_product_info") }}</p>
       </div>
     </div>
