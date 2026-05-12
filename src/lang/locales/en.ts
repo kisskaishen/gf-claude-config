@@ -312,6 +312,8 @@ export default {
   "web.gfuc.success": "Success",
   "web.gfuc.error": "Error",
   "web.gfuc.download": "Download",
+  "web.gfuc.download_original_file": "Download Original File",
+
   "web.gfuc.upload_task_tooltip":
     "Upload tasks allows you to view all historical upload records"
 };

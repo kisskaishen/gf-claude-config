@@ -298,5 +298,6 @@ export default {
   "web.gfuc.success": "成功",
   "web.gfuc.error": "错误",
   "web.gfuc.download": "下载",
+  "web.gfuc.download_original_file": "下载原始文件",
   "web.gfuc.upload_task_tooltip": "上传任务可以查看所有历史上传的记录"
 };

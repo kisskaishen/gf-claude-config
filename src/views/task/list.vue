@@ -73,7 +73,6 @@
         </template>
 
         <template #columns>
-          <el-table-column type="selection" width="55" />
           <el-table-column
             v-for="item in columns"
             :key="item.prop"
@@ -92,28 +91,39 @@
           >
             <template #default="{ row, index }">
               <div class="table-actions">
-                <el-tooltip :content="$t('web.gfuc.download')" placement="top">
+                <el-tooltip
+                  :content="$t('web.gfuc.download_original_file')"
+                  placement="top"
+                >
                   <svg-icon
                     name="upload-download"
                     width="24"
                     height="24"
                     @click="handleDownload(row)"
+                    v-if="row.rawFileUrl"
+                  />
+
                   />
                 </el-tooltip>
-                <el-tooltip :content="$t('web.gfuc.download')" placement="top">
-                  <svg-icon
-                    name="upload-download"
-                    width="24"
-                    height="24"
-                    @click="handleErrorDownload(row)"
-                  />
-                </el-tooltip>
-                <el-tooltip :content="$t('web.gfuc.refresh')" placement="top">
+
+                <el-tooltip :content="$t('gfuc.refresh')" placement="top">
                   <svg-icon
                     name="refresh"
                     width="24"
                     height="24"
                     @click="handleRefresh(row, index)"
+                  />
+                </el-tooltip>
+                <el-tooltip
+                  :content="$t('web.gfuc.download_error_data')"
+                  placement="top"
+                  v-if="row.errorFileUrl"
+                >
+                  <svg-icon
+                    name="upload-download"
+                    width="24"
+                    height="24"
+                    @click="handleErrorDownload(row)"
                   />
                 </el-tooltip>
               </div>
@@ -183,17 +193,19 @@ const taskTypeDict = useDict("task_type");
 
 const columns = [
   {
-    prop: "orderNo",
+    prop: "fileName",
     label: "web.gfuc.file_name", // 文件名
-    minWidth: 180
+    minWidth: 200
   },
   {
     prop: "createTime",
-    label: "web.gfuc.date" // 日期
+    label: "web.gfuc.date", // 日期
+    minWidth: 200
   },
   {
     prop: "taskTypeName",
-    label: "web.gfuc.type" // 类型
+    label: "web.gfuc.type", // 类型
+    minWidth: 150
   },
   {
     prop: "taskStatusName",
@@ -333,7 +345,7 @@ const handleDownload = async (row: any) => {
   if (!res) {
     return;
   }
-  await downloadFile(res, "模板文件");
+  await downloadFile(res, row.fileName);
 };
 
 const handleErrorDownload = async (row: any) => {
@@ -341,7 +353,7 @@ const handleErrorDownload = async (row: any) => {
   if (!res) {
     return;
   }
-  await downloadFile(res, "错误数据");
+  await downloadFile(res, "错误数据" + row.fileName);
 };
 const handleRefresh = async (row: any, index: number) => {
   // const res = await getOrderImportResult(row.importTaskId);
