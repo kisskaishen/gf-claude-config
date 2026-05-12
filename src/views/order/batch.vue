@@ -68,19 +68,23 @@
         :dragAreaHeight="194"
         drag
         :multiple="true"
-        :limit="10"
+        :limit="1"
         :progress="taskStatus"
         :buttonText="$t('web.gfuc.upload_task_button_text')"
         accept=".xls,.xlsx"
         :hint="$t('web.gfuc.upload_task_file_format_tip')"
         @refresh="handleRefresh"
+        @remove="handleRemove"
       />
     </div>
 
     <div class="mt-6 table-list" v-if="totalCount > 0">
       <div class="flex items-center justify-between">
         <!-- 调试步骤 -->
-        <div class="text-sm font-normal text-text-placeholder">
+        <div
+          class="text-sm font-normal text-text-placeholder"
+          v-if="taskStatus === 2"
+        >
           {{ $t("web.gfuc.upload_task_total_prefix") }}
           <span class="font-normal">{{ totalCount }}</span>
           {{ $t("web.gfuc.upload_task_suffix") }}，
@@ -93,6 +97,9 @@
           <span class="font-normal text-danger">{{ failCount }}</span>
           {{ $t("web.gfuc.upload_task_suffix") }}
         </div>
+        <div class="text-sm font-normal text-text-placeholder" v-else>
+          文件正在上传中，请稍等
+        </div>
 
         <el-button
           type="primary"
@@ -103,7 +110,13 @@
         >
       </div>
 
-      <el-table :data="tableData" class="mt-4" border max-height="300px">
+      <el-table
+        :data="tableData"
+        class="mt-4"
+        border
+        max-height="300px"
+        v-if="taskStatus === 2"
+      >
         <el-table-column :label="$t('web.gfuc.row_number')" prop="rowNum" />
         <el-table-column
           :label="$t('web.gfuc.customer_order_no')"
@@ -193,6 +206,44 @@ const downloadErrorData = async () => {
 };
 
 const importTaskId = ref();
+let pollingTimer = null; // 轮询定时器
+
+// 5秒自动轮询方法 - 直到满足条件
+const startPolling = (condition, callback, interval = 5000) => {
+  // 清除之前的定时器
+  if (pollingTimer) {
+    clearInterval(pollingTimer);
+    pollingTimer = null;
+  }
+
+  // 立即执行一次
+  const checkCondition = async () => {
+    try {
+      const result = await callback();
+      // 检查是否满足条件
+      if (condition(result)) {
+        stopPolling();
+      }
+    } catch (error) {
+      console.error("轮询请求失败:", error);
+      stopPolling();
+    }
+  };
+
+  // 立即执行
+  checkCondition();
+
+  // 启动定时轮询
+  pollingTimer = setInterval(checkCondition, interval);
+};
+
+// 停止轮询
+const stopPolling = () => {
+  if (pollingTimer) {
+    clearInterval(pollingTimer);
+    pollingTimer = null;
+  }
+};
 
 const customHttpRequest = async (options) => {
   const valid = await formRef.value.validate();
@@ -206,7 +257,8 @@ const customHttpRequest = async (options) => {
   const res = await uploadOrder(formData);
   importTaskId.value = res;
   if (importTaskId.value) {
-    getImportResult();
+    // 启动5秒轮询，直到任务完成（状态为2或3）
+    startPolling((result) => result?.taskStatus === 2, getImportResult, 5000);
   }
 };
 
@@ -216,7 +268,14 @@ const handleRefresh = async () => {
     getImportResult();
   }
 };
-
+const handleRemove = () => {
+  tableData.value = [];
+  totalCount.value = 0;
+  successCount.value = 0;
+  failCount.value = 0;
+  errorFileUrl.value = "";
+  taskStatus.value = 0;
+};
 // 文件上传结果监听
 const getImportResult = async () => {
   const res = await getOrderImportResult(importTaskId.value);
@@ -226,6 +285,7 @@ const getImportResult = async () => {
   failCount.value = res?.failCount || 0;
   errorFileUrl.value = res?.errorFileUrl || "";
   taskStatus.value = res?.taskStatus || 0;
+  return res; // 返回结果供轮询条件判断使用
 };
 
 //

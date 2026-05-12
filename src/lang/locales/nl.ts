@@ -301,6 +301,7 @@ export default {
   "web.gfuc.upload_result": "Upload resultaat",
   "web.gfuc.upload_success": "Upload succesvol",
   "web.gfuc.uploading": "Uploaden",
+  "web.gfuc.uploading_tip": "Bestand wordt geüpload, even geduld a.u.b.",
   "web.gfuc.please_agree_and_check_the_agreement":
     "Ga akkoord en vink de overeenkomst aan",
   "web.gfuc.task_management": "Taakbeheer",

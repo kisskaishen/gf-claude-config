@@ -288,6 +288,7 @@ watch(
   () => lang.value,
   (val) => {
     getProductList();
+    fetchData();
   }
 );
 

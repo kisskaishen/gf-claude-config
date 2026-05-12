@@ -307,6 +307,7 @@ export default {
   "web.gfuc.upload_result": "Upload result",
   "web.gfuc.upload_success": "Upload success",
   "web.gfuc.uploading": "Uploading",
+  "web.gfuc.uploading_tip": "File is uploading, please wait",
   "web.gfuc.please_agree_and_check_the_agreement":
     "Please agree and check the agreement",
   "web.gfuc.task_management": "Task Management",

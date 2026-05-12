@@ -227,3 +227,12 @@ export function downloadFailedOrderData(fileKey: string) {
     method: "get"
   });
 }
+
+// 渠道编码
+export function queryProductChannelCode(data: { country: string }) {
+  return request({
+    url: "/plm/product/queryProductChannelCode",
+    method: "post",
+    data
+  });
+}

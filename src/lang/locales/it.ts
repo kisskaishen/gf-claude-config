@@ -310,6 +310,7 @@ export default {
   "web.gfuc.upload_result": "Résultat de l'upload",
   "web.gfuc.upload_success": "Upload réussiie",
   "web.gfuc.uploading": "Upload en cours",
+  "web.gfuc.uploading_tip": "Il file è in caricamento, attendere prego",
   "web.gfuc.please_agree_and_check_the_agreement":
     "Si prega di accettare e spuntare il contratto",
   "web.gfuc.task_management": "Gestione attività",

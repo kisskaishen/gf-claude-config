@@ -166,9 +166,19 @@
                   <!-- <el-progress :percentage="file.percent" status="active" /> -->
                 </div>
               </div>
-              <el-button link @click="handleRefresh">
-                <el-icon><Refresh /></el-icon>
-              </el-button>
+
+              <div class="flex gap-1">
+                <el-button link @click="handleRefresh">
+                  <el-icon><Refresh /></el-icon>
+                </el-button>
+                <el-button
+                  link
+                  @click="handleRemoveFile(file)"
+                  class="text-primary"
+                >
+                  <el-icon><Delete /></el-icon>
+                </el-button>
+              </div>
             </div>
           </slot>
         </template>
@@ -195,7 +205,8 @@ import {
   Picture,
   VideoCameraFilled,
   WarningFilled,
-  Refresh
+  Refresh,
+  Delete
 } from "@element-plus/icons-vue";
 import { useI18n } from "vue-i18n";
 
@@ -756,7 +767,6 @@ const handleError = (error, file, fileListData) => {
 
 // 移除文件
 const handleRemove = (file, fileListData) => {
-  ElMessage.info(`已移除 ${file.name}`);
   fileList.value = fileListData;
   emit("remove", file, fileListData);
 };
@@ -795,6 +805,12 @@ const formatFileSize = (size) => {
 
 const handleRefresh = () => {
   emit("refresh");
+};
+// 手动删除文件
+const handleRemoveFile = (file) => {
+  if (uploadRef.value) {
+    uploadRef.value.handleRemove(file);
+  }
 };
 
 // 获取文件图标

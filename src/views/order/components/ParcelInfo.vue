@@ -275,10 +275,18 @@
                   :label="$t('web.gfuc.channel_code')"
                   prop="channelCode"
                 >
-                  <el-input
+                  <el-select
                     v-model="formData.channelCode"
                     :placeholder="$t('web.gfuc.enter_channel_code')"
-                  />
+                    filterable
+                  >
+                    <el-option
+                      v-for="item in channelCodeList"
+                      :key="item"
+                      :label="item"
+                      :value="item"
+                    ></el-option>
+                  </el-select>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -323,10 +331,13 @@ const props = defineProps({
     default: () => ({})
   }
 });
+import { queryProductChannelCode } from "@/api/order";
 
 const emit = defineEmits(["edit", "submit", "update:formData"]);
 
 const formRef = ref(null);
+
+const channelCodeList = ref([]);
 
 const formData = ref({
   orderGoods: {
@@ -349,6 +360,13 @@ const formData = ref({
   channelCode: "",
   ...props.initialData
 });
+
+// 初始化渠道编码列表
+const getProductChannelCode = async () => {
+  const res = await queryProductChannelCode();
+  channelCodeList.value = res || [];
+};
+getProductChannelCode();
 
 // 监听 initialData 变化，当父组件数据加载完成后更新表单数据
 watch(
@@ -456,7 +474,14 @@ const rules = computed(() => ({
         trigger: ["blur", "change"]
       }
     ]
-  }
+  },
+  channelCode: [
+    {
+      required: true,
+      message: t("web.gfuc.enter_channel_code"),
+      trigger: ["blur", "change"]
+    }
+  ]
 }));
 
 watch(

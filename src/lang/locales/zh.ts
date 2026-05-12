@@ -292,6 +292,7 @@ export default {
   "web.gfuc.upload_result": "上传结果",
   "web.gfuc.upload_success": "上传完成",
   "web.gfuc.uploading": "上传中",
+  "web.gfuc.uploading_tip": "文件正在上传中，请稍等",
 
   "web.gfuc.please_agree_and_check_the_agreement": "请同意并勾选协议",
 

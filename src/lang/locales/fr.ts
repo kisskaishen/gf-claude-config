@@ -319,6 +319,8 @@ export default {
   "web.gfuc.upload_result": "Résultat de l'upload",
   "web.gfuc.upload_success": "Upload réussiie",
   "web.gfuc.uploading": "Upload en cours",
+  "web.gfuc.uploading_tip":
+    "Le fichier est en cours de téléchargement, veuillez patienter",
   "web.gfuc.please_agree_and_check_the_agreement":
     "Veuillez accepter et cocher la convention",
   "web.gfuc.task_management": "Gestion des tâches",

@@ -340,6 +340,13 @@ const fetchData = () => {
   }, 500);
 };
 
+watch(
+  () => lang.value,
+  (val) => {
+    fetchData();
+  }
+);
+
 const handleDownload = async (row: any) => {
   const res = await downloadFailedOrderData(row.rawFileUrl);
   if (!res) {
