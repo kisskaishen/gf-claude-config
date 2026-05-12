@@ -37,7 +37,7 @@
           width="20"
           height="20"
           @click="onEdit"
-          v-if="!isActive && isCompleted"
+          v-if="!isActive"
         />
       </div>
 
