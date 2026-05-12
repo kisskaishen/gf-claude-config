@@ -42,6 +42,21 @@
             :label="$t('gfuc.pay_method' /** 支付方式 **/)"
             prop="receiptMethod"
           >
+            <template #label>
+              {{ $t("gfuc.pay_method" /** 支付方式 **/) }}
+              <el-tooltip
+                :content="
+                  $t(
+                    'gfuc.payment_method_selection' /** 请选择充值时支付的方式 **/
+                  )
+                "
+                placement="top"
+              >
+                <el-icon class="tip-icon">
+                  <svg-icon name="question" />
+                </el-icon>
+              </el-tooltip>
+            </template>
             <el-select
               v-model="formData.receiptMethod"
               :placeholder="
@@ -66,6 +81,21 @@
             :label="$t('gfuc.recharge_date' /** 充值日期 **/)"
             prop="receiptDate"
           >
+            <template #label>
+              {{ $t("gfuc.recharge_date" /** 充值日期 **/) }}
+              <el-tooltip
+                :content="
+                  $t(
+                    'gfuc.time_consistency' /** 时间需要跟上传截图的时间一致 **/
+                  )
+                "
+                placement="top"
+              >
+                <el-icon class="tip-icon">
+                  <svg-icon name="question" />
+                </el-icon>
+              </el-tooltip>
+            </template>
             <el-date-picker
               v-model="formData.receiptDate"
               type="date"
@@ -524,5 +554,9 @@ const handleContinueRecharge = () => {
 
 .submit-btn {
   margin-bottom: 119px;
+}
+
+.tip-icon {
+  vertical-align: text-bottom;
 }
 </style>

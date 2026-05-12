@@ -296,6 +296,7 @@ const submitOrder = async () => {
 
 onMounted(() => {
   if (route.params.orderId) {
+    openStep.value = [4];
     fetchOrderDetail();
     currentStep.value = 4;
     completedSteps.value = [1, 2, 3, 4];

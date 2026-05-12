@@ -190,7 +190,7 @@
                   />
                 </el-form-item>
               </el-col>
-              <el-col :span="8">
+              <el-col :span="8" v-if="site !== 'IT'">
                 <el-form-item :label="$t('web.gfuc.area')" prop="consigneeArea">
                   <el-select
                     v-model="orderConsignee.consigneeArea"
@@ -208,7 +208,12 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item :label="$t('web.gfuc.city')" prop="consigneeCity">
+                <el-form-item
+                  :label="
+                    site === 'IT' ? $t('web.gfuc.state') : $t('web.gfuc.city')
+                  "
+                  prop="consigneeCity"
+                >
                   <el-select
                     v-model="orderConsignee.consigneeCity"
                     :placeholder="$t('web.gfuc.please_enter_city')"
@@ -227,7 +232,9 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item
-                  :label="$t('web.gfuc.state')"
+                  :label="
+                    site === 'IT' ? $t('web.gfuc.area') : $t('web.gfuc.state')
+                  "
                   prop="consigneeState"
                 >
                   <el-select
@@ -511,8 +518,9 @@ const getStateListData = () => {
       let stateId = states.value.find(
         (item) => item.state_name === orderConsignee.value.consigneeState
       )?.id;
-
-      getCityListData(stateId);
+      nextTick(() => {
+        getCityListData(stateId);
+      });
     }
   });
 };

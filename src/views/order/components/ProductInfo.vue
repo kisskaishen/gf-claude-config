@@ -68,7 +68,7 @@
 
             <el-row>
               <el-col :span="24">
-                <el-form-item label-width="0">
+                <el-form-item label-width="0" prop="productCode">
                   <el-radio-group
                     v-model="formData.productCode"
                     class="radio-group"
@@ -350,6 +350,7 @@ const handleProductChange = (val) => {
 
 const onNext = () => {
   formRef.value.validate((valid) => {
+    console.log("valid", valid);
     if (valid) {
       emit("next");
     }
@@ -390,8 +391,6 @@ const getProductList = async () => {
     countryCode: userStore.userInfo?.country || ""
   });
 
-  console.log(res, res2, "+++++");
-
   // res的数据和res2数据对比，然后根据productCode合并数据
   const mergedRes = res.map((item) => ({
     ...item,
@@ -410,6 +409,9 @@ const getProductList = async () => {
   if (productList.value.length === 1) {
     formData.value.productCode = productList.value[0].code;
     formData.value.productName = productList.value[0].name;
+  } else {
+    formData.value.productCode = "";
+    formData.value.productName = "";
   }
 };
 
