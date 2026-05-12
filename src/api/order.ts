@@ -113,6 +113,15 @@ export function getSenderName(params: { customerId: string | number }) {
   });
 }
 
+// 根据市获取邮编
+export function getPostcodeByCity(data: { cityId: string; stateId: string }) {
+  return request({
+    url: "/delivery/system/listAddressByCityOrState",
+    method: "post",
+    data
+  });
+}
+
 //  根据邮政编码获取地址
 export function getAddressByCode(data: { postcode: string }) {
   return request({

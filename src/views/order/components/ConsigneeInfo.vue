@@ -180,7 +180,7 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item
-                  :label="$t('web.gfuc.postal_code')"
+                  :label="$t('web.gfuc.postal_code' /** 邮编 **/)"
                   prop="consigneeCode"
                 >
                   <el-input
@@ -214,6 +214,7 @@
                     :placeholder="$t('web.gfuc.please_enter_city')"
                     maxlength="50"
                     filterable
+                    @change="handleCityChange"
                   >
                     <el-option
                       v-for="city in cities"
@@ -234,6 +235,7 @@
                     :placeholder="$t('web.gfuc.please_enter_state')"
                     maxlength="35"
                     filterable
+                    @change="handleStateChange"
                   >
                     <el-option
                       v-for="state in states"
@@ -304,7 +306,12 @@
 <script setup>
 import { ref, watch } from "vue";
 import { Edit } from "@element-plus/icons-vue";
-import { getAddressByCode, getListCityBySid, getStateList } from "@/api/order";
+import {
+  getAddressByCode,
+  getListCityBySid,
+  getStateList,
+  getPostcodeByCity
+} from "@/api/order";
 import { useUserStore } from "@/store/user";
 import { useAppStore } from "@/store/app";
 
@@ -448,17 +455,17 @@ const handleZipCodeInput = () => {
   // 填写邮编，带出省市区，支持编辑。
   getAddressByCode({ postcode: orderConsignee.value.consigneeCode }).then(
     (res) => {
-      getStateListData();
+      // getStateListData();
       if (!res?.city?.stateId) {
         return;
       }
-      getCityListData(res?.city?.stateId);
+      // getCityListData(res?.city?.stateId);
 
       setTimeout(() => {
         orderConsignee.value.consigneeCity = res.city?.cityName || "";
 
         orderConsignee.value.consigneeState = res.state?.stateName || "";
-      }, 200);
+      }, 300);
     }
   );
 };
@@ -500,14 +507,43 @@ const onEdit = () => {
 const getStateListData = () => {
   getStateList().then((res) => {
     states.value = res || [];
+    if (orderConsignee.value.consigneeState) {
+      let stateId = states.value.find(
+        (item) => item.state_name === orderConsignee.value.consigneeState
+      )?.id;
+
+      getCityListData(stateId);
+    }
   });
 };
+getStateListData();
+
 // 城市列表
 const getCityListData = (stateId) => {
   getListCityBySid({ stateId }).then((res) => {
     cities.value = res || [];
   });
 };
+
+// 根据城市获取邮编
+const handleCityChange = async (val) => {
+  let cityId = cities.value.find((item) => item.cityName === val)?.id;
+
+  const res = await getPostcodeByCity({
+    cityId
+  });
+  console.log(res, "=====");
+};
+
+const handleStateChange = async (val) => {
+  let stateId = states.value.find((item) => item.state_name === val)?.id;
+
+  orderConsignee.value.consigneeCity = "";
+  orderConsignee.value.consigneeCode = "";
+
+  await getCityListData(stateId);
+};
+
 // 法国：外门牌 地址1，地址2，地址3，内门牌，邮编，区域，城市，洲，国家
 // 意大利：地址1，外门牌，内门牌， 地址2，地址3，邮编，区域，城市，国家
 // 荷兰：地址1，地址2，地址3，外门牌，内门牌，邮编，区域，城市，洲，国家
