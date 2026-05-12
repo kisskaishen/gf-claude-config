@@ -163,9 +163,25 @@
         @click="handleSubmit"
         :loading="loading"
       >
-        {{ $t("web.gfuc.submit_order" /** 提交 **/) }}
+        {{ $t("web.gfuc.submit_recharge" /** 提交充值 **/) }}
       </el-button>
     </el-form>
+
+    <SuccessDialog
+      v-model="successVisible"
+      :title="$t('web.gfuc.recharge_success' /** 充值成功 **/)"
+      :description="
+        $t(
+          'web.gfuc.recharge_success_description' /** 您的充值记录已提交，我们预计将会在一个工作日内为您充值。 **/
+        )
+      "
+      :primary-btn-text="
+        $t('web.gfuc.view_recharge_record' /** 查看充值记录 **/)
+      "
+      :secondary-btn-text="$t('web.gfuc.continue_recharge' /** 继续充值 **/)"
+      @primary-click="handleViewRechargeRecord"
+      @secondary-click="handleContinueRecharge"
+    />
   </page-container>
 </template>
 
@@ -190,12 +206,18 @@ import jpgIcon from "@/assets/upload-file/jpg.svg";
 import pdfIcon from "@/assets/upload-file/pdf.svg";
 import pngIcon from "@/assets/upload-file/png.svg";
 
+import SuccessDialog from "@/components/SuccessDialog/index.vue";
+
 import { useAppStore } from "@/store/app";
 import frExample from "@/assets/payment-example/FR.png";
 import itExample from "@/assets/payment-example/IT.png";
 import nlExample from "@/assets/payment-example/NL.png";
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 const appStore = useAppStore();
+
+const successVisible = ref(false);
 
 const fileIconMap: Record<string, string> = {
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
@@ -387,10 +409,20 @@ const handleSubmit = async () => {
   try {
     loading.value = true;
     await recharge(formData);
-    ElMessage.success(t("gfuc.submission_successful" /** 提交成功 **/));
+    successVisible.value = true;
+    // ElMessage.success(t("gfuc.submission_successful" /** 提交成功 **/));
   } finally {
     loading.value = false;
   }
+};
+
+const handleViewRechargeRecord = () => {
+  router.push("/finance/record");
+};
+const handleContinueRecharge = () => {
+  formRef.value?.resetFields();
+  fileList.value = [];
+  successVisible.value = false;
 };
 </script>
 

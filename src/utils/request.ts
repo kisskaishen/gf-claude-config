@@ -94,6 +94,10 @@ service.interceptors.request.use(
 
     // 5. X-Request-ID: 请求id (建议)
     // config.headers["X-Request-ID"] = crypto.randomUUID();
+    // 如果是批量打印接口，timeuout添加60s
+    if (config.url === "/oms/label/batchPrintLabel") {
+      config.timeout = 60000;
+    }
 
     return config;
   },

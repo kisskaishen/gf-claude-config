@@ -9,7 +9,7 @@ export default {
   "web.gfuc.recharge_record": "充值记录",
   "web.gfuc.balance": "余额",
   "web.gfuc.bill": "账单",
-  "web.gfuc.message_notification_settings": "消息通知设置",
+  "web.gfuc.message_subscription": "消息订阅",
   "web.gfuc.problem_piece_management": "问题件管理",
   "web.gfuc.problem_piece_view": "问题件查看",
   "web.gfuc.daily": "每天",
@@ -92,6 +92,7 @@ export default {
     "您将进行打印面单的操作，已勾选{count}单，是否确认打印？",
   "web.gfuc.batch_print_success": "已开始批量打印 {count} 个订单",
   "web.gfuc.select_orders_first": "请先选择要打印的订单",
+  "web.gfuc.printing_order": "正在打印中，请稍等",
 
   // 单票下单页面
   "web.gfuc.order_created_success": "订单创建成功",
@@ -193,6 +194,12 @@ export default {
   "web.gfuc.channel_code": "渠道编码",
   "web.gfuc.enter_channel_code": "请输入渠道编码",
   "web.gfuc.submit_order": "提交订单",
+  "web.gfuc.submit_recharge": "提交充值",
+  "web.gfuc.recharge_success": "充值成功",
+  "web.gfuc.recharge_success_description":
+    "您的充值记录已提交，我们预计将会在一个工作日内为您充值。",
+  "web.gfuc.view_recharge_record": "查看充值记录",
+  "web.gfuc.continue_recharge": "继续充值",
 
   "web.gfuc.please_enter": "请输入",
 

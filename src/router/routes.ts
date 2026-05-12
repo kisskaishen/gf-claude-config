@@ -146,8 +146,8 @@ export const routes: RouteRecordRaw[] = [
         name: "messageNotification",
         component: () => import("@/views/setting/messageNotification.vue"),
         meta: {
-          title: "消息通知设置",
-          i18n: "web.gfuc.message_notification_settings"
+          title: "消息订阅",
+          i18n: "web.gfuc.message_subscription"
         }
       }
     ]

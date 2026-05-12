@@ -5,7 +5,7 @@ export default {
   "web.gfuc.batch_order": "Batchbestelling",
   "web.gfuc.order_list": "Orderlijst",
   "web.gfuc.financial_management": "Financieel beheer",
-  "web.gfuc.message_notification_settings": "Berichtnotificatie instellingen",
+  "web.gfuc.message_subscription": "Berichtenabonnement",
   "web.gfuc.recharge": "Opwaarderen",
   "web.gfuc.recharge_record": "Opwaarderingsgeschiedenis",
   "web.gfuc.balance": "Saldo",
@@ -182,6 +182,12 @@ export default {
   "web.gfuc.channel_code": "Kanaalcode",
   "web.gfuc.enter_channel_code": "Voer de kanaalcode in",
   "web.gfuc.submit_order": "Bestel order",
+  "web.gfuc.submit_recharge": "Herlaadverzoek indienen",
+  "web.gfuc.recharge_success": "Herladen geslaagd",
+  "web.gfuc.recharge_success_description":
+    "Uw herlaadverzoek is ingediend. Wij verwachten uw herlading binnen één werkdag te verwerken.",
+  "web.gfuc.view_recharge_record": "Bekijk herlaadgeschiedenis",
+  "web.gfuc.continue_recharge": "Doorgaan met herladen",
   "web.gfuc.please_enter": "Voer",
   "web.gfuc.print_order": "Print order",
   "web.gfuc.edit_order": "Bewerk order",
@@ -253,6 +259,7 @@ export default {
     "U staat op het punt verzendetiketten af te drukken, {count} bestellingen geselecteerd, afdrukken bevestigen?",
   "web.gfuc.batch_print_success":
     "Gestart met batch afdrukken van {count} bestellingen",
+  "web.gfuc.printing_order": "Bezig met afdrukken, even geduld a.u.b.",
   "web.gfuc.select_orders_first":
     "Selecteer eerst bestellingen om af te drukken",
   "web.gfuc.unusual_type": "Type anomalo",

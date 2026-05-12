@@ -62,6 +62,7 @@ declare module 'vue' {
     SearchContainer: typeof import('./src/components/SearchContainer/index.vue')['default']
     SelectDropdown: typeof import('./src/components/SelectDropdown/index.vue')['default']
     SiteSelect: typeof import('./src/components/SiteSelect/index.vue')['default']
+    SuccessDialog: typeof import('./src/components/SuccessDialog/index.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
     TableLayout: typeof import('./src/components/TableLayout/index.vue')['default']
     TimezoneSelect: typeof import('./src/components/TimezoneSelect/index.vue')['default']

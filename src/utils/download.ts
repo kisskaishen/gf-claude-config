@@ -8,7 +8,6 @@ export const downloadFile = async (url: string | Blob, fileName?: string) => {
     let blob: Blob;
     if (typeof url === "string") {
       const response = await fetch(url);
-
       blob = await response.blob();
     } else {
       blob = url;

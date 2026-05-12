@@ -5,8 +5,7 @@ export default {
   "web.gfuc.batch_order": "Commande en lot",
   "web.gfuc.order_list": "Liste des commandes",
   "web.gfuc.financial_management": "Gestion financière",
-  "web.gfuc.message_notification_settings":
-    "Paramètres de notifications de messages",
+  "web.gfuc.message_subscription": "Abonnement aux messages",
   "web.gfuc.recharge": "Recharge",
   "web.gfuc.recharge_record": "Historique des recharges",
   "web.gfuc.balance": "Solde",
@@ -200,6 +199,12 @@ export default {
   "web.gfuc.channel_code": "Code canal",
   "web.gfuc.enter_channel_code": "Veuillez entrer le code canal",
   "web.gfuc.submit_order": "Soumettre la commande",
+  "web.gfuc.submit_recharge": "Soumettre la recharge",
+  "web.gfuc.recharge_success": "Recharge réussie",
+  "web.gfuc.recharge_success_description":
+    "Votre demande de recharge a été soumise. Nous prévoyons de traiter votre recharge dans un délai d'un jour ouvrable.",
+  "web.gfuc.view_recharge_record": "Voir l'historique de recharge",
+  "web.gfuc.continue_recharge": "Continuer la recharge",
   "web.gfuc.please_enter": "Veuillez entrer",
   "web.gfuc.print_order": "Imprimer la commande",
   "web.gfuc.edit_order": "Modifier la commande",
@@ -271,6 +276,7 @@ export default {
     "Vous êtes sur le point d'imprimer des étiquettes d'expédition, {count} commandes sélectionnées, confirmer l'impression ?",
   "web.gfuc.batch_print_success":
     "Impression par lot de {count} commandes démarrée",
+  "web.gfuc.printing_order": "Impression en cours, veuillez patienter",
   "web.gfuc.select_orders_first":
     "Veuillez d'abord sélectionner les commandes à imprimer",
   "web.gfuc.unusual_type": "Type anomalo",

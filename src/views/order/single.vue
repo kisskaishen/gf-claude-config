@@ -66,78 +66,21 @@
       </div>
     </div>
 
-    <el-dialog
+    <SuccessDialog
       v-model="successVisible"
-      :close-on-click-modal="false"
-      :close-on-press-escape="false"
-      width="480px"
-      class="success-dialog"
-    >
-      <div class="py-6 text-center">
-        <!-- 成功图标 -->
-        <div
-          class="inline-flex items-center justify-center w-20 h-20 mb-6 bg-green-100 rounded-full"
-        >
-          <svg
-            class="w-10 h-10 text-green-600"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
-        </div>
-
-        <!-- 标题 -->
-        <h3 class="mb-3 text-2xl font-bold text-gray-800">
-          {{
-            isEdit
-              ? $t("web.gfuc.order_update_success")
-              : $t("web.gfuc.order_created_success")
-          }}
-        </h3>
-
-        <!-- 描述文本 -->
-        <p class="text-sm text-info">
-          {{
-            isEdit
-              ? $t("web.gfuc.order_update_success_message")
-              : $t("web.gfuc.order_created_success_message")
-          }}
-        </p>
-      </div>
-
-      <!-- 底部按钮 -->
-      <template #footer>
-        <div class="flex justify-center gap-4 py-4">
-          <el-button
-            size="large"
-            class="px-10 py-3 text-lg border-gray-300"
-            @click="handleViewOrder"
-          >
-            {{ $t("web.gfuc.view_order") }}
-          </el-button>
-          <el-button
-            type="primary"
-            size="large"
-            class="px-10 py-3 text-lg"
-            @click="handleContinueBuy"
-          >
-            {{ $t("web.gfuc.continue_order") }}
-          </el-button>
-        </div>
-      </template>
-    </el-dialog>
+      :title="dialogTitle"
+      :description="dialogDescription"
+      :primary-btn-text="$t('web.gfuc.view_order')"
+      :secondary-btn-text="$t('web.gfuc.continue_order')"
+      @primary-click="handleViewOrder"
+      @secondary-click="handleContinueBuy"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive, onMounted, onActivated, watch } from "vue";
+import SuccessDialog from "@/components/SuccessDialog/index.vue";
 
 import ShipperInfo from "./components/ShipperInfo.vue";
 import ConsigneeInfo from "./components/ConsigneeInfo.vue";
@@ -152,6 +95,8 @@ import {
 } from "@/api/order";
 
 import { useRouter, useRoute } from "vue-router";
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
 
 const router = useRouter();
 const route = useRoute();
@@ -159,6 +104,17 @@ const route = useRoute();
 const isEdit = computed(() => route.params.orderId);
 defineOptions({
   name: "SingleOrder"
+});
+
+const dialogTitle = computed(() => {
+  return isEdit.value
+    ? t("web.gfuc.order_update_success")
+    : t("web.gfuc.order_created_success");
+});
+const dialogDescription = computed(() => {
+  return isEdit.value
+    ? t("web.gfuc.order_update_success_message")
+    : t("web.gfuc.order_created_success_message");
 });
 
 const STORAGE_KEY = "single_order_form_data";
@@ -223,7 +179,6 @@ const successVisible = ref(false);
 
 // 更新发件人数据
 const updateShipperData = (data) => {
-  console.log(data, "updateShipperData");
   formData.shipper = data;
 };
 
@@ -254,11 +209,8 @@ const goToNextStep = () => {
 
 // 编辑步骤
 const editStep = (step) => {
-  console.log(step, currentStep.value);
   if (currentStep.value != step) {
     completedSteps.value.push(currentStep.value);
-
-    console.log(completedSteps.value);
   }
   currentStep.value = step;
 };
@@ -379,7 +331,6 @@ const fetchOrderDetail = async () => {
     if (orderType === "order") {
       // 普通订单详情
       response = await getOrderDetail({ id: orderId });
-      console.log(response, "订单详情数据");
       // 格式化回显数据，确保数据结构与组件期望一致
       if (response.customerId) {
         sessionStorage.setItem("createOrderCustomerId", response.customerId);
@@ -394,7 +345,6 @@ const fetchOrderDetail = async () => {
       // 异常订单详情
       response = await getExceptionOrderDetail({ unusualOrderId: orderId });
       let data = JSON.parse(response?.requestBody || "{}");
-      console.log(data, "订单详情数据");
       // 格式化回显数据，确保数据结构与组件期望一致
       if (data.customerId) {
         sessionStorage.setItem("createOrderCustomerId", data.customerId);

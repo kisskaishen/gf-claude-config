@@ -1,11 +1,11 @@
 export default {
-  "web.gfuc.homepage": "Homepage",
+  "web.gfuc.homepage": "Home",
   "web.gfuc.order_management": "Order Management",
   "web.gfuc.single_ticket_order": "Single Ticket Order",
   "web.gfuc.batch_order": "Batch Order",
   "web.gfuc.order_list": "Order List",
   "web.gfuc.financial_management": "Financial Management",
-  "web.gfuc.message_notification_settings": "Message Notification Settings",
+  "web.gfuc.message_subscription": "Message Subscription",
   "web.gfuc.recharge": "Recharge",
   "web.gfuc.recharge_record": "Recharge Record",
   "web.gfuc.balance": "Balance",
@@ -191,6 +191,12 @@ export default {
   "web.gfuc.channel_code": "Channel Code",
   "web.gfuc.enter_channel_code": "Please enter channel code",
   "web.gfuc.submit_order": "Submit Order",
+  "web.gfuc.submit_recharge": "Submit Recharge",
+  "web.gfuc.recharge_success": "Recharge Successful",
+  "web.gfuc.recharge_success_description":
+    "Your recharge request has been submitted. We expect to process your recharge within one business day.",
+  "web.gfuc.view_recharge_record": "View Recharge Record",
+  "web.gfuc.continue_recharge": "Continue Recharge",
   "web.gfuc.please_enter": "Please enter",
   "web.gfuc.print_order": "Print Order",
   "web.gfuc.edit_order": "Edit Order",
@@ -261,6 +267,7 @@ export default {
   "web.gfuc.batch_print_confirm":
     "You are about to print shipping labels, {count} orders selected, confirm to print?",
   "web.gfuc.batch_print_success": "Started batch printing {count} orders",
+  "web.gfuc.printing_order": "Printing in progress, please wait",
   "web.gfuc.select_orders_first": "Please select orders to print first",
   "web.gfuc.unusual_type": "Exceptional Type",
 

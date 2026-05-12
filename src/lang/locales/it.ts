@@ -1,12 +1,12 @@
 export default {
   "web.gfuc.customer_platform": "Piattaforma cliente",
-  "web.gfuc.homepage": "Homepage",
+  "web.gfuc.homepage": "Home",
   "web.gfuc.order_management": "Gestione ordini",
   "web.gfuc.single_ticket_order": "Ordine singolo biglietto",
   "web.gfuc.batch_order": "Ordine in batch",
   "web.gfuc.order_list": "Lista ordini",
   "web.gfuc.financial_management": "Gestione finanziaria",
-  "web.gfuc.message_notification_settings": "Impostazioni notifiche messaggi",
+  "web.gfuc.message_subscription": "Sottoscrizione messaggi",
   "web.gfuc.recharge": "Ricarica",
   "web.gfuc.recharge_record": "Registro ricariche",
   "web.gfuc.balance": "Saldo",
@@ -192,6 +192,12 @@ export default {
   "web.gfuc.channel_code": "Codice canale",
   "web.gfuc.enter_channel_code": "Inserisci il codice canale",
   "web.gfuc.submit_order": "Invia ordine",
+  "web.gfuc.submit_recharge": "Invia ricarica",
+  "web.gfuc.recharge_success": "Ricarica riuscita",
+  "web.gfuc.recharge_success_description":
+    "La tua richiesta di ricarica è stata inviata. Prevediamo di elaborare la tua ricarica entro un giorno lavorativo.",
+  "web.gfuc.view_recharge_record": "Visualizza storico ricariche",
+  "web.gfuc.continue_recharge": "Continua la ricarica",
   "web.gfuc.please_enter": "Inserisci",
   "web.gfuc.print_order": "Stampa ordine",
   "web.gfuc.edit_order": "Modifica ordine",
@@ -263,6 +269,7 @@ export default {
     "Stai per stampare le etichette di spedizione, {count} ordini selezionati, confermare la stampa?",
   "web.gfuc.batch_print_success":
     "Avviata la stampa in batch di {count} ordini",
+  "web.gfuc.printing_order": "Stampa in corso, attendere prego",
   "web.gfuc.select_orders_first": "Seleziona prima gli ordini da stampare",
   "web.gfuc.unusual_type": "Tipo anomalo",
 
