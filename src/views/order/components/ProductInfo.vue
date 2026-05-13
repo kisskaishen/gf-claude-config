@@ -409,9 +409,6 @@ const getProductList = async () => {
   if (productList.value.length === 1) {
     formData.value.productCode = productList.value[0].code;
     formData.value.productName = productList.value[0].name;
-  } else {
-    formData.value.productCode = "";
-    formData.value.productName = "";
   }
 };
 
