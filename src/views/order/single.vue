@@ -102,18 +102,21 @@ const { t } = useI18n();
 const router = useRouter();
 const route = useRoute();
 
-const isEdit = computed(() => route.params.orderId);
+const isEdit = computed(() => route.params?.orderId);
+const isCopyOrReorder = computed(() =>
+  ["copy", "reorder"].includes(route.params?.editType)
+);
 defineOptions({
   name: "SingleOrder"
 });
 
 const dialogTitle = computed(() => {
-  return isEdit.value
+  return isEdit.value && !isCopyOrReorder.value
     ? t("web.gfuc.order_update_success")
     : t("web.gfuc.order_created_success");
 });
 const dialogDescription = computed(() => {
-  return isEdit.value
+  return isEdit.value && !isCopyOrReorder.value
     ? t("web.gfuc.order_update_success_message")
     : t("web.gfuc.order_created_success_message");
 });
