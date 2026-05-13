@@ -387,6 +387,10 @@ watch(
     if (newInitialData && Object.keys(newInitialData).length > 0) {
       // 合并现有数据和新的初始数据
       Object.assign(formData.value, newInitialData);
+
+      if (isCopyOrReorder.value) {
+        formData.value.cOrderNo = "";
+      }
     }
   },
   { immediate: true, deep: true }
