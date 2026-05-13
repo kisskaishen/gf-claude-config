@@ -96,7 +96,7 @@
                   placement="top"
                 >
                   <svg-icon
-                    name="upload-download"
+                    name="download-original"
                     width="24"
                     height="24"
                     @click="handleDownload(row)"
@@ -120,7 +120,7 @@
                   v-if="row.errorFileUrl"
                 >
                   <svg-icon
-                    name="upload-download"
+                    name="download-error"
                     width="24"
                     height="24"
                     @click="handleErrorDownload(row)"

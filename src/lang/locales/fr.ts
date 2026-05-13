@@ -334,7 +334,7 @@ export default {
   "web.gfuc.success": "Succès",
   "web.gfuc.error": "Erreur",
   "web.gfuc.download": "Télécharger",
-  "web.gfuc.download_original_file": "Télécharger le fichier original",
+  "web.gfuc.download_original_file": "Télécharger le fichier source",
   "web.gfuc.upload_task_tooltip":
     "Les tâches de téléchargement vous permettent de consulter tous les historiques de téléchargement"
 };

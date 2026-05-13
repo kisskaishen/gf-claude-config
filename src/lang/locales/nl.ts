@@ -315,7 +315,7 @@ export default {
   "web.gfuc.success": "Succes",
   "web.gfuc.error": "Fout",
   "web.gfuc.download": "Downloaden",
-  "web.gfuc.download_original_file": "Download origineel bestand",
+  "web.gfuc.download_original_file": "Download bronbestand",
   "web.gfuc.upload_task_tooltip":
     "Uploadtaken geven u de mogelijkheid om alle historische uploadrecords te bekijken"
 };

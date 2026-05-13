@@ -122,6 +122,7 @@
         <el-input
           v-model="form.email"
           type="textarea"
+          resize="none"
           :rows="4"
           :placeholder="$t('web.gfuc.reminder_email_placeholder')"
           class="w-full"

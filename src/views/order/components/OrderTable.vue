@@ -33,6 +33,7 @@
             <el-input
               v-model="searchForm.orderNumber"
               type="textarea"
+              resize="none"
               clearable
               :rows="5"
               :placeholder="

@@ -176,6 +176,7 @@
         <el-input
           v-model="formData.remark"
           type="textarea"
+          resize="none"
           :rows="4"
           :placeholder="
             $t(

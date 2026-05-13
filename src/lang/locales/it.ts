@@ -324,7 +324,7 @@ export default {
   "web.gfuc.success": "Successo",
   "web.gfuc.error": "Errore",
   "web.gfuc.download": "Scarica",
-  "web.gfuc.download_original_file": "Scarica file originale",
+  "web.gfuc.download_original_file": "Scarica file sorgente",
   "web.gfuc.upload_task_tooltip":
     "Le attività di caricamento consentono di visualizzare tutti i record di caricamento storici"
 };
