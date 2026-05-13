@@ -309,6 +309,8 @@ export default {
   "web.gfuc.upload_success": "Upload success",
   "web.gfuc.uploading": "Uploading",
   "web.gfuc.uploading_tip": "File is uploading, please wait",
+  "web.gfuc.upload_exceed_tip": "You can upload up to {limit} files",
+  "web.gfuc.upload_failed": "Upload Failed",
   "web.gfuc.please_agree_and_check_the_agreement":
     "Please agree and check the agreement",
   "web.gfuc.task_management": "Task Management",

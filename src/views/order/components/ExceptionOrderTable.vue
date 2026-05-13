@@ -162,6 +162,9 @@ const { t } = useI18n();
 import { useUserStore } from "@/store/user";
 const userStore = useUserStore();
 
+import { useAppStore } from "@/store/app";
+const appStore = useAppStore();
+
 const router = useRouter();
 
 defineOptions({
@@ -400,7 +403,21 @@ const handleView = (row: any) => {
 const handleReOrder = (row: any) => {
   router.push(`/order/single/${row.id}/exception/reorder`);
 };
+const lang = computed(() => appStore.lang);
+const timezone = computed(() => appStore.timezone);
 
+watch(
+  () => lang.value,
+  (val) => {
+    fetchData();
+  }
+);
+watch(
+  () => timezone.value,
+  (val) => {
+    fetchData();
+  }
+);
 onMounted(() => {
   fetchData();
 });

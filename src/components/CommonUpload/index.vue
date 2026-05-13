@@ -773,7 +773,7 @@ const handleRemove = (file, fileListData) => {
 
 // 超出数量限制
 const handleExceed = (files, fileListData) => {
-  ElMessage.warning(`最多只能上传 ${props.limit} 个文件`);
+  ElMessage.warning(t("web.gfuc.upload_exceed_tip", { limit: props.limit }));
   emit("exceed", files, fileListData);
 };
 
@@ -843,32 +843,32 @@ defineExpose({
 .common-upload {
   .upload-trigger {
     .drag-area {
-      width: 360px;
-      height: 180px;
-      border: 1px dashed #d9d9d9;
-      border-radius: 6px;
-      background-color: #fafafa;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      width: 360px;
+      height: 180px;
+      background-color: #fafafa;
+      border: 1px dashed #d9d9d9;
+      border-radius: 6px;
       transition: all 0.3s;
 
       &:hover {
-        border-color: #409eff;
         background-color: #f0f8ff;
+        border-color: #409eff;
       }
 
       .upload-icon {
+        margin-bottom: 12px;
         font-size: 48px;
         color: #8c939d;
-        margin-bottom: 12px;
       }
 
       .upload-text {
+        margin-bottom: 8px;
         font-size: 14px;
         color: #606266;
-        margin-bottom: 8px;
 
         .link-text {
           color: #409eff;
@@ -905,25 +905,25 @@ defineExpose({
   .upload-tip {
     margin-top: 8px;
     font-size: 14px;
-    color: #bbbdbf;
     font-weight: 400;
+    color: #bbbdbf;
   }
 
   .file-item {
     display: flex;
-    align-items: center;
     gap: 8px;
-    padding: 8px 0;
+    align-items: center;
     width: 100%;
+    padding: 8px 0;
 
     .file-name {
       flex: 1;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
       font-size: 16px;
       font-weight: 400;
       color: #354250;
+      white-space: nowrap;
     }
 
     .file-size {
@@ -932,21 +932,21 @@ defineExpose({
     }
 
     .dimension-error {
+      display: flex;
+      gap: 4px;
+      align-items: center;
       font-size: 12px;
       color: #f56c6c;
-      display: flex;
-      align-items: center;
-      gap: 4px;
     }
   }
 
   .preview-container {
-    width: 100%;
-    height: 100%;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    width: 100%;
+    height: 100%;
 
     .preview-image {
       max-width: 100%;
@@ -958,11 +958,11 @@ defineExpose({
       position: absolute;
       top: 4px;
       right: 4px;
-      background-color: rgba(245, 108, 108, 0.9);
-      border-radius: 50%;
       padding: 4px;
-      color: white;
       font-size: 12px;
+      color: white;
+      background-color: rgb(245 108 108 / 90%);
+      border-radius: 50%;
     }
   }
 
@@ -973,9 +973,9 @@ defineExpose({
 
   .preview-dimension {
     margin-top: 12px;
-    text-align: center;
     font-size: 14px;
     color: #909399;
+    text-align: center;
   }
 
   // 自定义宽高样式
