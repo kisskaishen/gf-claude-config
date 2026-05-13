@@ -670,10 +670,15 @@ const handleBatchPrint = () => {
     .then(async () => {
       printLoading.value = true;
       ElMessage.info(t("web.gfuc.printing_order"));
+      let data = [];
+      data = selectedOrders.value.map((item: any) => {
+        return {
+          waybillNo: item.waybillNo,
+          customerId: item.customerId
+        };
+      });
 
-      const res = await batchPrintOrderLabel(
-        selectedOrders.value.map((item: any) => item.waybillNo)
-      );
+      const res = await batchPrintOrderLabel(data);
 
       printLoading.value = false;
 
