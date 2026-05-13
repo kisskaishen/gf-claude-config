@@ -116,9 +116,8 @@ export function getSenderName(params: { customerId: string | number }) {
 // 根据市获取邮编
 export function getPostcodeByCity(data: { cityId: string; stateId: string }) {
   return request({
-    url: "/delivery/system/listAddressByCityOrState",
-    method: "post",
-    data
+    url: `/delivery/system/listAddressByCityOrState?cityId=${data.cityId}&stateId=${data.stateId}`,
+    method: "post"
   });
 }
 

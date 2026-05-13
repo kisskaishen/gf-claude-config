@@ -519,6 +519,16 @@ const getStateListData = () => {
 };
 getStateListData();
 
+watch(
+  () => orderConsignee.value.consigneeState,
+  (newValue) => {
+    let stateId = states.value.find((item) => item.state_name === newValue)?.id;
+    if (stateId) {
+      getCityListData(stateId);
+    }
+  }
+);
+
 // 城市列表
 const getCityListData = (stateId) => {
   getListCityBySid({ stateId }).then((res) => {
@@ -533,7 +543,7 @@ const handleCityChange = async (val) => {
   const res = await getPostcodeByCity({
     cityId
   });
-  console.log(res, "=====");
+  orderConsignee.value.consigneeCode = res?.[0]?.postcode || "";
 };
 
 const handleStateChange = async (val) => {
