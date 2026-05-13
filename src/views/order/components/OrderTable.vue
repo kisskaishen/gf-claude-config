@@ -317,7 +317,7 @@ const exceptionOrderStatusOptions = computed(() => {
 
 const columns = [
   {
-    prop: "orderNo",
+    prop: "corderNo",
     label: "gfuc.customer_order_number",
     minWidth: 180
   },
