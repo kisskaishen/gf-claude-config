@@ -246,13 +246,18 @@ const stopPolling = () => {
 };
 
 const customHttpRequest = async (options) => {
-  const valid = await formRef.value.validate();
+  const valid = await (isCj.value
+    ? formRef.value.validate()
+    : Promise.resolve(true));
   if (!valid) {
     return;
   }
   const formData = new FormData();
   formData.append("file", options.file);
-  formData.append("customerId", form.customerId);
+  formData.append(
+    "customerId",
+    form.customerId || shipperOptions.value[0]?.customerId
+  );
 
   const res = await uploadOrder(formData);
   importTaskId.value = res;
@@ -295,7 +300,7 @@ const getImportResult = async () => {
 watch(
   () => currentLang.value,
   () => {
-    formRef.value.resetFields();
+    formRef.value && formRef.value.resetFields();
   }
 );
 

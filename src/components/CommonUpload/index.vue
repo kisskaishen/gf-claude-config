@@ -761,7 +761,7 @@ const handleSuccess = (response, file, fileListData) => {
 
 // 上传失败
 const handleError = (error, file, fileListData) => {
-  ElMessage.error(`${file.name} ${$t("web.gfuc.upload_failed")}`);
+  ElMessage.error(`${file.name} ${t("web.gfuc.upload_failed")}`);
   emit("error", error, file, fileListData);
 };
 
