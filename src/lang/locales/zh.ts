@@ -298,7 +298,7 @@ export default {
   "web.gfuc.please_agree_and_check_the_agreement": "请同意并勾选协议",
 
   "web.gfuc.task_management": "任务管理",
-  "web.gfuc.task_list": "历史下载任务",
+  "web.gfuc.task_list": "任务列表",
   "web.gfuc.file_name": "文件名",
   "web.gfuc.date": "日期",
   "web.gfuc.type": "类型",

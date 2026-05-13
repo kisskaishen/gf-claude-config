@@ -306,7 +306,7 @@ export default {
   "web.gfuc.please_agree_and_check_the_agreement":
     "Ga akkoord en vink de overeenkomst aan",
   "web.gfuc.task_management": "Taakbeheer",
-  "web.gfuc.task_list": "Downloadgeschiedenis",
+  "web.gfuc.task_list": "Takenlijst",
   "web.gfuc.file_name": "Bestandsnaam",
   "web.gfuc.date": "Datum",
   "web.gfuc.type": "Type",

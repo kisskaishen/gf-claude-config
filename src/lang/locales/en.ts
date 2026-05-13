@@ -312,7 +312,7 @@ export default {
   "web.gfuc.please_agree_and_check_the_agreement":
     "Please agree and check the agreement",
   "web.gfuc.task_management": "Task Management",
-  "web.gfuc.task_list": "Download History",
+  "web.gfuc.task_list": "Task List",
   "web.gfuc.file_name": "File Name",
   "web.gfuc.date": "Date",
   "web.gfuc.type": "Type",

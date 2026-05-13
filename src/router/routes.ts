@@ -195,7 +195,7 @@ export const routes: RouteRecordRaw[] = [
         name: "TaskList",
         component: () => import("@/views/task/list.vue"),
         meta: {
-          title: "历史上传下载任务",
+          title: "任务列表",
           i18n: "web.gfuc.task_list",
           requireAuth: true
         }
