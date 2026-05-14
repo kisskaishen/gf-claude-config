@@ -232,9 +232,9 @@ const props = defineProps({
     type: String,
     default: ""
   },
-  detailCurrentCustomerId: {
-    type: String,
-    default: ""
+  isChange: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -390,8 +390,6 @@ const toPascalCase = (str) => {
 };
 
 const getProductList = async () => {
-  formData.value.productCode = "";
-  formData.value.productName = "";
   const res = await getProductStepInfo({
     country: userStore.userInfo?.country || "",
     customerId: props.customerId
@@ -425,10 +423,9 @@ const getProductList = async () => {
 watch(
   () => props.customerId,
   (newValue, oldValue) => {
-    // 当值变化时（包括从有值变为无值，或从无值变为有值）
-    // 当前表单的customerId
-    if (newValue !== props.detailCurrentCustomerId) {
-      // 如果有值，重新获取产品列表
+    if (newValue !== oldValue && props.isChange) {
+      formData.value.productCode = "";
+      formData.value.productName = "";
       getProductList();
     }
   }

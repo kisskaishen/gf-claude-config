@@ -17,6 +17,7 @@
               @next="goToNextStep(1)"
               @edit="editStep(1)"
               @update:orderShipper="updateShipperData"
+              @update:isChange="updateIsChange"
             />
 
             <!-- 收件人信息 -->
@@ -39,7 +40,7 @@
               :is-completed="completedSteps.includes(3)"
               :initial-data="formData.product"
               :customerId="customerId"
-              :detailCurrentCustomerId="detailCurrentCustomerId"
+              :isChange="isChange"
               @next="goToNextStep(3)"
               @edit="editStep(3)"
               @update:formData="updateProductData"
@@ -155,6 +156,10 @@ const formData = reactive({
   parcel: {}
 });
 
+const isChange = ref(false);
+const updateIsChange = (val) => {
+  isChange.value = val;
+};
 // 从 sessionStorage 恢复数据
 const restoreFormData = () => {
   try {
@@ -342,7 +347,6 @@ watch(
   },
   { deep: true }
 );
-const detailCurrentCustomerId = ref("");
 
 const fetchOrderDetail = async () => {
   try {
@@ -362,7 +366,6 @@ const fetchOrderDetail = async () => {
       formData.product = formatProductData(response) || {};
 
       formData.parcel = formatParcelData(response) || {};
-      detailCurrentCustomerId.value = response.customerId || "";
     } else {
       // 异常订单详情
       response = await getExceptionOrderDetail({ unusualOrderId: orderId });
@@ -377,7 +380,6 @@ const fetchOrderDetail = async () => {
       formData.product = formatProductData(data) || {};
 
       formData.parcel = formatParcelData(data) || {};
-      detailCurrentCustomerId.value = data.customerId || "";
     }
   } catch (error) {
     console.error("Failed to fetch order detail:", error);

@@ -512,7 +512,9 @@ const getStateListData = () => {
         (item) => item.state_name === orderConsignee.value.consigneeState
       )?.id;
       nextTick(() => {
-        getCityListData(stateId);
+        if (stateId) {
+          getCityListData(stateId);
+        }
       });
     }
   });
@@ -551,8 +553,9 @@ const handleStateChange = async (val) => {
 
   orderConsignee.value.consigneeCity = "";
   orderConsignee.value.consigneeCode = "";
-
-  await getCityListData(stateId);
+  if (stateId) {
+    await getCityListData(stateId);
+  }
 };
 
 // 法国：外门牌 地址1，地址2，地址3，内门牌，邮编，区域，城市，洲，国家

@@ -315,7 +315,12 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits(["next", "edit", "update:orderShipper"]);
+const emit = defineEmits([
+  "next",
+  "edit",
+  "update:orderShipper",
+  "update:isChange"
+]);
 
 const orderShipperRef = ref(null);
 
@@ -570,6 +575,7 @@ const onClear = () => {
 const handleCustomerChange = (val) => {
   orderShipper.value.customerId = val;
   sessionStorage.setItem("createOrderCustomerId", val);
+  emit("update:isChange", true);
 };
 
 const onEdit = () => {
