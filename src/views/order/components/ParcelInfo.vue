@@ -389,6 +389,9 @@ const getProductChannelCode = async () => {
 };
 getProductChannelCode();
 
+// 标记是否是首次初始化
+const isFirstInit = ref(true);
+
 // 监听 initialData 变化，当父组件数据加载完成后更新表单数据
 watch(
   () => props.initialData,
@@ -396,10 +399,12 @@ watch(
     if (newInitialData && Object.keys(newInitialData).length > 0) {
       // 合并现有数据和新的初始数据
       Object.assign(formData.value, newInitialData);
-
-      if (isCopyOrReorder.value) {
+      // 只有首次初始化时才检查是否需要清空 cOrderNo
+      if (isFirstInit.value && isCopyOrReorder.value) {
         formData.value.cOrderNo = "";
       }
+      // 首次初始化完成后设置为 false
+      isFirstInit.value = false;
     }
   },
   { immediate: true, deep: true }

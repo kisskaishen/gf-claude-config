@@ -688,10 +688,14 @@ const handleBatchPrint = () => {
           count: selectedOrders.value.length
         })
       );
+      let url = "";
+      if (Array.isArray(res)) {
+        url = res[0].url;
+      } else {
+        url = res.url;
+      }
 
-      console.log(res, "res");
-
-      downloadFile(res.url, t("web.gfuc.order_file"));
+      downloadFile(url, t("web.gfuc.order_file"));
     })
     .catch(() => {
       printLoading.value = false;
