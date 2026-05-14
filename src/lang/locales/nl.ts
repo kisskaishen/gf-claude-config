@@ -319,5 +319,6 @@ export default {
   "web.gfuc.download": "Downloaden",
   "web.gfuc.download_original_file": "Download bronbestand",
   "web.gfuc.upload_task_tooltip":
-    "Uploadtaken geven u de mogelijkheid om alle historische uploadrecords te bekijken"
+    "Uploadtaken geven u de mogelijkheid om alle historische uploadrecords te bekijken",
+  "web.gfuc.order_file": "Vrachtbrief bestand"
 };

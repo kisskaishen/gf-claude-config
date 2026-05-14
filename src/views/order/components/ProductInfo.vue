@@ -163,7 +163,7 @@
                   : $t("web.gfuc.standard_delivery")
               }}
             </p>
-            <div class="radio-group">
+            <div class="radio-group" v-if="formData.productCode">
               <div class="radio-check">
                 <div class="radio-label">{{ formData.productName }}</div>
                 <div class="radio-content">
@@ -382,6 +382,8 @@ const toPascalCase = (str) => {
 };
 
 const getProductList = async () => {
+  formData.value.productCode = "";
+  formData.value.productName = "";
   const res = await getProductStepInfo({
     country: userStore.userInfo?.country || "",
     customerId: sessionStorage.getItem("createOrderCustomerId") || ""

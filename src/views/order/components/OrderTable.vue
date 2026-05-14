@@ -691,7 +691,7 @@ const handleBatchPrint = () => {
 
       console.log(res, "res");
 
-      downloadFile(res.url, "面单打印");
+      downloadFile(res.url, t("web.gfuc.order_file"));
     })
     .catch(() => {
       printLoading.value = false;

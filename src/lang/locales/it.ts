@@ -328,5 +328,6 @@ export default {
   "web.gfuc.download": "Scarica",
   "web.gfuc.download_original_file": "Scarica file sorgente",
   "web.gfuc.upload_task_tooltip":
-    "Le attività di caricamento consentono di visualizzare tutti i record di caricamento storici"
+    "Le attività di caricamento consentono di visualizzare tutti i record di caricamento storici",
+  "web.gfuc.order_file": "File di bolla di spedizione"
 };

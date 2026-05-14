@@ -326,5 +326,7 @@ export default {
   "web.gfuc.download_original_file": "Download Source File",
 
   "web.gfuc.upload_task_tooltip":
-    "Upload tasks allows you to view all historical upload records"
+    "Upload tasks allows you to view all historical upload records",
+
+  "web.gfuc.order_file": "Waybill File"
 };

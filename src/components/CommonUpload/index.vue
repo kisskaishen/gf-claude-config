@@ -112,7 +112,7 @@
       >
         <template #trigger>
           <svg-icon name="upload" width="36" height="32"></svg-icon>
-          <div class="text-sm text-[#7A869A] font-normal">
+          <div class="text-sm font-normal text-info">
             {{ buttonText }}
           </div>
         </template>
@@ -144,24 +144,31 @@
                 </div>
                 <!-- 进度和状态 -->
                 <div class="flex items-center gap-2">
-                  <!-- <span class="text-sm text-[#7A869A]">{{ file.status }}</span> -->
-                  <span class="text-xs text-[#7A869A] font-normal">{{
+                  <!-- <span class="text-sm text-info">{{ file.status }}</span> -->
+                  <span class="text-xs font-normal text-info">{{
                     currentProgress + "%"
                   }}</span>
-                  <span class="text-xs text-[#7A869A] font-normal">{{
-                    currentProgress === 100
-                      ? $t("web.gfuc.upload_success")
-                      : $t("web.gfuc.uploading")
-                  }}</span>
-                  <span class="file-size text-xs text-[#7A869A] font-normal">{{
+                  <span
+                    class="text-xs font-normal"
+                    :class="
+                      currentProgress === 100 ? 'text-success' : 'text-info'
+                    "
+                    >{{
+                      currentProgress === 100
+                        ? $t("web.gfuc.upload_success")
+                        : $t("web.gfuc.uploading")
+                    }}</span
+                  >
+                  <!-- <span class="text-xs font-normal file-size text-info">{{
                     formatFileSize(file.size)
-                  }}</span>
+                  }}</span> -->
                 </div>
                 <div class="relative w-full h-1">
                   <el-progress
                     :percentage="currentProgress"
                     :show-text="false"
                     class="w-full"
+                    :color="currentProgress === 100 ? ['#00b578'] : ['#fc4c02']"
                   />
                   <!-- <el-progress :percentage="file.percent" status="active" /> -->
                 </div>

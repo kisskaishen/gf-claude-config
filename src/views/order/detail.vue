@@ -826,7 +826,7 @@ const consigneeAddress = (obj: any) => {
           @apply flex-1;
 
           .tracking-time {
-            @apply text-[#7a869a] text-sm mt-1;
+            @apply text-info text-sm mt-1;
           }
 
           .tracking-message {

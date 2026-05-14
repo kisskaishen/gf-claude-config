@@ -263,6 +263,15 @@
                 <el-form-item
                   :label="$t('web.gfuc.service_provider_tracking_no')"
                   prop="reference3"
+                  :rules="[
+                    {
+                      required: productCode === 'EU003',
+                      message: $t(
+                        'web.gfuc.enter_service_provider_tracking_no'
+                      ),
+                      trigger: ['blur', 'change']
+                    }
+                  ]"
                 >
                   <el-input
                     v-model="formData.reference3"
