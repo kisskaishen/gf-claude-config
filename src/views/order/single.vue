@@ -38,6 +38,8 @@
               :is-active="currentStep === 3 || openStep.includes(3)"
               :is-completed="completedSteps.includes(3)"
               :initial-data="formData.product"
+              :customerId="customerId"
+              :detailCurrentCustomerId="detailCurrentCustomerId"
               @next="goToNextStep(3)"
               @edit="editStep(3)"
               @update:formData="updateProductData"
@@ -101,6 +103,14 @@ const { t } = useI18n();
 
 const router = useRouter();
 const route = useRoute();
+
+const customerId = computed(() => {
+  return (
+    formData.shipper?.customerId ||
+    sessionStorage.getItem("createOrderCustomerId") ||
+    ""
+  );
+});
 
 const isEdit = computed(() => route.params?.orderId);
 const isCopyOrReorder = computed(() =>
@@ -332,6 +342,7 @@ watch(
   },
   { deep: true }
 );
+const detailCurrentCustomerId = ref("");
 
 const fetchOrderDetail = async () => {
   try {
@@ -351,6 +362,7 @@ const fetchOrderDetail = async () => {
       formData.product = formatProductData(response) || {};
 
       formData.parcel = formatParcelData(response) || {};
+      detailCurrentCustomerId.value = response.customerId || "";
     } else {
       // 异常订单详情
       response = await getExceptionOrderDetail({ unusualOrderId: orderId });
@@ -365,12 +377,13 @@ const fetchOrderDetail = async () => {
       formData.product = formatProductData(data) || {};
 
       formData.parcel = formatParcelData(data) || {};
+      detailCurrentCustomerId.value = data.customerId || "";
     }
   } catch (error) {
     console.error("Failed to fetch order detail:", error);
   }
 };
-
+//
 // 格式化发件人数据
 const formatShipperData = (shipperData: any, customerId: string) => {
   if (!shipperData) return {};

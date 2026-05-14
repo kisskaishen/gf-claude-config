@@ -119,11 +119,19 @@ service.interceptors.response.use(
     // 3.5 响应数据格式规范
     // status: 接口业务处理状态码：1-成功，0-失败
     if (res.status !== 1) {
-      ElMessage({
-        message: res.message || res.msg || "Error",
-        type: "error",
-        duration: 5 * 1000
-      });
+      if (response.config.url === "/oms/create/order") {
+        ElMessage({
+          message: res?.msgEn,
+          type: "error",
+          duration: 5 * 1000
+        });
+      } else {
+        ElMessage({
+          message: res.message || res.msg || "Error",
+          type: "error",
+          duration: 5 * 1000
+        });
+      }
 
       // 特殊错误码处理，例如：Token 失效
       if (res.code === 401) {

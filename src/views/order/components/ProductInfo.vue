@@ -227,6 +227,14 @@ const props = defineProps({
   initialData: {
     type: Object,
     default: () => ({})
+  },
+  customerId: {
+    type: String,
+    default: ""
+  },
+  detailCurrentCustomerId: {
+    type: String,
+    default: ""
   }
 });
 
@@ -386,7 +394,7 @@ const getProductList = async () => {
   formData.value.productName = "";
   const res = await getProductStepInfo({
     country: userStore.userInfo?.country || "",
-    customerId: sessionStorage.getItem("createOrderCustomerId") || ""
+    customerId: props.customerId
   });
 
   const res2 = await getOrderProductList({
@@ -415,12 +423,13 @@ const getProductList = async () => {
 };
 
 watch(
-  () => props.isActive,
-  (value) => {
-    if (value) {
-      if (sessionStorage.getItem("createOrderCustomerId")) {
-        getProductList();
-      }
+  () => props.customerId,
+  (newValue, oldValue) => {
+    // 当值变化时（包括从有值变为无值，或从无值变为有值）
+    // 当前表单的customerId
+    if (newValue !== props.detailCurrentCustomerId) {
+      // 如果有值，重新获取产品列表
+      getProductList();
     }
   }
 );
