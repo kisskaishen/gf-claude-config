@@ -430,6 +430,12 @@ watch(
     }
   }
 );
+watch(
+  () => props.isActive,
+  (newValue, oldValue) => {
+    getProductList();
+  }
+);
 defineExpose({
   resetForm
 });
