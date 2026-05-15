@@ -328,5 +328,9 @@ export default {
   "web.gfuc.upload_task_tooltip":
     "Upload tasks allows you to view all historical upload records",
 
-  "web.gfuc.order_file": "Waybill File"
+  "web.gfuc.order_file": "Waybill File",
+  "web.gfuc.order_success_description":
+    "You have successfully placed { successCount } order(s)",
+  "web.gfuc.continue_upload": "Continue Upload",
+  "web.gfuc.order_success": "Order Placed Successfully"
 };

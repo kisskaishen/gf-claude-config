@@ -60,6 +60,7 @@
         </el-form>
       </div>
       <common-upload
+        ref="uploadRef"
         v-model="fileList"
         :http-request="customHttpRequest"
         type="file"
@@ -128,6 +129,20 @@
         />
       </el-table>
     </div>
+
+    <SuccessDialog
+      v-model="successVisible"
+      :title="$t('web.gfuc.order_success' /** 下单成功 **/)"
+      :description="
+        $t('web.gfuc.order_success_description', {
+          successCount
+        }) /** 您已成功下单 { successCount } 条 **/
+      "
+      :primary-btn-text="$t('web.gfuc.view_order' /** 查看订单 **/)"
+      :secondary-btn-text="$t('web.gfuc.continue_upload' /** 继续上传 **/)"
+      @primary-click="handleViewUpload"
+      @secondary-click="handleContinue"
+    />
   </div>
 </template>
 
@@ -145,6 +160,8 @@ import {
   getOrderImportResult,
   downloadFailedOrderData
 } from "@/api/order";
+import SuccessDialog from "@/components/SuccessDialog/index.vue";
+
 import { useAppStore } from "@/store/app";
 import { useUserStore } from "@/store/user";
 import { useRouter } from "vue-router";
@@ -158,8 +175,10 @@ const successCount = ref(0);
 const failCount = ref(0);
 const errorFileUrl = ref("");
 const taskStatus = ref(0);
-
+const uploadRef = ref(null);
 const fileList = ref([]);
+
+const successVisible = ref(false);
 
 const userInfo = useUserStore();
 const isCj = computed(() =>
@@ -262,7 +281,7 @@ const customHttpRequest = async (options) => {
   const res = await uploadOrder(formData);
   importTaskId.value = res;
   if (importTaskId.value) {
-    // 启动5秒轮询，直到任务完成（状态为2或3）
+    // 启动5秒轮询，直到任务完成（状态为2）
     startPolling((result) => result?.taskStatus === 2, getImportResult, 5000);
   }
 };
@@ -290,7 +309,30 @@ const getImportResult = async () => {
   failCount.value = res?.failCount || 0;
   errorFileUrl.value = res?.errorFileUrl || "";
   taskStatus.value = res?.taskStatus || 0;
+  if (taskStatus.value === 2 && successCount.value === totalCount.value) {
+    successVisible.value = true;
+  }
   return res; // 返回结果供轮询条件判断使用
+};
+
+const handleViewUpload = () => {
+  handleContinue();
+
+  router.push("/order/list");
+};
+
+const handleContinue = () => {
+  successVisible.value = false;
+  if (shipperOptions.value.length > 1) {
+    form.customerId = "";
+  } else {
+    form.customerId = shipperOptions.value[0]?.customerId;
+  }
+
+  formRef.value && formRef.value.resetFields();
+
+  handleRemove();
+  uploadRef.value?.clearFiles();
 };
 
 //

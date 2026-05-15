@@ -340,5 +340,9 @@ export default {
   "web.gfuc.download_original_file": "Télécharger le fichier source",
   "web.gfuc.upload_task_tooltip":
     "Les tâches de téléchargement vous permettent de consulter tous les historiques de téléchargement",
-  "web.gfuc.order_file": "Fichier de bordereau"
+  "web.gfuc.order_file": "Fichier de bordereau",
+  "web.gfuc.order_success_description":
+    "Vous avez passé avec succès { successCount } commande(s)",
+  "web.gfuc.continue_upload": "Continuer le téléchargement",
+  "web.gfuc.order_success": "Commande réussie"
 };

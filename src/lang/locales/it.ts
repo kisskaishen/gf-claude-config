@@ -329,5 +329,9 @@ export default {
   "web.gfuc.download_original_file": "Scarica file sorgente",
   "web.gfuc.upload_task_tooltip":
     "Le attività di caricamento consentono di visualizzare tutti i record di caricamento storici",
-  "web.gfuc.order_file": "File di bolla di spedizione"
+  "web.gfuc.order_file": "File di bolla di spedizione",
+  "web.gfuc.order_success_description":
+    "Hai effettuato con successo { successCount } ordine(i)",
+  "web.gfuc.continue_upload": "Continua il caricamento",
+  "web.gfuc.order_success": "Ordine effettuato con successo"
 };

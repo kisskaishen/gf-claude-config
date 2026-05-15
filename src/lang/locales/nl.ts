@@ -320,5 +320,9 @@ export default {
   "web.gfuc.download_original_file": "Download bronbestand",
   "web.gfuc.upload_task_tooltip":
     "Uploadtaken geven u de mogelijkheid om alle historische uploadrecords te bekijken",
-  "web.gfuc.order_file": "Vrachtbrief bestand"
+  "web.gfuc.order_file": "Vrachtbrief bestand",
+  "web.gfuc.order_success_description":
+    "U heeft succesvol { successCount } bestelling(en) geplaatst",
+  "web.gfuc.continue_upload": "Doorgaan met uploaden",
+  "web.gfuc.order_success": "Bestelling succesvol geplaatst"
 };

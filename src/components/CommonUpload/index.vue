@@ -126,7 +126,6 @@
 
         <template #file="{ file }">
           <div class="text-info">{{ $t("web.gfuc.upload_result") }}</div>
-
           <slot name="file" :file="file">
             <div class="relative file-item">
               <svg-icon name="upload-file" width="40" height="48"></svg-icon>
@@ -137,10 +136,13 @@
                   {{ file.name.split(".")[1] }}
                 </div>
               </div>
-              <div class="flex flex-col flex-1">
+              <div class="flex flex-col flex-1 min-w-0">
                 <!-- 文件名 -->
                 <div>
-                  <span class="file-name">{{ file.name }}</span>
+                  <span
+                    class="w-full overflow-hidden whitespace-normal file-name"
+                    >{{ file.name }}</span
+                  >
                 </div>
                 <!-- 进度和状态 -->
                 <div class="flex items-center gap-2">
@@ -834,7 +836,19 @@ const getFileIcon = (fileName) => {
 // 导出方法供父组件调用
 defineExpose({
   clearFiles: () => {
+    // 清空文件列表
     fileList.value = [];
+    // 重置预览状态
+    previewVisible.value = false;
+    previewUrl.value = "";
+    currentPreviewDimension.value = null;
+    // 重置上传进度
+    currentProgress.value = 0;
+    // 清除动画定时器
+    if (animationTimer) {
+      clearInterval(animationTimer);
+      animationTimer = null;
+    }
   },
   submit: () => {
     if (uploadRef.value) {

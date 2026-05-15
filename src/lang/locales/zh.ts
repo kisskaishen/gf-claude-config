@@ -312,5 +312,8 @@ export default {
   "web.gfuc.download_original_file": "下载源文件",
   "web.gfuc.upload_task_tooltip": "上传任务可以查看所有历史上传的记录",
 
-  "web.gfuc.order_file": "面单文件"
+  "web.gfuc.order_file": "面单文件",
+  "web.gfuc.order_success_description": "您已成功下单 { successCount } 条",
+  "web.gfuc.continue_upload": "继续上传",
+  "web.gfuc.order_success": "下单成功"
 };
