@@ -1,32 +1,24 @@
 <template>
-  <div class="home-empty">
-    <svg-icon name="empty" width="197px" height="178px" class="empty-icon" />
-    <div class="empty-text">{{ $t("gfuc.no_data_available") }}</div>
+  <div class="home">
+    <component :is="currentComponent" />
   </div>
 </template>
 
 <script setup lang="ts">
+import Overview from "@/views/home/overview.vue";
+import Welcome from "@/views/home/welcome.vue";
+import Gigma from "@/views/home/gigma.vue";
+import { ref } from "vue";
 defineOptions({
   name: "Home"
 });
+
+const currentComponent = ref(Welcome);
 </script>
 
 <style scoped lang="scss">
-.home-empty {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
+.home {
+  width: 100%;
   min-height: calc(100vh - var(--header-height) - var(--tags-height) - 16px);
-}
-
-.empty-icon {
-  flex: 0 0 auto;
-}
-
-.empty-text {
-  font-size: var(--font-size-base);
-  color: var(--text-color-tertiary);
 }
 </style>

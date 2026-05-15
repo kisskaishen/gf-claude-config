@@ -1,5 +1,6 @@
 <template>
   <div class="layout-container">
+    <InsufficientBalance />
     <aside class="sidebar-wrapper" :class="{ 'is-collapse': isCollapse }">
       <Sidebar />
     </aside>
@@ -27,6 +28,7 @@ import Sidebar from "./components/Sidebar/index.vue";
 import NavBar from "./components/NavBar.vue";
 import TagsView from "./components/TagsView.vue";
 import AppMain from "./components/AppMain.vue";
+import InsufficientBalance from "./components/InsufficientBalance.vue";
 
 const appStore = useAppStore();
 const isCollapse = computed(() => !appStore.sidebar.opened);
@@ -57,7 +59,7 @@ onUnmounted(() => {
     position: relative;
     z-index: 10;
     width: 270px;
-    overflow: hidden;
+    overflow: visible;
     background-color: #fff;
     box-shadow: 0 6px 15px 0 #0000000f;
     transition: width 0.3s;

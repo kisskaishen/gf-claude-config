@@ -1,10 +1,20 @@
 <template>
   <div class="sidebar-container" :class="{ 'is-collapse': isCollapse }">
-    <div class="logo" @click="toggleCollapse">
+    <div class="logo">
       <img src="@/assets/logos/logo-red.png" alt="GOFO" />
       <span v-show="!isCollapse" class="logo-text">{{
         $t("gfuc.user_center" /** 用户中心 **/)
       }}</span>
+
+      <div class="collapse-btn" @click="toggleCollapse">
+        <div class="icon-wrapper">
+          <img
+            src="@/assets/svg-icons/collapse.svg"
+            class="collapse-icon"
+            :class="{ 'is-active': isCollapse }"
+          />
+        </div>
+      </div>
     </div>
 
     <el-scrollbar>
@@ -24,16 +34,6 @@
         />
       </el-menu>
     </el-scrollbar>
-
-    <div class="collapse-btn" @click="toggleCollapse">
-      <div class="icon-wrapper">
-        <img
-          src="@/assets/svg-icons/collapse.svg"
-          class="collapse-icon"
-          :class="{ 'is-active': isCollapse }"
-        />
-      </div>
-    </div>
   </div>
 </template>
 
@@ -42,6 +42,7 @@ import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useAppStore } from "@/store/app";
 import SidebarItem from "./SidebarItem.vue";
+import { DArrowLeft, DArrowRight } from "@element-plus/icons-vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -65,12 +66,13 @@ const toggleCollapse = () => {
   transition: width 0.3s;
 
   .logo {
+    position: relative;
     display: flex;
     gap: 10px;
     align-items: center;
     height: 54px;
     padding: 16px 0 12px 20px;
-    overflow: hidden;
+    overflow: visible;
 
     img {
       flex-shrink: 0;
@@ -83,6 +85,41 @@ const toggleCollapse = () => {
       color: var(--text-color-primary);
       white-space: nowrap;
       transition: opacity 0.3s;
+    }
+
+    .collapse-btn {
+      position: absolute;
+      right: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 32px;
+      width: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 9999;
+      box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+
+      .icon-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+      }
+
+      .collapse-icon {
+        width: 14px;
+        height: 14px;
+        transition: transform 0.3s;
+
+        &.is-active {
+          transform: rotate(180deg);
+        }
+      }
     }
   }
 
@@ -103,30 +140,30 @@ const toggleCollapse = () => {
     }
   }
 
-  .collapse-btn {
-    height: 48px;
-    margin-top: auto;
-    cursor: pointer;
+  // .collapse-btn {
+  //   height: 48px;
+  //   margin-top: auto;
+  //   cursor: pointer;
 
-    .icon-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 64px;
-      height: 100%;
-      margin-left: auto;
-    }
+  //   .icon-wrapper {
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     width: 64px;
+  //     height: 100%;
+  //     margin-left: auto;
+  //   }
 
-    .collapse-icon {
-      width: 16px;
-      height: 16px;
-      transition: transform 0.3s;
+  //   .collapse-icon {
+  //     width: 16px;
+  //     height: 16px;
+  //     transition: transform 0.3s;
 
-      &.is-active {
-        transform: rotate(180deg);
-      }
-    }
-  }
+  //     &.is-active {
+  //       transform: rotate(180deg);
+  //     }
+  //   }
+  // }
 
   &.is-collapse {
     .logo {

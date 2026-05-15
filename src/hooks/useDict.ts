@@ -1,5 +1,6 @@
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import { getDictByCode } from "@/api/common";
+import { useAppStore } from "@/store/app";
 
 /**
  * 字典数据项接口 (原始数据)
@@ -30,6 +31,7 @@ export interface DictOption<T = any> {
  */
 export function useDict<T = any>(code: string) {
   const options = ref<DictOption<T>[]>([]);
+  const appStore = useAppStore();
 
   const refresh = async () => {
     try {
@@ -66,6 +68,14 @@ export function useDict<T = any>(code: string) {
   onMounted(() => {
     refresh();
   });
+
+  // 监听语言变化，重新获取字典数据
+  watch(
+    () => appStore.lang,
+    () => {
+      refresh();
+    }
+  );
 
   return {
     options,

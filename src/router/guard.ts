@@ -18,9 +18,9 @@ export function setupRouteGuard(router: Router) {
       appStore.setLoadedI18nMap(true);
     }
 
-    if (userStore.token && userStore.hasSetPreference) {
+    if (userStore.token) {
       if (to.path === "/login") {
-        // 已登录，如果已设置偏好则跳转到首页，否则留在登录页设置偏好
+        // 已登录，跳转到首页
         next({ path: "/" });
       } else {
         next();
@@ -31,8 +31,13 @@ export function setupRouteGuard(router: Router) {
         // 在免登录白名单，直接进入
         next();
       } else {
+        console.log(to, "====");
         // 否则全部重定向到登录页
-        next(`/login?redirect=${to.path}`);
+        if (["OrderDetail", "SingleOrderWithParams"].includes(to.name)) {
+          next(`/login?redirect=/order/list`);
+        } else {
+          next(`/login?redirect=${to.path}`);
+        }
       }
     }
   });

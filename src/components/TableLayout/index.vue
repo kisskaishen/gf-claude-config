@@ -9,6 +9,13 @@
           @search="handleSearch"
           @reset="handleReset"
         >
+          <template #action-left>
+            <slot name="action-left"></slot>
+          </template>
+          <template #order-number v-if="hasOrderNumberSlot">
+            <slot name="order-number"></slot>
+          </template>
+
           <slot name="search"></slot>
         </SearchContainer>
       </el-form>
@@ -31,8 +38,11 @@
         :data="data"
         height="100%"
         v-bind="mergeTableConfig"
+        @cell-dblclick="handleCellDblClick"
+        @selection-change="handleSelectionChange"
       >
         <slot name="columns"></slot>
+
         <template #empty>
           <el-empty
             :description="$t('gfuc.no_data_available' /** 暂无数据 **/)"
@@ -55,13 +65,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick } from "vue";
+import { computed, nextTick, useSlots } from "vue";
 import SearchContainer from "@/components/SearchContainer/index.vue";
 import { useResetableRef } from "@/hooks/useResetableRef";
 import type { TableLayoutProps } from "./types";
+import { copyText } from "@/utils/index";
 defineOptions({
   name: "TableLayout"
 });
+
+const slots = useSlots();
+
+const hasOrderNumberSlot = computed(() => !!slots["order-number"]);
 
 // 1. 使用 TS 定义 Props 及其默认值
 const props = withDefaults(defineProps<TableLayoutProps>(), {
@@ -71,10 +86,32 @@ const props = withDefaults(defineProps<TableLayoutProps>(), {
   currentPage: 1,
   pageSize: 10,
   showSearch: true,
+  searchFormModel: () => ({}),
   searchConfig: () => ({ cols: 3, rowNum: 1 }),
   tableConfig: () => ({}),
   paginationConfig: () => ({})
 });
+
+// 处理单元格双击事件
+const handleCellDblClick = (row: any, column: any, cell: any, event: Event) => {
+  const cellText = cell?.innerText || row[column.property] || "";
+
+  if (cellText.trim()) {
+    copyText(cellText).then((success) => {
+      if (success) {
+        // 可以添加复制成功的提示
+        console.log("复制成功:", cellText);
+      } else {
+        console.error("复制失败");
+      }
+    });
+  }
+};
+
+// 处理选择变化事件
+const handleSelectionChange = (val: any) => {
+  emit("selection-change", val);
+};
 
 // 2. 定义 Emits
 const emit = defineEmits<{
@@ -83,6 +120,7 @@ const emit = defineEmits<{
   (e: "update:currentPage", value: number): void;
   (e: "update:pageSize", value: number): void;
   (e: "update:searchFormModel", value: any): void;
+  (e: "selection-change", value: any): void;
 }>();
 
 // 3. 初始化可重置的表单引用

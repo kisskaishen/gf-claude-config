@@ -15,6 +15,7 @@ export interface Result<T = any> {
   code: number;
   status: number; // 1-成功, 0-失败
   message: string;
+  msg?: string; // 兼容旧版 API
   data: T;
   requestId?: string;
 }
@@ -93,6 +94,10 @@ service.interceptors.request.use(
 
     // 5. X-Request-ID: 请求id (建议)
     // config.headers["X-Request-ID"] = crypto.randomUUID();
+    // 如果是批量打印接口，timeuout添加60s
+    if (config.url === "/oms/label/batchPrintLabel") {
+      config.timeout = 60000;
+    }
 
     return config;
   },
@@ -110,21 +115,40 @@ service.interceptors.response.use(
     }
 
     const res = response.data as Result;
-
+    // /oms/aceert / order;
     // 3.5 响应数据格式规范
     // status: 接口业务处理状态码：1-成功，0-失败
     if (res.status !== 1) {
-      ElMessage({
-        message: res.message || "Error",
-        type: "error",
-        duration: 5 * 1000
-      });
+      if (response.config.url === "/oms/create/order") {
+        ElMessage({
+          message: res?.msgEn,
+          type: "error",
+          duration: 5 * 1000
+        });
+      } else {
+        ElMessage({
+          message: res.message || res.msg || "Error",
+          type: "error",
+          duration: 5 * 1000
+        });
+      }
 
       // 特殊错误码处理，例如：Token 失效
       if (res.code === 401) {
-        const userStore = useUserStoreWithOut();
-        userStore.logout();
-        location.reload();
+        if (response.config.url === "/oms/create/order") {
+          ElMessage({
+            message: "下单Token失效，请联系客服",
+            type: "error"
+          });
+        } else {
+          ElMessage({
+            message: "Token 失效，请重新登录",
+            type: "error"
+          });
+          const userStore = useUserStoreWithOut();
+          userStore.logout();
+          location.reload();
+        }
       }
       return Promise.reject(new Error(res.message || "Error"));
     } else {
