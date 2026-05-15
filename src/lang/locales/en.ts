@@ -291,7 +291,7 @@ export default {
 
   // 批量下单
   "web.gfuc.batch_order_template_download": "Batch Order Template Download",
-  "web.gfuc.upload_task": "Upload Task",
+  "web.gfuc.upload_task": "Upload Records",
   "web.gfuc.upload_task_tip":
     "Please ensure the downloaded template file format is correct, otherwise it will cause order creation to fail.",
   "web.gfuc.upload_task_file_format_tip":
@@ -321,7 +321,7 @@ export default {
   "web.gfuc.status": "Status",
   "web.gfuc.total_orders": "Total Orders",
   "web.gfuc.success": "Success",
-  "web.gfuc.error": "Error",
+  "web.gfuc.fail": "Failed",
   "web.gfuc.download": "Download",
   "web.gfuc.download_original_file": "Download Source File",
 

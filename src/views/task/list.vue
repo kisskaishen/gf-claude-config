@@ -90,7 +90,7 @@
             fixed="right"
           >
             <template #default="{ row, index }">
-              <div class="table-actions">
+              <div class="flex gap-2 table-actions">
                 <el-tooltip
                   :content="$t('web.gfuc.download_original_file')"
                   placement="top"
@@ -218,7 +218,7 @@ const columns = [
 
   {
     prop: "failCount",
-    label: "web.gfuc.error" // 错误
+    label: "web.gfuc.fail" // 失败
   }
 ];
 

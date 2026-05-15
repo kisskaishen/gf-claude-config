@@ -285,7 +285,7 @@ export default {
   // 批量下单
   "web.gfuc.batch_order_template_download":
     "Télécharger le modèle de commande par lot",
-  "web.gfuc.upload_task": "Tâche d'upload",
+  "web.gfuc.upload_task": "Uploadgeschiedenis",
   "web.gfuc.upload_task_tip":
     "Veuillez assurer que le format de fichier téléchargé est correct, sinon cela peut entraîner des erreurs de création de commande.",
   "web.gfuc.upload_task_file_format_tip":
@@ -315,7 +315,7 @@ export default {
   "web.gfuc.status": "Status",
   "web.gfuc.total_orders": "Totaal aantal bestellingen",
   "web.gfuc.success": "Succes",
-  "web.gfuc.error": "Fout",
+  "web.gfuc.fail": "Mislukt",
   "web.gfuc.download": "Downloaden",
   "web.gfuc.download_original_file": "Download bronbestand",
   "web.gfuc.upload_task_tooltip":

@@ -275,7 +275,7 @@ export default {
 
   // 批量下单
   "web.gfuc.batch_order_template_download": "批量下单模板下载",
-  "web.gfuc.upload_task": "上传任务",
+  "web.gfuc.upload_task": "上传记录",
   "web.gfuc.upload_task_tip":
     "请确保下载的模板文件格式正确，否则会导致订单创建失败。",
   "web.gfuc.upload_task_file_format_tip":
@@ -307,7 +307,7 @@ export default {
   "web.gfuc.status": "状态",
   "web.gfuc.total_orders": "总订单",
   "web.gfuc.success": "成功",
-  "web.gfuc.error": "错误",
+  "web.gfuc.fail": "失败",
   "web.gfuc.download": "下载",
   "web.gfuc.download_original_file": "下载源文件",
   "web.gfuc.upload_task_tooltip": "上传任务可以查看所有历史上传的记录",

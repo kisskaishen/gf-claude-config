@@ -944,7 +944,6 @@ defineExpose({
       font-size: 16px;
       font-weight: 400;
       color: #354250;
-      white-space: nowrap;
     }
 
     .file-size {
