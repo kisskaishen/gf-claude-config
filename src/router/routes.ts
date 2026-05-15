@@ -10,7 +10,7 @@ export const routes: RouteRecordRaw[] = [
   {
     path: "/",
     component: () => import("@/layout/index.vue"),
-    redirect: "/finance/balance",
+    redirect: "/home",
     meta: { showOnlyOneChild: true },
     children: [
       {
@@ -48,7 +48,7 @@ export const routes: RouteRecordRaw[] = [
         }
       },
       {
-        path: "single/:orderId?/:orderType?",
+        path: "single/:orderId?/:orderType?/:editType?", // orderType：order | exception ，editType: copy | reorder
         name: "SingleOrderWithParams",
         component: () => import("@/views/order/single.vue"),
         meta: {
@@ -72,13 +72,11 @@ export const routes: RouteRecordRaw[] = [
       {
         path: "batch",
         name: "BatchOrder",
-        // component: () => import("@/views/order/batch.vue"),
-        component: () => import("@/views/home/index.vue"),
+        component: () => import("@/views/order/batch.vue"),
         meta: {
           title: "批量下单",
           i18n: "web.gfuc.batch_order",
-          requireAuth: true,
-          hidden: true // 批量下单页不在菜单显示
+          requireAuth: true
         }
       },
       {
@@ -148,8 +146,8 @@ export const routes: RouteRecordRaw[] = [
         name: "messageNotification",
         component: () => import("@/views/setting/messageNotification.vue"),
         meta: {
-          title: "消息通知设置",
-          i18n: "web.gfuc.message_notification_settings"
+          title: "消息订阅",
+          i18n: "web.gfuc.message_subscription"
         }
       }
     ]
@@ -178,6 +176,32 @@ export const routes: RouteRecordRaw[] = [
   //     }
   //   ]
   // },
+
+  {
+    path: "/task",
+    redirect: "/task/list",
+    component: () => import("@/layout/index.vue"),
+
+    meta: {
+      title: "任务管理",
+      icon: "task",
+      i18n: "web.gfuc.task_management",
+      width: "18px",
+      height: "18px"
+    },
+    children: [
+      {
+        path: "list",
+        name: "TaskList",
+        component: () => import("@/views/task/list.vue"),
+        meta: {
+          title: "任务列表",
+          i18n: "web.gfuc.task_list",
+          requireAuth: true
+        }
+      }
+    ]
+  },
   {
     path: "/redirect",
     component: () => import("@/layout/index.vue"),

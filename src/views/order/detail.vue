@@ -93,7 +93,7 @@
         </div>
       </div>
     </div>
-    <div class="flex">
+    <div class="flex content">
       <!-- 订单详情内容 -->
       <div class="mr-3 order-content">
         <!-- 基本信息 -->
@@ -597,9 +597,10 @@ const consigneeAddress = (obj: any) => {
 
 <style scoped lang="scss">
 .order-detail {
-  @apply flex flex-col gap-3 bg-bg;
+  @apply flex flex-col gap-3 bg-bg w-full;
 
-  min-width: 1200px;
+  width: 100%;
+  min-width: 0;
 }
 
 /* 订单状态跟踪 */
@@ -644,7 +645,7 @@ const consigneeAddress = (obj: any) => {
     }
 
     .step-arrow {
-      @apply absolute right-0 top-0 w-0 h-0 border-t-[28px] border-b-[28px] border-l-[32px] border-transparent;
+      @apply absolute right-0 top-0 w-0 h-0 border-t-[28px] border-b-[28px] border-l-[33px] border-transparent;
     }
 
     /* 激活状态 */
@@ -705,6 +706,8 @@ const consigneeAddress = (obj: any) => {
 /* 订单内容 */
 .order-content {
   @apply flex flex-col gap-3 flex-1;
+
+  min-width: 0;
 
   .section {
     @apply relative  p-4 rounded-lg bg-white;
@@ -767,7 +770,8 @@ const consigneeAddress = (obj: any) => {
 
 /* 右侧信息 */
 .order-sidebar {
-  @apply flex flex-col gap-5 flex-shrink-0 w-[430px];
+  // @apply flex flex-col gap-5 flex-1;
+  @apply flex flex-col gap-5 flex-shrink-0 w-[400px]; /* 默认宽度 400px */
 
   .tracking-section {
     @apply flex-1;
@@ -822,7 +826,7 @@ const consigneeAddress = (obj: any) => {
           @apply flex-1;
 
           .tracking-time {
-            @apply text-[#7a869a] text-sm mt-1;
+            @apply text-info text-sm mt-1;
           }
 
           .tracking-message {

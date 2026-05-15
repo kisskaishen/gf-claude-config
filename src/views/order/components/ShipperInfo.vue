@@ -38,7 +38,7 @@
           width="20"
           height="20"
           @click="onEdit"
-          v-if="!isActive && isCompleted"
+          v-if="!isActive"
         />
       </div>
 
@@ -278,7 +278,7 @@
         </div>
       </div>
 
-      <div v-else class="step-content-placeholder">
+      <div v-else class="step-content-placeholder" @click="onEdit">
         <p>{{ $t("web.gfuc.please_enter_shipper_info") }}</p>
       </div>
     </div>
@@ -315,7 +315,12 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits(["next", "edit", "update:orderShipper"]);
+const emit = defineEmits([
+  "next",
+  "edit",
+  "update:orderShipper",
+  "update:isChange"
+]);
 
 const orderShipperRef = ref(null);
 
@@ -570,6 +575,7 @@ const onClear = () => {
 const handleCustomerChange = (val) => {
   orderShipper.value.customerId = val;
   sessionStorage.setItem("createOrderCustomerId", val);
+  emit("update:isChange", true);
 };
 
 const onEdit = () => {

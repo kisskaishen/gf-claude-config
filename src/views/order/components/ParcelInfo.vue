@@ -37,7 +37,7 @@
           width="20"
           height="20"
           @click="onEdit"
-          v-if="!isActive && isCompleted"
+          v-if="!isActive"
         />
       </div>
 
@@ -244,7 +244,7 @@
                     v-model="formData.cOrderNo"
                     maxlength="30"
                     :placeholder="$t('web.gfuc.unique_customer_order_no')"
-                    :disabled="isEdit"
+                    :disabled="isEdit && !isCopyOrReorder"
                   />
                 </el-form-item>
               </el-col>
@@ -263,6 +263,15 @@
                 <el-form-item
                   :label="$t('web.gfuc.service_provider_tracking_no')"
                   prop="reference3"
+                  :rules="[
+                    {
+                      required: productCode === 'EU003',
+                      message: $t(
+                        'web.gfuc.enter_service_provider_tracking_no'
+                      ),
+                      trigger: ['blur', 'change']
+                    }
+                  ]"
                 >
                   <el-input
                     v-model="formData.reference3"
@@ -274,11 +283,26 @@
                 <el-form-item
                   :label="$t('web.gfuc.channel_code')"
                   prop="channelCode"
+                  :rules="[
+                    {
+                      required: productCode === 'EU003',
+                      message: $t('web.gfuc.enter_channel_code'),
+                      trigger: ['blur', 'change']
+                    }
+                  ]"
                 >
-                  <el-input
+                  <el-select
                     v-model="formData.channelCode"
                     :placeholder="$t('web.gfuc.enter_channel_code')"
-                  />
+                    filterable
+                  >
+                    <el-option
+                      v-for="item in channelCodeList"
+                      :key="item"
+                      :label="item"
+                      :value="item"
+                    ></el-option>
+                  </el-select>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -292,7 +316,7 @@
         </div> -->
       </div>
 
-      <div v-else class="step-placeholder">
+      <div v-else class="step-placeholder" @click="onEdit">
         <p>{{ $t("web.gfuc.fill_parcel_info") }}</p>
       </div>
     </div>
@@ -321,12 +345,20 @@ const props = defineProps({
   initialData: {
     type: Object,
     default: () => ({})
+  },
+  // 产品编码EU003需要展示揽收时间，产品编码必填
+  productCode: {
+    type: String,
+    default: ""
   }
 });
+import { queryProductChannelCode } from "@/api/order";
 
 const emit = defineEmits(["edit", "submit", "update:formData"]);
 
 const formRef = ref(null);
+
+const channelCodeList = ref([]);
 
 const formData = ref({
   orderGoods: {
@@ -350,6 +382,16 @@ const formData = ref({
   ...props.initialData
 });
 
+// 初始化渠道编码列表
+const getProductChannelCode = async () => {
+  const res = await queryProductChannelCode();
+  channelCodeList.value = res || [];
+};
+getProductChannelCode();
+
+// 标记是否是首次初始化
+const isFirstInit = ref(true);
+
 // 监听 initialData 变化，当父组件数据加载完成后更新表单数据
 watch(
   () => props.initialData,
@@ -357,6 +399,12 @@ watch(
     if (newInitialData && Object.keys(newInitialData).length > 0) {
       // 合并现有数据和新的初始数据
       Object.assign(formData.value, newInitialData);
+      // 只有首次初始化时才检查是否需要清空 cOrderNo
+      if (isFirstInit.value && isCopyOrReorder.value) {
+        formData.value.cOrderNo = "";
+      }
+      // 首次初始化完成后设置为 false
+      isFirstInit.value = false;
     }
   },
   { immediate: true, deep: true }
@@ -385,8 +433,12 @@ const validateDimensions = (rule, value, callback) => {
     callback();
   }
 };
-
+// 编辑
 const isEdit = computed(() => !!route.params?.orderId);
+// 是复制或者重新下单进来的
+const isCopyOrReorder = computed(() =>
+  ["copy", "reorder"].includes(route.params.editType)
+);
 
 const validateWeight = (rule, value, callback) => {
   if (!value) {

@@ -38,7 +38,7 @@
           width="20"
           height="20"
           @click="onEdit"
-          v-if="!isActive && isCompleted"
+          v-if="!isActive"
         />
       </div>
 
@@ -68,7 +68,7 @@
 
             <el-row>
               <el-col :span="24">
-                <el-form-item label-width="0">
+                <el-form-item label-width="0" prop="productCode">
                   <el-radio-group
                     v-model="formData.productCode"
                     class="radio-group"
@@ -87,10 +87,7 @@
               </el-col>
             </el-row>
 
-            <el-row
-              :gutter="12"
-              v-if="formData.productName.indexOf('揽收') > -1"
-            >
+            <el-row :gutter="12" v-if="formData.productCode === 'EU003'">
               <el-col :span="8">
                 <el-form-item
                   :label="$t('web.gfuc.collection_start_time')"
@@ -166,7 +163,7 @@
                   : $t("web.gfuc.standard_delivery")
               }}
             </p>
-            <div class="radio-group">
+            <div class="radio-group" v-if="formData.productCode">
               <div class="radio-check">
                 <div class="radio-label">{{ formData.productName }}</div>
                 <div class="radio-content">
@@ -181,7 +178,8 @@
 
             <div
               class="flex gap-4 mt-2"
-              v-if="formData.productName.indexOf('揽收') > -1"
+              v-if="formData.productCode === 'EU003'"
+              @click="onEdit"
             >
               <div class="flex flex-col">
                 <p>{{ $t("web.gfuc.collection_start_time") }}</p>
@@ -196,7 +194,7 @@
         </div>
       </div>
 
-      <div v-else class="step-placeholder">
+      <div v-else class="step-placeholder" @click="onEdit">
         <p>{{ $t("web.gfuc.please_select_product_info") }}</p>
       </div>
     </div>
@@ -229,6 +227,14 @@ const props = defineProps({
   initialData: {
     type: Object,
     default: () => ({})
+  },
+  customerId: {
+    type: String,
+    default: ""
+  },
+  isChange: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -352,6 +358,7 @@ const handleProductChange = (val) => {
 
 const onNext = () => {
   formRef.value.validate((valid) => {
+    console.log("valid", valid);
     if (valid) {
       emit("next");
     }
@@ -385,14 +392,12 @@ const toPascalCase = (str) => {
 const getProductList = async () => {
   const res = await getProductStepInfo({
     country: userStore.userInfo?.country || "",
-    customerId: sessionStorage.getItem("createOrderCustomerId") || ""
+    customerId: props.customerId
   });
 
   const res2 = await getOrderProductList({
     countryCode: userStore.userInfo?.country || ""
   });
-
-  console.log(res, res2, "+++++");
 
   // res的数据和res2数据对比，然后根据productCode合并数据
   const mergedRes = res.map((item) => ({
@@ -416,13 +421,19 @@ const getProductList = async () => {
 };
 
 watch(
-  () => props.isActive,
-  (value) => {
-    if (value) {
-      if (sessionStorage.getItem("createOrderCustomerId")) {
-        getProductList();
-      }
+  () => props.customerId,
+  (newValue, oldValue) => {
+    if (newValue !== oldValue && props.isChange) {
+      formData.value.productCode = "";
+      formData.value.productName = "";
+      getProductList();
     }
+  }
+);
+watch(
+  () => props.isActive,
+  (newValue, oldValue) => {
+    getProductList();
   }
 );
 defineExpose({

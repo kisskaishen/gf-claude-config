@@ -1,11 +1,11 @@
 export default {
-  "web.gfuc.homepage": "Homepage",
+  "web.gfuc.homepage": "Home",
   "web.gfuc.order_management": "Order Management",
   "web.gfuc.single_ticket_order": "Single Ticket Order",
   "web.gfuc.batch_order": "Batch Order",
   "web.gfuc.order_list": "Order List",
   "web.gfuc.financial_management": "Financial Management",
-  "web.gfuc.message_notification_settings": "Message Notification Settings",
+  "web.gfuc.message_subscription": "Message Subscription",
   "web.gfuc.recharge": "Recharge",
   "web.gfuc.recharge_record": "Recharge Record",
   "web.gfuc.balance": "Balance",
@@ -13,7 +13,7 @@ export default {
   "web.gfuc.problem_piece_management": "Problem Piece Management",
   "web.gfuc.problem_piece_view": "Problem Piece View",
   "web.gfuc.daily": "Daliy",
-  "web.gfuc.register_agreement": "Register Agreement",
+  "web.gfuc.register_agreement": "User Agreement",
   "web.gfuc.privacy_policy": "Privacy Policy",
   "web.gfuc.agreement":
     "I agree to the {register_agreement} and {privacy_policy}",
@@ -110,8 +110,8 @@ export default {
   "web.gfuc.please_enter_area": "Please enter area",
   "web.gfuc.city": "City",
   "web.gfuc.please_enter_city": "Please enter city",
-  "web.gfuc.state": "State",
-  "web.gfuc.please_enter_state": "Please enter state",
+  "web.gfuc.state": "State/Province",
+  "web.gfuc.please_enter_state": "Please enter state/province",
   "web.gfuc.country": "Country",
   "web.gfuc.please_enter_country": "Please enter country",
   "web.gfuc.next_step": "Next Step",
@@ -122,20 +122,27 @@ export default {
 
   // Recipient Information Component
   "web.gfuc.consignee_info_title": "Recipient Information",
+  "web.gfuc.street": "Street",
+  "web.gfuc.please_enter_street": "Please enter street",
+  "web.gfuc.address2": "Supplemental Address 1",
+  "web.gfuc.address2_tip":
+    "Company Name/Remote Area Name Supplement/Industrial Area/Commercial Activity",
+  "web.gfuc.address3": "Supplemental Address 2",
+  "web.gfuc.address3_tip": "Residential Community Name/Building Number",
 
-  "web.gfuc.address2": "Address Line 2",
-  "web.gfuc.address3": "Address Line 3",
-
-  "web.gfuc.internal_number": "Internal Number",
-  "web.gfuc.internal_number_placeholder": "Please enter internal number",
-  "web.gfuc.external_number": "External Number",
-  "web.gfuc.external_number_placeholder": "Please enter external number",
+  "web.gfuc.internal_number": "Internal Number (Room Number)",
+  "web.gfuc.internal_number_placeholder":
+    "Please enter internal number (Room Number)",
+  "web.gfuc.external_number": "External Number (Street Number)",
+  "web.gfuc.external_number_placeholder":
+    "Please enter external number (Street Number)",
 
   "web.gfuc.clear_button_title": "Clear",
   "web.gfuc.edit_button_title": "Edit",
 
   "web.gfuc.consignee_info_placeholder":
     "Please fill in the recipient information",
+  "web.gfuc.remark": "Remark",
 
   "web.gfuc.product_info": "Product Information",
   "web.gfuc.express_delivery": "Express",
@@ -185,6 +192,12 @@ export default {
   "web.gfuc.channel_code": "Channel Code",
   "web.gfuc.enter_channel_code": "Please enter channel code",
   "web.gfuc.submit_order": "Submit Order",
+  "web.gfuc.submit_recharge": "Submit Recharge",
+  "web.gfuc.recharge_success": "Recharge Successful",
+  "web.gfuc.recharge_success_description":
+    "Your recharge request has been submitted. We expect to process your recharge within one business day.",
+  "web.gfuc.view_recharge_record": "View Recharge Record",
+  "web.gfuc.continue_recharge": "Continue Recharge",
   "web.gfuc.please_enter": "Please enter",
   "web.gfuc.print_order": "Print Order",
   "web.gfuc.edit_order": "Edit Order",
@@ -255,6 +268,7 @@ export default {
   "web.gfuc.batch_print_confirm":
     "You are about to print shipping labels, {count} orders selected, confirm to print?",
   "web.gfuc.batch_print_success": "Started batch printing {count} orders",
+  "web.gfuc.printing_order": "Printing in progress, please wait",
   "web.gfuc.select_orders_first": "Please select orders to print first",
   "web.gfuc.unusual_type": "Exceptional Type",
 
@@ -273,5 +287,46 @@ export default {
   "web.gfuc.weight_range": "Parcel weight must be between 0.001-50kg",
   "web.gfuc.dimension_range": "Range must be between 1-150cm",
   "web.gfuc.total_range":
-    "Total length, width, and height must be less than 150cm"
+    "Total length, width, and height must be less than 150cm",
+
+  // 批量下单
+  "web.gfuc.batch_order_template_download": "Batch Order Template Download",
+  "web.gfuc.upload_task": "Upload Task",
+  "web.gfuc.upload_task_tip":
+    "Please ensure the downloaded template file format is correct, otherwise it will cause order creation to fail.",
+  "web.gfuc.upload_task_file_format_tip":
+    "Support xls, xlsx format, file size up to 10MB, max 500 orders per upload",
+  "web.gfuc.upload_task_total_prefix": "Total orders uploaded",
+  "web.gfuc.upload_task_suffix": "orders",
+  "web.gfuc.upload_task_success_prefix": "Success",
+  "web.gfuc.upload_task_failed_prefix": "Failed",
+  "web.gfuc.upload_task_button_text": "Click to upload file",
+  "web.gfuc.download_error_data": "Download error data",
+  "web.gfuc.row_number": "Uploaded row number",
+  "web.gfuc.error_message": "Error message",
+  "web.gfuc.copy_success": "Copy success",
+  "web.gfuc.upload_result": "Upload result",
+  "web.gfuc.upload_success": "Upload success",
+  "web.gfuc.uploading": "Uploading",
+  "web.gfuc.uploading_tip": "File is uploading, please wait",
+  "web.gfuc.upload_exceed_tip": "You can upload up to {limit} files",
+  "web.gfuc.upload_failed": "Upload Failed",
+  "web.gfuc.please_agree_and_check_the_agreement":
+    "Please agree and check the agreement",
+  "web.gfuc.task_management": "Task Management",
+  "web.gfuc.task_list": "Task List",
+  "web.gfuc.file_name": "File Name",
+  "web.gfuc.date": "Date",
+  "web.gfuc.type": "Type",
+  "web.gfuc.status": "Status",
+  "web.gfuc.total_orders": "Total Orders",
+  "web.gfuc.success": "Success",
+  "web.gfuc.error": "Error",
+  "web.gfuc.download": "Download",
+  "web.gfuc.download_original_file": "Download Source File",
+
+  "web.gfuc.upload_task_tooltip":
+    "Upload tasks allows you to view all historical upload records",
+
+  "web.gfuc.order_file": "Waybill File"
 };

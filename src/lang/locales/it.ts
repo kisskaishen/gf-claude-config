@@ -1,19 +1,19 @@
 export default {
   "web.gfuc.customer_platform": "Piattaforma cliente",
-  "web.gfuc.homepage": "Homepage",
+  "web.gfuc.homepage": "Home",
   "web.gfuc.order_management": "Gestione ordini",
   "web.gfuc.single_ticket_order": "Ordine singolo biglietto",
   "web.gfuc.batch_order": "Ordine in batch",
   "web.gfuc.order_list": "Lista ordini",
   "web.gfuc.financial_management": "Gestione finanziaria",
-  "web.gfuc.message_notification_settings": "Impostazioni notifiche messaggi",
+  "web.gfuc.message_subscription": "Sottoscrizione messaggi",
   "web.gfuc.recharge": "Ricarica",
   "web.gfuc.recharge_record": "Registro ricariche",
   "web.gfuc.balance": "Saldo",
   "web.gfuc.bill": "Fattura",
   "web.gfuc.problem_piece_management": "Gestione colli problematici",
   "web.gfuc.problem_piece_view": "Visualizza colli problematici",
-  "web.gfuc.register_agreement": "Contratto di iscrizione",
+  "web.gfuc.register_agreement": "Contratto con l'utente",
   "web.gfuc.privacy_policy": "Politica di privacy",
   "web.gfuc.agreement":
     "I agree to the {register_agreement} and {privacy_policy}",
@@ -107,8 +107,8 @@ export default {
   "web.gfuc.please_enter_area": "Inserisci area",
   "web.gfuc.city": "Città",
   "web.gfuc.please_enter_city": "Inserisci città",
-  "web.gfuc.state": "Stato",
-  "web.gfuc.please_enter_state": "Inserisci stato",
+  "web.gfuc.state": "Stato/Provincia",
+  "web.gfuc.please_enter_state": "Inserisci stato/provincia",
   "web.gfuc.country": "Paese",
   "web.gfuc.please_enter_country": "Inserisci paese",
   "web.gfuc.next_step": "Passo successivo",
@@ -120,20 +120,29 @@ export default {
 
   // Componente Informazioni del destinatario
   "web.gfuc.consignee_info_title": "Informazioni del destinatario",
+  "web.gfuc.street": "Via",
+  "web.gfuc.please_enter_street": "Inserisci la via",
 
-  "web.gfuc.address2": "Indirizzo riga 2",
-  "web.gfuc.address3": "Indirizzo riga 3",
+  "web.gfuc.address2": "Complemento indirizzo 1",
+  "web.gfuc.address2_tip":
+    "Nome azienda/Integrazione indirizzo zona remota/Zona industriale/Attività commerciale",
+  "web.gfuc.address3": "Complemento indirizzo 2",
+  "web.gfuc.address3_tip":
+    "Nome complesso residenziale/Numero edificio/corridoio",
 
-  "web.gfuc.internal_number": "Numero interno",
-  "web.gfuc.internal_number_placeholder": "Inserisci il numero interno",
-  "web.gfuc.external_number": "Numero esterno",
-  "web.gfuc.external_number_placeholder": "Inserisci il numero esterno",
+  "web.gfuc.internal_number": "Numero interno（Numero ordine）",
+  "web.gfuc.internal_number_placeholder":
+    "Inserisci il numero interno（Numero ordine）",
+  "web.gfuc.external_number": "Numero esterno（Numero ordine）",
+  "web.gfuc.external_number_placeholder":
+    "Inserisci il numero esterno（Numero ordine）",
 
   "web.gfuc.clear_button_title": "Cancella",
   "web.gfuc.edit_button_title": "Modifica",
 
   "web.gfuc.consignee_info_placeholder":
     "Si prega di compilare le informazioni del destinatario",
+  "web.gfuc.remark": "Note",
 
   "web.gfuc.product_info": "Informazioni prodotto",
   "web.gfuc.express_delivery": "Espresso",
@@ -184,6 +193,12 @@ export default {
   "web.gfuc.channel_code": "Codice canale",
   "web.gfuc.enter_channel_code": "Inserisci il codice canale",
   "web.gfuc.submit_order": "Invia ordine",
+  "web.gfuc.submit_recharge": "Invia ricarica",
+  "web.gfuc.recharge_success": "Ricarica riuscita",
+  "web.gfuc.recharge_success_description":
+    "La tua richiesta di ricarica è stata inviata. Prevediamo di elaborare la tua ricarica entro un giorno lavorativo.",
+  "web.gfuc.view_recharge_record": "Visualizza storico ricariche",
+  "web.gfuc.continue_recharge": "Continua la ricarica",
   "web.gfuc.please_enter": "Inserisci",
   "web.gfuc.print_order": "Stampa ordine",
   "web.gfuc.edit_order": "Modifica ordine",
@@ -255,6 +270,7 @@ export default {
     "Stai per stampare le etichette di spedizione, {count} ordini selezionati, confermare la stampa?",
   "web.gfuc.batch_print_success":
     "Avviata la stampa in batch di {count} ordini",
+  "web.gfuc.printing_order": "Stampa in corso, attendere prego",
   "web.gfuc.select_orders_first": "Seleziona prima gli ordini da stampare",
   "web.gfuc.unusual_type": "Tipo anomalo",
 
@@ -273,5 +289,45 @@ export default {
   "web.gfuc.weight_range": "Poids del colis deve essere tra 0.001-50kg",
   "web.gfuc.dimension_range": "Rang deve essere tra 1-150cm",
   "web.gfuc.total_range":
-    "Lunghezza, larghezza e altezza totalali devono essere inferiore a 150cm"
+    "Lunghezza, larghezza e altezza totalali devono essere inferiore a 150cm",
+
+  // 批量下单
+  "web.gfuc.batch_order_template_download":
+    "Télécharger le modèle de commande par lot",
+  "web.gfuc.upload_task": "Tâche d'upload",
+  "web.gfuc.upload_task_tip":
+    "Veuillez assurer que le format de fichier téléchargé est correct, sinon cela peut entraîner des erreurs de création de commande.",
+  "web.gfuc.upload_task_file_format_tip":
+    "Supporte les formats xls, xlsx, taille de fichier jusqu'à 10MB, max 500 commandes par fichier upload",
+  "web.gfuc.upload_task_total_prefix": "Nombre total de commandes uploadées",
+  "web.gfuc.upload_task_suffix": "commandes",
+  "web.gfuc.upload_task_success_prefix": "Succès",
+  "web.gfuc.upload_task_failed_prefix": "Échec",
+  "web.gfuc.upload_task_button_text": "Cliquer pour uploader le fichier",
+  "web.gfuc.download_error_data": "Télécharger les données d'erreur uploadées",
+  "web.gfuc.row_number": "Numéro de ligne uploadée",
+  "web.gfuc.error_message": "Message d'erreur",
+  "web.gfuc.copy_success": "Copie réussie",
+  "web.gfuc.upload_result": "Résultat de l'upload",
+  "web.gfuc.upload_success": "Upload réussiie",
+  "web.gfuc.uploading": "Upload en cours",
+  "web.gfuc.uploading_tip": "Il file è in caricamento, attendere prego",
+  "web.gfuc.upload_exceed_tip": "È possibile caricare al massimo {limit} file",
+  "web.gfuc.upload_failed": "Caricamento fallito",
+  "web.gfuc.please_agree_and_check_the_agreement":
+    "Si prega di accettare e spuntare il contratto",
+  "web.gfuc.task_management": "Gestione attività",
+  "web.gfuc.task_list": "Elenco attività",
+  "web.gfuc.file_name": "Nome file",
+  "web.gfuc.date": "Data",
+  "web.gfuc.type": "Tipo",
+  "web.gfuc.status": "Stato",
+  "web.gfuc.total_orders": "Ordini totali",
+  "web.gfuc.success": "Successo",
+  "web.gfuc.error": "Errore",
+  "web.gfuc.download": "Scarica",
+  "web.gfuc.download_original_file": "Scarica file sorgente",
+  "web.gfuc.upload_task_tooltip":
+    "Le attività di caricamento consentono di visualizzare tutti i record di caricamento storici",
+  "web.gfuc.order_file": "File di bolla di spedizione"
 };

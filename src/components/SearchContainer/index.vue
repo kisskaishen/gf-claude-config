@@ -86,7 +86,7 @@ const defaultItemSpan = computed(() => Math.floor(TOTAL_SPAN / props.cols));
 const hasOrderNumberSlot = computed(() => !!slots["order-number"]);
 const orderNumberSpan = computed(() => {
   // 单号模块默认占据1列，可根据需要调整
-  return Math.floor(TOTAL_SPAN / props.cols);
+  return hasOrderNumberSlot.value ? Math.floor(TOTAL_SPAN / props.cols) : 0;
 });
 
 const visibleSlots = computed(() => {

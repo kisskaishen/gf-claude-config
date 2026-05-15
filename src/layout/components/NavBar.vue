@@ -14,7 +14,9 @@
       <TimezoneSelect />
 
       <!-- 用户头像 -->
-      <el-avatar :size="30" :src="avatarImg"></el-avatar>
+      <el-tooltip :content="`${userAccount}`" placement="bottom">
+        <el-avatar :size="30" :src="avatarImg"></el-avatar>
+      </el-tooltip>
 
       <!-- 退出按钮 -->
       <div
@@ -42,6 +44,7 @@ const { t } = useI18n();
 const router = useRouter();
 const userStore = useUserStore();
 
+const userAccount = computed(() => userStore.userInfo?.account || "User");
 // --- 退出逻辑 ---
 const handleLogout = async () => {
   try {

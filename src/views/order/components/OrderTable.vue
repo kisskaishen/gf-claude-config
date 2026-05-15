@@ -14,9 +14,13 @@
         @selection-change="handleSelectionChange"
       >
         <template #action-left>
-          <el-button type="primary" @click="handleBatchPrint">
+          <el-button
+            type="primary"
+            @click="handleBatchPrint"
+            :loading="printLoading"
+          >
             <el-icon class="mr-1.5"><Printer /></el-icon>
-            {{ $t("web.gfuc.batch_print") }}
+            {{ $t("web.gfuc.batch_print" /** 批量打印 **/) }}
           </el-button>
         </template>
         <template #order-number>
@@ -29,6 +33,7 @@
             <el-input
               v-model="searchForm.orderNumber"
               type="textarea"
+              resize="none"
               clearable
               :rows="5"
               :placeholder="
@@ -68,7 +73,7 @@
               range-separator="~"
               :start-placeholder="$t('web.gfuc.start_time')"
               :end-placeholder="$t('web.gfuc.end_time')"
-              format="YYYY-MM-DD HH:mm:ss"
+              format="YYYY-MM-DD"
               value-format="YYYY-MM-DD HH:mm:ss"
               :default-time="defaultTime"
               @change="handleChange"
@@ -279,14 +284,21 @@ const props = defineProps({
 });
 
 const lang = computed(() => appStore.lang);
+const timezone = computed(() => appStore.timezone);
 
 watch(
   () => lang.value,
   (val) => {
     getProductList();
+    fetchData();
   }
 );
-
+watch(
+  () => timezone.value,
+  (val) => {
+    fetchData();
+  }
+);
 const currentStatus = computed(() => props.status);
 
 const orderStatusDict = useDict("order_status");
@@ -306,7 +318,7 @@ const exceptionOrderStatusOptions = computed(() => {
 
 const columns = [
   {
-    prop: "orderNo",
+    prop: "corderNo",
     label: "gfuc.customer_order_number",
     minWidth: 180
   },
@@ -335,6 +347,8 @@ const columns = [
   { prop: "orderCreateTime", label: "gfuc.submission_time", width: 200 }
 ];
 
+// 批量打印的loading
+const printLoading = ref(false);
 const loading = ref(false);
 
 // 初始表单状态
@@ -421,7 +435,6 @@ const handleChange = (value) => {
 
 // 处理订单状态集合
 const handleOrderStatusSet = (status?: number) => {
-  console.log(status, "++++++");
   if (currentStatus.value === 888) {
     return searchForm.orderStatus ? [searchForm.orderStatus] : [6, 7, 8];
   } else {
@@ -610,7 +623,8 @@ const handleCancel = (row: any) => {
   }).then(async () => {
     await cancelOrder({
       orderId: row.orderId,
-      orderNo: row.orderNo
+      orderNo: row.orderNo,
+      waybillNo: row.waybillNo
     });
     ElMessage.success(t("web.gfuc.order_cancel_success"));
     await fetchData();
@@ -618,7 +632,7 @@ const handleCancel = (row: any) => {
 };
 
 const handleCopy = (row: any) => {
-  router.push(`/order/single/${row.orderId}/order`);
+  router.push(`/order/single/${row.orderId}/order/copy`);
 };
 
 const selectedOrders = ref([]);
@@ -653,17 +667,39 @@ const handleBatchPrint = () => {
       confirmButtonText: t("web.gfuc.confirm"),
       cancelButtonText: t("web.gfuc.cancel")
     }
-  ).then(async () => {
-    const res = await batchPrintOrderLabel(
-      selectedOrders.value.map((item: any) => item.waybillNo)
-    );
+  )
+    .then(async () => {
+      printLoading.value = true;
+      ElMessage.info(t("web.gfuc.printing_order"));
+      let data = [];
+      data = selectedOrders.value.map((item: any) => {
+        return {
+          waybillNo: item.waybillNo,
+          customerId: item.customerId
+        };
+      });
 
-    ElMessage.success(
-      t("web.gfuc.batch_print_success", { count: selectedOrders.value.length })
-    );
+      const res = await batchPrintOrderLabel(data);
 
-    downloadFile(res[0].url, "面单打印");
-  });
+      printLoading.value = false;
+
+      ElMessage.success(
+        t("web.gfuc.batch_print_success", {
+          count: selectedOrders.value.length
+        })
+      );
+      let url = "";
+      if (Array.isArray(res)) {
+        url = res[0].url;
+      } else {
+        url = res.url;
+      }
+
+      downloadFile(url, t("web.gfuc.order_file"));
+    })
+    .catch(() => {
+      printLoading.value = false;
+    });
 };
 // 获取产品列表select数据
 const getProductList = async () => {

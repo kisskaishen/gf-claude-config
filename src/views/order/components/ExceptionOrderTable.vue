@@ -22,6 +22,7 @@
             <el-input
               v-model="searchForm.orderNumber"
               type="textarea"
+              resize="none"
               clearable
               :rows="5"
               :placeholder="
@@ -160,6 +161,9 @@ const { t } = useI18n();
 
 import { useUserStore } from "@/store/user";
 const userStore = useUserStore();
+
+import { useAppStore } from "@/store/app";
+const appStore = useAppStore();
 
 const router = useRouter();
 
@@ -397,9 +401,23 @@ const handleView = (row: any) => {
 };
 
 const handleReOrder = (row: any) => {
-  router.push(`/order/single/${row.id}/exception`);
+  router.push(`/order/single/${row.id}/exception/reorder`);
 };
+const lang = computed(() => appStore.lang);
+const timezone = computed(() => appStore.timezone);
 
+watch(
+  () => lang.value,
+  (val) => {
+    fetchData();
+  }
+);
+watch(
+  () => timezone.value,
+  (val) => {
+    fetchData();
+  }
+);
 onMounted(() => {
   fetchData();
 });

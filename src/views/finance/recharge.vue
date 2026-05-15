@@ -42,6 +42,21 @@
             :label="$t('gfuc.pay_method' /** 支付方式 **/)"
             prop="receiptMethod"
           >
+            <template #label>
+              {{ $t("gfuc.pay_method" /** 支付方式 **/) }}
+              <el-tooltip
+                :content="
+                  $t(
+                    'gfuc.payment_method_selection' /** 请选择充值时支付的方式 **/
+                  )
+                "
+                placement="top"
+              >
+                <el-icon class="tip-icon">
+                  <svg-icon name="question" />
+                </el-icon>
+              </el-tooltip>
+            </template>
             <el-select
               v-model="formData.receiptMethod"
               :placeholder="
@@ -66,6 +81,21 @@
             :label="$t('gfuc.recharge_date' /** 充值日期 **/)"
             prop="receiptDate"
           >
+            <template #label>
+              {{ $t("gfuc.recharge_date" /** 充值日期 **/) }}
+              <el-tooltip
+                :content="
+                  $t(
+                    'gfuc.time_consistency' /** 时间需要跟上传截图的时间一致 **/
+                  )
+                "
+                placement="top"
+              >
+                <el-icon class="tip-icon">
+                  <svg-icon name="question" />
+                </el-icon>
+              </el-tooltip>
+            </template>
             <el-date-picker
               v-model="formData.receiptDate"
               type="date"
@@ -94,7 +124,7 @@
             </el-link>
           </div>
         </template>
-        <div>
+        <div v-loading="uploadLoading">
           <el-upload
             class="upload-demo"
             action="#"
@@ -146,6 +176,7 @@
         <el-input
           v-model="formData.remark"
           type="textarea"
+          resize="none"
           :rows="4"
           :placeholder="
             $t(
@@ -163,9 +194,25 @@
         @click="handleSubmit"
         :loading="loading"
       >
-        {{ $t("web.gfuc.submit_order" /** 提交 **/) }}
+        {{ $t("web.gfuc.submit_recharge" /** 提交充值 **/) }}
       </el-button>
     </el-form>
+
+    <SuccessDialog
+      v-model="successVisible"
+      :title="$t('web.gfuc.recharge_success' /** 充值成功 **/)"
+      :description="
+        $t(
+          'web.gfuc.recharge_success_description' /** 您的充值记录已提交，我们预计将会在一个工作日内为您充值。 **/
+        )
+      "
+      :primary-btn-text="
+        $t('web.gfuc.view_recharge_record' /** 查看充值记录 **/)
+      "
+      :secondary-btn-text="$t('web.gfuc.continue_recharge' /** 继续充值 **/)"
+      @primary-click="handleViewRechargeRecord"
+      @secondary-click="handleContinueRecharge"
+    />
   </page-container>
 </template>
 
@@ -190,12 +237,18 @@ import jpgIcon from "@/assets/upload-file/jpg.svg";
 import pdfIcon from "@/assets/upload-file/pdf.svg";
 import pngIcon from "@/assets/upload-file/png.svg";
 
+import SuccessDialog from "@/components/SuccessDialog/index.vue";
+
 import { useAppStore } from "@/store/app";
 import frExample from "@/assets/payment-example/FR.png";
 import itExample from "@/assets/payment-example/IT.png";
 import nlExample from "@/assets/payment-example/NL.png";
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 const appStore = useAppStore();
+
+const successVisible = ref(false);
 
 const fileIconMap: Record<string, string> = {
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
@@ -212,6 +265,8 @@ defineOptions({
 
 const { t } = useI18n();
 const loading = ref(false);
+const uploadLoading = ref(false);
+
 const formRef = ref<FormInstance>();
 const fileList = ref<UploadFile[]>([]);
 
@@ -347,6 +402,7 @@ const handleBeforeUpload = (rawFile: UploadRawFile) => {
 
 const handleUpload = async (options: UploadRequestOptions) => {
   try {
+    uploadLoading.value = true;
     const data = new FormData();
     data.append("file", options.file);
     data.append("modelFolder", "modelFolder");
@@ -359,9 +415,11 @@ const handleUpload = async (options: UploadRequestOptions) => {
       file.url = res.url;
       file.status = "success";
     }
-
+    uploadLoading.value = false;
     formRef.value?.clearValidate("file");
   } catch (error) {
+    uploadLoading.value = false;
+
     ElMessage.error(t("gfuc.upload_failed_retry" /** 上传失败，请重试 **/));
     // 上传失败移除文件
     const index = fileList.value.findIndex((f) => f.uid === options.file.uid);
@@ -382,10 +440,20 @@ const handleSubmit = async () => {
   try {
     loading.value = true;
     await recharge(formData);
-    ElMessage.success(t("gfuc.submission_successful" /** 提交成功 **/));
+    successVisible.value = true;
+    // ElMessage.success(t("gfuc.submission_successful" /** 提交成功 **/));
   } finally {
     loading.value = false;
   }
+};
+
+const handleViewRechargeRecord = () => {
+  router.push("/finance/record");
+};
+const handleContinueRecharge = () => {
+  formRef.value?.resetFields();
+  fileList.value = [];
+  successVisible.value = false;
 };
 </script>
 
@@ -487,5 +555,9 @@ const handleSubmit = async () => {
 
 .submit-btn {
   margin-bottom: 119px;
+}
+
+.tip-icon {
+  vertical-align: text-bottom;
 }
 </style>

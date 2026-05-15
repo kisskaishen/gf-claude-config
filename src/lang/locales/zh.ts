@@ -9,11 +9,11 @@ export default {
   "web.gfuc.recharge_record": "充值记录",
   "web.gfuc.balance": "余额",
   "web.gfuc.bill": "账单",
-  "web.gfuc.message_notification_settings": "消息通知设置",
+  "web.gfuc.message_subscription": "消息订阅",
   "web.gfuc.problem_piece_management": "问题件管理",
   "web.gfuc.problem_piece_view": "问题件查看",
   "web.gfuc.daily": "每天",
-  "web.gfuc.register_agreement": "注册协议",
+  "web.gfuc.register_agreement": "用户协议",
   "web.gfuc.privacy_policy": "隐私政策",
   "web.gfuc.agreement": "我同意GOFO的{register_agreement}和{privacy_policy}",
   "web.gfuc.please_select_country": "请选择国家",
@@ -92,6 +92,7 @@ export default {
     "您将进行打印面单的操作，已勾选{count}单，是否确认打印？",
   "web.gfuc.batch_print_success": "已开始批量打印 {count} 个订单",
   "web.gfuc.select_orders_first": "请先选择要打印的订单",
+  "web.gfuc.printing_order": "正在打印中，请稍等",
 
   // 单票下单页面
   "web.gfuc.order_created_success": "订单创建成功",
@@ -121,8 +122,8 @@ export default {
   "web.gfuc.please_enter_area": "请输入区域",
   "web.gfuc.city": "城市",
   "web.gfuc.please_enter_city": "请输入城市",
-  "web.gfuc.state": "州",
-  "web.gfuc.please_enter_state": "请输入州",
+  "web.gfuc.state": "州/省",
+  "web.gfuc.please_enter_state": "请输入州/省",
   "web.gfuc.country": "国家",
   "web.gfuc.please_enter_country": "请输入国家",
   "web.gfuc.next_step": "下一步",
@@ -133,18 +134,23 @@ export default {
   // 收件人信息组件
   "web.gfuc.consignee_info_title": "收件人信息",
 
-  "web.gfuc.address2": "地址2",
-  "web.gfuc.address3": "地址3",
+  "web.gfuc.street": "街道",
+  "web.gfuc.please_enter_street": "请输入街道",
+  "web.gfuc.address2": "补充地址1",
+  "web.gfuc.address2_tip": "公司名/偏远地区地名补充/工业区/商业活动",
+  "web.gfuc.address3": "补充地址2",
+  "web.gfuc.address3_tip": "住宅小区名称/楼道号",
 
-  "web.gfuc.internal_number": "内门牌号",
-  "web.gfuc.internal_number_placeholder": "请输入内门牌号",
-  "web.gfuc.external_number": "外门牌号",
-  "web.gfuc.external_number_placeholder": "请输入外门牌号",
+  "web.gfuc.internal_number": "内门牌号（房间号）",
+  "web.gfuc.internal_number_placeholder": "请输入内门牌号（房间号）",
+  "web.gfuc.external_number": "外门牌号（街道号）",
+  "web.gfuc.external_number_placeholder": "请输入外门牌号（街道号）",
 
   "web.gfuc.clear_button_title": "清除数据",
   "web.gfuc.edit_button_title": "编辑数据",
 
   "web.gfuc.consignee_info_placeholder": "请填写收件人信息",
+  "web.gfuc.remark": "附加信息",
 
   "web.gfuc.product_info": "产品信息",
   "web.gfuc.express_delivery": "特惠",
@@ -189,6 +195,12 @@ export default {
   "web.gfuc.channel_code": "渠道编码",
   "web.gfuc.enter_channel_code": "请输入渠道编码",
   "web.gfuc.submit_order": "提交订单",
+  "web.gfuc.submit_recharge": "提交充值",
+  "web.gfuc.recharge_success": "充值成功",
+  "web.gfuc.recharge_success_description":
+    "您的充值记录已提交，我们预计将会在一个工作日内为您充值。",
+  "web.gfuc.view_recharge_record": "查看充值记录",
+  "web.gfuc.continue_recharge": "继续充值",
 
   "web.gfuc.please_enter": "请输入",
 
@@ -259,5 +271,46 @@ export default {
   "web.gfuc.response_message": "相应报文",
   "web.gfuc.weight_range": "包裹重量必须在0.001-50kg之间",
   "web.gfuc.dimension_range": "范围必须在1-150cm之间",
-  "web.gfuc.total_range": "包裹长宽高总和不能超过150cm"
+  "web.gfuc.total_range": "包裹长宽高总和不能超过150cm",
+
+  // 批量下单
+  "web.gfuc.batch_order_template_download": "批量下单模板下载",
+  "web.gfuc.upload_task": "上传任务",
+  "web.gfuc.upload_task_tip":
+    "请确保下载的模板文件格式正确，否则会导致订单创建失败。",
+  "web.gfuc.upload_task_file_format_tip":
+    "支持xls、xlsx格式，文件最大不超过10M，每个文件最多上传500条订单",
+  "web.gfuc.upload_task_total_prefix": "一共上传订单数据",
+  "web.gfuc.upload_task_suffix": "条",
+  "web.gfuc.upload_task_success_prefix": "成功",
+  "web.gfuc.upload_task_failed_prefix": "失败",
+  "web.gfuc.upload_task_button_text": "点击上传文件",
+  "web.gfuc.download_error_data": "下载错误数据",
+  "web.gfuc.row_number": "行号",
+  "web.gfuc.error_message": "错误信息",
+  // 复制成功
+  "web.gfuc.copy_success": "复制成功",
+  "web.gfuc.upload_result": "上传结果",
+  "web.gfuc.upload_success": "上传完成",
+  "web.gfuc.uploading": "上传中",
+  "web.gfuc.uploading_tip": "文件正在上传中，请稍等",
+  "web.gfuc.upload_exceed_tip": "最多只能上传 {limit} 个文件",
+  "web.gfuc.upload_failed": "上传失败",
+
+  "web.gfuc.please_agree_and_check_the_agreement": "请同意并勾选协议",
+
+  "web.gfuc.task_management": "任务管理",
+  "web.gfuc.task_list": "任务列表",
+  "web.gfuc.file_name": "文件名",
+  "web.gfuc.date": "日期",
+  "web.gfuc.type": "类型",
+  "web.gfuc.status": "状态",
+  "web.gfuc.total_orders": "总订单",
+  "web.gfuc.success": "成功",
+  "web.gfuc.error": "错误",
+  "web.gfuc.download": "下载",
+  "web.gfuc.download_original_file": "下载源文件",
+  "web.gfuc.upload_task_tooltip": "上传任务可以查看所有历史上传的记录",
+
+  "web.gfuc.order_file": "面单文件"
 };

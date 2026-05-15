@@ -94,6 +94,10 @@ service.interceptors.request.use(
 
     // 5. X-Request-ID: 请求id (建议)
     // config.headers["X-Request-ID"] = crypto.randomUUID();
+    // 如果是批量打印接口，timeuout添加60s
+    if (config.url === "/oms/label/batchPrintLabel") {
+      config.timeout = 60000;
+    }
 
     return config;
   },
@@ -115,11 +119,19 @@ service.interceptors.response.use(
     // 3.5 响应数据格式规范
     // status: 接口业务处理状态码：1-成功，0-失败
     if (res.status !== 1) {
-      ElMessage({
-        message: res.message || res.msg || "Error",
-        type: "error",
-        duration: 5 * 1000
-      });
+      if (response.config.url === "/oms/create/order") {
+        ElMessage({
+          message: res?.msgEn,
+          type: "error",
+          duration: 5 * 1000
+        });
+      } else {
+        ElMessage({
+          message: res.message || res.msg || "Error",
+          type: "error",
+          duration: 5 * 1000
+        });
+      }
 
       // 特殊错误码处理，例如：Token 失效
       if (res.code === 401) {

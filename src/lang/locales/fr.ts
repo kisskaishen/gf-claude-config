@@ -5,15 +5,14 @@ export default {
   "web.gfuc.batch_order": "Commande en lot",
   "web.gfuc.order_list": "Liste des commandes",
   "web.gfuc.financial_management": "Gestion financière",
-  "web.gfuc.message_notification_settings":
-    "Paramètres de notifications de messages",
+  "web.gfuc.message_subscription": "Abonnement aux messages",
   "web.gfuc.recharge": "Recharge",
   "web.gfuc.recharge_record": "Historique des recharges",
   "web.gfuc.balance": "Solde",
   "web.gfuc.bill": "Facture",
   "web.gfuc.problem_piece_management": "Gestion des colis à problème",
   "web.gfuc.problem_piece_view": "Consultation des colis à problème",
-  "web.gfuc.register_agreement": "Contrat de souscription",
+  "web.gfuc.register_agreement": "Contrat d'utilisation",
   "web.gfuc.privacy_policy": "Politique de confidentialité",
   "web.gfuc.agreement":
     "Je suis d'accord avec le {register_agreement} et la {privacy_policy}",
@@ -111,8 +110,8 @@ export default {
   "web.gfuc.please_enter_area": "Veuillez entrer la région",
   "web.gfuc.city": "Ville",
   "web.gfuc.please_enter_city": "Veuillez entrer la ville",
-  "web.gfuc.state": "État",
-  "web.gfuc.please_enter_state": "Veuillez entrer l'état",
+  "web.gfuc.state": "État/Province",
+  "web.gfuc.please_enter_state": "Veuillez entrer l'état/province",
   "web.gfuc.country": "Pays",
   "web.gfuc.please_enter_country": "Veuillez entrer le pays",
   "web.gfuc.next_step": "Étape suivante",
@@ -125,20 +124,28 @@ export default {
 
   // Composant Informations du destinataire
   "web.gfuc.consignee_info_title": "Informations du destinataire",
+  "web.gfuc.street": "Rue",
+  "web.gfuc.please_enter_street": "Veuillez entrer la rue",
 
-  "web.gfuc.address2": "Adresse ligne 2",
-  "web.gfuc.address3": "Adresse ligne 3",
+  "web.gfuc.address2": "Complément d'adresse 1",
+  "web.gfuc.address2_tip":
+    "Nom de l'entreprise/Complément d'adresse pour zone isolée/Zone industrielle/Activité commerciale",
+  "web.gfuc.address3": "Complément d'adresse 2",
+  "web.gfuc.address3_tip": "Nom du lotissement/Numéro de bâtiment/de couloir",
 
-  "web.gfuc.internal_number": "Numéro interne",
-  "web.gfuc.internal_number_placeholder": "Veuillez entrer le numéro interne",
-  "web.gfuc.external_number": "Numéro externe",
-  "web.gfuc.external_number_placeholder": "Veuillez entrer le numéro externe",
+  "web.gfuc.internal_number": "Numéro interne（Numéro de commande）",
+  "web.gfuc.internal_number_placeholder":
+    "Veuillez entrer le numéro interne（Numéro de commande）",
+  "web.gfuc.external_number": "Numéro externe（Numéro de commande）",
+  "web.gfuc.external_number_placeholder":
+    "Veuillez entrer le numéro externe（Numéro de commande）",
 
   "web.gfuc.clear_button_title": "Effacer",
   "web.gfuc.edit_button_title": "Modifier",
 
   "web.gfuc.consignee_info_placeholder":
     "Veuillez remplir les informations du destinataire",
+  "web.gfuc.remark": "Remarque",
 
   "web.gfuc.product_info": "Informations produit",
   "web.gfuc.express_delivery": "Express",
@@ -193,6 +200,12 @@ export default {
   "web.gfuc.channel_code": "Code canal",
   "web.gfuc.enter_channel_code": "Veuillez entrer le code canal",
   "web.gfuc.submit_order": "Soumettre la commande",
+  "web.gfuc.submit_recharge": "Soumettre la recharge",
+  "web.gfuc.recharge_success": "Recharge réussie",
+  "web.gfuc.recharge_success_description":
+    "Votre demande de recharge a été soumise. Nous prévoyons de traiter votre recharge dans un délai d'un jour ouvrable.",
+  "web.gfuc.view_recharge_record": "Voir l'historique de recharge",
+  "web.gfuc.continue_recharge": "Continuer la recharge",
   "web.gfuc.please_enter": "Veuillez entrer",
   "web.gfuc.print_order": "Imprimer la commande",
   "web.gfuc.edit_order": "Modifier la commande",
@@ -264,6 +277,7 @@ export default {
     "Vous êtes sur le point d'imprimer des étiquettes d'expédition, {count} commandes sélectionnées, confirmer l'impression ?",
   "web.gfuc.batch_print_success":
     "Impression par lot de {count} commandes démarrée",
+  "web.gfuc.printing_order": "Impression en cours, veuillez patienter",
   "web.gfuc.select_orders_first":
     "Veuillez d'abord sélectionner les commandes à imprimer",
   "web.gfuc.unusual_type": "Type anomalo",
@@ -283,5 +297,48 @@ export default {
   "web.gfuc.weight_range": "Poids du colis doit être entre 0.001-50kg",
   "web.gfuc.dimension_range": "Rang doit être entre 1-150cm",
   "web.gfuc.total_range":
-    "Longueur, largeur et hauteur totales doivent être inférieures à 150cm"
+    "Longueur, largeur et hauteur totales doivent être inférieures à 150cm",
+
+  // 批量下单
+  "web.gfuc.batch_order_template_download":
+    "Télécharger le modèle de commande par lot",
+  "web.gfuc.upload_task": "Tâche d'upload",
+  "web.gfuc.upload_task_tip":
+    "Veuillez assurer que le format de fichier téléchargé est correct, sinon cela peut entraîner des erreurs de création de commande.",
+  "web.gfuc.upload_task_file_format_tip":
+    "Supporte les formats xls, xlsx, taille de fichier jusqu'à 10MB, max 500 commandes par fichier upload",
+  "web.gfuc.upload_task_total_prefix": "Nombre total de commandes uploadées",
+  "web.gfuc.upload_task_suffix": "commandes",
+  "web.gfuc.upload_task_success_prefix": "Succès",
+  "web.gfuc.upload_task_failed_prefix": "Échec",
+  "web.gfuc.upload_task_button_text": "Cliquer pour uploader le fichier",
+  "web.gfuc.download_error_data": "Télécharger les données d'erreur uploadées",
+  "web.gfuc.row_number": "Numéro de ligne uploadée",
+  "web.gfuc.error_message": "Message d'erreur",
+  "web.gfuc.copy_success": "Copie réussie",
+
+  "web.gfuc.upload_result": "Résultat de l'upload",
+  "web.gfuc.upload_success": "Upload réussiie",
+  "web.gfuc.uploading": "Upload en cours",
+  "web.gfuc.uploading_tip":
+    "Le fichier est en cours de téléchargement, veuillez patienter",
+  "web.gfuc.upload_exceed_tip":
+    "Vous ne pouvez télécharger que {limit} fichiers maximum",
+  "web.gfuc.upload_failed": "Téléchargement échoué",
+  "web.gfuc.please_agree_and_check_the_agreement":
+    "Veuillez accepter et cocher la convention",
+  "web.gfuc.task_management": "Gestion des tâches",
+  "web.gfuc.task_list": "Liste des tâches",
+  "web.gfuc.file_name": "Nom du fichier",
+  "web.gfuc.date": "Date",
+  "web.gfuc.type": "Type",
+  "web.gfuc.status": "Statut",
+  "web.gfuc.total_orders": "Commandes totales",
+  "web.gfuc.success": "Succès",
+  "web.gfuc.error": "Erreur",
+  "web.gfuc.download": "Télécharger",
+  "web.gfuc.download_original_file": "Télécharger le fichier source",
+  "web.gfuc.upload_task_tooltip":
+    "Les tâches de téléchargement vous permettent de consulter tous les historiques de téléchargement",
+  "web.gfuc.order_file": "Fichier de bordereau"
 };

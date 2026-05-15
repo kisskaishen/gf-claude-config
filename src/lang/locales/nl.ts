@@ -5,14 +5,14 @@ export default {
   "web.gfuc.batch_order": "Batchbestelling",
   "web.gfuc.order_list": "Orderlijst",
   "web.gfuc.financial_management": "Financieel beheer",
-  "web.gfuc.message_notification_settings": "Berichtnotificatie instellingen",
+  "web.gfuc.message_subscription": "Berichtenabonnement",
   "web.gfuc.recharge": "Opwaarderen",
   "web.gfuc.recharge_record": "Opwaarderingsgeschiedenis",
   "web.gfuc.balance": "Saldo",
   "web.gfuc.bill": "Factuur",
   "web.gfuc.problem_piece_management": "Beheer probleemzendingen",
   "web.gfuc.problem_piece_view": "Probleemzendingen bekijken",
-  "web.gfuc.register_agreement": "Aanmeldingsovereenkomst",
+  "web.gfuc.register_agreement": "Gebruikersovereenkomst",
   "web.gfuc.privacy_policy": "Privacybeleid",
   "web.gfuc.agreement":
     "Ik accepteer de {register_agreement} en {privacy_policy}",
@@ -104,8 +104,8 @@ export default {
   "web.gfuc.please_enter_area": "Vul het gebied in",
   "web.gfuc.city": "Stad",
   "web.gfuc.please_enter_city": "Vul de stad in",
-  "web.gfuc.state": "Staat",
-  "web.gfuc.please_enter_state": "Vul de staat in",
+  "web.gfuc.state": "Staat/Provincie",
+  "web.gfuc.please_enter_state": "Vul de staat/provincie in",
   "web.gfuc.country": "Land",
   "web.gfuc.please_enter_country": "Vul het land in",
   "web.gfuc.next_step": "Volgende stap",
@@ -116,19 +116,26 @@ export default {
 
   // Ontvanger Informatie Component
   "web.gfuc.consignee_info_title": "Informatie ontvanger",
-
+  "web.gfuc.street": "Straat",
+  "web.gfuc.please_enter_street": "Voer de straat in",
   "web.gfuc.address2": "Adresregel 2",
+  "web.gfuc.address2_tip":
+    "Bedrijfsnaam/Aanvulling afgelegen gebied/Industriezone/Commerciële activiteit",
   "web.gfuc.address3": "Adresregel 3",
+  "web.gfuc.address3_tip": "Wooncomplexnaam/Gangnummer/Portieknummer",
 
-  "web.gfuc.internal_number": "Intern nummer",
-  "web.gfuc.internal_number_placeholder": "Voer het interne nummer in",
-  "web.gfuc.external_number": "Extern nummer",
-  "web.gfuc.external_number_placeholder": "Voer het externe nummer in",
+  "web.gfuc.internal_number": "Intern nummer（Nummer bestelling）",
+  "web.gfuc.internal_number_placeholder":
+    "Voer het interne nummer in（Nummer bestelling）",
+  "web.gfuc.external_number": "Extern nummer（Nummer bestelling）",
+  "web.gfuc.external_number_placeholder":
+    "Voer het externe nummer in（Nummer bestelling）",
 
   "web.gfuc.clear_button_title": "Wissen",
   "web.gfuc.edit_button_title": "Bewerken",
 
   "web.gfuc.consignee_info_placeholder": "Vul de ontvangergegevens in",
+  "web.gfuc.remark": "Aanmerking",
 
   "web.gfuc.product_info": "Productinformatie",
   "web.gfuc.express_delivery": "Express",
@@ -176,6 +183,12 @@ export default {
   "web.gfuc.channel_code": "Kanaalcode",
   "web.gfuc.enter_channel_code": "Voer de kanaalcode in",
   "web.gfuc.submit_order": "Bestel order",
+  "web.gfuc.submit_recharge": "Herlaadverzoek indienen",
+  "web.gfuc.recharge_success": "Herladen geslaagd",
+  "web.gfuc.recharge_success_description":
+    "Uw herlaadverzoek is ingediend. Wij verwachten uw herlading binnen één werkdag te verwerken.",
+  "web.gfuc.view_recharge_record": "Bekijk herlaadgeschiedenis",
+  "web.gfuc.continue_recharge": "Doorgaan met herladen",
   "web.gfuc.please_enter": "Voer",
   "web.gfuc.print_order": "Print order",
   "web.gfuc.edit_order": "Bewerk order",
@@ -247,6 +260,7 @@ export default {
     "U staat op het punt verzendetiketten af te drukken, {count} bestellingen geselecteerd, afdrukken bevestigen?",
   "web.gfuc.batch_print_success":
     "Gestart met batch afdrukken van {count} bestellingen",
+  "web.gfuc.printing_order": "Bezig met afdrukken, even geduld a.u.b.",
   "web.gfuc.select_orders_first":
     "Selecteer eerst bestellingen om af te drukken",
   "web.gfuc.unusual_type": "Type anomalo",
@@ -266,5 +280,45 @@ export default {
   "web.gfuc.weight_range": "Poids del colis deve essere tra 0.001-50kg",
   "web.gfuc.dimension_range": "Rang deve essere tra 1-150cm",
   "web.gfuc.total_range":
-    "Lunghezza, larghezza e altezza totalali devono essere inferiore a 150cm"
+    "Lunghezza, larghezza e altezza totalali devono essere inferiore a 150cm",
+
+  // 批量下单
+  "web.gfuc.batch_order_template_download":
+    "Télécharger le modèle de commande par lot",
+  "web.gfuc.upload_task": "Tâche d'upload",
+  "web.gfuc.upload_task_tip":
+    "Veuillez assurer que le format de fichier téléchargé est correct, sinon cela peut entraîner des erreurs de création de commande.",
+  "web.gfuc.upload_task_file_format_tip":
+    "Supporte les formats xls, xlsx, taille de fichier jusqu'à 10MB, max 500 commandes par fichier upload",
+  "web.gfuc.upload_task_total_prefix": "Nombre total de commandes uploadées",
+  "web.gfuc.upload_task_suffix": "commandes",
+  "web.gfuc.upload_task_success_prefix": "Succès",
+  "web.gfuc.upload_task_failed_prefix": "Échec",
+  "web.gfuc.upload_task_button_text": "Klik om upload bestand te upload",
+  "web.gfuc.download_error_data": "Télécharger les données d'erreur uploadées",
+  "web.gfuc.row_number": "Numéro de ligne uploadée",
+  "web.gfuc.error_message": "Message d'erreur",
+  "web.gfuc.copy_success": "Copie réussie",
+  "web.gfuc.upload_result": "Upload resultaat",
+  "web.gfuc.upload_success": "Upload succesvol",
+  "web.gfuc.uploading": "Uploaden",
+  "web.gfuc.uploading_tip": "Bestand wordt geüpload, even geduld a.u.b.",
+  "web.gfuc.upload_exceed_tip": "U kunt maximaal {limit} bestanden uploaden",
+  "web.gfuc.upload_failed": "Upload mislukt",
+  "web.gfuc.please_agree_and_check_the_agreement":
+    "Ga akkoord en vink de overeenkomst aan",
+  "web.gfuc.task_management": "Taakbeheer",
+  "web.gfuc.task_list": "Takenlijst",
+  "web.gfuc.file_name": "Bestandsnaam",
+  "web.gfuc.date": "Datum",
+  "web.gfuc.type": "Type",
+  "web.gfuc.status": "Status",
+  "web.gfuc.total_orders": "Totaal aantal bestellingen",
+  "web.gfuc.success": "Succes",
+  "web.gfuc.error": "Fout",
+  "web.gfuc.download": "Downloaden",
+  "web.gfuc.download_original_file": "Download bronbestand",
+  "web.gfuc.upload_task_tooltip":
+    "Uploadtaken geven u de mogelijkheid om alle historische uploadrecords te bekijken",
+  "web.gfuc.order_file": "Vrachtbrief bestand"
 };

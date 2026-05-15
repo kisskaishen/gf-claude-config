@@ -113,6 +113,14 @@ export function getSenderName(params: { customerId: string | number }) {
   });
 }
 
+// 根据市获取邮编
+export function getPostcodeByCity(data: { cityId: string; stateId: string }) {
+  return request({
+    url: `/delivery/system/listAddressByCityOrState?cityId=${data.cityId}&stateId=${data.stateId}`,
+    method: "post"
+  });
+}
+
 //  根据邮政编码获取地址
 export function getAddressByCode(data: { postcode: string }) {
   return request({
@@ -189,6 +197,49 @@ export function cancelOrder(data: {
 }) {
   return request({
     url: "/oms/cancel",
+    method: "post",
+    data
+  });
+}
+
+// 批量下单
+
+// 下载模板
+export function downloadOrderTemplate() {
+  return request({
+    url: "/oms/order/downloadTemplate",
+    method: "get",
+    responseType: "blob"
+  });
+}
+// 上传订单并下单
+export function uploadOrder(data: any) {
+  return request({
+    url: "/oms/order/importExcel",
+    method: "post",
+    data
+  });
+}
+// 上传结果以及数据查询
+export function getOrderImportResult(taskId: string) {
+  return request({
+    url: `/taskCenter/getOrderImportItem?taskId=${taskId}`,
+    method: "get"
+  });
+}
+
+// 下载失败订单数据
+export function downloadFailedOrderData(fileKey: string) {
+  return request({
+    url: `/file/download?fileKey=${fileKey}`,
+    method: "get"
+  });
+}
+
+// 渠道编码
+export function queryProductChannelCode(data: { country: string }) {
+  return request({
+    url: "/plm/product/queryProductChannelCode",
     method: "post",
     data
   });

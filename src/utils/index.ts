@@ -1,5 +1,5 @@
 import { ElMessage } from "element-plus";
-
+import { i18n } from "@/lang";
 /**
  * 复制文本到剪贴板
  * @param {String} text 要复制的文本
@@ -7,14 +7,13 @@ import { ElMessage } from "element-plus";
 export const copyText = async (text) => {
   // 空值判断
   if (!text) {
-    ElMessage.warning("复制内容不能为空");
     return false;
   }
 
   try {
     // 现代浏览器 API
     await navigator.clipboard.writeText(text);
-    ElMessage.success("复制成功");
+    ElMessage.success(i18n.global.t("web.gfuc.copy_success"));
     return true;
   } catch (err) {
     // 降级兼容（部分浏览器/环境不支持 navigator.clipboard）
@@ -25,7 +24,7 @@ export const copyText = async (text) => {
     document.execCommand("copy");
     document.body.removeChild(textArea);
 
-    ElMessage.success("复制成功");
+    ElMessage.success(i18n.global.t("web.gfuc.copy_success"));
     return true;
   }
 };

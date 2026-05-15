@@ -137,6 +137,9 @@ import PageContainer from "@/components/PageContainer/index.vue";
 import { useI18n } from "vue-i18n";
 import { useDict } from "@/hooks/useDict";
 import { getRechargeRecord } from "@/api/finance";
+import { useAppStore } from "@/store/app";
+
+const appStore = useAppStore();
 
 defineOptions({
   name: "RechargeRecord"
@@ -220,14 +223,32 @@ const getStatusClass = (status: Status) => {
   }
 };
 
+const timezone = computed(() => appStore.timezone);
+watch(
+  () => timezone.value,
+  (val) => {
+    fetchData();
+  }
+);
 const fetchData = async () => {
   loading.value = true;
+
+  let status = [];
+  status.push(...searchForm.value.status);
+  if (searchForm.value.status.find((item) => item === 1) > -1) {
+    status.push(3);
+  }
+  if (searchForm.value.status.find((item) => item === 5) > -1) {
+    status.push(4);
+  }
+
+  console.log(status, searchForm.value.status);
   try {
     const res = await getRechargeRecord({
       pageNumber: currentPage.value,
       pageSize: pageSize.value,
       receiptMethod: searchForm.value.paymentMethod,
-      status: searchForm.value.status,
+      status: status,
       ...(searchForm.value.dateType === DateType.Submit
         ? {
             submitStart: searchForm.value.dateRange?.[0] || "",
@@ -239,7 +260,15 @@ const fetchData = async () => {
           })
     });
     if (res) {
-      tableData.value = res.items || [];
+      tableData.value =
+        res.items.map((item) => ({
+          ...item,
+          status: [1, 3].includes(item.status)
+            ? 1
+            : [4, 5].includes(item.status)
+              ? 5
+              : item.status
+        })) || [];
       total.value = res.totalCount || 0;
     }
   } finally {

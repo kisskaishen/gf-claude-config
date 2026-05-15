@@ -16,6 +16,7 @@
                 ? 'default'
                 : 'primary'
             "
+            :loading="loading"
             @click="onSubmit"
             :disabled="
               !completedSteps.includes(4) &&
@@ -46,13 +47,19 @@ const props = defineProps({
   }
 });
 
+const loading = ref(false);
+
 const currentStep = computed(() => props.currentStep);
 const completedSteps = computed(() => props.completedSteps);
 
 const emit = defineEmits(["submit"]);
 
 const onSubmit = () => {
+  loading.value = true;
   emit("submit");
+  setTimeout(() => {
+    loading.value = false;
+  }, 1200);
 };
 </script>
 

@@ -13,6 +13,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AuthModal: typeof import('./src/components/AuthView/AuthModal.vue')['default']
     AuthView: typeof import('./src/components/AuthView/index.vue')['default']
+    CommonUpload: typeof import('./src/components/CommonUpload/index.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
@@ -61,6 +62,7 @@ declare module 'vue' {
     SearchContainer: typeof import('./src/components/SearchContainer/index.vue')['default']
     SelectDropdown: typeof import('./src/components/SelectDropdown/index.vue')['default']
     SiteSelect: typeof import('./src/components/SiteSelect/index.vue')['default']
+    SuccessDialog: typeof import('./src/components/SuccessDialog/index.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
     TableLayout: typeof import('./src/components/TableLayout/index.vue')['default']
     TimezoneSelect: typeof import('./src/components/TimezoneSelect/index.vue')['default']
