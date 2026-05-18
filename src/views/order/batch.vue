@@ -47,7 +47,7 @@
               filterable
               :placeholder="$t('web.gfuc.please_select_order_account')"
               @change="handleCustomerChange"
-              style="width: 380px"
+              style="width: 800px"
             >
               <el-option
                 v-for="item in shipperOptions"
@@ -64,12 +64,13 @@
         v-model="fileList"
         :http-request="customHttpRequest"
         type="file"
-        :width="380"
-        :dragAreaWidth="380"
+        :width="800"
+        :dragAreaWidth="800"
         :dragAreaHeight="194"
         drag
         :multiple="true"
         :limit="1"
+        :needFrontMsg="false"
         :progress="taskStatus"
         :buttonText="$t('web.gfuc.upload_task_button_text')"
         accept=".xls,.xlsx"

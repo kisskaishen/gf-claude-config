@@ -419,6 +419,11 @@ const props = defineProps({
   progress: {
     type: Number,
     default: 0
+  },
+  // 是否需要前端提示
+  needFrontMsg: {
+    type: Boolean,
+    default: true
   }
 });
 
@@ -763,14 +768,18 @@ const handleBeforeUpload = async (file) => {
 
 // 上传成功
 const handleSuccess = (response, file, fileListData) => {
-  ElMessage.success(`${file.name} ${t("web.gfuc.upload_success")}`);
+  if (props.needFrontMsg) {
+    ElMessage.success(`${file.name} ${t("web.gfuc.upload_success")}`);
+  }
   fileList.value = fileListData;
   emit("success", response, file, fileListData);
 };
 
 // 上传失败
 const handleError = (error, file, fileListData) => {
-  ElMessage.error(`${file.name} ${t("web.gfuc.upload_failed")}`);
+  if (props.needFrontMsg) {
+    ElMessage.error(`${file.name} ${t("web.gfuc.upload_failed")}`);
+  }
   emit("error", error, file, fileListData);
 };
 
@@ -1016,6 +1025,11 @@ defineExpose({
   }
 
   :deep(.el-upload-dragger) {
+    border-color: #e5e7eb;
+    padding: 80px 10px;
+    &:hover {
+      border-color: var(--el-color-primary);
+    }
     &.has-custom-width,
     &.has-custom-height {
       width: var(--drag-width, 360px);
