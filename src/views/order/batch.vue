@@ -283,7 +283,11 @@ const customHttpRequest = async (options) => {
   importTaskId.value = res;
   if (importTaskId.value) {
     // 启动5秒轮询，直到任务完成（状态为2）
-    startPolling((result) => result?.taskStatus === 2, getImportResult, 5000);
+    startPolling(
+      (result) => result?.taskStatus === 2 || result?.taskStatus === 3,
+      getImportResult,
+      5000
+    );
   }
 };
 
