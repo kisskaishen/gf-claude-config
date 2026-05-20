@@ -16,7 +16,7 @@
             "gfuc.authorization_instructions" /** 如果您已经跟我们公司签约走货，请联系您的商务帮您进行账号的授权绑定，如果还没商务联系您，请留下您的联系方式，将会派人专门跟进，或者您可用联系我们的邮箱： **/
           )
         }}
-        <a class="tip-link">gofoasle@gofo.com</a>
+        <a class="tip-link">sales.{{ site }}@gofo.com</a>
       </div>
     </div>
 
@@ -133,10 +133,12 @@ import { ElMessage } from "element-plus";
 import { useI18n } from "vue-i18n";
 import { postOpenService } from "@/api/user";
 import { useDict } from "@/hooks/useDict";
-
+import { useAppStore } from "@/store/app";
+const appStore = useAppStore();
 const { t } = useI18n();
 
 const loading = ref(false);
+const site = computed(() => appStore.site.toLowerCase());
 
 const props = defineProps<{
   modelValue: boolean;
