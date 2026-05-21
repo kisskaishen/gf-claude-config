@@ -1,6 +1,10 @@
 <template>
   <page-container :loading="loading">
-    <div class="balance-header">
+    <CommonTitle
+      :title="$t('web.gfuc.balance')"
+      :tip="$t('web.gfuc.balance_tip')"
+    />
+    <div class="mt-6 balance-header">
       <!-- 可下单金额 -->
       <div class="balance-card primary-card">
         <div class="card-content">
@@ -103,6 +107,7 @@
 import { getBalance } from "@/api/finance";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import CommonTitle from "@/components/CommonTitle/index.vue";
 
 defineOptions({
   name: "Balance"

@@ -348,5 +348,13 @@ export default {
     "Quando il codice prodotto è EU003, il numero di tracciamento di terze parti e il codice canale sono obbligatori (questo codice è generato dal nostro sistema, richiedilo a noi durante l'integrazione, deve essere valido)",
   "web.gfuc.batch_import_notice4":
     "Il paese del mittente e il paese del destinatario richiedono il codice paese a due lettere, come mostrato nell'esempio",
-  "web.gfuc.file_uploading": "Il file è in caricamento, attendere prego"
+  "web.gfuc.file_uploading": "Il file è in caricamento, attendere prego",
+  "web.gfuc.batch_order_tip":
+    "Basta importare un documento contenente le informazioni mostrate nel modello per caricare facilmente tutti gli ordini",
+  "web.gfuc.single_ticket_order_tip":
+    "Compila le informazioni dell'ordine logistico uno per uno, adatto per scenari di spedizione sporadica",
+  "web.gfuc.recharge_tip":
+    "Ricarica online per un accredito rapido, garantendo credito di spedizione sufficiente",
+  "web.gfuc.balance_tip":
+    "Visualizza saldo disponibile del conto e importo bloccato"
 };

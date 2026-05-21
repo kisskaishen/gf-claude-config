@@ -1,19 +1,14 @@
 <template>
   <div class="h-full">
     <div class="p-6 mx-auto">
-      <!-- 标题区域 -->
-      <div class="mb-8">
-        <h1 class="mb-2 text-xl font-bold text-gray-800">
-          {{ $t("web.gfuc.message_notification") }}
-        </h1>
-        <p class="text-sm text-info">
-          {{ $t("web.gfuc.balance_low_reminder_tip") }}
-        </p>
-      </div>
+      <CommonTitle
+        :title="$t('web.gfuc.message_notification')"
+        :tip="$t('web.gfuc.balance_low_reminder_tip')"
+      />
 
       <!-- 余额不足提醒卡片 -->
       <div
-        class="p-6 mb-4 bg-white border border-t-4 border-orange-200 rounded-lg shadow-sm border-t-orange-500"
+        class="p-6 mt-6 mb-4 bg-white border border-t-4 border-orange-200 rounded-lg shadow-sm border-t-orange-500"
       >
         <div class="flex items-center justify-between">
           <div class="flex items-center">
@@ -116,6 +111,7 @@ import { updateBalanceAlertConfig } from "@/api/finance";
 import { getBalanceAlertConfig } from "@/api/finance";
 import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
+import CommonTitle from "@/components/CommonTitle/index.vue";
 
 const userInfo = useUserStore();
 

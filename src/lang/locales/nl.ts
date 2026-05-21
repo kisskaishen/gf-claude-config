@@ -339,5 +339,13 @@ export default {
     "Wanneer de productcode EU003 is, zijn het trackingnummer van derden en het kanaalcode verplicht (deze code wordt gegenereerd door ons systeem, verkrijg deze van ons tijdens integratie, moet geldig zijn)",
   "web.gfuc.batch_import_notice4":
     "Het land van de afzender en het land van de ontvanger vereisen de tweeletterige landcode, zoals weergegeven in het voorbeeld",
-  "web.gfuc.file_uploading": "Bestand wordt geüpload, even geduld a.u.b."
+  "web.gfuc.file_uploading": "Bestand wordt geüpload, even geduld a.u.b.",
+  "web.gfuc.batch_order_tip":
+    "Importeer eenvoudig een document met de informatie uit het sjabloon en u kunt eenvoudig alle bestellingen uploaden",
+  "web.gfuc.single_ticket_order_tip":
+    "Vul de logistieke bestellingsgegevens één voor één in, geschikt voor sporadische verzendscenario's",
+  "web.gfuc.recharge_tip":
+    "Laad online op voor snelle bijschrijving, waardoor voldoende verzendkrediet wordt gegarandeerd",
+  "web.gfuc.balance_tip":
+    "Bekijk beschikbaar saldo en bevroren bedrag van uw account"
 };

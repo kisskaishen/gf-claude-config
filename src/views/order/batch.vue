@@ -1,16 +1,27 @@
 <template>
   <div class="p-6 rounded order-batch">
-    <div class="mb-6 text-lg font-bold">
+    <CommonTitle
+      :title="$t('web.gfuc.batch_order')"
+      :tip="$t('web.gfuc.batch_order_tip')"
+    />
+    <div class="mt-4 mb-6 text-lg font-bold">
       <div class="flex items-center justify-between">
-        <el-button type="primary" link @click="downloadTemplate">
-          <svg-icon
-            name="upload-download"
-            width="24"
-            height="24"
-            class="mr-2"
-          />
-          {{ $t("web.gfuc.batch_order_template_download") }}
-        </el-button>
+        <div
+          class="p-4 text-sm text-[#BBBDBF] border border-orange-100 w-[800px] rounded-lg bg-orange-50 flex justify-between items-center"
+        >
+          <div>
+            {{ $t("web.gfuc.upload_task_tip") }}
+            <el-button type="primary" link @click="downloadTemplate">
+              <svg-icon
+                name="upload-download"
+                width="24"
+                height="24"
+                class="mr-2"
+              />
+              {{ $t("web.gfuc.batch_order_template_download") }}
+            </el-button>
+          </div>
+        </div>
         <el-tooltip
           :content="$t('web.gfuc.upload_task_tooltip')"
           placement="bottom"
@@ -28,9 +39,10 @@
       </div>
       <div class="flex mt-2">
         <div>
-          <div class="tips text-sm text-[#BBBDBF]">
+          <!-- <div class="tips text-sm text-[#BBBDBF]">
             {{ $t("web.gfuc.upload_task_tip") }}
-          </div>
+          </div> -->
+
           <div class="mt-2">
             <el-form
               ref="formRef"
@@ -258,6 +270,7 @@ import {
   downloadFailedOrderData
 } from "@/api/order";
 import SuccessDialog from "@/components/SuccessDialog/index.vue";
+import CommonTitle from "@/components/CommonTitle/index.vue";
 
 import { useAppStore } from "@/store/app";
 import { useUserStore } from "@/store/user";
