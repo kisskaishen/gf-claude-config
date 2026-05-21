@@ -286,7 +286,7 @@ onMounted(() => {
   padding: 2px 8px;
   font-size: var(--font-size-base);
   white-space: nowrap;
-  border-radius: 2px;
+  border-radius: 12px;
 }
 
 .status-pending {
