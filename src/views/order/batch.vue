@@ -159,11 +159,11 @@
             </div>
             <!-- 注意事项 -->
             <div class="pt-4 mt-4 border-t border-gray-200">
-              <p class="mb-2 font-normal text-info">
+              <p class="mb-2 font-normal text-[#f5a380]">
                 ⚠️ {{ $t("web.gfuc.batch_import_notice_title") }}
               </p>
               <ul
-                class="space-y-1 list-none text-sm text-[#BBBDBF] font-normal"
+                class="space-y-1 text-sm font-normal list-none text-[#f5a380]"
               >
                 <li>1、{{ $t("web.gfuc.batch_import_notice1") }}</li>
                 <li>2、{{ $t("web.gfuc.batch_import_notice2") }}</li>
