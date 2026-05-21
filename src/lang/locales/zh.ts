@@ -315,5 +315,20 @@ export default {
   "web.gfuc.order_file": "面单文件",
   "web.gfuc.order_success_description": "您已成功下单 { successCount } 条",
   "web.gfuc.continue_upload": "继续上传",
-  "web.gfuc.order_success": "下单成功"
+  "web.gfuc.order_success": "下单成功",
+
+  "web.gfuc.batch_import_title": "批量导入操作说明",
+  "web.gfuc.batch_import_step1": "下载官方模板",
+  "web.gfuc.batch_import_step2": "填写订单信息",
+  "web.gfuc.batch_import_step3": "选择下单账户",
+  "web.gfuc.batch_import_step4": "上传并确认",
+  "web.gfuc.batch_import_notice_title": "注意事项",
+  "web.gfuc.batch_import_notice1":
+    "模版第一行是示例数据，请先删除或覆盖它再填写您的订单。",
+  "web.gfuc.batch_import_notice2": "产品编码需要找商务提供",
+  "web.gfuc.batch_import_notice3":
+    "当产品编码为EU003第三方跟踪号和渠道编码必填(该编码由我方系统生成，对接时找我方获取，必须有效)",
+  "web.gfuc.batch_import_notice4":
+    "寄件人国家和收件人国家需要填写国家二字码，如示例所示",
+  "web.gfuc.file_uploading": "文件正在上传中，请稍等"
 };

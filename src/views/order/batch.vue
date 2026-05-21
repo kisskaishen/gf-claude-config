@@ -102,7 +102,7 @@
                 d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               ></path>
             </svg>
-            批量导入操作说明
+            {{ $t("web.gfuc.batch_import_title") }}
           </h3>
           <div class="space-y-2 text-sm text-gray-600">
             <!-- 步骤1 -->
@@ -113,7 +113,9 @@
                 1
               </div>
               <div>
-                <p class="font-normal text-info">下载官方模板</p>
+                <p class="font-normal text-info">
+                  {{ $t("web.gfuc.batch_import_step1") }}
+                </p>
               </div>
             </div>
             <!-- 步骤2 -->
@@ -124,7 +126,9 @@
                 2
               </div>
               <div>
-                <p class="font-normal text-info">填写订单信息</p>
+                <p class="font-normal text-info">
+                  {{ $t("web.gfuc.batch_import_step2") }}
+                </p>
               </div>
             </div>
             <!-- 步骤3 -->
@@ -135,7 +139,9 @@
                 3
               </div>
               <div>
-                <p class="font-normal text-info">选择下单账户</p>
+                <p class="font-normal text-info">
+                  {{ $t("web.gfuc.batch_import_step3") }}
+                </p>
               </div>
             </div>
             <!-- 步骤4 -->
@@ -146,23 +152,23 @@
                 4
               </div>
               <div>
-                <p class="font-normal text-info">上传并确认</p>
+                <p class="font-normal text-info">
+                  {{ $t("web.gfuc.batch_import_step4") }}
+                </p>
               </div>
             </div>
             <!-- 注意事项 -->
             <div class="pt-4 mt-4 border-t border-gray-200">
-              <p class="mb-2 font-normal text-info">⚠️ 注意事项</p>
+              <p class="mb-2 font-normal text-info">
+                ⚠️ {{ $t("web.gfuc.batch_import_notice_title") }}
+              </p>
               <ul
                 class="space-y-1 list-none text-sm text-[#BBBDBF] font-normal"
               >
-                <li>
-                  1、模版第一行是示例数据，请先删除或覆盖它再填写您的订单。
-                </li>
-                <li>2、产品编码需要找商务提供</li>
-                <li>
-                  3、当产品编码为EU003第三方跟踪号和渠道编码必填(该编码由我方系统生成，对接时找我方获取，必须有效)
-                </li>
-                <li>4、寄件人国家和收件人国家需要填写国家二字码，如示例所示</li>
+                <li>1、{{ $t("web.gfuc.batch_import_notice1") }}</li>
+                <li>2、{{ $t("web.gfuc.batch_import_notice2") }}</li>
+                <li>3、{{ $t("web.gfuc.batch_import_notice3") }}</li>
+                <li>4、{{ $t("web.gfuc.batch_import_notice4") }}</li>
               </ul>
             </div>
           </div>
@@ -190,7 +196,7 @@
           {{ $t("web.gfuc.upload_task_suffix") }}
         </div>
         <div class="text-sm font-normal text-text-placeholder" v-else>
-          文件正在上传中，请稍等
+          {{ $t("web.gfuc.file_uploading") }}
         </div>
 
         <el-button

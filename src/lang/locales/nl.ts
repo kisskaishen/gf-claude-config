@@ -324,5 +324,20 @@ export default {
   "web.gfuc.order_success_description":
     "U heeft succesvol { successCount } bestelling(en) geplaatst",
   "web.gfuc.continue_upload": "Doorgaan met uploaden",
-  "web.gfuc.order_success": "Bestelling succesvol geplaatst"
+  "web.gfuc.order_success": "Bestelling succesvol geplaatst",
+  "web.gfuc.batch_import_title": "Instructies voor bulkimport",
+  "web.gfuc.batch_import_step1": "Download officieel sjabloon",
+  "web.gfuc.batch_import_step2": "Vul bestellingsgegevens in",
+  "web.gfuc.batch_import_step3": "Selecteer bestelaccount",
+  "web.gfuc.batch_import_step4": "Upload en bevestig",
+  "web.gfuc.batch_import_notice_title": "Belangrijke opmerkingen",
+  "web.gfuc.batch_import_notice1":
+    "De eerste rij van het sjabloon bevat voorbeeldgegevens. Verwijder of overschrijf deze voordat u uw bestellingen invult.",
+  "web.gfuc.batch_import_notice2":
+    "Productcode moet worden verkregen van het commerciële team",
+  "web.gfuc.batch_import_notice3":
+    "Wanneer de productcode EU003 is, zijn het trackingnummer van derden en het kanaalcode verplicht (deze code wordt gegenereerd door ons systeem, verkrijg deze van ons tijdens integratie, moet geldig zijn)",
+  "web.gfuc.batch_import_notice4":
+    "Het land van de afzender en het land van de ontvanger vereisen de tweeletterige landcode, zoals weergegeven in het voorbeeld",
+  "web.gfuc.file_uploading": "Bestand wordt geüpload, even geduld a.u.b."
 };

@@ -333,5 +333,20 @@ export default {
   "web.gfuc.order_success_description":
     "Hai effettuato con successo { successCount } ordine(i)",
   "web.gfuc.continue_upload": "Continua il caricamento",
-  "web.gfuc.order_success": "Ordine effettuato con successo"
+  "web.gfuc.order_success": "Ordine effettuato con successo",
+  "web.gfuc.batch_import_title": "Istruzioni per l'importazione massiva",
+  "web.gfuc.batch_import_step1": "Scarica modello ufficiale",
+  "web.gfuc.batch_import_step2": "Compila le informazioni dell'ordine",
+  "web.gfuc.batch_import_step3": "Seleziona account ordine",
+  "web.gfuc.batch_import_step4": "Carica e conferma",
+  "web.gfuc.batch_import_notice_title": "Note importanti",
+  "web.gfuc.batch_import_notice1":
+    "La prima riga del modello sono dati di esempio. Eliminala o sovrascrivila prima di compilare i tuoi ordini.",
+  "web.gfuc.batch_import_notice2":
+    "Il codice prodotto deve essere ottenuto dal team commerciale",
+  "web.gfuc.batch_import_notice3":
+    "Quando il codice prodotto è EU003, il numero di tracciamento di terze parti e il codice canale sono obbligatori (questo codice è generato dal nostro sistema, richiedilo a noi durante l'integrazione, deve essere valido)",
+  "web.gfuc.batch_import_notice4":
+    "Il paese del mittente e il paese del destinatario richiedono il codice paese a due lettere, come mostrato nell'esempio",
+  "web.gfuc.file_uploading": "Il file è in caricamento, attendere prego"
 };

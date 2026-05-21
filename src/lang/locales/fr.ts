@@ -344,5 +344,21 @@ export default {
   "web.gfuc.order_success_description":
     "Vous avez passé avec succès { successCount } commande(s)",
   "web.gfuc.continue_upload": "Continuer le téléchargement",
-  "web.gfuc.order_success": "Commande réussie"
+  "web.gfuc.order_success": "Commande réussie",
+  "web.gfuc.batch_import_title": "Instructions d'importation groupée",
+  "web.gfuc.batch_import_step1": "Télécharger le modèle officiel",
+  "web.gfuc.batch_import_step2": "Remplir les informations de commande",
+  "web.gfuc.batch_import_step3": "Sélectionner le compte de commande",
+  "web.gfuc.batch_import_step4": "Télécharger et confirmer",
+  "web.gfuc.batch_import_notice_title": "Remarques importantes",
+  "web.gfuc.batch_import_notice1":
+    "La première ligne du modèle est un exemple de données. Veuillez la supprimer ou la remplacer avant de remplir vos commandes.",
+  "web.gfuc.batch_import_notice2":
+    "Le code produit doit être obtenu auprès de l'équipe commerciale",
+  "web.gfuc.batch_import_notice3":
+    "Lorsque le code produit est EU003, le numéro de suivi tiers et le code canal sont obligatoires (ce code est généré par notre système, veuillez nous le demander lors de l'intégration, doit être valide)",
+  "web.gfuc.batch_import_notice4":
+    "Le pays de l'expéditeur et le pays du destinataire nécessitent le code pays à deux lettres, comme indiqué dans l'exemple",
+  "web.gfuc.file_uploading":
+    "Le fichier est en cours de téléchargement, veuillez patienter"
 };
