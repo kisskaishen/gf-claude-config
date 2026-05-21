@@ -285,7 +285,7 @@ export default {
   // 批量下单
   "web.gfuc.batch_order_template_download":
     "Télécharger le modèle de commande par lot",
-  "web.gfuc.upload_task": "Tâche d'upload",
+  "web.gfuc.upload_task": "Uploadgeschiedenis",
   "web.gfuc.upload_task_tip":
     "Veuillez assurer que le format de fichier téléchargé est correct, sinon cela peut entraîner des erreurs de création de commande.",
   "web.gfuc.upload_task_file_format_tip":
@@ -315,10 +315,29 @@ export default {
   "web.gfuc.status": "Status",
   "web.gfuc.total_orders": "Totaal aantal bestellingen",
   "web.gfuc.success": "Succes",
-  "web.gfuc.error": "Fout",
+  "web.gfuc.fail": "Mislukt",
   "web.gfuc.download": "Downloaden",
   "web.gfuc.download_original_file": "Download bronbestand",
   "web.gfuc.upload_task_tooltip":
     "Uploadtaken geven u de mogelijkheid om alle historische uploadrecords te bekijken",
-  "web.gfuc.order_file": "Vrachtbrief bestand"
+  "web.gfuc.order_file": "Vrachtbrief bestand",
+  "web.gfuc.order_success_description":
+    "U heeft succesvol { successCount } bestelling(en) geplaatst",
+  "web.gfuc.continue_upload": "Doorgaan met uploaden",
+  "web.gfuc.order_success": "Bestelling succesvol geplaatst",
+  "web.gfuc.batch_import_title": "Instructies voor bulkimport",
+  "web.gfuc.batch_import_step1": "Download officieel sjabloon",
+  "web.gfuc.batch_import_step2": "Vul bestellingsgegevens in",
+  "web.gfuc.batch_import_step3": "Selecteer bestelaccount",
+  "web.gfuc.batch_import_step4": "Upload en bevestig",
+  "web.gfuc.batch_import_notice_title": "Belangrijke opmerkingen",
+  "web.gfuc.batch_import_notice1":
+    "De eerste rij van het sjabloon bevat voorbeeldgegevens. Verwijder of overschrijf deze voordat u uw bestellingen invult.",
+  "web.gfuc.batch_import_notice2":
+    "Productcode moet worden verkregen van het commerciële team",
+  "web.gfuc.batch_import_notice3":
+    "Wanneer de productcode EU003 is, zijn het trackingnummer van derden en het kanaalcode verplicht (deze code wordt gegenereerd door ons systeem, verkrijg deze van ons tijdens integratie, moet geldig zijn)",
+  "web.gfuc.batch_import_notice4":
+    "Het land van de afzender en het land van de ontvanger vereisen de tweeletterige landcode, zoals weergegeven in het voorbeeld",
+  "web.gfuc.file_uploading": "Bestand wordt geüpload, even geduld a.u.b."
 };

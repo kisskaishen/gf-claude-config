@@ -51,7 +51,7 @@
             label-width="80px"
             label-position="top"
           >
-            <el-row>
+            <!-- <el-row>
               <el-col :span="24">
                 <el-form-item label-width="0">
                   <el-radio-group v-model="formData.productType">
@@ -64,7 +64,7 @@
                   </el-radio-group>
                 </el-form-item>
               </el-col>
-            </el-row>
+            </el-row> -->
 
             <el-row>
               <el-col :span="24">
@@ -156,13 +156,13 @@
 
         <div v-else class="summary-container">
           <div class="flex-col summary-content">
-            <p class="text-base">
+            <!-- <p class="text-base">
               {{
                 formData.productType === "ECO"
                   ? $t("web.gfuc.express_delivery")
                   : $t("web.gfuc.standard_delivery")
               }}
-            </p>
+            </p> -->
             <div class="radio-group" v-if="formData.productCode">
               <div class="radio-check">
                 <div class="radio-label">{{ formData.productName }}</div>
@@ -445,11 +445,11 @@ defineExpose({
 @use "@/views/order/style/base";
 
 .step-content-form {
-  @apply -mt-2;
+  //  @apply mt-2;
 }
 
 .radio-group {
-  @apply flex flex-col w-full  gap-y-3 -mt-4;
+  @apply flex flex-col w-full  gap-y-3;
 
   .el-radio,
   .radio-check {
@@ -471,7 +471,7 @@ defineExpose({
 
 .summary-content {
   .radio-group {
-    @apply mt-2;
+    // @apply mt-2;
 
     .radio-check {
       @apply flex flex-col  justify-center;

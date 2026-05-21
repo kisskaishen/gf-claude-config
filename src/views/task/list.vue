@@ -16,6 +16,16 @@
           <!-- Search Fields -->
           <!-- task_type task_status -->
           <el-form-item
+            :label="$t('web.gfuc.file_name' /** 文件名称 **/)"
+            prop="fileName"
+          >
+            <el-input
+              v-model="searchForm.fileName"
+              :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
+              clearable
+            />
+          </el-form-item>
+          <el-form-item
             :label="$t('web.gfuc.type' /** 类型 **/)"
             prop="taskType"
           >
@@ -70,6 +80,27 @@
               @change="handleChange"
             />
           </el-form-item>
+          <el-form-item
+            :label="$t('web.gfuc.customer_name' /** 下单客户 **/)"
+            prop="customerId"
+            v-if="customerNameList.length > 1"
+          >
+            <el-select
+              v-model="searchForm.customerIdList"
+              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+              clearable
+              filterable
+              multiple
+              collapse-tags
+            >
+              <el-option
+                v-for="item in customerNameList"
+                :key="item.customerId"
+                :label="item.customerName"
+                :value="item.customerId"
+              />
+            </el-select>
+          </el-form-item>
         </template>
 
         <template #columns>
@@ -82,6 +113,13 @@
             :min-width="item?.minWidth || undefined"
             show-overflow-tooltip
           >
+            <template #default="{ row, index }">
+              <div v-if="item.prop === 'taskStatusName'">
+                <span :class="['status-tag', getStatusClass(row.taskStatus)]">
+                  {{ taskStatusDict.getLabel(row.taskStatus) ?? "-" }}
+                </span>
+              </div>
+            </template>
           </el-table-column>
 
           <el-table-column
@@ -90,7 +128,14 @@
             fixed="right"
           >
             <template #default="{ row, index }">
-              <div class="table-actions">
+              <div class="flex gap-2 table-actions">
+                <!-- <el-tooltip
+                  :content="$t('web.gfuc.view_order')"
+                  placement="top"
+                >
+                  <svg-icon name="order-view" width="24" height="24" />
+                </el-tooltip> -->
+
                 <el-tooltip
                   :content="$t('web.gfuc.download_original_file')"
                   placement="top"
@@ -177,6 +222,10 @@ const props = defineProps({
   }
 });
 
+const customerNameList = computed(() => {
+  return userStore.loginInfo?.shipperCustomerList || [];
+});
+
 const lang = computed(() => appStore.lang);
 const timezone = computed(() => appStore.timezone);
 
@@ -199,11 +248,12 @@ const columns = [
   {
     prop: "taskTypeName",
     label: "web.gfuc.type", // 类型
-    minWidth: 150
+    minWidth: 160
   },
   {
     prop: "taskStatusName",
-    label: "web.gfuc.status" // 状态
+    label: "web.gfuc.status", // 状态
+    minWidth: 100
   },
 
   {
@@ -218,7 +268,7 @@ const columns = [
 
   {
     prop: "failCount",
-    label: "web.gfuc.error" // 错误
+    label: "web.gfuc.fail" // 失败
   }
 ];
 
@@ -226,9 +276,11 @@ const loading = ref(false);
 
 // 初始表单状态
 const initialFormState = {
+  fileName: "",
   taskStatusSet: [],
   taskTypeSet: [],
   customerIdList: [],
+
   orderTimeRange: ["", ""]
 };
 
@@ -259,6 +311,21 @@ const disabledDate = (time) => {
     time.getTime() > maxTime ||
     time.getTime() > Date.now()
   );
+};
+
+const getStatusClass = (status) => {
+  switch (status) {
+    case 0:
+      return "status-info";
+    case 1:
+      return "status-pending";
+    case 2:
+      return "status-success";
+    case 3:
+      return "status-failed";
+    default:
+      return "status-info";
+  }
 };
 
 // 设置默认值（前30天）
@@ -396,5 +463,30 @@ watch(
 <style lang="scss" scoped>
 .task-container {
   @apply p-6;
+
+  .status-tag {
+    padding: 2px 8px;
+    font-size: var(--font-size-base);
+    white-space: nowrap;
+    border-radius: 2px;
+  }
+  .status-info {
+    color: #4e5969;
+    background-color: #e5e7eb;
+  }
+  .status-pending {
+    color: rgb(255 123 41 / 100%);
+    background-color: rgb(255 242 229 / 100%);
+  }
+
+  .status-success {
+    color: rgb(43 143 1 / 100%);
+    background-color: rgb(238 255 230 / 100%);
+  }
+
+  .status-failed {
+    color: rgb(255 49 65 / 100%);
+    background-color: rgb(255 227 230 / 100%);
+  }
 }
 </style>

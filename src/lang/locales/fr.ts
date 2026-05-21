@@ -302,7 +302,7 @@ export default {
   // 批量下单
   "web.gfuc.batch_order_template_download":
     "Télécharger le modèle de commande par lot",
-  "web.gfuc.upload_task": "Tâche d'upload",
+  "web.gfuc.upload_task": "Historique des téléchargements",
   "web.gfuc.upload_task_tip":
     "Veuillez assurer que le format de fichier téléchargé est correct, sinon cela peut entraîner des erreurs de création de commande.",
   "web.gfuc.upload_task_file_format_tip":
@@ -335,10 +335,30 @@ export default {
   "web.gfuc.status": "Statut",
   "web.gfuc.total_orders": "Commandes totales",
   "web.gfuc.success": "Succès",
-  "web.gfuc.error": "Erreur",
+  "web.gfuc.fail": "Échec",
   "web.gfuc.download": "Télécharger",
   "web.gfuc.download_original_file": "Télécharger le fichier source",
   "web.gfuc.upload_task_tooltip":
     "Les tâches de téléchargement vous permettent de consulter tous les historiques de téléchargement",
-  "web.gfuc.order_file": "Fichier de bordereau"
+  "web.gfuc.order_file": "Fichier de bordereau",
+  "web.gfuc.order_success_description":
+    "Vous avez passé avec succès { successCount } commande(s)",
+  "web.gfuc.continue_upload": "Continuer le téléchargement",
+  "web.gfuc.order_success": "Commande réussie",
+  "web.gfuc.batch_import_title": "Instructions d'importation groupée",
+  "web.gfuc.batch_import_step1": "Télécharger le modèle officiel",
+  "web.gfuc.batch_import_step2": "Remplir les informations de commande",
+  "web.gfuc.batch_import_step3": "Sélectionner le compte de commande",
+  "web.gfuc.batch_import_step4": "Télécharger et confirmer",
+  "web.gfuc.batch_import_notice_title": "Remarques importantes",
+  "web.gfuc.batch_import_notice1":
+    "La première ligne du modèle est un exemple de données. Veuillez la supprimer ou la remplacer avant de remplir vos commandes.",
+  "web.gfuc.batch_import_notice2":
+    "Le code produit doit être obtenu auprès de l'équipe commerciale",
+  "web.gfuc.batch_import_notice3":
+    "Lorsque le code produit est EU003, le numéro de suivi tiers et le code canal sont obligatoires (ce code est généré par notre système, veuillez nous le demander lors de l'intégration, doit être valide)",
+  "web.gfuc.batch_import_notice4":
+    "Le pays de l'expéditeur et le pays du destinataire nécessitent le code pays à deux lettres, comme indiqué dans l'exemple",
+  "web.gfuc.file_uploading":
+    "Le fichier est en cours de téléchargement, veuillez patienter"
 };
