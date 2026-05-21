@@ -5,44 +5,24 @@
       :tip="$t('web.gfuc.batch_order_tip')"
     />
     <div class="mt-4 mb-6 text-lg font-bold">
-      <div class="flex items-center justify-between">
-        <div
-          class="p-4 text-sm text-[#BBBDBF] border border-orange-100 w-[800px] rounded-lg bg-orange-50 flex justify-between items-center"
-        >
-          <div>
-            {{ $t("web.gfuc.upload_task_tip") }}
-            <el-button type="primary" link @click="downloadTemplate">
-              <svg-icon
-                name="upload-download"
-                width="24"
-                height="24"
-                class="mr-2"
-              />
-              {{ $t("web.gfuc.batch_order_template_download") }}
-            </el-button>
-          </div>
-        </div>
-        <el-tooltip
-          :content="$t('web.gfuc.upload_task_tooltip')"
-          placement="bottom"
-        >
-          <el-button @click="goTaskList">
-            <svg-icon
-              name="upload-submit"
-              width="20"
-              height="20"
-              class="mr-2"
-            />
-            {{ $t("web.gfuc.upload_task") }}
-          </el-button>
-        </el-tooltip>
-      </div>
       <div class="flex mt-2">
         <div>
-          <!-- <div class="tips text-sm text-[#BBBDBF]">
-            {{ $t("web.gfuc.upload_task_tip") }}
-          </div> -->
-
+          <div
+            class="p-4 text-sm text-[#BBBDBF] border border-orange-100 w-[800px] rounded-lg bg-orange-50 flex justify-between items-center"
+          >
+            <div>
+              {{ $t("web.gfuc.upload_task_tip") }}
+              <el-button type="primary" link @click="downloadTemplate">
+                <svg-icon
+                  name="upload-download"
+                  width="24"
+                  height="24"
+                  class="mr-2"
+                />
+                {{ $t("web.gfuc.batch_order_template_download") }}
+              </el-button>
+            </div>
+          </div>
           <div class="mt-2">
             <el-form
               ref="formRef"
@@ -95,7 +75,7 @@
         </div>
 
         <div
-          class="flex-1 min-w-0 p-4 ml-4 text-white bg-gray-50 rounded-xl h-fit"
+          class="flex-1 min-w-0 p-4 ml-4 text-white bg-gray-50 rounded-xl h-fit max-h-[480px] overflow-auto"
         >
           <h3
             class="flex items-center gap-2 mb-4 text-base font-semibold text-info"
@@ -169,6 +149,19 @@
                 </p>
               </div>
             </div>
+            <div class="flex items-center gap-3">
+              <div
+                class="flex items-center justify-center flex-shrink-0 w-4 h-4 text-xs font-medium text-white bg-orange-500 rounded-full"
+              >
+                5
+              </div>
+              <div>
+                <p class="font-normal text-info">
+                  {{ $t("web.gfuc.upload_task_tooltip") }}
+                </p>
+              </div>
+            </div>
+
             <!-- 注意事项 -->
             <div class="pt-4 mt-4 border-t border-gray-200">
               <p class="mb-2 font-normal text-[#f5a380]">
