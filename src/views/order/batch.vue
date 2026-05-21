@@ -26,58 +26,148 @@
           </el-button>
         </el-tooltip>
       </div>
-      <div class="tips text-sm text-[#BBBDBF] mt-2">
-        {{ $t("web.gfuc.upload_task_tip") }}
-      </div>
-      <div class="mt-2">
-        <el-form
-          ref="formRef"
-          :model="form"
-          label-width="80px"
-          label-position="top"
-          v-if="isCj"
-        >
-          <el-form-item
-            :label="$t('web.gfuc.order_account')"
-            prop="customerId"
-            :rules="customerRules"
-          >
-            <el-select
-              v-model="form.customerId"
-              filterable
-              :placeholder="$t('web.gfuc.please_select_order_account')"
-              @change="handleCustomerChange"
-              style="width: 800px"
+      <div class="flex mt-2">
+        <div>
+          <div class="tips text-sm text-[#BBBDBF]">
+            {{ $t("web.gfuc.upload_task_tip") }}
+          </div>
+          <div class="mt-2">
+            <el-form
+              ref="formRef"
+              :model="form"
+              label-width="80px"
+              label-position="top"
+              v-if="isCj"
             >
-              <el-option
-                v-for="item in shipperOptions"
-                :key="item.customerId"
-                :label="item.customerName"
-                :value="item.customerId"
-              />
-            </el-select>
-          </el-form-item>
-        </el-form>
+              <el-form-item
+                :label="$t('web.gfuc.order_account')"
+                prop="customerId"
+                :rules="customerRules"
+              >
+                <el-select
+                  v-model="form.customerId"
+                  filterable
+                  :placeholder="$t('web.gfuc.please_select_order_account')"
+                  @change="handleCustomerChange"
+                  style="width: 800px"
+                >
+                  <el-option
+                    v-for="item in shipperOptions"
+                    :key="item.customerId"
+                    :label="item.customerName"
+                    :value="item.customerId"
+                  />
+                </el-select>
+              </el-form-item>
+            </el-form>
+          </div>
+          <common-upload
+            ref="uploadRef"
+            v-model="fileList"
+            :http-request="customHttpRequest"
+            type="file"
+            :width="800"
+            :dragAreaWidth="800"
+            :dragAreaHeight="194"
+            drag
+            :multiple="true"
+            :limit="1"
+            :needFrontMsg="false"
+            :progress="taskStatus"
+            :buttonText="$t('web.gfuc.upload_task_button_text')"
+            accept=".xls,.xlsx"
+            :hint="$t('web.gfuc.upload_task_file_format_tip')"
+            @refresh="handleRefresh"
+            @remove="handleRemove"
+          />
+        </div>
+
+        <div
+          class="flex-1 min-w-0 p-4 ml-4 text-white bg-gray-50 rounded-xl h-fit"
+        >
+          <h3
+            class="flex items-center gap-2 mb-4 text-base font-semibold text-info"
+          >
+            <svg
+              class="w-5 h-5 text-orange-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            批量导入操作说明
+          </h3>
+          <div class="space-y-2 text-sm text-gray-600">
+            <!-- 步骤1 -->
+            <div class="flex items-center gap-3">
+              <div
+                class="flex items-center justify-center flex-shrink-0 w-4 h-4 text-xs font-medium text-white bg-orange-500 rounded-full"
+              >
+                1
+              </div>
+              <div>
+                <p class="font-normal text-info">下载官方模板</p>
+              </div>
+            </div>
+            <!-- 步骤2 -->
+            <div class="flex items-center gap-3">
+              <div
+                class="flex items-center justify-center flex-shrink-0 w-4 h-4 text-xs font-medium text-white bg-orange-500 rounded-full"
+              >
+                2
+              </div>
+              <div>
+                <p class="font-normal text-info">填写订单信息</p>
+              </div>
+            </div>
+            <!-- 步骤3 -->
+            <div class="flex items-center gap-3">
+              <div
+                class="flex items-center justify-center flex-shrink-0 w-4 h-4 text-xs font-medium text-white bg-orange-500 rounded-full"
+              >
+                3
+              </div>
+              <div>
+                <p class="font-normal text-info">选择下单账户</p>
+              </div>
+            </div>
+            <!-- 步骤4 -->
+            <div class="flex items-center gap-3">
+              <div
+                class="flex items-center justify-center flex-shrink-0 w-4 h-4 text-xs font-medium text-white bg-orange-500 rounded-full"
+              >
+                4
+              </div>
+              <div>
+                <p class="font-normal text-info">上传并确认</p>
+              </div>
+            </div>
+            <!-- 注意事项 -->
+            <div class="pt-4 mt-4 border-t border-gray-200">
+              <p class="mb-2 font-normal text-info">⚠️ 注意事项</p>
+              <ul
+                class="space-y-1 list-none text-sm text-[#BBBDBF] font-normal"
+              >
+                <li>
+                  1、模版第一行是示例数据，请先删除或覆盖它再填写您的订单。
+                </li>
+                <li>2、产品编码需要找商务提供</li>
+                <li>
+                  3、当产品编码为EU003第三方跟踪号和渠道编码必填(该编码由我方系统生成，对接时找我方获取，必须有效)
+                </li>
+                <li>4、寄件人国家和收件人国家需要填写国家二字码，如示例所示</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <common-upload
-        ref="uploadRef"
-        v-model="fileList"
-        :http-request="customHttpRequest"
-        type="file"
-        :width="800"
-        :dragAreaWidth="800"
-        :dragAreaHeight="194"
-        drag
-        :multiple="true"
-        :limit="1"
-        :needFrontMsg="false"
-        :progress="taskStatus"
-        :buttonText="$t('web.gfuc.upload_task_button_text')"
-        accept=".xls,.xlsx"
-        :hint="$t('web.gfuc.upload_task_file_format_tip')"
-        @refresh="handleRefresh"
-        @remove="handleRemove"
-      />
     </div>
 
     <div class="mt-6 table-list" v-if="totalCount > 0">
