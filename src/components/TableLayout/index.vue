@@ -135,8 +135,8 @@ const mergeSearchFormConfig = computed(() => ({
   ...props.searchFormConfig
 }));
 const mergeTableConfig = computed(() => ({
-  border: true,
-  stripe: true,
+  border: false,
+  stripe: false,
   size: "default" as const,
   ...props.tableConfig
 }));

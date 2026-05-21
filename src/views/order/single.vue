@@ -3,6 +3,7 @@
     <CommonTitle
       :title="$t('web.gfuc.single_ticket_order')"
       :tip="$t('web.gfuc.single_ticket_order_tip')"
+      class="pl-10"
     />
     <div class="mt-4 order-container">
       <!-- 右侧表单内容 -->
