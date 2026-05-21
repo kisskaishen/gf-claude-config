@@ -336,5 +336,7 @@ export default {
     "只需要导入包含模版所示信息的文档，您就可以轻松上传所有订单",
   "web.gfuc.single_ticket_order_tip": "逐一填写物流订单信息，适合零散发货场景",
   "web.gfuc.recharge_tip": "在线充值，快速到账，保障发货额度充足",
-  "web.gfuc.balance_tip": "查看可用账户余额及冻结额度"
+  "web.gfuc.balance_tip": "查看可用账户余额及冻结额度",
+  "web.gfuc.upload_task_click": "上传记录可点击",
+  "web.gfuc.view": "查看"
 };

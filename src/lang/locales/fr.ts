@@ -368,5 +368,8 @@ export default {
   "web.gfuc.recharge_tip":
     "Rechargez en ligne pour un crédit rapide, garantissant un crédit d'expédition suffisant",
   "web.gfuc.balance_tip":
-    "Consultez le solde disponible du compte et le montant gelé"
+    "Consultez le solde disponible du compte et le montant gelé",
+  "web.gfuc.upload_task_click":
+    "Les historiques de téléchargement sont cliquables",
+  "web.gfuc.view": "Voir"
 };

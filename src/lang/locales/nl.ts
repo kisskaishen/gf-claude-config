@@ -347,5 +347,7 @@ export default {
   "web.gfuc.recharge_tip":
     "Laad online op voor snelle bijschrijving, waardoor voldoende verzendkrediet wordt gegarandeerd",
   "web.gfuc.balance_tip":
-    "Bekijk beschikbaar saldo en bevroren bedrag van uw account"
+    "Bekijk beschikbaar saldo en bevroren bedrag van uw account",
+  "web.gfuc.upload_task_click": "Uploadgeschiedenis is aanklikbaar",
+  "web.gfuc.view": "Bekijk"
 };

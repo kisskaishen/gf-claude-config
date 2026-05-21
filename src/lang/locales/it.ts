@@ -356,5 +356,7 @@ export default {
   "web.gfuc.recharge_tip":
     "Ricarica online per un accredito rapido, garantendo credito di spedizione sufficiente",
   "web.gfuc.balance_tip":
-    "Visualizza saldo disponibile del conto e importo bloccato"
+    "Visualizza saldo disponibile del conto e importo bloccato",
+  "web.gfuc.upload_task_click": "I record di caricamento sono cliccabili",
+  "web.gfuc.view": "Visualizza"
 };

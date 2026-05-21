@@ -75,7 +75,8 @@
         </div>
 
         <div
-          class="flex-1 min-w-0 p-4 ml-4 text-white bg-gray-50 rounded-xl h-fit max-h-[480px] overflow-auto"
+          class="flex-1 min-w-0 p-4 ml-4 text-white bg-gray-50 rounded-xl h-fit"
+          :class="{ 'max-h-[524px] overflow-auto': taskStatus === 2 }"
         >
           <h3
             class="flex items-center gap-2 mb-4 text-base font-semibold text-info"
@@ -157,7 +158,12 @@
               </div>
               <div>
                 <p class="font-normal text-info">
-                  {{ $t("web.gfuc.upload_task_tooltip") }}
+                  {{ $t("web.gfuc.upload_task_click")
+                  }}<span
+                    class="underline cursor-pointer text-primary hover:text-primary-hover"
+                  >
+                    {{ $t("web.gfuc.task_list") }} </span
+                  >{{ $t("web.gfuc.view") }}
                 </p>
               </div>
             </div>

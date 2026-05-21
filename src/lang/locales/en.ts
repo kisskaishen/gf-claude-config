@@ -354,5 +354,7 @@ export default {
     "Fill in logistics order information one by one, suitable for sporadic shipping scenarios",
   "web.gfuc.recharge_tip":
     "Recharge online for fast crediting, ensuring sufficient shipping credit",
-  "web.gfuc.balance_tip": "View available account balance and frozen amount"
+  "web.gfuc.balance_tip": "View available account balance and frozen amount",
+  "web.gfuc.upload_task_click": "Upload records are clickable",
+  "web.gfuc.view": "View"
 };
