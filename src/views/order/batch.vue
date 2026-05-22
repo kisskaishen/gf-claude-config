@@ -1,35 +1,27 @@
 <template>
   <div class="p-6 rounded order-batch">
-    <div class="mb-6 text-lg font-bold">
-      <div class="flex items-center justify-between">
-        <el-button type="primary" link @click="downloadTemplate">
-          <svg-icon
-            name="upload-download"
-            width="24"
-            height="24"
-            class="mr-2"
-          />
-          {{ $t("web.gfuc.batch_order_template_download") }}
-        </el-button>
-        <el-tooltip
-          :content="$t('web.gfuc.upload_task_tooltip')"
-          placement="bottom"
-        >
-          <el-button @click="goTaskList">
-            <svg-icon
-              name="upload-submit"
-              width="20"
-              height="20"
-              class="mr-2"
-            />
-            {{ $t("web.gfuc.upload_task") }}
-          </el-button>
-        </el-tooltip>
-      </div>
+    <CommonTitle
+      :title="$t('web.gfuc.batch_order')"
+      :tip="$t('web.gfuc.batch_order_tip')"
+    />
+    <div class="mt-4 mb-6 text-lg font-bold">
       <div class="flex mt-2">
         <div>
-          <div class="tips text-sm text-[#BBBDBF]">
-            {{ $t("web.gfuc.upload_task_tip") }}
+          <div
+            class="p-4 text-sm text-[#BBBDBF] border border-orange-100 w-[800px] rounded-lg bg-orange-50 flex justify-between items-center"
+          >
+            <div>
+              {{ $t("web.gfuc.upload_task_tip") }}
+              <el-button type="primary" link @click="downloadTemplate">
+                <svg-icon
+                  name="upload-download"
+                  width="24"
+                  height="24"
+                  class="mr-2"
+                />
+                {{ $t("web.gfuc.batch_order_template_download") }}
+              </el-button>
+            </div>
           </div>
           <div class="mt-2">
             <el-form
@@ -84,6 +76,7 @@
 
         <div
           class="flex-1 min-w-0 p-4 ml-4 text-white bg-gray-50 rounded-xl h-fit"
+          :class="{ 'max-h-[524px] overflow-auto': taskStatus === 2 }"
         >
           <h3
             class="flex items-center gap-2 mb-4 text-base font-semibold text-info"
@@ -157,6 +150,24 @@
                 </p>
               </div>
             </div>
+            <div class="flex items-center gap-3">
+              <div
+                class="flex items-center justify-center flex-shrink-0 w-4 h-4 text-xs font-medium text-white bg-orange-500 rounded-full"
+              >
+                5
+              </div>
+              <div>
+                <p class="font-normal text-info">
+                  {{ $t("web.gfuc.upload_task_click")
+                  }}<span
+                    class="underline cursor-pointer text-primary hover:text-primary-hover"
+                  >
+                    {{ $t("web.gfuc.task_list") }} </span
+                  >{{ $t("web.gfuc.view") }}
+                </p>
+              </div>
+            </div>
+
             <!-- 注意事项 -->
             <div class="pt-4 mt-4 border-t border-gray-200">
               <p class="mb-2 font-normal text-[#f5a380]">
@@ -258,6 +269,7 @@ import {
   downloadFailedOrderData
 } from "@/api/order";
 import SuccessDialog from "@/components/SuccessDialog/index.vue";
+import CommonTitle from "@/components/CommonTitle/index.vue";
 
 import { useAppStore } from "@/store/app";
 import { useUserStore } from "@/store/user";

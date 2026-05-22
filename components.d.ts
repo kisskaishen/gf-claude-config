@@ -13,6 +13,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AuthModal: typeof import('./src/components/AuthView/AuthModal.vue')['default']
     AuthView: typeof import('./src/components/AuthView/index.vue')['default']
+    CommonTitle: typeof import('./src/components/CommonTitle/index.vue')['default']
     CommonUpload: typeof import('./src/components/CommonUpload/index.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']

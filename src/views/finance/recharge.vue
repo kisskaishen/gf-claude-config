@@ -1,11 +1,15 @@
 <template>
   <page-container :fixedHeight="false">
+    <CommonTitle
+      :title="$t('web.gfuc.recharge')"
+      :tip="$t('web.gfuc.recharge_tip')"
+    />
     <el-form
       ref="formRef"
       :model="formData"
       :rules="rules"
       label-position="top"
-      class="recharge-form"
+      class="mt-6 recharge-form"
     >
       <el-row :gutter="24">
         <!-- 充值金额 -->
@@ -236,6 +240,7 @@ import jpegIcon from "@/assets/upload-file/jpeg.svg";
 import jpgIcon from "@/assets/upload-file/jpg.svg";
 import pdfIcon from "@/assets/upload-file/pdf.svg";
 import pngIcon from "@/assets/upload-file/png.svg";
+import CommonTitle from "@/components/CommonTitle/index.vue";
 
 import SuccessDialog from "@/components/SuccessDialog/index.vue";
 

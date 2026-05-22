@@ -360,5 +360,16 @@ export default {
   "web.gfuc.batch_import_notice4":
     "Le pays de l'expéditeur et le pays du destinataire nécessitent le code pays à deux lettres, comme indiqué dans l'exemple",
   "web.gfuc.file_uploading":
-    "Le fichier est en cours de téléchargement, veuillez patienter"
+    "Le fichier est en cours de téléchargement, veuillez patienter",
+  "web.gfuc.batch_order_tip":
+    "Il suffit d'importer un document contenant les informations indiquées dans le modèle pour télécharger facilement toutes les commandes",
+  "web.gfuc.single_ticket_order_tip":
+    "Remplissez les informations de commande logistique une par une, adapté aux scénarios d'expédition sporadique",
+  "web.gfuc.recharge_tip":
+    "Rechargez en ligne pour un crédit rapide, garantissant un crédit d'expédition suffisant",
+  "web.gfuc.balance_tip":
+    "Consultez le solde disponible du compte et le montant gelé",
+  "web.gfuc.upload_task_click":
+    "Les historiques de téléchargement sont cliquables",
+  "web.gfuc.view": "Voir"
 };

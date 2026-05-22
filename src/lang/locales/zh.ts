@@ -330,5 +330,13 @@ export default {
     "当产品编码为EU003第三方跟踪号和渠道编码必填(该编码由我方系统生成，对接时找我方获取，必须有效)",
   "web.gfuc.batch_import_notice4":
     "寄件人国家和收件人国家需要填写国家二字码，如示例所示",
-  "web.gfuc.file_uploading": "文件正在上传中，请稍等"
+  "web.gfuc.file_uploading": "文件正在上传中，请稍等",
+
+  "web.gfuc.batch_order_tip":
+    "只需要导入包含模版所示信息的文档，您就可以轻松上传所有订单",
+  "web.gfuc.single_ticket_order_tip": "逐一填写物流订单信息，适合零散发货场景",
+  "web.gfuc.recharge_tip": "在线充值，快速到账，保障发货额度充足",
+  "web.gfuc.balance_tip": "查看可用账户余额及冻结额度",
+  "web.gfuc.upload_task_click": "上传记录可点击",
+  "web.gfuc.view": "查看"
 };

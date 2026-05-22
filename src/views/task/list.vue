@@ -111,6 +111,7 @@
             :label="$t(item.label)"
             :width="item?.width || undefined"
             :min-width="item?.minWidth || undefined"
+            :align="item?.textAlign || 'left'"
             show-overflow-tooltip
           >
             <template #default="{ row, index }">
@@ -124,11 +125,12 @@
 
           <el-table-column
             :label="$t('gfuc.operation' /** 操作 **/)"
-            width="180"
+            width="160"
             fixed="right"
+            align="center"
           >
             <template #default="{ row, index }">
-              <div class="flex gap-2 table-actions">
+              <div class="flex justify-center gap-2 table-actions">
                 <!-- <el-tooltip
                   :content="$t('web.gfuc.view_order')"
                   placement="top"
@@ -253,22 +255,26 @@ const columns = [
   {
     prop: "taskStatusName",
     label: "web.gfuc.status", // 状态
-    minWidth: 100
+    minWidth: 136,
+    textAlign: "center"
   },
 
   {
     prop: "totalCount",
-    label: "web.gfuc.total_orders" // 总订单
+    label: "web.gfuc.total_orders", // 总订单
+    textAlign: "center"
   },
 
   {
     prop: "successCount",
-    label: "web.gfuc.success" // 成功
+    label: "web.gfuc.success", // 成功
+    textAlign: "center"
   },
 
   {
     prop: "failCount",
-    label: "web.gfuc.fail" // 失败
+    label: "web.gfuc.fail", // 失败,
+    textAlign: "center"
   }
 ];
 
@@ -468,7 +474,7 @@ watch(
     padding: 2px 8px;
     font-size: var(--font-size-base);
     white-space: nowrap;
-    border-radius: 2px;
+    border-radius: 12px;
   }
   .status-info {
     color: #4e5969;

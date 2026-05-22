@@ -1,8 +1,11 @@
 <template>
   <div class="order-form">
-    <div class="order-container">
-      <!-- 左侧步骤条，融合在右侧里面 -->
-
+    <CommonTitle
+      :title="$t('web.gfuc.single_ticket_order')"
+      :tip="$t('web.gfuc.single_ticket_order_tip')"
+      class="pl-10"
+    />
+    <div class="mt-4 order-container">
       <!-- 右侧表单内容 -->
       <div class="flex-1 overflow-auto">
         <div class="order-content">
@@ -85,6 +88,7 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, onActivated, watch } from "vue";
 import SuccessDialog from "@/components/SuccessDialog/index.vue";
+import CommonTitle from "@/components/CommonTitle/index.vue";
 
 import ShipperInfo from "./components/ShipperInfo.vue";
 import ConsigneeInfo from "./components/ConsigneeInfo.vue";
