@@ -641,7 +641,7 @@ const consigneeAddress = (obj: any) => {
     }
 
     .step-text {
-      @apply text-sm font-medium  text-text-regular;
+      @apply text-sm font-medium  text-text-regular w-[68%] text-center;
     }
 
     .step-arrow {
