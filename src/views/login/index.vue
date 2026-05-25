@@ -152,7 +152,7 @@ const redirectToHome = () => {
 .login-container {
   display: flex;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   background-color: #fff;
 }
 
