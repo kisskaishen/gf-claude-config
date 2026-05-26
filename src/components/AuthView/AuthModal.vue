@@ -37,6 +37,19 @@
             />
           </el-form-item>
         </el-col>
+        <el-col :span="12">
+          <el-form-item
+            :label="$t('gfuc.country' /** 国家 **/)"
+            prop="countryCode"
+          >
+            <el-select
+              v-model="formData.countryCode"
+              :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
+              :options="countryDict.options.value"
+              disabled
+            />
+          </el-form-item>
+        </el-col>
       </el-row>
 
       <el-row :gutter="16">
@@ -142,6 +155,7 @@ const visible = computed({
   get: () => props.modelValue,
   set: (val) => emit("update:modelValue", val)
 });
+const countryDict = useDict("gfuc.site.code");
 const frequencyDict = useDict("gfuc.send.frequency");
 const volumeDict = useDict("gfuc.send.count");
 
@@ -155,6 +169,8 @@ const formData = reactive({
   shippingFrequency: undefined,
   /** 货量预估 */
   shippingVolume: undefined,
+  /** 国家 */
+  countryCode: appStore.site,
   /** 备注 */
   remark: ""
 });
@@ -167,7 +183,13 @@ const rules = reactive<FormRules>({
       trigger: "change"
     }
   ],
-
+  countryCode: [
+    {
+      required: true,
+      message: t("gfuc.please_enter_country" /** 请输入国家 **/),
+      trigger: "change"
+    }
+  ],
   email: [
     {
       required: true,
