@@ -356,5 +356,27 @@ export default {
     "Recharge online for fast crediting, ensuring sufficient shipping credit",
   "web.gfuc.balance_tip": "View available account balance and frozen amount",
   "web.gfuc.upload_task_click": "Upload records are clickable",
-  "web.gfuc.view": "View"
+  "web.gfuc.view": "View",
+
+  "web.gfuc.freight_bill": "Freight Bill",
+  "web.gfuc.claim_bill": "Claim Bill",
+  "web.gfuc.settlement_cycle": "Settlement Cycle",
+  "web.gfuc.account_period": "Account Period",
+  "web.gfuc.account_number": "Account Number",
+  "web.gfuc.account_status": "Account Status",
+  "web.gfuc.invoice_status": "Invoice Status",
+  "web.gfuc.download_bill": "Download Bill",
+  "web.gfuc.settlement_currency": "Settlement Currency",
+  "web.gfuc.ticket_count": "Ticket Count",
+  "web.gfuc.tax_rate_status": "Tax Rate",
+  "web.gfuc.bill_amount_including_tax": "Bill Amount (Including Tax)",
+  "web.gfuc.bill_amount_excluding_tax": "Bill Amount (Excluding Tax)",
+  "web.gfuc.bill_amount_tax": "Bill Amount (Tax Amount)",
+  "web.gfuc.bill_detail_excluding_tax": "Bill Details (Excluding Tax)",
+  "web.gfuc.adjustment_total_excluding_tax": "Adjustment Total (Excluding Tax)",
+  "web.gfuc.adjustment_detail_excluding_tax":
+    "Adjustment Details (Excluding Tax)",
+  "web.gfuc.claim_bill_no": "Claim Bill Number",
+  "web.gfuc.claim_bill_amount_ex_tax": "Claim Bill Amount (Excluding Tax)",
+  "web.gfuc.claim_bill_amount_in_tax": "Claim Bill Amount (Including Tax)"
 };

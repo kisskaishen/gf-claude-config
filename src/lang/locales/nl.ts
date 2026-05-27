@@ -349,5 +349,26 @@ export default {
   "web.gfuc.balance_tip":
     "Bekijk beschikbaar saldo en bevroren bedrag van uw account",
   "web.gfuc.upload_task_click": "Uploadgeschiedenis is aanklikbaar",
-  "web.gfuc.view": "Bekijk"
+  "web.gfuc.view": "Bekijk",
+
+  "web.gfuc.freight_bill": "Vrachtfactuur",
+  "web.gfuc.claim_bill": "Claimfactuur",
+  "web.gfuc.settlement_cycle": "Afrekeningscyclus",
+  "web.gfuc.account_period": "Boekhoudperiode",
+  "web.gfuc.account_number": "Factuurnummer",
+  "web.gfuc.account_status": "Factuurstatus",
+  "web.gfuc.invoice_status": "Facturatiestatus",
+  "web.gfuc.download_bill": "Factuur downloaden",
+  "web.gfuc.settlement_currency": "Afrekeningsvaluta",
+  "web.gfuc.ticket_count": "Ticket aantal",
+  "web.gfuc.tax_rate_status": "Belastingtarief",
+  "web.gfuc.bill_amount_including_tax": "Factuurbedrag (incl. btw)",
+  "web.gfuc.bill_amount_excluding_tax": "Factuurbedrag (excl. btw)",
+  "web.gfuc.bill_amount_tax": "Factuurbedrag (btw)",
+  "web.gfuc.bill_detail_excluding_tax": "Factuurdetail (excl. btw)",
+  "web.gfuc.adjustment_total_excluding_tax": "Aanpassingstotaal (excl. btw)",
+  "web.gfuc.adjustment_detail_excluding_tax": "Aanpassingsdetail (excl. btw)",
+  "web.gfuc.claim_bill_no": "Claimfactuurnummer",
+  "web.gfuc.claim_bill_amount_ex_tax": "Claimfactuurbedrag (excl. btw)",
+  "web.gfuc.claim_bill_amount_in_tax": "Claimfactuurbedrag (incl. btw)"
 };

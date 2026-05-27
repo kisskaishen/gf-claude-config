@@ -122,13 +122,13 @@ export const routes: RouteRecordRaw[] = [
         name: "Balance",
         component: () => import("@/views/finance/balance.vue"),
         meta: { title: "余额", requireAuth: true, i18n: "web.gfuc.balance" }
+      },
+      {
+        path: "account",
+        name: "Account",
+        component: () => import("@/views/finance/account.vue"),
+        meta: { title: "账单", requireAuth: true, i18n: "web.gfuc.bill" }
       }
-      // {
-      //   path: "account",
-      //   name: "Account",
-      //   component: () => import("@/views/home/index.vue"),
-      //   meta: { title: "账单", requireAuth: true, i18n: "web.gfuc.bill" }
-      // }
     ]
   },
   {
