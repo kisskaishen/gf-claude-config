@@ -370,5 +370,6 @@ export default {
   "web.gfuc.adjustment_detail_excluding_tax": "Aanpassingsdetail (excl. btw)",
   "web.gfuc.claim_bill_no": "Claimfactuurnummer",
   "web.gfuc.claim_bill_amount_ex_tax": "Claimfactuurbedrag (excl. btw)",
-  "web.gfuc.claim_bill_amount_in_tax": "Claimfactuurbedrag (incl. btw)"
+  "web.gfuc.claim_bill_amount_in_tax": "Claimfactuurbedrag (incl. btw)",
+  "web.gfuc.select_bill_first": "Selecteer eerst een factuur"
 };

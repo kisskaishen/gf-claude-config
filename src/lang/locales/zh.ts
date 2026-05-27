@@ -359,5 +359,6 @@ export default {
   "web.gfuc.adjustment_detail_excluding_tax": "调账明细_未税",
   "web.gfuc.claim_bill_no": "理赔账单编号",
   "web.gfuc.claim_bill_amount_ex_tax": "理赔账单金额_未税",
-  "web.gfuc.claim_bill_amount_in_tax": "理赔账单金额_含税"
+  "web.gfuc.claim_bill_amount_in_tax": "理赔账单金额_含税",
+  "web.gfuc.select_bill_first": "请先选择账单"
 };

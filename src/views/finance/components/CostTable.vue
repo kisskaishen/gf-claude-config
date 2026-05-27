@@ -475,7 +475,7 @@ const handleBatchDownload = () => {
   // 获取选中的订单
 
   if (selectedOrders.value.length === 0) {
-    ElMessage.warning(t("web.gfuc.select_orders_first"));
+    ElMessage.warning(t("web.gfuc.select_bill_first"));
     return;
   }
 

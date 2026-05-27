@@ -378,5 +378,6 @@ export default {
     "Adjustment Details (Excluding Tax)",
   "web.gfuc.claim_bill_no": "Claim Bill Number",
   "web.gfuc.claim_bill_amount_ex_tax": "Claim Bill Amount (Excluding Tax)",
-  "web.gfuc.claim_bill_amount_in_tax": "Claim Bill Amount (Including Tax)"
+  "web.gfuc.claim_bill_amount_in_tax": "Claim Bill Amount (Including Tax)",
+  "web.gfuc.select_bill_first": "Please select a bill first"
 };

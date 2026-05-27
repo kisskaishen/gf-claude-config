@@ -23,25 +23,7 @@
             {{ $t("web.gfuc.batch_print" /** 批量打印 **/) }}
           </el-button>
         </template>
-        <!-- <template #order-number>
-          <el-form-item
-            :label="$t('gfuc.tracking_number' /** 单号 **/)"
-            prop="orderNumber"
-            class="order-number-item"
-            :span="8"
-          >
-            <el-input
-              v-model="searchForm.orderNumber"
-              type="textarea"
-              resize="none"
-              clearable
-              :rows="5"
-              :placeholder="
-                $t('web.gfuc.please_enter' /** 请输入订单号或运单号 **/)
-              "
-            />
-          </el-form-item>
-        </template> -->
+
         <template #search>
           <!-- Search Fields -->
           <el-form-item
@@ -272,7 +254,6 @@ import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
 
 import { useUserStore } from "@/store/user";
-import { cloneDeep } from "lodash-es";
 import dayjs from "dayjs";
 import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";

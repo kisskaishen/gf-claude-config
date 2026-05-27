@@ -394,5 +394,6 @@ export default {
   "web.gfuc.claim_bill_amount_ex_tax":
     "Montant de la facture de réclamation (HT)",
   "web.gfuc.claim_bill_amount_in_tax":
-    "Montant de la facture de réclamation (TTC)"
+    "Montant de la facture de réclamation (TTC)",
+  "web.gfuc.select_bill_first": "Veuillez d'abord sélectionner une facture"
 };

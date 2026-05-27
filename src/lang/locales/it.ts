@@ -380,5 +380,6 @@ export default {
     "Dettaglio rettifica (Iva esclusa)",
   "web.gfuc.claim_bill_no": "Numero fattura reclamo",
   "web.gfuc.claim_bill_amount_ex_tax": "Importo fattura reclamo (Iva esclusa)",
-  "web.gfuc.claim_bill_amount_in_tax": "Importo fattura reclamo (Iva inclusa)"
+  "web.gfuc.claim_bill_amount_in_tax": "Importo fattura reclamo (Iva inclusa)",
+  "web.gfuc.select_bill_first": "Seleziona prima una fattura"
 };
