@@ -360,5 +360,9 @@ export default {
   "web.gfuc.claim_bill_no": "理赔账单编号",
   "web.gfuc.claim_bill_amount_ex_tax": "理赔账单金额_未税",
   "web.gfuc.claim_bill_amount_in_tax": "理赔账单金额_含税",
-  "web.gfuc.select_bill_first": "请先选择账单"
+  "web.gfuc.select_bill_first": "请先选择账单",
+  "web.gfuc.account_download_tip":
+    "你的账单正在下载中，预计5分钟完成下载，请前往任务中心查看",
+  "web.gfuc.stay_on_current_page": "留在当前页面",
+  "web.gfuc.go_to_task_center": "去任务中心查看"
 };

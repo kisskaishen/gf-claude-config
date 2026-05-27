@@ -9,6 +9,7 @@
     <div class="py-6 text-center">
       <!-- 成功图标 -->
       <div
+        v-if="showIcon"
         :class="[
           'inline-flex items-center justify-center w-20 h-20 mb-6 bg-green-100 rounded-full',
           iconClass
@@ -87,6 +88,7 @@ interface Props {
   secondaryBtnClass?: string; // 次要按钮自定义类名
   iconClass?: string; // 图标容器自定义类名
   dialogClass?: string; // 弹窗自定义类名
+  showIcon?: boolean; // 是否显示图标图标
 }
 
 interface Emits {
@@ -107,7 +109,8 @@ const props = withDefaults(defineProps<Props>(), {
   primaryBtnClass: "px-10 py-3 text-lg",
   secondaryBtnClass: "px-10 py-3 text-lg border-gray-300",
   iconClass: "",
-  dialogClass: "success-dialog"
+  dialogClass: "success-dialog",
+  showIcon: true
 });
 
 const emit = defineEmits<Emits>();

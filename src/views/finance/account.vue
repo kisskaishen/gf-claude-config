@@ -1,6 +1,6 @@
 <template>
   <PageContainer>
-    <div class="order-container">
+    <div class="account-container">
       <!-- Tabs -->
       <el-tabs
         v-model="activeTab"
@@ -15,9 +15,36 @@
           :name="item.value"
         />
       </el-tabs>
-      <ClaimTable v-model:status="activeTab" v-if="activeTab === 999" />
-      <CostTable v-model:status="activeTab" v-else />
+      <ClaimTable
+        v-model:status="activeTab"
+        @show-success-dialog="successVisible = true"
+        v-if="activeTab === 1"
+      />
+      <CostTable
+        v-model:status="activeTab"
+        @show-success-dialog="successVisible = true"
+        v-else
+      />
     </div>
+
+    <SuccessDialog
+      v-model="successVisible"
+      :showIcon="false"
+      :title="$t('web.gfuc.tip' /** 温馨提示 **/)"
+      :description="
+        $t(
+          'web.gfuc.account_download_tip' /** 你的账单正在下载中，预计5分钟完成下载，请前往任务中心查看 **/
+        )
+      "
+      :primary-btn-text="
+        $t('web.gfuc.stay_on_current_page' /** 留在当前页面 **/)
+      "
+      :secondary-btn-text="
+        $t('web.gfuc.go_to_task_center' /** 去任务中心查看 **/)
+      "
+      @primary-click="handleStayOnCurrentPage"
+      @secondary-click="handleGoToTaskCenter"
+    />
   </PageContainer>
 </template>
 
@@ -25,15 +52,21 @@
 import { ref, computed } from "vue";
 import ClaimTable from "@/views/finance/components/ClaimTable.vue";
 import CostTable from "@/views/finance/components/CostTable.vue";
+import SuccessDialog from "@/components/SuccessDialog/index.vue";
 
 import PageContainer from "@/components/PageContainer/index.vue";
 // import { useDict } from "@/hooks/useDict";
 import { useI18n } from "vue-i18n";
+import { useRouter } from "vue-router";
+
 const { t } = useI18n();
+const router = useRouter();
 
 defineOptions({
   name: "AccountList"
 });
+
+const successVisible = ref(false);
 
 const activeTab = ref(0);
 const activeTabOptions = computed(() => [
@@ -42,13 +75,23 @@ const activeTabOptions = computed(() => [
     label: t("web.gfuc.freight_bill" /** 运费账单 */)
   },
   {
-    value: 999,
+    value: 1,
     label: t("web.gfuc.claim_bill" /** 理赔账单 */)
   }
 ]);
 
 const handleTabClick = (tab: any, event: Event) => {
   console.log(tab.props.label, tab.props.name);
+};
+
+const handleStayOnCurrentPage = () => {
+  successVisible.value = false;
+};
+
+const handleGoToTaskCenter = () => {
+  successVisible.value = false;
+
+  router.push("/task/list");
 };
 </script>
 
@@ -72,7 +115,7 @@ const handleTabClick = (tab: any, event: Event) => {
   }
 }
 
-.order-container {
+.account-container {
   display: flex;
   flex-direction: column;
   height: 100%;

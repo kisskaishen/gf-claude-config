@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="order-content">
+    <div class="account-content">
       <TableLayout
         v-model:searchFormModel="searchForm"
         v-model:currentPage="pagination.currentPage"
@@ -184,8 +184,9 @@ const userStore = useUserStore();
 const { t } = useI18n();
 const appStore = useAppStore();
 defineOptions({
-  name: "OrderList"
+  name: "CostTable"
 });
+const emits = defineEmits(["show-success-dialog"]);
 
 const defaultTime = [
   new Date(2000, 1, 1, 0, 0, 0), // 开始时间默认00:00:00
@@ -452,7 +453,9 @@ const fetchData = () => {
   }, 500);
 };
 
-const handleDownload = (row: any) => {};
+const handleDownload = (row: any) => {
+  emits("show-success-dialog", true);
+};
 
 const selectedOrders = ref([]);
 
@@ -472,8 +475,9 @@ const handleReset = () => {
 
 // 批量下载
 const handleBatchDownload = () => {
+  emits("show-success-dialog", true);
+  return;
   // 获取选中的订单
-
   if (selectedOrders.value.length === 0) {
     ElMessage.warning(t("web.gfuc.select_bill_first"));
     return;
@@ -538,7 +542,7 @@ onMounted(() => {
   }
 }
 
-.order-content {
+.account-content {
   flex: 1;
   height: calc(100vh - 200px);
   overflow: hidden;

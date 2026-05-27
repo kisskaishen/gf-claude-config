@@ -381,5 +381,9 @@ export default {
   "web.gfuc.claim_bill_no": "Numero fattura reclamo",
   "web.gfuc.claim_bill_amount_ex_tax": "Importo fattura reclamo (Iva esclusa)",
   "web.gfuc.claim_bill_amount_in_tax": "Importo fattura reclamo (Iva inclusa)",
-  "web.gfuc.select_bill_first": "Seleziona prima una fattura"
+  "web.gfuc.select_bill_first": "Seleziona prima una fattura",
+  "web.gfuc.account_download_tip":
+    "La tua fattura è in fase di download, completamento stimato in 5 minuti. Si prega di andare al Centro attività per verificare",
+  "web.gfuc.stay_on_current_page": "Rimani sulla pagina corrente",
+  "web.gfuc.go_to_task_center": "Vai al Centro attività per visualizzare"
 };

@@ -395,5 +395,9 @@ export default {
     "Montant de la facture de réclamation (HT)",
   "web.gfuc.claim_bill_amount_in_tax":
     "Montant de la facture de réclamation (TTC)",
-  "web.gfuc.select_bill_first": "Veuillez d'abord sélectionner une facture"
+  "web.gfuc.select_bill_first": "Veuillez d'abord sélectionner une facture",
+  "web.gfuc.account_download_tip":
+    "Votre facture est en cours de téléchargement, durée estimée : 5 minutes. Veuillez vous rendre au Centre des tâches pour vérifier",
+  "web.gfuc.stay_on_current_page": "Rester sur la page actuelle",
+  "web.gfuc.go_to_task_center": "Aller au Centre des tâches pour voir"
 };

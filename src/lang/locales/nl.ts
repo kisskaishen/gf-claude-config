@@ -371,5 +371,9 @@ export default {
   "web.gfuc.claim_bill_no": "Claimfactuurnummer",
   "web.gfuc.claim_bill_amount_ex_tax": "Claimfactuurbedrag (excl. btw)",
   "web.gfuc.claim_bill_amount_in_tax": "Claimfactuurbedrag (incl. btw)",
-  "web.gfuc.select_bill_first": "Selecteer eerst een factuur"
+  "web.gfuc.select_bill_first": "Selecteer eerst een factuur",
+  "web.gfuc.account_download_tip":
+    "Uw factuur wordt gedownload, geschatte voltooiing over 5 minuten. Ga naar het Taakcentrum om te controleren",
+  "web.gfuc.stay_on_current_page": "Blijf op de huidige pagina",
+  "web.gfuc.go_to_task_center": "Ga naar het Taakcentrum om te bekijken"
 };

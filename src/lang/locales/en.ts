@@ -379,5 +379,9 @@ export default {
   "web.gfuc.claim_bill_no": "Claim Bill Number",
   "web.gfuc.claim_bill_amount_ex_tax": "Claim Bill Amount (Excluding Tax)",
   "web.gfuc.claim_bill_amount_in_tax": "Claim Bill Amount (Including Tax)",
-  "web.gfuc.select_bill_first": "Please select a bill first"
+  "web.gfuc.select_bill_first": "Please select a bill first",
+  "web.gfuc.account_download_tip":
+    "Your bill is being downloaded, estimated completion in 5 minutes. Please go to the Task Center to check",
+  "web.gfuc.stay_on_current_page": "Stay on Current Page",
+  "web.gfuc.go_to_task_center": "Go to Task Center to View"
 };

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="order-content">
+    <div class="account-content">
       <TableLayout
         v-model:searchFormModel="searchForm"
         v-model:currentPage="pagination.currentPage"
@@ -14,16 +14,10 @@
         @selection-change="handleSelectionChange"
       >
         <template #action-left>
-          <el-button
-            type="primary"
-            @click="handleBatchPrint"
-            :loading="printLoading"
-          >
-            <el-icon class="mr-1.5"><Printer /></el-icon>
+          <el-button @click="handleBatchDownload" :loading="downloadLoading">
             {{ $t("web.gfuc.download_bill" /** 下载账单 **/) }}
           </el-button>
         </template>
-
         <template #search>
           <!-- Search Fields -->
           <el-form-item
@@ -150,71 +144,17 @@
           >
             <template #default="{ row }">
               <div class="table-actions">
-                <!-- 查看 (所有状态都有) -->
                 <el-tooltip
                   :content="$t('web.gfuc.view_order')"
                   placement="top"
                 >
                   <svg-icon
-                    name="order-view"
+                    name="upload-download"
                     width="24"
                     height="24"
-                    @click="handleView(row)"
+                    @click="handleDownload(row)"
                   />
                 </el-tooltip>
-
-                <!-- 已下单: 打印、编辑、取消 -->
-                <template v-if="row.orderStatus === 1">
-                  <el-tooltip
-                    :content="$t('web.gfuc.print_order')"
-                    placement="top"
-                  >
-                    <svg-icon
-                      name="order-printer"
-                      width="24"
-                      height="24"
-                      @click="handlePrint(row)"
-                    />
-                  </el-tooltip>
-                  <el-tooltip
-                    :content="$t('web.gfuc.edit_order')"
-                    placement="top"
-                    v-if="row.orderUpdateFlag"
-                  >
-                    <svg-icon
-                      name="order-list-edit"
-                      width="24"
-                      height="24"
-                      @click="handleEdit(row)"
-                    />
-                  </el-tooltip>
-                  <el-tooltip
-                    :content="$t('web.gfuc.cancel_order')"
-                    placement="top"
-                  >
-                    <svg-icon
-                      name="order-delete"
-                      width="24"
-                      height="24"
-                      @click="handleCancel(row)"
-                    />
-                  </el-tooltip>
-                </template>
-
-                <!-- 取消: 复制订单 -->
-                <template v-if="row.orderStatus === 2">
-                  <el-tooltip
-                    :content="$t('web.gfuc.copy_order')"
-                    placement="top"
-                  >
-                    <svg-icon
-                      name="order-copy"
-                      width="24"
-                      height="24"
-                      @click="handleCopy(row)"
-                    />
-                  </el-tooltip>
-                </template>
               </div>
             </template>
           </el-table-column>
@@ -252,8 +192,11 @@ const router = useRouter();
 
 const { t } = useI18n();
 const appStore = useAppStore();
+
+const emits = defineEmits(["show-success-dialog"]);
+
 defineOptions({
-  name: "OrderList"
+  name: "ClaimTable"
 });
 
 const defaultTime = [
@@ -388,7 +331,7 @@ const columns = computed(() => [
 ]);
 
 // 批量打印的loading
-const printLoading = ref(false);
+const downloadLoading = ref(false);
 const loading = ref(false);
 
 // 初始表单状态
@@ -533,42 +476,8 @@ const fetchData = () => {
   }, 500);
 };
 
-const handleView = (row: any) => {
-  router.push(`/order/detail/${row.orderId}/order`);
-};
-
-const handlePrint = (row: any) => {
-  // 打印订单
-  getOrderLabelUrl({
-    waybillNo: row.waybillNo,
-    customerId: row.customerId
-  }).then((res) => {
-    downloadFile(res.url, row.waybillNo);
-  });
-};
-
-const handleEdit = (row: any) => {
-  router.push(`/order/single/${row.orderId}/order`);
-};
-
-const handleCancel = (row: any) => {
-  // 这里可以调用取消订单的接口，成功后刷新列表
-  ElMessageBox.confirm(t("web.gfuc.order_cancel_confirm"), t("web.gfuc.tip"), {
-    confirmButtonText: t("web.gfuc.confirm"),
-    cancelButtonText: t("web.gfuc.cancel")
-  }).then(async () => {
-    await cancelOrder({
-      orderId: row.orderId,
-      orderNo: row.orderNo,
-      waybillNo: row.waybillNo
-    });
-    ElMessage.success(t("web.gfuc.order_cancel_success"));
-    await fetchData();
-  });
-};
-
-const handleCopy = (row: any) => {
-  router.push(`/order/single/${row.orderId}/order/copy`);
+const handleDownload = (row: any) => {
+  emits("show-success-dialog", true);
 };
 
 const selectedOrders = ref([]);
@@ -588,7 +497,9 @@ const handleReset = () => {
 };
 
 // 批量打印
-const handleBatchPrint = () => {
+const handleBatchDownload = () => {
+  emits("show-success-dialog", true);
+  return;
   // 获取选中的订单
 
   if (selectedOrders.value.length === 0) {
@@ -605,7 +516,7 @@ const handleBatchPrint = () => {
     }
   )
     .then(async () => {
-      printLoading.value = true;
+      downloadLoading.value = true;
       ElMessage.info(t("web.gfuc.printing_order"));
       let data = [];
       data = selectedOrders.value.map((item: any) => {
@@ -617,7 +528,7 @@ const handleBatchPrint = () => {
 
       const res = await batchPrintOrderLabel(data);
 
-      printLoading.value = false;
+      downloadLoading.value = false;
 
       ElMessage.success(
         t("web.gfuc.batch_print_success", {
@@ -634,7 +545,7 @@ const handleBatchPrint = () => {
       downloadFile(url, t("web.gfuc.order_file"));
     })
     .catch(() => {
-      printLoading.value = false;
+      downloadLoading.value = false;
     });
 };
 
@@ -655,7 +566,7 @@ onMounted(() => {
   }
 }
 
-.order-content {
+.account-content {
   flex: 1;
   height: calc(100vh - 200px);
   overflow: hidden;
