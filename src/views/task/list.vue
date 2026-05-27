@@ -8,7 +8,7 @@
         :data="tableData"
         :total="pagination.total"
         :loading="loading"
-        :searchConfig="{ cols: 3, rowNum: 2 }"
+        :searchConfig="{ cols: 3, rowNum: 1 }"
         @search="fetchData"
         @reset="handleReset"
       >
@@ -469,6 +469,9 @@ watch(
 <style lang="scss" scoped>
 .task-container {
   @apply p-6;
+  height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
 
   .status-tag {
     padding: 2px 8px;

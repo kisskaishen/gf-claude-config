@@ -8,11 +8,11 @@
         :data="tableData"
         :total="pagination.total"
         :loading="loading"
-        :searchConfig="{ cols: 3, rowNum: 2 }"
+        :searchConfig="{ cols: 3, rowNum: 1 }"
         @search="fetchData"
         @reset="handleReset"
       >
-        <template #order-number>
+        <!-- <template #order-number>
           <el-form-item
             :label="$t('gfuc.tracking_number' /** 单号 **/)"
             prop="orderNumber"
@@ -30,8 +30,22 @@
               "
             />
           </el-form-item>
-        </template>
+        </template> -->
         <template #search>
+          <el-form-item
+            :label="$t('gfuc.tracking_number' /** 单号 **/)"
+            prop="orderNumber"
+            class="order-number-item"
+            :span="8"
+          >
+            <el-input
+              v-model="searchForm.orderNumber"
+              clearable
+              :placeholder="
+                $t('web.gfuc.please_enter' /** 请输入订单号或运单号 **/)
+              "
+            />
+          </el-form-item>
           <el-form-item
             :label="$t('web.gfuc.postal_code')"
             prop="consigneeCode"
