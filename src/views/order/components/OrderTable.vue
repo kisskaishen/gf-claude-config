@@ -154,7 +154,10 @@
         </template>
 
         <template #columns>
-          <el-table-column type="selection" width="55" />
+          <el-table-column
+            type="selection"
+            :width="columnWidth(55, 55, 55, 55, 55, 55)"
+          />
           <el-table-column
             v-for="item in columns"
             :key="item.prop"
@@ -174,7 +177,7 @@
 
           <el-table-column
             :label="$t('gfuc.operation' /** 操作 **/)"
-            width="180"
+            :width="columnWidth(160, 180, 200, 200, 180, 180)"
             fixed="right"
           >
             <template #default="{ row }">
@@ -255,7 +258,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, onMounted, watch, computed } from "vue";
-import { spliceArray, commaToArr } from "@/utils/index";
+import { spliceArray, commaToArr, columnWidth } from "@/utils/index";
 import { downloadFile } from "@/utils/download";
 import { Printer } from "@element-plus/icons-vue";
 import {
@@ -329,36 +332,48 @@ const exceptionOrderStatusOptions = computed(() => {
   return arr;
 });
 
-const columns = [
+const columns = computed(() => [
   {
     prop: "corderNo",
     label: "gfuc.customer_order_number",
-    minWidth: 180
+    minWidth: columnWidth(200, 220, 260, 220, 200, 200)
   },
   {
     prop: "waybillNo",
     label: "gfuc.waybill_number",
-    minWidth: 200
+    minWidth: columnWidth(200, 200, 200, 200, 180, 200)
   },
-  { prop: "productName", label: "gfuc.product_name", minWidth: 120 },
-  { prop: "orderStatusName", label: "gfuc.order_status", width: 100 },
+  {
+    prop: "productName",
+    label: "gfuc.product_name",
+    minWidth: columnWidth(120, 180, 200, 200, 180, 180)
+  },
+  {
+    prop: "orderStatusName",
+    label: "gfuc.order_status",
+    width: columnWidth(100, 160, 220, 200, 160, 160)
+  },
   {
     prop: "orderConsigneeVO.consigneeName",
     label: "gfuc.recipient",
-    minWidth: 120
+    minWidth: columnWidth(100, 160, 180, 180, 160, 160)
   },
   {
     prop: "orderConsigneeVO.consigneePhone",
     label: "gfuc.recipient_phone",
-    minWidth: 130
+    minWidth: columnWidth(120, 240, 320, 320, 320, 160)
   },
   {
     prop: "orderConsigneeVO.address1",
     label: "gfuc.recipient_address",
-    minWidth: 200
+    minWidth: columnWidth(200, 200, 240, 240, 240, 200)
   },
-  { prop: "orderCreateTime", label: "gfuc.submission_time", width: 200 }
-];
+  {
+    prop: "orderCreateTime",
+    label: "gfuc.submission_time",
+    width: columnWidth(140, 180, 200, 200, 180, 180)
+  }
+]);
 
 // 批量打印的loading
 const printLoading = ref(false);

@@ -167,29 +167,19 @@
 
 <script setup lang="ts">
 import { ref, reactive, onMounted, watch, computed } from "vue";
-import { spliceArray, commaToArr } from "@/utils/index";
+import { spliceArray, commaToArr, columnWidth } from "@/utils/index";
 import { downloadFile } from "@/utils/download";
-import { Printer } from "@element-plus/icons-vue";
-import {
-  getOrderList,
-  getOrderLabelUrl,
-  batchPrintOrderLabel,
-  getOrderProductList,
-  cancelOrder
-} from "@/api/order";
+
+// import {} from "@/api/finance";
 import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
 
 import { useUserStore } from "@/store/user";
-import { cloneDeep } from "lodash-es";
 import dayjs from "dayjs";
-import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
 import { useAppStore } from "@/store/app";
 
 const userStore = useUserStore();
-
-const router = useRouter();
 
 const { t } = useI18n();
 const appStore = useAppStore();
@@ -212,31 +202,6 @@ const lang = computed(() => appStore.lang);
 const timezone = computed(() => appStore.timezone);
 
 // 根据lang动态设置表头宽度
-const columnWidth = (
-  cnWidth: number,
-  enWidth: number,
-  frWidth: number,
-  itWidth: number,
-  nlWidth: number,
-  otherWidth: number
-): number => {
-  const currentLang = lang.value;
-
-  switch (currentLang) {
-    case "zh":
-      return cnWidth;
-    case "en":
-      return enWidth;
-    case "fr":
-      return frWidth;
-    case "it":
-      return itWidth;
-    case "nl":
-      return nlWidth;
-    default:
-      return otherWidth;
-  }
-};
 
 watch(
   () => lang.value,
