@@ -20,28 +20,10 @@
             :loading="printLoading"
           >
             <el-icon class="mr-1.5"><Printer /></el-icon>
-            {{ $t("web.gfuc.batch_print" /** 批量打印 **/) }}
+            {{ $t("web.gfuc.download_bill" /** 下载账单 **/) }}
           </el-button>
         </template>
-        <!-- <template #order-number>
-          <el-form-item
-            :label="$t('gfuc.tracking_number' /** 单号 **/)"
-            prop="orderNumber"
-            class="order-number-item"
-            :span="8"
-          >
-            <el-input
-              v-model="searchForm.orderNumber"
-              type="textarea"
-              resize="none"
-              clearable
-              :rows="5"
-              :placeholder="
-                $t('web.gfuc.please_enter' /** 请输入订单号或运单号 **/)
-              "
-            />
-          </el-form-item>
-        </template> -->
+
         <template #search>
           <!-- Search Fields -->
           <el-form-item
@@ -58,8 +40,7 @@
             />
           </el-form-item>
           <el-form-item
-            v-if="[0, 888].includes(currentStatus)"
-            :label="$t('gfuc.order_status' /** 订单状态 **/)"
+            :label="$t('web.gfuc.settlement_cycle' /** 结算周期 **/)"
             prop="orderStatusSet"
           >
             <el-select
@@ -68,15 +49,15 @@
               clearable
             >
               <el-option
-                v-for="item in exceptionOrderStatusOptions"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
+                v-for="item in [1, 2, 3]"
+                :key="item"
+                :label="item"
+                :value="item"
               />
             </el-select>
           </el-form-item>
           <el-form-item
-            :label="$t('gfuc.order_time' /** 下单时间 **/)"
+            :label="$t('web.gfuc.account_period' /** 账期 **/)"
             prop="orderTimeRange"
           >
             <el-date-picker
@@ -93,7 +74,7 @@
             />
           </el-form-item>
           <el-form-item
-            :label="$t('gfuc.recipient_postal_code' /** 收件人邮编 **/)"
+            :label="$t('web.gfuc.account_number' /** 账单编号 **/)"
             prop="consigneeCodeList"
           >
             <el-input
@@ -103,18 +84,8 @@
             />
           </el-form-item>
           <el-form-item
-            :label="$t('gfuc.recipient_phone' /** 收件人电话 **/)"
-            prop="shipperCodeList"
-          >
-            <el-input
-              v-model="searchForm.consigneePhone"
-              clearable
-              :placeholder="$t('web.gfuc.please_enter' /** 请输入 **/)"
-            />
-          </el-form-item>
-          <el-form-item
-            :label="$t('gfuc.product' /** 产品 **/)"
-            prop="productCodeList"
+            :label="$t('web.gfuc.account_status' /** 账单状态 **/)"
+            prop="accountStatus"
           >
             <el-select
               v-model="searchForm.productCodeList"
@@ -133,31 +104,29 @@
             </el-select>
           </el-form-item>
           <el-form-item
-            :label="$t('web.gfuc.customer_name' /** 下单客户 **/)"
-            prop="customerId"
-            v-if="customerNameList.length > 1"
+            :label="$t('web.gfuc.invoice_status' /** 开票状态 **/)"
+            prop="productCodeList"
           >
             <el-select
-              v-model="searchForm.customerId"
+              v-model="searchForm.productCodeList"
               :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
               clearable
               filterable
+              multiple
+              collapse-tags
             >
               <el-option
-                v-for="item in customerNameList"
-                :key="item.customerId"
-                :label="item.customerName"
-                :value="item.customerId"
+                v-for="item in productList"
+                :key="item.code"
+                :label="item.name"
+                :value="item.code"
               />
             </el-select>
           </el-form-item>
         </template>
 
         <template #columns>
-          <el-table-column
-            type="selection"
-            :width="columnWidth(55, 55, 55, 55, 55, 55)"
-          />
+          <el-table-column type="selection" width="55" />
           <el-table-column
             v-for="item in columns"
             :key="item.prop"
@@ -171,13 +140,12 @@
               #default="{ row }"
               v-if="item.prop === 'orderConsigneeVO.address1'"
             >
-              {{ getAddress(row.orderConsigneeVO) }}
             </template>
           </el-table-column>
 
           <el-table-column
             :label="$t('gfuc.operation' /** 操作 **/)"
-            :width="columnWidth(160, 180, 200, 200, 180, 180)"
+            width="180"
             fixed="right"
           >
             <template #default="{ row }">
@@ -258,7 +226,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, onMounted, watch, computed } from "vue";
-import { spliceArray, commaToArr, columnWidth } from "@/utils/index";
+import { spliceArray, commaToArr } from "@/utils/index";
 import { downloadFile } from "@/utils/download";
 import { Printer } from "@element-plus/icons-vue";
 import {
@@ -302,10 +270,36 @@ const props = defineProps({
 const lang = computed(() => appStore.lang);
 const timezone = computed(() => appStore.timezone);
 
+// 根据lang动态设置表头宽度
+const columnWidth = (
+  cnWidth: number,
+  enWidth: number,
+  frWidth: number,
+  itWidth: number,
+  nlWidth: number,
+  otherWidth: number
+): number => {
+  const currentLang = lang.value;
+
+  switch (currentLang) {
+    case "zh":
+      return cnWidth;
+    case "en":
+      return enWidth;
+    case "fr":
+      return frWidth;
+    case "it":
+      return itWidth;
+    case "nl":
+      return nlWidth;
+    default:
+      return otherWidth;
+  }
+};
+
 watch(
   () => lang.value,
   (val) => {
-    getProductList();
     fetchData();
   }
 );
@@ -315,63 +309,81 @@ watch(
     fetchData();
   }
 );
-const currentStatus = computed(() => props.status);
-
-const orderStatusDict = useDict("order_status");
-
-// 异常订单状态
-const exceptionOrderStatusOptions = computed(() => {
-  let arr = [];
-  if (currentStatus.value === 0) {
-    arr = orderStatusDict.options.value;
-  } else if (currentStatus.value === 888) {
-    arr = orderStatusDict.options.value.filter((item: any) =>
-      [6, 7, 8].includes(item.value)
-    );
-  }
-  return arr;
-});
 
 const columns = computed(() => [
   {
     prop: "corderNo",
-    label: "gfuc.customer_order_number",
-    minWidth: columnWidth(200, 220, 260, 220, 200, 200)
+    label: t("web.gfuc.account_number" /** 账单编号 */),
+    minWidth: columnWidth(120, 180, 200, 180, 160, 180)
   },
   {
-    prop: "waybillNo",
-    label: "gfuc.waybill_number",
-    minWidth: columnWidth(200, 200, 200, 200, 180, 200)
+    prop: "settlementCycle",
+    label: t("web.gfuc.settlement_cycle" /** 结算周期 */),
+    minWidth: columnWidth(120, 200, 220, 240, 180, 200)
   },
   {
-    prop: "productName",
-    label: "gfuc.product_name",
-    minWidth: columnWidth(120, 180, 200, 200, 180, 180)
+    prop: "accountPeriod",
+    label: t("web.gfuc.account_period" /** 账期 */),
+    minWidth: columnWidth(80, 160, 200, 180, 160, 160)
+  },
+  {
+    prop: "settlementCurrency",
+    label: t("web.gfuc.settlement_currency" /** 结算币种 */),
+    minWidth: columnWidth(120, 220, 220, 240, 180, 200)
   },
   {
     prop: "orderStatusName",
-    label: "gfuc.order_status",
-    width: columnWidth(100, 160, 220, 200, 160, 160)
+    label: t("web.gfuc.account_status" /** 账单状态 */),
+    width: columnWidth(100, 160, 180, 200, 160, 160)
   },
   {
-    prop: "orderConsigneeVO.consigneeName",
-    label: "gfuc.recipient",
-    minWidth: columnWidth(100, 160, 180, 180, 160, 160)
+    prop: "ticketCount",
+    label: t("web.gfuc.ticket_count" /** 票数 */),
+    minWidth: columnWidth(80, 140, 200, 220, 160, 160)
   },
   {
-    prop: "orderConsigneeVO.consigneePhone",
-    label: "gfuc.recipient_phone",
-    minWidth: columnWidth(120, 240, 320, 320, 320, 160)
+    prop: "taxRate",
+    label: t("web.gfuc.tax_rate_status" /** 税率 */),
+    minWidth: columnWidth(80, 100, 160, 180, 160, 120)
   },
   {
-    prop: "orderConsigneeVO.address1",
-    label: "gfuc.recipient_address",
-    minWidth: columnWidth(200, 200, 240, 240, 240, 200)
+    prop: "billAmountIncludingTax",
+    label: t("web.gfuc.bill_amount_including_tax" /** 账单金额_含税 */),
+    minWidth: columnWidth(150, 240, 240, 240, 240, 220),
+    align: "right" // 金额类字段一般右对齐更规范
   },
   {
-    prop: "orderCreateTime",
-    label: "gfuc.submission_time",
-    width: columnWidth(140, 180, 200, 200, 180, 180)
+    prop: "billAmountExcludingTax",
+    label: t("web.gfuc.bill_amount_excluding_tax" /** 账单金额_未税 */),
+    minWidth: columnWidth(150, 240, 240, 260, 260, 220),
+    align: "right"
+  },
+  {
+    prop: "billAmountTax",
+    label: t("web.gfuc.bill_amount_tax" /** 账单金额_税额 */),
+    minWidth: columnWidth(150, 240, 240, 220, 220, 180),
+    align: "right"
+  },
+  {
+    prop: "billDetailExcludingTax",
+    label: t("web.gfuc.bill_detail_excluding_tax" /** 账单明细_未税 */),
+    minWidth: columnWidth(160, 240, 240, 280, 260, 240)
+  },
+  {
+    prop: "adjustmentTotalExcludingTax",
+    label: t("web.gfuc.adjustment_total_excluding_tax" /** 调账总额_未税 */),
+    minWidth: columnWidth(160, 280, 260, 300, 300, 280),
+    align: "right"
+  },
+  {
+    prop: "adjustmentDetailExcludingTax",
+    label: t("web.gfuc.adjustment_detail_excluding_tax" /** 调账明细_未税 */),
+    minWidth: columnWidth(160, 300, 280, 320, 320, 280)
+  },
+  {
+    prop: "adjustmentBillNo",
+    label: t("web.gfuc.claim_bill_no" /** 理赔账单编号 */),
+    minWidth: columnWidth(160, 180, 360, 220, 200, 200)
   }
 ]);
 
@@ -461,20 +473,6 @@ const handleChange = (value) => {
   }
 };
 
-// 处理订单状态集合
-const handleOrderStatusSet = (status?: number) => {
-  if (currentStatus.value === 888) {
-    return searchForm.orderStatus ? [searchForm.orderStatus] : [6, 7, 8];
-  } else {
-    if (status === 0 || !status) {
-      return [];
-    } else if (status === 888) {
-      return [6, 7, 8];
-    } else {
-      return [status];
-    }
-  }
-};
 const getParams = () => {
   const {
     orderNumber,
@@ -508,10 +506,7 @@ const getParams = () => {
   }
 
   params.orderType = "";
-  // 赋值
-  params.orderStatusSet = handleOrderStatusSet(
-    orderStatus || currentStatus.value
-  );
+
   console.log(params.orderStatusSet, "++++====");
 
   if (searchForm.customerId) {
@@ -524,102 +519,15 @@ const getParams = () => {
   return params;
 };
 
-const getAddress = (obj: any) => {
-  if (obj?.consigneeCountry === "FR") {
-    return [
-      obj?.consigneeNumExt,
-      obj?.address1,
-      obj?.address2,
-      obj?.address3,
-      obj?.consigneeNumIn,
-      obj?.consigneeCode,
-      obj?.consigneeArea,
-      obj?.consigneeCity,
-      obj?.consigneeState,
-      obj?.consigneeCountry
-    ]
-      .filter(Boolean) // 过滤掉 undefined/null/空字符串
-      .join(" "); // 用空格连接
-  } else if (obj?.consigneeCountry === "IT") {
-    return [
-      obj?.address1,
-      obj?.consigneeNumExt,
-      obj?.consigneeNumIn,
-      obj?.address2,
-      obj?.address3,
-      obj?.consigneeCode,
-      obj?.consigneeArea,
-      obj?.consigneeCity,
-      obj?.consigneeState,
-      obj?.consigneeCountry
-    ]
-      .filter(Boolean) // 过滤掉 undefined/null/空字符串
-      .join(" "); // 用空格连接
-  } else if (obj?.consigneeCountry === "NL") {
-    return [
-      obj?.address1,
-      obj?.address2,
-      obj?.address3,
-      obj?.consigneeNumExt,
-      obj?.consigneeNumIn,
-      obj?.consigneeCode,
-      obj?.consigneeArea,
-      obj?.consigneeCity,
-      obj?.consigneeState,
-      obj?.consigneeCountry
-    ]
-      .filter(Boolean) // 过滤掉 undefined/null/空字符串
-      .join(" "); // 用空格连接
-  } else {
-    return [
-      obj?.consigneeCountry,
-      obj?.consigneeCode,
-      obj?.consigneeState,
-      obj?.consigneeCity,
-      obj?.consigneeArea,
-      obj?.address1,
-      obj?.address2,
-      obj?.address3,
-      obj?.consigneeNumExt,
-      obj?.consigneeNumIn
-    ]
-      .filter(Boolean) // 过滤掉 undefined/null/空字符串
-      .join(" "); // 用空格连接
-  }
-};
-
 const handleResetForm = () => {
   searchForm.orderNumber = "";
   // Object.assign(searchForm, initialFormState);
   // setDefaultRange();
 };
-const getOrderProductListData = async () => {
-  const params = getParams();
-
-  const res = await getOrderList({
-    data: {
-      ...params
-    },
-    pageNum: pagination.currentPage,
-    pageSize: pagination.pageSize
-  });
-  tableData.value = res.records.map((item: any) => ({
-    ...item,
-    orderUpdateFlag:
-      userStore.loginInfo.shipperCustomerList.find(
-        (v: any) => v.customerId === item.customerId
-      )?.orderUpdateFlag === 1
-        ? true
-        : false
-  }));
-  pagination.total = res.total || 0;
-};
 
 const fetchData = () => {
   loading.value = true;
-  getOrderProductListData();
 
-  // 模拟接口请求
   setTimeout(() => {
     loading.value = false;
   }, 500);
@@ -729,25 +637,10 @@ const handleBatchPrint = () => {
       printLoading.value = false;
     });
 };
-// 获取产品列表select数据
-const getProductList = async () => {
-  const res = await getOrderProductList({
-    countryCode: userStore.userInfo?.country || ""
-  });
-  productList.value = res || [];
-};
 
 onMounted(() => {
-  getProductList();
   fetchData();
 });
-
-watch(
-  () => currentStatus.value,
-  () => {
-    fetchData();
-  }
-);
 </script>
 
 <style lang="scss" scoped>

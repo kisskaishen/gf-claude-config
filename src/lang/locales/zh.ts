@@ -338,5 +338,26 @@ export default {
   "web.gfuc.recharge_tip": "在线充值，快速到账，保障发货额度充足",
   "web.gfuc.balance_tip": "查看可用账户余额及冻结额度",
   "web.gfuc.upload_task_click": "上传记录可点击",
-  "web.gfuc.view": "查看"
+  "web.gfuc.view": "查看",
+
+  "web.gfuc.freight_bill": "运费账单",
+  "web.gfuc.claim_bill": "理赔账单",
+  "web.gfuc.settlement_cycle": "结算周期",
+  "web.gfuc.account_period": "账期",
+  "web.gfuc.account_number": "账单编号",
+  "web.gfuc.account_status": "账单状态",
+  "web.gfuc.invoice_status": "开票状态",
+  "web.gfuc.download_bill": "下载账单",
+  "web.gfuc.settlement_currency": "结算币种",
+  "web.gfuc.ticket_count": "票数",
+  "web.gfuc.tax_rate_status": "税率",
+  "web.gfuc.bill_amount_including_tax": "账单金额_含税",
+  "web.gfuc.bill_amount_excluding_tax": "账单金额_未税",
+  "web.gfuc.bill_amount_tax": "账单金额_税额",
+  "web.gfuc.bill_detail_excluding_tax": "账单明细_未税",
+  "web.gfuc.adjustment_total_excluding_tax": "调账总额_未税",
+  "web.gfuc.adjustment_detail_excluding_tax": "调账明细_未税",
+  "web.gfuc.claim_bill_no": "理赔账单编号",
+  "web.gfuc.claim_bill_amount_ex_tax": "理赔账单金额_未税",
+  "web.gfuc.claim_bill_amount_in_tax": "理赔账单金额_含税"
 };

@@ -1,95 +1,81 @@
 <template>
-  <div class="page">
-    <TableLayout
-      v-model:search-form-model="searchFormModel"
-      :data="data"
-      :total="total"
-      @search="handleSearch"
-    >
-      <template #search>
-        <el-form-item :label="$t('gfuc.name' /** 名称 **/)">
-          <el-input
-            v-model="searchFormModel.name"
-            :placeholder="$t('gfuc.please_enter_name' /** 请输入名称 **/)"
-          />
-        </el-form-item>
-        <el-form-item :label="$t('gfuc.age' /** 年龄 **/)">
-          <el-input
-            v-model="searchFormModel.age"
-            :placeholder="$t('gfuc.please_enter_age' /** 请输入年龄 **/)"
-          />
-        </el-form-item>
-        <el-form-item :label="$t('gfuc.registration_time' /** 登记时间 **/)">
-          <el-date-picker
-            v-model="searchFormModel.registerTime"
-            type="daterange"
-            :start-placeholder="$t('gfuc.start_date' /** 开始日期 **/)"
-            :end-placeholder="$t('gfuc.end_date' /** 结束日期 **/)"
-          />
-        </el-form-item>
-        <el-form-item :label="$t('gfuc.address' /** 地址 **/)" :span="16">
-          <el-input
-            v-model="searchFormModel.address"
-            placeholder="请输入地址"
-          />
-        </el-form-item>
-      </template>
-      <!-- <template #toolbar-left>
-      <el-button type="primary" @click="handleSearch">导出</el-button>
-    </template> -->
-      <template #columns>
-        <el-table-column prop="name" label="名称" />
-        <el-table-column prop="age" label="年龄" />
-        <el-table-column prop="address" label="地址" />
-        <el-table-column prop="registerTime" label="登记时间" />
-      </template>
-    </TableLayout>
-  </div>
+  <PageContainer>
+    <div class="order-container">
+      <!-- Tabs -->
+      <el-tabs
+        v-model="activeTab"
+        class="order-tabs"
+        span="24"
+        @tab-click="handleTabClick"
+      >
+        <el-tab-pane
+          v-for="item in activeTabOptions"
+          :key="item.value"
+          :label="item.label"
+          :name="item.value"
+        />
+      </el-tabs>
+      <ClaimTable v-model:status="activeTab" v-if="activeTab === 999" />
+      <CostTable v-model:status="activeTab" v-else />
+    </div>
+  </PageContainer>
 </template>
+
 <script setup lang="ts">
+import { ref, computed } from "vue";
+import ClaimTable from "@/views/finance/components/ClaimTable.vue";
+import CostTable from "@/views/finance/components/CostTable.vue";
+
+import PageContainer from "@/components/PageContainer/index.vue";
+// import { useDict } from "@/hooks/useDict";
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+
 defineOptions({
-  name: "Account"
+  name: "AccountList"
 });
-import TableLayout from "@/components/TableLayout/index.vue";
-import { onMounted, ref } from "vue";
-const loading = ref(false);
-const searchFormModel = ref({
-  name: "",
-  age: "",
-  address: "",
-  registerTime: []
-});
-const data = ref<any[]>([]);
 
-const total = ref(0);
+const activeTab = ref(0);
+const activeTabOptions = computed(() => [
+  {
+    value: 0,
+    label: t("web.gfuc.freight_bill" /** 运费账单 */)
+  },
+  {
+    value: 999,
+    label: t("web.gfuc.claim_bill" /** 理赔账单 */)
+  }
+]);
 
-const fetchData = () => {
-  loading.value = true;
-  setTimeout(() => {
-    loading.value = false;
-    data.value = Array.from({ length: 10 }).map((_, index) => ({
-      id: index + 1,
-      name: `test${index + 1}`,
-      age: 18,
-      address: `test${index + 1}`,
-      registerTime: new Date()
-    }));
-    total.value = 10;
-  }, 1000);
+const handleTabClick = (tab: any, event: Event) => {
+  console.log(tab.props.label, tab.props.name);
 };
-
-const handleSearch = () => {
-  console.log("search");
-  fetchData();
-};
-
-onMounted(() => {
-  fetchData();
-});
 </script>
+
 <style lang="scss" scoped>
-.page {
+.order-tabs {
+  margin-bottom: 16px;
+
+  :deep(.el-tabs__item) {
+    height: 32px;
+  }
+
+  :deep(.el-tabs__header) {
+    margin: 0;
+    border-bottom: none;
+  }
+
+  :deep(.el-tabs__nav-wrap) {
+    &::after {
+      height: 1px;
+    }
+  }
+}
+
+.order-container {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  padding: 24px 24px 0;
+  overflow: hidden;
 }
 </style>
