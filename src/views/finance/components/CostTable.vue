@@ -23,11 +23,11 @@
           <!-- Search Fields -->
           <el-form-item
             :label="$t('gfuc.tracking_number' /** 单号 **/)"
-            prop="orderNumber"
+            prop="waybillNo"
             :span="8"
           >
             <el-input
-              v-model="searchForm.orderNumber"
+              v-model="searchForm.waybillNo"
               clearable
               :placeholder="
                 $t('web.gfuc.please_enter' /** 请输入订单号或运单号 **/)
@@ -36,18 +36,18 @@
           </el-form-item>
           <el-form-item
             :label="$t('web.gfuc.settlement_cycle' /** 结算周期 **/)"
-            prop="orderStatusSet"
+            prop="cycle"
           >
             <el-select
-              v-model="searchForm.orderStatus"
+              v-model="searchForm.cycle"
               :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
               clearable
             >
               <el-option
-                v-for="item in [1, 2, 3]"
-                :key="item"
-                :label="item"
-                :value="item"
+                v-for="item in cycleTypeListDict.options.value"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
               />
             </el-select>
           </el-form-item>
@@ -70,20 +70,20 @@
           </el-form-item>
           <el-form-item
             :label="$t('web.gfuc.account_number' /** 账单编号 **/)"
-            prop="consigneeCodeList"
+            prop="number"
           >
             <el-input
-              v-model="searchForm.consigneeCodeList"
+              v-model="searchForm.number"
               clearable
               :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
             />
           </el-form-item>
           <el-form-item
             :label="$t('web.gfuc.account_status' /** 账单状态 **/)"
-            prop="accountStatus"
+            prop="billStatusList"
           >
             <el-select
-              v-model="searchForm.productCodeList"
+              v-model="searchForm.billStatusList"
               :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
               clearable
               filterable
@@ -91,19 +91,19 @@
               collapse-tags
             >
               <el-option
-                v-for="item in productList"
-                :key="item.code"
-                :label="item.name"
-                :value="item.code"
+                v-for="item in billStatusListDict.options.value"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
               />
             </el-select>
           </el-form-item>
           <el-form-item
             :label="$t('web.gfuc.invoice_status' /** 开票状态 **/)"
-            prop="productCodeList"
+            prop="invoiceStatusList"
           >
             <el-select
-              v-model="searchForm.productCodeList"
+              v-model="searchForm.invoiceStatusList"
               :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
               clearable
               filterable
@@ -111,10 +111,10 @@
               collapse-tags
             >
               <el-option
-                v-for="item in productList"
-                :key="item.code"
-                :label="item.name"
-                :value="item.code"
+                v-for="item in invoiceStatusListDict.options.value"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
               />
             </el-select>
           </el-form-item>
@@ -173,6 +173,7 @@ import { downloadFile } from "@/utils/download";
 // import {} from "@/api/finance";
 import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
+import { getFreightBill } from "@/api/finance";
 
 import { useUserStore } from "@/store/user";
 import dayjs from "dayjs";
@@ -187,6 +188,10 @@ defineOptions({
   name: "CostTable"
 });
 const emits = defineEmits(["show-success-dialog"]);
+
+const cycleTypeListDict = useDict("fms_receivable_cycle_type");
+const billStatusListDict = useDict("lcs.finance.bill.status");
+const invoiceStatusListDict = useDict("fms.receivable.invoice.status.type");
 
 const defaultTime = [
   new Date(2000, 1, 1, 0, 0, 0), // 开始时间默认00:00:00
@@ -317,19 +322,28 @@ const loading = ref(false);
 
 // 初始表单状态
 const initialFormState = {
-  orderNumber: "",
-  orderStatus: "",
-  orderStatusSet: [],
-  orderSource: undefined,
-  consigneeCodeList: "",
-  shipperCodeList: "",
-  productCodeList: [],
-  customerName: "",
-  customerId: "",
-  consigneePhone: "",
-  transferRequired: undefined,
-  deliveryStationIdList: [],
-  orderTimeRange: ["", ""]
+  // 账单月份数组，如 ["01", "02"]
+  billMonth: [],
+  // 账单状态数组，如 [1, 2]
+  billStatusList: [],
+  // 账单年份，如 2026
+  billYear: undefined,
+  // 客户ID列表
+  customerIdList: [],
+  // 客户负责人ID
+  customerPrincipalId: undefined,
+  // 周期
+  cycle: undefined,
+  // 半月标识
+  halfMonth: undefined,
+  // 发票状态数组，如 [1, 2]
+  invoiceStatusList: [],
+  // 账单编号，如 "BILL20260527001"
+  number: undefined,
+  // 运单编号，如 "YD1234567890"
+  waybillNo: undefined,
+  // 周数数组，如 [1, 2, 3]
+  weeks: undefined
 };
 
 const searchForm = reactive({ ...initialFormState });
@@ -341,8 +355,6 @@ const pagination = reactive({
 });
 
 const tableData = ref([]);
-
-const productList = ref([]);
 
 // 禁用日期逻辑
 const disabledDate = (time) => {
@@ -395,59 +407,48 @@ const handleChange = (value) => {
 
 const getParams = () => {
   const {
-    orderNumber,
-    shipperCodeList,
-    consigneeCodeList,
-    orderTimeRange,
-    orderStatus,
+    waybillNo,
+
     ...args
   } = searchForm;
   const params: any = {
     ...args
   };
   // 处理单号
-  if (orderNumber) {
-    params.orderNumber = spliceArray(commaToArr(orderNumber), 500).join("\n");
-  } else {
-    params.orderNumber = "";
-  }
-  // 时间参数
-  if (orderTimeRange?.length === 2) {
-    params.queryStartTime = orderTimeRange[0];
-    params.queryEndTime = orderTimeRange[1];
-  }
-  // 收件地邮编
-  if (consigneeCodeList) {
-    params.consigneeCodeList = spliceArray(commaToArr(consigneeCodeList), 100);
-  }
-  // 寄件地邮编
-  if (shipperCodeList) {
-    params.shipperCodeList = spliceArray(commaToArr(shipperCodeList), 100);
-  }
+  // if (waybillNo) {
+  //   params.waybillNo = spliceArray(commaToArr(waybillNo), 500).join("\n");
+  // } else {
+  //   params.waybillNo = "";
+  // }
 
-  params.orderType = "";
-
-  console.log(params.orderStatusSet, "++++====");
-
-  if (searchForm.customerId) {
-    params.customerIdList = [searchForm.customerId];
-  } else {
-    params.customerIdList = userStore.loginInfo?.shipperCustomerList?.map(
-      (item: any) => item.customerId
-    );
-  }
+  // if (searchForm.customerId) {
+  //   params.customerIdList = [searchForm.customerId];
+  // } else {
+  //   params.customerIdList = userStore.loginInfo?.shipperCustomerList?.map(
+  //     (item: any) => item.customerId
+  //   );
+  // }
   return params;
 };
 
-const handleResetForm = () => {
-  searchForm.orderNumber = "";
-  // Object.assign(searchForm, initialFormState);
-  // setDefaultRange();
+const handleResetForm = () => {};
+
+const getListData = async () => {
+  const params = getParams();
+
+  const res = await getFreightBill({
+    ...params,
+    pageNum: pagination.currentPage,
+    pageSize: pagination.pageSize
+  });
+  console.log(res, "====");
+  tableData.value = res.records;
+  pagination.total = res.total || 0;
 };
 
 const fetchData = () => {
   loading.value = true;
-
+  getListData();
   setTimeout(() => {
     loading.value = false;
   }, 500);
