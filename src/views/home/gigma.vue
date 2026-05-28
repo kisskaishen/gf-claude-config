@@ -1,7 +1,7 @@
 <template>
   <div class="container p-6">
     <!-- 欢迎信息 -->
-    <h1 class="mb-6 text-xl font-medium">你好，xxx</h1>
+    <h1 class="mb-6 text-xl font-medium">你好，{{ userAccount }}</h1>
 
     <!-- 总金额和状态卡片 -->
     <div class="flex justify-between gap-6 mb-6">
@@ -10,7 +10,7 @@
         class="flex-1 p-4 border-l-4 border-orange-500 rounded-lg bg-orange-50"
       >
         <p class="mb-2 text-sm text-gray-600">总下单金额</p>
-        <p class="text-2xl font-bold text-primary">€ 5,415,654.51</p>
+        <p class="text-2xl font-bold text-primary">€ {{ balance }}</p>
         <div class="pt-4 mt-4 border-t border-orange-200">
           <a href="#" class="text-sm text-primary hover:underline">查看明细</a>
         </div>
@@ -20,7 +20,9 @@
       <div
         class="flex flex-col items-center justify-center p-4 bg-white border rounded-lg border-card min-w-[286px]"
       >
-        <p class="mb-2 text-3xl font-bold text-center text-primary">0</p>
+        <p class="mb-2 text-3xl font-bold text-center text-primary">
+          {{ recentDeliveryCount }}
+        </p>
         <p class="text-center text-gray-600">派送中</p>
       </div>
 
@@ -28,7 +30,9 @@
       <div
         class="flex flex-col items-center justify-center p-4 bg-white border rounded-lg border-card min-w-[286px]"
       >
-        <p class="mb-2 text-3xl font-bold text-center text-primary">0</p>
+        <p class="mb-2 text-3xl font-bold text-center text-primary">
+          {{ SignedOrdersCount }}
+        </p>
         <p class="text-center text-gray-600">已签收</p>
       </div>
     </div>
@@ -342,10 +346,27 @@
 </template>
 
 <script setup lang="ts">
-// 这里可以添加组件逻辑
-import { ref } from "vue";
+import { getBalanceInfo, getRecentCount } from "@/api/home";
+import { useUserStore } from "@/store/user";
+const userStore = useUserStore();
 
+const userAccount = computed(() => {
+  return userStore?.userInfo?.account;
+});
+
+const balance = ref(0);
+const recentDeliveryCount = ref(0);
+const SignedOrdersCount = ref(0);
 const trackingNo = ref("");
+
+onMounted(async () => {
+  const balanceInfo = await await getBalanceInfo();
+  balance.value = balanceInfo.data?.balance || 0;
+
+  const res = await getRecentCount();
+  recentDeliveryCount.value = res.data?.recentDeliveryCount || 0;
+  SignedOrdersCount.value = res.data?.SignedOrdersCount || 0;
+});
 </script>
 
 <style scoped lang="scss">

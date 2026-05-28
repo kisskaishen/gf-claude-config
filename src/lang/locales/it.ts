@@ -358,5 +358,27 @@ export default {
   "web.gfuc.balance_tip":
     "Visualizza saldo disponibile del conto e importo bloccato",
   "web.gfuc.upload_task_click": "I record di caricamento sono cliccabili",
-  "web.gfuc.view": "Visualizza"
+  "web.gfuc.view": "Visualizza",
+
+  "web.gfuc.freight_bill": "Fattura di trasporto",
+  "web.gfuc.claim_bill": "Fattura di reclamo",
+  "web.gfuc.settlement_cycle": "Ciclo di liquidazione",
+  "web.gfuc.account_period": "Periodo contabile",
+  "web.gfuc.account_number": "Numero fattura",
+  "web.gfuc.account_status": "Stato fattura",
+  "web.gfuc.invoice_status": "Stato fatturazione",
+  "web.gfuc.download_bill": "Scarica fattura",
+  "web.gfuc.settlement_currency": "Valuta di liquidazione",
+  "web.gfuc.ticket_count": "Numero di ticket",
+  "web.gfuc.tax_rate_status": "Aliquota fiscale",
+  "web.gfuc.bill_amount_including_tax": "Importo fattura (Iva inclusa)",
+  "web.gfuc.bill_amount_excluding_tax": "Importo fattura (Iva esclusa)",
+  "web.gfuc.bill_amount_tax": "Importo fattura (Iva)",
+  "web.gfuc.bill_detail_excluding_tax": "Dettaglio fattura (Iva esclusa)",
+  "web.gfuc.adjustment_total_excluding_tax": "Totale rettifica (Iva esclusa)",
+  "web.gfuc.adjustment_detail_excluding_tax":
+    "Dettaglio rettifica (Iva esclusa)",
+  "web.gfuc.claim_bill_no": "Numero fattura reclamo",
+  "web.gfuc.claim_bill_amount_ex_tax": "Importo fattura reclamo (Iva esclusa)",
+  "web.gfuc.claim_bill_amount_in_tax": "Importo fattura reclamo (Iva inclusa)"
 };

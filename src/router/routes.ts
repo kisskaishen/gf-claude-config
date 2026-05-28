@@ -126,7 +126,7 @@ export const routes: RouteRecordRaw[] = [
       // {
       //   path: "account",
       //   name: "Account",
-      //   component: () => import("@/views/home/index.vue"),
+      //   component: () => import("@/views/finance/account.vue"),
       //   meta: { title: "账单", requireAuth: true, i18n: "web.gfuc.bill" }
       // }
     ]

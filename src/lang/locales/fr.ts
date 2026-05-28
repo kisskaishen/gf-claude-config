@@ -371,5 +371,28 @@ export default {
     "Consultez le solde disponible du compte et le montant gelé",
   "web.gfuc.upload_task_click":
     "Les historiques de téléchargement sont cliquables",
-  "web.gfuc.view": "Voir"
+  "web.gfuc.view": "Voir",
+
+  "web.gfuc.freight_bill": "Facture de fret",
+  "web.gfuc.claim_bill": "Facture de réclamation",
+  "web.gfuc.settlement_cycle": "Cycle de règlement",
+  "web.gfuc.account_period": "Période comptable",
+  "web.gfuc.account_number": "Numéro de facture",
+  "web.gfuc.account_status": "Statut de la facture",
+  "web.gfuc.invoice_status": "Statut de facturation",
+  "web.gfuc.download_bill": "Télécharger la facture",
+  "web.gfuc.settlement_currency": "Devise de règlement",
+  "web.gfuc.ticket_count": "Nombre de tickets",
+  "web.gfuc.tax_rate_status": "Taux de taxe",
+  "web.gfuc.bill_amount_including_tax": "Montant de la facture (TTC)",
+  "web.gfuc.bill_amount_excluding_tax": "Montant de la facture (HT)",
+  "web.gfuc.bill_amount_tax": "Montant de la facture (TVA)",
+  "web.gfuc.bill_detail_excluding_tax": "Détail de la facture (HT)",
+  "web.gfuc.adjustment_total_excluding_tax": "Total d'ajustement (HT)",
+  "web.gfuc.adjustment_detail_excluding_tax": "Détail d'ajustement (HT)",
+  "web.gfuc.claim_bill_no": "Numéro de facture de réclamation",
+  "web.gfuc.claim_bill_amount_ex_tax":
+    "Montant de la facture de réclamation (HT)",
+  "web.gfuc.claim_bill_amount_in_tax":
+    "Montant de la facture de réclamation (TTC)"
 };

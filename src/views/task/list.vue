@@ -8,7 +8,7 @@
         :data="tableData"
         :total="pagination.total"
         :loading="loading"
-        :searchConfig="{ cols: 3, rowNum: 2 }"
+        :searchConfig="{ cols: 3, rowNum: 1 }"
         @search="fetchData"
         @reset="handleReset"
       >
@@ -125,7 +125,7 @@
 
           <el-table-column
             :label="$t('gfuc.operation' /** 操作 **/)"
-            width="160"
+            :width="columnWidth(160, 180, 200, 200, 180, 180)"
             fixed="right"
             align="center"
           >
@@ -184,20 +184,15 @@
 
 <script setup lang="ts">
 import { ref, reactive, onMounted, watch, computed } from "vue";
-import { spliceArray, commaToArr } from "@/utils/index";
 import { downloadFile } from "@/utils/download";
 import { getTaskList } from "@/api/task";
-import {
-  downloadOrderTemplate,
-  uploadOrder,
-  getOrderImportResult,
-  downloadFailedOrderData
-} from "@/api/order";
+import { downloadFailedOrderData } from "@/api/order";
 import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
+import { columnWidth } from "@/utils/index";
 
 import { useUserStore } from "@/store/user";
-import { cloneDeep } from "lodash-es";
+
 import dayjs from "dayjs";
 import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
@@ -210,7 +205,7 @@ const router = useRouter();
 const { t } = useI18n();
 const appStore = useAppStore();
 defineOptions({
-  name: "OrderList"
+  name: "TaskList"
 });
 
 const defaultTime = [
@@ -236,47 +231,50 @@ const currentStatus = computed(() => props.status);
 const taskStatusDict = useDict("task_status");
 const taskTypeDict = useDict("task_type");
 
-const columns = [
+const columns = computed(() => [
   {
     prop: "fileName",
     label: "web.gfuc.file_name", // 文件名
-    minWidth: 200
+    minWidth: columnWidth(160, 200, 200, 200, 180, 200)
   },
   {
     prop: "createTime",
     label: "web.gfuc.date", // 日期
-    minWidth: 200
+    minWidth: columnWidth(120, 180, 200, 180, 160, 180)
   },
   {
     prop: "taskTypeName",
     label: "web.gfuc.type", // 类型
-    minWidth: 160
+    minWidth: columnWidth(100, 160, 180, 180, 140, 160)
   },
   {
     prop: "taskStatusName",
     label: "web.gfuc.status", // 状态
-    minWidth: 136,
+    minWidth: columnWidth(100, 160, 180, 200, 160, 160),
     textAlign: "center"
   },
 
   {
     prop: "totalCount",
     label: "web.gfuc.total_orders", // 总订单
+    minWidth: columnWidth(100, 160, 200, 200, 220, 160),
     textAlign: "center"
   },
 
   {
     prop: "successCount",
     label: "web.gfuc.success", // 成功
+    minWidth: columnWidth(80, 140, 160, 160, 120, 140),
     textAlign: "center"
   },
 
   {
     prop: "failCount",
     label: "web.gfuc.fail", // 失败,
+    minWidth: columnWidth(80, 140, 160, 160, 120, 140),
     textAlign: "center"
   }
-];
+]);
 
 const loading = ref(false);
 
@@ -469,6 +467,9 @@ watch(
 <style lang="scss" scoped>
 .task-container {
   @apply p-6;
+  height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
 
   .status-tag {
     padding: 2px 8px;

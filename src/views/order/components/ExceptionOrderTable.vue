@@ -8,11 +8,11 @@
         :data="tableData"
         :total="pagination.total"
         :loading="loading"
-        :searchConfig="{ cols: 3, rowNum: 2 }"
+        :searchConfig="{ cols: 3, rowNum: 1 }"
         @search="fetchData"
         @reset="handleReset"
       >
-        <template #order-number>
+        <!-- <template #order-number>
           <el-form-item
             :label="$t('gfuc.tracking_number' /** 单号 **/)"
             prop="orderNumber"
@@ -30,8 +30,22 @@
               "
             />
           </el-form-item>
-        </template>
+        </template> -->
         <template #search>
+          <el-form-item
+            :label="$t('gfuc.tracking_number' /** 单号 **/)"
+            prop="orderNumber"
+            class="order-number-item"
+            :span="8"
+          >
+            <el-input
+              v-model="searchForm.orderNumber"
+              clearable
+              :placeholder="
+                $t('web.gfuc.please_enter' /** 请输入订单号或运单号 **/)
+              "
+            />
+          </el-form-item>
           <el-form-item
             :label="$t('web.gfuc.postal_code')"
             prop="consigneeCode"
@@ -113,7 +127,7 @@
 
           <el-table-column
             :label="$t('gfuc.operation' /** 操作 **/)"
-            width="160"
+            :width="columnWidth(160, 180, 200, 200, 180, 180)"
             fixed="right"
           >
             <template #default="{ row }">
@@ -147,11 +161,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from "vue";
+import { ref, reactive, onMounted, computed, watch } from "vue";
 import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
 import { getExceptionOrderList } from "@/api/order";
-import { spliceArray, commaToArr } from "@/utils/index";
+import { spliceArray, commaToArr, columnWidth } from "@/utils/index";
 import { useI18n } from "vue-i18n";
 import { cloneDeep } from "lodash-es";
 import dayjs from "dayjs";
@@ -205,62 +219,78 @@ const exceptionOrderColumns = computed(() => [
   {
     prop: "customerName",
     label: t("web.gfuc.customer_name2"),
-    minWidth: "120"
+    minWidth: columnWidth(120, 180, 200, 200, 180, 180)
   },
-  { prop: "orderSource", label: t("web.gfuc.order_source"), width: "100" },
+  {
+    prop: "orderSource",
+    label: t("web.gfuc.order_source"),
+    width: columnWidth(100, 160, 180, 180, 160, 160)
+  },
   {
     prop: "waybillNo",
     label: t("web.gfuc.system_order_no"),
-    minWidth: "200"
+    minWidth: columnWidth(160, 200, 240, 200, 200, 200)
   },
   {
     prop: "cusOrderNo",
     label: t("web.gfuc.customer_order_no"),
-    minWidth: "160"
+    minWidth: columnWidth(140, 200, 260, 220, 200, 200)
   },
   {
     prop: "consigneeCode",
     label: t("web.gfuc.consignee_postal_code"),
-    width: "110"
+    width: columnWidth(100, 200, 240, 240, 240, 140)
   },
   {
     prop: "unusualTypeValue",
     label: t("web.gfuc.unusual_type_value"),
-    width: "120"
+    width: columnWidth(120, 200, 200, 200, 180, 180)
   },
   {
     prop: "describe",
     label: t("web.gfuc.description"),
-    minWidth: "240",
+    minWidth: columnWidth(200, 240, 260, 260, 240, 240),
     showOverflowTooltip: true
   },
-  { prop: "unusualField", label: t("web.gfuc.unusual_field"), minWidth: "140" },
+  {
+    prop: "unusualField",
+    label: t("web.gfuc.unusual_field"),
+    minWidth: columnWidth(140, 200, 220, 220, 200, 200)
+  },
   {
     prop: "fieldValue",
     label: t("web.gfuc.unusual_field_value"),
-    minWidth: "200",
+    minWidth: columnWidth(200, 200, 200, 200, 200, 200),
     showOverflowTooltip: true
   },
   {
     prop: "rule",
     label: t("web.gfuc.field_validation_rule"),
-    minWidth: "200",
+    minWidth: columnWidth(200, 240, 260, 260, 240, 240),
     showOverflowTooltip: true
   },
-  { prop: "orderCreateTime", label: t("web.gfuc.order_time"), width: "200" },
+  {
+    prop: "orderCreateTime",
+    label: t("web.gfuc.order_time"),
+    width: columnWidth(200, 180, 200, 200, 180, 180)
+  },
   {
     prop: "requestBody",
     label: t("web.gfuc.request_parameters"),
-    minWidth: "220",
+    minWidth: columnWidth(200, 220, 240, 240, 220, 220),
     showOverflowTooltip: true
   },
   {
     prop: "responseBody",
     label: t("web.gfuc.response_message"),
-    minWidth: "220",
+    minWidth: columnWidth(200, 220, 240, 240, 220, 220),
     showOverflowTooltip: true
   },
-  { prop: "referenceNo", label: t("web.gfuc.reference_no"), minWidth: "150" }
+  {
+    prop: "referenceNo",
+    label: t("web.gfuc.reference_no"),
+    minWidth: columnWidth(140, 180, 200, 200, 180, 180)
+  }
 ]);
 
 const loading = ref(false);

@@ -39,7 +39,10 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item class="date-range-item">
+        <el-form-item
+          class="date-range-item"
+          :class="lang === 'nl' ? 'date-range-item-nl' : ''"
+        >
           <template #label>
             <el-radio-group
               v-model="searchForm.dateType"
@@ -63,13 +66,13 @@
         <el-table-column
           prop="receiptAmount"
           :label="$t('gfuc.recharge_amount' /** 充值金额 **/)"
-          min-width="120"
+          :min-width="columnWidth(120, 180, 200, 200, 180, 180)"
           show-overflow-tooltip
         />
         <el-table-column
           prop="currency"
           :label="$t('gfuc.currency' /** 币种 **/)"
-          min-width="80"
+          :min-width="columnWidth(80, 140, 160, 160, 120, 140)"
           show-overflow-tooltip
         >
           <template #default="{ row }">
@@ -82,7 +85,7 @@
         <el-table-column
           prop="receiptMethod"
           :label="$t('gfuc.payment_method' /** 付款方式 **/)"
-          min-width="120"
+          :min-width="columnWidth(120, 180, 220, 220, 180, 200)"
           show-overflow-tooltip
         >
           <template #default="{ row }">
@@ -92,19 +95,19 @@
         <el-table-column
           prop="receiptDate"
           :label="$t('gfuc.recharge_date' /** 充值日期 **/)"
-          min-width="120"
+          :min-width="columnWidth(120, 180, 200, 180, 240, 180)"
           show-overflow-tooltip
         />
         <el-table-column
           prop="remark"
           :label="$t('gfuc.remark' /** 备注 **/)"
-          min-width="150"
+          :min-width="columnWidth(100, 160, 180, 180, 160, 160)"
           show-overflow-tooltip
         />
         <el-table-column
           prop="status"
           :label="$t('gfuc.status' /** 状态 **/)"
-          min-width="100"
+          :min-width="columnWidth(80, 160, 180, 200, 160, 160)"
           show-overflow-tooltip
         >
           <template #default="{ row }">
@@ -116,13 +119,13 @@
         <el-table-column
           prop="rejectionReason"
           :label="$t('gfuc.failure_reason' /** 失败原因 **/)"
-          min-width="150"
+          :min-width="columnWidth(140, 200, 240, 240, 200, 200)"
           show-overflow-tooltip
         />
         <el-table-column
           prop="createTimeStr"
           :label="$t('gfuc.submission_time' /** 提交时间 **/)"
-          min-width="160"
+          :min-width="columnWidth(140, 180, 200, 200, 180, 180)"
           show-overflow-tooltip
         />
       </template>
@@ -138,8 +141,11 @@ import { useI18n } from "vue-i18n";
 import { useDict } from "@/hooks/useDict";
 import { getRechargeRecord } from "@/api/finance";
 import { useAppStore } from "@/store/app";
+import { columnWidth } from "@/utils/index";
+import { computed, watch } from "vue";
 
 const appStore = useAppStore();
+const lang = computed(() => appStore.lang);
 
 defineOptions({
   name: "RechargeRecord"
@@ -261,7 +267,7 @@ const fetchData = async () => {
     });
     if (res) {
       tableData.value =
-        res.items.map((item) => ({
+        res.items?.map((item) => ({
           ...item,
           status: [1, 3].includes(item.status)
             ? 1
@@ -307,6 +313,11 @@ onMounted(() => {
 .date-range-item {
   :deep(.el-radio) {
     height: auto;
+  }
+  &.date-range-item-nl {
+    :deep(.el-radio) {
+      margin-right: 7px;
+    }
   }
 }
 </style>

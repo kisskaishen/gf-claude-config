@@ -1,5 +1,8 @@
 import { ElMessage } from "element-plus";
 import { i18n } from "@/lang";
+import { useAppStore } from "@/store/app";
+const appStore = useAppStore();
+const lang = computed(() => appStore.lang);
 /**
  * 复制文本到剪贴板
  * @param {String} text 要复制的文本
@@ -50,4 +53,30 @@ export const spacesOrLineToArr = (str: string) => {
  */
 export const commaToArr = (str: string) => {
   return str.split(",").filter((it) => !!it);
+};
+
+export const columnWidth = (
+  cnWidth: number,
+  enWidth: number,
+  frWidth: number,
+  itWidth: number,
+  nlWidth: number,
+  otherWidth: number
+): number => {
+  const currentLang = lang.value;
+
+  switch (currentLang) {
+    case "zh":
+      return cnWidth;
+    case "en":
+      return enWidth;
+    case "fr":
+      return frWidth;
+    case "it":
+      return itWidth;
+    case "nl":
+      return nlWidth;
+    default:
+      return otherWidth;
+  }
 };

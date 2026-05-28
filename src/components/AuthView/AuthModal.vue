@@ -38,13 +38,15 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item :label="$t('gfuc.country' /** 国家 **/)" prop="country">
+          <el-form-item
+            :label="$t('gfuc.country' /** 国家 **/)"
+            prop="countryCode"
+          >
             <el-select
-              v-model="formData.country"
+              v-model="formData.countryCode"
               :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
               :options="countryDict.options.value"
-              multiple
-              collapse-tags
+              disabled
             />
           </el-form-item>
         </el-col>
@@ -168,7 +170,7 @@ const formData = reactive({
   /** 货量预估 */
   shippingVolume: undefined,
   /** 国家 */
-  country: undefined,
+  countryCode: appStore.site,
   /** 备注 */
   remark: ""
 });
@@ -181,7 +183,7 @@ const rules = reactive<FormRules>({
       trigger: "change"
     }
   ],
-  country: [
+  countryCode: [
     {
       required: true,
       message: t("gfuc.please_enter_country" /** 请输入国家 **/),
