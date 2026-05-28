@@ -399,5 +399,8 @@ export default {
   "web.gfuc.account_download_tip":
     "Votre facture est en cours de téléchargement, durée estimée : 5 minutes. Veuillez vous rendre au Centre des tâches pour vérifier",
   "web.gfuc.stay_on_current_page": "Rester sur la page actuelle",
-  "web.gfuc.go_to_task_center": "Aller au Centre des tâches pour voir"
+  "web.gfuc.go_to_task_center": "Aller au Centre des tâches pour voir",
+  "web.gfuc.half_month1": "Première quinzaine",
+  "web.gfuc.half_month2": "Deuxième quinzaine",
+  "web.gfuc.export": "Exporter"
 };

@@ -383,5 +383,8 @@ export default {
   "web.gfuc.account_download_tip":
     "Your bill is being downloaded, estimated completion in 5 minutes. Please go to the Task Center to check",
   "web.gfuc.stay_on_current_page": "Stay on Current Page",
-  "web.gfuc.go_to_task_center": "Go to Task Center to View"
+  "web.gfuc.go_to_task_center": "Go to Task Center to View",
+  "web.gfuc.half_month1": "First Half of Month",
+  "web.gfuc.half_month2": "Second Half of Month",
+  "web.gfuc.export": "Export"
 };

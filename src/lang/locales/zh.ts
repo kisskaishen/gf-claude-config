@@ -355,7 +355,7 @@ export default {
   "web.gfuc.bill_amount_excluding_tax": "账单金额_未税",
   "web.gfuc.bill_amount_tax": "账单金额_税额",
   "web.gfuc.bill_detail_excluding_tax": "账单明细_未税",
-  "web.gfuc.adjustment_total_excluding_tax": "调账总额_未税",
+  "web.gfuc.adjustment_total_excluding_tax": "调总账_未税",
   "web.gfuc.adjustment_detail_excluding_tax": "调账明细_未税",
   "web.gfuc.claim_bill_no": "理赔账单编号",
   "web.gfuc.claim_bill_amount_ex_tax": "理赔账单金额_未税",
@@ -364,5 +364,8 @@ export default {
   "web.gfuc.account_download_tip":
     "你的账单正在下载中，预计5分钟完成下载，请前往任务中心查看",
   "web.gfuc.stay_on_current_page": "留在当前页面",
-  "web.gfuc.go_to_task_center": "去任务中心查看"
+  "web.gfuc.go_to_task_center": "去任务中心查看",
+  "web.gfuc.half_month1": "上半月",
+  "web.gfuc.half_month2": "下半月",
+  "web.gfuc.export": "导出"
 };

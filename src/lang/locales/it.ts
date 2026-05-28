@@ -385,5 +385,8 @@ export default {
   "web.gfuc.account_download_tip":
     "La tua fattura è in fase di download, completamento stimato in 5 minuti. Si prega di andare al Centro attività per verificare",
   "web.gfuc.stay_on_current_page": "Rimani sulla pagina corrente",
-  "web.gfuc.go_to_task_center": "Vai al Centro attività per visualizzare"
+  "web.gfuc.go_to_task_center": "Vai al Centro attività per visualizzare",
+  "web.gfuc.half_month1": "Prima metà del mese",
+  "web.gfuc.half_month2": "Seconda metà del mese",
+  "web.gfuc.export": "Esporta"
 };

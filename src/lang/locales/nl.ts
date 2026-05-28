@@ -375,5 +375,8 @@ export default {
   "web.gfuc.account_download_tip":
     "Uw factuur wordt gedownload, geschatte voltooiing over 5 minuten. Ga naar het Taakcentrum om te controleren",
   "web.gfuc.stay_on_current_page": "Blijf op de huidige pagina",
-  "web.gfuc.go_to_task_center": "Ga naar het Taakcentrum om te bekijken"
+  "web.gfuc.go_to_task_center": "Ga naar het Taakcentrum om te bekijken",
+  "web.gfuc.half_month1": "Eerste helft van de maand",
+  "web.gfuc.half_month2": "Tweede helft van de maand",
+  "web.gfuc.export": "Exporteren"
 };

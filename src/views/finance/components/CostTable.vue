@@ -14,6 +14,10 @@
         @selection-change="handleSelectionChange"
       >
         <template #action-left>
+          <el-button @click="handleBatchExport" :loading="exportLoading">
+            <svg-icon name="export" width="16" height="16" class="mr-2" />
+            {{ $t("web.gfuc.export" /** 导出 **/) }}
+          </el-button>
           <el-button @click="handleBatchDownload" :loading="downloadLoading">
             {{ $t("web.gfuc.download_bill" /** 下载账单 **/) }}
           </el-button>
@@ -42,6 +46,7 @@
               v-model="searchForm.cycle"
               :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
               clearable
+              @change="handleCycleChange"
             >
               <el-option
                 v-for="item in cycleTypeListDict.options.value"
@@ -53,20 +58,70 @@
           </el-form-item>
           <el-form-item
             :label="$t('web.gfuc.account_period' /** 账期 **/)"
-            prop="orderTimeRange"
+            prop="dateValue"
           >
-            <el-date-picker
-              v-model="searchForm.orderTimeRange"
-              type="datetimerange"
-              :disabled-date="disabledDate"
-              range-separator="~"
-              :start-placeholder="$t('web.gfuc.start_time')"
-              :end-placeholder="$t('web.gfuc.end_time')"
-              format="YYYY-MM-DD"
-              value-format="YYYY-MM-DD HH:mm:ss"
-              :default-time="defaultTime"
-              @change="handleChange"
-            />
+            <!-- 半月结 -->
+            <template v-if="searchForm.cycle == 1">
+              <div class="flex items-center w-full gap-2">
+                <el-date-picker
+                  v-model="searchForm.dateValue"
+                  type="week"
+                  format="YYYY-MM"
+                  value-format="YYYY-MM"
+                  :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+                  class="flex-2"
+                  @change="halfMonthChange"
+                />
+                <el-select
+                  v-model="searchForm.halfMonth"
+                  :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+                  clearable
+                  class="flex-1"
+                >
+                  <el-option
+                    v-for="item in halfMonthList"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  />
+                </el-select>
+              </div>
+            </template>
+            <!-- 月结 -->
+            <template v-if="searchForm.cycle == 2 || searchForm.cycle == 5">
+              <el-date-picker
+                v-model="searchForm.dateValue"
+                type="month"
+                value-format="YYYY-MM"
+                format="YYYY-MM"
+                :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+                style="width: 100%"
+                @change="monthChange"
+              />
+            </template>
+            <!-- 周结/双周结 -->
+            <template v-if="searchForm.cycle == 3 || searchForm.cycle == 4">
+              <el-date-picker
+                v-model="searchForm.dateValue"
+                type="week"
+                format="YYYY[w]ww"
+                value-format="YYYY-MM-ww"
+                :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+                style="width: 100%"
+                @change="weekChange"
+              />
+            </template>
+            <template v-if="searchForm.cycle == undefined">
+              <el-date-picker
+                v-model="searchForm.dateValue"
+                type="week"
+                format="YYYY[w]ww"
+                value-format="YYYY-MM-ww"
+                :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+                style="width: 100%"
+                disabled
+              />
+            </template>
           </el-form-item>
           <el-form-item
             :label="$t('web.gfuc.account_number' /** 账单编号 **/)"
@@ -115,6 +170,27 @@
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
+              />
+            </el-select>
+          </el-form-item>
+          <el-form-item
+            :label="$t('web.gfuc.customer_name' /** 下单客户 **/)"
+            prop="customerIdList"
+            v-if="customerNameList.length > 1"
+          >
+            <el-select
+              v-model="searchForm.customerIdList"
+              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+              clearable
+              filterable
+              multiple
+              collapse-tags
+            >
+              <el-option
+                v-for="item in customerNameList"
+                :key="item.customerId"
+                :label="item.customerName"
+                :value="item.customerId"
               />
             </el-select>
           </el-form-item>
@@ -173,7 +249,11 @@ import { downloadFile } from "@/utils/download";
 // import {} from "@/api/finance";
 import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
-import { getFreightBill } from "@/api/finance";
+import {
+  getFreightBill,
+  downloadFreightBill,
+  exportFreightBill
+} from "@/api/finance";
 
 import { useUserStore } from "@/store/user";
 import dayjs from "dayjs";
@@ -193,15 +273,19 @@ const cycleTypeListDict = useDict("fms_receivable_cycle_type");
 const billStatusListDict = useDict("lcs.finance.bill.status");
 const invoiceStatusListDict = useDict("fms.receivable.invoice.status.type");
 
-const defaultTime = [
-  new Date(2000, 1, 1, 0, 0, 0), // 开始时间默认00:00:00
-  new Date(2000, 1, 1, 23, 59, 59) // 结束时间默认23:59:59
-];
-const props = defineProps({
-  status: {
-    type: Number,
-    default: 0
+const halfMonthList = [
+  {
+    value: 1,
+    label: t("web.gfuc.half_month1" /** 上半月 */)
+  },
+  {
+    value: 2,
+    label: t("web.gfuc.half_month2" /** 下半月 */)
   }
+];
+
+const customerNameList = computed(() => {
+  return userStore.loginInfo?.shipperCustomerList || [];
 });
 
 const lang = computed(() => appStore.lang);
@@ -283,7 +367,7 @@ const columns = computed(() => [
   },
   {
     prop: "adjustmentTotalExcludingTax",
-    label: t("web.gfuc.adjustment_total_excluding_tax" /** 调账总额_未税 */),
+    label: t("web.gfuc.adjustment_total_excluding_tax" /** 调总账_未税 */),
     minWidth: columnWidth(160, 280, 260, 300, 300, 280),
     align: "right"
   },
@@ -316,12 +400,14 @@ const columns = computed(() => [
   }
 ]);
 
-// 批量打印的loading
+// loading
+const exportLoading = ref(false);
 const downloadLoading = ref(false);
 const loading = ref(false);
 
 // 初始表单状态
 const initialFormState = {
+  dateValue: "",
   // 账单月份数组，如 ["01", "02"]
   billMonth: [],
   // 账单状态数组，如 [1, 2]
@@ -351,44 +437,33 @@ const searchForm = reactive({ ...initialFormState });
 const pagination = reactive({
   currentPage: 1,
   pageSize: 20,
-  total: 320
+  total: 0
 });
 
 const tableData = ref([]);
 
-// 禁用日期逻辑
-const disabledDate = (time) => {
-  if (!searchForm.orderTimeRange || !searchForm.orderTimeRange[0]) {
-    // 未选择开始日期时，只禁用未来日期
-    return time.getTime() > Date.now();
-  }
-
-  const startTime = new Date(searchForm.orderTimeRange[0]).getTime();
-  const minTime = startTime - 30 * 24 * 3600 * 1000;
-  const maxTime = startTime + 30 * 24 * 3600 * 1000;
-
-  // 禁用超出30天范围或未来的日期
-  return (
-    time.getTime() < minTime ||
-    time.getTime() > maxTime ||
-    time.getTime() > Date.now()
-  );
+const handleCycleChange = () => {
+  searchForm.dateValue = "";
+  searchForm.billYear = undefined;
+  searchForm.billMonth = [];
+  searchForm.weeks = undefined;
 };
 
-// 设置默认值（前30天）
-const setDefaultRange = () => {
-  const end = new Date();
-  const start = new Date();
-  start.setTime(start.getTime() - 30 * 24 * 3600 * 1000);
-
-  // 设置开始时间为00:00:00，结束时间为23:59:59
-  const startDate = dayjs(start).startOf("day").format("YYYY-MM-DD HH:mm:ss");
-  const endDate = dayjs(end).endOf("day").format("YYYY-MM-DD HH:mm:ss");
-
-  searchForm.orderTimeRange = [startDate, endDate];
+const halfMonthChange = (value) => {
+  searchForm.billYear = value.split("-")[0];
+  searchForm.billMonth[0] = value.split("-")[1];
 };
 
-setDefaultRange();
+const monthChange = (value) => {
+  searchForm.billYear = value.split("-")[0];
+  searchForm.billMonth[0] = value.split("-")[1];
+};
+
+const weekChange = (value) => {
+  searchForm.billYear = value.split("-")[0];
+  searchForm.billMonth[0] = value.split("-")[1];
+  searchForm.weeks = value.split("-")[2].split(",");
+};
 
 // 处理日期变化
 const handleChange = (value) => {
@@ -421,13 +496,6 @@ const getParams = () => {
   //   params.waybillNo = "";
   // }
 
-  // if (searchForm.customerId) {
-  //   params.customerIdList = [searchForm.customerId];
-  // } else {
-  //   params.customerIdList = userStore.loginInfo?.shipperCustomerList?.map(
-  //     (item: any) => item.customerId
-  //   );
-  // }
   return params;
 };
 
@@ -474,6 +542,18 @@ const handleReset = () => {
   fetchData();
 };
 
+// 导出
+const handleBatchExport = async () => {
+  const params = getParams();
+
+  exportLoading.value = true;
+  await exportFreightBill({
+    ...params,
+    pageNum: pagination.currentPage,
+    pageSize: pagination.pageSize
+  });
+  exportLoading.value = false;
+};
 // 批量下载
 const handleBatchDownload = () => {
   emits("show-success-dialog", true);
@@ -503,7 +583,7 @@ const handleBatchDownload = () => {
         };
       });
 
-      const res = await batchPrintOrderLabel(data);
+      const res = await downloadFreightBill(data);
 
       downloadLoading.value = false;
 
