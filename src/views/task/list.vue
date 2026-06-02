@@ -149,7 +149,18 @@
                     @click="handleDownload(row)"
                     v-if="row.rawFileUrl"
                   />
+                </el-tooltip>
 
+                <el-tooltip
+                  :content="$t('web.gfuc.download_freight_bill')"
+                  placement="top"
+                >
+                  <svg-icon
+                    name="download-original"
+                    width="24"
+                    height="24"
+                    @click="handleBillDownload(row)"
+                    v-if="row.relatedTaskIds?.length > 0"
                   />
                 </el-tooltip>
 
@@ -187,9 +198,11 @@ import { ref, reactive, onMounted, watch, computed } from "vue";
 import { downloadFile } from "@/utils/download";
 import { getTaskList } from "@/api/task";
 import { downloadFailedOrderData } from "@/api/order";
+import { downloadBill } from "@/api/finance";
 import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
 import { columnWidth } from "@/utils/index";
+import { downloadZip } from "@/utils/download";
 
 import { useUserStore } from "@/store/user";
 
@@ -418,6 +431,12 @@ watch(
     fetchData();
   }
 );
+
+const handleBillDownload = async (row: any) => {
+  const res = await downloadBill({ id: row.id });
+  let urlList = res.map((item) => item.downloadUrl);
+  await downloadZip(urlList);
+};
 
 const handleDownload = async (row: any) => {
   const res = await downloadFailedOrderData(row.rawFileUrl);

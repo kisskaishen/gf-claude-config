@@ -367,5 +367,6 @@ export default {
   "web.gfuc.go_to_task_center": "去任务中心查看",
   "web.gfuc.half_month1": "上半月",
   "web.gfuc.half_month2": "下半月",
-  "web.gfuc.export": "导出"
+  "web.gfuc.export": "导出",
+  "web.gfuc.download_freight_bill": "下载运费账单"
 };

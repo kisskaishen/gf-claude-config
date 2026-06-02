@@ -79,7 +79,7 @@
                   class="flex-1"
                 >
                   <el-option
-                    v-for="item in halfMonthList"
+                    v-for="item in halfMonthListDict.options.value"
                     :key="item.value"
                     :label="item.label"
                     :value="item.value"
@@ -207,16 +207,16 @@
             :min-width="item.minWidth || undefined"
             show-overflow-tooltip
           >
-            <template
-              #default="{ row }"
-              v-if="item.prop === 'orderConsigneeVO.address1'"
-            >
+            <template #default="{ row }" v-if="item.prop === 'statusName'">
+              <span :class="['status-tag', getStatusClass(row.status)]">
+                {{ billStatusListDict.getLabel(row.status) ?? "-" }}
+              </span>
             </template>
           </el-table-column>
 
           <el-table-column
             :label="$t('gfuc.operation' /** 操作 **/)"
-            width="180"
+            :width="columnWidth(80, 120, 120, 120, 80, 80)"
             fixed="right"
           >
             <template #default="{ row }">
@@ -250,13 +250,12 @@ import { downloadFile } from "@/utils/download";
 import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
 import {
-  getClaimBill,
-  downloadClaimBill,
-  exportClaimBill
+  getFreightBill,
+  downloadFreightBill,
+  exportFreightBill
 } from "@/api/finance";
 
 import { useUserStore } from "@/store/user";
-import dayjs from "dayjs";
 import { useI18n } from "vue-i18n";
 import { useAppStore } from "@/store/app";
 
@@ -272,17 +271,7 @@ const emits = defineEmits(["show-success-dialog"]);
 const cycleTypeListDict = useDict("fms_receivable_cycle_type");
 const billStatusListDict = useDict("lcs.finance.bill.status");
 const invoiceStatusListDict = useDict("fms.receivable.invoice.status.type");
-
-const halfMonthList = [
-  {
-    value: 1,
-    label: t("web.gfuc.half_month1" /** 上半月 */)
-  },
-  {
-    value: 2,
-    label: t("web.gfuc.half_month2" /** 下半月 */)
-  }
-];
+const halfMonthListDict = useDict("fms.bill.month.type");
 
 const customerNameList = computed(() => {
   return userStore.loginInfo?.shipperCustomerList || [];
@@ -308,65 +297,65 @@ watch(
 
 const columns = computed(() => [
   {
-    prop: "corderNo",
+    prop: "number",
     label: t("web.gfuc.account_number" /** 账单编号 */),
     minWidth: columnWidth(120, 180, 200, 180, 160, 180)
   },
   {
-    prop: "settlementCycle",
+    prop: "cycleName",
     label: t("web.gfuc.settlement_cycle" /** 结算周期 */),
     minWidth: columnWidth(120, 200, 220, 240, 180, 200)
   },
   {
-    prop: "accountPeriod",
+    prop: "phaseName",
     label: t("web.gfuc.account_period" /** 账期 */),
     minWidth: columnWidth(80, 160, 200, 180, 160, 160)
   },
   {
-    prop: "settlementCurrency",
+    prop: "currencyName",
     label: t("web.gfuc.settlement_currency" /** 结算币种 */),
     minWidth: columnWidth(120, 220, 220, 240, 180, 200)
   },
   {
-    prop: "orderStatusName",
+    prop: "statusName",
     label: t("web.gfuc.account_status" /** 账单状态 */),
     width: columnWidth(100, 160, 180, 200, 160, 160)
   },
   {
-    prop: "ticketCount",
+    prop: "detailCount",
     label: t("web.gfuc.ticket_count" /** 票数 */),
     minWidth: columnWidth(80, 140, 200, 220, 160, 160)
   },
   {
-    prop: "taxRate",
+    prop: "taxRatio",
     label: t("web.gfuc.tax_rate_status" /** 税率 */),
     minWidth: columnWidth(80, 100, 160, 180, 160, 120)
   },
   {
-    prop: "billAmountIncludingTax",
+    prop: "taxedTotal",
     label: t("web.gfuc.bill_amount_including_tax" /** 账单金额_含税 */),
     minWidth: columnWidth(150, 240, 240, 240, 240, 220),
     align: "right" // 金额类字段一般右对齐更规范
   },
   {
-    prop: "billAmountExcludingTax",
+    prop: "untaxedTotal",
     label: t("web.gfuc.bill_amount_excluding_tax" /** 账单金额_未税 */),
     minWidth: columnWidth(150, 240, 240, 260, 260, 220),
     align: "right"
   },
   {
-    prop: "billAmountTax",
+    prop: "taxTotal",
     label: t("web.gfuc.bill_amount_tax" /** 账单金额_税额 */),
     minWidth: columnWidth(150, 240, 240, 220, 220, 180),
     align: "right"
   },
   {
-    prop: "billDetailExcludingTax",
+    prop: "detailUntaxedTotal",
     label: t("web.gfuc.bill_detail_excluding_tax" /** 账单明细_未税 */),
     minWidth: columnWidth(160, 240, 240, 280, 260, 240)
   },
   {
-    prop: "adjustmentTotalExcludingTax",
+    prop: "adjustGeneralTotal",
     label: t("web.gfuc.adjustment_total_excluding_tax" /** 调总账_未税 */),
     minWidth: columnWidth(160, 280, 260, 300, 300, 280),
     align: "right"
@@ -377,13 +366,13 @@ const columns = computed(() => [
     minWidth: columnWidth(160, 300, 280, 320, 320, 280)
   },
   {
-    prop: "adjustmentBillNo",
+    prop: "claimBillTotalNum",
     label: t("web.gfuc.claim_bill_no" /** 理赔账单编号 */),
     minWidth: columnWidth(160, 180, 360, 220, 200, 200)
   },
 
   {
-    prop: "adjustmentStatus",
+    prop: "invoiceStatusName",
     label: t("web.gfuc.invoice_status" /** 开票状态 */),
     minWidth: columnWidth(100, 160, 200, 180, 160, 160)
   }
@@ -454,18 +443,16 @@ const weekChange = (value) => {
   searchForm.weeks = value.split("-")[2].split(",");
 };
 
-// 处理日期变化
-const handleChange = (value) => {
-  if (value && value[0] && value[1]) {
-    const start = dayjs(value[0]);
-    const end = dayjs(value[1]);
-    const diffDays = end.diff(start, "day");
-
-    if (diffDays > 30) {
-      // 超过30天时，自动调整结束日期
-      const newEnd = start.add(30, "day").toDate();
-      searchForm.orderTimeRange = [value[0], newEnd];
-    }
+const getStatusClass = (status: any) => {
+  switch (status) {
+    case 5:
+      return "status-pending";
+    case 7:
+      return "status-failed";
+    case 6:
+      return "status-success";
+    default:
+      return "";
   }
 };
 
@@ -493,13 +480,13 @@ const handleResetForm = () => {};
 const getListData = async () => {
   const params = getParams();
 
-  const res = await getClaimBill({
+  const res = await getFreightBill({
     ...params,
     pageNum: pagination.currentPage,
     pageSize: pagination.pageSize
   });
   console.log(res, "====");
-  tableData.value = res.records;
+  tableData.value = res.list;
   pagination.total = res.total || 0;
 };
 
@@ -511,7 +498,11 @@ const fetchData = () => {
   }, 500);
 };
 
-const handleDownload = (row: any) => {
+const handleDownload = async (row: any) => {
+  await downloadFreightBill({
+    numbers: [row.number]
+  });
+
   emits("show-success-dialog", true);
 };
 
@@ -519,8 +510,7 @@ const selectedOrders = ref([]);
 
 const handleSelectionChange = (val: any) => {
   selectedOrders.value = val.map((item: any) => ({
-    waybillNo: item.waybillNo,
-    orderId: item.orderId,
+    number: item.number,
     customerId: item.customerId
   }));
 };
@@ -533,66 +523,42 @@ const handleReset = () => {
 
 // 导出
 const handleBatchExport = async () => {
-  const params = getParams();
-
-  exportLoading.value = true;
-  await exportClaimBill({
-    ...params,
-    pageNum: pagination.currentPage,
-    pageSize: pagination.pageSize
-  });
-  exportLoading.value = false;
-};
-// 批量下载
-const handleBatchDownload = () => {
-  emits("show-success-dialog", true);
-  return;
-  // 获取选中的订单
   if (selectedOrders.value.length === 0) {
     ElMessage.warning(t("web.gfuc.select_bill_first"));
     return;
   }
+  const params = getParams();
 
-  ElMessageBox.confirm(
-    t("web.gfuc.batch_print_confirm", { count: selectedOrders.value.length }),
-    t("web.gfuc.tip"),
-    {
-      confirmButtonText: t("web.gfuc.confirm"),
-      cancelButtonText: t("web.gfuc.cancel")
+  exportLoading.value = true;
+  await exportFreightBill({
+    ...params,
+    pageNum: pagination.currentPage,
+    pageSize: pagination.pageSize
+  });
+  emits("show-success-dialog", true);
+
+  exportLoading.value = false;
+};
+// 批量下载
+const handleBatchDownload = async () => {
+  try {
+    // 获取选中的订单
+    if (selectedOrders.value.length === 0) {
+      ElMessage.warning(t("web.gfuc.select_bill_first"));
+      return;
     }
-  )
-    .then(async () => {
-      downloadLoading.value = true;
-      ElMessage.info(t("web.gfuc.printing_order"));
-      let data = [];
-      data = selectedOrders.value.map((item: any) => {
-        return {
-          waybillNo: item.waybillNo,
-          customerId: item.customerId
-        };
-      });
 
-      const res = await downloadClaimBill(data);
-
-      downloadLoading.value = false;
-
-      ElMessage.success(
-        t("web.gfuc.batch_print_success", {
-          count: selectedOrders.value.length
-        })
-      );
-      let url = "";
-      if (Array.isArray(res)) {
-        url = res[0].url;
-      } else {
-        url = res.url;
-      }
-
-      downloadFile(url, t("web.gfuc.order_file"));
-    })
-    .catch(() => {
-      downloadLoading.value = false;
+    downloadLoading.value = true;
+    await downloadFreightBill({
+      numbers: selectedOrders.value.map((item: any) => item.number)
     });
+
+    emits("show-success-dialog", true);
+
+    downloadLoading.value = false;
+  } catch (error) {
+    downloadLoading.value = false;
+  }
 };
 
 onMounted(() => {
@@ -616,5 +582,25 @@ onMounted(() => {
   flex: 1;
   height: calc(100vh - 200px);
   overflow: hidden;
+}
+.status-tag {
+  padding: 2px 8px;
+  font-size: var(--font-size-base);
+  white-space: nowrap;
+  border-radius: 12px;
+}
+.status-pending {
+  color: rgb(255 123 41 / 100%);
+  background-color: rgb(255 242 229 / 100%);
+}
+
+.status-success {
+  color: rgb(43 143 1 / 100%);
+  background-color: rgb(238 255 230 / 100%);
+}
+
+.status-failed {
+  color: rgb(255 49 65 / 100%);
+  background-color: rgb(255 227 230 / 100%);
 }
 </style>

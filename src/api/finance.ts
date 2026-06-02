@@ -151,13 +151,21 @@ export function exportFreightBill(data: BillPageQueryRequest) {
 
 // 下载运费账单
 export function downloadFreightBill(data: {
-  customerPrincipalId: number | string;
+  customerPrincipalId?: number | string;
   numbers: string[];
 }) {
   return request({
     url: "/fms/bill/download",
     method: "post",
     data
+  });
+}
+
+// 任务列表-下载账单
+export function downloadBill(data: { id: string }) {
+  return request({
+    url: "/taskCenter/getDcExportDownloadUrl?taskCenterId=" + data.id,
+    method: "get"
   });
 }
 
