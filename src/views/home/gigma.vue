@@ -56,7 +56,13 @@
       >
         <template #append>
           <!-- 追加按钮 -->
-          <el-button type="primary" class="custom-append-btn"> 查询 </el-button>
+          <el-button
+            type="primary"
+            class="custom-append-btn"
+            @click="handleQuery"
+          >
+            查询
+          </el-button>
         </template>
       </el-input>
     </div>
@@ -347,8 +353,10 @@
 
 <script setup lang="ts">
 import { getBalanceInfo, getRecentCount } from "@/api/home";
+import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/user";
 const userStore = useUserStore();
+const router = useRouter();
 
 const userAccount = computed(() => {
   return userStore?.userInfo?.account;
@@ -367,6 +375,16 @@ onMounted(async () => {
   recentDeliveryCount.value = res.data?.recentDeliveryCount || 0;
   SignedOrdersCount.value = res.data?.SignedOrdersCount || 0;
 });
+
+const handleQuery = async () => {
+  if (!trackingNo.value) {
+    ElMessage.error("请输入运单号");
+    return;
+  }
+  sessionStorage.setItem("trackingNo", trackingNo.value);
+  // 跳转到订单列表页 页面可以根据需要传递参数，例如运单号
+  router.push({ name: "OrderList" });
+};
 </script>
 
 <style scoped lang="scss">

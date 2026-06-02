@@ -573,6 +573,9 @@ const handleResetForm = () => {
   searchForm.orderNumber = "";
   // Object.assign(searchForm, initialFormState);
   // setDefaultRange();
+  if (sessionStorage.getItem("trackingNo")) {
+    sessionStorage.removeItem("trackingNo");
+  }
 };
 const getOrderProductListData = async () => {
   const params = getParams();
@@ -719,7 +722,18 @@ const getProductList = async () => {
 };
 
 onMounted(() => {
+  if (sessionStorage.getItem("trackingNo")) {
+    searchForm.orderNumber = sessionStorage.getItem("trackingNo");
+  }
+  // 初始化时获取产品列表
   getProductList();
+  fetchData();
+});
+
+onActivated(() => {
+  if (sessionStorage.getItem("trackingNo")) {
+    searchForm.orderNumber = sessionStorage.getItem("trackingNo");
+  }
   fetchData();
 });
 
