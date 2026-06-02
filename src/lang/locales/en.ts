@@ -386,5 +386,10 @@ export default {
   "web.gfuc.go_to_task_center": "Go to Task Center to View",
   "web.gfuc.half_month1": "First Half of Month",
   "web.gfuc.half_month2": "Second Half of Month",
-  "web.gfuc.export": "Export"
+  "web.gfuc.export": "Export",
+  "web.gfuc.download_freight_bill": "Download Freight Bill",
+  "web.gfuc.open_service": "Activate Service",
+  "web.gfuc.forecast_order": "Forecast Order",
+  "web.gfuc.shipment_transport": "Shipment Transport",
+  "web.gfuc.delivery_sign": "Delivery Signatures"
 };

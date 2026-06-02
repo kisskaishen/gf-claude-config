@@ -378,5 +378,10 @@ export default {
   "web.gfuc.go_to_task_center": "Ga naar het Taakcentrum om te bekijken",
   "web.gfuc.half_month1": "Eerste helft van de maand",
   "web.gfuc.half_month2": "Tweede helft van de maand",
-  "web.gfuc.export": "Exporteren"
+  "web.gfuc.export": "Exporteren",
+  "web.gfuc.download_freight_bill": "Download vrachtfactuur",
+  "web.gfuc.open_service": "Service activeren",
+  "web.gfuc.forecast_order": "Verwachte bestelling",
+  "web.gfuc.shipment_transport": "Goederenvervoer",
+  "web.gfuc.delivery_sign": "Leveringshandtekening"
 };

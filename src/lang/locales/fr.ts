@@ -402,5 +402,10 @@ export default {
   "web.gfuc.go_to_task_center": "Aller au Centre des tâches pour voir",
   "web.gfuc.half_month1": "Première quinzaine",
   "web.gfuc.half_month2": "Deuxième quinzaine",
-  "web.gfuc.export": "Exporter"
+  "web.gfuc.export": "Exporter",
+  "web.gfuc.download_freight_bill": "Télécharger la facture de fret",
+  "web.gfuc.open_service": "Activer le service",
+  "web.gfuc.forecast_order": "Commande prévisionnelle",
+  "web.gfuc.shipment_transport": "Transport des marchandises",
+  "web.gfuc.delivery_sign": "Signature de livraison"
 };

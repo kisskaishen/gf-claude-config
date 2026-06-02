@@ -169,24 +169,11 @@
       <!-- 开通服务 -->
       <div class="flex flex-col items-center">
         <div
-          class="flex items-center justify-center w-10 h-10 mb-2 text-white rounded-full bg-primary"
+          class="flex items-center justify-center w-16 h-16 mb-2 border rounded-full border-text-primary"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-            />
-          </svg>
+          <svg-icon name="home-step1" width="32px" height="32px" />
         </div>
-        <p class="text-sm text-gray-600">开通服务</p>
+        <p class="text-base text-info">{{ $t("web.gfuc.open_service") }}</p>
       </div>
 
       <!-- 箭头 -->
@@ -197,24 +184,11 @@
       <!-- 预报订单 -->
       <div class="flex flex-col items-center">
         <div
-          class="flex items-center justify-center w-10 h-10 mb-2 rounded-full text-primary bg-primary-light"
+          class="flex items-center justify-center w-16 h-16 mb-2 border rounded-full border-text-primary"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-            />
-          </svg>
+          <svg-icon name="home-step2" width="32px" height="32px" />
         </div>
-        <p class="text-sm text-gray-600">预报订单</p>
+        <p class="text-base text-info">{{ $t("web.gfuc.forecast_order") }}</p>
       </div>
 
       <!-- 箭头 -->
@@ -225,24 +199,11 @@
       <!-- 打印面单 -->
       <div class="flex flex-col items-center">
         <div
-          class="flex items-center justify-center w-10 h-10 mb-2 rounded-full text-primary bg-primary-light"
+          class="flex items-center justify-center w-16 h-16 mb-2 border rounded-full border-text-primary"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17 17h2a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
-            />
-          </svg>
+          <svg-icon name="home-step3" width="32px" height="32px" />
         </div>
-        <p class="text-sm text-info">打印面单</p>
+        <p class="text-base text-info">{{ $t("web.gfuc.print_order") }}</p>
       </div>
 
       <!-- 箭头 -->
@@ -253,24 +214,13 @@
       <!-- 发货运输 -->
       <div class="flex flex-col items-center">
         <div
-          class="flex items-center justify-center w-10 h-10 mb-2 rounded-full text-primary bg-primary-light"
+          class="flex items-center justify-center w-16 h-16 mb-2 border rounded-full border-text-primary"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-            />
-          </svg>
+          <svg-icon name="home-step4" width="32px" height="32px" />
         </div>
-        <p class="text-sm text-gray-600">发货运输</p>
+        <p class="text-base text-info">
+          {{ $t("web.gfuc.shipment_transport") }}
+        </p>
       </div>
 
       <!-- 箭头 -->
@@ -281,24 +231,11 @@
       <!-- 派送签收 -->
       <div class="flex flex-col items-center">
         <div
-          class="flex items-center justify-center w-10 h-10 mb-2 rounded-full text-primary bg-primary-light"
+          class="flex items-center justify-center w-16 h-16 mb-2 border rounded-full border-text-primary"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 10V3L4 14h7v7l9-11h-7z"
-            />
-          </svg>
+          <svg-icon name="home-step5" width="32px" height="32px" />
         </div>
-        <p class="text-sm text-gray-600">派送签收</p>
+        <p class="text-base text-info">{{ $t("web.gfuc.delivery_sign") }}</p>
       </div>
     </div>
 
@@ -369,7 +306,7 @@ const trackingNo = ref("");
 
 onMounted(async () => {
   const balanceInfo = await await getBalanceInfo();
-  balance.value = balanceInfo.data?.balance || 0;
+  balance.value = balanceInfo || 0;
 
   const res = await getRecentCount();
   recentDeliveryCount.value = res.data?.recentDeliveryCount || 0;

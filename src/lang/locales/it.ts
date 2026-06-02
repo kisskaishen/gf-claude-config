@@ -388,5 +388,10 @@ export default {
   "web.gfuc.go_to_task_center": "Vai al Centro attività per visualizzare",
   "web.gfuc.half_month1": "Prima metà del mese",
   "web.gfuc.half_month2": "Seconda metà del mese",
-  "web.gfuc.export": "Esporta"
+  "web.gfuc.export": "Esporta",
+  "web.gfuc.download_freight_bill": "Scarica fattura di trasporto",
+  "web.gfuc.open_service": "Attiva servizio",
+  "web.gfuc.forecast_order": "Ordine previsto",
+  "web.gfuc.shipment_transport": "Trasporto merci",
+  "web.gfuc.delivery_sign": "Firma di consegna"
 };
