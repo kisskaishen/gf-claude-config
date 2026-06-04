@@ -54,13 +54,13 @@
             <el-row :gutter="12">
               <!-- 成交客户的用户中心登录进去，下单需要选择下单账户
 走货账户的用户中心登录进去，隐藏下单账户选择。 -->
-              <el-col :span="8" v-if="isCj">
+              <el-col :span="8" v-if="isMoreCustomer">
                 <el-form-item
                   :label="$t('web.gfuc.order_account')"
                   prop="customerId"
                   :rules="[
                     {
-                      required: isCj,
+                      required: isMoreCustomer,
                       message: $t('web.gfuc.please_select_order_account'),
                       trigger: 'blur'
                     }
@@ -177,7 +177,7 @@
                   />
                 </el-form-item>
               </el-col>
-              <el-col :span="isCj ? 8 : 16">
+              <el-col :span="isMoreCustomer ? 8 : 16">
                 <el-form-item
                   :label="t('web.gfuc.address')"
                   prop="shipperStreet"
@@ -328,8 +328,11 @@ const userInfo = useUserStore();
 const appStore = useAppStore();
 
 // userIdentity 用户身份：1-潜在客户 2-成交客户 3-走货账户
-const isCj = computed(() =>
-  userInfo.userInfo?.userIdentity === 2 ? true : false
+// const isMoreCustomer = computed(() =>
+//   userInfo.userInfo?.userIdentity === 2 ? true : false
+// );
+const isMoreCustomer = computed(
+  () => userInfo.loginInfo?.shipperCustomerList?.length > 1
 );
 const shipperOptions = computed(() => {
   return userInfo.loginInfo?.shipperCustomerList || [];
