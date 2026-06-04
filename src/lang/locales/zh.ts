@@ -56,6 +56,7 @@ export default {
   "web.gfuc.return_to_refill": "返回重新填写",
   "web.gfuc.authentication": "认证",
   "web.gfuc.login_successful": "登录成功",
+  "web.gfuc.registration_success_please_login": "注册成功，请登录",
   "web.gfuc.confirm": "确定",
   "web.gfuc.preference_settings_description":
     "为了更好的服务，您需要设置您的网站偏好",
