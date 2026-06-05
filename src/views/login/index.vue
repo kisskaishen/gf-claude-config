@@ -117,7 +117,7 @@ const handleSwitch = (
 
 const handleSuccess = async (type: "login" | "register", otherInfo = "") => {
   console.log(userStore.hasSetPreference, "认证");
-  if (type === "login") {
+  if (type === "login" || type === "register") {
     // 登录成功后清理订单相关的sessionStorage数据
     sessionStorage.removeItem("single_order_form_data");
 

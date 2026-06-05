@@ -29,7 +29,7 @@
               :model="form"
               label-width="80px"
               label-position="top"
-              v-if="isCj"
+              v-if="isMoreCustomer"
             >
               <el-form-item
                 :label="$t('web.gfuc.order_account')"
@@ -290,16 +290,21 @@ const fileList = ref([]);
 const successVisible = ref(false);
 
 const userInfo = useUserStore();
-const isCj = computed(() =>
-  userInfo.userInfo?.userIdentity === 2 ? true : false
-);
+// const isCj = computed(() =>
+//   userInfo.userInfo?.userIdentity === 2 ? true : false
+// );
+
+const isMoreCustomer = computed(() => {
+  return userInfo.loginInfo?.shipperCustomerList?.length > 1;
+});
+
 const shipperOptions = computed(() => {
   return userInfo.loginInfo?.shipperCustomerList || [];
 });
 // 表单验证规则 - 使用 computed 使其响应语言切换
 const customerRules = computed(() => [
   {
-    required: isCj.value,
+    required: isMoreCustomer.value,
     message: t("web.gfuc.please_select_order_account"),
     trigger: ["blur", "change"]
   }
@@ -374,7 +379,7 @@ const stopPolling = () => {
 };
 
 const customHttpRequest = async (options) => {
-  const valid = await (isCj.value
+  const valid = await (isMoreCustomer.value
     ? formRef.value.validate()
     : Promise.resolve(true));
   if (!valid) {
