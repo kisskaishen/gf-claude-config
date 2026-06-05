@@ -534,10 +534,6 @@ const handleReset = () => {
 
 // 导出
 const handleBatchExport = async () => {
-  if (selectedOrders.value.length === 0) {
-    ElMessage.warning(t("web.gfuc.select_bill_first"));
-    return;
-  }
   const params = getParams();
 
   exportLoading.value = true;

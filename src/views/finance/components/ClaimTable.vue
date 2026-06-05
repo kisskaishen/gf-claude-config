@@ -250,9 +250,9 @@ import { downloadFile } from "@/utils/download";
 import TableLayout from "@/components/TableLayout/index.vue";
 import { useDict } from "@/hooks/useDict";
 import {
-  getFreightBill,
-  downloadFreightBill,
-  exportFreightBill
+  getClaimBill,
+  downloadClaimBill,
+  exportClaimBill
 } from "@/api/finance";
 
 import { useUserStore } from "@/store/user";
@@ -480,7 +480,7 @@ const handleResetForm = () => {};
 const getListData = async () => {
   const params = getParams();
 
-  const res = await getFreightBill({
+  const res = await getClaimBill({
     ...params,
     pageNum: pagination.currentPage,
     pageSize: pagination.pageSize
@@ -499,7 +499,7 @@ const fetchData = () => {
 };
 
 const handleDownload = async (row: any) => {
-  await downloadFreightBill({
+  await downloadClaimBill({
     numbers: [row.number]
   });
 
@@ -523,14 +523,10 @@ const handleReset = () => {
 
 // 导出
 const handleBatchExport = async () => {
-  if (selectedOrders.value.length === 0) {
-    ElMessage.warning(t("web.gfuc.select_bill_first"));
-    return;
-  }
   const params = getParams();
 
   exportLoading.value = true;
-  await exportFreightBill({
+  await exportClaimBill({
     ...params,
     pageNum: pagination.currentPage,
     pageSize: pagination.pageSize
