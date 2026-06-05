@@ -13,7 +13,7 @@ defineOptions({
   name: "Home"
 });
 
-const currentComponent = ref(Welcome);
+const currentComponent = ref(Gigma);
 </script>
 
 <style scoped lang="scss">
