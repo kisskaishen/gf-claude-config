@@ -70,93 +70,131 @@ export const downloadFile = async (url: string | Blob, fileName?: string) => {
 //   }
 // };
 
+// 新增：解析单个zip二进制，返回内部所有文件
+async function parseInnerZip(
+  buf: ArrayBuffer
+): Promise<{ name: string; data: Uint8Array }[]> {
+  const innerZip = await JSZip.loadAsync(buf);
+  const fileList: { name: string; data: Uint8Array }[] = [];
+  // 遍历zip内所有文件，跳过文件夹
+  for (const [fileName, zipObj] of Object.entries(innerZip.files)) {
+    if (zipObj.dir) continue;
+    const fileBuf = await zipObj.async("uint8array");
+    fileList.push({ name: fileName, data: fileBuf });
+  }
+  return fileList;
+}
+
 export const downloadZip = async (urlList: string[]) => {
-  // 验证URL列表
   if (!urlList || urlList.length === 0) {
     console.error("下载列表为空");
     alert("没有可下载的文件");
     return;
   }
 
-  // 使用原生方式创建ZIP（最兼容的方式）
+  if (urlList.length === 1) {
+    const url = urlList[0];
+    let fileName = url.split("/").pop() || "download";
+    fileName = fileName.split("?")[0];
+    fileName = fileName.replace(/[\s/:*?"<>|\x00-\x1F]/g, "_") || "download";
+    await downloadFile(url, fileName);
+    return;
+  }
+
   const zip = new JSZip();
 
   try {
-    // 并行下载所有文件
-    const downloadPromises = urlList.map(async (url, index) => {
-      console.log(`正在下载文件 ${index + 1}/${urlList.length}: ${url}`);
+    for (let i = 0; i < urlList.length; i++) {
+      const url = urlList[i];
+      console.log(`正在下载文件 ${i + 1}/${urlList.length}: ${url}`);
 
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000);
+      const res = await fetch(url, {
+        headers: { Accept: "*/*" }
+      });
 
-      try {
-        const res = await fetch(url, {
-          signal: controller.signal,
-          headers: {
-            Accept: "*/*"
-          }
-        });
-        clearTimeout(timeoutId);
-
-        if (!res.ok) {
-          console.error(`文件下载失败，状态码: ${res.status}，URL: ${url}`);
-          return null;
-        }
-
-        // 关键：使用arrayBuffer确保二进制数据完整性
-        const arrayBuffer = await res.arrayBuffer();
-        console.log(`文件 ${index + 1} 大小: ${arrayBuffer.byteLength} bytes`);
-
-        if (arrayBuffer.byteLength === 0) {
-          console.error(`文件 ${index + 1} 为空，URL: ${url}`);
-          return null;
-        }
-
-        // 文件名处理：移除所有特殊字符和空格
-        let fileName = url.split("/").pop() || `file_${index + 1}`;
-        // 移除URL查询参数（如果有的话）
-        fileName = fileName.split("?")[0];
-        // 替换空格和所有危险字符
-        fileName =
-          fileName.replace(/[\s/:*?"<>|\x00-\x1F]/g, "_") ||
-          `file_${index + 1}`;
-
-        return { fileName, arrayBuffer };
-      } catch (fetchErr) {
-        clearTimeout(timeoutId);
-        console.error(`文件 ${index + 1} 下载异常:`, fetchErr);
-        return null;
+      if (!res.ok) {
+        console.error(`文件下载失败，状态码: ${res.status}`, url);
+        continue;
       }
-    });
 
-    // 等待所有下载完成
-    const results = await Promise.all(downloadPromises);
+      const arrayBuffer = await res.arrayBuffer();
+      console.log(`文件 ${i + 1} 大小: ${arrayBuffer.byteLength} bytes`);
 
-    // 将有效文件添加到ZIP
-    let fileCount = 0;
-    for (const result of results) {
-      if (result) {
-        zip.file(result.fileName, result.arrayBuffer, {
-          binary: true
+      if (arrayBuffer.byteLength === 0) {
+        console.error(`文件 ${i + 1} 为空`, url);
+        continue;
+      }
+
+      // 原始文件名
+      let originFileName = url.split("/").pop() || `file_${i + 1}`;
+      originFileName = originFileName.split("?")[0];
+      originFileName =
+        originFileName.replace(/[\s/:*?"<>|\x00-\x1F]/g, "_") ||
+        `file_${i + 1}`;
+      const isZipFile = originFileName.toLowerCase().endsWith(".zip");
+
+      // =========关键改动：是zip就解析内层文件，否则直接添加原文件=========
+      if (isZipFile) {
+        // 解析内部所有文件
+        const innerFiles = await parseInnerZip(arrayBuffer);
+        for (const item of innerFiles) {
+          // 去重文件名
+          let finalName = item.name;
+          let cnt = 1;
+          while (zip.files[finalName]) {
+            const dotIdx = finalName.lastIndexOf(".");
+            if (dotIdx > 0) {
+              finalName =
+                finalName.slice(0, dotIdx) +
+                `_${cnt}` +
+                finalName.slice(dotIdx);
+            } else {
+              finalName = finalName + `_${cnt}`;
+            }
+            cnt++;
+          }
+          // 内层普通文件统一压缩
+          zip.file(finalName, item.data, { compression: "DEFLATE" });
+        }
+        console.log(
+          `源压缩包${originFileName}已解包，提取${innerFiles.length}个文件加入总压缩包`
+        );
+      } else {
+        // 非zip原文件逻辑不变
+        let finalFileName = originFileName;
+        let counter = 1;
+        while (zip.files[finalFileName]) {
+          const extIndex = originFileName.lastIndexOf(".");
+          if (extIndex > 0) {
+            finalFileName =
+              originFileName.substring(0, extIndex) +
+              `_${counter}` +
+              originFileName.substring(extIndex);
+          } else {
+            finalFileName = originFileName + `_${counter}`;
+          }
+          counter++;
+        }
+        zip.file(finalFileName, arrayBuffer, {
+          binary: true,
+          date: new Date(),
+          compression: "DEFLATE"
         });
-        fileCount++;
+        console.log(`文件 ${i + 1} 添加成功: ${finalFileName}`);
       }
     }
 
+    const fileCount = Object.keys(zip.files).length;
     if (fileCount === 0) {
-      console.error("没有成功下载任何文件");
-      alert("没有成功下载任何文件");
+      console.error("没有成功添加任何文件");
+      alert("没有成功添加任何文件");
       return;
     }
 
     console.log(`成功添加 ${fileCount} 个文件到ZIP`);
 
-    // 生成ZIP文件（使用最兼容的配置）
     const zipBlob = await zip.generateAsync({
       type: "blob",
-      compression: "DEFLATE",
-      compressionLevel: 6,
-      // 使用DOS格式确保最大兼容性
       platform: "DOS",
       comment: "",
       mimeType: "application/zip"
@@ -164,22 +202,14 @@ export const downloadZip = async (urlList: string[]) => {
 
     console.log(`ZIP文件生成成功，大小: ${zipBlob.size} bytes`);
 
-    // 验证ZIP文件
-    if (zipBlob.size < 10) {
-      console.error("生成的ZIP文件过小");
-      alert("生成的ZIP文件无效");
-      return;
-    }
-
-    // 使用原生方式触发下载（不依赖file-saver）
-    const url = URL.createObjectURL(zipBlob);
+    const blobUrl = URL.createObjectURL(zipBlob);
     const a = document.createElement("a");
-    a.href = url;
+    a.href = blobUrl;
     a.download = "batch_files.zip";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    URL.revokeObjectURL(blobUrl);
 
     console.log("ZIP文件下载成功");
   } catch (err) {
