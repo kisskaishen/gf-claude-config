@@ -383,5 +383,19 @@ export default {
   "web.gfuc.open_service": "Service activeren",
   "web.gfuc.forecast_order": "Verwachte bestelling",
   "web.gfuc.shipment_transport": "Goederenvervoer",
-  "web.gfuc.delivery_sign": "Leveringshandtekening"
+  "web.gfuc.delivery_sign": "Leveringshandtekening",
+  "web.gfuc.halo": "Hallo",
+  "web.gfuc.available_balance": "Beschikbaar saldo voor bestelling",
+  "web.gfuc.view_detail": "Bekijk details",
+  "web.gfuc.delivery_in_progress": "In levering",
+  "web.gfuc.signed_orders": "Getekend",
+  "web.gfuc.tracking_no": "Voer uw trackingnummer in",
+  "web.gfuc.query": "Zoeken",
+  "web.gfuc.forecast_order_tip":
+    "Vul eenvoudig de basisgegevens in om snel bestellingen te voorspellen",
+  "web.gfuc.problem_management": "Probleemorderbeheer",
+  "web.gfuc.problem_management_tip":
+    "Bekijk snel informatie over problematische pakketten",
+  "web.gfuc.view_bill": "Bekijk factuur",
+  "web.gfuc.view_bill_tip": "Facturen bekijken en downloaden"
 };

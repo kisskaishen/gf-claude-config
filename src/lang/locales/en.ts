@@ -391,5 +391,19 @@ export default {
   "web.gfuc.open_service": "Activate Service",
   "web.gfuc.forecast_order": "Forecast Order",
   "web.gfuc.shipment_transport": "Shipment Transport",
-  "web.gfuc.delivery_sign": "Delivery Signatures"
+  "web.gfuc.delivery_sign": "Delivery Signatures",
+  "web.gfuc.halo": "Hello",
+  "web.gfuc.available_balance": "Available Balance for Order",
+  "web.gfuc.view_detail": "View Details",
+  "web.gfuc.delivery_in_progress": "In Delivery",
+  "web.gfuc.signed_orders": "Signed",
+  "web.gfuc.tracking_no": "Please enter your tracking number",
+  "web.gfuc.query": "Query",
+  "web.gfuc.forecast_order_tip":
+    "Simply fill in the basic information to quickly forecast orders",
+  "web.gfuc.problem_management": "Problem Order Management",
+  "web.gfuc.problem_management_tip":
+    "Quickly view problematic parcel information",
+  "web.gfuc.view_bill": "View Bill",
+  "web.gfuc.view_bill_tip": "View and download bills"
 };

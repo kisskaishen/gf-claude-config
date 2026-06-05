@@ -5,7 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import Overview from "@/views/home/overview.vue";
 import Welcome from "@/views/home/welcome.vue";
 import Gigma from "@/views/home/gigma.vue";
 import { ref } from "vue";

@@ -373,5 +373,18 @@ export default {
   "web.gfuc.open_service": "开通服务",
   "web.gfuc.forecast_order": "预报订单",
   "web.gfuc.shipment_transport": "发货运输",
-  "web.gfuc.delivery_sign": "派送签收"
+  "web.gfuc.delivery_sign": "派送签收",
+
+  "web.gfuc.halo": "你好",
+  "web.gfuc.available_balance": "可下单金额",
+  "web.gfuc.view_detail": "查看明细",
+  "web.gfuc.delivery_in_progress": "派送中",
+  "web.gfuc.signed_orders": "已签收",
+  "web.gfuc.tracking_no": "请输入你的运单号",
+  "web.gfuc.query": "查询",
+  "web.gfuc.forecast_order_tip": "只需要简单填写信息，即可快速预报订单",
+  "web.gfuc.problem_management": "问题件管理",
+  "web.gfuc.problem_management_tip": "快速查看有问题的包裹信息",
+  "web.gfuc.view_bill": "查看账单",
+  "web.gfuc.view_bill_tip": "进行账单查看，下载"
 };

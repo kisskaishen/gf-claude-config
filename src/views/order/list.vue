@@ -46,6 +46,20 @@ const orderStatusOptions = computed(() => {
 
 const activeTab = ref(0);
 
+onMounted(() => {
+  activeTab.value = Number(sessionStorage.getItem("homeOrderType") || "0");
+
+  setTimeout(() => {
+    sessionStorage.removeItem("homeOrderType");
+  }, 100);
+});
+onActivated(() => {
+  activeTab.value = Number(sessionStorage.getItem("homeOrderType") || "0");
+  setTimeout(() => {
+    sessionStorage.removeItem("homeOrderType");
+  }, 100);
+});
+
 const handleTabClick = (tab: any, event: Event) => {
   console.log(tab.props.label, tab.props.name);
 };

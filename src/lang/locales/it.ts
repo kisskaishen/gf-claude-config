@@ -393,5 +393,19 @@ export default {
   "web.gfuc.open_service": "Attiva servizio",
   "web.gfuc.forecast_order": "Ordine previsto",
   "web.gfuc.shipment_transport": "Trasporto merci",
-  "web.gfuc.delivery_sign": "Firma di consegna"
+  "web.gfuc.delivery_sign": "Firma di consegna",
+  "web.gfuc.halo": "Ciao",
+  "web.gfuc.available_balance": "Saldo disponibile per ordine",
+  "web.gfuc.view_detail": "Visualizza dettagli",
+  "web.gfuc.delivery_in_progress": "In consegna",
+  "web.gfuc.signed_orders": "Firmato",
+  "web.gfuc.tracking_no": "Inserisci il tuo numero di tracciamento",
+  "web.gfuc.query": "Cerca",
+  "web.gfuc.forecast_order_tip":
+    "Compila semplicemente le informazioni di base per prevedere rapidamente gli ordini",
+  "web.gfuc.problem_management": "Gestione ordini problematici",
+  "web.gfuc.problem_management_tip":
+    "Visualizza rapidamente le informazioni dei pacchi problematici",
+  "web.gfuc.view_bill": "Visualizza fattura",
+  "web.gfuc.view_bill_tip": "Visualizza e scarica le fatture"
 };

@@ -722,17 +722,21 @@ const getProductList = async () => {
 };
 
 onMounted(() => {
-  if (sessionStorage.getItem("trackingNo")) {
-    searchForm.orderNumber = sessionStorage.getItem("trackingNo");
-  }
   // 初始化时获取产品列表
   getProductList();
+  if (sessionStorage.getItem("homeOrderType")) {
+    searchForm.orderStatus = Number(sessionStorage.getItem("homeOrderType"));
+  } else {
+    searchForm.orderStatus = "";
+  }
   fetchData();
 });
 
 onActivated(() => {
-  if (sessionStorage.getItem("trackingNo")) {
-    searchForm.orderNumber = sessionStorage.getItem("trackingNo");
+  if (sessionStorage.getItem("homeOrderType")) {
+    searchForm.orderStatus = Number(sessionStorage.getItem("homeOrderType"));
+  } else {
+    searchForm.orderStatus = "";
   }
   fetchData();
 });

@@ -545,7 +545,7 @@ const handleBatchDownload = async () => {
     }
 
     downloadLoading.value = true;
-    await downloadFreightBill({
+    await downloadClaimBill({
       numbers: selectedOrders.value.map((item: any) => item.number)
     });
 
@@ -579,12 +579,14 @@ onMounted(() => {
   height: calc(100vh - 200px);
   overflow: hidden;
 }
+
 .status-tag {
   padding: 2px 8px;
   font-size: var(--font-size-base);
   white-space: nowrap;
   border-radius: 12px;
 }
+
 .status-pending {
   color: rgb(255 123 41 / 100%);
   background-color: rgb(255 242 229 / 100%);

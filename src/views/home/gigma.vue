@@ -1,7 +1,9 @@
 <template>
   <div class="container p-6">
     <!-- 欢迎信息 -->
-    <h1 class="mb-6 text-xl font-medium">你好，{{ userAccount }}</h1>
+    <h1 class="mb-6 text-xl font-medium">
+      {{ $t("web.gfuc.halo") }}， {{ userAccount }}
+    </h1>
 
     <!-- 总金额和状态卡片 -->
     <div class="flex justify-between gap-6 mb-6">
@@ -9,31 +11,44 @@
       <div
         class="flex-1 p-4 border-l-4 border-orange-500 rounded-lg bg-orange-50"
       >
-        <p class="mb-2 text-sm text-gray-600">总下单金额</p>
+        <p class="mb-2 text-sm text-gray-600">
+          {{ $t("web.gfuc.available_balance") }}
+        </p>
         <p class="text-2xl font-bold text-primary">€ {{ balance }}</p>
         <div class="pt-4 mt-4 border-t border-orange-200">
-          <a href="#" class="text-sm text-primary hover:underline">查看明细</a>
+          <a
+            href="#"
+            class="text-sm text-primary hover:underline"
+            @click="handleViewDetail('Balance')"
+            >{{ $t("web.gfuc.view_detail") }}</a
+          >
         </div>
       </div>
 
       <!-- 派送中 -->
       <div
         class="flex flex-col items-center justify-center p-4 bg-white border rounded-lg border-card min-w-[286px]"
+        @click="handleViewDetail('OrderList', 4)"
       >
         <p class="mb-2 text-3xl font-bold text-center text-primary">
           {{ recentDeliveryCount }}
         </p>
-        <p class="text-center text-gray-600">派送中</p>
+        <p class="text-center text-gray-600">
+          {{ $t("web.gfuc.delivery_in_progress") }}
+        </p>
       </div>
 
       <!-- 已签收 -->
       <div
         class="flex flex-col items-center justify-center p-4 bg-white border rounded-lg border-card min-w-[286px]"
+        @click="handleViewDetail('OrderList', 5)"
       >
         <p class="mb-2 text-3xl font-bold text-center text-primary">
           {{ SignedOrdersCount }}
         </p>
-        <p class="text-center text-gray-600">已签收</p>
+        <p class="text-center text-gray-600">
+          {{ $t("web.gfuc.signed_orders") }}
+        </p>
       </div>
     </div>
 
@@ -51,7 +66,7 @@
       </button> -->
       <el-input
         v-model="trackingNo"
-        placeholder="请输入你的运单号"
+        :placeholder="$t('web.gfuc.tracking_no')"
         class="flex-1 custom-input"
       >
         <template #append>
@@ -61,7 +76,7 @@
             class="custom-append-btn"
             @click="handleQuery"
           >
-            查询
+            {{ $t("web.gfuc.query") }}
           </el-button>
         </template>
       </el-input>
@@ -72,6 +87,7 @@
       <!-- 预报订单 -->
       <div
         class="p-6 transition-shadow bg-white border rounded-lg border-card hover:shadow-md"
+        @click="handleViewDetail('SingleOrder')"
       >
         <div class="flex justify-center mb-4">
           <div
@@ -94,16 +110,17 @@
           </div>
         </div>
         <h3 class="mb-2 text-lg font-medium text-center text-primary">
-          预报订单
+          {{ $t("web.gfuc.forecast_order") }}
         </h3>
         <p class="text-sm text-center text-gray-600">
-          只需要简单填写信息，即可快速预报订单
+          {{ $t("web.gfuc.forecast_order_tip") }}
         </p>
       </div>
 
       <!-- 问题件管理 -->
       <div
         class="p-6 transition-shadow bg-white border rounded-lg border-card hover:shadow-md"
+        @click="handleViewDetail('Question')"
       >
         <div class="flex justify-center mb-4">
           <div
@@ -126,16 +143,17 @@
           </div>
         </div>
         <h3 class="mb-2 text-lg font-medium text-center text-primary">
-          问题件管理
+          {{ $t("web.gfuc.problem_management") }}
         </h3>
         <p class="text-sm text-center text-gray-600">
-          快速查看有问题的包裹信息
+          {{ $t("web.gfuc.problem_management_tip") }}
         </p>
       </div>
 
       <!-- 查看账单 -->
       <div
         class="p-6 transition-shadow bg-white border rounded-lg border-card hover:shadow-md"
+        @click="handleViewDetail('Account')"
       >
         <div class="flex justify-center mb-4">
           <div
@@ -158,9 +176,11 @@
           </div>
         </div>
         <h3 class="mb-2 text-lg font-medium text-center text-primary">
-          查看账单
+          {{ $t("web.gfuc.view_bill") }}
         </h3>
-        <p class="text-sm text-center text-gray-600">进行账单查看，下载</p>
+        <p class="text-sm text-center text-gray-600">
+          {{ $t("web.gfuc.view_bill_tip") }}
+        </p>
       </div>
     </div>
 
@@ -318,9 +338,24 @@ const handleQuery = async () => {
     ElMessage.error("请输入运单号");
     return;
   }
-  sessionStorage.setItem("trackingNo", trackingNo.value);
-  // 跳转到订单列表页 页面可以根据需要传递参数，例如运单号
-  router.push({ name: "OrderList" });
+  // sessionStorage.setItem("trackingNo", trackingNo.value);
+  // // 跳转到订单列表页 页面可以根据需要传递参数，例如运单号
+  // router.push({ name: "OrderList" });
+  let country = trackingNo.value.substring(2, 4).toLowerCase();
+  window.open(
+    `https://www.gofo.com/${country}/tracking-results/?id=${trackingNo.value}`,
+    "_blank"
+  );
+};
+
+const handleViewDetail = (name: string, type?: number) => {
+  if (type) {
+    sessionStorage.setItem("homeOrderType", type.toString());
+  }
+  if (name === "Question") {
+    return;
+  }
+  router.push({ name });
 };
 </script>
 
@@ -356,8 +391,8 @@ const handleQuery = async () => {
 }
 
 .custom-append-btn {
-  width: 94px;
   height: 48px;
+  padding: 0 24px;
   font-size: 16px;
   font-weight: 500;
   color: #fff !important;
