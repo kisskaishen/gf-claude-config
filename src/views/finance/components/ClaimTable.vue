@@ -222,7 +222,7 @@
             <template #default="{ row }">
               <div class="table-actions">
                 <el-tooltip
-                  :content="$t('web.gfuc.view_order')"
+                  :content="$t('web.gfuc.download_bill')"
                   placement="top"
                 >
                   <svg-icon

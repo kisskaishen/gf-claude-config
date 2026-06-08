@@ -390,6 +390,7 @@ export default {
   "web.gfuc.half_month2": "Seconda metà del mese",
   "web.gfuc.export": "Esporta",
   "web.gfuc.download_freight_bill": "Scarica fattura di trasporto",
+  "web.gfuc.download_claim_bill": "Scarica fattura di reclamo",
   "web.gfuc.open_service": "Attiva servizio",
   "web.gfuc.forecast_order": "Ordine previsto",
   "web.gfuc.shipment_transport": "Trasporto merci",

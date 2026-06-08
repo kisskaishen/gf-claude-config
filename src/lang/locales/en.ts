@@ -388,6 +388,7 @@ export default {
   "web.gfuc.half_month2": "Second Half of Month",
   "web.gfuc.export": "Export",
   "web.gfuc.download_freight_bill": "Download Freight Bill",
+  "web.gfuc.download_claim_bill": "Download Claim Bill",
   "web.gfuc.open_service": "Activate Service",
   "web.gfuc.forecast_order": "Forecast Order",
   "web.gfuc.shipment_transport": "Shipment Transport",

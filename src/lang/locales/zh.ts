@@ -370,6 +370,7 @@ export default {
   "web.gfuc.half_month2": "下半月",
   "web.gfuc.export": "导出",
   "web.gfuc.download_freight_bill": "下载运费账单",
+  "web.gfuc.download_claim_bill": "下载理赔账单",
   "web.gfuc.open_service": "开通服务",
   "web.gfuc.forecast_order": "预报订单",
   "web.gfuc.shipment_transport": "发货运输",

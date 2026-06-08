@@ -187,19 +187,19 @@
     <!-- 流程步骤 -->
     <div class="flex flex-wrap items-center justify-between mb-8">
       <!-- 开通服务 -->
-      <div class="flex flex-col items-center">
+      <!-- <div class="flex flex-col items-center">
         <div
           class="flex items-center justify-center w-16 h-16 mb-2 border rounded-full border-text-primary"
         >
           <svg-icon name="home-step1" width="32px" height="32px" />
         </div>
         <p class="text-base text-info">{{ $t("web.gfuc.open_service") }}</p>
-      </div>
+      </div> -->
 
       <!-- 箭头 -->
-      <div class="my-2">
+      <!-- <div class="my-2">
         <svg-icon name="homeStep" width="32px" height="32px" />
-      </div>
+      </div> -->
 
       <!-- 预报订单 -->
       <div class="flex flex-col items-center">

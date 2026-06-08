@@ -55,7 +55,6 @@ import CostTable from "@/views/finance/components/CostTable.vue";
 import SuccessDialog from "@/components/SuccessDialog/index.vue";
 
 import PageContainer from "@/components/PageContainer/index.vue";
-// import { useDict } from "@/hooks/useDict";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 

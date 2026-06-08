@@ -222,7 +222,7 @@
             <template #default="{ row }">
               <div class="table-actions">
                 <el-tooltip
-                  :content="$t('web.gfuc.view_order')"
+                  :content="$t('web.gfuc.download_bill')"
                   placement="top"
                 >
                   <svg-icon
@@ -272,6 +272,9 @@ const cycleTypeListDict = useDict("fms_receivable_cycle_type");
 const billStatusListDict = useDict("lcs.finance.bill.status");
 const invoiceStatusListDict = useDict("fms.receivable.invoice.status.type");
 const halfMonthListDict = useDict("fms.bill.month.type");
+
+// 账单状态
+const accountStatus = useDict("fms.receivable.invoice.status.type");
 
 const customerNameList = computed(() => {
   return userStore.loginInfo?.shipperCustomerList || [];

@@ -380,6 +380,7 @@ export default {
   "web.gfuc.half_month2": "Tweede helft van de maand",
   "web.gfuc.export": "Exporteren",
   "web.gfuc.download_freight_bill": "Download vrachtfactuur",
+  "web.gfuc.download_claim_bill": "Download claimfactuur",
   "web.gfuc.open_service": "Service activeren",
   "web.gfuc.forecast_order": "Verwachte bestelling",
   "web.gfuc.shipment_transport": "Goederenvervoer",

@@ -404,6 +404,7 @@ export default {
   "web.gfuc.half_month2": "Deuxième quinzaine",
   "web.gfuc.export": "Exporter",
   "web.gfuc.download_freight_bill": "Télécharger la facture de fret",
+  "web.gfuc.download_claim_bill": "Télécharger la facture de réclamation",
   "web.gfuc.open_service": "Activer le service",
   "web.gfuc.forecast_order": "Commande prévisionnelle",
   "web.gfuc.shipment_transport": "Transport des marchandises",

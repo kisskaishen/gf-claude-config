@@ -152,7 +152,13 @@
                 </el-tooltip>
 
                 <el-tooltip
-                  :content="$t('web.gfuc.download_freight_bill')"
+                  :content="
+                    row.taskType === 2
+                      ? $t('web.gfuc.download_freight_bill')
+                      : row.taskType === 4
+                        ? $t('web.gfuc.download_claim_bill')
+                        : ''
+                  "
                   placement="top"
                 >
                   <svg-icon
