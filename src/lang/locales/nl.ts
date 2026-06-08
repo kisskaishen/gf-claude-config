@@ -398,5 +398,8 @@ export default {
   "web.gfuc.problem_management_tip":
     "Bekijk snel informatie over problematische pakketten",
   "web.gfuc.view_bill": "Bekijk factuur",
-  "web.gfuc.view_bill_tip": "Facturen bekijken en downloaden"
+  "web.gfuc.view_bill_tip": "Facturen bekijken en downloaden",
+  "web.gfuc.please_input_tracking_no": "Voer het trackingnummer in",
+  "web.gfuc.please_input_correct_tracking_no":
+    "Voer het juiste trackingnummer in"
 };

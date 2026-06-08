@@ -312,8 +312,12 @@
 import { getBalanceInfo, getRecentCount } from "@/api/home";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/user";
+import { useI18n } from "vue-i18n";
+
 const userStore = useUserStore();
 const router = useRouter();
+
+const { t } = useI18n();
 
 const userAccount = computed(() => {
   return userStore?.userInfo?.account;
@@ -335,13 +339,17 @@ onMounted(async () => {
 
 const handleQuery = async () => {
   if (!trackingNo.value) {
-    ElMessage.error("请输入运单号");
+    ElMessage.error(t("web.gfuc.please_input_tracking_no"));
     return;
   }
   // sessionStorage.setItem("trackingNo", trackingNo.value);
   // // 跳转到订单列表页 页面可以根据需要传递参数，例如运单号
   // router.push({ name: "OrderList" });
   let country = trackingNo.value.substring(2, 4).toLowerCase();
+  if (!["nl", "it", "fr", "es"].includes(country)) {
+    ElMessage.error(t("web.gfuc.please_input_correct_tracking_no"));
+    return;
+  }
   window.open(
     `https://www.gofo.com/${country}/tracking-results/?id=${trackingNo.value}`,
     "_blank"

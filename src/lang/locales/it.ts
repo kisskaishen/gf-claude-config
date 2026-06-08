@@ -408,5 +408,8 @@ export default {
   "web.gfuc.problem_management_tip":
     "Visualizza rapidamente le informazioni dei pacchi problematici",
   "web.gfuc.view_bill": "Visualizza fattura",
-  "web.gfuc.view_bill_tip": "Visualizza e scarica le fatture"
+  "web.gfuc.view_bill_tip": "Visualizza e scarica le fatture",
+  "web.gfuc.please_input_tracking_no": "Inserisci il numero di tracciamento",
+  "web.gfuc.please_input_correct_tracking_no":
+    "Inserisci il numero di tracciamento corretto"
 };

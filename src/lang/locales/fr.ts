@@ -422,5 +422,8 @@ export default {
   "web.gfuc.problem_management_tip":
     "Consultez rapidement les informations des colis problématiques",
   "web.gfuc.view_bill": "Voir la facture",
-  "web.gfuc.view_bill_tip": "Consulter et télécharger les factures"
+  "web.gfuc.view_bill_tip": "Consulter et télécharger les factures",
+  "web.gfuc.please_input_tracking_no": "Veuillez saisir le numéro de suivi",
+  "web.gfuc.please_input_correct_tracking_no":
+    "Veuillez saisir le numéro de suivi correct"
 };

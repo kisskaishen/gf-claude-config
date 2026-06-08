@@ -406,5 +406,8 @@ export default {
   "web.gfuc.problem_management_tip":
     "Quickly view problematic parcel information",
   "web.gfuc.view_bill": "View Bill",
-  "web.gfuc.view_bill_tip": "View and download bills"
+  "web.gfuc.view_bill_tip": "View and download bills",
+  "web.gfuc.please_input_tracking_no": "Please enter tracking number",
+  "web.gfuc.please_input_correct_tracking_no":
+    "Please enter the correct tracking number"
 };
