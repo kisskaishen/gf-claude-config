@@ -1025,11 +1025,13 @@ defineExpose({
   }
 
   :deep(.el-upload-dragger) {
-    border-color: #e5e7eb;
     padding: 80px 10px;
+    border-color: #e5e7eb;
+
     &:hover {
       border-color: var(--el-color-primary);
     }
+
     &.has-custom-width,
     &.has-custom-height {
       width: var(--drag-width, 360px);

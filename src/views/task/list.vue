@@ -114,7 +114,7 @@
             :align="item?.textAlign || 'left'"
             show-overflow-tooltip
           >
-            <template #default="{ row, index }">
+            <template #default="{ row }">
               <div v-if="item.prop === 'taskStatusName'">
                 <span :class="['status-tag', getStatusClass(row.taskStatus)]">
                   {{ taskStatusDict.getLabel(row.taskStatus) ?? "-" }}
@@ -492,9 +492,10 @@ watch(
 <style lang="scss" scoped>
 .task-container {
   @apply p-6;
-  height: calc(100vh - 120px);
+
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 120px);
 
   .status-tag {
     padding: 2px 8px;
@@ -502,10 +503,12 @@ watch(
     white-space: nowrap;
     border-radius: 12px;
   }
+
   .status-info {
     color: #4e5969;
     background-color: #e5e7eb;
   }
+
   .status-pending {
     color: rgb(255 123 41 / 100%);
     background-color: rgb(255 242 229 / 100%);

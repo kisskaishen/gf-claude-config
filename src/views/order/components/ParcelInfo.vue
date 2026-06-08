@@ -592,9 +592,6 @@ defineExpose({
 <style scoped lang="scss">
 @use "@/views/order/style/base";
 
-.table-actions {
-}
-
 :deep(.el-input-number) {
   width: 100%;
 

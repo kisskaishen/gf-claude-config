@@ -447,7 +447,7 @@ const handleContinue = () => {
     form.customerId = shipperOptions.value[0]?.customerId;
   }
 
-  formRef.value && formRef.value.resetFields();
+  formRef.value && formRef.value?.resetFields();
 
   handleRemove();
   uploadRef.value?.clearFiles();
@@ -460,7 +460,7 @@ const handleContinue = () => {
 watch(
   () => currentLang.value,
   () => {
-    formRef.value && formRef.value.resetFields();
+    formRef.value && formRef.value?.resetFields();
   }
 );
 

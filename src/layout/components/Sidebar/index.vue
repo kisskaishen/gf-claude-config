@@ -89,19 +89,19 @@ const toggleCollapse = () => {
 
     .collapse-btn {
       position: absolute;
-      right: -16px;
       top: 50%;
-      transform: translateY(-50%);
-      height: 32px;
-      width: 32px;
+      right: -16px;
+      z-index: 9999;
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 32px;
+      height: 32px;
       cursor: pointer;
-      border-radius: 50%;
-      z-index: 9999;
-      box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
       background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 2px 0 4px rgb(0 0 0 / 10%);
+      transform: translateY(-50%);
 
       .icon-wrapper {
         display: flex;
