@@ -333,8 +333,8 @@ onMounted(async () => {
   balance.value = balanceInfo || 0;
 
   const res = await getRecentCount();
-  recentDeliveryCount.value = res.data?.recentDeliveryCount || 0;
-  SignedOrdersCount.value = res.data?.SignedOrdersCount || 0;
+  recentDeliveryCount.value = res?.recentDeliveryCount || 0;
+  SignedOrdersCount.value = res?.signedOrdersCount || 0;
 });
 
 const handleQuery = async () => {

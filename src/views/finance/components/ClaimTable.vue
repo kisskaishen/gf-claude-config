@@ -365,11 +365,6 @@ const columns = computed(() => [
     label: t("web.gfuc.adjustment_detail_excluding_tax" /** 调账明细_未税 */),
     minWidth: columnWidth(160, 300, 280, 320, 320, 280)
   },
-  {
-    prop: "claimBillTotalNum",
-    label: t("web.gfuc.claim_bill_no" /** 理赔账单编号 */),
-    minWidth: columnWidth(160, 180, 360, 220, 200, 200)
-  },
 
   {
     prop: "invoiceStatusName",
@@ -471,6 +466,8 @@ const getParams = () => {
   // } else {
   //   params.waybillNo = "";
   // }
+
+  params.waybillNo = waybillNo;
 
   return params;
 };

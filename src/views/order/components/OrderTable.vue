@@ -413,10 +413,10 @@ const disabledDate = (time) => {
 };
 
 // 设置默认值（前30天）
-const setDefaultRange = () => {
+const setDefaultRange = (defaultDays: number = 30) => {
   const end = new Date();
   const start = new Date();
-  start.setTime(start.getTime() - 30 * 24 * 3600 * 1000);
+  start.setTime(start.getTime() - defaultDays * 24 * 3600 * 1000);
 
   // 设置开始时间为00:00:00，结束时间为23:59:59
   const startDate = dayjs(start).startOf("day").format("YYYY-MM-DD HH:mm:ss");
@@ -724,26 +724,40 @@ const getProductList = async () => {
 onMounted(() => {
   // 初始化时获取产品列表
   getProductList();
-  if (sessionStorage.getItem("homeOrderType")) {
-    searchForm.orderStatus = Number(sessionStorage.getItem("homeOrderType"));
-  } else {
-    searchForm.orderStatus = "";
-  }
+  formatTypeParam();
+
   fetchData();
 });
 
 onActivated(() => {
-  if (sessionStorage.getItem("homeOrderType")) {
-    searchForm.orderStatus = Number(sessionStorage.getItem("homeOrderType"));
-  } else {
-    searchForm.orderStatus = "";
-  }
+  formatTypeParam();
   fetchData();
 });
 
+const formatTypeParam = () => {
+  const homeOrderType = sessionStorage.getItem("homeOrderType");
+  if (homeOrderType) {
+    searchForm.orderStatus = Number(homeOrderType);
+
+    // 根据 orderStatus 设置下单时间
+    if (searchForm.orderStatus === 4) {
+      // orderStatus 为 4，下单时间默认为最近7天
+      setDefaultRange(7);
+    } else if (searchForm.orderStatus === 5) {
+      // orderStatus 为 5，下单时间为空
+      searchForm.orderTimeRange = [];
+    }
+  } else {
+    searchForm.orderStatus = "";
+  }
+};
+
 watch(
   () => currentStatus.value,
-  () => {
+  (val) => {
+    searchForm.orderStatus = val;
+
+    setDefaultRange();
     fetchData();
   }
 );

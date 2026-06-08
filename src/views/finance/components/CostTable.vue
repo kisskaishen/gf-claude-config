@@ -212,6 +212,13 @@
                 {{ billStatusListDict.getLabel(row.status) ?? "-" }}
               </span>
             </template>
+            <!-- 金额字段格式化 -->
+            <template
+              #default="{ row }"
+              v-else-if="amountProps.includes(item.prop)"
+            >
+              {{ formatAmount(row[item.prop]) }}
+            </template>
           </el-table-column>
 
           <el-table-column
@@ -254,6 +261,7 @@ import {
   downloadFreightBill,
   exportFreightBill
 } from "@/api/finance";
+import { formatAmount } from "@/utils/index";
 
 import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
@@ -298,6 +306,18 @@ watch(
   }
 );
 
+// 金额字段列表（需要格式化的字段）
+const amountProps = [
+  "taxedTotal",
+  "untaxedTotal",
+  "taxTotal",
+  "detailUntaxedTotal",
+  "adjustGeneralTotal",
+  "adjustmentDetailExcludingTax",
+  "claimUntaxedTotal",
+  "claimTaxedTotal"
+];
+
 const columns = computed(() => [
   {
     prop: "number",
@@ -338,7 +358,7 @@ const columns = computed(() => [
     prop: "taxedTotal",
     label: t("web.gfuc.bill_amount_including_tax" /** 账单金额_含税 */),
     minWidth: columnWidth(150, 240, 240, 240, 240, 220),
-    align: "right" // 金额类字段一般右对齐更规范
+    align: "right"
   },
   {
     prop: "untaxedTotal",
@@ -485,6 +505,7 @@ const getParams = () => {
   // } else {
   //   params.waybillNo = "";
   // }
+  params.waybillNo = waybillNo;
 
   return params;
 };
