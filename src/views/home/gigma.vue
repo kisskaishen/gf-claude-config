@@ -1,12 +1,12 @@
 <template>
-  <div class="container p-6">
+  <div class="container p-6 mx-auto">
     <!-- 欢迎信息 -->
     <h1 class="mb-6 text-xl font-medium">
       {{ $t("web.gfuc.halo") }}， {{ userAccount }}
     </h1>
 
     <!-- 总金额和状态卡片 -->
-    <div class="flex justify-between gap-6 mb-6">
+    <div class="flex justify-between gap-6 mb-10">
       <!-- 总下单金额 -->
       <div
         class="flex-1 p-4 border-l-4 border-orange-500 rounded-lg bg-orange-50"
@@ -53,7 +53,7 @@
     </div>
 
     <!-- 运单号查询 -->
-    <div class="flex mb-8">
+    <div class="flex mb-10">
       <!-- <input
         type="text"
         placeholder="请输入你的运单号"
@@ -83,7 +83,7 @@
     </div>
 
     <!-- 功能卡片 -->
-    <div class="grid grid-cols-1 gap-4 mb-8 md:grid-cols-3">
+    <div class="grid grid-cols-1 gap-4 mb-10 md:grid-cols-3">
       <!-- 预报订单 -->
       <div
         class="p-6 transition-shadow bg-white border rounded-lg border-card hover:shadow-md"
@@ -185,21 +185,21 @@
     </div>
 
     <!-- 流程步骤 -->
-    <div class="flex flex-wrap items-center justify-between mb-8">
+    <div class="flex flex-wrap items-center justify-around">
       <!-- 开通服务 -->
-      <!-- <div class="flex flex-col items-center">
+      <div class="flex flex-col items-center" v-if="!hasShipperList">
         <div
           class="flex items-center justify-center w-16 h-16 mb-2 border rounded-full border-text-primary"
         >
           <svg-icon name="home-step1" width="32px" height="32px" />
         </div>
         <p class="text-base text-info">{{ $t("web.gfuc.open_service") }}</p>
-      </div> -->
+      </div>
 
       <!-- 箭头 -->
-      <!-- <div class="my-2">
+      <div class="my-2" v-if="!hasShipperList">
         <svg-icon name="homeStep" width="32px" height="32px" />
-      </div> -->
+      </div>
 
       <!-- 预报订单 -->
       <div class="flex flex-col items-center">
@@ -261,7 +261,7 @@
 
     <!-- 右侧帮助和反馈 -->
     <div
-      class="fixed right-0 flex flex-col gap-2 -translate-y-1/2 bg-white shadow-md top-1/2 px-1.5 py-3"
+      class="fixed right-0 flex flex-col gap-2 -translate-y-1/2 bg-white shadow-md bottom-1/4 px-1.5 py-3"
     >
       <!-- 帮助 -->
       <div
@@ -323,12 +323,19 @@ const userAccount = computed(() => {
   return userStore?.userInfo?.account;
 });
 
+const hasShipperList = computed(() => {
+  return userStore?.loginInfo?.shipperCustomerList?.length > 0;
+});
+
 const balance = ref(0);
 const recentDeliveryCount = ref(0);
 const SignedOrdersCount = ref(0);
 const trackingNo = ref("");
 
 onMounted(async () => {
+  if (!hasShipperList.value) {
+    return;
+  }
   const balanceInfo = await await getBalanceInfo();
   balance.value = balanceInfo || 0;
 
@@ -347,8 +354,7 @@ const handleQuery = async () => {
   // router.push({ name: "OrderList" });
   let country = trackingNo.value.substring(2, 4).toLowerCase();
   if (!["nl", "it", "fr", "es"].includes(country)) {
-    ElMessage.error(t("web.gfuc.please_input_correct_tracking_no"));
-    return;
+    country = "fr";
   }
   window.open(
     `https://www.gofo.com/${country}/tracking-results/?id=${trackingNo.value}`,
