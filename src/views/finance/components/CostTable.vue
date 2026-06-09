@@ -389,7 +389,7 @@ const columns = computed(() => [
     minWidth: columnWidth(160, 300, 280, 320, 320, 280)
   },
   {
-    prop: "claimBillTotalNum",
+    prop: "claimBillTotalNumber",
     label: t("web.gfuc.claim_bill_no" /** 理赔账单编号 */),
     minWidth: columnWidth(160, 180, 360, 220, 200, 200)
   },
