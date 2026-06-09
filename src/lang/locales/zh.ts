@@ -389,5 +389,22 @@ export default {
   "web.gfuc.view_bill": "查看账单",
   "web.gfuc.view_bill_tip": "进行账单查看，下载",
   "web.gfuc.please_input_tracking_no": "请输入运单号",
-  "web.gfuc.please_input_correct_tracking_no": "请输入正确的运单号"
+  "web.gfuc.please_input_correct_tracking_no": "请输入正确的运单号",
+
+  "web.gfuc.help_center": "帮助中心",
+  "web.gfuc.help_center_desc": "查找您需要的帮助信息",
+  "web.gfuc.help_detail": "帮助详情",
+  "web.gfuc.help_search_placeholder": "搜索问题...",
+  "web.gfuc.help_search_no_results": "未找到相关结果",
+  "web.gfuc.help_category_shipping": "发货运输",
+  "web.gfuc.help_category_billing": "费用问题",
+  "web.gfuc.help_category_account": "账户相关",
+  "web.gfuc.help_category_technical": "技术问题",
+  "web.gfuc.help_faq": "常见问题",
+  "web.gfuc.help_contact": "联系客服",
+  "web.gfuc.help_contact_desc": "如以上未能解决您的问题，请联系我们的客服",
+  "web.gfuc.help_online_service": "在线客服",
+  "web.gfuc.help_email": "客服邮箱",
+  "web.gfuc.help_back": "返回帮助中心",
+  "web.gfuc.help_view_all": "查看全部"
 };

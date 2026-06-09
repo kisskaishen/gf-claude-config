@@ -425,5 +425,24 @@ export default {
   "web.gfuc.view_bill_tip": "Consulter et télécharger les factures",
   "web.gfuc.please_input_tracking_no": "Veuillez saisir le numéro de suivi",
   "web.gfuc.please_input_correct_tracking_no":
-    "Veuillez saisir le numéro de suivi correct"
+    "Veuillez saisir le numéro de suivi correct",
+
+  "web.gfuc.help_center": "Centre d'Aide",
+  "web.gfuc.help_center_desc":
+    "Trouvez les informations d'aide dont vous avez besoin",
+  "web.gfuc.help_detail": "Détails de l'aide",
+  "web.gfuc.help_search_placeholder": "Rechercher des questions...",
+  "web.gfuc.help_search_no_results": "Aucun résultat trouvé",
+  "web.gfuc.help_category_shipping": "Expédition et Transport",
+  "web.gfuc.help_category_billing": "Questions de Facturation",
+  "web.gfuc.help_category_account": "Lié au Compte",
+  "web.gfuc.help_category_technical": "Problèmes Techniques",
+  "web.gfuc.help_faq": "Questions Fréquentes",
+  "web.gfuc.help_contact": "Nous Contacter",
+  "web.gfuc.help_contact_desc":
+    "Si ce qui précède n'a pas résolu votre problème, veuillez contacter notre service client",
+  "web.gfuc.help_online_service": "Service en Ligne",
+  "web.gfuc.help_email": "Email du Service Client",
+  "web.gfuc.help_back": "Retour au Centre d'Aide",
+  "web.gfuc.help_view_all": "Voir Tout"
 };

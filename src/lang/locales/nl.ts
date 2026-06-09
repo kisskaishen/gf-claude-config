@@ -401,5 +401,23 @@ export default {
   "web.gfuc.view_bill_tip": "Facturen bekijken en downloaden",
   "web.gfuc.please_input_tracking_no": "Voer het trackingnummer in",
   "web.gfuc.please_input_correct_tracking_no":
-    "Voer het juiste trackingnummer in"
+    "Voer het juiste trackingnummer in",
+
+  "web.gfuc.help_center": "Helpcentrum",
+  "web.gfuc.help_center_desc": "Vind de hulpinfo die u nodig heeft",
+  "web.gfuc.help_detail": "Helpdetails",
+  "web.gfuc.help_search_placeholder": "Zoek vragen...",
+  "web.gfuc.help_search_no_results": "Geen resultaten gevonden",
+  "web.gfuc.help_category_shipping": "Verzending en Transport",
+  "web.gfuc.help_category_billing": "Facturatieproblemen",
+  "web.gfuc.help_category_account": "Accountgerelateerd",
+  "web.gfuc.help_category_technical": "Technische Problemen",
+  "web.gfuc.help_faq": "Veelgestelde Vragen",
+  "web.gfuc.help_contact": "Neem Contact Op",
+  "web.gfuc.help_contact_desc":
+    "Als bovenstaande uw probleem niet heeft opgelost, neem dan contact op met onze klantenservice",
+  "web.gfuc.help_online_service": "Online Service",
+  "web.gfuc.help_email": "E-mail Klantenservice",
+  "web.gfuc.help_back": "Terug naar Helpcentrum",
+  "web.gfuc.help_view_all": "Alles Bekijken"
 };

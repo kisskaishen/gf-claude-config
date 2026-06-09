@@ -409,5 +409,23 @@ export default {
   "web.gfuc.view_bill_tip": "View and download bills",
   "web.gfuc.please_input_tracking_no": "Please enter tracking number",
   "web.gfuc.please_input_correct_tracking_no":
-    "Please enter the correct tracking number"
+    "Please enter the correct tracking number",
+
+  "web.gfuc.help_center": "Help Center",
+  "web.gfuc.help_center_desc": "Find the help information you need",
+  "web.gfuc.help_detail": "Help Details",
+  "web.gfuc.help_search_placeholder": "Search questions...",
+  "web.gfuc.help_search_no_results": "No results found",
+  "web.gfuc.help_category_shipping": "Shipping & Transport",
+  "web.gfuc.help_category_billing": "Billing Issues",
+  "web.gfuc.help_category_account": "Account Related",
+  "web.gfuc.help_category_technical": "Technical Issues",
+  "web.gfuc.help_faq": "Frequently Asked Questions",
+  "web.gfuc.help_contact": "Contact Us",
+  "web.gfuc.help_contact_desc":
+    "If the above did not solve your problem, please contact our customer service",
+  "web.gfuc.help_online_service": "Online Service",
+  "web.gfuc.help_email": "Customer Service Email",
+  "web.gfuc.help_back": "Back to Help Center",
+  "web.gfuc.help_view_all": "View All"
 };

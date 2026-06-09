@@ -22,11 +22,15 @@ export const useTagsViewStore = defineStore(
       // 单票下单路由特殊处理：单例模式
       if (
         route.name === "SingleOrder" ||
-        route.name === "SingleOrderWithParams"
+        route.name === "SingleOrderWithParams" ||
+        route.name === "HelpDetail"
       ) {
         // 查找是否已存在单票下单标签页
         const existingSingleOrderIndex = visitedViews.value.findIndex(
-          (v) => v.name === "SingleOrder" || v.name === "SingleOrderWithParams"
+          (v) =>
+            v.name === "SingleOrder" ||
+            v.name === "SingleOrderWithParams" ||
+            v.name === "HelpDetail"
         );
 
         if (existingSingleOrderIndex !== -1) {

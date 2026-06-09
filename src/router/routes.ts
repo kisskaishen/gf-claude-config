@@ -203,6 +203,38 @@ export const routes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: "/help",
+    component: () => import("@/layout/index.vue"),
+    redirect: "/help",
+    meta: {
+      title: "帮助中心",
+      icon: "help",
+      i18n: "web.gfuc.help_center",
+      showOnlyOneChild: true
+    },
+    children: [
+      {
+        path: "",
+        name: "HelpCenter",
+        component: () => import("@/views/help/index.vue"),
+        meta: {
+          title: "帮助中心",
+          i18n: "web.gfuc.help_center"
+        }
+      },
+      {
+        path: "detail/:id",
+        name: "HelpDetail",
+        component: () => import("@/views/help/detail.vue"),
+        meta: {
+          title: "帮助详情",
+          i18n: "web.gfuc.help_detail",
+          hidden: true
+        }
+      }
+    ]
+  },
+  {
     path: "/redirect",
     component: () => import("@/layout/index.vue"),
     meta: { hidden: true },
