@@ -14,7 +14,9 @@
         <p class="mb-2 text-sm text-gray-600">
           {{ $t("web.gfuc.available_balance") }}
         </p>
-        <p class="text-2xl font-bold text-primary">€ {{ balance }}</p>
+        <p class="text-2xl font-bold text-primary">
+          € {{ formatAmount(balance) }}
+        </p>
         <div class="pt-4 mt-4 border-t border-orange-200">
           <a
             href="#"
@@ -313,6 +315,8 @@ import { getBalanceInfo, getRecentCount } from "@/api/home";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
+import { onActivated } from "vue";
+import { formatAmount } from "@/utils";
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -332,16 +336,24 @@ const recentDeliveryCount = ref(0);
 const SignedOrdersCount = ref(0);
 const trackingNo = ref("");
 
-onMounted(async () => {
+const fetchHomeData = async () => {
   if (!hasShipperList.value) {
     return;
   }
-  const balanceInfo = await await getBalanceInfo();
+  const balanceInfo = await getBalanceInfo();
   balance.value = balanceInfo || 0;
 
   const res = await getRecentCount();
   recentDeliveryCount.value = res?.recentDeliveryCount || 0;
   SignedOrdersCount.value = res?.signedOrdersCount || 0;
+};
+
+onMounted(() => {
+  fetchHomeData();
+});
+
+onActivated(() => {
+  fetchHomeData();
 });
 
 const handleQuery = async () => {
