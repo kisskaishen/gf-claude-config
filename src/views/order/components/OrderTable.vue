@@ -743,9 +743,6 @@ const formatTypeParam = () => {
     if (searchForm.orderStatus === 4) {
       // orderStatus 为 4，下单时间默认为最近7天
       setDefaultRange(7);
-    } else if (searchForm.orderStatus === 5) {
-      // orderStatus 为 5，下单时间为空
-      searchForm.orderTimeRange = [];
     }
   } else {
     searchForm.orderStatus = "";

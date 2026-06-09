@@ -155,7 +155,7 @@
                   :content="
                     row.taskType === 2
                       ? $t('web.gfuc.download_freight_bill')
-                      : row.taskType === 3
+                      : [3, 4].includes(row.taskType)
                         ? $t('web.gfuc.download_claim_bill')
                         : ''
                   "

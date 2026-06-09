@@ -17,12 +17,14 @@
       </el-tabs>
       <ClaimTable
         v-model:status="activeTab"
+        :search-claim-bill-no="claimBillSearchNo"
         @show-success-dialog="successVisible = true"
         v-if="activeTab === 1"
       />
       <CostTable
         v-model:status="activeTab"
         @show-success-dialog="successVisible = true"
+        @search-claim-bill="handleSearchClaimBill"
         v-else
       />
     </div>
@@ -68,6 +70,13 @@ defineOptions({
 const successVisible = ref(false);
 
 const activeTab = ref(0);
+const claimBillSearchNo = ref("");
+
+const handleSearchClaimBill = (claimBillNo: string) => {
+  claimBillSearchNo.value = claimBillNo;
+  activeTab.value = 1;
+};
+
 const activeTabOptions = computed(() => [
   {
     value: 0,

@@ -219,6 +219,18 @@
             >
               {{ formatAmount(row[item.prop]) }}
             </template>
+            <!-- 理赔账单编号 -->
+            <template
+              #default="{ row }"
+              v-else-if="item.prop === 'claimBillTotalNumber'"
+            >
+              <span
+                class="text-primary cursor-pointer"
+                @click.stop="handleSearchClaimBill(row.claimBillTotalNumber)"
+              >
+                {{ row.claimBillTotalNumber ?? "-" }}
+              </span>
+            </template>
           </el-table-column>
 
           <el-table-column
@@ -274,7 +286,7 @@ const appStore = useAppStore();
 defineOptions({
   name: "CostTable"
 });
-const emits = defineEmits(["show-success-dialog"]);
+const emits = defineEmits(["show-success-dialog", "searchClaimBill"]);
 
 const cycleTypeListDict = useDict("fms_receivable_cycle_type");
 const billStatusListDict = useDict("lcs.finance.bill.status");
@@ -539,6 +551,11 @@ const handleDownload = async (row: any) => {
   });
 
   emits("show-success-dialog", true);
+};
+
+const handleSearchClaimBill = (claimBillNo: string) => {
+  if (!claimBillNo) return;
+  emits("searchClaimBill", claimBillNo);
 };
 
 const selectedOrders = ref([]);
