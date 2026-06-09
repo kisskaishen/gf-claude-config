@@ -5,9 +5,9 @@
       :tip="$t('web.gfuc.help_center_desc')"
     />
 
-    <div class="flex mt-6 gap-6">
+    <div class="flex flex-1 gap-6 mt-6 min-h-0">
       <!-- 主内容区 -->
-      <div class="flex-1 min-w-0">
+      <div class="flex-1 min-w-0 overflow-y-auto">
         <!-- 搜索框 -->
         <div class="mb-6">
           <el-input
@@ -79,7 +79,7 @@
               {{ currentCategoryTitle }}
             </h3>
           </div>
-          <div class="bg-white rounded-lg shadow-sm divide-y divide-border">
+          <div class="bg-white divide-y rounded-lg shadow-sm divide-border">
             <div
               v-for="article in filteredArticles"
               :key="article.id"
@@ -88,7 +88,7 @@
             >
               <div class="flex items-center justify-between">
                 <div class="flex-1 min-w-0">
-                  <h4 class="text-sm font-medium text-text-regular truncate">
+                  <h4 class="text-sm font-medium truncate text-text-regular">
                     {{ article.title }}
                   </h4>
                   <p class="mt-1 text-xs text-text-tertiary line-clamp-1">
