@@ -266,6 +266,12 @@ const appStore = useAppStore();
 defineOptions({
   name: "CostTable"
 });
+const props = defineProps({
+  searchClaimBillNo: {
+    type: String,
+    default: ""
+  }
+});
 const emits = defineEmits(["show-success-dialog"]);
 
 const cycleTypeListDict = useDict("fms_receivable_cycle_type");
@@ -299,7 +305,7 @@ const columns = computed(() => [
   {
     prop: "number",
     label: t("web.gfuc.account_number" /** 账单编号 */),
-    minWidth: columnWidth(120, 180, 200, 180, 160, 180)
+    minWidth: columnWidth(160, 180, 200, 180, 160, 180)
   },
   {
     prop: "cycleName",
@@ -398,7 +404,7 @@ const initialFormState = {
   // 发票状态数组，如 [1, 2]
   invoiceStatusList: [],
   // 账单编号，如 "BILL20260527001"
-  number: undefined,
+  number: "",
   // 运单编号，如 "YD1234567890"
   waybillNo: undefined,
   // 周数数组，如 [1, 2, 3]
@@ -460,6 +466,7 @@ const getParams = () => {
   const params: any = {
     ...args
   };
+
   // 处理单号
   // if (waybillNo) {
   //   params.waybillNo = spliceArray(commaToArr(waybillNo), 500).join("\n");
@@ -482,7 +489,6 @@ const getListData = async () => {
     pageNum: pagination.currentPage,
     pageSize: pagination.pageSize
   });
-  console.log(res, "====");
   tableData.value = res.list;
   pagination.total = res.total || 0;
 };
@@ -555,6 +561,9 @@ const handleBatchDownload = async () => {
 };
 
 onMounted(() => {
+  if (props.searchClaimBillNo) {
+    searchForm.number = props.searchClaimBillNo;
+  }
   fetchData();
 });
 </script>
