@@ -378,13 +378,13 @@ const columns = computed(() => [
     minWidth: columnWidth(160, 240, 240, 280, 260, 240)
   },
   {
-    prop: "adjustGeneralTotal",
+    prop: "adjustGeneralLedgerUntaxedTotal",
     label: t("web.gfuc.adjustment_total_excluding_tax" /** 调总账_未税 */),
     minWidth: columnWidth(160, 280, 260, 300, 300, 280),
     align: "right"
   },
   {
-    prop: "adjustmentDetailExcludingTax",
+    prop: "adjustUntaxedTotal",
     label: t("web.gfuc.adjustment_detail_excluding_tax" /** 调账明细_未税 */),
     minWidth: columnWidth(160, 300, 280, 320, 320, 280)
   },
