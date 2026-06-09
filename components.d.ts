@@ -55,6 +55,7 @@ declare module 'vue' {
     ElTimeSelect: typeof import('element-plus/es')['ElTimeSelect']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     ElUpload: typeof import('element-plus/es')['ElUpload']
+    FeedbackDialog: typeof import('./src/components/FeedbackDialog/index.vue')['default']
     LangSelect: typeof import('./src/components/LangSelect/index.vue')['default']
     PageContainer: typeof import('./src/components/PageContainer/index.vue')['default']
     ProTable: typeof import('./src/components/ProTable/index.vue')['default']

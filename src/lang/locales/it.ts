@@ -430,5 +430,20 @@ export default {
   "web.gfuc.help_online_service": "Servizio Online",
   "web.gfuc.help_email": "Email del Servizio Clienti",
   "web.gfuc.help_back": "Torna al Centro Assistenza",
-  "web.gfuc.help_view_all": "Vedi Tutto"
+  "web.gfuc.help_view_all": "Vedi Tutto",
+  "web.gfuc.feedback": "Feedback",
+  "web.gfuc.feedback_content": "Contenuto del feedback",
+  "web.gfuc.feedback_content_placeholder":
+    "Descrivi il tuo problema o suggerimento...",
+  "web.gfuc.feedback_upload": "Carica screenshot (opzionale)",
+  "web.gfuc.feedback_upload_btn": "Clicca per caricare immagini",
+  "web.gfuc.feedback_upload_hint": "Max 5 immagini, formati JPG/PNG supportati",
+  "web.gfuc.feedback_contact": "Contatti (opzionale)",
+  "web.gfuc.feedback_contact_placeholder":
+    "Inserisci la tua email o numero di telefono",
+  "web.gfuc.feedback_submit_success": "Feedback inviato con successo, grazie!",
+  "web.gfuc.feedback_submit_failed":
+    "Invio feedback fallito, riprova più tardi",
+  "web.gfuc.please_input_feedback_content":
+    "Inserisci il contenuto del feedback"
 };

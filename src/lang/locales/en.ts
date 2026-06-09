@@ -427,5 +427,20 @@ export default {
   "web.gfuc.help_online_service": "Online Service",
   "web.gfuc.help_email": "Customer Service Email",
   "web.gfuc.help_back": "Back to Help Center",
-  "web.gfuc.help_view_all": "View All"
+  "web.gfuc.help_view_all": "View All",
+  "web.gfuc.feedback": "Feedback",
+  "web.gfuc.feedback_content": "Feedback Content",
+  "web.gfuc.feedback_content_placeholder":
+    "Please describe your issue or suggestion...",
+  "web.gfuc.feedback_upload": "Upload Screenshot (Optional)",
+  "web.gfuc.feedback_upload_btn": "Click to Upload Images",
+  "web.gfuc.feedback_upload_hint": "Up to 5 images, JPG/PNG supported",
+  "web.gfuc.feedback_contact": "Contact Info (Optional)",
+  "web.gfuc.feedback_contact_placeholder":
+    "Please enter your email or phone number",
+  "web.gfuc.feedback_submit_success":
+    "Feedback submitted successfully, thank you!",
+  "web.gfuc.feedback_submit_failed":
+    "Feedback submission failed, please try again later",
+  "web.gfuc.please_input_feedback_content": "Please enter your feedback content"
 };

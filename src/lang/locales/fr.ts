@@ -444,5 +444,21 @@ export default {
   "web.gfuc.help_online_service": "Service en Ligne",
   "web.gfuc.help_email": "Email du Service Client",
   "web.gfuc.help_back": "Retour au Centre d'Aide",
-  "web.gfuc.help_view_all": "Voir Tout"
+  "web.gfuc.help_view_all": "Voir Tout",
+  "web.gfuc.feedback": "Commentaires",
+  "web.gfuc.feedback_content": "Contenu du commentaire",
+  "web.gfuc.feedback_content_placeholder":
+    "Veuillez décrire votre problème ou suggestion...",
+  "web.gfuc.feedback_upload": "Joindre une capture d'écran (optionnel)",
+  "web.gfuc.feedback_upload_btn": "Cliquez pour télécharger des images",
+  "web.gfuc.feedback_upload_hint":
+    "Jusqu'à 5 images, formats JPG/PNG supportés",
+  "web.gfuc.feedback_contact": "Coordonnées (optionnel)",
+  "web.gfuc.feedback_contact_placeholder":
+    "Veuillez entrer votre email ou numéro de téléphone",
+  "web.gfuc.feedback_submit_success": "Commentaire soumis avec succès, merci !",
+  "web.gfuc.feedback_submit_failed":
+    "Échec de l'envoi du commentaire, veuillez réessayer plus tard",
+  "web.gfuc.please_input_feedback_content":
+    "Veuillez saisir le contenu de votre commentaire"
 };

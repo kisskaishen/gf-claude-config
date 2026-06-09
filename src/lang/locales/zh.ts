@@ -406,5 +406,17 @@ export default {
   "web.gfuc.help_online_service": "在线客服",
   "web.gfuc.help_email": "客服邮箱",
   "web.gfuc.help_back": "返回帮助中心",
-  "web.gfuc.help_view_all": "查看全部"
+  "web.gfuc.help_view_all": "查看全部",
+  // 用户反馈
+  "web.gfuc.feedback": "用户反馈",
+  "web.gfuc.feedback_content": "反馈内容",
+  "web.gfuc.feedback_content_placeholder": "请详细描述您的问题或建议...",
+  "web.gfuc.feedback_upload": "上传截图（选填）",
+  "web.gfuc.feedback_upload_btn": "点击上传图片",
+  "web.gfuc.feedback_upload_hint": "最多上传5张，支持JPG/PNG格式",
+  "web.gfuc.feedback_contact": "联系方式（选填）",
+  "web.gfuc.feedback_contact_placeholder": "请输入您的邮箱或手机号",
+  "web.gfuc.feedback_submit_success": "反馈提交成功，感谢您的支持！",
+  "web.gfuc.feedback_submit_failed": "反馈提交失败，请稍后重试",
+  "web.gfuc.please_input_feedback_content": "请输入反馈内容"
 };

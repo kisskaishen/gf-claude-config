@@ -419,5 +419,19 @@ export default {
   "web.gfuc.help_online_service": "Online Service",
   "web.gfuc.help_email": "E-mail Klantenservice",
   "web.gfuc.help_back": "Terug naar Helpcentrum",
-  "web.gfuc.help_view_all": "Alles Bekijken"
+  "web.gfuc.help_view_all": "Alles Bekijken",
+  "web.gfuc.feedback": "Feedback",
+  "web.gfuc.feedback_content": "Feedbackinhoud",
+  "web.gfuc.feedback_content_placeholder":
+    "Beschrijf uw probleem of suggestie...",
+  "web.gfuc.feedback_upload": "Screenshot uploaden (optioneel)",
+  "web.gfuc.feedback_upload_btn": "Klik om afbeeldingen te uploaden",
+  "web.gfuc.feedback_upload_hint": "Max 5 afbeeldingen, JPG/PNG ondersteund",
+  "web.gfuc.feedback_contact": "Contactgegevens (optioneel)",
+  "web.gfuc.feedback_contact_placeholder":
+    "Voer uw e-mail of telefoonnummer in",
+  "web.gfuc.feedback_submit_success": "Feedback succesvol verzonden, bedankt!",
+  "web.gfuc.feedback_submit_failed":
+    "Feedback verzenden mislukt, probeer het later opnieuw",
+  "web.gfuc.please_input_feedback_content": "Voer uw feedbackinhoud in"
 };

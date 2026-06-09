@@ -287,6 +287,7 @@
       <!-- 反馈 -->
       <div
         class="flex flex-col items-center justify-center w-12 transition-shadow bg-white cursor-pointer"
+        @click="handleOpenFeedback"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -302,9 +303,15 @@
             d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
           />
         </svg>
-        <span class="text-sm text-info">反馈</span>
+        <span class="text-sm text-info">{{ $t("web.gfuc.feedback") }}</span>
       </div>
     </div>
+
+    <!-- 用户反馈弹框 -->
+    <FeedbackDialog
+      v-model:visible="feedbackVisible"
+      :on-submit="handleSubmitFeedback"
+    />
   </div>
 </template>
 
@@ -313,6 +320,7 @@ import { getBalanceInfo, getRecentCount } from "@/api/home";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
+import FeedbackDialog from "@/components/FeedbackDialog/index.vue";
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -331,6 +339,24 @@ const balance = ref(0);
 const recentDeliveryCount = ref(0);
 const SignedOrdersCount = ref(0);
 const trackingNo = ref("");
+
+// 用户反馈
+const feedbackVisible = ref(false);
+
+const handleOpenFeedback = () => {
+  feedbackVisible.value = true;
+};
+
+const handleSubmitFeedback = async (data: {
+  content: string;
+  contact: string;
+  files: any[];
+}) => {
+  // TODO: 调用反馈接口
+  // await submitFeedback(data);
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  ElMessage.success(t("web.gfuc.feedback_submit_success"));
+};
 
 onMounted(async () => {
   if (!hasShipperList.value) {
