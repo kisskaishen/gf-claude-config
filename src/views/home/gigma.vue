@@ -323,7 +323,6 @@ import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
 import FeedbackDialog from "@/components/FeedbackDialog/index.vue";
-import { onActivated } from "vue";
 import { formatAmount } from "@/utils";
 const userStore = useUserStore();
 const router = useRouter();
@@ -360,6 +359,7 @@ const handleSubmitFeedback = async (data: {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   ElMessage.success(t("web.gfuc.feedback_submit_success"));
 };
+const dataLoaded = ref(false);
 
 const fetchHomeData = async () => {
   if (!hasShipperList.value) {
@@ -378,7 +378,10 @@ onMounted(() => {
 });
 
 onActivated(() => {
-  fetchHomeData();
+  if (dataLoaded.value) {
+    fetchHomeData();
+  }
+  dataLoaded.value = true;
 });
 
 const handleQuery = async () => {
