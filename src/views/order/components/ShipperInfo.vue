@@ -50,6 +50,7 @@
             :rules="rules"
             label-width="80px"
             label-position="top"
+            require-asterisk-position="right"
           >
             <el-row :gutter="12">
               <!-- 成交客户的用户中心登录进去，下单需要选择下单账户

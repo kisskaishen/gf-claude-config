@@ -49,6 +49,7 @@
             :rules="rules"
             label-width="80px"
             label-position="top"
+            require-asterisk-position="right"
           >
             <el-row :gutter="20">
               <el-col :span="8">

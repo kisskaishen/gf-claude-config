@@ -49,6 +49,7 @@
             :rules="rules"
             label-width="80px"
             label-position="top"
+            require-asterisk-position="right"
           >
             <el-row :gutter="12">
               <el-col :span="6">
@@ -139,8 +140,8 @@
                     </el-table-column>
                     <el-table-column prop="itemNameEn" min-width="200">
                       <template #header>
-                        <span class="text-[#ff0014] mr-1">*</span>
                         <span> {{ $t("web.gfuc.product_name_en") }}</span>
+                        <span class="text-[#ff0014] ml-0.5">*</span>
                       </template>
                       <template #default="{ row, $index }">
                         <el-form-item
@@ -163,8 +164,8 @@
                       min-width="100"
                     >
                       <template #header>
-                        <span class="text-[#ff0014] mr-1">*</span>
                         <span> {{ $t("web.gfuc.quantity") }}</span>
+                        <span class="text-[#ff0014] ml-0.5">*</span>
                       </template>
                       <template #default="{ row, $index }">
                         <el-form-item
