@@ -1,0 +1,19 @@
+src/views/home/gigma.vue
+  s_9f9488af876656::t_25b6363bcd4ef0 264,268-288
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "0e680016b740029154bd697ed5dc27ec27cd52c6",
+  "prompts": {},
+  "sessions": {
+    "s_9f9488af876656": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8ab2a6f3-50aa-4140-8cfe-d3ef3cc469f3",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
