@@ -326,10 +326,15 @@ import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
 import FeedbackDialog from "@/components/FeedbackDialog/index.vue";
 import { formatAmount } from "@/utils";
+import { useAppStore } from "@/store/app";
+const appStore = useAppStore();
 const userStore = useUserStore();
 const router = useRouter();
 
 const { t } = useI18n();
+
+const lang = computed(() => appStore.lang);
+const currentCountry = computed(() => appStore.site?.toLowerCase() || "");
 
 const userAccount = computed(() => {
   return userStore?.userInfo?.account;
@@ -395,12 +400,20 @@ const handleQuery = async () => {
   // router.push({ name: "OrderList" });
   let country = trackingNo.value.substring(2, 4).toLowerCase();
   if (!["nl", "it", "fr", "es"].includes(country)) {
-    country = "fr";
+    country = currentCountry.value;
   }
-  window.open(
-    `https://www.gofo.com/${country}/tracking-results/?id=${trackingNo.value}`,
-    "_blank"
-  );
+  console.log(lang.value, currentCountry.value);
+  if (lang.value === currentCountry.value) {
+    window.open(
+      `https://www.gofo.com/${country}/tracking-results/?id=${trackingNo.value}`,
+      "_blank"
+    );
+  } else {
+    window.open(
+      `https://www.gofo.com/${country}/en/tracking-results/?id=${trackingNo.value}`,
+      "_blank"
+    );
+  }
 };
 
 const handleViewDetail = (name: string, type?: number) => {
