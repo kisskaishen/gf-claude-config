@@ -315,7 +315,6 @@ import { getBalanceInfo, getRecentCount } from "@/api/home";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
-import { onActivated } from "vue";
 import { formatAmount } from "@/utils";
 
 const userStore = useUserStore();
@@ -336,6 +335,8 @@ const recentDeliveryCount = ref(0);
 const SignedOrdersCount = ref(0);
 const trackingNo = ref("");
 
+const dataLoaded = ref(false);
+
 const fetchHomeData = async () => {
   if (!hasShipperList.value) {
     return;
@@ -353,7 +354,10 @@ onMounted(() => {
 });
 
 onActivated(() => {
-  fetchHomeData();
+  if (dataLoaded.value) {
+    fetchHomeData();
+  }
+  dataLoaded.value = true;
 });
 
 const handleQuery = async () => {
