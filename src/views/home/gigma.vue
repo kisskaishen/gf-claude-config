@@ -14,7 +14,9 @@
         <p class="mb-2 text-sm text-gray-600">
           {{ $t("web.gfuc.available_balance") }}
         </p>
-        <p class="text-2xl font-bold text-primary">€ {{ balance }}</p>
+        <p class="text-2xl font-bold text-primary">
+          € {{ formatAmount(balance) }}
+        </p>
         <div class="pt-4 mt-4 border-t border-orange-200">
           <a
             href="#"
@@ -259,31 +261,10 @@
       </div>
     </div>
 
-    <!-- 右侧帮助和反馈 -->
+    <!-- 右侧反馈 -->
     <div
       class="fixed right-0 flex flex-col gap-2 -translate-y-1/2 bg-white shadow-md bottom-1/4 px-1.5 py-3"
     >
-      <!-- 帮助 -->
-      <div
-        class="flex flex-col items-center justify-center w-12 transition-shadow bg-white cursor-pointer"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6 text-gray-600"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <span class="text-sm text-info">帮助</span>
-      </div>
-      <el-divider style="margin: 0" />
       <!-- 反馈 -->
       <div
         class="flex flex-col items-center justify-center w-12 transition-shadow bg-white cursor-pointer"
@@ -321,7 +302,8 @@ import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
 import FeedbackDialog from "@/components/FeedbackDialog/index.vue";
-
+import { onActivated } from "vue";
+import { formatAmount } from "@/utils";
 const userStore = useUserStore();
 const router = useRouter();
 
@@ -358,16 +340,24 @@ const handleSubmitFeedback = async (data: {
   ElMessage.success(t("web.gfuc.feedback_submit_success"));
 };
 
-onMounted(async () => {
+const fetchHomeData = async () => {
   if (!hasShipperList.value) {
     return;
   }
-  const balanceInfo = await await getBalanceInfo();
+  const balanceInfo = await getBalanceInfo();
   balance.value = balanceInfo || 0;
 
   const res = await getRecentCount();
   recentDeliveryCount.value = res?.recentDeliveryCount || 0;
   SignedOrdersCount.value = res?.signedOrdersCount || 0;
+};
+
+onMounted(() => {
+  fetchHomeData();
+});
+
+onActivated(() => {
+  fetchHomeData();
 });
 
 const handleQuery = async () => {

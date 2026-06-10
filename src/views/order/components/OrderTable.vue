@@ -468,9 +468,12 @@ const getParams = () => {
   const params: any = {
     ...args
   };
-  // 处理单号
+  // 处理单号（支持多单查询：空格/逗号分隔）
   if (orderNumber) {
-    params.orderNumber = spliceArray(commaToArr(orderNumber), 500).join("\n");
+    params.orderNumber = orderNumber
+      .split(/[\s,]+/)
+      .filter(Boolean)
+      .join("\n");
   } else {
     params.orderNumber = "";
   }

@@ -210,7 +210,8 @@ export const routes: RouteRecordRaw[] = [
       title: "帮助中心",
       icon: "help",
       i18n: "web.gfuc.help_center",
-      showOnlyOneChild: true
+      showOnlyOneChild: true,
+      hidden: true
     },
     children: [
       {
