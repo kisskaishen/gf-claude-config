@@ -1,0 +1,19 @@
+src/router/routes.ts
+  s_9f9488af876656::t_edc504414d8b79 213-214
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "359d14194be1860b82498c51592d9aac974698c2",
+  "prompts": {},
+  "sessions": {
+    "s_9f9488af876656": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8ab2a6f3-50aa-4140-8cfe-d3ef3cc469f3",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
