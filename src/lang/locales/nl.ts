@@ -421,17 +421,21 @@ export default {
   "web.gfuc.help_back": "Terug naar Helpcentrum",
   "web.gfuc.help_view_all": "Alles Bekijken",
   "web.gfuc.feedback": "Feedback",
-  "web.gfuc.feedback_content": "Feedbackinhoud",
-  "web.gfuc.feedback_content_placeholder":
-    "Beschrijf uw probleem of suggestie...",
-  "web.gfuc.feedback_upload": "Screenshot uploaden (optioneel)",
-  "web.gfuc.feedback_upload_btn": "Klik om afbeeldingen te uploaden",
-  "web.gfuc.feedback_upload_hint": "Max 5 afbeeldingen, JPG/PNG ondersteund",
-  "web.gfuc.feedback_contact": "Contactgegevens (optioneel)",
-  "web.gfuc.feedback_contact_placeholder":
-    "Voer uw e-mail of telefoonnummer in",
+  "web.gfuc.feedback_hint":
+    "U kunt problemen of suggesties melden. Uw feedback helpt ons het systeem te verbeteren.",
+  "web.gfuc.feedback_title": "Titel",
+  "web.gfuc.feedback_title_placeholder": "Vat uw probleem kort samen",
+  "web.gfuc.feedback_description": "Beschrijving",
+  "web.gfuc.feedback_description_placeholder":
+    "Beschrijf het probleem in detail, inclusief stappen, verwachte en werkelijke resultaten",
+  "web.gfuc.feedback_upload": "Afbeeldingen (Optioneel)",
+  "web.gfuc.feedback_upload_drag_hint": "Klik of sleep afbeeldingen hier",
+  "web.gfuc.feedback_upload_hint":
+    "Max 6 afbeeldingen, JPG/PNG/GIF, max 10 MB per stuk",
+  "web.gfuc.feedback_submit": "Feedback Verzenden",
   "web.gfuc.feedback_submit_success": "Feedback succesvol verzonden, bedankt!",
   "web.gfuc.feedback_submit_failed":
-    "Feedback verzenden mislukt, probeer het later opnieuw",
-  "web.gfuc.please_input_feedback_content": "Voer uw feedbackinhoud in"
+    "Verzenden mislukt, probeer het later opnieuw",
+  "web.gfuc.please_input_feedback_title": "Voer een titel in",
+  "web.gfuc.please_input_feedback_description": "Voer een beschrijving in"
 };

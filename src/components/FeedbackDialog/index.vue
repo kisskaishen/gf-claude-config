@@ -2,73 +2,106 @@
   <el-dialog
     v-model="dialogVisible"
     :title="$t('web.gfuc.feedback')"
-    width="560px"
+    width="600px"
     :close-on-click-modal="false"
     destroy-on-close
+    top="5vh"
     @closed="handleClosed"
   >
     <div class="feedback-form">
-      <!-- 反馈内容 -->
-      <div class="feedback-field">
-        <label class="feedback-label">
-          {{ $t("web.gfuc.feedback_content") }}
+      <!-- 提示横幅 -->
+      <div class="hint-banner">
+        <svg class="hint-icon" viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="9" r="8" stroke="#E66C28" stroke-width="1.5" />
+          <path
+            d="M9 5.5v4"
+            stroke="#E66C28"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+          <circle cx="9" cy="12.8" r="0.8" fill="#E66C28" />
+        </svg>
+        <span>{{ $t("web.gfuc.feedback_hint") }}</span>
+      </div>
+
+      <!-- 标题 -->
+      <div class="form-group">
+        <label class="form-label">
+          {{ $t("web.gfuc.feedback_title") }}
           <span class="required">*</span>
         </label>
         <el-input
-          v-model="form.content"
-          type="textarea"
-          :rows="5"
-          :placeholder="$t('web.gfuc.feedback_content_placeholder')"
-          maxlength="500"
+          v-model="form.title"
+          :placeholder="$t('web.gfuc.feedback_title_placeholder')"
+          maxlength="80"
+          class="feedback-input"
           show-word-limit
+          word-limit-position="outside"
         />
       </div>
 
-      <!-- 上传截图 -->
-      <div class="feedback-field">
-        <label class="feedback-label">
+      <!-- 描述 -->
+      <div class="form-group">
+        <label class="form-label">
+          {{ $t("web.gfuc.feedback_description") }}
+          <span class="required">*</span>
+        </label>
+        <el-input
+          v-model="form.description"
+          type="textarea"
+          :rows="6"
+          :placeholder="$t('web.gfuc.feedback_description_placeholder')"
+          maxlength="1000"
+          class="feedback-textarea"
+          show-word-limit
+          word-limit-position="outside"
+        />
+      </div>
+
+      <!-- 图片上传 -->
+      <div class="form-group">
+        <label class="form-label">
           {{ $t("web.gfuc.feedback_upload") }}
         </label>
-        <!-- <CommonUpload
+        <CommonUpload
           ref="uploadRef"
+          v-model="form.files"
+          :http-request="customHttpRequest"
           type="image"
-          :limit="5"
+          :limit="6"
+          drag
           :multiple="true"
           :list-type="'picture-card'"
           :show-file-list="true"
           :auto-upload="false"
-          :button-text="$t('web.gfuc.feedback_upload_btn')"
+          :need-front-msg="false"
+          :button-text="$t('web.gfuc.feedback_upload_drag_hint')"
           :hint="$t('web.gfuc.feedback_upload_hint')"
-          v-model="form.files"
-        /> -->
-      </div>
-
-      <!-- 联系方式 -->
-      <div class="feedback-field">
-        <label class="feedback-label">
-          {{ $t("web.gfuc.feedback_contact") }}
-        </label>
-        <el-input
-          v-model="form.contact"
-          :placeholder="$t('web.gfuc.feedback_contact_placeholder')"
-          maxlength="100"
+          @remove="handleRemove"
         />
       </div>
     </div>
 
     <template #footer>
-      <el-button @click="handleCancel">
-        {{ $t("web.gfuc.cancel") }}
-      </el-button>
-      <el-button type="primary" :loading="submitting" @click="handleSubmit">
-        {{ $t("web.gfuc.submit") }}
-      </el-button>
+      <div class="btn-group">
+        <el-button class="btn-cancel" @click="handleCancel">
+          {{ $t("web.gfuc.cancel") }}
+        </el-button>
+        <el-button
+          class="btn-submit"
+          :loading="submitting"
+          :disabled="!isFormValid"
+          @click="handleSubmit"
+        >
+          {{ $t("web.gfuc.feedback_submit") }}
+        </el-button>
+      </div>
     </template>
   </el-dialog>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, watch } from "vue";
+import { ref, reactive, watch, computed } from "vue";
 import { ElMessage } from "element-plus";
 import { useI18n } from "vue-i18n";
 import CommonUpload from "@/components/CommonUpload/index.vue";
@@ -78,8 +111,8 @@ const { t } = useI18n();
 const props = defineProps<{
   visible: boolean;
   onSubmit?: (data: {
-    content: string;
-    contact: string;
+    title: string;
+    description: string;
     files: any[];
   }) => Promise<void>;
 }>();
@@ -88,14 +121,14 @@ const emit = defineEmits<{
   (e: "update:visible", value: boolean): void;
 }>();
 
-const uploadRef = ref(null);
+const uploadRef = ref<InstanceType<typeof CommonUpload> | null>(null);
 const submitting = ref(false);
 const dialogVisible = ref(false);
 
 const form = reactive({
-  content: "",
-  contact: "",
-  files: []
+  title: "",
+  description: "",
+  files: [] as any[]
 });
 
 watch(
@@ -105,17 +138,20 @@ watch(
     if (val) {
       resetForm();
     }
-  },
-  { immediate: true }
+  }
 );
 
 watch(dialogVisible, (val) => {
   emit("update:visible", val);
 });
 
+const isFormValid = computed(() => {
+  return form.title.trim().length > 0 && form.description.trim().length > 0;
+});
+
 const resetForm = () => {
-  form.content = "";
-  form.contact = "";
+  form.title = "";
+  form.description = "";
   form.files = [];
 };
 
@@ -128,42 +164,207 @@ const handleClosed = () => {
 };
 
 const handleSubmit = async () => {
-  if (!form.content.trim()) {
-    ElMessage.error(t("web.gfuc.please_input_feedback_content"));
+  if (!isFormValid.value) {
+    if (!form.title.trim()) {
+      ElMessage.error(t("web.gfuc.please_input_feedback_title"));
+    } else if (!form.description.trim()) {
+      ElMessage.error(t("web.gfuc.please_input_feedback_description"));
+    }
     return;
   }
   submitting.value = true;
   try {
     if (props.onSubmit) {
       await props.onSubmit({
-        content: form.content,
-        contact: form.contact,
-        files: form.files
+        title: form.title,
+        description: form.description,
+        files: form.files.map((item: any) => item.raw || item)
       });
     }
+    ElMessage.success(t("web.gfuc.feedback_submit_success"));
     dialogVisible.value = false;
+  } catch {
+    ElMessage.error(t("web.gfuc.feedback_submit_failed"));
   } finally {
     submitting.value = false;
   }
+};
+
+// 自定义上传请求（auto-upload=false 时不会被调用，为后续扩展预留）
+const customHttpRequest = (_options: any) => {
+  return null;
+};
+
+// 文件移除回调（v-model 已双向同步，此方法可处理额外逻辑）
+const handleRemove = () => {
+  // form.files 已通过 v-model 自动同步
 };
 </script>
 
 <style scoped lang="scss">
 .feedback-form {
-  .feedback-field {
+  padding: 0 4px;
+
+  // ===== 提示横幅 =====
+  .hint-banner {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    line-height: 20px;
+    color: #606266;
+    background: #fff8f0;
+    border: 1px solid #fde2c4;
+    border-radius: 10px;
+
+    .hint-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      margin-top: 1px;
+    }
+  }
+
+  // ===== 表单组 =====
+  .form-group {
     margin-bottom: 20px;
 
-    .feedback-label {
-      display: block;
+    &:last-of-type {
+      margin-bottom: 28px;
+    }
+
+    .form-label {
+      display: flex;
+      gap: 6px;
+      align-items: center;
       margin-bottom: 8px;
       font-size: 14px;
-      font-weight: 500;
-      color: #333;
+      font-weight: 600;
+      color: #303133;
 
       .required {
-        margin-left: 2px;
-        color: #f56c6c;
+        font-size: 14px;
+        color: #e54545;
       }
+    }
+  }
+}
+
+// ===== 按钮组 =====
+:deep(.el-dialog__footer) {
+  padding-top: 0;
+}
+
+.btn-group {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+
+  .btn-cancel,
+  .btn-submit {
+    min-width: 120px;
+    height: 42px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 21px;
+    transition: all 0.2s;
+  }
+
+  .btn-cancel {
+    color: #606266;
+    background: #f5f7fa;
+    border: 1px solid #dcdfe6;
+
+    &:hover {
+      color: #303133;
+      background: #eceef2;
+    }
+  }
+
+  .btn-submit {
+    color: #fff;
+    background: #e66c28;
+    border: none;
+    box-shadow: 0 2px 8px rgb(230 108 40 / 30%);
+
+    &:hover {
+      background: #d05a1a;
+      box-shadow: 0 4px 14px rgb(230 108 40 / 40%);
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+
+    &:disabled {
+      color: #fff;
+      cursor: not-allowed;
+      background: #f0c4a8;
+      box-shadow: none;
+    }
+  }
+}
+
+// ===== Element Plus 输入框覆盖样式 =====
+:deep(.feedback-input) {
+  .el-input__wrapper {
+    height: 44px;
+    border: 1px solid #dcdfe6;
+    border-radius: 10px;
+    box-shadow: none;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+
+    &:hover {
+      border-color: #e66c28;
+    }
+
+    &.is-focus {
+      border-color: #e66c28;
+      box-shadow: 0 0 0 3px rgb(230 108 40 / 10%);
+    }
+
+    .el-input__inner {
+      font-size: 14px;
+      color: #303133;
+
+      &::placeholder {
+        color: #c0c4cc;
+      }
+    }
+  }
+}
+
+:deep(.feedback-textarea) {
+  .el-textarea__inner {
+    min-height: 180px;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 22px;
+    color: #303133;
+    border: 1px solid #dcdfe6;
+    border-radius: 10px;
+    box-shadow: none;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+
+    &::placeholder {
+      color: #c0c4cc;
+    }
+
+    &:hover {
+      border-color: #e66c28;
+    }
+
+    &:focus {
+      border-color: #e66c28;
+      box-shadow: 0 0 0 3px rgb(230 108 40 / 10%);
     }
   }
 }

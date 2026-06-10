@@ -11,12 +11,11 @@
         :multiple="multiple"
         :limit="limit"
         :file-list="fileList"
-        :show-file-list="showFileList"
+        :show-file-list="false"
         :auto-upload="autoUpload"
-        :drag="drag"
         :disabled="disabled"
         :style="uploadStyle"
-        :class="uploadClasses"
+        :class="[uploadClasses, 'image-upload']"
         :before-upload="handleBeforeUpload"
         :on-success="handleSuccess"
         :on-error="handleError"
@@ -26,65 +25,56 @@
         :http-request="customHttpRequest"
         v-bind="$attrs"
       >
-        <!-- 上传按钮区域 -->
+        <!-- 上传按钮区域：虚线框样式 -->
         <template #trigger>
           <div
             v-if="!disabled && (!limit || fileList.length < limit)"
-            class="upload-trigger"
+            class="image-upload-trigger"
           >
-            <div v-if="drag" class="drag-area" :style="dragAreaStyle">
-              <el-icon class="upload-icon"><Upload /></el-icon>
-              <div class="upload-text">
-                <span class="link-text">点击上传</span> 或拖拽文件到这里
-              </div>
-              <div class="upload-hint">{{ acceptText }}</div>
-              <div v-if="imageDimensionHint" class="dimension-hint">
-                {{ imageDimensionHint }}
-              </div>
-            </div>
-            <div v-else class="upload-button">
-              <el-button :type="buttonType" :icon="Upload" :style="buttonStyle">
-                {{ buttonText }}
-              </el-button>
-              <div v-if="hint" class="upload-hint">{{ hint }}</div>
-              <div v-if="imageDimensionHint" class="dimension-hint">
-                {{ imageDimensionHint }}
-              </div>
-            </div>
+            <svg class="upload-icon" viewBox="0 0 40 40" fill="none">
+              <rect
+                x="4"
+                y="6"
+                width="32"
+                height="28"
+                rx="3"
+                stroke="#909399"
+                stroke-width="2"
+              />
+              <circle cx="14" cy="16" r="3" stroke="#909399" stroke-width="2" />
+              <path
+                d="M8 30l8-10 6 8 4-5 6 7"
+                stroke="#909399"
+                stroke-width="2"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <div class="upload-text">{{ buttonText }}</div>
+            <div v-if="hint" class="upload-hint">{{ hint }}</div>
           </div>
         </template>
-
-        <!-- 预览插槽 -->
-        <template v-if="usePreviewSlot" #default="{ file }">
-          <slot name="preview" :file="file">
-            <div class="preview-container" :style="previewItemStyle">
-              <img
-                :src="file.url"
-                class="preview-image"
-                :style="previewImageStyle"
-              />
-              <div v-if="file.dimensionError" class="dimension-error-badge">
-                <el-icon><WarningFilled /></el-icon>
-              </div>
-            </div>
-          </slot>
-        </template>
-
-        <!-- 文件列表插槽 -->
-        <template #file="{ file }">
-          <slot name="file" :file="file">
-            <div class="file-item">
-              <el-icon><Document /></el-icon>
-              <span class="file-name">{{ file.name }}</span>
-              <span class="file-size">{{ formatFileSize(file.size) }}</span>
-              <span v-if="file.dimensionError" class="dimension-error">
-                <el-icon><WarningFilled /></el-icon>
-                尺寸不符
-              </span>
-            </div>
-          </slot>
-        </template>
       </el-upload>
+
+      <!-- 图片预览网格 -->
+      <div v-if="fileList.length > 0" class="image-preview-grid">
+        <div
+          v-for="(file, index) in fileList"
+          :key="index"
+          class="image-preview-item"
+          @click="handlePreview(file)"
+        >
+          <img :src="file.url" :alt="file.name" />
+          <div v-if="file.dimensionError" class="dimension-error-badge">
+            <el-icon><WarningFilled /></el-icon>
+          </div>
+          <el-icon
+            class="preview-remove-btn"
+            @click.stop="handleRemoveFile(file)"
+          >
+            <Close />
+          </el-icon>
+        </div>
+      </div>
     </template>
 
     <!-- 文件上传模式 -->
@@ -209,13 +199,12 @@
 import { ref, computed, watch } from "vue";
 import { ElMessage } from "element-plus";
 import {
-  Upload,
-  Document,
   Picture,
   VideoCameraFilled,
   WarningFilled,
   Refresh,
-  Delete
+  Delete,
+  Close
 } from "@element-plus/icons-vue";
 import { useI18n } from "vue-i18n";
 
@@ -513,86 +502,11 @@ const uploadStyle = computed(() => {
   return style;
 });
 
-// 计算按钮样式
-const buttonStyle = computed(() => {
-  const style = {};
-  if (props.buttonWidth) {
-    style.width =
-      typeof props.buttonWidth === "number"
-        ? `${props.buttonWidth}px`
-        : props.buttonWidth;
-  }
-  if (props.buttonHeight) {
-    style.height =
-      typeof props.buttonHeight === "number"
-        ? `${props.buttonHeight}px`
-        : props.buttonHeight;
-  }
-  return style;
-});
-
-// 计算拖拽区域样式
-const dragAreaStyle = computed(() => {
-  const style = {};
-  if (props.dragAreaWidth) {
-    style.width =
-      typeof props.dragAreaWidth === "number"
-        ? `${props.dragAreaWidth}px`
-        : props.dragAreaWidth;
-  }
-  if (props.dragAreaHeight) {
-    style.height =
-      typeof props.dragAreaHeight === "number"
-        ? `${props.dragAreaHeight}px`
-        : props.dragAreaHeight;
-  }
-  return style;
-});
-
-// 计算预览项样式
-const previewItemStyle = computed(() => {
-  const style = {};
-  if (props.previewItemWidth) {
-    style.width =
-      typeof props.previewItemWidth === "number"
-        ? `${props.previewItemWidth}px`
-        : props.previewItemWidth;
-  }
-  if (props.previewItemHeight) {
-    style.height =
-      typeof props.previewItemHeight === "number"
-        ? `${props.previewItemHeight}px`
-        : props.previewItemHeight;
-  }
-  return style;
-});
-
-// 计算预览图片样式
-const previewImageStyle = computed(() => {
-  const style = {};
-  if (props.previewImageWidth) {
-    style.width =
-      typeof props.previewImageWidth === "number"
-        ? `${props.previewImageWidth}px`
-        : props.previewImageWidth;
-  }
-  if (props.previewImageHeight) {
-    style.height =
-      typeof props.previewImageHeight === "number"
-        ? `${props.previewImageHeight}px`
-        : props.previewImageHeight;
-  }
-  return style;
-});
-
 // 上传组件类名
 const uploadClasses = computed(() => ({
   "has-custom-width": props.uploadWidth || props.width,
   "has-custom-height": props.uploadHeight || props.height
 }));
-
-// 是否使用预览插槽
-const usePreviewSlot = computed(() => props.listType === "picture-card");
 
 // 接受的文件类型文本
 const acceptText = computed(() => {
@@ -871,182 +785,241 @@ defineExpose({
 
 <style scoped lang="scss">
 .common-upload {
-  .upload-trigger {
-    .drag-area {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 360px;
-      height: 180px;
-      background-color: #fafafa;
-      border: 1px dashed #d9d9d9;
-      border-radius: 6px;
-      transition: all 0.3s;
+  // ===== 图片上传虚线触发区 =====
+  .image-upload-trigger {
+    @apply w-full;
 
-      &:hover {
-        background-color: #f0f8ff;
-        border-color: #409eff;
-      }
-
-      .upload-icon {
-        margin-bottom: 12px;
-        font-size: 48px;
-        color: #8c939d;
-      }
-
-      .upload-text {
-        margin-bottom: 8px;
-        font-size: 14px;
-        color: #606266;
-
-        .link-text {
-          color: #409eff;
-        }
-      }
-
-      .upload-hint {
-        font-size: 12px;
-        color: #909399;
-      }
-
-      .dimension-hint {
-        margin-top: 8px;
-        font-size: 12px;
-        color: #e6a23c;
-      }
-    }
-
-    .upload-button {
-      .upload-hint {
-        margin-top: 8px;
-        font-size: 12px;
-        color: #909399;
-      }
-
-      .dimension-hint {
-        margin-top: 4px;
-        font-size: 12px;
-        color: #e6a23c;
-      }
-    }
-  }
-
-  .upload-tip {
-    margin-top: 8px;
-    font-size: 14px;
-    font-weight: 400;
-    color: #bbbdbf;
-  }
-
-  .file-item {
     display: flex;
-    gap: 8px;
+    flex-direction: column;
     align-items: center;
-    width: 100%;
-    padding: 8px 0;
+    justify-content: center;
+    min-width: 120px;
+    min-height: 120px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    background: #fafbfc;
+    border-radius: 10px;
+    transition:
+      border-color 0.2s,
+      background-color 0.2s;
 
-    .file-name {
-      flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-size: 16px;
-      font-weight: 400;
-      color: #354250;
+    &:hover {
+      background: #fff8f0;
+      border-color: #e66c28;
     }
 
-    .file-size {
-      font-size: 12px;
+    .upload-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 8px;
       color: #909399;
     }
 
-    .dimension-error {
-      display: flex;
-      gap: 4px;
-      align-items: center;
+    .upload-text {
+      font-size: 14px;
+      color: #606266;
+    }
+
+    .upload-hint {
+      margin-top: 4px;
       font-size: 12px;
-      color: #f56c6c;
+      color: #909399;
     }
   }
 
-  .preview-container {
-    position: relative;
+  // ===== 图片预览网格 =====
+  .image-preview-grid {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+  }
 
-    .preview-image {
-      max-width: 100%;
-      max-height: 100%;
+  // ===== 图片预览项 =====
+  .image-preview-item {
+    position: relative;
+    width: 88px;
+    height: 88px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #ebeef5;
+    border-radius: 8px;
+
+    img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
     }
 
     .dimension-error-badge {
       position: absolute;
       top: 4px;
-      right: 4px;
-      padding: 4px;
+      left: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
       font-size: 12px;
-      color: white;
-      background-color: rgb(245 108 108 / 90%);
+      color: #fff;
+      background: rgb(245 108 108 / 90%);
       border-radius: 50%;
     }
+
+    .preview-remove-btn {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+      color: #fff;
+      cursor: pointer;
+      background: rgb(0 0 0 / 55%);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.15s;
+
+      &:hover {
+        background: rgb(229 69 69 / 85%);
+      }
+    }
+
+    &:hover .preview-remove-btn {
+      opacity: 1;
+    }
+  }
+}
+
+// ===== 文件模式上传提示 =====
+.upload-tip {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #bbbdbf;
+}
+
+// ===== 文件模式下文件列表项 =====
+.file-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  padding: 8px 0;
+
+  .file-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    font-weight: 400;
+    color: #354250;
   }
 
-  .preview-dialog-image {
-    width: 100%;
-    height: auto;
-  }
-
-  .preview-dimension {
-    margin-top: 12px;
-    font-size: 14px;
+  .file-size {
+    font-size: 12px;
     color: #909399;
-    text-align: center;
   }
 
-  // 自定义宽高样式
+  .dimension-error {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    font-size: 12px;
+    color: #f56c6c;
+  }
+}
+
+// ===== 图片预览对话框 =====
+.preview-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  .preview-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+  .dimension-error-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    padding: 4px;
+    font-size: 12px;
+    color: white;
+    background-color: rgb(245 108 108 / 90%);
+    border-radius: 50%;
+  }
+}
+
+.preview-dialog-image {
+  width: 100%;
+  height: auto;
+}
+
+.preview-dimension {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #909399;
+  text-align: center;
+}
+
+// ===== 自定义宽高样式 =====
+.common-upload {
   &.has-custom-width,
   &.has-custom-height {
     display: inline-block;
   }
+}
 
-  :deep(.el-upload--picture-card) {
-    width: 100px;
-    height: 100px;
+// ===== Element Plus 覆盖 =====
+:deep(.el-upload-list) {
+  width: 100%;
+}
 
-    &.has-custom-width,
-    &.has-custom-height {
-      width: var(--upload-width, 100px);
-      height: var(--upload-height, 100px);
-    }
+:deep(.el-upload--picture-card) {
+  // width: 100px;
+  // height: 100px;
+  @apply w-full h-full;
+
+  &.has-custom-width,
+  &.has-custom-height {
+    width: var(--upload-width, 100px);
+    height: var(--upload-height, 100px);
+  }
+}
+
+:deep(.el-upload-dragger) {
+  padding: 80px 10px;
+  border-color: #e5e7eb;
+
+  &:hover {
+    border-color: var(--el-color-primary);
   }
 
-  :deep(.el-upload-dragger) {
-    padding: 80px 10px;
-    border-color: #e5e7eb;
+  &.has-custom-width,
+  &.has-custom-height {
+    width: var(--drag-width, 360px);
+    height: var(--drag-height, 180px);
+  }
+}
 
-    &:hover {
-      border-color: var(--el-color-primary);
-    }
-
-    &.has-custom-width,
-    &.has-custom-height {
-      width: var(--drag-width, 360px);
-      height: var(--drag-height, 180px);
-    }
+:deep(.el-upload-list__item) {
+  &:hover {
+    background-color: transparent;
   }
 
-  :deep(.el-upload-list__item) {
-    &:hover {
-      background-color: transparent;
-    }
-
-    .el-progress {
-      top: 0;
-    }
+  .el-progress {
+    top: 0;
   }
 }
 </style>

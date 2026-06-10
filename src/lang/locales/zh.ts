@@ -409,14 +409,20 @@ export default {
   "web.gfuc.help_view_all": "查看全部",
   // 用户反馈
   "web.gfuc.feedback": "用户反馈",
-  "web.gfuc.feedback_content": "反馈内容",
-  "web.gfuc.feedback_content_placeholder": "请详细描述您的问题或建议...",
-  "web.gfuc.feedback_upload": "上传截图（选填）",
-  "web.gfuc.feedback_upload_btn": "点击上传图片",
-  "web.gfuc.feedback_upload_hint": "最多上传5张，支持JPG/PNG格式",
-  "web.gfuc.feedback_contact": "联系方式（选填）",
-  "web.gfuc.feedback_contact_placeholder": "请输入您的邮箱或手机号",
-  "web.gfuc.feedback_submit_success": "反馈提交成功，感谢您的支持！",
+  "web.gfuc.feedback_hint":
+    "您可以反馈系统使用中遇到的问题，您的反馈和建议将帮助我们优化系统功能和用户体验。",
+  "web.gfuc.feedback_title": "标题",
+  "web.gfuc.feedback_title_placeholder": "请简要概括您遇到的问题",
+  "web.gfuc.feedback_description": "描述",
+  "web.gfuc.feedback_description_placeholder":
+    "请详细描述您遇到的问题，包括操作步骤、预期结果和实际结果等",
+  "web.gfuc.feedback_upload": "图片（选填）",
+  "web.gfuc.feedback_upload_drag_hint": "点击上传或拖拽图片到此处",
+  "web.gfuc.feedback_upload_hint":
+    "最多上传6张，支持JPG/PNG/GIF格式，单张不超过10MB",
+  "web.gfuc.feedback_submit": "提交反馈",
+  "web.gfuc.feedback_submit_success": "反馈提交成功，感谢您提供的宝贵意见！",
   "web.gfuc.feedback_submit_failed": "反馈提交失败，请稍后重试",
-  "web.gfuc.please_input_feedback_content": "请输入反馈内容"
+  "web.gfuc.please_input_feedback_title": "请输入标题",
+  "web.gfuc.please_input_feedback_description": "请输入描述内容"
 };

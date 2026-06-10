@@ -429,18 +429,21 @@ export default {
   "web.gfuc.help_back": "Back to Help Center",
   "web.gfuc.help_view_all": "View All",
   "web.gfuc.feedback": "Feedback",
-  "web.gfuc.feedback_content": "Feedback Content",
-  "web.gfuc.feedback_content_placeholder":
-    "Please describe your issue or suggestion...",
-  "web.gfuc.feedback_upload": "Upload Screenshot (Optional)",
-  "web.gfuc.feedback_upload_btn": "Click to Upload Images",
-  "web.gfuc.feedback_upload_hint": "Up to 5 images, JPG/PNG supported",
-  "web.gfuc.feedback_contact": "Contact Info (Optional)",
-  "web.gfuc.feedback_contact_placeholder":
-    "Please enter your email or phone number",
+  "web.gfuc.feedback_hint":
+    "You can report issues or suggestions you encounter. Your feedback helps us improve the system.",
+  "web.gfuc.feedback_title": "Title",
+  "web.gfuc.feedback_title_placeholder": "Briefly describe your issue",
+  "web.gfuc.feedback_description": "Description",
+  "web.gfuc.feedback_description_placeholder":
+    "Please describe the issue in detail, including steps, expected results and actual results",
+  "web.gfuc.feedback_upload": "Images (Optional)",
+  "web.gfuc.feedback_upload_drag_hint": "Click or drag images here",
+  "web.gfuc.feedback_upload_hint": "Up to 6 images, JPG/PNG/GIF, max 10MB each",
+  "web.gfuc.feedback_submit": "Submit Feedback",
   "web.gfuc.feedback_submit_success":
     "Feedback submitted successfully, thank you!",
   "web.gfuc.feedback_submit_failed":
     "Feedback submission failed, please try again later",
-  "web.gfuc.please_input_feedback_content": "Please enter your feedback content"
+  "web.gfuc.please_input_feedback_title": "Please enter a title",
+  "web.gfuc.please_input_feedback_description": "Please enter a description"
 };

@@ -432,18 +432,20 @@ export default {
   "web.gfuc.help_back": "Torna al Centro Assistenza",
   "web.gfuc.help_view_all": "Vedi Tutto",
   "web.gfuc.feedback": "Feedback",
-  "web.gfuc.feedback_content": "Contenuto del feedback",
-  "web.gfuc.feedback_content_placeholder":
-    "Descrivi il tuo problema o suggerimento...",
-  "web.gfuc.feedback_upload": "Carica screenshot (opzionale)",
-  "web.gfuc.feedback_upload_btn": "Clicca per caricare immagini",
-  "web.gfuc.feedback_upload_hint": "Max 5 immagini, formati JPG/PNG supportati",
-  "web.gfuc.feedback_contact": "Contatti (opzionale)",
-  "web.gfuc.feedback_contact_placeholder":
-    "Inserisci la tua email o numero di telefono",
+  "web.gfuc.feedback_hint":
+    "Puoi segnalare problemi o suggerimenti. Il tuo feedback ci aiuta a migliorare il sistema.",
+  "web.gfuc.feedback_title": "Titolo",
+  "web.gfuc.feedback_title_placeholder": "Riassumi brevemente il tuo problema",
+  "web.gfuc.feedback_description": "Descrizione",
+  "web.gfuc.feedback_description_placeholder":
+    "Descrivi il problema in dettaglio, inclusi passaggi, risultati attesi e reali",
+  "web.gfuc.feedback_upload": "Immagini (Opzionale)",
+  "web.gfuc.feedback_upload_drag_hint": "Clicca o trascina le immagini qui",
+  "web.gfuc.feedback_upload_hint":
+    "Max 6 immagini, JPG/PNG/GIF, max 10 MB ciascuna",
+  "web.gfuc.feedback_submit": "Invia Feedback",
   "web.gfuc.feedback_submit_success": "Feedback inviato con successo, grazie!",
-  "web.gfuc.feedback_submit_failed":
-    "Invio feedback fallito, riprova più tardi",
-  "web.gfuc.please_input_feedback_content":
-    "Inserisci il contenuto del feedback"
+  "web.gfuc.feedback_submit_failed": "Invio fallito, riprova più tardi",
+  "web.gfuc.please_input_feedback_title": "Inserisci un titolo",
+  "web.gfuc.please_input_feedback_description": "Inserisci una descrizione"
 };
