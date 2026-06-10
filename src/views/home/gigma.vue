@@ -263,7 +263,7 @@
 
     <!-- 右侧帮助和反馈 -->
     <div
-      class="fixed right-0 flex flex-col gap-2 -translate-y-1/2 bg-white shadow-md bottom-1/4 px-1.5 py-3"
+      class="hidden fixed right-0 flex-col gap-2 -translate-y-1/2 bg-white shadow-md bottom-1/4 px-1.5 py-3"
     >
       <!-- 帮助 -->
       <div
