@@ -405,8 +405,7 @@ export default {
   "web.gfuc.forecast_order_tip":
     "Compila semplicemente le informazioni di base per prevedere rapidamente gli ordini",
   "web.gfuc.problem_management": "Gestione ordini problematici",
-  "web.gfuc.problem_management_tip":
-    "Visualizza rapidamente le informazioni dei pacchi problematici",
+  "web.gfuc.problem_management_tip": "Carica in batch i pacchetti problematici",
   "web.gfuc.view_bill": "Visualizza fattura",
   "web.gfuc.view_bill_tip": "Visualizza e scarica le fatture",
   "web.gfuc.please_input_tracking_no": "Inserisci il numero di tracciamento",

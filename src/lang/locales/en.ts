@@ -403,8 +403,7 @@ export default {
   "web.gfuc.forecast_order_tip":
     "Simply fill in the basic information to quickly forecast orders",
   "web.gfuc.problem_management": "Problem Order Management",
-  "web.gfuc.problem_management_tip":
-    "Quickly view problematic parcel information",
+  "web.gfuc.problem_management_tip": "Batch upload parcel information",
   "web.gfuc.view_bill": "View Bill",
   "web.gfuc.view_bill_tip": "View and download bills",
   "web.gfuc.please_input_tracking_no": "Please enter tracking number",

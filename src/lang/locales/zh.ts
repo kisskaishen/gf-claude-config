@@ -385,7 +385,7 @@ export default {
   "web.gfuc.query": "查询",
   "web.gfuc.forecast_order_tip": "只需要简单填写信息，即可快速预报订单",
   "web.gfuc.problem_management": "问题件管理",
-  "web.gfuc.problem_management_tip": "快速查看有问题的包裹信息",
+  "web.gfuc.problem_management_tip": "批量上传包裹信息",
   "web.gfuc.view_bill": "查看账单",
   "web.gfuc.view_bill_tip": "进行账单查看，下载",
   "web.gfuc.please_input_tracking_no": "请输入运单号",

@@ -420,7 +420,7 @@ export default {
     "Remplissez simplement les informations de base pour prévoir rapidement les commandes",
   "web.gfuc.problem_management": "Gestion des commandes problématiques",
   "web.gfuc.problem_management_tip":
-    "Consultez rapidement les informations des colis problématiques",
+    "Télécharger en batch les informations des colis",
   "web.gfuc.view_bill": "Voir la facture",
   "web.gfuc.view_bill_tip": "Consulter et télécharger les factures",
   "web.gfuc.please_input_tracking_no": "Veuillez saisir le numéro de suivi",
