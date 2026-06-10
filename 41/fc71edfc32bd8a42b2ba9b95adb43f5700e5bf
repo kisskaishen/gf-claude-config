@@ -1,0 +1,31 @@
+src/views/finance/account.vue
+  h_a8c280f6806a43 34,59
+src/views/home/gigma.vue
+  h_a8c280f6806a43 266
+src/components/SuccessDialog/index.vue
+  s_bbfd0a91c5e316::t_4508bffe7b05dc 53,62
+  s_bbfd0a91c5e316::t_9f3497a4441992 139-144
+src/views/finance/components/CostTable.vue
+  h_a8c280f6806a43 589-592
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "41fc71edfc32bd8a42b2ba9b95adb43f5700e5bf",
+  "prompts": {},
+  "humans": {
+    "h_a8c280f6806a43": {
+      "author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  },
+  "sessions": {
+    "s_bbfd0a91c5e316": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4026b449-6e35-4dc1-a0c7-0c9800e1431a",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
