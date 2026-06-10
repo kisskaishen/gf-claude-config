@@ -96,7 +96,8 @@ export const downloadZip = async (urlList: string[]) => {
     const url = urlList[0];
     let fileName = url.split("/").pop() || "download";
     fileName = fileName.split("?")[0];
-    fileName = fileName.replace(/[\s/:*?"<>|\x00-\x1F]/g, "_") || "download";
+    fileName = decodeURIComponent(fileName);
+    fileName = fileName.replace(/[/:*?"<>|\x00-\x1F]/g, "_") || "download";
     await downloadFile(url, fileName);
     return;
   }
@@ -128,9 +129,9 @@ export const downloadZip = async (urlList: string[]) => {
       // 原始文件名
       let originFileName = url.split("/").pop() || `file_${i + 1}`;
       originFileName = originFileName.split("?")[0];
+      originFileName = decodeURIComponent(originFileName);
       originFileName =
-        originFileName.replace(/[\s/:*?"<>|\x00-\x1F]/g, "_") ||
-        `file_${i + 1}`;
+        originFileName.replace(/[/:*?"<>|\x00-\x1F]/g, "_") || `file_${i + 1}`;
       const isZipFile = originFileName.toLowerCase().endsWith(".zip");
 
       // =========关键改动：是zip就解析内层文件，否则直接添加原文件=========
