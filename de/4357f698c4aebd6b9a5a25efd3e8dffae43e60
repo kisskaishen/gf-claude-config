@@ -1,0 +1,50 @@
+src/lang/locales/zh.ts
+  s_99d9eba8d3c8ca::t_3e6ccb96e71998 412-424,426-427
+src/lang/locales/it.ts
+  s_99d9eba8d3c8ca::t_b688e60981fe7f 435-446,448-450
+src/components/CommonUpload/index.vue
+  s_99d9eba8d3c8ca::t_17addc835efc70 831-832,834-837,842-843,846
+  h_a8c280f6806a43 790,985-987,990-992
+  s_99d9eba8d3c8ca::t_8dd4aa5308a3a1 206-207
+  s_99d9eba8d3c8ca::t_d1e27f6fc0c052 788-789,793-805,807-809,812-816,819-821,824-825,839-840,844-845,848-851,856-870,874-878,880-881,884-887,889-893
+  s_99d9eba8d3c8ca::t_efd1d410b6707b 896-904,906-920,923-924,928-977,982,984,989,993-997,999,1001-1003,1005-1007,1009-1012,1014,1016-1019,1021-1022
+  s_99d9eba8d3c8ca::t_e712a599297cc9 14,58-68,70-77
+  s_99d9eba8d3c8ca::t_55231c5e2bfd65 18,28,32,34-42,44-53,69
+src/components/FeedbackDialog/index.vue
+  s_99d9eba8d3c8ca::t_b4231ab3d65e33 5,8,12-37,43-46,50,52-55,61-63,86-98,104,114-115,129-130,148-151,153-154,167-172,179-180,184,186-187,192,196-197,206-211,213-216,220-231,234-241,244-245,248-267,270-271,273-277,280-287,290,292-293,296-302,304-314,317-322,324-326,329-335,341-349,352-357,359-361,363-365
+  s_99d9eba8d3c8ca::t_26d36be43eae5b 66,68-69,71,77-78,80
+  h_a8c280f6806a43 38-39,57,72,218-219,279,289,294,315,323,327,336,350,358,362,366
+  s_99d9eba8d3c8ca::t_6ceaa8792b2d9c 124,131
+  s_99d9eba8d3c8ca::t_e46e0861b69e0e 181
+  s_99d9eba8d3c8ca::t_737d891249afce 193-195,198-200
+src/lang/locales/fr.ts
+  s_99d9eba8d3c8ca::t_728275e6428372 449-457,459-460,463-466
+src/views/home/gigma.vue
+  h_a8c280f6806a43 266
+  s_99d9eba8d3c8ca::t_31d29a235120b7 353-354
+src/lang/locales/en.ts
+  s_99d9eba8d3c8ca::t_c723f94bcc26cf 432-442,447-448
+src/lang/locales/nl.ts
+  s_99d9eba8d3c8ca::t_fa791fb2a14bcc 424-435,438-440
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "de4357f698c4aebd6b9a5a25efd3e8dffae43e60",
+  "prompts": {},
+  "humans": {
+    "h_a8c280f6806a43": {
+      "author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  },
+  "sessions": {
+    "s_99d9eba8d3c8ca": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e3063159-10f6-46a2-ae24-0238ea59e341",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
