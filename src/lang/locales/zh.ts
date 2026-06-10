@@ -389,5 +389,8 @@ export default {
   "web.gfuc.view_bill": "查看账单",
   "web.gfuc.view_bill_tip": "进行账单查看，下载",
   "web.gfuc.please_input_tracking_no": "请输入运单号",
-  "web.gfuc.please_input_correct_tracking_no": "请输入正确的运单号"
+  "web.gfuc.please_input_correct_tracking_no": "请输入正确的运单号",
+  "web.gfuc.downloading": "下载中...",
+  "web.gfuc.download_success": "下载成功",
+  "web.gfuc.download_failed": "下载失败"
 };

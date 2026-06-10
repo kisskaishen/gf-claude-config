@@ -400,5 +400,8 @@ export default {
   "web.gfuc.view_bill_tip": "Facturen bekijken en downloaden",
   "web.gfuc.please_input_tracking_no": "Voer het trackingnummer in",
   "web.gfuc.please_input_correct_tracking_no":
-    "Voer het juiste trackingnummer in"
+    "Voer het juiste trackingnummer in",
+  "web.gfuc.downloading": "Downloaden in bevoegd...",
+  "web.gfuc.download_success": "Downloadenvol",
+  "web.gfuc.download_failed": "Downloaden mislukt"
 };

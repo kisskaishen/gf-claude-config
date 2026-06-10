@@ -410,5 +410,8 @@ export default {
   "web.gfuc.view_bill_tip": "Visualizza e scarica le fatture",
   "web.gfuc.please_input_tracking_no": "Inserisci il numero di tracciamento",
   "web.gfuc.please_input_correct_tracking_no":
-    "Inserisci il numero di tracciamento corretto"
+    "Inserisci il numero di tracciamento corretto",
+  "web.gfuc.downloading": "Scaricamento in corso...",
+  "web.gfuc.download_success": "Scaricamento riuscito",
+  "web.gfuc.download_failed": "Scaricamento fallito"
 };

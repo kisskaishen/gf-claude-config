@@ -130,7 +130,7 @@
             align="center"
           >
             <template #default="{ row, index }">
-              <div class="flex justify-center gap-2 table-actions">
+              <div class="flex gap-2 justify-center table-actions">
                 <!-- <el-tooltip
                   :content="$t('web.gfuc.view_order')"
                   placement="top"
@@ -216,6 +216,7 @@ import dayjs from "dayjs";
 import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
 import { useAppStore } from "@/store/app";
+import { ElMessage } from "element-plus";
 
 const userStore = useUserStore();
 
@@ -439,9 +440,21 @@ watch(
 );
 
 const handleBillDownload = async (row: any) => {
-  const res = await downloadBill({ id: row.id });
-  let urlList = res.map((item) => item.downloadUrl);
-  await downloadZip(urlList);
+  const loadingToast = ElMessage({
+    message: t("web.gfuc.downloading"),
+    type: "info",
+    duration: 0
+  });
+  try {
+    const res = await downloadBill({ id: row.id });
+    let urlList = res.map((item) => item.downloadUrl);
+    await downloadZip(urlList);
+    loadingToast.close();
+    ElMessage.success(t("web.gfuc.download_success"));
+  } catch (error) {
+    loadingToast.close();
+    ElMessage.error(t("web.gfuc.download_failed"));
+  }
 };
 
 const handleDownload = async (row: any) => {

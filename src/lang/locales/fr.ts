@@ -425,5 +425,8 @@ export default {
   "web.gfuc.view_bill_tip": "Consulter et télécharger les factures",
   "web.gfuc.please_input_tracking_no": "Veuillez saisir le numéro de suivi",
   "web.gfuc.please_input_correct_tracking_no":
-    "Veuillez saisir le numéro de suivi correct"
+    "Veuillez saisir le numéro de suivi correct",
+  "web.gfuc.downloading": "Téléchargement en cours...",
+  "web.gfuc.download_success": "Téléchargement réussi",
+  "web.gfuc.download_failed": "Téléchargement échoué"
 };
