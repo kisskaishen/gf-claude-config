@@ -31,6 +31,7 @@
 
     <SuccessDialog
       v-model="successVisible"
+      :width="columnWidth(480, 720, 720, 720, 720, 480) + 'px'"
       :showIcon="false"
       :title="$t('web.gfuc.tip' /** 温馨提示 **/)"
       :description="
@@ -55,6 +56,7 @@ import { ref, computed } from "vue";
 import ClaimTable from "@/views/finance/components/ClaimTable.vue";
 import CostTable from "@/views/finance/components/CostTable.vue";
 import SuccessDialog from "@/components/SuccessDialog/index.vue";
+import { columnWidth } from "@/utils/index";
 
 import PageContainer from "@/components/PageContainer/index.vue";
 import { useI18n } from "vue-i18n";

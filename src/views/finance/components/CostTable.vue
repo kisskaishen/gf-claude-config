@@ -586,6 +586,10 @@ const handleBatchExport = async () => {
   emits("show-success-dialog", true);
 
   exportLoading.value = false;
+
+  setTimeout(() => {
+    exportLoading.value = false;
+  }, 1000);
 };
 // 批量下载
 const handleBatchDownload = async () => {

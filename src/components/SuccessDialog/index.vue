@@ -50,6 +50,7 @@
         <el-button
           v-if="showPrimaryBtn"
           :size="buttonSize"
+          class="max-w-[50%] !whitespace-normal break-words leading-normal"
           :class="primaryBtnClass"
           @click="handlePrimaryClick"
         >
@@ -58,6 +59,7 @@
         <el-button
           v-if="showSecondaryBtn"
           :size="buttonSize"
+          class="max-w-[50%] !whitespace-normal break-words leading-normal"
           :class="secondaryBtnClass"
           @click="handleSecondaryClick"
           type="primary"
@@ -133,5 +135,11 @@ const handleSecondaryClick = () => {
 /* 如果需要对弹窗进行额外样式定制，可以在这里添加 */
 .success-dialog :deep(.el-dialog__header) {
   display: none;
+}
+
+/* 按钮文字超出最大宽度自动换行 */
+.success-dialog :deep(.el-button span) {
+  white-space: normal !important;
+  word-break: break-word;
 }
 </style>
