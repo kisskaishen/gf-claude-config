@@ -1,0 +1,27 @@
+src/views/order/components/ProductInfo.vue
+  s_58b460e280861a::t_9730d417d4be1a 53
+src/views/order/components/ShipperInfo.vue
+  s_58b460e280861a::t_59193196eb0f04 53
+src/views/order/components/ParcelInfo.vue
+  s_58b460e280861a::t_8be85385853918 144
+  s_58b460e280861a::t_472a13840ad796 168
+  s_58b460e280861a::t_113f8a36da885a 52
+src/views/order/components/ConsigneeInfo.vue
+  s_58b460e280861a::t_757ad5ba7ce7c3 52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "73dd41502af64ac506b3a28a6d1d4344d40fa73a",
+  "prompts": {},
+  "sessions": {
+    "s_58b460e280861a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ed185d3e-3e4e-444e-986b-0fbd9d5993e1",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
