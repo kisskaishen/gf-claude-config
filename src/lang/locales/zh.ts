@@ -424,5 +424,8 @@ export default {
   "web.gfuc.feedback_submit_success": "反馈提交成功，感谢您提供的宝贵意见！",
   "web.gfuc.feedback_submit_failed": "反馈提交失败，请稍后重试",
   "web.gfuc.please_input_feedback_title": "请输入标题",
-  "web.gfuc.please_input_feedback_description": "请输入描述内容"
+  "web.gfuc.please_input_feedback_description": "请输入描述内容",
+  "web.gfuc.downloading": "下载中...",
+  "web.gfuc.download_success": "下载成功",
+  "web.gfuc.download_failed": "下载失败"
 };

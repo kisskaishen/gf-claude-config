@@ -446,5 +446,8 @@ export default {
   "web.gfuc.feedback_submit_success": "Feedback inviato con successo, grazie!",
   "web.gfuc.feedback_submit_failed": "Invio fallito, riprova più tardi",
   "web.gfuc.please_input_feedback_title": "Inserisci un titolo",
-  "web.gfuc.please_input_feedback_description": "Inserisci una descrizione"
+  "web.gfuc.please_input_feedback_description": "Inserisci una descrizione",
+  "web.gfuc.downloading": "Scaricamento in corso...",
+  "web.gfuc.download_success": "Scaricamento riuscito",
+  "web.gfuc.download_failed": "Scaricamento fallito"
 };

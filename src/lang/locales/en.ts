@@ -444,5 +444,8 @@ export default {
   "web.gfuc.feedback_submit_failed":
     "Feedback submission failed, please try again later",
   "web.gfuc.please_input_feedback_title": "Please enter a title",
-  "web.gfuc.please_input_feedback_description": "Please enter a description"
+  "web.gfuc.please_input_feedback_description": "Please enter a description",
+  "web.gfuc.downloading": "Downloading...",
+  "web.gfuc.download_success": "Download Successful",
+  "web.gfuc.download_failed": "Download Failed"
 };

@@ -463,5 +463,8 @@ export default {
     "Échec de l'envoi, veuillez réessayer plus tard",
   "web.gfuc.please_input_feedback_title": "Veuillez saisir un titre",
   "web.gfuc.please_input_feedback_description":
-    "Veuillez saisir une description"
+    "Veuillez saisir une description",
+  "web.gfuc.downloading": "Téléchargement en cours...",
+  "web.gfuc.download_success": "Téléchargement réussi",
+  "web.gfuc.download_failed": "Téléchargement échoué"
 };

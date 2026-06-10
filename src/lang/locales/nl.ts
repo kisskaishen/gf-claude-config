@@ -436,5 +436,8 @@ export default {
   "web.gfuc.feedback_submit_failed":
     "Verzenden mislukt, probeer het later opnieuw",
   "web.gfuc.please_input_feedback_title": "Voer een titel in",
-  "web.gfuc.please_input_feedback_description": "Voer een beschrijving in"
+  "web.gfuc.please_input_feedback_description": "Voer een beschrijving in",
+  "web.gfuc.downloading": "Downloaden in bevoegd...",
+  "web.gfuc.download_success": "Downloadenvol",
+  "web.gfuc.download_failed": "Downloaden mislukt"
 };

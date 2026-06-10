@@ -94,8 +94,8 @@ export const downloadZip = async (urlList: string[]) => {
 
   if (urlList.length === 1) {
     const url = urlList[0];
-    let fileName = url.split("/").pop() || "download";
-    fileName = fileName.split("?")[0];
+    let fileName = url?.split("/").pop() || "download";
+    fileName = fileName?.split("?")[0];
     fileName = decodeURIComponent(fileName);
     fileName = fileName.replace(/[/:*?"<>|\x00-\x1F]/g, "_") || "download";
     await downloadFile(url, fileName);
@@ -127,8 +127,8 @@ export const downloadZip = async (urlList: string[]) => {
       }
 
       // 原始文件名
-      let originFileName = url.split("/").pop() || `file_${i + 1}`;
-      originFileName = originFileName.split("?")[0];
+      let originFileName = url?.split("/").pop() || `file_${i + 1}`;
+      originFileName = originFileName?.split("?")[0];
       originFileName = decodeURIComponent(originFileName);
       originFileName =
         originFileName.replace(/[/:*?"<>|\x00-\x1F]/g, "_") || `file_${i + 1}`;
