@@ -153,7 +153,7 @@
 
                 <el-tooltip
                   :content="
-                    row.taskType === 2
+                    [1, 2].includes(row.taskType)
                       ? $t('web.gfuc.download_freight_bill')
                       : [3, 4].includes(row.taskType)
                         ? $t('web.gfuc.download_claim_bill')
