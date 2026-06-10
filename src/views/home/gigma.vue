@@ -263,11 +263,11 @@
 
     <!-- 右侧帮助和反馈 -->
     <div
-      class="flex fixed right-0 flex-col gap-2 -translate-y-1/2 bg-white shadow-md bottom-1/4 px-1.5 py-3"
+      class="flex fixed right-0 flex-col gap-2 -translate-y-1/2 bg-white shadow-md bottom-1/4 px-1.5 py-3 min-w-14"
     >
       <!-- 帮助 -->
       <div
-        class="flex flex-col items-center justify-center w-12 transition-shadow bg-white cursor-pointer"
+        class="flex flex-col items-center justify-center transition-shadow bg-white cursor-pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -283,12 +283,12 @@
             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
           />
         </svg>
-        <span class="text-sm text-info">帮助</span>
+        <span class="text-sm text-info whitespace-nowrap">帮助</span>
       </div>
       <el-divider style="margin: 0" />
       <!-- 反馈 -->
       <div
-        class="flex flex-col items-center justify-center w-12 transition-shadow bg-white cursor-pointer"
+        class="flex flex-col items-center justify-center transition-shadow bg-white cursor-pointer"
         @click="handleOpenFeedback"
       >
         <svg
@@ -305,7 +305,9 @@
             d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
           />
         </svg>
-        <span class="text-sm text-info">{{ $t("web.gfuc.feedback") }}</span>
+        <span class="text-sm text-info whitespace-nowrap">{{
+          $t("web.gfuc.feedback")
+        }}</span>
       </div>
     </div>
 

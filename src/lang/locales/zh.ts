@@ -408,7 +408,7 @@ export default {
   "web.gfuc.help_back": "返回帮助中心",
   "web.gfuc.help_view_all": "查看全部",
   // 用户反馈
-  "web.gfuc.feedback": "用户反馈",
+  "web.gfuc.feedback": "反馈",
   "web.gfuc.feedback_hint":
     "您可以反馈系统使用中遇到的问题，您的反馈和建议将帮助我们优化系统功能和用户体验。",
   "web.gfuc.feedback_title": "标题",
