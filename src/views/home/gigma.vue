@@ -378,7 +378,7 @@ const handleQuery = async () => {
   }
   console.log(lang.value, currentCountry.value);
   if (
-    lang.value === currentCountry.value ||
+    lang.value === currentCountry.value &&
     ["nl", "it", "fr", "es"].includes(country)
   ) {
     window.open(
