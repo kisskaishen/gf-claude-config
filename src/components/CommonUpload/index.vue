@@ -102,13 +102,16 @@
       >
         <template #trigger>
           <svg-icon name="upload" width="36" height="32"></svg-icon>
-          <div class="text-sm font-normal text-info">
+          <div class="mt-8 text-base font-normal text-black">
             {{ buttonText }}
+          </div>
+          <div v-if="hint" class="text-xs text-[#999999]">{{ hint }}</div>
+          <div v-if="hint2" class="mt-2 text-sm text-[#999999]">
+            {{ hint2 }}
           </div>
         </template>
 
         <template #tip>
-          <div v-if="hint" class="upload-tip">{{ hint }}</div>
           <!-- <div v-if="showTypeTip" class="upload-tip">
             支持 {{ acceptText }} 格式
           </div> -->
@@ -119,7 +122,7 @@
           <slot name="file" :file="file">
             <div class="relative file-item">
               <svg-icon name="upload-file" width="40" height="48"></svg-icon>
-              <div class="absolute left-0 h-12 w-9 top-2">
+              <div class="absolute left-0 top-2 w-9 h-12">
                 <div
                   class="h-12 text-sm font-normal text-center text-white leading-[48px]"
                 >
@@ -130,12 +133,12 @@
                 <!-- 文件名 -->
                 <div>
                   <span
-                    class="w-full overflow-hidden whitespace-normal file-name"
+                    class="overflow-hidden w-full whitespace-normal file-name"
                     >{{ file.name }}</span
                   >
                 </div>
                 <!-- 进度和状态 -->
-                <div class="flex items-center gap-2">
+                <div class="flex gap-2 items-center">
                   <!-- <span class="text-sm text-info">{{ file.status }}</span> -->
                   <span class="text-xs font-normal text-info">{{
                     currentProgress + "%"
@@ -283,6 +286,11 @@ const props = defineProps({
   },
   // 上传提示信息
   hint: {
+    type: String,
+    default: ""
+  },
+  // 上传提示信息2
+  hint2: {
     type: String,
     default: ""
   },
@@ -896,12 +904,6 @@ defineExpose({
 }
 
 // ===== 文件模式上传提示 =====
-.upload-tip {
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 400;
-  color: #bbbdbf;
-}
 
 // ===== 文件模式下文件列表项 =====
 .file-item {
