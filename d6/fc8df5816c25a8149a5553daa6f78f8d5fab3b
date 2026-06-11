@@ -1,0 +1,14 @@
+src/views/home/gigma.vue
+  h_a8c280f6806a43 381
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "d6fc8df5816c25a8149a5553daa6f78f8d5fab3b",
+  "prompts": {},
+  "humans": {
+    "h_a8c280f6806a43": {
+      "author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
