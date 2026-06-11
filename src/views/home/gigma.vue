@@ -6,10 +6,10 @@
     </h1>
 
     <!-- 总金额和状态卡片 -->
-    <div class="flex gap-6 justify-between mb-10">
+    <div class="flex justify-between gap-6 mb-10">
       <!-- 总下单金额 -->
       <div
-        class="flex-1 p-4 bg-orange-50 rounded-lg border-l-4 border-orange-500"
+        class="flex-1 p-4 border-l-4 border-orange-500 rounded-lg bg-orange-50"
       >
         <p class="mb-2 text-sm text-gray-600">
           {{ $t("web.gfuc.available_balance") }}
@@ -59,10 +59,10 @@
       <!-- <input
         type="text"
         placeholder="请输入你的运单号"
-        class="flex-1 px-4 py-2 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
+        class="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary"
       />
       <button
-        class="px-6 py-2 text-white rounded-r-md transition-colors bg-primary hover:bg-primary-hover"
+        class="px-6 py-2 text-white transition-colors rounded-r-md bg-primary hover:bg-primary-hover"
       >
         查询
       </button> -->
@@ -88,12 +88,12 @@
     <div class="grid grid-cols-1 gap-4 mb-10 md:grid-cols-3">
       <!-- 单票订单 -->
       <div
-        class="p-6 bg-white rounded-lg border transition-shadow border-card hover:shadow-md"
+        class="p-6 transition-shadow bg-white border rounded-lg border-card hover:shadow-md"
         @click="handleViewDetail('SingleOrder')"
       >
         <div class="flex justify-center mb-4">
           <div
-            class="flex justify-center items-center w-16 h-16 rounded-full bg-primary-light"
+            class="flex items-center justify-center w-16 h-16 rounded-full bg-primary-light"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -121,12 +121,12 @@
 
       <!-- 批量下单 -->
       <div
-        class="p-6 bg-white rounded-lg border transition-shadow border-card hover:shadow-md"
+        class="p-6 transition-shadow bg-white border rounded-lg border-card hover:shadow-md"
         @click="handleViewDetail('BatchOrder')"
       >
         <div class="flex justify-center mb-4">
           <div
-            class="flex justify-center items-center w-16 h-16 rounded-full bg-primary-light"
+            class="flex items-center justify-center w-16 h-16 rounded-full bg-primary-light"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -154,12 +154,12 @@
 
       <!-- 查看账单 -->
       <div
-        class="p-6 bg-white rounded-lg border transition-shadow border-card hover:shadow-md"
+        class="p-6 transition-shadow bg-white border rounded-lg border-card hover:shadow-md"
         @click="handleViewDetail('Account')"
       >
         <div class="flex justify-center mb-4">
           <div
-            class="flex justify-center items-center w-16 h-16 rounded-full bg-primary-light"
+            class="flex items-center justify-center w-16 h-16 rounded-full bg-primary-light"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -187,11 +187,11 @@
     </div>
 
     <!-- 流程步骤 -->
-    <div class="flex flex-wrap justify-around items-center">
+    <div class="flex flex-wrap items-center justify-around">
       <!-- 开通服务 -->
       <div class="flex flex-col items-center" v-if="!hasShipperList">
         <div
-          class="flex justify-center items-center mb-2 w-16 h-16 rounded-full border border-text-primary"
+          class="flex items-center justify-center w-16 h-16 mb-2 border rounded-full border-text-primary"
         >
           <svg-icon name="home-step1" width="32px" height="32px" />
         </div>
@@ -206,7 +206,7 @@
       <!-- 预报订单 -->
       <div class="flex flex-col items-center">
         <div
-          class="flex justify-center items-center mb-2 w-16 h-16 rounded-full border border-text-primary"
+          class="flex items-center justify-center w-16 h-16 mb-2 border rounded-full border-text-primary"
         >
           <svg-icon name="home-step2" width="32px" height="32px" />
         </div>
@@ -221,7 +221,7 @@
       <!-- 打印面单 -->
       <div class="flex flex-col items-center">
         <div
-          class="flex justify-center items-center mb-2 w-16 h-16 rounded-full border border-text-primary"
+          class="flex items-center justify-center w-16 h-16 mb-2 border rounded-full border-text-primary"
         >
           <svg-icon name="home-step3" width="32px" height="32px" />
         </div>
@@ -236,7 +236,7 @@
       <!-- 发货运输 -->
       <div class="flex flex-col items-center">
         <div
-          class="flex justify-center items-center mb-2 w-16 h-16 rounded-full border border-text-primary"
+          class="flex items-center justify-center w-16 h-16 mb-2 border rounded-full border-text-primary"
         >
           <svg-icon name="home-step4" width="32px" height="32px" />
         </div>
@@ -253,7 +253,7 @@
       <!-- 派送签收 -->
       <div class="flex flex-col items-center">
         <div
-          class="flex justify-center items-center mb-2 w-16 h-16 rounded-full border border-text-primary"
+          class="flex items-center justify-center w-16 h-16 mb-2 border rounded-full border-text-primary"
         >
           <svg-icon name="home-step5" width="32px" height="32px" />
         </div>
@@ -267,7 +267,7 @@
     >
       <!-- 帮助 -->
       <div
-        class="flex flex-col justify-center items-center bg-white transition-shadow cursor-pointer"
+        class="flex flex-col items-center justify-center transition-shadow bg-white cursor-pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -288,7 +288,7 @@
       <el-divider style="margin: 0" />
       <!-- 反馈 -->
       <div
-        class="flex flex-col justify-center items-center bg-white transition-shadow cursor-pointer"
+        class="flex flex-col items-center justify-center transition-shadow bg-white cursor-pointer"
         @click="handleOpenFeedback"
       >
         <svg
@@ -403,7 +403,10 @@ const handleQuery = async () => {
     country = currentCountry.value;
   }
   console.log(lang.value, currentCountry.value);
-  if (lang.value === currentCountry.value) {
+  if (
+    lang.value === currentCountry.value &&
+    ["nl", "it", "fr", "es"].includes(country)
+  ) {
     window.open(
       `https://www.gofo.com/${country}/tracking-results/?id=${trackingNo.value}`,
       "_blank"

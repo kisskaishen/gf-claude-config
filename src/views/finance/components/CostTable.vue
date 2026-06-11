@@ -225,7 +225,7 @@
               v-else-if="item.prop === 'claimBillTotalNumber'"
             >
               <span
-                class="text-primary cursor-pointer"
+                class="cursor-pointer text-primary"
                 @click.stop="handleSearchClaimBill(row.claimBillTotalNumber)"
               >
                 {{ row.claimBillTotalNumber ?? "-" }}
@@ -578,6 +578,9 @@ const handleBatchExport = async () => {
   const params = getParams();
 
   exportLoading.value = true;
+  setTimeout(() => {
+    exportLoading.value = false;
+  }, 1000);
   await exportFreightBill({
     ...params,
     pageNum: pagination.currentPage,
@@ -586,10 +589,6 @@ const handleBatchExport = async () => {
   emits("show-success-dialog", true);
 
   exportLoading.value = false;
-
-  setTimeout(() => {
-    exportLoading.value = false;
-  }, 1000);
 };
 // 批量下载
 const handleBatchDownload = async () => {

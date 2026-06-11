@@ -529,6 +529,9 @@ const handleBatchExport = async () => {
   const params = getParams();
 
   exportLoading.value = true;
+  setTimeout(() => {
+    exportLoading.value = false;
+  }, 1000);
   await exportClaimBill({
     ...params,
     pageNum: pagination.currentPage,
