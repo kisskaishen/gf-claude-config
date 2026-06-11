@@ -1,0 +1,24 @@
+src/views/finance/components/ClaimTable.vue
+  h_a8c280f6806a43 532-534
+src/views/home/gigma.vue
+  h_a8c280f6806a43 9,12,62,65,91,96,124,129,157,162,190,194,209,224,239,256,407-408
+  s_58b460e280861a::t_3de5491cda236e 270,291
+src/views/finance/components/CostTable.vue
+  h_a8c280f6806a43 228,581-583
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "31f2ae266db7b3f0d9d6450589aba86e3ecc96ab",
+  "prompts": {},
+  "sessions": {
+    "s_58b460e280861a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ed185d3e-3e4e-444e-986b-0fbd9d5993e1",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
