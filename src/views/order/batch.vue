@@ -1,5 +1,5 @@
 <template>
-  <div class="p-6 min-h-screen bg-bg">
+  <div class="min-h-screen bg-bg">
     <!-- 批量上传卡片 -->
     <div
       class="bg-white rounded-lg shadow-[0_2px_16px_rgba(79,87,125,0.08)] p-6 flex flex-col gap-6"
@@ -76,9 +76,7 @@
           </div>
 
           <!-- 上传区域 -->
-          <div
-            class="bg-white border-2 border-dashed border-border rounded-lg min-h-[241px] flex flex-col justify-center p-6"
-          >
+          <div class="bg-white min-h-[241px] flex flex-col justify-center">
             <common-upload
               ref="uploadRef"
               v-model="fileList"
@@ -163,16 +161,18 @@
           <!-- 注意事项卡片 -->
           <div class="p-6 bg-white rounded-lg border border-border">
             <div class="mb-2.5">
-              <span class="text-sm font-medium text-[#f5a380]"
-                >⚠️ {{ $t("web.gfuc.batch_import_notice_title") }}</span
+              <span class="text-sm font-medium text-primary"
+                ><svg-icon name="icon-warning" width="16" height="16" />{{
+                  $t("web.gfuc.batch_import_notice_title")
+                }}</span
               >
             </div>
             <div class="flex flex-col">
               <div
                 class="flex items-center gap-3 px-4 py-2 bg-[#ffece5] border-l-2 border-primary rounded-r"
               >
-                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                <span class="text-xs font-medium text-text-tertiary">{{
+                <!-- <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> -->
+                <span class="text-xs font-medium text-primary">{{
                   $t("web.gfuc.batch_import_notice1")
                 }}</span>
               </div>
@@ -223,12 +223,7 @@
         <div v-else class="text-sm text-text-placeholder">
           <span>{{ $t("web.gfuc.file_uploading") }}</span>
         </div>
-        <el-button
-          type="primary"
-          link
-          @click="downloadErrorData"
-          v-if="errorFileUrl"
-        >
+        <el-button @click="downloadErrorData" v-if="errorFileUrl">
           {{ $t("web.gfuc.download_error_data") }}
         </el-button>
       </div>

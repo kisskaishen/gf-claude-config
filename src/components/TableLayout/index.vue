@@ -196,6 +196,8 @@ const handleReset = async () => {
   margin-top: 16px;
   overflow: hidden;
   background: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
 }
 
 .pagination-container {

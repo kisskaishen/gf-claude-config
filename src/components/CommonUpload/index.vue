@@ -101,8 +101,8 @@
         :drag="drag"
       >
         <template #trigger>
-          <svg-icon name="upload" width="36" height="32"></svg-icon>
-          <div class="mt-8 text-base font-normal text-black">
+          <svg-icon name="upload" width="62" height="62"></svg-icon>
+          <div class="mt-6 text-base font-normal text-black">
             {{ buttonText }}
           </div>
           <div v-if="hint" class="text-xs text-[#999999]">{{ hint }}</div>
