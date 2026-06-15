@@ -1,0 +1,27 @@
+src/lang/locales/zh.ts
+  s_99d9eba8d3c8ca::t_3e6ccb96e71998 427
+src/lang/locales/it.ts
+  s_99d9eba8d3c8ca::t_b688e60981fe7f 449
+src/lang/locales/fr.ts
+  s_99d9eba8d3c8ca::t_728275e6428372 466
+src/lang/locales/nl.ts
+  s_99d9eba8d3c8ca::t_fa791fb2a14bcc 439
+src/lang/locales/en.ts
+  s_99d9eba8d3c8ca::t_c723f94bcc26cf 447
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "be00621017d5a872b69dca76202d33005db76317",
+  "prompts": {},
+  "sessions": {
+    "s_99d9eba8d3c8ca": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e3063159-10f6-46a2-ae24-0238ea59e341",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
