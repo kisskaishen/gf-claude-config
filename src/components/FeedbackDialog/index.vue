@@ -40,6 +40,43 @@
         />
       </div>
 
+      <!-- 工单分类 -->
+      <div class="form-group">
+        <label class="form-label">
+          工单分类
+          <span class="required">*</span>
+        </label>
+        <el-select
+          v-model="form.categoryId"
+          placeholder="请选择工单分类"
+          class="feedback-select"
+          filterable
+          clearable
+          :loading="categoryLoading"
+        >
+          <el-option
+            v-for="item in flatCategories"
+            :key="item.id"
+            :label="item.label"
+            :value="item.id"
+          />
+        </el-select>
+      </div>
+
+      <!-- 紧急程度 -->
+      <div class="form-group">
+        <label class="form-label">紧急程度</label>
+        <el-select
+          v-model="form.priority"
+          placeholder="请选择紧急程度"
+          class="feedback-select"
+        >
+          <el-option label="低" value="低" />
+          <el-option label="中" value="中" />
+          <el-option label="高" value="高" />
+        </el-select>
+      </div>
+
       <!-- 描述 -->
       <div class="form-group">
         <label class="form-label">
@@ -104,12 +141,25 @@
 import { ref, reactive, watch, computed } from "vue";
 import { ElMessage } from "element-plus";
 import { useI18n } from "vue-i18n";
+import { useAppStore } from "@/store/app";
+import { useUserStore } from "@/store/user";
 import CommonUpload from "@/components/CommonUpload/index.vue";
+import {
+  getWorkOrderCategory,
+  uploadWorkOrderAttachment,
+  addWorkOrder
+} from "@/api/home";
+import type { WorkOrderCategoryItem } from "@/api/home";
 
 const { t } = useI18n();
+const appStore = useAppStore();
+const userStore = useUserStore();
 
 const props = defineProps<{
   visible: boolean;
+  categoryId?: number; // 可选：默认分类ID
+  staffCode?: string; // 员工编号（默认取自登录账号）
+  staffName?: string; // 员工姓名
   onSubmit?: (data: {
     title: string;
     description: string;
@@ -124,12 +174,56 @@ const emit = defineEmits<{
 const uploadRef = ref<InstanceType<typeof CommonUpload> | null>(null);
 const submitting = ref(false);
 const dialogVisible = ref(false);
+const categoryLoading = ref(false);
+const categories = ref<WorkOrderCategoryItem[]>([]);
 
 const form = reactive({
   title: "",
   description: "",
+  categoryId: undefined as number | undefined,
+  priority: "低" as string,
   files: [] as any[]
 });
+
+// 将树形分类展平为一级选项
+const flatCategories = computed(() => {
+  const flatten = (
+    items: WorkOrderCategoryItem[],
+    parentName = ""
+  ): { id: number; label: string }[] => {
+    const result: { id: number; label: string }[] = [];
+    for (const item of items) {
+      const label = parentName ? `${parentName} / ${item.name}` : item.name;
+      if (item.children && item.children.length > 0) {
+        result.push(...flatten(item.children, label));
+      } else {
+        result.push({ id: item.id, label });
+      }
+    }
+    return result;
+  };
+  return flatten(categories.value);
+});
+
+// 根据选中的分类ID获取分类完整路径名
+const selectedCategoryName = computed(() => {
+  if (!form.categoryId) return "";
+  const item = flatCategories.value.find((c) => c.id === form.categoryId);
+  return item?.label || "";
+});
+
+// 获取工单分类
+const fetchCategories = async () => {
+  categoryLoading.value = true;
+  try {
+    const res = await getWorkOrderCategory();
+    categories.value = res || [];
+  } catch (e) {
+    console.error("获取工单分类失败", e);
+  } finally {
+    categoryLoading.value = false;
+  }
+};
 
 watch(
   () => props.visible,
@@ -137,6 +231,7 @@ watch(
     dialogVisible.value = val;
     if (val) {
       resetForm();
+      fetchCategories();
     }
   }
 );
@@ -146,12 +241,18 @@ watch(dialogVisible, (val) => {
 });
 
 const isFormValid = computed(() => {
-  return form.title.trim().length > 0 && form.description.trim().length > 0;
+  return (
+    form.title.trim().length > 0 &&
+    form.description.trim().length > 0 &&
+    form.categoryId !== undefined
+  );
 });
 
 const resetForm = () => {
   form.title = "";
   form.description = "";
+  form.categoryId = props.categoryId;
+  form.priority = "低";
   form.files = [];
 };
 
@@ -163,28 +264,113 @@ const handleClosed = () => {
   resetForm();
 };
 
+// 上传单个文件，返回附件路径
+const uploadFile = async (file: File): Promise<string> => {
+  const formData = new FormData();
+  formData.append("file", file);
+  return await uploadWorkOrderAttachment(formData);
+};
+
 const handleSubmit = async () => {
   if (!isFormValid.value) {
     if (!form.title.trim()) {
       ElMessage.error(t("web.gfuc.please_input_feedback_title"));
     } else if (!form.description.trim()) {
       ElMessage.error(t("web.gfuc.please_input_feedback_description"));
+    } else if (form.categoryId === undefined) {
+      ElMessage.error("请选择工单分类");
     }
     return;
   }
-  submitting.value = true;
-  try {
-    if (props.onSubmit) {
+
+  // 如果父组件传了 onSubmit，走外部回调（兼容旧用法）
+  if (props.onSubmit) {
+    submitting.value = true;
+    try {
       await props.onSubmit({
         title: form.title,
         description: form.description,
         files: form.files.map((item: any) => item.raw || item)
       });
+      ElMessage.success(t("web.gfuc.feedback_submit_success"));
+      dialogVisible.value = false;
+    } catch {
+      ElMessage.error(t("web.gfuc.feedback_submit_failed"));
+    } finally {
+      submitting.value = false;
     }
+    return;
+  }
+
+  // 默认走直接 API 调用
+  submitting.value = true;
+  try {
+    // 1. 上传附件
+    const attachmentPaths: string[] = [];
+    for (const item of form.files) {
+      const rawFile = item.raw || item;
+      if (rawFile instanceof File || rawFile instanceof Blob) {
+        const path = await uploadFile(rawFile);
+        attachmentPaths.push(path);
+      }
+    }
+
+    // 2. 构建表单字段
+    const countryName =
+      {
+        fr: "法国",
+        de: "德国",
+        it: "意大利",
+        es: "西班牙",
+        uk: "英国",
+        at: "奥地利"
+      }[appStore.site?.toLowerCase()] ||
+      appStore.site ||
+      "";
+
+    const formFieldValues = [
+      {
+        Name: "紧急程度",
+        IsRequired: 1,
+        Type: 4,
+        Value: form.priority
+      },
+      {
+        Name: "国家",
+        IsRequired: 1,
+        Type: 1,
+        Value: countryName
+      },
+      {
+        Name: "问题描述",
+        IsRequired: 1,
+        Type: 7,
+        Value: `<p>${form.description}</p>`
+      }
+    ];
+
+    // 3. 创建工单
+    if (form.categoryId === undefined) {
+      throw new Error("categoryId is undefined");
+    }
+    await addWorkOrder({
+      Title: form.title,
+      CategoryId: form.categoryId,
+      Category: selectedCategoryName.value,
+      Attachments: attachmentPaths,
+      OrderPriority: form.priority,
+      FormFieldValues: formFieldValues,
+      source: 5,
+      staffCode: props.staffCode || userStore.userInfo?.account || "",
+      staffName: props.staffName || "",
+      IsDraft: false
+    });
+
     ElMessage.success(t("web.gfuc.feedback_submit_success"));
     dialogVisible.value = false;
-  } catch {
-    ElMessage.error(t("web.gfuc.feedback_submit_failed"));
+  } catch (e: any) {
+    console.error("提交工单失败", e);
+    ElMessage.error(e?.message || t("web.gfuc.feedback_submit_failed"));
   } finally {
     submitting.value = false;
   }
@@ -363,6 +549,30 @@ const handleRemove = () => {
     }
 
     &:focus {
+      border-color: #e66c28;
+      box-shadow: 0 0 0 3px rgb(230 108 40 / 10%);
+    }
+  }
+}
+
+// ===== Element Plus 选择器覆盖样式 =====
+:deep(.feedback-select) {
+  width: 100%;
+
+  .el-select__wrapper {
+    height: 44px;
+    border: 1px solid #dcdfe6;
+    border-radius: 10px;
+    box-shadow: none;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+
+    &:hover {
+      border-color: #e66c28;
+    }
+
+    &.is-focus {
       border-color: #e66c28;
       box-shadow: 0 0 0 3px rgb(230 108 40 / 10%);
     }
