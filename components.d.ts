@@ -13,8 +13,10 @@ declare module 'vue' {
   export interface GlobalComponents {
     AuthModal: typeof import('./src/components/AuthView/AuthModal.vue')['default']
     AuthView: typeof import('./src/components/AuthView/index.vue')['default']
+    CommonTag: typeof import('./src/components/commonTag/index.vue')['default']
     CommonTitle: typeof import('./src/components/CommonTitle/index.vue')['default']
     CommonUpload: typeof import('./src/components/CommonUpload/index.vue')['default']
+    copy: typeof import('./src/components/TableLayout copy/index.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
@@ -68,6 +70,7 @@ declare module 'vue' {
     SuccessDialog: typeof import('./src/components/SuccessDialog/index.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
     TableLayout: typeof import('./src/components/TableLayout/index.vue')['default']
+    'TableLayout copy': typeof import('./src/components/TableLayout copy/index.vue')['default']
     TimezoneSelect: typeof import('./src/components/TimezoneSelect/index.vue')['default']
   }
   export interface GlobalDirectives {

@@ -193,6 +193,7 @@ export function cancelOrder(data: {
   cancelReason?: string;
   orderId?: string;
   orderNo?: string;
+  waybillNo?: string;
   remarks?: string;
 }) {
   return request({

@@ -11,4 +11,6 @@ export interface SearchContainerProps {
   gutter?: number;
   /** 是否自动布局 */
   isAutoLayout?: boolean;
+  /** 操作按钮占几列 (默认2) */
+  operationCols?: number;
 }

@@ -8,11 +8,24 @@
         :data="tableData"
         :total="pagination.total"
         :loading="loading"
-        :searchConfig="{ cols: 3, rowNum: 1 }"
+        :searchConfig="{ cols: 4, rowNum: 1, operationCols: 2 }"
         @search="fetchData"
         @reset="handleReset"
         @selection-change="handleSelectionChange"
       >
+        <template #action-status>
+          <div class="flex gap-2">
+            <CommonTag
+              v-for="item in exceptionOrderStatusOptions"
+              :key="item.value"
+              :bg-color="item.bgColor"
+              :text-color="item.textColor"
+              :count="item.label"
+              :active="searchForm.orderStatus === item.value"
+              @click="searchForm.orderStatus = item.value"
+            />
+          </div>
+        </template>
         <template #action-left>
           <el-button
             type="primary"
@@ -26,41 +39,31 @@
 
         <template #search>
           <!-- Search Fields -->
-          <el-form-item
-            :label="$t('gfuc.tracking_number' /** 单号 **/)"
-            prop="orderNumber"
-            :span="8"
-          >
+          <el-form-item prop="orderNumber">
             <el-input
               v-model="searchForm.orderNumber"
               clearable
               :placeholder="
-                $t('web.gfuc.please_enter' /** 请输入订单号或运单号 **/)
+                $t('gfuc.please_enter' /** 请输入 **/) +
+                $t('gfuc.tracking_number' /** 单号 **/)
               "
             />
           </el-form-item>
-          <el-form-item
+          <!-- <div
             v-if="[0, 888].includes(currentStatus)"
-            :label="$t('gfuc.order_status' /** 订单状态 **/)"
-            prop="orderStatusSet"
+            class="status-tags"
           >
-            <el-select
-              v-model="searchForm.orderStatus"
-              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
-              clearable
-            >
-              <el-option
-                v-for="item in exceptionOrderStatusOptions"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              />
-            </el-select>
-          </el-form-item>
-          <el-form-item
-            :label="$t('gfuc.order_time' /** 下单时间 **/)"
-            prop="orderTimeRange"
-          >
+            <CommonTag
+              v-for="item in exceptionOrderStatusOptions"
+              :key="item.value"
+              :bg-color="item.bgColor"
+              :text-color="item.textColor"
+              :count="item.label"
+              :active="searchForm.orderStatus === item.value"
+              @click="searchForm.orderStatus = item.value"
+            />
+          </div> -->
+          <el-form-item prop="orderTimeRange">
             <el-date-picker
               v-model="searchForm.orderTimeRange"
               type="datetimerange"
@@ -74,33 +77,33 @@
               @change="handleChange"
             />
           </el-form-item>
-          <el-form-item
-            :label="$t('gfuc.recipient_postal_code' /** 收件人邮编 **/)"
-            prop="consigneeCodeList"
-          >
+          <el-form-item prop="consigneeCodeList">
             <el-input
               v-model="searchForm.consigneeCodeList"
               clearable
-              :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
+              :placeholder="
+                $t('gfuc.please_enter' /** 请输入 **/) +
+                $t('gfuc.recipient_postal_code' /** 收件人邮编 **/)
+              "
             />
           </el-form-item>
-          <el-form-item
-            :label="$t('gfuc.recipient_phone' /** 收件人电话 **/)"
-            prop="shipperCodeList"
-          >
+          <el-form-item prop="shipperCodeList">
             <el-input
               v-model="searchForm.consigneePhone"
               clearable
-              :placeholder="$t('web.gfuc.please_enter' /** 请输入 **/)"
+              :placeholder="
+                $t('gfuc.please_enter' /** 请输入 **/) +
+                $t('gfuc.recipient_phone' /** 收件人电话 **/)
+              "
             />
           </el-form-item>
-          <el-form-item
-            :label="$t('gfuc.product' /** 产品 **/)"
-            prop="productCodeList"
-          >
+          <el-form-item prop="productCodeList">
             <el-select
               v-model="searchForm.productCodeList"
-              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+              :placeholder="
+                $t('gfuc.please_select' /** 请选择 **/) +
+                $t('gfuc.product' /** 产品 **/)
+              "
               clearable
               filterable
               multiple
@@ -114,14 +117,13 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item
-            :label="$t('web.gfuc.customer_name' /** 下单客户 **/)"
-            prop="customerId"
-            v-if="customerNameList.length > 1"
-          >
+          <el-form-item prop="customerId" v-if="customerNameList.length > 1">
             <el-select
               v-model="searchForm.customerId"
-              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+              :placeholder="
+                $t('gfuc.please_select' /** 请选择 **/) +
+                $t('web.gfuc.customer_name' /** 下单客户 **/)
+              "
               clearable
               filterable
             >
@@ -149,11 +151,22 @@
             :min-width="item.minWidth || undefined"
             show-overflow-tooltip
           >
-            <template
-              #default="{ row }"
-              v-if="item.prop === 'orderConsigneeVO.address1'"
-            >
-              {{ getAddress(row.orderConsigneeVO) }}
+            <template #default="{ row }">
+              <template v-if="item.prop === 'orderStatusName'">
+                <div v-for="item in exceptionOrderStatusOptions">
+                  <CommonTag
+                    v-if="row.orderStatus === item.value"
+                    :key="item.value"
+                    :bg-color="item.bgColor"
+                    :text-color="item.textColor"
+                    :count="item.label"
+                    :active="row.orderStatus === item.value"
+                  ></CommonTag>
+                </div>
+              </template>
+              <template v-else-if="item.prop === 'orderConsigneeVO.address1'">
+                {{ getAddress(row.orderConsigneeVO) }}
+              </template>
             </template>
           </el-table-column>
 
@@ -300,17 +313,35 @@ const currentStatus = computed(() => props.status);
 
 const orderStatusDict = useDict("order_status");
 
+// 异常订单状态颜色映射
+const statusColorMap: Record<number, { bgColor: string; textColor: string }> = {
+  0: { bgColor: "#FEF3EB", textColor: "#FC4C02" },
+  1: { bgColor: "#DFEDFF", textColor: "#237BEB" },
+  2: { bgColor: "#F0F0F0", textColor: "#999" },
+  3: { bgColor: "#FFF4E1", textColor: "#F59E0B" },
+  4: { bgColor: "#FFF4E1", textColor: "#F59E0B" },
+  5: { bgColor: "#E7F5F0", textColor: "#02B578" },
+  888: { bgColor: "#FFE1E4", textColor: "#FF0014" },
+  999: { bgColor: "#FFE1E4", textColor: "#FF0014" }
+};
+
 // 异常订单状态
 const exceptionOrderStatusOptions = computed(() => {
-  let arr = [];
+  let arr: any[] = [];
   if (currentStatus.value === 0) {
-    arr = orderStatusDict.options.value;
+    arr = orderStatusDict.options.value.filter(
+      (item: any) => ![6, 7, 8].includes(item.value)
+    );
   } else if (currentStatus.value === 888) {
     arr = orderStatusDict.options.value.filter((item: any) =>
       [6, 7, 8].includes(item.value)
     );
   }
-  return arr;
+  return arr.map((item: any) => ({
+    ...item,
+    bgColor: statusColorMap[item.value]?.bgColor || "#f5f5f5",
+    textColor: statusColorMap[item.value]?.textColor || "#333"
+  }));
 });
 
 const columns = computed(() => [
@@ -332,7 +363,7 @@ const columns = computed(() => [
   {
     prop: "orderStatusName",
     label: "gfuc.order_status",
-    width: columnWidth(100, 160, 220, 200, 160, 160)
+    width: columnWidth(120, 160, 220, 200, 160, 160)
   },
   {
     prop: "orderConsigneeVO.consigneeName",
@@ -363,7 +394,7 @@ const loading = ref(false);
 // 初始表单状态
 const initialFormState = {
   orderNumber: "",
-  orderStatus: "",
+  orderStatus: 0,
   orderStatusSet: [],
   orderSource: undefined,
   consigneeCodeList: "",
@@ -748,7 +779,7 @@ const formatTypeParam = () => {
       setDefaultRange(7);
     }
   } else {
-    searchForm.orderStatus = "";
+    searchForm.orderStatus = 0;
   }
 };
 
@@ -761,9 +792,23 @@ watch(
     fetchData();
   }
 );
+
+watch(
+  () => searchForm.orderStatus,
+  () => {
+    fetchData();
+  }
+);
 </script>
 
 <style lang="scss" scoped>
+.status-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
 .table-actions {
   display: flex;
   gap: 8px;
@@ -777,7 +822,7 @@ watch(
 
 .order-content {
   flex: 1;
-  height: calc(100vh - 200px);
+  height: calc(100vh - 148px);
   overflow: hidden;
 }
 </style>

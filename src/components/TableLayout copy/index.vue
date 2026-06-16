@@ -12,14 +12,13 @@
           <template #action-left>
             <slot name="action-left"></slot>
           </template>
+          <template #order-number v-if="hasOrderNumberSlot">
+            <slot name="order-number"></slot>
+          </template>
 
           <slot name="search"></slot>
         </SearchContainer>
-        <slot name="action-status"></slot>
       </el-form>
-    </div>
-    <div class="status-bar" v-if="$slots['status-bar']">
-      <slot name="status-bar"></slot>
     </div>
     <div
       class="table-toolbar"
@@ -77,6 +76,8 @@ defineOptions({
 
 const slots = useSlots();
 
+const hasOrderNumberSlot = computed(() => !!slots["order-number"]);
+
 // 1. 使用 TS 定义 Props 及其默认值
 const props = withDefaults(defineProps<TableLayoutProps>(), {
   data: () => [],
@@ -131,7 +132,6 @@ const { state: initialForm, reset: resetForm } = useResetableRef(
 
 const mergeSearchFormConfig = computed(() => ({
   labelPosition: "top" as const,
-  labelWidth: 0,
   ...props.searchFormConfig
 }));
 const mergeTableConfig = computed(() => ({
@@ -189,10 +189,6 @@ const handleReset = async () => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.status-bar {
-  margin-top: 16px;
 }
 
 .table-main {

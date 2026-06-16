@@ -8,30 +8,30 @@
         :data="tableData"
         :total="pagination.total"
         :loading="loading"
-        :searchConfig="{ cols: 3, rowNum: 1 }"
+        :searchConfig="{ cols: 4, rowNum: 1, operationCols: 2 }"
         @search="fetchData"
         @reset="handleReset"
       >
         <template #search>
           <!-- Search Fields -->
           <!-- task_type task_status -->
-          <el-form-item
-            :label="$t('web.gfuc.file_name' /** 文件名称 **/)"
-            prop="fileName"
-          >
+          <el-form-item prop="fileName">
             <el-input
               v-model="searchForm.fileName"
-              :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
+              :placeholder="
+                $t('gfuc.please_enter' /** 请输入 **/) +
+                $t('web.gfuc.file_name' /** 文件名称 **/)
+              "
               clearable
             />
           </el-form-item>
-          <el-form-item
-            :label="$t('web.gfuc.type' /** 类型 **/)"
-            prop="taskType"
-          >
+          <el-form-item prop="taskType">
             <el-select
               v-model="searchForm.taskTypeSet"
-              :placeholder="$t('web.gfuc.please_select' /** 请选择 **/)"
+              :placeholder="
+                $t('gfuc.please_select' /** 请选择 **/) +
+                $t('web.gfuc.type' /** 类型 **/)
+              "
               clearable
               multiple
               collapse-tags
@@ -44,13 +44,13 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item
-            :label="$t('gfuc.status' /** 状态 **/)"
-            prop="taskStatus"
-          >
+          <el-form-item prop="taskStatus">
             <el-select
               v-model="searchForm.taskStatusSet"
-              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+              :placeholder="
+                $t('gfuc.please_select' /** 请选择 **/) +
+                $t('gfuc.status' /** 状态 **/)
+              "
               clearable
               multiple
               collapse-tags
@@ -63,10 +63,7 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item
-            :label="$t('gfuc.order_time' /** 操作时间 **/)"
-            prop="orderTimeRange"
-          >
+          <el-form-item prop="orderTimeRange">
             <el-date-picker
               v-model="searchForm.orderTimeRange"
               type="datetimerange"
@@ -80,14 +77,13 @@
               @change="handleChange"
             />
           </el-form-item>
-          <el-form-item
-            :label="$t('web.gfuc.customer_name' /** 下单客户 **/)"
-            prop="customerId"
-            v-if="customerNameList.length > 1"
-          >
+          <el-form-item prop="customerId" v-if="customerNameList.length > 1">
             <el-select
               v-model="searchForm.customerIdList"
-              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+              :placeholder="
+                $t('gfuc.please_select' /** 请选择 **/) +
+                $t('web.gfuc.customer_name' /** 下单客户 **/)
+              "
               clearable
               filterable
               multiple
@@ -130,7 +126,7 @@
             align="center"
           >
             <template #default="{ row, index }">
-              <div class="flex gap-2 justify-center table-actions">
+              <div class="flex justify-center gap-2 table-actions">
                 <!-- <el-tooltip
                   :content="$t('web.gfuc.view_order')"
                   placement="top"

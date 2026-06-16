@@ -8,7 +8,7 @@
         :data="tableData"
         :total="pagination.total"
         :loading="loading"
-        :searchConfig="{ cols: 3, rowNum: 1 }"
+        :searchConfig="{ cols: 4, rowNum: 1, operationCols: 2 }"
         @search="fetchData"
         @reset="handleReset"
         @selection-change="handleSelectionChange"
@@ -25,26 +25,21 @@
 
         <template #search>
           <!-- Search Fields -->
-          <el-form-item
-            :label="$t('gfuc.tracking_number' /** 单号 **/)"
-            prop="waybillNo"
-            :span="8"
-          >
+          <el-form-item prop="waybillNo">
             <el-input
               v-model="searchForm.waybillNo"
               clearable
               :placeholder="
-                $t('web.gfuc.please_enter' /** 请输入订单号或运单号 **/)
+                $t('gfuc.tracking_number' /** 请输入订单号或运单号 **/)
               "
             />
           </el-form-item>
-          <el-form-item
-            :label="$t('web.gfuc.settlement_cycle' /** 结算周期 **/)"
-            prop="cycle"
-          >
+          <el-form-item prop="cycle">
             <el-select
               v-model="searchForm.cycle"
-              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+              :placeholder="
+                $t('web.gfuc.settlement_cycle' /** 请选择结算周期 **/)
+              "
               clearable
               @change="handleCycleChange"
             >
@@ -56,10 +51,7 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item
-            :label="$t('web.gfuc.account_period' /** 账期 **/)"
-            prop="dateValue"
-          >
+          <el-form-item prop="dateValue">
             <!-- 半月结 -->
             <template v-if="searchForm.cycle == 1">
               <div class="flex items-center w-full gap-2">
@@ -68,7 +60,9 @@
                   type="week"
                   format="YYYY-MM"
                   value-format="YYYY-MM"
-                  :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+                  :placeholder="
+                    $t('web.gfuc.account_period' /** 请选择账期 **/)
+                  "
                   class="flex-2"
                   @change="halfMonthChange"
                 />
@@ -94,7 +88,7 @@
                 type="month"
                 value-format="YYYY-MM"
                 format="YYYY-MM"
-                :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+                :placeholder="$t('web.gfuc.account_period' /** 请选择账期 **/)"
                 style="width: 100%"
                 @change="monthChange"
               />
@@ -106,7 +100,7 @@
                 type="week"
                 format="YYYY[w]ww"
                 value-format="YYYY-MM-ww"
-                :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+                :placeholder="$t('web.gfuc.account_period' /** 请选择账期 **/)"
                 style="width: 100%"
                 @change="weekChange"
               />
@@ -117,29 +111,27 @@
                 type="week"
                 format="YYYY[w]ww"
                 value-format="YYYY-MM-ww"
-                :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+                :placeholder="$t('web.gfuc.account_period' /** 请选择账期 **/)"
                 style="width: 100%"
                 disabled
               />
             </template>
           </el-form-item>
-          <el-form-item
-            :label="$t('web.gfuc.account_number' /** 账单编号 **/)"
-            prop="number"
-          >
+          <el-form-item prop="number">
             <el-input
               v-model="searchForm.number"
               clearable
-              :placeholder="$t('gfuc.please_enter' /** 请输入 **/)"
+              :placeholder="
+                $t('web.gfuc.account_number' /** 请输入账单编号 **/)
+              "
             />
           </el-form-item>
-          <el-form-item
-            :label="$t('web.gfuc.account_status' /** 账单状态 **/)"
-            prop="billStatusList"
-          >
+          <el-form-item prop="billStatusList">
             <el-select
               v-model="searchForm.billStatusList"
-              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+              :placeholder="
+                $t('web.gfuc.account_status' /** 请选择账单状态 **/)
+              "
               clearable
               filterable
               multiple
@@ -153,13 +145,12 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item
-            :label="$t('web.gfuc.invoice_status' /** 开票状态 **/)"
-            prop="invoiceStatusList"
-          >
+          <el-form-item prop="invoiceStatusList">
             <el-select
               v-model="searchForm.invoiceStatusList"
-              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+              :placeholder="
+                $t('web.gfuc.invoice_status' /** 请选择开票状态 **/)
+              "
               clearable
               filterable
               multiple
@@ -174,13 +165,12 @@
             </el-select>
           </el-form-item>
           <el-form-item
-            :label="$t('web.gfuc.customer_name' /** 下单客户 **/)"
             prop="customerIdList"
             v-if="customerNameList.length > 1"
           >
             <el-select
               v-model="searchForm.customerIdList"
-              :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+              :placeholder="$t('web.gfuc.customer_name' /** 请选择下单客户 **/)"
               clearable
               filterable
               multiple
