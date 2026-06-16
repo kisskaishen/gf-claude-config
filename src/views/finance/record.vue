@@ -4,6 +4,7 @@
       v-model:searchFormModel="searchForm"
       :data="tableData"
       :total="total"
+      :searchConfig="{ cols: 3, rowNum: 2, operationCols: 1 }"
       v-model:currentPage="currentPage"
       v-model:pageSize="pageSize"
       :loading="loading"
@@ -12,13 +13,10 @@
     >
       <!-- 搜索区域 -->
       <template #search>
-        <el-form-item
-          :label="$t('gfuc.payment_method' /** 付款方式 **/)"
-          prop="paymentMethod"
-        >
+        <el-form-item prop="paymentMethod">
           <el-select
             v-model="searchForm.paymentMethod"
-            :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+            :placeholder="$t('gfuc.payment_method' /** 付款方式 **/)"
             clearable
             :options="receiptMethodDict.options.value"
             multiple
@@ -27,10 +25,10 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item :label="$t('gfuc.status' /** 状态 **/)" prop="status">
+        <el-form-item prop="status">
           <el-select
             v-model="searchForm.status"
-            :placeholder="$t('gfuc.please_select' /** 请选择 **/)"
+            :placeholder="$t('gfuc.status' /** 状态 **/)"
             multiple
             collapse-tags
             clearable
@@ -39,25 +37,28 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item
-          class="date-range-item"
-          :class="lang === 'nl' ? 'date-range-item-nl' : ''"
-        >
-          <template #label>
-            <el-radio-group
+        <el-form-item prop="dateType">
+          <div class="flex items-center w-full gap-1">
+            <el-select
               v-model="searchForm.dateType"
-              :options="dateTypeOptions"
+              style="width: 180px; border-right: 0"
             >
-            </el-radio-group>
-          </template>
-          <el-date-picker
-            v-model="searchForm.dateRange"
-            type="daterange"
-            :start-placeholder="$t('gfuc.start_date' /** 开始日期 **/)"
-            :end-placeholder="$t('gfuc.end_date' /** 结束日期 **/)"
-            value-format="YYYY-MM-DD"
-            :fallback-placements="['bottom']"
-          />
+              <el-option
+                v-for="item in dateTypeOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+            <el-date-picker
+              v-model="searchForm.dateRange"
+              type="daterange"
+              :start-placeholder="$t('gfuc.start_date' /** 开始日期 **/)"
+              :end-placeholder="$t('gfuc.end_date' /** 结束日期 **/)"
+              value-format="YYYY-MM-DD"
+              :fallback-placements="['bottom']"
+            />
+          </div>
         </el-form-item>
       </template>
 
