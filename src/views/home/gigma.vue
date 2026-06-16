@@ -312,10 +312,7 @@
     </div>
 
     <!-- 用户反馈弹框 -->
-    <FeedbackDialog
-      v-model:visible="feedbackVisible"
-      :on-submit="handleSubmitFeedback"
-    />
+    <FeedbackDialog v-model:visible="feedbackVisible" />
   </div>
 </template>
 
@@ -356,15 +353,6 @@ const handleOpenFeedback = () => {
   feedbackVisible.value = true;
 };
 
-const handleSubmitFeedback = async (data: {
-  title: string;
-  description: string;
-  files: any[];
-}) => {
-  // TODO: 调用反馈接口
-  // await submitFeedback(data);
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-};
 const dataLoaded = ref(false);
 
 const fetchHomeData = async () => {

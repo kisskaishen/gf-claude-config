@@ -23,6 +23,7 @@
         :on-exceed="handleExceed"
         :on-preview="handlePreview"
         :http-request="customHttpRequest"
+        :on-change="handleChange"
         v-bind="$attrs"
       >
         <!-- 上传按钮区域：虚线框样式 -->
@@ -703,6 +704,11 @@ const handleError = (error, file, fileListData) => {
     ElMessage.error(`${file.name} ${t("web.gfuc.upload_failed")}`);
   }
   emit("error", error, file, fileListData);
+};
+
+// 文件列表变化（auto-upload=false 时靠此事件同步文件列表）
+const handleChange = (file, fileListData) => {
+  fileList.value = fileListData;
 };
 
 // 移除文件

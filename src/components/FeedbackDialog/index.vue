@@ -40,43 +40,6 @@
         />
       </div>
 
-      <!-- 工单分类 -->
-      <div class="form-group">
-        <label class="form-label">
-          工单分类
-          <span class="required">*</span>
-        </label>
-        <el-select
-          v-model="form.categoryId"
-          placeholder="请选择工单分类"
-          class="feedback-select"
-          filterable
-          clearable
-          :loading="categoryLoading"
-        >
-          <el-option
-            v-for="item in flatCategories"
-            :key="item.id"
-            :label="item.label"
-            :value="item.id"
-          />
-        </el-select>
-      </div>
-
-      <!-- 紧急程度 -->
-      <div class="form-group">
-        <label class="form-label">紧急程度</label>
-        <el-select
-          v-model="form.priority"
-          placeholder="请选择紧急程度"
-          class="feedback-select"
-        >
-          <el-option label="低" value="低" />
-          <el-option label="中" value="中" />
-          <el-option label="高" value="高" />
-        </el-select>
-      </div>
-
       <!-- 描述 -->
       <div class="form-group">
         <label class="form-label">
@@ -106,11 +69,12 @@
           :http-request="customHttpRequest"
           type="image"
           :limit="6"
+          :max-size="10"
+          accept=".jpg,.jpeg,.png,.gif"
           drag
           :multiple="true"
           :list-type="'picture-card'"
           :show-file-list="true"
-          :auto-upload="false"
           :need-front-msg="false"
           :button-text="$t('web.gfuc.feedback_upload_drag_hint')"
           :hint="$t('web.gfuc.feedback_upload_hint')"
@@ -144,12 +108,7 @@ import { useI18n } from "vue-i18n";
 import { useAppStore } from "@/store/app";
 import { useUserStore } from "@/store/user";
 import CommonUpload from "@/components/CommonUpload/index.vue";
-import {
-  getWorkOrderCategory,
-  uploadWorkOrderAttachment,
-  addWorkOrder
-} from "@/api/home";
-import type { WorkOrderCategoryItem } from "@/api/home";
+import { uploadWorkOrderAttachment, addWorkOrder } from "@/api/home";
 
 const { t } = useI18n();
 const appStore = useAppStore();
@@ -157,7 +116,6 @@ const userStore = useUserStore();
 
 const props = defineProps<{
   visible: boolean;
-  categoryId?: number; // 可选：默认分类ID
   staffCode?: string; // 员工编号（默认取自登录账号）
   staffName?: string; // 员工姓名
   onSubmit?: (data: {
@@ -174,56 +132,12 @@ const emit = defineEmits<{
 const uploadRef = ref<InstanceType<typeof CommonUpload> | null>(null);
 const submitting = ref(false);
 const dialogVisible = ref(false);
-const categoryLoading = ref(false);
-const categories = ref<WorkOrderCategoryItem[]>([]);
 
 const form = reactive({
   title: "",
   description: "",
-  categoryId: undefined as number | undefined,
-  priority: "低" as string,
   files: [] as any[]
 });
-
-// 将树形分类展平为一级选项
-const flatCategories = computed(() => {
-  const flatten = (
-    items: WorkOrderCategoryItem[],
-    parentName = ""
-  ): { id: number; label: string }[] => {
-    const result: { id: number; label: string }[] = [];
-    for (const item of items) {
-      const label = parentName ? `${parentName} / ${item.name}` : item.name;
-      if (item.children && item.children.length > 0) {
-        result.push(...flatten(item.children, label));
-      } else {
-        result.push({ id: item.id, label });
-      }
-    }
-    return result;
-  };
-  return flatten(categories.value);
-});
-
-// 根据选中的分类ID获取分类完整路径名
-const selectedCategoryName = computed(() => {
-  if (!form.categoryId) return "";
-  const item = flatCategories.value.find((c) => c.id === form.categoryId);
-  return item?.label || "";
-});
-
-// 获取工单分类
-const fetchCategories = async () => {
-  categoryLoading.value = true;
-  try {
-    const res = await getWorkOrderCategory();
-    categories.value = res || [];
-  } catch (e) {
-    console.error("获取工单分类失败", e);
-  } finally {
-    categoryLoading.value = false;
-  }
-};
 
 watch(
   () => props.visible,
@@ -231,7 +145,6 @@ watch(
     dialogVisible.value = val;
     if (val) {
       resetForm();
-      fetchCategories();
     }
   }
 );
@@ -241,18 +154,12 @@ watch(dialogVisible, (val) => {
 });
 
 const isFormValid = computed(() => {
-  return (
-    form.title.trim().length > 0 &&
-    form.description.trim().length > 0 &&
-    form.categoryId !== undefined
-  );
+  return form.title.trim().length > 0 && form.description.trim().length > 0;
 });
 
 const resetForm = () => {
   form.title = "";
   form.description = "";
-  form.categoryId = props.categoryId;
-  form.priority = "低";
   form.files = [];
 };
 
@@ -264,11 +171,12 @@ const handleClosed = () => {
   resetForm();
 };
 
-// 上传单个文件，返回附件路径
-const uploadFile = async (file: File): Promise<string> => {
+// 自定义上传请求：选择图片后立即调用上传接口
+const customHttpRequest = async (options: any) => {
   const formData = new FormData();
-  formData.append("file", file);
-  return await uploadWorkOrderAttachment(formData);
+  formData.append("file", options.file);
+  const path = await uploadWorkOrderAttachment(formData);
+  return path;
 };
 
 const handleSubmit = async () => {
@@ -277,8 +185,6 @@ const handleSubmit = async () => {
       ElMessage.error(t("web.gfuc.please_input_feedback_title"));
     } else if (!form.description.trim()) {
       ElMessage.error(t("web.gfuc.please_input_feedback_description"));
-    } else if (form.categoryId === undefined) {
-      ElMessage.error("请选择工单分类");
     }
     return;
   }
@@ -305,13 +211,11 @@ const handleSubmit = async () => {
   // 默认走直接 API 调用
   submitting.value = true;
   try {
-    // 1. 上传附件
+    // 1. 从已上传的文件中取附件路径（customHttpRequest 上传后返回的路径在 item.response 中）
     const attachmentPaths: string[] = [];
     for (const item of form.files) {
-      const rawFile = item.raw || item;
-      if (rawFile instanceof File || rawFile instanceof Blob) {
-        const path = await uploadFile(rawFile);
-        attachmentPaths.push(path);
+      if (item.response) {
+        attachmentPaths.push(item.response);
       }
     }
 
@@ -330,12 +234,6 @@ const handleSubmit = async () => {
 
     const formFieldValues = [
       {
-        Name: "紧急程度",
-        IsRequired: 1,
-        Type: 4,
-        Value: form.priority
-      },
-      {
         Name: "国家",
         IsRequired: 1,
         Type: 1,
@@ -350,15 +248,12 @@ const handleSubmit = async () => {
     ];
 
     // 3. 创建工单
-    if (form.categoryId === undefined) {
-      throw new Error("categoryId is undefined");
-    }
     await addWorkOrder({
       Title: form.title,
-      CategoryId: form.categoryId,
-      Category: selectedCategoryName.value,
+      CategoryId: 0,
+      Category: "",
       Attachments: attachmentPaths,
-      OrderPriority: form.priority,
+      OrderPriority: "",
       FormFieldValues: formFieldValues,
       source: 5,
       staffCode: props.staffCode || userStore.userInfo?.account || "",
@@ -374,11 +269,6 @@ const handleSubmit = async () => {
   } finally {
     submitting.value = false;
   }
-};
-
-// 自定义上传请求（auto-upload=false 时不会被调用，为后续扩展预留）
-const customHttpRequest = (_options: any) => {
-  return null;
 };
 
 // 文件移除回调（v-model 已双向同步，此方法可处理额外逻辑）
