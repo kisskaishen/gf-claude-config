@@ -18,6 +18,17 @@ scope: 所有源文件
 | [Vue 3 组件开发约定](vue-conventions.md)   | 所有 `.vue` 文件 | ⭐ 推荐  |
 | [TypeScript 编码规范](typescript-rules.md) | 所有 `.ts` 文件  | ⭐ 推荐  |
 | [Git 工作流程与提交规范](git-workflow.md)  | 所有 Git 操作    | 🔴 必须  |
+| [自测报告](qa-report.md)                   | 文档与规则审计   | 📋 报告  |
+
+## 新增编码约束（参考 `.cursor/rules/`）
+
+| 规则                                                        | 说明                                                 | 强制程度 |
+| ----------------------------------------------------------- | ---------------------------------------------------- | -------- |
+| [分层解耦](../../.cursor/rules/layer-separation.mdc)        | 组件、样式、请求、工具函数强制分离，禁止业务逻辑混写 | 🔴 必须  |
+| [类型约束](../../.cursor/rules/type-constraints.mdc)        | 禁止隐式 any，必须定义完整接口类型                   | 🔴 必须  |
+| [组件复用](../../.cursor/rules/component-reuse.mdc)         | 重复 UI 模块必须封装通用组件，禁止复制粘贴代码       | 🔴 必须  |
+| [性能量化](../../.cursor/rules/performance.mdc)             | 渲染和请求逻辑必须附带性能优化指标                   | 🟡 推荐  |
+| [兼容性约束](../../.cursor/rules/browser-compatibility.mdc) | 产出代码需标注适配浏览器/设备最低版本                | 🟡 推荐  |
 
 ## 总则
 

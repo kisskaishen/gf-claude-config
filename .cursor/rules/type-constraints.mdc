@@ -1,0 +1,188 @@
+---
+description: 类型约束规则 — TS 项目禁止隐式 any，所有函数参数、返回值、API 响应必须定义完整接口类型
+globs: src/**/*.ts
+alwaysApply: true
+---
+
+# 类型约束规则
+
+## 核心原则
+
+**禁止隐式 any。** 项目中 `strict: true` 已启用，编译器会检查大多数隐式 any。以下规则是代码层面的补充约束。
+
+## 1. 所有函数必须有完整类型签名
+
+```typescript
+// ✅ 正确 — 参数和返回值都有完整类型
+export function formatAmount(value: number, locale: string): string {
+  return new Intl.NumberFormat(locale).format(value)
+}
+
+// ❌ 错误 — 缺少返回值类型
+export function formatAmount(value: number) {
+  return new Intl.NumberFormat(locale).format(value)
+}
+
+// ❌ 错误 — 参数隐式 any
+export function formatAmount(value) {
+  return value.toLocaleString()
+}
+```
+
+## 2. API 响应必须有完整类型定义
+
+### 请求参数类型
+
+```typescript
+// ✅ 必须定义每个字段的类型
+export interface OrderListParams {
+  keyword?: string
+  status?: number | string
+  pageNum: number
+  pageSize: number
+  startDate?: string
+  endDate?: string
+  siteCode?: string
+}
+```
+
+### 响应数据类型
+
+```typescript
+// ✅ 必须定义每个返回字段
+export interface OrderItem {
+  id: string
+  orderNo: string
+  status: number
+  statusName: string
+  customerName: string
+  totalAmount: number
+  createTime: string
+  productList?: ProductItem[]
+}
+
+// ❌ 错误 — 使用 Record<string, any> 或空对象
+export interface OrderItem {
+  [key: string]: any       // ← 禁止
+}
+```
+
+## 3. 禁止滥用 `any` 的场景
+
+```typescript
+// ❌ 错误 — 用 any 逃避类型检查
+function transform(data: any) {        // ← 禁止
+  return data.map((x: any) => x.name)  // ← 禁止
+}
+
+// ✅ 正确 — 使用泛型
+function transform<T extends { name: string }>(data: T[]): string[] {
+  return data.map(x => x.name)
+}
+
+// ✅ 正确 — 使用 unknown 代替 any（先判断再使用）
+function process(data: unknown) {
+  if (Array.isArray(data)) {
+    return data.length
+  }
+  return 0
+}
+```
+
+### 唯一允许使用 any 的场景
+
+```typescript
+// ⚠️ 仅在泛型工具类型中可使用 any（需注释说明）
+// 通用响应类型（已有定义，直接沿用）
+export interface Result<T = any> {      // ← ⚠️ 允许：通用的泛型兜底
+  code: number
+  status: number
+  message: string
+  data: T
+}
+```
+
+## 4. 枚举和常量使用类型安全定义
+
+```typescript
+// ✅ 使用枚举
+export enum OrderStatus {
+  PENDING = 0,
+  PROCESSING = 1,
+  COMPLETED = 2,
+  CANCELLED = -1,
+}
+
+// ✅ 使用 const 对象 + type（enum 的替代方案）
+export const ORDER_STATUS = {
+  PENDING: 0,
+  PROCESSING: 1,
+  COMPLETED: 2,
+} as const
+
+export type OrderStatusType = (typeof ORDER_STATUS)[keyof typeof ORDER_STATUS]
+```
+
+## 5. 组件 Props 和 Emits 必须有完整类型
+
+```typescript
+// ✅ 必须定义 Props 接口
+interface TableLayoutProps {
+  data: any[]
+  loading?: boolean
+  total?: number
+  pageNum?: number
+  pageSize?: number
+}
+
+const props = withDefaults(defineProps<TableLayoutProps>(), {
+  data: () => [],
+  loading: false,
+})
+
+// ✅ 必须定义 Emits 类型
+const emit = defineEmits<{
+  (e: "update:pageNum", value: number): void
+  (e: "search", filters: Record<string, any>): void
+}>()
+```
+
+## 6. 禁止类型断言逃避检查
+
+```typescript
+// ❌ 错误 — 用 as 掩盖类型错误
+const data = response.data as any          // ← 禁止
+const list = rawData as OrderItem[]        // ← 如果 rawData 不确定，应先做类型守卫
+
+// ✅ 正确 — 使用类型守卫
+function isOrderItem(data: unknown): data is OrderItem {
+  return typeof data === "object" && data !== null && "id" in data
+}
+
+if (isOrderItem(rawData)) {
+  console.log(rawData.id)  // 类型已收窄
+}
+```
+
+## 7. 通用的类型定义放在独立文件
+
+```typescript
+// ✅ 跨模块复用的类型提到独立文件（或集中管理）
+// src/types/order.ts
+export interface OrderListParams { ... }
+export interface OrderItem { ... }
+export interface OrderDetailResult { ... }
+
+// ✅ 页面级别的类型就近定义在文件顶部
+// src/api/order.ts — 仅在 order API 中使用
+interface InternalTransformParams { ... }
+```
+
+## 代码审查清单
+
+- [ ] 是否有未标注类型的函数参数？
+- [ ] 是否有 `as any` 或显式 `any` 类型？（除了 Result<T> 的泛型兜底）
+- [ ] API 请求参数和响应是否都有完整接口？
+- [ ] 组件 Props/Emits 是否都有类型定义？
+- [ ] 枚举/常量是否使用 `as const` 或 enum？
+- [ ] 是否用 `unknown` 替代了 `any`？

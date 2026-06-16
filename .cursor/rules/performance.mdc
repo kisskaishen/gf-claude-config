@@ -1,0 +1,166 @@
+---
+description: 性能量化规则 — 渲染逻辑和请求逻辑必须附带性能指标约束，禁止无节制的重复渲染和无效请求
+globs: src/**/*.{ts,vue}
+alwaysApply: true
+---
+
+# 性能量化规则
+
+## 性能指标基线
+
+| 指标 | 目标值 | 测量方式 |
+|------|-------|---------|
+| 页面首次渲染（FCP） | ≤ 1.5s | Lighthouse / DevTools |
+| API 响应后列表渲染 | ≤ 200ms | console.time / 性能面板 |
+| 搜索/筛选响应 | ≤ 300ms | 用户感知延迟 |
+| 列表滚动帧率 | ≥ 50fps | DevTools Performance |
+| 单次无用重复渲染 | **0 次** | Vue Devtools 组件高亮 |
+
+## 渲染性能规则
+
+### 1. 列表渲染必须指定 key
+
+```vue
+// ✅ 正确 — 每行指定唯一 key
+<el-table-column v-for="col in columns" :key="col.prop">
+</el-table-column>
+
+// ❌ 错误 — index 作为 key 会导致重用问题
+<el-table-column v-for="(col, idx) in columns" :key="idx">
+```
+
+### 2. 大数据列表必须使用虚拟滚动
+
+```vue
+// 超过 100 行的表格/列表必须启用虚拟滚动
+// 方案一：ElTableV2（Element Plus 虚拟表格）
+// 方案二：分页（每页 ≤ 100 条）
+
+// ✅ 有分页控制的列表
+<TableLayout :data="tableData" :page-size="20" :total="total" />
+```
+
+### 3. 避免不必要的计算属性重复计算
+
+```typescript
+// ✅ 正确 — 使用 computed 缓存派生数据
+const filteredList = computed(() => {
+  return rawList.value.filter(item => item.status === filterStatus.value)
+})
+
+// ❌ 错误 — 方法在每次渲染都重新计算
+function getFilteredList() {
+  return rawList.value.filter(item => item.status === filterStatus.value)
+}
+```
+
+### 4. watch 必须量化范围
+
+```typescript
+// ✅ 正确 — 监听具体字段而非整个对象
+watch(() => searchForm.value.status, (val) => {
+  handleSearch()
+})
+
+// ❌ 错误 — 深监听整个对象，每次键盘输入都触发搜索
+watch(searchForm, () => { handleSearch() }, { deep: true })
+```
+
+### 5. 组件按需加载
+
+```typescript
+// ✅ 正确 — 路由级别懒加载
+const OrderDetail = () => import("@/views/order/detail.vue")
+
+// ✅ 正确 — 条件渲染用 v-if 而非 v-show（减少初始渲染 DOM 量）
+<HeavyChart v-if="showChart" />
+```
+
+### 6. 避免不必要的侦听器
+
+```typescript
+// ❌ 注意：以下模式会导致不必要的 watch 触发
+// 如果只是展示数据，无需 watch
+watch(list, () => {}, { deep: true })  // 大数组深监听 → 卡顿
+
+// ✅ 只在需要响应变化时使用 watch
+// 用 computed 替代纯派生场景
+```
+
+## 请求性能规则
+
+### 1. 搜索防抖
+
+```typescript
+// ✅ 搜索输入必须防抖（300ms）
+import { debounce } from "lodash-es"
+
+const handleSearch = debounce(() => {
+  fetchList()
+}, 300)
+```
+
+### 2. 避免重复请求
+
+```typescript
+// ✅ 使用 AbortController 取消上一个请求
+let controller: AbortController | null = null
+
+async function fetchList(params: any) {
+  controller?.abort()
+  controller = new AbortController()
+  return request({ url: "/oms/list", method: "post", data: params, signal: controller.signal })
+}
+```
+
+### 3. 字典/静态数据缓存
+
+```typescript
+// ✅ 使用 useDict hook（已实现缓存）
+// useDict 内部已处理重复请求合并
+const { dictList } = useDict("order_type")
+
+// ❌ 错误 — 每次进入页面都重复请求字典
+onMounted(() => { getDictList("order_type") })
+onMounted(() => { getDictList("order_type") })
+```
+
+## 代码注释规范
+
+### 关键渲染路径添加性能注释
+
+```vue
+<template>
+  <!-- CRITICAL: 列表渲染，100 行以内，预估 50ms -->
+  <el-table :data="tableData" />
+
+  <!-- DEFERRED: 统计图表，等列表渲染完成后再加载 -->
+  <ChartSection v-if="loaded" />
+</template>
+```
+
+### 性能标注格式
+
+```typescript
+// PERF: 使用 computed 避免每次渲染重新筛选
+const filteredItems = computed(() => { ... })
+
+// PERF: debounce 300ms 减少搜索请求频率
+const onSearch = debounce(fetchList, 300)
+
+// PERF: 仅 watch status 字段而非整个 form
+watch(() => form.value.status, handler)
+```
+
+## 性能审查清单
+
+提交代码前检查以下项目：
+
+- [ ] 列表渲染是否指定了唯一 `:key`
+- [ ] 搜索/输入是否有防抖
+- [ ] 大列表是否分页（每页 ≤ 100）
+- [ ] watch 是否监听了最小范围
+- [ ] 是否避免了不必要的深监听（deep: true）
+- [ ] 路由/大组件是否懒加载
+- [ ] 重复 API 请求是否缓存或去重
+- [ ] computed 是否替代了方法调用

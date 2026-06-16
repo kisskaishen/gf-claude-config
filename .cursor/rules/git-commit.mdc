@@ -1,7 +1,7 @@
 ---
 description: Git 提交规范 — 提交信息格式、分支策略、Husky 检查流程
-globs:
-alwaysApply: false
+globs: *
+alwaysApply: true
 ---
 
 # Git 提交规范

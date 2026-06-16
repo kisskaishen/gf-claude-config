@@ -16,17 +16,19 @@ priority: high
 
 ```
 docs/
-├── README.md                    # 本文档
-├── standards/                   # ⚖️ 编码规范与规则
-│   ├── README.md                #   规范总览
-│   ├── vue-conventions.md       #   Vue 3 组件开发约定
-│   ├── typescript-rules.md      #   TypeScript 编码规范
-│   └── git-workflow.md          #   Git 工作流程与提交规范
-└── skills/                      # 🔧 技能库 — 常用操作指南
-    ├── README.md                #   技能库说明
-    ├── api-calls.md             #   API 调用模式
-    ├── state-management.md      #   状态管理（Pinia）指南
-    └── component-guide.md       #   组件开发指南
+├── [README.md](.)                              # 本文档
+├── standards/                                   # ⚖️ 编码规范与规则
+│   ├── [README.md](standards/README.md)         #   规范总览
+│   ├── [vue-conventions.md](standards/vue-conventions.md)       #   Vue 3 组件开发约定
+│   ├── [typescript-rules.md](standards/typescript-rules.md)     #   TypeScript 编码规范
+│   └── [git-workflow.md](standards/git-workflow.md)             #   Git 工作流程与提交规范
+└── skills/                                      # 🔧 技能库 — 常用操作指南
+    ├── [README.md](skills/README.md)            #   技能库说明
+    ├── [api-calls.md](skills/api-calls.md)      #   API 调用模式
+    ├── [state-management.md](skills/state-management.md)       #   状态管理（Pinia）指南
+    ├── [component-guide.md](skills/component-guide.md)         #   组件开发指南
+    ├── [ui-fidelity-implementation.md](skills/ui-fidelity-implementation.md)  #   UI 高保真还原
+    └── [automated-testing.md](skills/automated-testing.md)     #   自动化测试
 ```
 
 ## 使用方式

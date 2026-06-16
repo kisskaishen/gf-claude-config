@@ -1,0 +1,3 @@
+# 高保真自测 - 参考图目录
+# 将 Figma 设计稿截图放在这里，命名格式: <page-name>.png
+# 然后在 verify-fidelity 时引用: --ref=scripts/fidelity/refs/<page-name>.png
