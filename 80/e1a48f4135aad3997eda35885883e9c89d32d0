@@ -1,0 +1,19 @@
+src/views/order/components/ParcelInfo.vue
+  s_79a5c9e0e0858c::t_bd207779f7b1b9 447
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "80e1a48f4135aad3997eda35885883e9c89d32d0",
+  "prompts": {},
+  "sessions": {
+    "s_79a5c9e0e0858c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "69ed92a1-85f5-470f-b294-e9acec0b215c",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
