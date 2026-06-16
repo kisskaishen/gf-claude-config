@@ -1,0 +1,35 @@
+src/views/home/gigma.vue
+  s_43713b4173d975::t_a3d1b1322e896b 315
+src/components/FeedbackDialog/index.vue
+  s_43713b4173d975::t_03779ea13387de 72-73
+  s_43713b4173d975::t_7672b0e62608b1 253-254,256
+  s_43713b4173d975::t_1715c8d4a9421d 174-175,177-179
+  s_43713b4173d975::t_3a1c0369d096f5 214,217-218
+  s_43713b4173d975::t_cf148cda8e436c 157
+src/components/CommonUpload/index.vue
+  s_43713b4173d975::t_1b419d0e79e4f8 26
+  s_43713b4173d975::t_8b908153b22d46 709-713
+src/api/home.ts
+  h_a8c280f6806a43 22,34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "a6fdc9e7c48fa62dc1620bb3f67e999461c8158f",
+  "prompts": {},
+  "humans": {
+    "h_a8c280f6806a43": {
+      "author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  },
+  "sessions": {
+    "s_43713b4173d975": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ebc721e-136d-4961-b7df-56b15385330c",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
