@@ -1,0 +1,54 @@
+docs/README.md
+  s_4cb66b22f10f64::t_ded0e2b5cf2b84 1-8
+  s_4cb66b22f10f64::t_df2a2484f6d2a8 9-37
+docs/skills/api-calls.md
+  s_4cb66b22f10f64::t_d3daf11ce54fe3 1-9
+  s_4cb66b22f10f64::t_5f6bd62d07dca8 10-16,18-28,31-37,39-44,46-58,60-70,72-83,86-101,106-109,114-126,130-132,136-143,145-146
+docs/standards/git-workflow.md
+  s_4cb66b22f10f64::t_b7a51707161f9c 1-9
+  s_4cb66b22f10f64::t_da338782e5567e 10-34,36-64
+docs/skills/state-management.md
+  s_4cb66b22f10f64::t_52290aa1023147 10-18,21-22,25-28,31-32,35-37,41-43,46-54,57-59,61-74,76-83,85-89,91-119,121,124-128,130-132
+  s_4cb66b22f10f64::t_42c3e1170ad27a 1-9
+.cursor/rules/vue-components.mdc
+  s_4cb66b22f10f64::t_71946230a439e0 1-52
+.cursor/rules/git-commit.mdc
+  s_4cb66b22f10f64::t_d3517d34a571d6 1-31
+docs/standards/typescript-rules.md
+  s_4cb66b22f10f64::t_a721b3d2b89ce1 1-9
+  s_4cb66b22f10f64::t_1e1526bbe76faa 10-25,30-32,37-45,48-49,52-76,78-84,88-108,111-119
+.cursor/rules/pinia-store.mdc
+  s_4cb66b22f10f64::t_cf102041cded8f 1-45
+.cursor/rules/typescript-style.mdc
+  s_4cb66b22f10f64::t_2ed22f009fa81b 1-42
+docs/skills/component-guide.md
+  s_4cb66b22f10f64::t_ab02196cc5e474 10-20,22-40,42-84,86-101,103-104,106-136
+  s_4cb66b22f10f64::t_9250dadd99b208 1-9
+docs/standards/README.md
+  s_4cb66b22f10f64::t_8088486812137e 10-16,18-26
+  s_4cb66b22f10f64::t_04b19f700570ce 1-9
+.cursor/rules/api-layer.mdc
+  s_4cb66b22f10f64::t_764f15be3f6db9 1-42
+docs/standards/vue-conventions.md
+  s_4cb66b22f10f64::t_d428d287dab16b 1-9
+  s_4cb66b22f10f64::t_9007d5e17ec031 10-52,54-56,59-61,63-65,69-70,74-94,100-106,108-114,116-123,127-131,133-158,160-164
+docs/skills/README.md
+  s_4cb66b22f10f64::t_49213e750454a6 9-15,17-19
+  s_4cb66b22f10f64::t_23630bffbf0719 1-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "68a6003d4f7114b8962544fa232f04494a6b5faf",
+  "prompts": {},
+  "sessions": {
+    "s_4cb66b22f10f64": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "82960263-eab2-46e0-bfb4-88c028299b4d",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
