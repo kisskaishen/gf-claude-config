@@ -444,7 +444,7 @@ const isCopyOrReorder = computed(() =>
 const validateWeight = (rule, value, callback) => {
   if (!value) {
     callback(new Error(t("web.gfuc.enter_parcel_weight")));
-  } else if (value < 0.001 || value > 50) {
+  } else if (value < 0.001 || value > 50 || isNaN(Number(value))) {
     callback(new Error(t("web.gfuc.weight_range")));
   } else {
     callback();
