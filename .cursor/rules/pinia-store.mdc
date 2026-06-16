@@ -1,0 +1,45 @@
+---
+description: Pinia 状态管理 — Store 使用 Setup 函数语法、持久化命名规则、组件外使用 WithOut 模式
+globs: src/store/**/*.ts
+alwaysApply: true
+---
+
+# Pinia 状态管理约定
+
+## Store 定义
+
+所有 Store 使用 **Setup 函数语法**，统一放在 `src/store/` 下。
+
+## 持久化
+
+使用 `pinia-plugin-persistedstate`，key 命名规则：`csd-gfuc-web-<store-name>`
+
+```typescript
+export const useAppStore = defineStore("app", () => {
+  return { sidebar, lang, timezone, site }
+}, {
+  persist: {
+    key: "csd-gfuc-web-app-state",
+    pick: ["sidebar", "lang", "timezone"]
+  }
+})
+```
+
+## 组件内使用
+
+```typescript
+import { useUserStore } from "@/store/user"
+const userStore = useUserStore()
+```
+
+## 组件外使用（utils / router guard）
+
+必须导出 `WithOut` 函数，传入 `store` 实例：
+
+```typescript
+import { store } from "@/store"
+
+export function useUserStoreWithOut() {
+  return useUserStore(store)
+}
+```

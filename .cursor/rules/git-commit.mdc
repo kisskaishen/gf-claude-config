@@ -1,0 +1,31 @@
+---
+description: Git 提交规范 — 提交信息格式、分支策略、Husky 检查流程
+globs:
+alwaysApply: false
+---
+
+# Git 提交规范
+
+## 提交信息格式
+
+提交信息使用中文，格式：`<类型>: <描述>`
+
+| 前缀 | 说明 |
+|------|------|
+| feat | 新功能 |
+| fix | 修复 Bug |
+| refactor | 重构 |
+| style | 样式调整 |
+| docs | 文档变更 |
+| chore | 构建/工具变更 |
+
+## 分支命名
+
+- `master` — 生产分支
+- `release-vX.XX.XX.XX` — 发布候选
+- `feat/<功能名>` — 功能开发
+- `fix/<bug名>` — Bug 修复
+
+## 提交前
+
+项目配置了 Husky + lint-staged 自动执行 lint 检查，提交前确保通过。
