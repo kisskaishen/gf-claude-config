@@ -1,0 +1,40 @@
+src/assets/svg-icons/order-view.svg
+  s_79a5c9e0e0858c::t_856c4af21970ba 1-14
+src/views/finance/components/ClaimTable.vue
+  s_79a5c9e0e0858c::t_e1b6fbf40ad42e 38
+  s_79a5c9e0e0858c::t_3e3975a89b5c0a 124
+  s_79a5c9e0e0858c::t_0d4d79d6ec6d95 59,65
+  s_79a5c9e0e0858c::t_856c4af21970ba 28,32,35,50,114,121,138
+  s_79a5c9e0e0858c::t_aa702f37417f6e 161
+  s_79a5c9e0e0858c::t_65d44d48bac200 85,97,108
+  s_79a5c9e0e0858c::t_d7a7926d1b07d3 141
+  s_79a5c9e0e0858c::t_3bb8c7b531467e 118
+src/assets/svg-icons/order-delete.svg
+  s_79a5c9e0e0858c::t_856c4af21970ba 1-14
+src/assets/svg-icons/order-copy.svg
+  s_79a5c9e0e0858c::t_856c4af21970ba 1-14
+src/views/finance/record.vue
+  s_79a5c9e0e0858c::t_856c4af21970ba 16,41,44
+  s_79a5c9e0e0858c::t_db30e21f5a1259 19,28,31
+  s_79a5c9e0e0858c::t_aa73b4ebd16e12 40,42,46-61
+src/assets/svg-icons/order-printer.svg
+  s_79a5c9e0e0858c::t_856c4af21970ba 1-14
+src/views/home/gigma.vue
+  s_79a5c9e0e0858c::t_856c4af21970ba 9,12,32,45,62,65,89,91,96,124,129,157,162,190,194,209,224,239,256,270,291,457-461
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "f9cdb071919df67ff5c09e31bbafa211c73fb274",
+  "prompts": {},
+  "sessions": {
+    "s_79a5c9e0e0858c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "69ed92a1-85f5-470f-b294-e9acec0b215c",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
