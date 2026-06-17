@@ -1,0 +1,30 @@
+src/views/home/gigma.vue
+  s_c1c1f7d483bb39::t_183d7bb8a51674 315-318
+src/components/FeedbackDialog/index.vue
+  s_e89634e36d4954::t_f003d2f6a55a0c 115
+  s_c1c1f7d483bb39::t_183d7bb8a51674 220-222
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "ad5d235ebdca678f12c93993f0b557fb9d539c0d",
+  "prompts": {},
+  "sessions": {
+    "s_c1c1f7d483bb39": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "13bbec1d-3771-4ce9-982b-9170f63180e0",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    },
+    "s_e89634e36d4954": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae0f5243-a42b-475e-9822-58cafdb14d92",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
