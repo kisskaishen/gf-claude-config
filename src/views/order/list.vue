@@ -29,11 +29,7 @@
             </div>
           </template>
           <template #action-left>
-            <el-button
-              type="primary"
-              @click="handleBatchPrint"
-              :loading="printLoading"
-            >
+            <el-button plain @click="handleBatchPrint" :loading="printLoading">
               <el-icon class="mr-1.5"><Printer /></el-icon>
               {{ $t("web.gfuc.batch_print" /** 批量打印 **/) }}
             </el-button>
@@ -137,7 +133,7 @@
               :label="$t(item.label)"
               :width="item.width || undefined"
               :min-width="item.minWidth || undefined"
-              show-overflow-tooltip
+              :show-overflow-tooltip="item.type !== 'text-wrap'"
             >
               <template #default="{ row }">
                 <template v-if="item.prop === 'orderStatusName'">
@@ -153,14 +149,21 @@
                   </div>
                 </template>
                 <template v-else-if="item.prop === 'orderConsigneeVO.address1'">
-                  {{ getAddress(row.orderConsigneeVO) }}
+                  <el-tooltip
+                    :content="getAddress(row.orderConsigneeVO)"
+                    placement="top"
+                    effect="dark"
+                    hide-after="200"
+                  >
+                    <span class="text-wrap-cell">{{ getAddress(row.orderConsigneeVO) }}</span>
+                  </el-tooltip>
                 </template>
               </template>
             </el-table-column>
 
             <el-table-column
               :label="$t('gfuc.operation' /** 操作 **/)"
-              :width="columnWidth(210, 180, 200, 200, 180, 180)"
+              :width="columnWidth(180, 180, 180, 180, 180, 180)"
               fixed="right"
             >
               <template #default="{ row }">
@@ -726,6 +729,7 @@ const columns = computed(() => [
   {
     prop: "orderConsigneeVO.address1",
     label: "gfuc.recipient_address",
+    type: "text-wrap",
     minWidth: columnWidth(200, 200, 240, 240, 240, 200)
   },
   {
@@ -1166,7 +1170,7 @@ onActivated(() => {
   }
 
   .action-btn {
-    padding: 11px;
+    padding: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1176,8 +1180,8 @@ onActivated(() => {
     transition: all 0.2s;
     border: 1px solid #ebebeb;
     margin: 0;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
 
     &:hover {
       border: 1px solid var(--el-color-primary);
@@ -1208,5 +1212,15 @@ onActivated(() => {
   flex-direction: column;
   height: 100%;
   overflow: hidden;
+}
+
+.text-wrap-cell {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  overflow: hidden;
+  word-break: break-word;
+  line-height: 1.4;
 }
 </style>

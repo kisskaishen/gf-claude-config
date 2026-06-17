@@ -1,11 +1,17 @@
 <script lang="ts">
 import { defineComponent, h } from "vue";
-import { ElTableColumn } from "element-plus";
+import { ElTableColumn, ElTooltip } from "element-plus";
 
 export default defineComponent({
   name: "ProTableColumn",
   inheritAttrs: false,
-  setup(_, { attrs, slots }) {
+  props: {
+    type: {
+      type: String,
+      default: ""
+    }
+  },
+  setup(props, { attrs, slots }) {
     const renderValue = (val: any) => {
       if (val === null || val === undefined || val === "") {
         return "-";
@@ -13,7 +19,51 @@ export default defineComponent({
       return val;
     };
 
+    /**
+     * 渲染 text-wrap 类型单元格: 最多2行, 超出省略, hover 显示 el-tooltip
+     */
+    const renderTextWrapCell = (scope: any) => {
+      const prop = attrs.prop as string;
+      const rawVal = scope.row[prop];
+      const displayVal = renderValue(rawVal);
+
+      // 空值直接返回 "-", 不显示 tooltip
+      if (rawVal === null || rawVal === undefined || rawVal === "") {
+        return displayVal;
+      }
+
+      return h(
+        ElTooltip,
+        {
+          content: String(rawVal),
+          placement: "top",
+          effect: "dark",
+          popperClass: "pro-table-column-tooltip",
+          hideAfter: 200
+        },
+        {
+          default: () => h("span", { class: "text-wrap-cell" }, displayVal)
+        }
+      );
+    };
+
     return () => {
+      if (props.type === "text-wrap") {
+        return h(
+          ElTableColumn,
+          {
+            showOverflowTooltip: false,
+            ...attrs
+          },
+          {
+            default: (scope: any) => renderTextWrapCell(scope),
+            header: slots.header
+              ? (scope: any) => slots.header?.(scope)
+              : undefined
+          }
+        );
+      }
+
       return h(
         ElTableColumn,
         {
@@ -37,3 +87,14 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped>
+.text-wrap-cell {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+  line-height: 1.4;
+}
+</style>

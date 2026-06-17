@@ -274,13 +274,21 @@ body {
 
   // Table 表格
   .el-table {
-    --el-table-text-color: var(--text-color-secondary);
-    --el-table-header-text-color: #525252;
+    --el-table-text-color: #525252;
+    --el-table-header-text-color: #7a869a;
     --el-table-header-bg-color: #f7f7f8;
     --el-fill-color-lighter: #fafafa;
     --el-table-border-color: #ebebeb;
     --el-table-header-border-color: #ebebeb;
     --el-table-column-separator-color: transparent;
+
+    .el-table__cell {
+      font-size: 14px;
+    }
+
+    th.el-table__cell {
+      font-weight: 400;
+    }
   }
 
   // Radio
