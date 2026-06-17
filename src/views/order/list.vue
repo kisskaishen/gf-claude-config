@@ -160,7 +160,7 @@
 
             <el-table-column
               :label="$t('gfuc.operation' /** 操作 **/)"
-              :width="columnWidth(160, 180, 200, 200, 180, 180)"
+              :width="columnWidth(210, 180, 200, 200, 180, 180)"
               fixed="right"
             >
               <template #default="{ row }">
@@ -170,12 +170,9 @@
                     :content="$t('web.gfuc.view_order')"
                     placement="top"
                   >
-                    <svg-icon
-                      name="order-view"
-                      width="24"
-                      height="24"
-                      @click="handleView(row)"
-                    />
+                    <el-button class="action-btn" @click="handleView(row)">
+                      <svg-icon name="order-view" width="16" height="16" />
+                    </el-button>
                   </el-tooltip>
 
                   <!-- 已下单: 打印、编辑、取消 -->
@@ -184,35 +181,30 @@
                       :content="$t('web.gfuc.print_order')"
                       placement="top"
                     >
-                      <svg-icon
-                        name="order-printer"
-                        width="24"
-                        height="24"
-                        @click="handlePrint(row)"
-                      />
+                      <el-button class="action-btn" @click="handlePrint(row)">
+                        <svg-icon name="order-printer" width="16" height="16" />
+                      </el-button>
                     </el-tooltip>
                     <el-tooltip
                       :content="$t('web.gfuc.edit_order')"
                       placement="top"
                       v-if="row.orderUpdateFlag"
                     >
-                      <svg-icon
-                        name="order-list-edit"
-                        width="24"
-                        height="24"
-                        @click="handleEdit(row)"
-                      />
+                      <el-button class="action-btn" @click="handleEdit(row)">
+                        <svg-icon
+                          name="order-list-edit"
+                          width="16"
+                          height="16"
+                        />
+                      </el-button>
                     </el-tooltip>
                     <el-tooltip
                       :content="$t('web.gfuc.cancel_order')"
                       placement="top"
                     >
-                      <svg-icon
-                        name="order-delete"
-                        width="24"
-                        height="24"
-                        @click="handleCancel(row)"
-                      />
+                      <el-button class="action-btn" @click="handleCancel(row)">
+                        <svg-icon name="order-delete" width="16" height="16" />
+                      </el-button>
                     </el-tooltip>
                   </template>
 
@@ -222,12 +214,9 @@
                       :content="$t('web.gfuc.copy_order')"
                       placement="top"
                     >
-                      <svg-icon
-                        name="order-copy"
-                        width="24"
-                        height="24"
-                        @click="handleCopy(row)"
-                      />
+                      <el-button class="action-btn" @click="handleCopy(row)">
+                        <svg-icon name="order-copy" width="16" height="16" />
+                      </el-button>
                     </el-tooltip>
                   </template>
                 </div>
@@ -250,6 +239,19 @@
           @search="fetchExceptionData"
           @reset="handleExceptionReset"
         >
+          <template #action-status>
+            <div class="flex gap-2">
+              <CommonTag
+                v-for="item in exceptionOrderStatusOptions"
+                :key="item.value"
+                :bg-color="item.bgColor"
+                :text-color="item.textColor"
+                :count="item.label"
+                :active="searchForm.orderStatus === item.value"
+                @click="searchForm.orderStatus = item.value"
+              />
+            </div>
+          </template>
           <template #search>
             <el-form-item prop="orderNumber">
               <el-input
@@ -329,7 +331,7 @@
             />
             <el-table-column
               :label="$t('gfuc.operation' /** 操作 **/)"
-              :width="columnWidth(160, 180, 200, 200, 180, 180)"
+              :width="columnWidth(120, 120, 120, 120, 120, 180)"
               fixed="right"
             >
               <template #default="{ row }">
@@ -338,23 +340,23 @@
                     :content="$t('web.gfuc.view_order')"
                     placement="top"
                   >
-                    <svg-icon
-                      name="order-view"
-                      width="24"
-                      height="24"
+                    <el-button
+                      class="action-btn"
                       @click="handleExceptionView(row)"
-                    />
+                    >
+                      <svg-icon name="order-view" width="16" height="16" />
+                    </el-button>
                   </el-tooltip>
                   <el-tooltip
                     :content="$t('web.gfuc.re_order')"
                     placement="top"
                   >
-                    <svg-icon
-                      name="order-copy"
-                      width="24"
-                      height="24"
+                    <el-button
+                      class="action-btn"
                       @click="handleExceptionReOrder(row)"
-                    />
+                    >
+                      <svg-icon name="order-copy" width="16" height="16" />
+                    </el-button>
                   </el-tooltip>
                 </div>
               </template>
@@ -729,7 +731,7 @@ const columns = computed(() => [
   {
     prop: "orderCreateTime",
     label: "gfuc.submission_time",
-    width: columnWidth(140, 180, 200, 200, 180, 180)
+    width: columnWidth(200, 200, 200, 200, 200, 180)
   }
 ]);
 
@@ -1161,6 +1163,25 @@ onActivated(() => {
   .el-button {
     padding: 0;
     font-size: 18px;
+  }
+
+  .action-btn {
+    padding: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+    border: 1px solid #ebebeb;
+    margin: 0;
+    width: 40px;
+    height: 40px;
+
+    &:hover {
+      border: 1px solid var(--el-color-primary);
+    }
   }
 }
 
