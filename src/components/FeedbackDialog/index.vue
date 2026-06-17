@@ -112,6 +112,7 @@ const { t } = useI18n();
 
 const props = defineProps<{
   visible: boolean;
+  country?: string;
   onSubmit?: (data: {
     title: string;
     description: string;
@@ -216,8 +217,9 @@ const handleSubmit = async () => {
     // 2. 创建工单 — 使用 formContent 传递 HTML 描述内容
 
     await addWorkOrder({
-      Title: form.title,
-      Attachments: attachmentPaths,
+      title: form.title,
+      attachments: attachmentPaths,
+      country: props.country,
       formContent: `<p>${form.description}</p>`
     });
 

@@ -312,7 +312,10 @@
     </div>
 
     <!-- 用户反馈弹框 -->
-    <FeedbackDialog v-model:visible="feedbackVisible" />
+    <FeedbackDialog
+      v-model:visible="feedbackVisible"
+      :country="appStore.site"
+    />
   </div>
 </template>
 
