@@ -1,0 +1,42 @@
+src/views/order/components/ProductInfo.vue
+  s_4d4d4927b4a496::t_d372cedd78700d 449-450
+src/lang/locales/fr.ts
+  s_4d4d4927b4a496::t_a078a8016b86ac 203
+src/lang/locales/zh.ts
+  s_4d4d4927b4a496::t_292753aa622fde 199
+src/views/order/components/ConsigneeInfo.vue
+  s_4d4d4927b4a496::t_dc92deb1e6de51 639-640
+  s_4d4d4927b4a496::t_c4d550d0821fc4 503-510
+src/views/order/single.vue
+  s_4d4d4927b4a496::t_6a68734f8ff1b9 150
+  s_4d4d4927b4a496::t_394b35aa9b2987 239,241-248
+  s_4d4d4927b4a496::t_48018a33825262 276,278,283-284
+  s_4d4d4927b4a496::t_53525bd4ceb5b7 153
+  s_4d4d4927b4a496::t_2749c5452a6f35 292-344
+  s_4d4d4927b4a496::t_c9c8b33e99aff3 280-282,287-289
+  s_4d4d4927b4a496::t_a5bc04ed75c2ed 256-267,269,271-275,277,279,286
+src/lang/locales/en.ts
+  s_4d4d4927b4a496::t_397a4135f60b80 195
+src/lang/locales/nl.ts
+  s_4d4d4927b4a496::t_175c9ae2fc5015 186
+src/views/order/components/ShipperInfo.vue
+  s_4d4d4927b4a496::t_ecf8cb17fa0618 592-599,601-602
+src/lang/locales/it.ts
+  s_4d4d4927b4a496::t_b7e78882ac39b3 196
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "ac6366de1b5b31df81a9174afe3729aae358f6c9",
+  "prompts": {},
+  "sessions": {
+    "s_4d4d4927b4a496": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1bb0a5f6-568d-4640-bc5f-db62a97d871f",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
