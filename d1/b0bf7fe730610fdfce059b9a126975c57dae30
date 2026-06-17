@@ -1,0 +1,30 @@
+src/views/order/list.vue
+  s_4d4d4927b4a496::t_2927305bb71c3e 217
+  s_4d4d4927b4a496::t_fd78ef772c76a3 343-344,346
+  s_4d4d4927b4a496::t_442f8a81011bfd 193
+  s_4d4d4927b4a496::t_99114835d9642a 242-254
+  s_4d4d4927b4a496::t_353d42c3e1263a 354-355,357
+  s_4d4d4927b4a496::t_72cee0946e5fb8 1167-1168,1170-1175,1181-1182,1184-1185
+  s_4d4d4927b4a496::t_47acf0cf9d75ba 173
+  s_4d4d4927b4a496::t_722d0d0e5ccf13 1176-1180
+  s_4d4d4927b4a496::t_35c4522e5e53f3 174-175,185-186,194-199,206-207,218-219
+  s_4d4d4927b4a496::t_6a1473485bfde0 205
+  s_4d4d4927b4a496::t_e809b821943dbb 184
+  s_4d4d4927b4a496::t_2d15e9dd182063 347-348,358-359
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "d1b0bf7fe730610fdfce059b9a126975c57dae30",
+  "prompts": {},
+  "sessions": {
+    "s_4d4d4927b4a496": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1bb0a5f6-568d-4640-bc5f-db62a97d871f",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
