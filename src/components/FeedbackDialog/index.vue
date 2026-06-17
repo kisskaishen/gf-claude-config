@@ -105,19 +105,13 @@
 import { ref, reactive, watch, computed } from "vue";
 import { ElMessage } from "element-plus";
 import { useI18n } from "vue-i18n";
-import { useAppStore } from "@/store/app";
-import { useUserStore } from "@/store/user";
 import CommonUpload from "@/components/CommonUpload/index.vue";
 import { uploadWorkOrderAttachment, addWorkOrder } from "@/api/home";
 
 const { t } = useI18n();
-const appStore = useAppStore();
-const userStore = useUserStore();
 
 const props = defineProps<{
   visible: boolean;
-  staffCode?: string; // 员工编号（默认取自登录账号）
-  staffName?: string; // 员工姓名
   onSubmit?: (data: {
     title: string;
     description: string;
@@ -211,60 +205,26 @@ const handleSubmit = async () => {
   // 默认走直接 API 调用
   submitting.value = true;
   try {
-    // 1. 从已上传的文件中取附件路径（customHttpRequest 上传后返回的路径在 item.response 中）
+    // 1. 从已上传的文件中取附件 FilePath（customHttpRequest 上传后返回的对象中包含 FilePath 字段）
     const attachmentPaths: string[] = [];
     for (const item of form.files) {
-      if (item.response) {
-        attachmentPaths.push(item.response);
+      if (item.response?.FilePath) {
+        attachmentPaths.push(item.response.FilePath);
       }
     }
 
-    // 2. 构建表单字段
-    const countryName =
-      {
-        fr: "法国",
-        de: "德国",
-        it: "意大利",
-        es: "西班牙",
-        uk: "英国",
-        at: "奥地利"
-      }[appStore.site?.toLowerCase()] ||
-      appStore.site ||
-      "";
+    // 2. 创建工单 — 使用 formContent 传递 HTML 描述内容
 
-    const formFieldValues = [
-      {
-        Name: "国家",
-        IsRequired: 1,
-        Type: 1,
-        Value: countryName
-      },
-      {
-        Name: "问题描述",
-        IsRequired: 1,
-        Type: 7,
-        Value: `<p>${form.description}</p>`
-      }
-    ];
-
-    // 3. 创建工单
     await addWorkOrder({
       Title: form.title,
-      CategoryId: 0,
-      Category: "",
       Attachments: attachmentPaths,
-      OrderPriority: "",
-      FormFieldValues: formFieldValues,
-      source: 5,
-      staffCode: props.staffCode || userStore.userInfo?.account || "",
-      staffName: props.staffName || "",
-      IsDraft: false
+      formContent: `<p>${form.description}</p>`
     });
 
     ElMessage.success(t("web.gfuc.feedback_submit_success"));
     dialogVisible.value = false;
   } catch (e: any) {
-    console.error("提交工单失败", e);
+    console.error("提交失败", e);
     ElMessage.error(e?.message || t("web.gfuc.feedback_submit_failed"));
   } finally {
     submitting.value = false;
