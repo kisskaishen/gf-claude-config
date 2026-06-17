@@ -1,0 +1,29 @@
+src/components/ProTableColumn/index.vue
+  s_c1c1f7d483bb39::t_457a83fafab1c1 3,8-14,22-49,51-66,90-100
+src/views/order/list.vue
+  s_c1c1f7d483bb39::t_9c6164cde6d19c 136
+  s_c1c1f7d483bb39::t_f21cd706d115eb 152-159
+  s_c1c1f7d483bb39::t_51855e5925fdbb 732
+  s_c1c1f7d483bb39::t_cf9758d1338d6e 1216-1220,1222-1225
+  s_c1c1f7d483bb39::t_de7e3881631c1f 1221
+src/styles/element-override.scss
+  s_c1c1f7d483bb39::t_acbb1b88ecfb1c 284,289-291
+  s_c1c1f7d483bb39::t_8deb28d28d6597 277-278
+  s_c1c1f7d483bb39::t_70db99a17e3651 285-288
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "3924aef6b884c1c9eb088ce8fe9083ade2e30e9b",
+  "prompts": {},
+  "sessions": {
+    "s_c1c1f7d483bb39": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "13bbec1d-3771-4ce9-982b-9170f63180e0",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
