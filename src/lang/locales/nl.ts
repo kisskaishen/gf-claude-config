@@ -183,6 +183,7 @@ export default {
   "web.gfuc.channel_code": "Kanaalcode",
   "web.gfuc.enter_channel_code": "Voer de kanaalcode in",
   "web.gfuc.submit_order": "Bestel order",
+  "web.gfuc.please_complete_step": "Voltooi eerst stap {step}",
   "web.gfuc.submit_recharge": "Herlaadverzoek indienen",
   "web.gfuc.recharge_success": "Herladen geslaagd",
   "web.gfuc.recharge_success_description":
@@ -277,7 +278,7 @@ export default {
   "web.gfuc.order_time": "Orario ordine",
   "web.gfuc.request_parameters": "Parameters richiesta",
   "web.gfuc.response_message": "Message risposta",
-  "web.gfuc.weight_range": "Poids del colis deve essere tra 0.001-50kg",
+  "web.gfuc.weight_range": "Poids del colis deve essere tra 0.001-50",
   "web.gfuc.dimension_range": "Rang deve essere tra 1-150cm",
   "web.gfuc.total_range":
     "Lunghezza, larghezza e altezza totalali devono essere inferiore a 150cm",

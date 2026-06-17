@@ -147,10 +147,10 @@ const parcelInfoRef = ref(null);
 const currentStep = ref(1);
 
 // 已完成的步骤
-const completedSteps = ref([]);
+const completedSteps = ref<number[]>([]);
 
 // 需要打开的表单
-const openStep = ref([1]);
+const openStep = ref<number[]>([1]);
 
 // 表单数据
 const formData = reactive({
@@ -236,8 +236,16 @@ const goToNextStep = (val) => {
 
 // 编辑步骤
 const editStep = (step) => {
+  // 离开当前步骤时，将当前步骤标记为已完成
   if (currentStep.value != step) {
-    completedSteps.value.push(currentStep.value);
+    if (!completedSteps.value.includes(currentStep.value)) {
+      completedSteps.value.push(currentStep.value);
+    }
+  }
+  // 移除目标步骤的已完成状态，因为需要重新填写/校验
+  const index = completedSteps.value.indexOf(step);
+  if (index > -1) {
+    completedSteps.value.splice(index, 1);
   }
   openStep.value.push(step);
   currentStep.value = step;
@@ -245,74 +253,95 @@ const editStep = (step) => {
 
 // 提交订单
 const submitOrder = async () => {
-  // 先校验第四步的信息是否填写
-  if (parcelInfoRef.value) {
+  // 展开所有步骤的el-form（只有isActive=true时el-form才会渲染DOM），以便触发各组件内部的validate
+  const stepRefs = [
+    { ref: shipperInfoRef, number: 1 },
+    { ref: consigneeInfoRef, number: 2 },
+    { ref: productInfoRef, number: 3 },
+    { ref: parcelInfoRef, number: 4 }
+  ];
+  stepRefs.forEach(({ number }) => {
+    if (!openStep.value.includes(number)) {
+      openStep.value.push(number);
+    }
+  });
+
+  await nextTick();
+
+  // 依次触发每个步骤的 el-form 校验
+  for (const { ref: stepRef, number: stepNumber } of stepRefs) {
+    if (!stepRef.value || typeof stepRef.value.validate !== "function") {
+      continue;
+    }
     try {
-      if (!isEdit.value) {
-        // 调用第四步组件的校验方法
-        let valid = await parcelInfoRef.value.validate();
-        if (!valid) {
-          return;
-        }
-
-        // 校验通过，继续提交订单逻辑
-        console.log("第四步表单校验通过，开始提交订单", formData);
+      const valid = await stepRef.value.validate();
+      if (!valid) {
+        currentStep.value = stepNumber;
+        ElMessage.warning(
+          t("web.gfuc.please_complete_step", { step: stepNumber })
+        );
+        return;
       }
-
-      // formData格式化
-      let data = {
-        customerId:
-          formData.shipper?.customerId ||
-          sessionStorage.getItem("createOrderCustomerId") ||
-          "",
-
-        orderShipper: formData.shipper,
-        orderConsignee: formData.consignee,
-
-        orderProduct: formData.product,
-
-        shippingType: "HDN", // ZT/HDN
-        productName: formData.product?.productName,
-        productCode: formData.product?.productCode,
-        productType: formData.product?.productType,
-
-        queryCollectStartTime: formData.product?.queryCollectStartTime,
-        queryCollectEndTime: formData.product?.queryCollectEndTime,
-
-        orderParcel: formData.parcel,
-        orderGoods: formData.parcel?.orderGoods,
-        orderItemList: formData.parcel?.orderItemList,
-
-        cOrderNo: formData.parcel?.cOrderNo,
-        declaredValue: formData.parcel?.declaredValue,
-        reference3: formData.parcel?.reference3,
-        referenceNo: formData.parcel?.referenceNo,
-        channelCode: formData.parcel?.channelCode
-      };
-
-      const res = await createOrder(data);
-      let customerId = sessionStorage.getItem("createOrderCustomerId");
-      if (customerId) {
-        sessionStorage.removeItem("createOrderCustomerId");
-      }
-      if (res.waybillNo) {
-        successVisible.value = true;
-      } else {
-        ElMessage.error("订单创建失败，请重试");
-      }
-
-      // 这里可以添加实际的提交逻辑
-      // 例如：调用API提交订单数据
     } catch (error) {
-      // 校验失败，显示错误信息
-      console.error("第四步表单校验失败:", error);
-      // 可以在这里添加错误提示，比如使用Element Plus的Message组件
-      // ElMessage.error('请先完善包裹信息');
+      console.error(`第${stepNumber}步校验出错:`, error);
+      ElMessage.warning(
+        t("web.gfuc.please_complete_step", { step: stepNumber })
+      );
       return;
     }
-  } else {
-    console.error("第四步组件引用或校验方法不存在");
-    return;
+  }
+
+  console.log("所有步骤校验通过，开始提交订单", formData);
+  await doSubmitOrder();
+};
+
+// 执行提交订单逻辑
+const doSubmitOrder = async () => {
+  try {
+    // formData格式化
+    let data = {
+      customerId:
+        formData.shipper?.customerId ||
+        sessionStorage.getItem("createOrderCustomerId") ||
+        "",
+
+      orderShipper: formData.shipper,
+      orderConsignee: formData.consignee,
+
+      orderProduct: formData.product,
+
+      shippingType: "HDN", // ZT/HDN
+      productName: formData.product?.productName,
+      productCode: formData.product?.productCode,
+      productType: formData.product?.productType,
+
+      queryCollectStartTime: formData.product?.queryCollectStartTime,
+      queryCollectEndTime: formData.product?.queryCollectEndTime,
+
+      orderParcel: formData.parcel,
+      orderGoods: formData.parcel?.orderGoods,
+      orderItemList: formData.parcel?.orderItemList,
+
+      cOrderNo: formData.parcel?.cOrderNo,
+      declaredValue: formData.parcel?.declaredValue,
+      reference3: formData.parcel?.reference3,
+      referenceNo: formData.parcel?.referenceNo,
+      channelCode: formData.parcel?.channelCode
+    };
+
+    const res = await createOrder(data);
+    let customerId = sessionStorage.getItem("createOrderCustomerId");
+    if (customerId) {
+      sessionStorage.removeItem("createOrderCustomerId");
+    }
+    if (res.waybillNo) {
+      successVisible.value = true;
+    } else {
+      ElMessage.error("订单创建失败，请重试");
+    }
+  } catch (error) {
+    console.error("提交订单失败:", error);
+    ElMessage.error("订单提交失败，请重试");
   }
 };
 

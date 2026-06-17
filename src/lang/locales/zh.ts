@@ -196,6 +196,7 @@ export default {
   "web.gfuc.channel_code": "渠道编码",
   "web.gfuc.enter_channel_code": "请输入渠道编码",
   "web.gfuc.submit_order": "提交订单",
+  "web.gfuc.please_complete_step": "请先完善第{step}步的信息",
   "web.gfuc.submit_recharge": "提交充值",
   "web.gfuc.recharge_success": "充值成功",
   "web.gfuc.recharge_success_description":
@@ -270,7 +271,7 @@ export default {
   "web.gfuc.order_time": "下单时间",
   "web.gfuc.request_parameters": "请求参数",
   "web.gfuc.response_message": "相应报文",
-  "web.gfuc.weight_range": "包裹重量必须在0.001-50kg之间",
+  "web.gfuc.weight_range": "包裹重量必须在0.001-50之间",
   "web.gfuc.dimension_range": "范围必须在1-150cm之间",
   "web.gfuc.total_range": "包裹长宽高总和不能超过150cm",
 

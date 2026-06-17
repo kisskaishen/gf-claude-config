@@ -192,6 +192,7 @@ export default {
   "web.gfuc.channel_code": "Channel Code",
   "web.gfuc.enter_channel_code": "Please enter channel code",
   "web.gfuc.submit_order": "Submit Order",
+  "web.gfuc.please_complete_step": "Please complete step {step} first",
   "web.gfuc.submit_recharge": "Submit Recharge",
   "web.gfuc.recharge_success": "Recharge Successful",
   "web.gfuc.recharge_success_description":
@@ -284,7 +285,7 @@ export default {
   "web.gfuc.order_time": "Order Time",
   "web.gfuc.request_parameters": "Request Parameters",
   "web.gfuc.response_message": "Response Message",
-  "web.gfuc.weight_range": "Parcel weight must be between 0.001-50kg",
+  "web.gfuc.weight_range": "Parcel weight must be between 0.001-50",
   "web.gfuc.dimension_range": "Range must be between 1-150cm",
   "web.gfuc.total_range":
     "Total length, width, and height must be less than 150cm",

@@ -589,8 +589,17 @@ const resetForm = () => {
   onClear();
 };
 
+const validate = () => {
+  return new Promise((resolve) => {
+    orderShipperRef.value.validate((valid) => {
+      resolve(valid);
+    });
+  });
+};
+
 defineExpose({
-  resetForm
+  resetForm,
+  validate
 });
 </script>
 

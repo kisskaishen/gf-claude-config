@@ -121,7 +121,7 @@ service.interceptors.response.use(
     if (res.status !== 1) {
       if (response.config.url === "/oms/create/order") {
         ElMessage({
-          message: res?.msgEn,
+          message: res?.msgEn || res.message || res.msg || "Error",
           type: "error",
           duration: 5 * 1000
         });

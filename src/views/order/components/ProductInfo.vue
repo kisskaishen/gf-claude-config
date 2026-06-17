@@ -384,6 +384,14 @@ const onEdit = () => {
   emit("edit");
 };
 
+const validate = () => {
+  return new Promise((resolve) => {
+    formRef.value.validate((valid) => {
+      resolve(valid);
+    });
+  });
+};
+
 const toPascalCase = (str) => {
   return str
     .replace(/[_-](\w)/g, (_, char) => char.toUpperCase())
@@ -438,7 +446,8 @@ watch(
   }
 );
 defineExpose({
-  resetForm
+  resetForm,
+  validate
 });
 </script>
 

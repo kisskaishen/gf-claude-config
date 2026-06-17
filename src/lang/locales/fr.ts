@@ -200,6 +200,7 @@ export default {
   "web.gfuc.channel_code": "Code canal",
   "web.gfuc.enter_channel_code": "Veuillez entrer le code canal",
   "web.gfuc.submit_order": "Soumettre la commande",
+  "web.gfuc.please_complete_step": "Veuillez d'abord compléter l'étape {step}",
   "web.gfuc.submit_recharge": "Soumettre la recharge",
   "web.gfuc.recharge_success": "Recharge réussie",
   "web.gfuc.recharge_success_description":
@@ -294,7 +295,7 @@ export default {
   "web.gfuc.order_time": "Orario ordine",
   "web.gfuc.request_parameters": "Requesti parametri",
   "web.gfuc.response_message": "Response message",
-  "web.gfuc.weight_range": "Poids du colis doit être entre 0.001-50kg",
+  "web.gfuc.weight_range": "Poids du colis doit être entre 0.001-50",
   "web.gfuc.dimension_range": "Rang doit être entre 1-150cm",
   "web.gfuc.total_range":
     "Longueur, largeur et hauteur totales doivent être inférieures à 150cm",

@@ -57,7 +57,8 @@
                   :label="$t('web.gfuc.total_parcel_weight')"
                   prop="orderGoods.weight"
                 >
-                  <el-input
+                  <el-input-number
+                    :controls="false"
                     v-model="formData.orderGoods.weight"
                     :placeholder="
                       $t('web.gfuc.total_parcel_weight_placeholder')

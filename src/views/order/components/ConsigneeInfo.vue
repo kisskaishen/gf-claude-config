@@ -500,6 +500,14 @@ const resetForm = () => {
   onClear();
 };
 
+const validate = () => {
+  return new Promise((resolve) => {
+    consigneeFormRef.value.validate((valid) => {
+      resolve(valid);
+    });
+  });
+};
+
 const onEdit = () => {
   emit("edit");
 };
@@ -628,7 +636,8 @@ const consigneeAddress = (obj) => {
   }
 };
 defineExpose({
-  resetForm
+  resetForm,
+  validate
 });
 </script>
 
