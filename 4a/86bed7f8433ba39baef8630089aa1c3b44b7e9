@@ -1,0 +1,21 @@
+src/components/FeedbackDialog/index.vue
+  s_c92b7aa28ab6f2::t_bc5498f1a9c4e9 221
+  s_c92b7aa28ab6f2::t_e65883e28d2bc5 208,211-212
+  s_c92b7aa28ab6f2::t_93e28329d30c43 216
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "4a86bed7f8433ba39baef8630089aa1c3b44b7e9",
+  "prompts": {},
+  "sessions": {
+    "s_c92b7aa28ab6f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cfd12189-120e-4fc1-ab0b-119e59ba911a",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
