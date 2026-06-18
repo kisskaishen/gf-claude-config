@@ -1,0 +1,42 @@
+src/lang/locales/fr.ts
+  s_eebe4c843e7d82::t_cb16b7a5d7948d 419-421
+  s_eebe4c843e7d82::t_bb5c3aabd49507 424
+src/lang/locales/it.ts
+  s_eebe4c843e7d82::t_6b87d45b05db33 407
+  s_eebe4c843e7d82::t_dfc7318f377e8f 410
+  s_eebe4c843e7d82::t_cb16b7a5d7948d 405-406
+src/lang/locales/en.ts
+  s_eebe4c843e7d82::t_ea11c724cfbc1d 405
+  s_eebe4c843e7d82::t_5c89d3273b62ff 408
+  s_eebe4c843e7d82::t_cb16b7a5d7948d 403-404
+src/lang/locales/zh.ts
+  s_eebe4c843e7d82::t_80a2721570b10a 387
+  s_eebe4c843e7d82::t_a9624250cb06fa 390
+  s_eebe4c843e7d82::t_4b2ea487070526 386
+src/lang/locales/nl.ts
+  s_eebe4c843e7d82::t_ecb782b4cc703d 400
+  s_eebe4c843e7d82::t_cb16b7a5d7948d 395-396
+  s_eebe4c843e7d82::t_95b3f07de2385e 397
+src/components/CommonUpload/index.vue
+  s_eebe4c843e7d82::t_cb16b7a5d7948d 18,127,138,143,1011,1014
+src/views/home/gigma.vue
+  s_eebe4c843e7d82::t_165fd860e9c973 43,45,61,63
+  s_eebe4c843e7d82::t_cb16b7a5d7948d 32,35,38-42,44,50,53,56-60,62,91,273,275-277
+  s_eebe4c843e7d82::t_b54d61b15ed4a5 36,54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "40156732064cacbc37d2756bcc6764fc187809a0",
+  "prompts": {},
+  "sessions": {
+    "s_eebe4c843e7d82": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b4dfd593-16c0-42b2-91f6-c6035df2b6c0",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
