@@ -1,35 +1,39 @@
 <template>
   <div class="login-container">
     <!-- 语言切换 -->
+    <!-- <LangSelect /> -->
     <div class="right-top">
       <svg-icon class="icon-earth" name="earth" />
       <LangSelect />
     </div>
-
-    <!-- 左侧图片展示区 -->
+    <!-- 左侧装饰区 -->
     <div class="login-left">
-      <div class="image-wrapper">
-        <img src="@/assets/login/bg-left.png" alt="GOFO" />
+      <div class="top-decor">
+        <img src="@/assets/login/bg-top.png" alt="GOFO" />
+      </div>
+
+      <!-- 底部大图标装饰 -->
+      <div class="bottom-decor">
+        <img src="@/assets/login/bg-bottom.png" alt="" />
       </div>
     </div>
 
     <!-- 右侧登录区 -->
     <div class="login-right">
       <div class="login-card">
-        <div class="card-header">
-          <div class="header-logo">
-            <img
-              src="@/assets/logos/logo-red.png"
-              alt="GOFO"
-              class="inner-logo-img"
-            />
-          </div>
-          <span class="header-title"
-            >GOFO {{ $t("web.gfuc.user_center" /** 用户中心 **/) }}</span
-          >
-        </div>
-
         <div class="auth-form-container">
+          <div class="card-header">
+            <div class="header-logo">
+              <img
+                src="@/assets/logos/logo-red.png"
+                alt="GOFO"
+                class="inner-logo-img"
+              />
+            </div>
+            <span class="header-title">{{
+              $t("web.gfuc.user_center" /** 用户中心 **/)
+            }}</span>
+          </div>
           <!-- 登录表单 -->
           <LoginForm
             v-if="mode === 'login'"
@@ -46,7 +50,6 @@
             @success="handleSuccess"
             @switch="handleSwitch"
           />
-
           <!-- 验证码表单 -->
           <VerifyCodeForm
             v-else-if="mode === 'verify'"
@@ -69,8 +72,6 @@
 </template>
 
 <script setup lang="ts">
-defineOptions({ name: "LoginPage" });
-
 import { ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { ElMessage } from "element-plus";
@@ -150,31 +151,38 @@ const redirectToHome = () => {
 <style scoped lang="scss">
 .login-container {
   display: flex;
-  min-width: 1440px;
   height: 100vh;
   overflow: auto;
   background-color: #fff;
 }
 
 .login-left {
-  box-sizing: border-box;
+  position: relative;
   display: flex;
   flex-shrink: 0;
-  width: 720px;
-  padding: 15px;
+  flex-direction: column;
+  width: 375px;
+  padding: 60px 40px;
+  color: #fff;
+  background-color: var(--color-primary);
 
-  .image-wrapper {
-    width: 690px; /* 720px - 15px * 2 */
-    max-height: calc(100vh - 30px);
-    overflow: hidden;
-    border-radius: 24px;
+  img {
+    width: 100%;
+    height: auto;
+  }
 
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+  .top-decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 289px;
+  }
+
+  .bottom-decor {
+    position: absolute;
+    bottom: -17px;
+    left: -9px;
+    width: 416px;
   }
 }
 
@@ -183,21 +191,36 @@ const redirectToHome = () => {
   flex: 1;
   align-items: center;
   justify-content: center;
-  min-width: 480px;
-  padding: 60px 120px;
   background-color: #fff;
 }
 
 .login-card {
   width: 480px;
-  max-width: 100%;
+  padding: 40px 40px 22px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px 0 #4f577d14;
+  backdrop-filter: blur(66px);
+}
+
+.auth-form-container {
+  --color: #999;
+
+  width: 100%;
+  font-size: 14px;
+  color: var(--color);
+
+  :deep(.el-form-item__label::before) {
+    content: "" !important;
+  }
 }
 
 .card-header {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 20px;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
 
   .header-logo {
     display: flex;
@@ -205,7 +228,6 @@ const redirectToHome = () => {
     justify-content: center;
     width: 44px;
     height: 44px;
-    margin-bottom: 12px;
 
     .inner-logo-img {
       width: 100%;
@@ -215,23 +237,16 @@ const redirectToHome = () => {
   }
 
   .header-title {
-    font-family: Poppins, "Noto Sans SC", sans-serif;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 600;
-    line-height: 1.3;
-    color: #000;
+    color: #1d2129;
   }
-}
-
-.auth-form-container {
-  width: 100%;
 }
 
 .right-top {
   position: absolute;
   top: 24px;
   right: 24px;
-  z-index: 10;
   display: flex;
   gap: 4px;
   align-items: center;
