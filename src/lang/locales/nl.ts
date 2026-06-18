@@ -392,8 +392,12 @@ export default {
   "web.gfuc.view_detail": "Bekijk details",
   "web.gfuc.delivery_in_progress": "In levering",
   "web.gfuc.signed_orders": "Getekend",
+  "web.gfuc.days_delivery_in_progress":
+    "Pakketten in levering afgelopen 7 dagen",
+  "web.gfuc.days_signed_orders": "Getekende pakketten afgelopen 7 dagen",
   "web.gfuc.tracking_no": "Voer uw trackingnummer in",
   "web.gfuc.query": "Zoeken",
+  "web.gfuc.track_query": "Tracking Zoeken",
   "web.gfuc.forecast_order_tip":
     "Vul eenvoudig de basisgegevens in om snel bestellingen te voorspellen",
   "web.gfuc.problem_management": "Probleemorderbeheer",

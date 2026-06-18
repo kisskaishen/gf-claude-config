@@ -400,8 +400,12 @@ export default {
   "web.gfuc.view_detail": "View Details",
   "web.gfuc.delivery_in_progress": "In Delivery",
   "web.gfuc.signed_orders": "Signed",
+  "web.gfuc.days_delivery_in_progress":
+    "Packages in delivery in the last 7 days",
+  "web.gfuc.days_signed_orders": "Packages signed in the last 7 days",
   "web.gfuc.tracking_no": "Please enter your tracking number",
   "web.gfuc.query": "Query",
+  "web.gfuc.track_query": "Track Query",
   "web.gfuc.forecast_order_tip":
     "Simply fill in the basic information to quickly forecast orders",
   "web.gfuc.problem_management": "Problem Order Management",

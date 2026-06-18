@@ -29,28 +29,38 @@
 
       <!-- 派送中 -->
       <div
-        class="flex flex-col items-center justify-center p-4 bg-white border rounded-lg border-card min-w-[320px]"
+        class="flex flex-col p-4 bg-white border rounded-lg cursor-pointer border-card min-w-[320px]"
         @click="handleViewDetail('OrderList', 4)"
       >
-        <p class="mb-2 text-3xl font-bold text-center text-primary">
-          {{ recentDeliveryCount }}
+        <p class="mb-4 text-sm text-left text-gray-600">
+          {{ $t("web.gfuc.days_delivery_in_progress") }}
         </p>
-        <p class="text-center text-gray-600">
-          {{ $t("web.gfuc.delivery_in_progress") }}
-        </p>
+        <div class="flex flex-col items-center">
+          <p class="mb-2 text-3xl font-bold text-center text-primary">
+            {{ recentDeliveryCount }}
+          </p>
+          <p class="text-center text-gray-600">
+            {{ $t("web.gfuc.delivery_in_progress") }}
+          </p>
+        </div>
       </div>
 
       <!-- 已签收 -->
       <div
-        class="flex flex-col items-center justify-center p-4 bg-white border rounded-lg border-card min-w-[320px]"
+        class="flex flex-col p-4 bg-white border rounded-lg cursor-pointer border-card min-w-[320px]"
         @click="handleViewDetail('OrderList', 5)"
       >
-        <p class="mb-2 text-3xl font-bold text-center text-primary">
-          {{ SignedOrdersCount }}
+        <p class="mb-4 text-sm text-left text-gray-600">
+          {{ $t("web.gfuc.days_signed_orders") }}
         </p>
-        <p class="text-center text-gray-600">
-          {{ $t("web.gfuc.signed_orders") }}
-        </p>
+        <div class="flex flex-col items-center">
+          <p class="mb-2 text-3xl font-bold text-center text-primary">
+            {{ SignedOrdersCount }}
+          </p>
+          <p class="text-center text-gray-600">
+            {{ $t("web.gfuc.signed_orders") }}
+          </p>
+        </div>
       </div>
     </div>
 
@@ -78,7 +88,7 @@
             class="custom-append-btn"
             @click="handleQuery"
           >
-            {{ $t("web.gfuc.query") }}
+            {{ $t("web.gfuc.track_query") }}
           </el-button>
         </template>
       </el-input>
@@ -260,63 +270,60 @@
         <p class="text-base text-info">{{ $t("web.gfuc.delivery_sign") }}</p>
       </div>
     </div>
-
-    <!-- 右侧帮助和反馈 -->
-    <div
-      class="flex fixed right-0 bottom-1/4 flex-col gap-2 px-1.5 py-3 bg-white shadow-md -translate-y-1/2 min-w-14"
-    >
-      <!-- 帮助 -->
-      <div
-        class="flex flex-col items-center justify-center transition-shadow bg-white cursor-pointer"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6 text-gray-600"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <span class="text-sm whitespace-nowrap text-info">帮助</span>
-      </div>
-      <el-divider style="margin: 0" />
-      <!-- 反馈 -->
-      <div
-        class="flex flex-col items-center justify-center transition-shadow bg-white cursor-pointer"
-        @click="handleOpenFeedback"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6 text-gray-600"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-          />
-        </svg>
-        <span class="text-sm whitespace-nowrap text-info">{{
-          $t("web.gfuc.feedback")
-        }}</span>
-      </div>
-    </div>
-
-    <!-- 用户反馈弹框 -->
-    <FeedbackDialog
-      v-model:visible="feedbackVisible"
-      :country="appStore.site"
-    />
   </div>
+
+  <!-- 右侧帮助和反馈 -->
+  <div
+    class="flex fixed right-0 bottom-[10%] flex-col gap-2 px-1.5 py-3 bg-white shadow-md -translate-y-1/2 min-w-14"
+  >
+    <!-- 帮助 -->
+    <div
+      class="flex flex-col items-center justify-center transition-shadow bg-white cursor-pointer"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6 text-gray-600"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+      <span class="text-sm whitespace-nowrap text-info">帮助</span>
+    </div>
+    <el-divider style="margin: 0" />
+    <!-- 反馈 -->
+    <div
+      class="flex flex-col items-center justify-center transition-shadow bg-white cursor-pointer"
+      @click="handleOpenFeedback"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6 text-gray-600"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+        />
+      </svg>
+      <span class="text-sm whitespace-nowrap text-info">{{
+        $t("web.gfuc.feedback")
+      }}</span>
+    </div>
+  </div>
+
+  <!-- 用户反馈弹框 -->
+  <FeedbackDialog v-model:visible="feedbackVisible" :country="appStore.site" />
 </template>
 
 <script setup lang="ts">

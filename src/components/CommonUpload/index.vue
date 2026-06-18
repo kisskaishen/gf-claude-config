@@ -15,6 +15,7 @@
         :auto-upload="autoUpload"
         :disabled="disabled"
         :style="uploadStyle"
+        drag
         :class="[uploadClasses, 'image-upload']"
         :before-upload="handleBeforeUpload"
         :on-success="handleSuccess"
@@ -123,7 +124,7 @@
           <slot name="file" :file="file">
             <div class="relative file-item">
               <svg-icon name="upload-file" width="40" height="48"></svg-icon>
-              <div class="absolute left-0 top-2 w-9 h-12">
+              <div class="absolute left-0 h-12 top-2 w-9">
                 <div
                   class="h-12 text-sm font-normal text-center text-white leading-[48px]"
                 >
@@ -134,12 +135,12 @@
                 <!-- 文件名 -->
                 <div>
                   <span
-                    class="overflow-hidden w-full whitespace-normal file-name"
+                    class="w-full overflow-hidden whitespace-normal file-name"
                     >{{ file.name }}</span
                   >
                 </div>
                 <!-- 进度和状态 -->
-                <div class="flex gap-2 items-center">
+                <div class="flex items-center gap-2">
                   <!-- <span class="text-sm text-info">{{ file.status }}</span> -->
                   <span class="text-xs font-normal text-info">{{
                     currentProgress + "%"
@@ -1007,11 +1008,10 @@ defineExpose({
 }
 
 :deep(.el-upload-dragger) {
-  padding: 80px 10px;
-  border-color: #e5e7eb;
+  padding: 0;
 
   &:hover {
-    border-color: var(--el-color-primary);
+    border-color: transparent;
   }
 
   &.has-custom-width,

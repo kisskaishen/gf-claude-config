@@ -402,8 +402,12 @@ export default {
   "web.gfuc.view_detail": "Visualizza dettagli",
   "web.gfuc.delivery_in_progress": "In consegna",
   "web.gfuc.signed_orders": "Firmato",
+  "web.gfuc.days_delivery_in_progress":
+    "Pacchi in consegna negli ultimi 7 giorni",
+  "web.gfuc.days_signed_orders": "Pacchi firmati negli ultimi 7 giorni",
   "web.gfuc.tracking_no": "Inserisci il tuo numero di tracciamento",
   "web.gfuc.query": "Cerca",
+  "web.gfuc.track_query": "Ricerca tracciamento",
   "web.gfuc.forecast_order_tip":
     "Compila semplicemente le informazioni di base per prevedere rapidamente gli ordini",
   "web.gfuc.problem_management": "Gestione ordini problematici",
