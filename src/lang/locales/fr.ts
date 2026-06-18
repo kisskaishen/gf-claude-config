@@ -330,7 +330,7 @@ export default {
   "web.gfuc.please_agree_and_check_the_agreement":
     "Veuillez accepter et cocher la convention",
   "web.gfuc.task_management": "Gestion des tâches",
-  "web.gfuc.task_list": "Liste des tâches",
+  "web.gfuc.task_list": "Centre de tâches",
   "web.gfuc.file_name": "Nom du fichier",
   "web.gfuc.date": "Date",
   "web.gfuc.type": "Type",

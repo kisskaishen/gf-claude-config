@@ -234,12 +234,9 @@
                   :content="$t('web.gfuc.download_bill')"
                   placement="top"
                 >
-                  <svg-icon
-                    name="upload-download"
-                    width="24"
-                    height="24"
-                    @click="handleDownload(row)"
-                  />
+                  <el-button class="action-btn" @click="handleDownload(row)">
+                    <svg-icon name="upload-download" width="16" height="16" />
+                  </el-button>
                 </el-tooltip>
               </div>
             </template>
@@ -616,6 +613,27 @@ onMounted(() => {
   .el-button {
     padding: 0;
     font-size: 18px;
+  }
+
+  .action-btn {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+    border: 1px solid #ebebeb;
+    margin: 0;
+    width: 32px;
+    height: 32px;
+    color: #999999;
+
+    &:hover {
+      border-color: var(--el-color-primary);
+      color: var(--el-color-primary);
+    }
   }
 }
 

@@ -2,9 +2,9 @@
   <div v-if="!item.meta?.hidden">
     <template v-if="hasOneShowingChild(item.children, item)">
       <el-menu-item :index="resolvePath(onlyOneChild.path)">
-        <el-icon v-if="onlyOneChild.meta?.icon || item.meta?.icon">
+        <template v-if="onlyOneChild.meta?.icon || item.meta?.icon">
           <svg-icon :name="onlyOneChild.meta?.icon || item.meta?.icon" />
-        </el-icon>
+        </template>
         <template #title>
           <span
             class="sidebar-title"
@@ -17,13 +17,13 @@
 
     <el-sub-menu v-else :index="item.path">
       <template #title>
-        <el-icon v-if="item.meta?.icon">
+        <template v-if="item.meta?.icon">
           <svg-icon
             :name="item.meta?.icon"
             :width="item.meta?.width || '20px'"
             :height="item.meta?.height || '24px'"
           />
-        </el-icon>
+        </template>
         <span class="sidebar-title" :title="getI18nTitle(item.meta)">{{
           getI18nTitle(item.meta)
         }}</span>
@@ -59,8 +59,17 @@ function hasOneShowingChild(
 ) {
   const showingChildren = children.filter((item) => !item.meta?.hidden);
 
-  if (showingChildren.length === 1 && parent.meta?.showOnlyOneChild) {
-    onlyOneChild.value = showingChildren[0];
+  if (showingChildren.length === 1) {
+    // 只有一个可见子路由时，直接展示子级，但继承父级的 icon
+    onlyOneChild.value = {
+      ...showingChildren[0],
+      meta: {
+        ...showingChildren[0].meta,
+        icon: showingChildren[0].meta?.icon || parent.meta?.icon,
+        width: showingChildren[0].meta?.width || parent.meta?.width,
+        height: showingChildren[0].meta?.height || parent.meta?.height
+      }
+    };
     return true;
   }
   if (showingChildren.length === 0) {
@@ -93,7 +102,17 @@ function getI18nTitle(meta: any) {
   white-space: nowrap;
 }
 
-.el-icon {
+.svg-icon {
   font-size: 20px;
+  margin-right: 6px;
+}
+
+/* 菜单选中时图标颜色跟随文字 */
+:deep(.el-menu-item.is-active svg) {
+  fill: var(--el-menu-active-color) !important;
+}
+
+:deep(.el-sub-menu.is-active > .el-sub-menu__title svg) {
+  fill: var(--el-menu-active-color) !important;
 }
 </style>

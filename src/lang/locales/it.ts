@@ -319,7 +319,7 @@ export default {
   "web.gfuc.please_agree_and_check_the_agreement":
     "Si prega di accettare e spuntare il contratto",
   "web.gfuc.task_management": "Gestione attività",
-  "web.gfuc.task_list": "Elenco attività",
+  "web.gfuc.task_list": "Centro attività",
   "web.gfuc.file_name": "Nome file",
   "web.gfuc.date": "Data",
   "web.gfuc.type": "Tipo",

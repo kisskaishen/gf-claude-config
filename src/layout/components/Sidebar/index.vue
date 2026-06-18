@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <el-scrollbar>
+    <el-scrollbar class="sidebar-menu-wrapper">
       <el-menu
         :default-active="activeMenu"
         :collapse="isCollapse"
@@ -34,6 +34,16 @@
         />
       </el-menu>
     </el-scrollbar>
+
+    <!-- 底部帮助中心入口（暂隐藏） -->
+    <!-- <div class="sidebar-footer">
+      <div class="help-entry" @click="goHelpCenter">
+        <svg-icon name="help" :size="isCollapse ? '20px' : '20px'" />
+        <span v-show="!isCollapse" class="help-text">{{
+          $t("web.gfuc.help_center")
+        }}</span>
+      </div>
+    </div> -->
   </div>
 </template>
 
@@ -42,7 +52,6 @@ import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useAppStore } from "@/store/app";
 import SidebarItem from "./SidebarItem.vue";
-import { DArrowLeft, DArrowRight } from "@element-plus/icons-vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -54,6 +63,10 @@ const isCollapse = computed(() => !appStore.sidebar.opened);
 
 const toggleCollapse = () => {
   appStore.toggleSidebar();
+};
+
+const goHelpCenter = () => {
+  router.push("/help");
 };
 </script>
 
@@ -175,6 +188,42 @@ const toggleCollapse = () => {
     .collapse-btn {
       justify-content: center;
       padding-left: 0;
+    }
+
+    .sidebar-footer {
+      .help-entry {
+        justify-content: center;
+        padding: 12px 0;
+      }
+    }
+  }
+
+  .sidebar-menu-wrapper {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .sidebar-footer {
+    flex-shrink: 0;
+    border-top: 1px solid var(--border-color-light, #eff0f5);
+
+    .help-entry {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: rgb(252 76 2 / 4%);
+      }
+
+      .help-text {
+        font-size: var(--font-size-md);
+        color: var(--text-color-primary);
+        white-space: nowrap;
+      }
     }
   }
 }

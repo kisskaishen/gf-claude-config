@@ -108,14 +108,17 @@
             :width="item?.width || undefined"
             :min-width="item?.minWidth || undefined"
             :align="item?.textAlign || 'left'"
-            show-overflow-tooltip
+            :show-overflow-tooltip="item.type !== 'text-wrap'"
           >
             <template #default="{ row }">
-              <div v-if="item.prop === 'taskStatusName'">
+              <template v-if="item.type === 'text-wrap'">
+                <span class="text-wrap-cell">{{ row[item.prop] }}</span>
+              </template>
+              <template v-else-if="item.prop === 'taskStatusName'">
                 <span :class="['status-tag', getStatusClass(row.taskStatus)]">
                   {{ taskStatusDict.getLabel(row.taskStatus) ?? "-" }}
                 </span>
-              </div>
+              </template>
             </template>
           </el-table-column>
 
@@ -127,24 +130,17 @@
           >
             <template #default="{ row, index }">
               <div class="flex justify-center gap-2 table-actions">
-                <!-- <el-tooltip
-                  :content="$t('web.gfuc.view_order')"
-                  placement="top"
-                >
-                  <svg-icon name="order-view" width="24" height="24" />
-                </el-tooltip> -->
-
                 <el-tooltip
                   :content="$t('web.gfuc.download_original_file')"
                   placement="top"
                 >
-                  <svg-icon
-                    name="download-original"
-                    width="24"
-                    height="24"
+                  <el-button
+                    class="action-btn"
                     @click="handleDownload(row)"
                     v-if="row.rawFileUrl"
-                  />
+                  >
+                    <svg-icon name="download-original" width="16" height="16" />
+                  </el-button>
                 </el-tooltip>
 
                 <el-tooltip
@@ -157,34 +153,34 @@
                   "
                   placement="top"
                 >
-                  <svg-icon
-                    name="download-original"
-                    width="24"
-                    height="24"
+                  <el-button
+                    class="action-btn"
                     @click="handleBillDownload(row)"
                     v-if="row.relatedTaskIds?.length > 0"
-                  />
+                  >
+                    <svg-icon name="download-original" width="16" height="16" />
+                  </el-button>
                 </el-tooltip>
 
                 <el-tooltip :content="$t('gfuc.refresh')" placement="top">
-                  <svg-icon
-                    name="refresh"
-                    width="24"
-                    height="24"
+                  <el-button
+                    class="action-btn"
                     @click="handleRefresh(row, index)"
-                  />
+                  >
+                    <svg-icon name="refresh" width="16" height="16" />
+                  </el-button>
                 </el-tooltip>
                 <el-tooltip
                   :content="$t('web.gfuc.download_error_data')"
                   placement="top"
                   v-if="row.errorFileUrl"
                 >
-                  <svg-icon
-                    name="download-error"
-                    width="24"
-                    height="24"
+                  <el-button
+                    class="action-btn"
                     @click="handleErrorDownload(row)"
-                  />
+                  >
+                    <svg-icon name="download-error" width="16" height="16" />
+                  </el-button>
                 </el-tooltip>
               </div>
             </template>
@@ -251,6 +247,7 @@ const columns = computed(() => [
   {
     prop: "fileName",
     label: "web.gfuc.file_name", // 文件名
+    type: "text-wrap",
     minWidth: columnWidth(160, 200, 200, 200, 180, 200)
   },
   {
@@ -506,6 +503,34 @@ watch(
   flex-direction: column;
   height: calc(100vh - 120px);
 
+  .table-actions {
+    .el-button {
+      padding: 0;
+      font-size: 18px;
+    }
+
+    .action-btn {
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s;
+      border: 1px solid #ebebeb;
+      margin: 0;
+      width: 32px;
+      height: 32px;
+      color: #999999;
+
+      &:hover {
+        border-color: var(--el-color-primary);
+        color: var(--el-color-primary);
+      }
+    }
+  }
+
   .status-tag {
     padding: 2px 8px;
     font-size: var(--font-size-base);
@@ -531,6 +556,16 @@ watch(
   .status-failed {
     color: rgb(255 49 65 / 100%);
     background-color: rgb(255 227 230 / 100%);
+  }
+
+  .text-wrap-cell {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    overflow: hidden;
+    word-break: break-word;
+    line-height: 1.4;
   }
 }
 </style>

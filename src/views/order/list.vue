@@ -1182,9 +1182,11 @@ onActivated(() => {
     margin: 0;
     width: 32px;
     height: 32px;
+    color: #999999;
 
     &:hover {
-      border: 1px solid var(--el-color-primary);
+      border-color: var(--el-color-primary);
+      color: var(--el-color-primary);
     }
   }
 }
