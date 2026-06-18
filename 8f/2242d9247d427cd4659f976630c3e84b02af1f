@@ -1,0 +1,81 @@
+src/views/order/list.vue
+  s_c81987c06df525::t_582ef632f00a80 1188-1189
+src/assets/svg-icons/order-view.svg
+  s_c81987c06df525::t_292d0e1f4ec11a 7
+src/views/finance/components/ClaimTable.vue
+  s_c81987c06df525::t_0b34115e540d63 573
+  s_c81987c06df525::t_7b21ab98fd209b 206-208
+  s_c81987c06df525::t_a1e9237210399f 559-572,574-579
+src/lang/locales/it.ts
+  s_c81987c06df525::t_e0bc2d72a706f1 322
+src/layout/components/Sidebar/SidebarItem.vue
+  s_c81987c06df525::t_c42669666aca1e 105
+  s_c81987c06df525::t_e7a03eb347045c 5,7,20,26
+  s_c81987c06df525::t_f1006aa1e15f4c 62-72
+  s_c81987c06df525::t_bcae000ccadf05 109-110,113-114
+  s_c81987c06df525::t_7a7a9d1d221003 111-112,115-116
+  s_c81987c06df525::t_d250fc9f290cdf 107
+src/layout/components/Sidebar/index.vue
+  s_c81987c06df525::t_4f45cbb78e00d2 192-200,206-227
+  s_c81987c06df525::t_e7f100413b32c3 37,40-42,44-45
+  s_c81987c06df525::t_bbd200451e35ca 201-205
+  s_c81987c06df525::t_2564e4ef811295 67-69
+  s_c81987c06df525::t_7e513a67fe2716 38-39,43,46
+  s_c81987c06df525::t_77010e9aa3a30f 20
+src/assets/svg-icons/order-list-edit.svg
+  s_c81987c06df525::t_2d74a7adb6bec3 6
+src/assets/svg-icons/order-copy.svg
+  s_c81987c06df525::t_31ebfed7c7602b 7
+src/assets/svg-icons/setting.svg
+  s_c81987c06df525::t_fdaec41bbafa6c 1
+src/lang/locales/en.ts
+  s_c81987c06df525::t_04bfccc4a86390 319
+src/assets/svg-icons/download-error.svg
+  s_c81987c06df525::t_167f35c7821db9 2-5,7
+src/assets/svg-icons/upload-download.svg
+  s_c81987c06df525::t_c8b6a3085d4732 2
+src/lang/locales/nl.ts
+  s_c81987c06df525::t_5831e21b401d3d 313
+src/views/finance/components/CostTable.vue
+  s_c81987c06df525::t_99d117691f8330 237-239
+  s_c81987c06df525::t_4764062b3d51cc 631
+  s_c81987c06df525::t_d7149c234cef9b 617-630,632-637
+src/assets/svg-icons/task.svg
+  s_c81987c06df525::t_8b1c3b51fd53ff 3-4
+src/assets/svg-icons/order-delete.svg
+  s_c81987c06df525::t_5ca57ffaf1de98 7
+src/assets/svg-icons/refresh.svg
+  s_c81987c06df525::t_0e709e263b3bbb 2
+src/views/task/list.vue
+  s_c81987c06df525::t_99fed71a2f18cb 111,114-117,121
+  s_c81987c06df525::t_cf010810a6d14b 250
+  s_c81987c06df525::t_5d63bc0e7b6e5d 506-533
+  s_c81987c06df525::t_523fe25895de9a 560-569
+  s_c81987c06df525::t_ec704eaadf28b7 137-138,141-143,156-157,160-162,166-167,169-171,178-179,181-183
+src/lang/locales/fr.ts
+  s_c81987c06df525::t_989c1969b3a0bd 333
+src/router/routes.ts
+  s_c81987c06df525::t_51ab4e3a0bff07 198
+src/lang/locales/zh.ts
+  s_c81987c06df525::t_c7267673f9a04f 306
+src/assets/svg-icons/order-printer.svg
+  s_c81987c06df525::t_c3e8eb1e1c7b2f 7
+src/assets/svg-icons/download-original.svg
+  s_c81987c06df525::t_c5f6b5ad5f332e 2-6,9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "8f2242d9247d427cd4659f976630c3e84b02af1f",
+  "prompts": {},
+  "sessions": {
+    "s_c81987c06df525": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "40ca27f7-a918-4cb2-a9e6-f806c0d77087",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
