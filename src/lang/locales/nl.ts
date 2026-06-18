@@ -441,5 +441,12 @@ export default {
   "web.gfuc.please_input_feedback_description": "Voer een beschrijving in",
   "web.gfuc.downloading": "Downloaden in bevoegd...",
   "web.gfuc.download_success": "Downloadenvol",
-  "web.gfuc.download_failed": "Downloaden mislukt"
+  "web.gfuc.download_failed": "Downloaden mislukt",
+
+  // Orderdetails
+  "web.gfuc.order_status": "Orderstatus",
+  "web.gfuc.parcel_and_other": "Pakketinfo & overige info",
+  "web.gfuc.no_tracking_info": "Geen trackinginformatie",
+  "web.gfuc.printing": "Afdrukken...",
+  "web.gfuc.deleting": "Verwijderen..."
 };

@@ -1,130 +1,166 @@
 <template>
   <div class="order-detail">
-    <!-- 订单状态跟踪 -->
-    <div class="order-status-tracker">
-      <div class="order-info">
-        <div class="flex items-center">
-          <div class="flex flex-col items-center mr-6">
-            <svg-icon name="orderStatus" width="50" height="48" />
-            <div
-              class="flex items-center w-full text-white bg-[#FFEAEC] rounded-xl mt-1"
-              v-if="orderType === 'order'"
-            >
-              <span class="text-sm text-[#FF3141] text-center flex-1 px-3">{{
-                orderData?.orderStatusName || orderData?.orderStatus || "-"
-              }}</span>
-            </div>
-          </div>
-          <div class="section-item">
-            <div class="label">
-              <span>{{ $t("web.gfuc.customer_order_no") }}</span>
-              <svg-icon
-                v-if="orderData?.cOrderNo"
-                name="copy"
-                width="20"
-                height="20"
-                @click="copyText(orderData?.cOrderNo)"
-              />
-            </div>
-            <span class="value">{{ orderData?.cOrderNo || "-" }}</span>
-          </div>
+    <!-- 顶部：单号信息 + 进度条 -->
+    <div class="detail-top-card">
+      <!-- 第一行：单号 + 状态 + 操作按钮（三栏等分） -->
+      <div class="top-row">
+        <div class="order-field">
+          <span class="field-label">{{
+            $t("web.gfuc.customer_order_no")
+          }}</span>
+          <span class="field-value">
+            {{ orderData?.cOrderNo || "-" }}
+            <svg-icon
+              v-if="orderData?.cOrderNo"
+              name="order-copy"
+              width="16"
+              height="16"
+              class="copy-icon"
+              @click="copyText(orderData?.cOrderNo)"
+            />
+          </span>
         </div>
-        <el-divider direction="vertical" />
-        <div class="section-item">
-          <div class="label">
-            <span>{{ $t("web.gfuc.waybill_no") }}</span>
+        <div class="top-divider" />
+        <div class="order-field">
+          <span class="field-label">{{ $t("web.gfuc.waybill_no") }}</span>
+          <span class="field-value">
+            {{ orderData?.waybillNo || "-" }}
             <svg-icon
               v-if="orderData?.waybillNo"
-              name="copy"
-              width="20"
-              height="20"
+              name="order-copy"
+              width="16"
+              height="16"
+              class="copy-icon"
               @click="copyText(orderData?.waybillNo)"
             />
+          </span>
+        </div>
+        <div class="top-divider" />
+        <div class="order-field">
+          <span class="field-label">{{ $t("web.gfuc.order_status") }}</span>
+          <div class="field-value-row">
+            <span class="status-badge" :class="statusClass">
+              {{ orderData?.orderStatusName || orderData?.orderStatus || "-" }}
+            </span>
+            <!-- <template v-if="orderData?.orderStatus === 1">
+              <el-button text class="action-btn" @click="handlePrint">
+                <svg-icon name="order-printer" width="16" height="16" />
+              </el-button>
+              <el-button text class="action-btn" @click="handleDelete">
+                <svg-icon name="order-delete" width="16" height="16" />
+              </el-button>
+            </template> -->
           </div>
-          <span class="value">{{ orderData?.waybillNo || "-" }}</span>
         </div>
-        <el-divider direction="vertical" />
       </div>
-      <!-- 进度条容器 -->
-      <div class="status-steps">
-        <!-- 步骤背景（带箭头） -->
-        <div
-          v-for="(step, index) in statusSteps"
-          :key="index"
-          class="step-item"
-          :class="{
-            'step-disabled':
-              orderData?.orderStatus == 2 || orderType === 'exception',
-            'step-active':
-              orderData?.orderStatus !== 2 &&
-              orderType !== 'exception' &&
-              step.status == orderData.orderStatus,
-            'step-complated':
-              orderData?.orderStatus !== 2 &&
-              orderType !== 'exception' &&
-              step.status < orderData.orderStatus,
-            'step-default':
-              orderData?.orderStatus !== 2 &&
-              orderType !== 'exception' &&
-              step.status > orderData?.orderStatus
-          }"
-        >
-          <span class="step-text">{{ step.label }}</span>
 
-          <!-- 箭头 -->
+      <!-- 第二行：5步进度条 -->
+      <div class="progress-row">
+        <template v-for="(step, index) in computedSteps" :key="index">
           <div
-            v-if="shouldShowArrow(index)"
-            class="step-arrow"
-            :class="{
-              'arrow-active':
-                orderData?.orderStatus !== 2 &&
-                orderType !== 'exception' &&
-                step.status == orderData.orderStatus,
-              'arrow-complated':
-                orderData?.orderStatus !== 2 &&
-                orderType !== 'exception' &&
-                step.status < orderData.orderStatus,
-              'arrow-default':
-                orderData?.orderStatus !== 2 &&
-                orderType !== 'exception' &&
-                step.status > orderData?.orderStatus
-            }"
+            v-if="index > 0"
+            class="connector"
+            :class="{ 'connector-active': step.status <= currentStepStatus }"
           />
-        </div>
+          <div class="progress-step">
+            <div
+              class="step-dot"
+              :class="{
+                'dot-active': step.status === currentStepStatus,
+                'dot-completed': step.status < currentStepStatus,
+                'dot-pending': step.status > currentStepStatus
+              }"
+            >
+              <svg-icon
+                v-if="step.status < currentStepStatus"
+                name="check"
+                width="12"
+                height="12"
+              />
+              <svg-icon
+                v-else-if="step.status === currentStepStatus"
+                name="circle"
+                width="12"
+                height="12"
+              />
+            </div>
+            <span
+              class="step-label"
+              :class="{
+                'label-active': step.status === currentStepStatus,
+                'label-completed': step.status < currentStepStatus,
+                'label-pending': step.status > currentStepStatus
+              }"
+              >{{ step.label }}</span
+            >
+          </div>
+        </template>
       </div>
     </div>
-    <div class="flex content">
-      <!-- 订单详情内容 -->
-      <div class="mr-3 order-content">
+
+    <!-- 底部：两栏布局 -->
+    <div class="detail-bottom">
+      <!-- 左栏 -->
+      <div class="left-column">
         <!-- 基本信息 -->
-        <div class="section base-section">
-          <h3 class="section-title">{{ $t("web.gfuc.basic_info") }}</h3>
+        <div class="info-card">
+          <div class="card-title">
+            <span class="title-bar" />
+            <span class="title-text">{{
+              $t("web.gfuc.basic_info" /** 基本信息 */)
+            }}</span>
+          </div>
           <div class="info-grid">
             <div class="info-item">
-              <span class="info-label">{{ $t("web.gfuc.reference_no") }}</span>
-              <span class="info-value">{{
-                orderData?.referenceNo || "-"
+              <span class="info-label">{{
+                $t("web.gfuc.reference_no" /** 参考单号 */)
               }}</span>
+              <span class="info-value">
+                {{ orderData?.referenceNo || "-" }}
+                <svg-icon
+                  v-if="orderData?.referenceNo"
+                  name="order-copy"
+                  width="16"
+                  height="16"
+                  class="copy-icon"
+                  @click="copyText(orderData?.referenceNo)"
+                />
+              </span>
             </div>
-            <el-divider direction="vertical" />
+            <div class="grid-divider" />
             <div class="info-item">
               <span class="info-label">{{
-                $t("web.gfuc.third_party_tracking")
+                $t("web.gfuc.third_party_tracking" /** 第三方跟踪号 */)
               }}</span>
-              <span class="info-value">{{ orderData?.reference3 || "-" }}</span>
+              <span class="info-value">
+                {{ orderData?.reference3 || "-" }}
+                <svg-icon
+                  v-if="orderData?.reference3"
+                  name="order-copy"
+                  width="16"
+                  height="16"
+                  class="copy-icon"
+                  @click="copyText(orderData?.reference3)"
+                />
+              </span>
             </div>
-            <el-divider direction="vertical" />
+            <div class="grid-divider" />
             <div class="info-item">
-              <span class="info-label">{{ $t("web.gfuc.product_type") }}</span>
+              <span class="info-label">{{
+                $t("web.gfuc.product_type" /** 产品类型 */)
+              }}</span>
               <span class="info-value">{{
                 orderData?.productType === "ECO"
-                  ? $t("web.gfuc.express_delivery") || "-"
+                  ? $t("web.gfuc.express_delivery")
                   : $t("web.gfuc.standard_delivery") || "-"
               }}</span>
             </div>
-            <el-divider direction="vertical" />
+            <div class="grid-divider" />
+
             <div class="info-item">
-              <span class="info-label">{{ $t("web.gfuc.product") }}</span>
+              <span class="info-label">{{
+                $t("web.gfuc.product" /** 产品 */)
+              }}</span>
               <span class="info-value">{{
                 orderData?.productName || "-"
               }}</span>
@@ -132,84 +168,103 @@
           </div>
         </div>
 
-        <!-- 发货和收件人信息 -->
-        <div class="section shipping-section">
-          <div class="flex items-center justify-between">
-            <h3 class="section-title">{{ $t("web.gfuc.shipment_info") }}</h3>
-            <div class="flex items-center text-[#4e5965] font-semibold">
-              <svg-icon name="recipeType" width="24px" height="24px" />
-              <span class="ml-2">{{ $t("web.gfuc.delivery_info") }}</span>
-            </div>
+        <!-- 发货信息 -->
+        <div class="info-card">
+          <div class="card-title">
+            <span class="title-bar" />
+            <span class="title-text">{{
+              $t("web.gfuc.shipment_info" /** 发货信息 */)
+            }}</span>
+            <span class="delivery-tag">
+              <svg-icon name="home" width="16" height="16" />
+              {{ $t("web.gfuc.delivery_info" /** 送货上门 */) }}
+            </span>
           </div>
-          <div class="flex items-center">
-            <div class="flex flex-col flex-1 ml-3">
-              <div class="section-info-title">
-                <svg-icon name="sender" width="24px" height="24px" />
-                <span>{{ $t("web.gfuc.shipper_info") }}</span>
+          <div class="address-grid">
+            <div class="address-column">
+              <div class="address-title">
+                <svg-icon name="sender" width="24" height="24" />
+                <span>{{ $t("web.gfuc.shipper_info" /** 寄件人信息 */) }}</span>
               </div>
-              <div class="info-grid">
-                <div class="info-item full-width">
-                  <span class="info-label">{{ $t("web.gfuc.name") }}</span>
-                  <span class="info-value">{{
-                    orderData?.orderShipper?.shipperName || "-"
-                  }}</span>
-                </div>
-                <div class="info-item full-width">
-                  <span class="info-label">{{ $t("web.gfuc.address") }}</span>
-                  <span class="info-value">{{
-                    shipperAddress(orderData?.orderShipper) || "-"
-                  }}</span>
-                </div>
-                <div class="info-item">
-                  <span class="info-label">{{ $t("web.gfuc.phone") }}</span>
-                  <span class="info-value">{{
-                    orderData?.orderShipper?.shipperPhone || "-"
-                  }}</span>
-                </div>
+              <div class="address-item">
+                <span class="address-label">{{
+                  $t("web.gfuc.name" /** 姓名 */)
+                }}</span>
+                <span class="address-value">{{
+                  orderData?.orderShipper?.shipperName || "-"
+                }}</span>
+              </div>
+              <div class="address-item">
+                <span class="address-label">{{
+                  $t("web.gfuc.phone" /** 电话 */)
+                }}</span>
+                <span class="address-value">{{
+                  orderData?.orderShipper?.shipperPhone || "-"
+                }}</span>
+              </div>
+              <div class="address-item">
+                <span class="address-label">{{
+                  $t("web.gfuc.address" /** 地址 */)
+                }}</span>
+                <span class="address-value">{{
+                  shipperAddress(orderData?.orderShipper) || "-"
+                }}</span>
               </div>
             </div>
-            <el-divider direction="vertical" />
-            <div class="flex flex-col flex-1 ml-3">
-              <div class="section-info-title">
-                <svg-icon name="recipient" width="24px" height="24px" />
-                <span>{{ $t("web.gfuc.consignee_info_title") }}</span>
+            <div class="address-divider" />
+            <div class="address-column">
+              <div class="address-title">
+                <svg-icon name="recipient" width="24" height="24" />
+                <span>{{
+                  $t("web.gfuc.consignee_info_title" /** 收件人信息 */)
+                }}</span>
               </div>
-              <div class="info-grid">
-                <div class="info-item full-width">
-                  <span class="info-label">{{ $t("web.gfuc.name") }}</span>
-                  <span class="info-value">{{
-                    orderData?.orderConsignee?.consigneeName || "-"
-                  }}</span>
-                </div>
-                <div class="info-item full-width">
-                  <span class="info-label">{{ $t("web.gfuc.address") }}</span>
-                  <span class="info-value">{{
-                    consigneeAddress(orderData?.orderConsignee)
-                  }}</span>
-                </div>
-                <div class="info-item">
-                  <span class="info-label">{{ $t("web.gfuc.phone") }}</span>
-                  <span class="info-value">{{
-                    orderData?.orderConsignee?.consigneePhone || "-"
-                  }}</span>
-                </div>
+              <div class="address-item">
+                <span class="address-label">{{
+                  $t("web.gfuc.name" /** 姓名 */)
+                }}</span>
+                <span class="address-value">{{
+                  orderData?.orderConsignee?.consigneeName || "-"
+                }}</span>
+              </div>
+              <div class="address-item">
+                <span class="address-label">{{
+                  $t("web.gfuc.phone" /** 电话 */)
+                }}</span>
+                <span class="address-value">{{
+                  orderData?.orderConsignee?.consigneePhone || "-"
+                }}</span>
+              </div>
+              <div class="address-item">
+                <span class="address-label">{{
+                  $t("web.gfuc.address" /** 地址 */)
+                }}</span>
+                <span class="address-value">{{
+                  consigneeAddress(orderData?.orderConsignee) || "-"
+                }}</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 包裹信息 -->
-        <div class="section package-section">
-          <h3 class="section-title">{{ $t("web.gfuc.parcel_info") }}</h3>
+        <!-- 包裹信息&其他信息 -->
+        <div class="info-card">
+          <div class="card-title">
+            <span class="title-bar" />
+            <span class="title-text">{{
+              $t("web.gfuc.parcel_and_other" /** 包裹信息&其他信息 */)
+            }}</span>
+          </div>
           <el-table
             :data="orderData.orderItemList"
             border
             style="width: 100%"
             class="goods-table"
+            header-cell-class-name="table-header"
           >
             <el-table-column
               prop="itemNameZh"
-              :label="$t('web.gfuc.product_name_cn')"
+              :label="$t('web.gfuc.product_name_cn' /** 中文品名 */)"
               min-width="200"
             >
               <template #default="{ row }">
@@ -218,7 +273,7 @@
             </el-table-column>
             <el-table-column
               prop="itemNameEn"
-              :label="$t('web.gfuc.product_name_en')"
+              :label="$t('web.gfuc.product_name_en' /** 商品英文名称 */)"
               min-width="200"
             >
               <template #default="{ row }">
@@ -227,7 +282,7 @@
             </el-table-column>
             <el-table-column
               prop="itemQty"
-              :label="$t('web.gfuc.quantity')"
+              :label="$t('web.gfuc.quantity' /** 数量 */)"
               width="120"
             >
               <template #default="{ row }">
@@ -236,54 +291,55 @@
             </el-table-column>
           </el-table>
 
-          <div class="info-grid">
-            <div class="info-item">
-              <span class="info-label">{{
-                $t("web.gfuc.total_quantity")
+          <div class="parcel-summary">
+            <div class="summary-item">
+              <span class="summary-label">{{
+                $t("web.gfuc.total_quantity" /** 总数量 */)
               }}</span>
-              <span class="info-value">{{
+              <span class="summary-value">{{
                 orderData?.orderItemList?.reduce(
-                  (acc, cur) => acc + cur.itemQty,
+                  (acc, cur) => acc + (cur.itemQty || 0),
                   0
                 ) || "-"
               }}</span>
             </div>
             <el-divider direction="vertical" />
-            <div class="info-item">
-              <span class="info-label">{{
-                $t("web.gfuc.declared_value")
+            <div class="summary-item">
+              <span class="summary-label">{{
+                $t("web.gfuc.declared_value" /** 申报价值 */)
               }}</span>
-              <span class="info-value">{{
+              <span class="summary-value">{{
                 orderData?.declaredValue || "-"
               }}</span>
             </div>
             <el-divider direction="vertical" />
-            <div class="info-item">
-              <span class="info-label"
-                >{{ $t("web.gfuc.total_weight") }}(kg)</span
+            <div class="summary-item">
+              <span class="summary-label"
+                >{{ $t("web.gfuc.total_weight" /** 总重量 */) }}(kg)</span
               >
-              <span class="info-value">{{
+              <span class="summary-value">{{
                 orderData?.orderGoods?.weight || "-"
               }}</span>
             </div>
             <el-divider direction="vertical" />
-            <div class="info-item">
-              <span class="info-label">{{ $t("web.gfuc.parcel_volume") }}</span>
-              <span class="info-value">{{
-                orderData?.orderGoods?.length +
-                  "*" +
-                  orderData?.orderGoods?.width +
-                  "*" +
-                  orderData?.orderGoods?.height +
-                  "CM" || "-"
+            <div class="summary-item">
+              <span class="summary-label">{{
+                $t("web.gfuc.parcel_volume" /** 体积 */)
+              }}</span>
+              <span class="summary-value">{{
+                orderData?.orderGoods?.length &&
+                orderData?.orderGoods?.width &&
+                orderData?.orderGoods?.height
+                  ? `${orderData.orderGoods.length}*${orderData.orderGoods.width}*${orderData.orderGoods.height}CM`
+                  : "-"
               }}</span>
             </div>
             <el-divider direction="vertical" />
-            <div class="info-item">
-              <span class="info-label"
-                >{{ $t("web.gfuc.charging_weight") }}(kg)</span
+            <div class="summary-item">
+              <span class="summary-label"
+                >{{ $t("web.gfuc.charging_weight" /** 计费重量 */) }}(kg)</span
               >
-              <span class="info-value">{{
+              <span class="summary-value">{{
                 orderData?.orderGoods?.weight || "-"
               }}</span>
             </div>
@@ -291,60 +347,68 @@
         </div>
       </div>
 
-      <!-- 右侧信息 -->
-      <div class="order-sidebar">
+      <!-- 右栏 -->
+      <div class="right-column">
         <!-- 轨迹信息 -->
-        <div class="sidebar-section tracking-section">
-          <h3 class="sidebar-title">{{ $t("web.gfuc.tracking_info") }}</h3>
-          <div class="tracking-info">
-            <div v-for="item in orderData.trackingInfo" :key="item.trackDate">
-              <div class="tracking-date">
-                <el-divider content-position="center">
-                  {{ item.trackDate }}
-                </el-divider>
-              </div>
-              <div
-                class="tracking-item active"
-                v-for="son in item.trackDetailItemList"
-                :key="son.processTime"
-              >
-                <div class="tracking-dot">
-                  <!-- <svg-icon name="locationStep" width="24" height="24" /> -->
-                  <svg-icon
-                    name="completedStep"
-                    width="24"
-                    height="24"
-                    color="#D9D9D9"
-                  />
+        <div class="tracking-card">
+          <div class="card-title">
+            <span class="title-bar" />
+            <span class="title-text">{{
+              $t("web.gfuc.tracking_info" /** 轨迹信息 */)
+            }}</span>
+          </div>
+          <div class="tracking-list">
+            <template v-if="orderData.trackingInfo?.length">
+              <div v-for="item in orderData.trackingInfo" :key="item.trackDate">
+                <div class="tracking-date-divider">
+                  <el-divider content-position="center">{{
+                    item.trackDate
+                  }}</el-divider>
                 </div>
-                <div class="tracking-content">
-                  <div class="tracking-message">
-                    {{ son.externalTrackContent }}
+                <div
+                  v-for="son in item.trackDetailItemList"
+                  :key="son.processTime"
+                  class="tracking-item"
+                >
+                  <div class="tracking-dot">
+                    <svg-icon name="completedStep" width="24" height="24" />
                   </div>
-                  <div class="tracking-time">{{ son.processTime }}</div>
+                  <div class="tracking-content">
+                    <div class="tracking-msg">
+                      {{ son.externalTrackContent }}
+                    </div>
+                    <div class="tracking-time">{{ son.processTime }}</div>
+                  </div>
                 </div>
               </div>
+            </template>
+            <div v-else class="tracking-empty">
+              {{ $t("web.gfuc.no_tracking_info" /** 暂无轨迹信息 */) }}
             </div>
           </div>
         </div>
 
         <!-- 增值服务 -->
-        <div class="sidebar-section service-section" v-if="orderData?.orderCod">
-          <h3 class="sidebar-title">
-            {{ $t("web.gfuc.additional_services") }}
-          </h3>
-          <div class="service-info">
+        <div v-if="orderData?.orderCod" class="tracking-card">
+          <div class="card-title">
+            <span class="title-bar" />
+            <span class="title-text">{{
+              $t("web.gfuc.additional_services" /** 增值服务 */)
+            }}</span>
+          </div>
+          <div class="service-grid">
             <div class="service-item">
               <span class="service-label">{{
-                $t("web.gfuc.insurance_amount")
+                $t("web.gfuc.insurance_amount" /** 保险金额 */)
               }}</span>
               <span class="service-value">{{
                 orderData?.orderCod?.currency || "-"
               }}</span>
             </div>
-            <el-divider direction="vertical" />
             <div class="service-item">
-              <span class="service-label">{{ $t("web.gfuc.cod_amount") }}</span>
+              <span class="service-label">{{
+                $t("web.gfuc.cod_amount" /** COD金额 */)
+              }}</span>
               <span class="service-value">{{
                 orderData?.orderCod?.codAmount || "-"
               }}</span>
@@ -357,7 +421,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+defineOptions({ name: "OrderDetail" });
+
+import { ref, computed, onMounted } from "vue";
 import { copyText } from "@/utils/index";
 import {
   getOrderDetail,
@@ -365,13 +431,22 @@ import {
   getOrderTracking
 } from "@/api/order";
 import { useDict } from "@/hooks/useDict";
-
 import { useRoute } from "vue-router";
-const route = useRoute();
+import { ElMessage } from "element-plus";
 
+const route = useRoute();
 const orderStatusDict = useDict("order_status");
 
-// 步骤数据
+const orderType = ref(route.params.orderType as string);
+const orderData = ref<any>({
+  orderItemList: [],
+  trackingInfo: []
+});
+
+// 计算当前进度状态值
+const currentStepStatus = computed(() => orderData.value?.orderStatus || 0);
+
+// 根据订单类型计算进度步骤
 const statusSteps = computed(() => {
   let arr = [1, 3, 4];
   if ([6, 7, 8].includes(orderData.value?.orderStatus)) {
@@ -380,91 +455,21 @@ const statusSteps = computed(() => {
     arr.push(5);
   }
   return orderStatusDict.options.value
-    .filter((item) => arr.includes(item.value))
-    .map((item) => ({
+    .filter((item: any) => arr.includes(item.value))
+    .map((item: any) => ({
       label: item.label,
       status: item.value
     }));
 });
 
-// 当前步骤（从0开始，对应数组索引）
+const computedSteps = computed(() => statusSteps.value);
 
-// 判断是否显示箭头（只在相邻节点之间显示）
-const shouldShowArrow = (index) => {
-  if (index >= statusSteps.value.length - 1) {
-    return false; // 最后一个节点不显示箭头
-  }
-
-  const currentStatus = orderData.value?.orderStatus;
-  if (!currentStatus) return false;
-
-  // 找到当前状态在步骤数组中的索引
-  const currentStepIndex = statusSteps.value.findIndex(
-    (step) => step.status === currentStatus
-  );
-  if (currentStepIndex === -1) return false;
-
-  // 箭头只在当前节点的前后相邻节点之间显示
-  // 即：箭头在索引为currentStepIndex-1和currentStepIndex之间，或者currentStepIndex和currentStepIndex+1之间
-  return index === currentStepIndex - 1 || index === currentStepIndex;
-};
-
-const orderType = ref(route.params.orderType);
-
-// 模拟数据
-const orderData = ref({
-  orderId: "GFFR2253045097778",
-  trackingNumber: "GFFR2253045097778",
-  status: "包裹收货",
-  statusSteps: [
-    // { name: "提交订单", completed: true },
-    // { name: "包裹收货", completed: true, active: true },
-    // { name: "派送中", completed: false },
-    // { name: "已签收", completed: false }
-  ],
-  basicInfo: {
-    referenceNumber: "autotest_ad_FRA",
-    thirdPartyTracking: "-",
-    productType: "autotest_ad_FRA",
-    product: "……"
-  },
-  senderInfo: {
-    name: "test",
-    address: "207 TELLURIDE DR GEORGETOWN, TX 78626-7103, China.",
-    phone: "5860698233"
-  },
-  recipientInfo: {
-    name: "test",
-    address: "207 TELLURIDE DR GEORGETOWN, TX 78626-7103, China.",
-    phone: "5860698233"
-  },
-  packageInfo: {
-    goods: [
-      { itemNameZh: "连衣裙", itemNameEn: "dress", itemQty: 1 },
-      { itemNameZh: "鞋子", itemNameEn: "shoes", itemQty: 1 }
-    ],
-    totalitemQty: 2,
-    declaredValue: 2312,
-    totalWeight: 1.4,
-    volume: "10*10*10 CM",
-    chargeableWeight: 1.25
-  },
-  trackingInfo: [
-    {
-      trackDate: "2 Dec.2025",
-      trackDetailItemList: [
-        {
-          processTime: "12:00:00",
-          externalTrackContent: "Le Havre,76600,FR / package is delivered",
-          active: true
-        }
-      ]
-    }
-  ],
-  services: {
-    insurance: 120,
-    cod: 110
-  }
+// 状态 badge 样式类
+const statusClass = computed(() => {
+  const status = orderData.value?.orderStatus;
+  if (status === 1) return "status-active"; // 已下单 - 绿色
+  if (status === 3 || status === 4) return "status-active"; // 准备派送/派送中 - 蓝色
+  return "";
 });
 
 onMounted(() => {
@@ -473,21 +478,19 @@ onMounted(() => {
 
 const fetchOrderDetail = async () => {
   try {
-    let orderId = route.params.orderId;
-    let response = {};
+    const orderId = route.params.orderId;
     if (orderType.value === "order") {
-      // 普通订单详情
-      response = await getOrderDetail({ id: orderId });
+      const response = await getOrderDetail({ id: orderId });
       orderData.value = response;
     } else {
-      // 异常订单详情
-      response = await getExceptionOrderDetail({ unusualOrderId: orderId });
+      const response = await getExceptionOrderDetail({
+        unusualOrderId: orderId
+      });
       orderData.value = JSON.parse(response?.requestBody || "{}");
     }
 
-    // 获取订单轨迹信息
     if (orderData.value?.waybillNo) {
-      let data = await getOrderTracking({
+      const data = await getOrderTracking({
         orderNumber: orderData.value?.waybillNo
       });
       orderData.value.trackingInfo = data[0]?.trackDetailItemList || [];
@@ -496,10 +499,18 @@ const fetchOrderDetail = async () => {
     console.error("Failed to fetch order detail:", error);
   }
 };
-// 法国：地址1，邮编，区域，城市，洲，国家
-// 意大利：地址1，邮编，区域，城市，国家
-// 荷兰：地址1邮编，区域，城市，洲，国家
+
+const handlePrint = () => {
+  // ElMessage.info(t("web.gfuc.printing" /** 打印功能开发中 */));
+};
+
+const handleDelete = () => {
+  // ElMessage.info($t("web.gfuc.deleting" /** 删除功能开发中 */));
+};
+
+// 地址格式化
 const shipperAddress = (obj: any) => {
+  if (!obj) return "-";
   if (obj?.shipperCountry !== "ZH") {
     return [
       obj?.shipperStreet,
@@ -509,8 +520,8 @@ const shipperAddress = (obj: any) => {
       obj?.shipperState,
       obj?.shipperCountry
     ]
-      .filter(Boolean) // 过滤掉 undefined/null/空字符串
-      .join(" "); // 用空格连接
+      .filter(Boolean)
+      .join(" ");
   } else {
     return [
       obj?.shipperCountry,
@@ -520,15 +531,13 @@ const shipperAddress = (obj: any) => {
       obj?.shipperStreet,
       obj?.shipperCode
     ]
-      .filter(Boolean) // 过滤掉 undefined/null/空字符串
-      .join(" "); // 用空格连接
+      .filter(Boolean)
+      .join(" ");
   }
 };
 
-// 法国：外门牌 地址1，地址2，地址3，内门牌，邮编，区域，城市，洲，国家
-// 意大利：地址1，外门牌，内门牌， 地址2，地址3，邮编，区域，城市，国家
-// 荷兰：地址1，地址2，地址3，外门牌，内门牌，邮编，区域，城市，洲，国家
 const consigneeAddress = (obj: any) => {
+  if (!obj) return "-";
   if (obj?.consigneeCountry === "FR") {
     return [
       obj?.consigneeNumExt,
@@ -542,8 +551,8 @@ const consigneeAddress = (obj: any) => {
       obj?.consigneeState,
       obj?.consigneeCountry
     ]
-      .filter(Boolean) // 过滤掉 undefined/null/空字符串
-      .join(" "); // 用空格连接
+      .filter(Boolean)
+      .join(" ");
   } else if (obj?.consigneeCountry === "IT") {
     return [
       obj?.address1,
@@ -557,8 +566,8 @@ const consigneeAddress = (obj: any) => {
       obj?.consigneeState,
       obj?.consigneeCountry
     ]
-      .filter(Boolean) // 过滤掉 undefined/null/空字符串
-      .join(" "); // 用空格连接
+      .filter(Boolean)
+      .join(" ");
   } else if (obj?.consigneeCountry === "NL") {
     return [
       obj?.address1,
@@ -572,284 +581,537 @@ const consigneeAddress = (obj: any) => {
       obj?.consigneeState,
       obj?.consigneeCountry
     ]
-      .filter(Boolean) // 过滤掉 undefined/null/空字符串
-      .join(" "); // 用空格连接
+      .filter(Boolean)
+      .join(" ");
   } else {
     return [
       obj?.consigneeCountry,
       obj?.consigneeCode,
-
       obj?.consigneeState,
       obj?.consigneeCity,
       obj?.consigneeArea,
-
       obj?.address1,
       obj?.address2,
       obj?.address3,
       obj?.consigneeNumExt,
       obj?.consigneeNumIn
     ]
-      .filter(Boolean) // 过滤掉 undefined/null/空字符串
-      .join(" "); // 用空格连接
+      .filter(Boolean)
+      .join(" ");
   }
 };
 </script>
 
 <style scoped lang="scss">
 .order-detail {
-  @apply flex flex-col gap-3 bg-bg w-full;
-
-  width: 100%;
-  min-width: 0;
+  padding: 0;
+  background-color: #f7f7f8;
 }
 
-/* 订单状态跟踪 */
-.order-status-tracker {
-  @apply flex items-center bg-white rounded-lg p-6 gap-8;
+/* 顶部卡片 */
+.detail-top-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
 
-  .el-divider {
-    height: 40px;
-  }
+  .top-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
 
-  .order-info {
-    @apply flex items-center gap-8;
+    .order-field {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 0 24px;
 
-    .section-item {
-      @apply flex flex-col;
-
-      .label {
-        @apply flex justify-between items-center text-info;
-      }
-
-      .value {
-        @apply text-text-regular;
-      }
-    }
-  }
-
-  .status-steps {
-    @apply flex items-center flex-1;
-
-    .step-item {
       &:first-child {
-        @apply ml-0 pl-0;
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+
+      .field-label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #7a869a;
+      }
+
+      .field-value {
+        font-size: 16px;
+        font-weight: 500;
+        color: #525252;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .field-value-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 3px 12px;
+        border-radius: 80px;
+        font-size: 14px;
+        font-weight: 500;
+
+        &.status-active {
+          background: #e8f9ef;
+          color: #00b947;
+        }
+
+        &.status-blue {
+          background: #ebf2ff;
+          color: #237beb;
+        }
+      }
+
+      .action-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 8px 12px;
+        border: 1px solid #e5e6e8;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #525252;
+        background: #fff;
+        cursor: pointer;
+
+        &:hover {
+          border-color: var(--color-primary);
+          color: var(--color-primary);
+        }
       }
     }
 
-    .step-item {
-      @apply h-14 flex-1 flex items-center justify-center relative  bg-bg text-base;
+    .top-divider {
+      width: 1px;
+      background: #e5e6e8;
+      flex-shrink: 0;
+      align-self: stretch;
     }
+  }
 
-    .step-text {
-      @apply text-sm font-medium  text-text-regular w-[68%] text-center;
-    }
+  /* 进度条 — 居中对齐，圆圈在上文案在下 */
+  .progress-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 8px;
+    gap: 0;
 
-    .step-arrow {
-      @apply absolute right-0 top-0 w-0 h-0 border-t-[28px] border-b-[28px] border-l-[33px] border-transparent;
-    }
+    .connector {
+      flex: 1;
+      height: 2px;
+      background: #e0e0e0;
+      min-width: 20px;
+      align-self: center;
+      margin-bottom: 24px;
 
-    /* 激活状态 */
-    .step-active {
-      @apply bg-primary;
-
-      .step-text {
-        @apply text-white font-semibold;
+      &.connector-active {
+        background: var(--color-primary);
       }
     }
 
-    /* 完成状态 */
-    .step-complated {
-      @apply bg-[#FFEDE6];
-
-      z-index: 2;
-
-      .step-arrow {
-        @apply border-l-[#FFEDE6];
-      }
+    .progress-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .arrow-active {
-      @apply border-l-primary;
-
+    .step-dot {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      position: relative;
       z-index: 1;
 
-      .step-arrow {
-        @apply border-l-primary;
+      &.dot-completed {
+        background: var(--color-primary);
+        color: #fff;
+      }
+
+      &.dot-active {
+        background: var(--color-primary);
+        color: #fff;
+        box-shadow: 0 0 0 4px rgba(252, 76, 2, 0.15);
+      }
+
+      &.dot-pending {
+        background: #f5f5f5;
+        border: 1px solid #e0e0e0;
+        color: #c0c0c0;
       }
     }
 
-    .arrow-complated {
-      @apply bg-primary;
+    .step-label {
+      margin-top: 8px;
+      font-size: 10px;
+      font-weight: 500;
+      text-align: center;
+      white-space: nowrap;
 
-      z-index: 1;
-
-      .step-arrow {
-        @apply border-l-[#fd7c28];
+      &.label-active,
+      &.label-completed {
+        color: var(--color-primary);
       }
-    }
 
-    /* 默认状态 */
-    .step-default {
-      @apply bg-bg  -ml-[32px];
-
-      // .step-arrow {
-      //   @apply border-l-[#FFEDE6];
-      // }
-    }
-
-    .arrow-default {
-      @apply border-l-bg;
+      &.label-pending {
+        color: #c0c0c0;
+      }
     }
   }
 }
 
-/* 订单内容 */
-.order-content {
-  @apply flex flex-col gap-3 flex-1;
+/* 底部两栏 */
+.detail-bottom {
+  display: flex;
+  gap: 24px;
 
-  min-width: 0;
+  .left-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+  }
 
-  .section {
-    @apply relative  p-4 rounded-lg bg-white;
+  .right-column {
+    width: 340px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
 
-    .section-info-title {
-      @apply flex items-center gap-2;
+/* 信息卡片 */
+.info-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+
+    .title-bar {
+      width: 4px;
+      height: 22px;
+      background: var(--color-primary);
+      border-radius: 2px;
+      flex-shrink: 0;
     }
 
-    &.base-section {
-      .info-grid {
-        @apply flex items-center flex-wrap w-full;
-
-        .el-divider {
-          @apply h-6;
-        }
-      }
+    .title-text {
+      font-size: 18px;
+      font-weight: 500;
+      color: #354250;
     }
 
-    &.shipping-section {
-      .info-grid {
-        .info-item {
-          @apply my-2 mx-8;
-        }
-      }
-
-      .el-divider {
-        @apply h-48;
-      }
+    .delivery-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+      padding: 4px 12px;
+      background: #ffede4;
+      border-radius: 80px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-primary);
     }
+  }
 
-    &.package-section {
-      .info-grid {
-        @apply flex items-center  mt-5 px-4 py-2.5 bg-bg;
-      }
-    }
+  .info-grid {
+    display: flex;
+    align-items: stretch;
 
-    .section-title {
-      @apply relative flex items-center justify-between mb-4 pl-2.5 text-lg font-semibold text-[#4e5965];
-
-      &::before {
-        @apply absolute top-1/2 -translate-y-1/2 left-0 w-1 h-[22px] bg-primary rounded-full;
-
-        content: "";
-      }
+    .grid-divider {
+      width: 1px;
+      background: #e5e6e8;
+      flex-shrink: 0;
+      margin: 0 24px;
+      align-self: stretch;
     }
 
     .info-item {
-      @apply flex-1 flex flex-col mx-4;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
 
       .info-label {
-        @apply text-info text-base;
+        font-size: 14px;
+        font-weight: 500;
+        color: #7a869a;
       }
 
       .info-value {
-        @apply text-text-regular text-base;
+        font-size: 16px;
+        font-weight: 500;
+        color: #525252;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+  }
+
+  .copy-icon {
+    cursor: pointer;
+    color: #525252;
+    flex-shrink: 0;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+/* 地址模块 */
+.address-grid {
+  display: flex;
+  gap: 0;
+
+  .address-divider {
+    width: 1px;
+    background: #e5e6e8;
+    margin: 8px 40px;
+    flex-shrink: 0;
+  }
+
+  .address-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .address-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #354250;
+    }
+
+    .address-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+
+      .address-label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #7a869a;
+        white-space: nowrap;
+        flex-shrink: 0;
+        min-width: 32px;
+      }
+
+      .address-value {
+        font-size: 16px;
+        font-weight: 500;
+        color: #525252;
+        line-height: 1.5;
+        word-break: break-word;
       }
     }
   }
 }
 
-/* 右侧信息 */
-.order-sidebar {
-  // @apply flex flex-col gap-5 flex-1;
-  @apply flex flex-col gap-5 flex-shrink-0 w-[400px]; /* 默认宽度 400px */
-
-  .tracking-section {
-    @apply flex-1;
+/* 表格 */
+.goods-table {
+  :deep(.table-header) {
+    background: #f7f7f8;
+    color: #525252;
+    font-size: 16px;
+    font-weight: 500;
   }
 
-  .sidebar-section {
-    @apply bg-white p-4 rounded-lg;
+  :deep(.el-table__header-wrapper) {
+    th {
+      background: #f7f7f8;
+    }
+  }
+}
 
-    .sidebar-title {
-      @apply relative flex items-center justify-between mb-4 pl-2.5 text-[18px] font-semibold text-text-regular;
+.cell-text {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1d2939;
+}
+
+.cell-sub {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  color: #667085;
+}
+
+/* 包裹摘要 */
+.parcel-summary {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 16px;
+  padding: 10px 16px;
+  background: #f7f7f8;
+  border-radius: 4px;
+
+  .el-divider {
+    height: 24px;
+  }
+
+  .summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .summary-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #7a869a;
+    }
+
+    .summary-value {
+      font-size: 16px;
+      font-weight: 500;
+      color: #525252;
+    }
+  }
+}
+
+/* 右侧轨迹卡片 */
+.tracking-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+
+    .title-bar {
+      width: 4px;
+      height: 22px;
+      background: var(--color-primary);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .title-text {
+      font-size: 18px;
+      font-weight: 500;
+      color: #354250;
+    }
+  }
+
+  .tracking-list {
+    display: flex;
+    flex-direction: column;
+
+    .tracking-date-divider {
+      :deep(.el-divider__text) {
+        font-size: 14px;
+        color: #999;
+      }
+    }
+
+    .tracking-item {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 24px;
+      position: relative;
 
       &::before {
-        @apply absolute top-1/2 -translate-y-1/2 left-0 w-1 h-[22px] bg-primary rounded-full;
-
         content: "";
-      }
-    }
-
-    :deep(.el-divider) {
-      .el-divider__text {
-        @apply text-text-placeholder text-base;
-      }
-    }
-
-    .tracking-info {
-      @apply flex flex-col;
-
-      .tracking-date {
-        @apply text-xs text-info mr-2 mb-1 text-center;
+        position: absolute;
+        top: 20px;
+        left: 11px;
+        bottom: -24px;
+        width: 2px;
+        background: #f0f0f0;
       }
 
-      .tracking-item {
-        @apply relative flex mb-6;
+      &:last-child::before {
+        display: none;
+      }
 
-        gap: 14px;
+      .tracking-dot {
+        flex-shrink: 0;
+        color: #bbbdbf;
+      }
 
-        &::before {
-          @apply absolute top-5 -bottom-10 left-[11px] w-0.5 bg-bg;
+      .tracking-content {
+        flex: 1;
 
-          content: "";
+        .tracking-msg {
+          font-size: 14px;
+          font-weight: 500;
+          color: #4e5965;
         }
 
-        &:last-child::before {
-          @apply hidden;
-        }
-
-        .tracking-dot {
-          @apply relative text-[#BBBDBF];
-        }
-
-        .tracking-content {
-          @apply flex-1;
-
-          .tracking-time {
-            @apply text-info text-sm mt-1;
-          }
-
-          .tracking-message {
-            @apply text-[#4e5965] text-base font-semibold;
-          }
+        .tracking-time {
+          font-size: 12px;
+          color: #999;
+          margin-top: 4px;
         }
       }
     }
 
-    /* 增值服务 */
-    .service-info {
-      @apply flex items-center gap-4;
+    .tracking-empty {
+      text-align: center;
+      padding: 40px 0;
+      color: #999;
+      font-size: 14px;
+    }
+  }
 
-      .service-item {
-        @apply flex flex-col;
+  /* 增值服务 */
+  .service-grid {
+    display: flex;
+    gap: 24px;
 
-        .service-label {
-          @apply text-base text-info;
-        }
+    .service-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
 
-        .service-value {
-          @apply text-base text-text-regular;
-        }
+      .service-label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #7a869a;
+      }
+
+      .service-value {
+        font-size: 16px;
+        font-weight: 500;
+        color: #525252;
       }
     }
   }

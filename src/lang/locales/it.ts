@@ -451,5 +451,12 @@ export default {
   "web.gfuc.please_input_feedback_description": "Inserisci una descrizione",
   "web.gfuc.downloading": "Scaricamento in corso...",
   "web.gfuc.download_success": "Scaricamento riuscito",
-  "web.gfuc.download_failed": "Scaricamento fallito"
+  "web.gfuc.download_failed": "Scaricamento fallito",
+
+  // Dettaglio ordine
+  "web.gfuc.order_status": "Stato dell'ordine",
+  "web.gfuc.parcel_and_other": "Info pacco e altre info",
+  "web.gfuc.no_tracking_info": "Nessuna informazione di tracciamento",
+  "web.gfuc.printing": "Stampa in corso...",
+  "web.gfuc.deleting": "Eliminazione in corso..."
 };

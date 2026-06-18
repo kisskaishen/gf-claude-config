@@ -449,5 +449,12 @@ export default {
   "web.gfuc.please_input_feedback_description": "Please enter a description",
   "web.gfuc.downloading": "Downloading...",
   "web.gfuc.download_success": "Download Successful",
-  "web.gfuc.download_failed": "Download Failed"
+  "web.gfuc.download_failed": "Download Failed",
+
+  // Order Detail
+  "web.gfuc.order_status": "Order Status",
+  "web.gfuc.parcel_and_other": "Parcel Information & Other Info",
+  "web.gfuc.no_tracking_info": "No tracking information",
+  "web.gfuc.printing": "Printing...",
+  "web.gfuc.deleting": "Deleting..."
 };

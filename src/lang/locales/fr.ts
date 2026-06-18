@@ -468,5 +468,12 @@ export default {
     "Veuillez saisir une description",
   "web.gfuc.downloading": "Téléchargement en cours...",
   "web.gfuc.download_success": "Téléchargement réussi",
-  "web.gfuc.download_failed": "Téléchargement échoué"
+  "web.gfuc.download_failed": "Téléchargement échoué",
+
+  // Détails de la commande
+  "web.gfuc.order_status": "Statut de la commande",
+  "web.gfuc.parcel_and_other": "Info colis & autres infos",
+  "web.gfuc.no_tracking_info": "Aucune information de suivi",
+  "web.gfuc.printing": "Impression en cours...",
+  "web.gfuc.deleting": "Suppression en cours..."
 };

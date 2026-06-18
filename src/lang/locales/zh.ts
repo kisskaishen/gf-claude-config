@@ -429,5 +429,12 @@ export default {
   "web.gfuc.please_input_feedback_description": "请输入描述内容",
   "web.gfuc.downloading": "下载中...",
   "web.gfuc.download_success": "下载成功",
-  "web.gfuc.download_failed": "下载失败"
+  "web.gfuc.download_failed": "下载失败",
+
+  // 订单详情
+  "web.gfuc.order_status": "订单状态",
+  "web.gfuc.parcel_and_other": "包裹信息&其他信息",
+  "web.gfuc.no_tracking_info": "暂无轨迹信息",
+  "web.gfuc.printing": "打印中...",
+  "web.gfuc.deleting": "删除中..."
 };
