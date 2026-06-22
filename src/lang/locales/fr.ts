@@ -310,7 +310,7 @@ export default {
     "Veuillez assurer que le format de fichier téléchargé est correct, sinon cela peut entraîner des erreurs de création de commande.",
   "web.gfuc.upload_task_file_format_tip": "Supporte les formats xls, xlsx",
   "web.gfuc.upload_task_file_size_tip":
-    "Taille de fichier jusqu'à 10MB, max 500 commandes par fichier upload",
+    "Taille de fichier jusqu'à 50Mo, max 5000 commandes par fichier",
   "web.gfuc.upload_task_total_prefix": "Nombre total de commandes uploadées",
   "web.gfuc.upload_task_suffix": "commandes",
   "web.gfuc.upload_task_success_prefix": "Succès",

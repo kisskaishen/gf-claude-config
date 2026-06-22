@@ -284,7 +284,7 @@ export default {
     "请确保下载的模板文件格式正确，否则会导致订单创建失败。",
   "web.gfuc.upload_task_file_format_tip": "支持xls、xlsx格式",
   "web.gfuc.upload_task_file_size_tip":
-    "文件最大不超过10M，每个文件最多上传500条订单",
+    "文件最大不超过50M，每个文件最多上传5000条订单",
   "web.gfuc.upload_task_total_prefix": "一共上传订单数据",
   "web.gfuc.upload_task_suffix": "条",
   "web.gfuc.upload_task_success_prefix": "成功",

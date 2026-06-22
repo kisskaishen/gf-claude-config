@@ -93,7 +93,7 @@
         :auto-upload="autoUpload"
         :disabled="disabled"
         :style="uploadStyle"
-        :class="uploadClasses"
+        :class="[uploadClasses, 'el-upload-file']"
         :before-upload="handleBeforeUpload"
         :on-success="handleSuccess"
         :on-error="handleError"
@@ -1116,6 +1116,14 @@ defineExpose({
   &.has-custom-height {
     width: var(--drag-width, 360px);
     height: var(--drag-height, 180px);
+  }
+}
+
+:deep(.el-upload-file .el-upload-dragger) {
+  padding: 80px 10px;
+
+  &:hover {
+    border-color: var(--el-color-primary);
   }
 }
 
