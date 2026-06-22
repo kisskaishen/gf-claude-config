@@ -30,8 +30,9 @@
         <!-- 上传按钮区域：虚线框样式 -->
         <template #trigger>
           <div
-            v-if="!disabled && (!limit || fileList.length < limit)"
+            v-if="!disabled"
             class="image-upload-trigger"
+            :class="{ 'is-full': limit && fileList.length >= limit }"
           >
             <svg class="upload-icon" viewBox="0 0 40 40" fill="none">
               <rect
@@ -909,6 +910,16 @@ defineExpose({
     &:hover {
       background: #fff8f0;
       border-color: #e66c28;
+    }
+
+    &.is-full {
+      cursor: not-allowed;
+      opacity: 0.5;
+
+      &:hover {
+        background: #fafbfc;
+        border-color: transparent;
+      }
     }
 
     .upload-icon {

@@ -2,7 +2,7 @@
   <el-dialog
     v-model="dialogVisible"
     :title="$t('web.gfuc.feedback')"
-    width="600px"
+    width="640px"
     :close-on-click-modal="false"
     destroy-on-close
     top="5vh"
@@ -33,7 +33,7 @@
         <el-input
           v-model="form.title"
           :placeholder="$t('web.gfuc.feedback_title_placeholder')"
-          maxlength="80"
+          maxlength="50"
           class="feedback-input"
           show-word-limit
           word-limit-position="outside"
