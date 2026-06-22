@@ -294,6 +294,7 @@ export default {
 
   // 批量下单
   "web.gfuc.batch_order_template_download": "Batch Order Template Download",
+  "web.gfuc.batch_order_template_filename": "Batch Order Template",
   "web.gfuc.upload_task": "Upload Records",
   "web.gfuc.upload_task_tip":
     "Please ensure the downloaded template file format is correct, otherwise it will cause order creation to fail.",

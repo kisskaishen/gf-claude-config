@@ -278,6 +278,7 @@ export default {
 
   // 批量下单
   "web.gfuc.batch_order_template_download": "批量下单模板下载",
+  "web.gfuc.batch_order_template_filename": "批量下单模板",
   "web.gfuc.upload_task": "上传记录",
   "web.gfuc.upload_task_tip":
     "请确保下载的模板文件格式正确，否则会导致订单创建失败。",

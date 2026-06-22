@@ -335,7 +335,8 @@ const downloadTemplate = async () => {
   const blob = new Blob([res], {
     type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
   });
-  await downloadFile(blob, `模板文件-${site.value}`);
+  const fileName = `${t("web.gfuc.batch_order_template_filename")}-${site.value}`;
+  await downloadFile(blob, fileName);
 };
 
 const downloadErrorData = async () => {

@@ -297,6 +297,7 @@ export default {
   // 批量下单
   "web.gfuc.batch_order_template_download":
     "Télécharger le modèle de commande par lot",
+  "web.gfuc.batch_order_template_filename": "Modello di ordine batch",
   "web.gfuc.upload_task": "Record di caricamento",
   "web.gfuc.upload_task_tip":
     "Veuillez assurer que le format de fichier téléchargé est correct, sinon cela peut entraîner des erreurs de création de commande.",
