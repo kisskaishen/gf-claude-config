@@ -5,27 +5,20 @@
     :rules="loginRules"
     label-position="top"
     class="form-body"
+    @submit.prevent
   >
-    <!-- 走货国家 -->
+    <!-- 走货国家（输入邮箱后展示） -->
     <el-form-item
+      v-if="showCountrySelect"
       :label="$t('web.gfuc.country_zh' /** 走货国家 */)"
       prop="country"
     >
       <el-select v-model="loginData.country" class="full-width">
         <el-option
-          :key="Country.FR"
-          :label="$t('web.gfuc.country_FR' /** 法国 */)"
-          :value="Country.FR"
-        />
-        <el-option
-          :key="Country.IT"
-          :label="$t('web.gfuc.country_IT' /** 意大利 */)"
-          :value="Country.IT"
-        />
-        <el-option
-          :key="Country.NL"
-          :label="$t('web.gfuc.country_NL' /** 荷兰 */)"
-          :value="Country.NL"
+          v-for="code in countryOptions"
+          :key="code"
+          :label="$t(`web.gfuc.country_${code}`, code)"
+          :value="code"
         />
       </el-select>
     </el-form-item>
@@ -168,7 +161,7 @@ import AgreementModal from "./AgreementModal.vue";
 import { useI18n } from "vue-i18n";
 import { useUserStore } from "@/store/user";
 import { rsaEncryptPwd } from "@/utils/crypto";
-import { getVerifyCode } from "@/api/user";
+import { getVerifyCode, getAccountCountry } from "@/api/user";
 import { Country } from "@/enums/index";
 import { useAppStore } from "@/store/app";
 
@@ -222,6 +215,36 @@ watch(
 
 const loading = ref(false);
 const loginFormRef = ref<FormInstance>();
+
+// --- 走货国家选项（输入邮箱后动态获取） ---
+const showCountrySelect = ref(false);
+const countryOptions = ref<string[]>([]);
+
+watch(
+  () => loginData.email,
+  async (val) => {
+    if (val && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+      try {
+        const countries = await getAccountCountry({ accountId: val });
+        countryOptions.value = countries || [];
+        showCountrySelect.value = countryOptions.value.length > 0;
+        if (
+          countryOptions.value.length > 0 &&
+          !countryOptions.value.includes(loginData.country)
+        ) {
+          loginData.country = countryOptions.value[0] || loginData.country;
+        }
+      } catch {
+        // 接口失败不展示走货国家
+        showCountrySelect.value = false;
+        countryOptions.value = [];
+      }
+    } else {
+      showCountrySelect.value = false;
+      countryOptions.value = [];
+    }
+  }
+);
 
 // --- 表单校验规则 ---
 const loginRules = reactive<FormRules>({

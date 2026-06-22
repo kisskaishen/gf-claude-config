@@ -329,7 +329,9 @@ const handleCustomerChange = (val: string) => {
 };
 
 const downloadTemplate = async () => {
-  const res = await downloadOrderTemplate();
+  const res = await downloadOrderTemplate({
+    customerId: form.customerId || shipperOptions.value[0]?.customerId || ""
+  });
   const blob = new Blob([res], {
     type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
   });

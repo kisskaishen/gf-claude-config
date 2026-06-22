@@ -462,5 +462,38 @@ export default {
   "web.gfuc.parcel_and_other": "Info pacco e altre info",
   "web.gfuc.no_tracking_info": "Nessuna informazione di tracciamento",
   "web.gfuc.printing": "Stampa in corso...",
-  "web.gfuc.deleting": "Eliminazione in corso..."
+  "web.gfuc.deleting": "Eliminazione in corso...",
+
+  // Caricamento file
+  "web.gfuc.unsupported_file_type":
+    "Tipo di file non supportato, carica file in formato {accept}",
+  "web.gfuc.file_size_exceeded":
+    "La dimensione del file non può superare {size}MB",
+  "web.gfuc.file_count_exceeded": "Puoi caricare al massimo {limit} file",
+  "web.gfuc.image_load_failed":
+    "Impossibile caricare l'immagine, impossibile ottenere le dimensioni",
+  "web.gfuc.image_dimension_exact":
+    "Le dimensioni dell'immagine devono essere {width}x{height}px, attuali {curWidth}x{curHeight}px",
+  "web.gfuc.image_dimension_recommend":
+    "Immagine consigliata {width}x{height}px, attuale {curWidth}x{curHeight}px",
+  "web.gfuc.image_width_min":
+    "La larghezza dell'immagine non può essere inferiore a {min}px, attuale {cur}px",
+  "web.gfuc.image_width_max":
+    "La larghezza dell'immagine non può essere superiore a {max}px, attuale {cur}px",
+  "web.gfuc.image_height_min":
+    "L'altezza dell'immagine non può essere inferiore a {min}px, attuale {cur}px",
+  "web.gfuc.image_height_max":
+    "L'altezza dell'immagine non può essere superiore a {max}px, attuale {cur}px",
+  "web.gfuc.please_upload_payment_screenshot":
+    "Carica lo screenshot del pagamento",
+  "web.gfuc.file": "File",
+  "web.gfuc.size_requirement_exact":
+    "Requisito di dimensione: esattamente {width} x {height}px",
+  "web.gfuc.size_requirement_recommend":
+    "Dimensione consigliata: {width} x {height}px",
+  "web.gfuc.min_size": "Min {size}px",
+  "web.gfuc.max_size": "Max {size}px",
+  "web.gfuc.dimension_width": "Larghezza: {values}",
+  "web.gfuc.dimension_height": "Altezza: {values}",
+  "web.gfuc.dimension_separator": "; "
 };

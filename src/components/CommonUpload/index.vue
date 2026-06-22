@@ -523,7 +523,9 @@ const acceptText = computed(() => {
   if (props.accept) {
     return props.accept.replace(/\./g, "").toUpperCase();
   }
-  return props.type === "image" ? "JPG, PNG, GIF" : "文件";
+  return props.type === "image"
+    ? "JPG, PNG, GIF"
+    : t("web.gfuc.file" /** 文件 **/);
 });
 
 // 图片尺寸提示文本
@@ -531,9 +533,25 @@ const imageDimensionHint = computed(() => {
   const hints = [];
   if (props.imageWidth && props.imageHeight) {
     if (props.exactDimension) {
-      hints.push(`尺寸要求: 精确 ${props.imageWidth} x ${props.imageHeight}px`);
+      hints.push(
+        t(
+          "web.gfuc.size_requirement_exact" /** 尺寸要求: 精确 {width} x {height}px **/,
+          {
+            width: props.imageWidth,
+            height: props.imageHeight
+          }
+        )
+      );
     } else {
-      hints.push(`建议尺寸: ${props.imageWidth} x ${props.imageHeight}px`);
+      hints.push(
+        t(
+          "web.gfuc.size_requirement_recommend" /** 建议尺寸: {width} x {height}px **/,
+          {
+            width: props.imageWidth,
+            height: props.imageHeight
+          }
+        )
+      );
     }
   } else {
     if (
@@ -544,16 +562,42 @@ const imageDimensionHint = computed(() => {
     ) {
       const widthHint = [];
       const heightHint = [];
-      if (props.minWidth) widthHint.push(`最小 ${props.minWidth}px`);
-      if (props.maxWidth) widthHint.push(`最大 ${props.maxWidth}px`);
-      if (props.minHeight) heightHint.push(`最小 ${props.minHeight}px`);
-      if (props.maxHeight) heightHint.push(`最大 ${props.maxHeight}px`);
+      if (props.minWidth)
+        widthHint.push(
+          t("web.gfuc.min_size" /** 最小 {size}px **/, { size: props.minWidth })
+        );
+      if (props.maxWidth)
+        widthHint.push(
+          t("web.gfuc.max_size" /** 最大 {size}px **/, { size: props.maxWidth })
+        );
+      if (props.minHeight)
+        heightHint.push(
+          t("web.gfuc.min_size" /** 最小 {size}px **/, {
+            size: props.minHeight
+          })
+        );
+      if (props.maxHeight)
+        heightHint.push(
+          t("web.gfuc.max_size" /** 最大 {size}px **/, {
+            size: props.maxHeight
+          })
+        );
 
-      if (widthHint.length) hints.push(`宽度: ${widthHint.join(" · ")}`);
-      if (heightHint.length) hints.push(`高度: ${heightHint.join(" · ")}`);
+      if (widthHint.length)
+        hints.push(
+          t("web.gfuc.dimension_width" /** 宽度: {values} **/, {
+            values: widthHint.join(" · ")
+          })
+        );
+      if (heightHint.length)
+        hints.push(
+          t("web.gfuc.dimension_height" /** 高度: {values} **/, {
+            values: heightHint.join(" · ")
+          })
+        );
     }
   }
-  return hints.join("；");
+  return hints.join(t("web.gfuc.dimension_separator" /** ； **/));
 });
 
 // 检查图片尺寸
@@ -569,14 +613,30 @@ const checkImageDimensions = (file) => {
       if (props.imageWidth && props.imageHeight && props.exactDimension) {
         isValid = width === props.imageWidth && height === props.imageHeight;
         if (!isValid) {
-          errorMessage = `图片尺寸必须为 ${props.imageWidth}x${props.imageHeight}px，当前为 ${width}x${height}px`;
+          errorMessage = t(
+            "web.gfuc.image_dimension_exact" /** 图片尺寸必须为 {width}x{height}px，当前为 {curWidth}x{curHeight}px **/,
+            {
+              width: props.imageWidth,
+              height: props.imageHeight,
+              curWidth: width,
+              curHeight: height
+            }
+          );
         }
       }
       // 建议尺寸（警告）
       else if (props.imageWidth && props.imageHeight && !props.exactDimension) {
         isValid = true;
         if (width !== props.imageWidth || height !== props.imageHeight) {
-          errorMessage = `建议使用 ${props.imageWidth}x${props.imageHeight}px 的图片，当前为 ${width}x${height}px`;
+          errorMessage = t(
+            "web.gfuc.image_dimension_recommend" /** 建议使用 {width}x{height}px 的图片，当前为 {curWidth}x{curHeight}px **/,
+            {
+              width: props.imageWidth,
+              height: props.imageHeight,
+              curWidth: width,
+              curHeight: height
+            }
+          );
           ElMessage.warning(errorMessage);
         }
       }
@@ -584,16 +644,28 @@ const checkImageDimensions = (file) => {
       else {
         if (props.minWidth && width < props.minWidth) {
           isValid = false;
-          errorMessage = `图片宽度不能小于 ${props.minWidth}px，当前为 ${width}px`;
+          errorMessage = t(
+            "web.gfuc.image_width_min" /** 图片宽度不能小于 {min}px，当前为 {cur}px **/,
+            { min: props.minWidth, cur: width }
+          );
         } else if (props.maxWidth && width > props.maxWidth) {
           isValid = false;
-          errorMessage = `图片宽度不能大于 ${props.maxWidth}px，当前为 ${width}px`;
+          errorMessage = t(
+            "web.gfuc.image_width_max" /** 图片宽度不能大于 {max}px，当前为 {cur}px **/,
+            { max: props.maxWidth, cur: width }
+          );
         } else if (props.minHeight && height < props.minHeight) {
           isValid = false;
-          errorMessage = `图片高度不能小于 ${props.minHeight}px，当前为 ${height}px`;
+          errorMessage = t(
+            "web.gfuc.image_height_min" /** 图片高度不能小于 {min}px，当前为 {cur}px **/,
+            { min: props.minHeight, cur: height }
+          );
         } else if (props.maxHeight && height > props.maxHeight) {
           isValid = false;
-          errorMessage = `图片高度不能大于 ${props.maxHeight}px，当前为 ${height}px`;
+          errorMessage = t(
+            "web.gfuc.image_height_max" /** 图片高度不能大于 {max}px，当前为 {cur}px **/,
+            { max: props.maxHeight, cur: height }
+          );
         }
       }
 
@@ -604,7 +676,11 @@ const checkImageDimensions = (file) => {
       }
     };
     img.onerror = () => {
-      reject(new Error("图片加载失败，无法获取尺寸信息"));
+      reject(
+        new Error(
+          t("web.gfuc.image_load_failed" /** 图片加载失败，无法获取尺寸信息 **/)
+        )
+      );
     };
     img.src = URL.createObjectURL(file);
   });
@@ -647,7 +723,10 @@ const handleBeforeUpload = async (file) => {
 
     if (!isValid) {
       ElMessage.error(
-        `不支持的文件类型，请上传 ${acceptText.value} 格式的文件`
+        t(
+          "web.gfuc.unsupported_file_type" /** 不支持的文件类型，请上传 {accept} 格式的文件 **/,
+          { accept: acceptText.value }
+        )
       );
       return false;
     }
@@ -656,13 +735,21 @@ const handleBeforeUpload = async (file) => {
   // 校验文件大小
   const maxSizeBytes = props.maxSize * 1024 * 1024;
   if (file.size > maxSizeBytes) {
-    ElMessage.error(`文件大小不能超过 ${props.maxSize}MB`);
+    ElMessage.error(
+      t("web.gfuc.file_size_exceeded" /** 文件大小不能超过 {size}MB **/, {
+        size: props.maxSize
+      })
+    );
     return false;
   }
 
   // 校验数量限制
   if (!props.multiple && fileList.value.length >= props.limit) {
-    ElMessage.warning(`最多只能上传 ${props.limit} 个文件`);
+    ElMessage.warning(
+      t("web.gfuc.file_count_exceeded" /** 最多只能上传 {limit} 个文件 **/, {
+        limit: props.limit
+      })
+    );
     return false;
   }
 

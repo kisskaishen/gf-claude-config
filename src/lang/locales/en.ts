@@ -460,5 +460,37 @@ export default {
   "web.gfuc.parcel_and_other": "Parcel Information & Other Info",
   "web.gfuc.no_tracking_info": "No tracking information",
   "web.gfuc.printing": "Printing...",
-  "web.gfuc.deleting": "Deleting..."
+  "web.gfuc.deleting": "Deleting...",
+
+  // File Upload
+  "web.gfuc.unsupported_file_type":
+    "Unsupported file type, please upload files in {accept} format",
+  "web.gfuc.file_size_exceeded": "File size cannot exceed {size}MB",
+  "web.gfuc.file_count_exceeded": "You can only upload up to {limit} file(s)",
+  "web.gfuc.image_load_failed":
+    "Image failed to load, cannot get dimension info",
+  "web.gfuc.image_dimension_exact":
+    "Image dimensions must be {width}x{height}px, current is {curWidth}x{curHeight}px",
+  "web.gfuc.image_dimension_recommend":
+    "Recommended {width}x{height}px image, current is {curWidth}x{curHeight}px",
+  "web.gfuc.image_width_min":
+    "Image width cannot be less than {min}px, current is {cur}px",
+  "web.gfuc.image_width_max":
+    "Image width cannot be greater than {max}px, current is {cur}px",
+  "web.gfuc.image_height_min":
+    "Image height cannot be less than {min}px, current is {cur}px",
+  "web.gfuc.image_height_max":
+    "Image height cannot be greater than {max}px, current is {cur}px",
+  "web.gfuc.please_upload_payment_screenshot":
+    "Please upload payment screenshot",
+  "web.gfuc.file": "File",
+  "web.gfuc.size_requirement_exact":
+    "Size requirement: exactly {width} x {height}px",
+  "web.gfuc.size_requirement_recommend":
+    "Recommended size: {width} x {height}px",
+  "web.gfuc.min_size": "Min {size}px",
+  "web.gfuc.max_size": "Max {size}px",
+  "web.gfuc.dimension_width": "Width: {values}",
+  "web.gfuc.dimension_height": "Height: {values}",
+  "web.gfuc.dimension_separator": "; "
 };

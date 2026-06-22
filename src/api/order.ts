@@ -206,10 +206,11 @@ export function cancelOrder(data: {
 // 批量下单
 
 // 下载模板
-export function downloadOrderTemplate() {
+export function downloadOrderTemplate(data: { customerId: string }) {
   return request({
     url: "/oms/order/downloadTemplate",
     method: "get",
+    params: data,
     responseType: "blob"
   });
 }

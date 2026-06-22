@@ -479,5 +479,39 @@ export default {
   "web.gfuc.parcel_and_other": "Info colis & autres infos",
   "web.gfuc.no_tracking_info": "Aucune information de suivi",
   "web.gfuc.printing": "Impression en cours...",
-  "web.gfuc.deleting": "Suppression en cours..."
+  "web.gfuc.deleting": "Suppression en cours...",
+
+  // Téléchargement de fichiers
+  "web.gfuc.unsupported_file_type":
+    "Type de fichier non pris en charge, veuillez télécharger des fichiers au format {accept}",
+  "web.gfuc.file_size_exceeded":
+    "La taille du fichier ne peut pas dépasser {size}Mo",
+  "web.gfuc.file_count_exceeded":
+    "Vous ne pouvez télécharger que {limit} fichier(s)",
+  "web.gfuc.image_load_failed":
+    "Échec du chargement de l'image, impossible d'obtenir les dimensions",
+  "web.gfuc.image_dimension_exact":
+    "Les dimensions de l'image doivent être de {width}x{height}px, actuellement {curWidth}x{curHeight}px",
+  "web.gfuc.image_dimension_recommend":
+    "Image recommandée de {width}x{height}px, actuellement {curWidth}x{curHeight}px",
+  "web.gfuc.image_width_min":
+    "La largeur de l'image ne peut pas être inférieure à {min}px, actuellement {cur}px",
+  "web.gfuc.image_width_max":
+    "La largeur de l'image ne peut pas être supérieure à {max}px, actuellement {cur}px",
+  "web.gfuc.image_height_min":
+    "La hauteur de l'image ne peut pas être inférieure à {min}px, actuellement {cur}px",
+  "web.gfuc.image_height_max":
+    "La hauteur de l'image ne peut pas être supérieure à {max}px, actuellement {cur}px",
+  "web.gfuc.please_upload_payment_screenshot":
+    "Veuillez télécharger la capture d'écran du paiement",
+  "web.gfuc.file": "Fichier",
+  "web.gfuc.size_requirement_exact":
+    "Exigence de taille : exactement {width} x {height}px",
+  "web.gfuc.size_requirement_recommend":
+    "Taille recommandée : {width} x {height}px",
+  "web.gfuc.min_size": "Min {size}px",
+  "web.gfuc.max_size": "Max {size}px",
+  "web.gfuc.dimension_width": "Largeur : {values}",
+  "web.gfuc.dimension_height": "Hauteur : {values}",
+  "web.gfuc.dimension_separator": " ; "
 };

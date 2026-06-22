@@ -315,7 +315,7 @@ const validateFile = (_rule: any, value: any, callback: any) => {
   if (!formData.attachmentKeys.length) {
     callback(
       new Error(
-        t("gfuc.please_upload_payment_screenshot" /** 请上传支付截图 **/)
+        t("web.gfuc.please_upload_payment_screenshot" /** 请上传支付截图 **/)
       )
     );
   } else {

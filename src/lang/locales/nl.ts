@@ -452,5 +452,38 @@ export default {
   "web.gfuc.parcel_and_other": "Pakketinfo & overige info",
   "web.gfuc.no_tracking_info": "Geen trackinginformatie",
   "web.gfuc.printing": "Afdrukken...",
-  "web.gfuc.deleting": "Verwijderen..."
+  "web.gfuc.deleting": "Verwijderen...",
+
+  // Bestandsupload
+  "web.gfuc.unsupported_file_type":
+    "Niet-ondersteund bestandstype, upload bestanden in {accept}-formaat",
+  "web.gfuc.file_size_exceeded":
+    "Bestandsgrootte mag niet groter zijn dan {size}MB",
+  "web.gfuc.file_count_exceeded":
+    "U kunt maximaal {limit} bestand(en) uploaden",
+  "web.gfuc.image_load_failed":
+    "Afbeelding laden mislukt, kan geen afmetingen verkrijgen",
+  "web.gfuc.image_dimension_exact":
+    "Afbeeldingsafmetingen moeten {width}x{height}px zijn, huidig is {curWidth}x{curHeight}px",
+  "web.gfuc.image_dimension_recommend":
+    "Aanbevolen {width}x{height}px afbeelding, huidig is {curWidth}x{curHeight}px",
+  "web.gfuc.image_width_min":
+    "Afbeeldingsbreedte mag niet kleiner zijn dan {min}px, huidig is {cur}px",
+  "web.gfuc.image_width_max":
+    "Afbeeldingsbreedte mag niet groter zijn dan {max}px, huidig is {cur}px",
+  "web.gfuc.image_height_min":
+    "Afbeeldingshoogte mag niet kleiner zijn dan {min}px, huidig is {cur}px",
+  "web.gfuc.image_height_max":
+    "Afbeeldingshoogte mag niet groter zijn dan {max}px, huidig is {cur}px",
+  "web.gfuc.please_upload_payment_screenshot": "Upload betalingsscreenshot",
+  "web.gfuc.file": "Bestand",
+  "web.gfuc.size_requirement_exact":
+    "Formaatvereiste: precies {width} x {height}px",
+  "web.gfuc.size_requirement_recommend":
+    "Aanbevolen formaat: {width} x {height}px",
+  "web.gfuc.min_size": "Min {size}px",
+  "web.gfuc.max_size": "Max {size}px",
+  "web.gfuc.dimension_width": "Breedte: {values}",
+  "web.gfuc.dimension_height": "Hoogte: {values}",
+  "web.gfuc.dimension_separator": "; "
 };

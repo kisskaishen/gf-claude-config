@@ -439,5 +439,29 @@ export default {
   "web.gfuc.parcel_and_other": "包裹信息&其他信息",
   "web.gfuc.no_tracking_info": "暂无轨迹信息",
   "web.gfuc.printing": "打印中...",
-  "web.gfuc.deleting": "删除中..."
+  "web.gfuc.deleting": "删除中...",
+
+  // 文件上传
+  "web.gfuc.unsupported_file_type":
+    "不支持的文件类型，请上传 {accept} 格式的文件",
+  "web.gfuc.file_size_exceeded": "文件大小不能超过 {size}MB",
+  "web.gfuc.file_count_exceeded": "最多只能上传 {limit} 个文件",
+  "web.gfuc.image_load_failed": "图片加载失败，无法获取尺寸信息",
+  "web.gfuc.image_dimension_exact":
+    "图片尺寸必须为 {width}x{height}px，当前为 {curWidth}x{curHeight}px",
+  "web.gfuc.image_dimension_recommend":
+    "建议使用 {width}x{height}px 的图片，当前为 {curWidth}x{curHeight}px",
+  "web.gfuc.image_width_min": "图片宽度不能小于 {min}px，当前为 {cur}px",
+  "web.gfuc.image_width_max": "图片宽度不能大于 {max}px，当前为 {cur}px",
+  "web.gfuc.image_height_min": "图片高度不能小于 {min}px，当前为 {cur}px",
+  "web.gfuc.image_height_max": "图片高度不能大于 {max}px，当前为 {cur}px",
+  "web.gfuc.please_upload_payment_screenshot": "请上传支付截图",
+  "web.gfuc.file": "文件",
+  "web.gfuc.size_requirement_exact": "尺寸要求: 精确 {width} x {height}px",
+  "web.gfuc.size_requirement_recommend": "建议尺寸: {width} x {height}px",
+  "web.gfuc.min_size": "最小 {size}px",
+  "web.gfuc.max_size": "最大 {size}px",
+  "web.gfuc.dimension_width": "宽度: {values}",
+  "web.gfuc.dimension_height": "高度: {values}",
+  "web.gfuc.dimension_separator": "；"
 };

@@ -12,6 +12,17 @@ export function postCheckAccount(data: { country: string; email: string }) {
 }
 
 /**
+ * 获取用户账号下的走货国家列表
+ */
+export function getAccountCountry(data: { accountId: string }) {
+  return request<string[]>({
+    url: "/user/accountCountry",
+    method: "post",
+    data
+  });
+}
+
+/**
  * 用户注册
  */
 export function postRegister(data: {
