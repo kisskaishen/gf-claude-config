@@ -1,0 +1,64 @@
+src/views/order/batch.vue
+  s_72d654692409a0::t_5973320e129716 332-334
+src/lang/locales/zh.ts
+  s_4a42d88ed6f3e2::t_8559e64fef731d 442-456
+  s_4a42d88ed6f3e2::t_73bb97dd4afc9b 457-464
+src/api/order.ts
+  s_72d654692409a0::t_5f7de3de2eeb4e 209,213
+src/views/login/components/LoginForm.vue
+  s_eebe4c843e7d82::t_aae213ef02c896 245
+src/lang/locales/fr.ts
+  s_4a42d88ed6f3e2::t_5a3fcd65bdb3b0 497-504
+  s_4a42d88ed6f3e2::t_2d602de6671c12 482-496
+src/lang/locales/it.ts
+  s_4a42d88ed6f3e2::t_39e626dc0b27ee 465-479
+  s_4a42d88ed6f3e2::t_4d972cccc0bdef 480-487
+src/lang/locales/nl.ts
+  s_4a42d88ed6f3e2::t_e9a67769f3fb91 470-477
+  s_4a42d88ed6f3e2::t_23a55f93c50090 455-469
+src/components/CommonUpload/index.vue
+  s_4a42d88ed6f3e2::t_89b1b2bbdb65fa 526
+  s_4a42d88ed6f3e2::t_e68a3a3e4c885b 536-544,546-554,565-574,576-577
+  s_4a42d88ed6f3e2::t_a3981d10ee3dc7 639
+  s_4a42d88ed6f3e2::t_a436313df8f18e 621-624,649
+  s_4a42d88ed6f3e2::t_adbd10491f3e25 619,633-636,648
+  s_4a42d88ed6f3e2::t_193c1987f67bf1 650,653-656
+  s_4a42d88ed6f3e2::t_d8694d4d2078ab 590-597
+src/views/finance/recharge.vue
+  s_4a42d88ed6f3e2::t_e49097658e7e51 318
+src/lang/locales/en.ts
+  s_4a42d88ed6f3e2::t_85a9575aa9a792 463-477
+  s_4a42d88ed6f3e2::t_f524ccb119fc79 478-485
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "fad43128763188af0ae919419b17367775c9e8b9",
+  "prompts": {},
+  "sessions": {
+    "s_4a42d88ed6f3e2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "905b4feb-04f3-4d5a-8aa5-c8bff5268a73",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    },
+    "s_72d654692409a0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "10bac06a-ce36-487b-b299-8155419e4d89",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    },
+    "s_eebe4c843e7d82": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b4dfd593-16c0-42b2-91f6-c6035df2b6c0",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
