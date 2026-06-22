@@ -1,0 +1,20 @@
+src/components/CommonUpload/index.vue
+  s_e2f1d5243c72a5::t_fcc981febec487 915-924
+  s_e2f1d5243c72a5::t_42911443432ab8 33,35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "9367244ecfda793479cd254da3f203b38146ab41",
+  "prompts": {},
+  "sessions": {
+    "s_e2f1d5243c72a5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c6f4e027-d011-452b-bc47-eb012f51ae4f",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
