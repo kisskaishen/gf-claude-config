@@ -1,0 +1,46 @@
+src/hooks/useDict.ts
+  s_df4006253c1781::t_6b1bde50f13ed6 26-28,30,39-52,55-61,64-66,103-106
+src/lang/locales/zh.ts
+  s_968bf08308c61e::t_d66224091532ec 56
+src/lang/locales/fr.ts
+  s_968bf08308c61e::t_50d6d602cb2db7 61-62
+src/lang/locales/en.ts
+  s_968bf08308c61e::t_aeee966b6cabd2 61-62
+src/views/login/components/LoginForm.vue
+  s_968bf08308c61e::t_7f6547d0b58051 230-233
+  s_968bf08308c61e::t_87655e1134b5e6 235-239
+src/views/order/list.vue
+  s_df4006253c1781::t_4debbe8c4d5696 1145-1147,1149-1155
+  s_df4006253c1781::t_a33393fd264c5c 1140-1141
+src/views/order/components/OrderTable.vue
+  s_df4006253c1781::t_5b9592b3800c2e 793
+  s_df4006253c1781::t_b3c772bd6e9543 761,766-768,770-772
+src/lang/locales/nl.ts
+  s_968bf08308c61e::t_730a452d98406b 59-60
+src/lang/locales/it.ts
+  s_968bf08308c61e::t_b6837d566c8015 62-63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "d4bd88d2d986ab2c5faa8f108e7ea8db77a41614",
+  "prompts": {},
+  "sessions": {
+    "s_968bf08308c61e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7c5a1fad-c5e3-4747-83ef-a402c96fc469",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    },
+    "s_df4006253c1781": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8ac63caf-17bd-4e61-80e6-ba53f582e047",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
