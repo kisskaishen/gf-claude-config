@@ -758,14 +758,18 @@ const getProductList = async () => {
 onMounted(() => {
   // 初始化时获取产品列表
   getProductList();
+  // formatTypeParam 会设置 searchForm.orderStatus，由 watch 自动触发 fetchData
   formatTypeParam();
-
-  fetchData();
 });
 
 onActivated(() => {
+  // formatTypeParam 会设置 searchForm.orderStatus，由 watch 自动触发 fetchData
+  // 如果 formatTypeParam 未改变 orderStatus（与当前值相同），则需要手动触发
+  const prevStatus = searchForm.orderStatus;
   formatTypeParam();
-  fetchData();
+  if (searchForm.orderStatus === prevStatus) {
+    fetchData();
+  }
 });
 
 const formatTypeParam = () => {
@@ -786,10 +790,9 @@ const formatTypeParam = () => {
 watch(
   () => currentStatus.value,
   (val) => {
+    // 只更新状态值，fetchData 由 searchForm.orderStatus 的 watch 触发
     searchForm.orderStatus = val;
-
     setDefaultRange();
-    fetchData();
   }
 );
 

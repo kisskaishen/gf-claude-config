@@ -53,6 +53,7 @@ export default {
   "web.gfuc.verification_code_not_received": "没有收到验证码？",
   "web.gfuc.resend": "再次发送",
   "web.gfuc.email_filled_incorrectly": "邮箱填写错误？",
+  "web.gfuc.email_not_registered": "当前邮箱暂未注册，请检查后重试",
   "web.gfuc.return_to_refill": "返回重新填写",
   "web.gfuc.authentication": "认证",
   "web.gfuc.login_successful": "登录成功",

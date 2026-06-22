@@ -1136,17 +1136,23 @@ watch(
 onMounted(() => {
   // 初始化时获取产品列表
   getProductList();
-  formatTypeParam();
-  fetchData();
   setExceptionDefaultRange();
+  // formatTypeParam 会设置 searchForm.orderStatus，由 watch 自动触发 fetchData / fetchExceptionData
+  formatTypeParam();
 });
 
 onActivated(() => {
+  // formatTypeParam 会设置 searchForm.orderStatus，由 watch 自动触发 fetchData / fetchExceptionData
+  // 如果 formatTypeParam 未改变 orderStatus（与当前值相同），则需要手动触发
+  const prevStatus = searchForm.orderStatus;
   formatTypeParam();
-  if (searchForm.orderStatus === 999) {
-    fetchExceptionData();
-  } else {
-    fetchData();
+  if (searchForm.orderStatus === prevStatus) {
+    // watch 未触发，手动拉取数据
+    if (searchForm.orderStatus === 999) {
+      fetchExceptionData();
+    } else {
+      fetchData();
+    }
   }
 });
 </script>

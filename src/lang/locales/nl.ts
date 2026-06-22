@@ -56,6 +56,8 @@ export default {
   "web.gfuc.verification_code_not_received": "Geen verificatiecode ontvangen?",
   "web.gfuc.resend": "Opnieuw verzenden",
   "web.gfuc.email_filled_incorrectly": "E-mailadres verkeerd ingevuld?",
+  "web.gfuc.email_not_registered":
+    "Dit e-mailadres is nog niet geregistreerd. Controleer het en probeer het opnieuw.",
   "web.gfuc.return_to_refill": "Terug naar opnieuw invullen",
   "web.gfuc.authentication": "Authenticatie",
   "web.gfuc.login_successful": "Login succesvol",

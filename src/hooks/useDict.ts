@@ -23,8 +23,11 @@ export interface DictOption<T = any> {
   label: string;
 }
 
+/** 全局字典缓存：code → { data: DictOption[], lang: string } */
+const dictCache = new Map<string, { options: DictOption[]; lang: string }>();
+
 /**
- * 获取字典数据的 Hook
+ * 获取字典数据的 Hook（带全局缓存）
  * @template T 值类型 (itemValue)，支持传入 enum 或联合类型
  * @param code 字典编码
  * @returns { options, getLabel, refresh }
@@ -33,20 +36,34 @@ export function useDict<T = any>(code: string) {
   const options = ref<DictOption<T>[]>([]);
   const appStore = useAppStore();
 
+  const transformDictData = (rawData: DictItem[]): DictOption[] => {
+    return rawData
+      .sort((a, b) => (a.sortval || 0) - (b.sortval || 0))
+      .map((item) => ({
+        value:
+          typeof item.itemCode === "string" &&
+          item.itemCode.trim() !== "" &&
+          !isNaN(Number(item.itemCode))
+            ? Number(item.itemCode)
+            : item.itemCode,
+        label: item.itemValue
+      }));
+  };
+
   const refresh = async () => {
     try {
+      // 先检查缓存：同一语言下同一 code 不重复请求
+      const cached = dictCache.get(code);
+      if (cached && cached.lang === appStore.lang) {
+        options.value = cached.options as DictOption<T>[];
+        return;
+      }
+
       const res = (await getDictByCode(code)) as DictItem[];
       if (res && Array.isArray(res)) {
-        options.value = res
-          .sort((a, b) => (a.sortval || 0) - (b.sortval || 0))
-          .map((item) => ({
-            value: (typeof item.itemCode === "string" &&
-            item.itemCode.trim() !== "" &&
-            !isNaN(Number(item.itemCode))
-              ? Number(item.itemCode)
-              : item.itemCode) as unknown as T,
-            label: item.itemValue
-          }));
+        const transformed = transformDictData(res);
+        dictCache.set(code, { options: transformed, lang: appStore.lang });
+        options.value = transformed as DictOption<T>[];
       } else {
         options.value = [];
       }
@@ -82,4 +99,9 @@ export function useDict<T = any>(code: string) {
     getLabel,
     refresh
   };
+}
+
+/** 清空所有字典缓存（语言切换时上层也可直接调用） */
+export function clearDictCache() {
+  dictCache.clear();
 }

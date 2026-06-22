@@ -58,6 +58,8 @@ export default {
   "web.gfuc.verification_code_not_received": "No verification code received?",
   "web.gfuc.resend": "Resend",
   "web.gfuc.email_filled_incorrectly": "Email filled incorrectly?",
+  "web.gfuc.email_not_registered":
+    "This email is not registered yet. Please check and try again.",
   "web.gfuc.return_to_refill": "Return to refill",
   "web.gfuc.authentication": "Authentication",
   "web.gfuc.login_successful": "Login successful",

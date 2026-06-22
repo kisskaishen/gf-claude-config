@@ -59,6 +59,8 @@ export default {
     "Nessun codice di verifica ricevuto?",
   "web.gfuc.resend": "Reinvia",
   "web.gfuc.email_filled_incorrectly": "Email inserita in modo errato?",
+  "web.gfuc.email_not_registered":
+    "Questa email non è ancora registrata. Verifica e riprova.",
   "web.gfuc.return_to_refill": "Torna a inserire",
   "web.gfuc.authentication": "Autenticazione",
   "web.gfuc.login_successful": "Login riuscito",

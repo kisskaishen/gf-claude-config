@@ -227,12 +227,16 @@ watch(
       try {
         const countries = await getAccountCountry({ accountId: val });
         countryOptions.value = countries || [];
-        showCountrySelect.value = countryOptions.value.length > 0;
-        if (
-          countryOptions.value.length > 0 &&
-          !countryOptions.value.includes(loginData.country)
-        ) {
-          loginData.country = countryOptions.value[0] || loginData.country;
+        // 只有一个国家时无需展示选择器，直接赋值使用
+        showCountrySelect.value = countryOptions.value.length > 1;
+        if (countryOptions.value.length >= 1) {
+          loginData.country = countryOptions.value[0];
+        }
+        // 邮箱格式正确但返回空数组，说明该邮箱未注册
+        if (countryOptions.value.length === 0) {
+          ElMessage.warning(
+            t("web.gfuc.email_not_registered" /** 当前邮箱暂未注册，请检查后重试 */)
+          );
         }
       } catch {
         // 接口失败不展示走货国家
