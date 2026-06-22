@@ -300,7 +300,7 @@ export default {
     "Please ensure the downloaded template file format is correct, otherwise it will cause order creation to fail.",
   "web.gfuc.upload_task_file_format_tip": "Support xls, xlsx format",
   "web.gfuc.upload_task_file_size_tip":
-    "File size up to 50MB, max 5000 orders per upload",
+    "File size up to 100MB, max 5000 orders per upload",
   "web.gfuc.upload_task_total_prefix": "Total orders uploaded",
   "web.gfuc.upload_task_suffix": "orders",
   "web.gfuc.upload_task_success_prefix": "Success",
