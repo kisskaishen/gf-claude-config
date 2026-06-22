@@ -109,7 +109,7 @@
                   />
                 </el-form-item>
               </el-col>
-              <el-col :span="8">
+              <el-col :span="16">
                 <el-form-item prop="address2">
                   <template #label>
                     <div class="flex items-center gap-1">
@@ -132,7 +132,7 @@
                   />
                 </el-form-item>
               </el-col>
-              <el-col :span="8">
+              <el-col :span="16">
                 <el-form-item prop="address3">
                   <template #label>
                     <div class="flex items-center gap-1">
@@ -155,7 +155,7 @@
                 </el-form-item>
               </el-col>
 
-              <el-col :span="8">
+              <el-col :span="8" v-if="site !== 'FR'">
                 <el-form-item
                   :label="$t('web.gfuc.internal_number')"
                   prop="consigneeNumIn"
@@ -167,7 +167,7 @@
                   />
                 </el-form-item>
               </el-col>
-              <el-col :span="8">
+              <el-col :span="8" v-if="site !== 'FR'">
                 <el-form-item
                   :label="$t('web.gfuc.external_number')"
                   prop="consigneeNumExt"

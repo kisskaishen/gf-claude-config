@@ -126,14 +126,13 @@ export default {
 
   // Composant Informations du destinataire
   "web.gfuc.consignee_info_title": "Informations du destinataire",
-  "web.gfuc.street": "Rue",
+  "web.gfuc.street": "N° et nom de la rue",
   "web.gfuc.please_enter_street": "Veuillez entrer la rue",
 
   "web.gfuc.address2": "Complément d'adresse 1",
-  "web.gfuc.address2_tip":
-    "Nom de l'entreprise/Complément d'adresse pour zone isolée/Zone industrielle/Activité commerciale",
+  "web.gfuc.address2_tip": "ZI, ZA, Lieu dit, Nom société",
   "web.gfuc.address3": "Complément d'adresse 2",
-  "web.gfuc.address3_tip": "Nom du lotissement/Numéro de bâtiment/de couloir",
+  "web.gfuc.address3_tip": "Bât, n° boite aux lettres, N° appartement, étage",
 
   "web.gfuc.internal_number": "Numéro interne（Numéro de commande）",
   "web.gfuc.internal_number_placeholder":
