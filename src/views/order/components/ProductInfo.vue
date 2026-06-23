@@ -248,7 +248,7 @@ const rules = reactive({
     { required: true, message: "请选择产品类型", trigger: "change" }
   ],
   productCode: [
-    { required: true, message: "请选择增值服务", trigger: "change" }
+    { required: true, message: t("web.gfuc.please_select_value_added_service"), trigger: "change" }
   ],
   queryCollectStartTime: [
     {
@@ -422,6 +422,16 @@ const getProductList = async () => {
       item["description" + toPascalCase(appStore.lang.toLocaleLowerCase())] ||
       t("gfuc.no_data_available")
   }));
+
+  // 如果已有选中的产品，同步更新其名称（语言切换时名称可能变化）
+  if (formData.value.productCode) {
+    const selected = productList.value.find(
+      (item) => item.code === formData.value.productCode
+    );
+    if (selected) {
+      formData.value.productName = selected.name;
+    }
+  }
 
   if (productList.value.length === 1) {
     formData.value.productCode = productList.value[0].code;

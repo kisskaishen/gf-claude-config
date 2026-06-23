@@ -85,6 +85,8 @@ export default {
   "web.gfuc.order_update_success": "Bestelling succesvol bijgewerkt",
   "web.gfuc.order_update_success_message":
     "Uw bestelling is succesvol bijgewerkt. U kunt de bestelling bekijken of doorgaan met bestellen",
+  "web.gfuc.order_create_failed_retry":
+    "Bestelling aanmaken mislukt, probeer opnieuw",
   "web.gfuc.view_order": "Bekijk bestelling",
   "web.gfuc.continue_order": "Doorgaan met bestellen",
 
@@ -151,6 +153,8 @@ export default {
   "web.gfuc.please_select_product_type": "Selecteer het producttype",
   "web.gfuc.please_select_product_info":
     "Selecteer de logistieke productinformatie",
+  "web.gfuc.please_select_value_added_service":
+    "Selecteer de dienst met toegevoegde waarde",
 
   "web.gfuc.parcel_info": "Pakketinformatie & overige info",
   "web.gfuc.total_parcel_weight": "Totaal pakketgewicht (kg)",

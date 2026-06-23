@@ -103,6 +103,7 @@ export default {
   "web.gfuc.order_update_success": "订单更新成功",
   "web.gfuc.order_update_success_message":
     "您的订单已经更新成功，您可以查看订单或继续下单",
+  "web.gfuc.order_create_failed_retry": "订单创建失败，请重试",
   "web.gfuc.continue_order": "继续下单",
 
   // 发件人信息组件
@@ -165,6 +166,7 @@ export default {
     "揽收开始时间必须早于揽收结束时间",
   "web.gfuc.please_select_product_type": "请选择产品类型",
   "web.gfuc.please_select_product_info": "请选择物流产品信息",
+  "web.gfuc.please_select_value_added_service": "请选择增值服务",
 
   "web.gfuc.parcel_info": "包裹信息&其他信息",
   "web.gfuc.total_parcel_weight": "总包裹重(kg)",
