@@ -423,7 +423,7 @@
 <script setup lang="ts">
 defineOptions({ name: "OrderDetail" });
 
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, watch } from "vue";
 import { copyText } from "@/utils/index";
 import {
   getOrderDetail,
@@ -433,8 +433,10 @@ import {
 import { useDict } from "@/hooks/useDict";
 import { useRoute } from "vue-router";
 import { ElMessage } from "element-plus";
+import { useAppStore } from "@/store/app";
 
 const route = useRoute();
+const appStore = useAppStore();
 const orderStatusDict = useDict("order_status");
 
 const orderType = ref(route.params.orderType as string);
@@ -475,6 +477,14 @@ const statusClass = computed(() => {
 onMounted(() => {
   fetchOrderDetail();
 });
+
+// 切换语言时重新请求详情接口
+watch(
+  () => appStore.lang,
+  () => {
+    fetchOrderDetail();
+  }
+);
 
 const fetchOrderDetail = async () => {
   try {

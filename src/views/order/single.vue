@@ -337,11 +337,10 @@ const doSubmitOrder = async () => {
     if (res.waybillNo) {
       successVisible.value = true;
     } else {
-      ElMessage.error("订单创建失败，请重试");
+      ElMessage.error(t("web.gfuc.order_create_failed_retry"));
     }
   } catch (error) {
     console.error("提交订单失败:", error);
-    ElMessage.error("订单提交失败，请重试");
   }
 };
 

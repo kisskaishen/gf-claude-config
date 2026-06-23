@@ -88,6 +88,8 @@ export default {
   "web.gfuc.order_update_success": "Ordine aggiornato con successo",
   "web.gfuc.order_update_success_message":
     "Il tuo ordine è stato aggiornato con successo. Puoi visualizzare l'ordine o continuare ad effettuare ordini",
+  "web.gfuc.order_create_failed_retry":
+    "Creazione dell'ordine fallita, riprova",
   "web.gfuc.view_order": "Visualizza ordine",
   "web.gfuc.continue_order": "Continua l'ordine",
 
@@ -159,6 +161,8 @@ export default {
   "web.gfuc.please_select_product_type": "Seleziona il tipo di prodotto",
   "web.gfuc.please_select_product_info":
     "Seleziona le informazioni del prodotto logistico",
+  "web.gfuc.please_select_value_added_service":
+    "Seleziona il servizio a valore aggiunto",
 
   "web.gfuc.parcel_info": "Informazioni del pacco & altre info",
   "web.gfuc.total_parcel_weight": "Peso totale del pacco (kg)",
