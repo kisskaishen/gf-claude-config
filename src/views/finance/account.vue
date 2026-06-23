@@ -19,36 +19,23 @@
         v-model:status="activeTab"
         :search-claim-bill-no="claimBillSearchNo"
         :settle-cycle-data="settleCycleData"
-        @show-success-dialog="successVisible = true"
+        @fly-to-task-center="handleFlyToTaskCenter"
         v-if="activeTab === 1"
       />
       <CostTable
         v-model:status="activeTab"
         :settle-cycle-data="settleCycleData"
-        @show-success-dialog="successVisible = true"
+        @fly-to-task-center="handleFlyToTaskCenter"
         @search-claim-bill="handleSearchClaimBill"
         v-else
       />
     </div>
 
-    <SuccessDialog
-      v-model="successVisible"
-      :width="columnWidth(480, 720, 720, 720, 720, 480) + 'px'"
-      :showIcon="false"
-      :title="$t('web.gfuc.tip' /** 温馨提示 **/)"
-      :description="
-        $t(
-          'web.gfuc.account_download_tip' /** 你的账单正在下载中，预计5分钟完成下载，请前往任务中心查看 **/
-        )
-      "
-      :primary-btn-text="
-        $t('web.gfuc.stay_on_current_page' /** 留在当前页面 **/)
-      "
-      :secondary-btn-text="
-        $t('web.gfuc.go_to_task_center' /** 去任务中心查看 **/)
-      "
-      @primary-click="handleStayOnCurrentPage"
-      @secondary-click="handleGoToTaskCenter"
+    <!-- 飞入导航栏任务中心图标的动效 -->
+    <FlyToTaskCenter
+      v-model:visible="flyVisible"
+      :from-element="flyFromElement"
+      @done="handleFlyDone"
     />
   </PageContainer>
 </template>
@@ -57,22 +44,22 @@
 import { ref, computed, onMounted } from "vue";
 import ClaimTable from "@/views/finance/components/ClaimTable.vue";
 import CostTable from "@/views/finance/components/CostTable.vue";
-import SuccessDialog from "@/components/SuccessDialog/index.vue";
-import { columnWidth } from "@/utils/index";
+import FlyToTaskCenter from "@/views/finance/components/FlyToTaskCenter/index.vue";
 
 import PageContainer from "@/components/PageContainer/index.vue";
 import { useI18n } from "vue-i18n";
-import { useRouter } from "vue-router";
+import { ElMessage } from "element-plus";
 import { getCustomerSettleCycle } from "@/api/finance";
 
 const { t } = useI18n();
-const router = useRouter();
 
 defineOptions({
   name: "AccountList"
 });
 
-const successVisible = ref(false);
+/** 飞入动画状态 */
+const flyVisible = ref(false);
+const flyFromElement = ref<HTMLElement | null>(null);
 
 const activeTab = ref(0);
 const claimBillSearchNo = ref("");
@@ -115,14 +102,20 @@ const handleTabClick = (tab: any, event: Event) => {
   console.log(tab.props.label, tab.props.name);
 };
 
-const handleStayOnCurrentPage = () => {
-  successVisible.value = false;
+/** 触发飞入动画：子组件点击下载/导出后 */
+const handleFlyToTaskCenter = (element: HTMLElement | null) => {
+  if (!element) return;
+  flyFromElement.value = element;
+  flyVisible.value = true;
 };
 
-const handleGoToTaskCenter = () => {
-  successVisible.value = false;
-
-  router.push("/task/list");
+/** 飞入动画完成 */
+const handleFlyDone = () => {
+  ElMessage.success(
+    t(
+      "web.gfuc.download_task_submitted" /** 下载任务已提交，请前往任务中心查看 **/
+    )
+  );
 };
 </script>
 

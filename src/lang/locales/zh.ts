@@ -307,7 +307,7 @@ export default {
   "web.gfuc.please_agree_and_check_the_agreement": "请同意并勾选协议",
 
   "web.gfuc.task_management": "任务管理",
-  "web.gfuc.task_list": "任务中心",
+  "web.gfuc.task_list": "下载中心",
   "web.gfuc.file_name": "文件名",
   "web.gfuc.date": "日期",
   "web.gfuc.type": "类型",
@@ -370,9 +370,10 @@ export default {
   "web.gfuc.claim_bill_amount_in_tax": "理赔账单金额_含税",
   "web.gfuc.select_bill_first": "请先选择账单",
   "web.gfuc.account_download_tip":
-    "你的账单正在下载中，预计5分钟完成下载，请前往任务中心查看",
+    "你的账单正在下载中，预计5分钟完成下载，请前往下载中心查看",
   "web.gfuc.stay_on_current_page": "留在当前页面",
-  "web.gfuc.go_to_task_center": "去任务中心查看",
+  "web.gfuc.go_to_task_center": "去下载中心查看",
+  "web.gfuc.download_task_submitted": "下载任务已提交，请前往下载中心查看",
   "web.gfuc.half_month1": "上半月",
   "web.gfuc.half_month2": "下半月",
   "web.gfuc.export": "导出",

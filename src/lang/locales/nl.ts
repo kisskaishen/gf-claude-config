@@ -317,7 +317,7 @@ export default {
   "web.gfuc.please_agree_and_check_the_agreement":
     "Ga akkoord en vink de overeenkomst aan",
   "web.gfuc.task_management": "Taakbeheer",
-  "web.gfuc.task_list": "Takencentrum",
+  "web.gfuc.task_list": "Downloadcentrum",
   "web.gfuc.file_name": "Bestandsnaam",
   "web.gfuc.date": "Datum",
   "web.gfuc.type": "Type",
@@ -383,9 +383,11 @@ export default {
   "web.gfuc.claim_bill_amount_in_tax": "Claimfactuurbedrag (incl. btw)",
   "web.gfuc.select_bill_first": "Selecteer eerst een factuur",
   "web.gfuc.account_download_tip":
-    "Uw factuur wordt gedownload, geschatte voltooiing over 5 minuten. Ga naar het Taakcentrum om te controleren",
+    "Uw factuur wordt gedownload, geschatte voltooiing over 5 minuten. Ga naar het Downloadcentrum om te controleren",
   "web.gfuc.stay_on_current_page": "Blijf op de huidige pagina",
-  "web.gfuc.go_to_task_center": "Ga naar het Taakcentrum om te bekijken",
+  "web.gfuc.go_to_task_center": "Ga naar het Downloadcentrum om te bekijken",
+  "web.gfuc.download_task_submitted":
+    "Downloadtaak ingediend, ga naar het Downloadcentrum om te bekijken",
   "web.gfuc.half_month1": "Eerste helft van de maand",
   "web.gfuc.half_month2": "Tweede helft van de maand",
   "web.gfuc.export": "Exporteren",

@@ -18,7 +18,11 @@
         :content="$t('web.gfuc.task_list' /** 任务中心 **/)"
         placement="bottom"
       >
-        <div class="task-center-btn" @click="handleGoTaskCenter">
+        <div
+          id="tour-task-center"
+          class="task-center-btn"
+          @click="handleGoTaskCenter"
+        >
           <svg-icon name="upload-download" width="24" height="24" />
         </div>
       </el-tooltip>

@@ -326,7 +326,7 @@ export default {
   "web.gfuc.please_agree_and_check_the_agreement":
     "Si prega di accettare e spuntare il contratto",
   "web.gfuc.task_management": "Gestione attività",
-  "web.gfuc.task_list": "Centro attività",
+  "web.gfuc.task_list": "Centro download",
   "web.gfuc.file_name": "Nome file",
   "web.gfuc.date": "Data",
   "web.gfuc.type": "Tipo",
@@ -393,9 +393,11 @@ export default {
   "web.gfuc.claim_bill_amount_in_tax": "Importo fattura reclamo (Iva inclusa)",
   "web.gfuc.select_bill_first": "Seleziona prima una fattura",
   "web.gfuc.account_download_tip":
-    "La tua fattura è in fase di download, completamento stimato in 5 minuti. Si prega di andare al Centro attività per verificare",
+    "La tua fattura è in fase di download, completamento stimato in 5 minuti. Si prega di andare al Centro download per verificare",
   "web.gfuc.stay_on_current_page": "Rimani sulla pagina corrente",
-  "web.gfuc.go_to_task_center": "Vai al Centro attività per visualizzare",
+  "web.gfuc.go_to_task_center": "Vai al Centro download per visualizzare",
+  "web.gfuc.download_task_submitted":
+    "Download inviato, vai al Centro download per visualizzare",
   "web.gfuc.half_month1": "Prima metà del mese",
   "web.gfuc.half_month2": "Seconda metà del mese",
   "web.gfuc.export": "Esporta",

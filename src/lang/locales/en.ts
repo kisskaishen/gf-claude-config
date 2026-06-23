@@ -90,7 +90,8 @@ export default {
   "web.gfuc.order_update_success": "Order Updated Successfully",
   "web.gfuc.order_update_success_message":
     "Your order has been updated successfully, you can view the order or continue to order",
-  "web.gfuc.order_create_failed_retry": "Order creation failed, please try again",
+  "web.gfuc.order_create_failed_retry":
+    "Order creation failed, please try again",
   "web.gfuc.view_order": "View Order",
   "web.gfuc.continue_order": "Continue Order",
 
@@ -322,7 +323,7 @@ export default {
   "web.gfuc.please_agree_and_check_the_agreement":
     "Please agree and check the agreement",
   "web.gfuc.task_management": "Task Management",
-  "web.gfuc.task_list": "Task Center",
+  "web.gfuc.task_list": "Download Center",
   "web.gfuc.file_name": "File Name",
   "web.gfuc.date": "Date",
   "web.gfuc.type": "Type",
@@ -390,9 +391,11 @@ export default {
   "web.gfuc.claim_bill_amount_in_tax": "Claim Bill Amount (Including Tax)",
   "web.gfuc.select_bill_first": "Please select a bill first",
   "web.gfuc.account_download_tip":
-    "Your bill is being downloaded, estimated completion in 5 minutes. Please go to the Task Center to check",
+    "Your bill is being downloaded, estimated completion in 5 minutes. Please go to the Download Center to check",
   "web.gfuc.stay_on_current_page": "Stay on Current Page",
-  "web.gfuc.go_to_task_center": "Go to Task Center to View",
+  "web.gfuc.go_to_task_center": "Go to Download Center",
+  "web.gfuc.download_task_submitted":
+    "Download task submitted, please check the Download Center",
   "web.gfuc.half_month1": "First Half of Month",
   "web.gfuc.half_month2": "Second Half of Month",
   "web.gfuc.export": "Export",

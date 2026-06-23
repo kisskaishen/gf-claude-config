@@ -14,11 +14,19 @@
         @selection-change="handleSelectionChange"
       >
         <template #action-left>
-          <el-button @click="handleBatchExport" :loading="exportLoading">
+          <el-button
+            ref="exportBtnRef"
+            @click="handleBatchExport"
+            :loading="exportLoading"
+          >
             <svg-icon name="export" width="16" height="16" class="mr-2" />
             {{ $t("web.gfuc.export" /** 导出 **/) }}
           </el-button>
-          <el-button @click="handleBatchDownload" :loading="downloadLoading">
+          <el-button
+            ref="batchDownloadBtnRef"
+            @click="handleBatchDownload"
+            :loading="downloadLoading"
+          >
             {{ $t("web.gfuc.download_bill" /** 下载账单 **/) }}
           </el-button>
         </template>
@@ -203,7 +211,10 @@
                   :content="$t('web.gfuc.download_bill')"
                   placement="top"
                 >
-                  <el-button class="action-btn" @click="handleDownload(row)">
+                  <el-button
+                    class="action-btn"
+                    @click="handleDownload(row, $event)"
+                  >
                     <svg-icon name="upload-download" width="16" height="16" />
                   </el-button>
                 </el-tooltip>
@@ -251,7 +262,7 @@ const props = defineProps({
     default: () => []
   }
 });
-const emits = defineEmits(["show-success-dialog"]);
+const emits = defineEmits(["fly-to-task-center"]);
 
 /** 结算周期列表 — 由父组件通过接口透传，替代原字典数据 */
 const cycleTypeList = computed(() => {
@@ -368,6 +379,8 @@ const columns = computed(() => [
 const exportLoading = ref(false);
 const downloadLoading = ref(false);
 const loading = ref(false);
+const batchDownloadBtnRef = ref<HTMLElement | null>(null);
+const exportBtnRef = ref<HTMLElement | null>(null);
 
 // 初始表单状态
 const initialFormState = {
@@ -486,12 +499,13 @@ const fetchData = () => {
   }, 500);
 };
 
-const handleDownload = async (row: any) => {
+const handleDownload = async (row: any, event: MouseEvent) => {
+  const target = event.currentTarget as HTMLElement;
   await downloadClaimBill({
     numbers: [row.number]
   });
 
-  emits("show-success-dialog", true);
+  emits("fly-to-task-center", target);
 };
 
 const selectedOrders = ref([]);
@@ -522,7 +536,10 @@ const handleBatchExport = async () => {
     pageNum: pagination.currentPage,
     pageSize: pagination.pageSize
   });
-  emits("show-success-dialog", true);
+  const exportEl = exportBtnRef.value?.$el as HTMLElement | undefined;
+  if (exportEl) {
+    emits("fly-to-task-center", exportEl);
+  }
 
   exportLoading.value = false;
 };
@@ -540,7 +557,12 @@ const handleBatchDownload = async () => {
       numbers: selectedOrders.value.map((item: any) => item.number)
     });
 
-    emits("show-success-dialog", true);
+    const downloadEl = batchDownloadBtnRef.value?.$el as
+      | HTMLElement
+      | undefined;
+    if (downloadEl) {
+      emits("fly-to-task-center", downloadEl);
+    }
 
     downloadLoading.value = false;
   } catch (error) {

@@ -336,7 +336,7 @@ export default {
   "web.gfuc.please_agree_and_check_the_agreement":
     "Veuillez accepter et cocher la convention",
   "web.gfuc.task_management": "Gestion des tâches",
-  "web.gfuc.task_list": "Centre de tâches",
+  "web.gfuc.task_list": "Centre de téléchargement",
   "web.gfuc.file_name": "Nom du fichier",
   "web.gfuc.date": "Date",
   "web.gfuc.type": "Type",
@@ -406,9 +406,11 @@ export default {
     "Montant de la facture de réclamation (TTC)",
   "web.gfuc.select_bill_first": "Veuillez d'abord sélectionner une facture",
   "web.gfuc.account_download_tip":
-    "Votre facture est en cours de téléchargement, durée estimée : 5 minutes. Veuillez vous rendre au Centre des tâches pour vérifier",
+    "Votre facture est en cours de téléchargement, durée estimée : 5 minutes. Veuillez vous rendre au Centre de téléchargement pour vérifier",
   "web.gfuc.stay_on_current_page": "Rester sur la page actuelle",
-  "web.gfuc.go_to_task_center": "Aller au Centre des tâches pour voir",
+  "web.gfuc.go_to_task_center": "Aller au Centre de téléchargement",
+  "web.gfuc.download_task_submitted":
+    "Tâche de téléchargement soumise, veuillez consulter le Centre de téléchargement",
   "web.gfuc.half_month1": "Première quinzaine",
   "web.gfuc.half_month2": "Deuxième quinzaine",
   "web.gfuc.export": "Exporter",
