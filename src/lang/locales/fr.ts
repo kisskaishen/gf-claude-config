@@ -522,5 +522,8 @@ export default {
   "web.gfuc.page_not_found_description":
     "Désolé, la page que vous recherchez n'existe pas ou a été supprimée.",
   "web.gfuc.return_to_home": "Retour à l'accueil",
-  "web.gfuc.return_to_previous": "Retour à la page précédente"
+  "web.gfuc.return_to_previous": "Retour à la page précédente",
+
+  "web.gfuc.please_select_order_account_first":
+    "Veuillez d'abord sélectionner un compte de commande"
 };

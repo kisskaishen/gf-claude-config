@@ -505,5 +505,8 @@ export default {
   "web.gfuc.page_not_found_description":
     "Spiacenti, la pagina che stai cercando non esiste o è stata rimossa.",
   "web.gfuc.return_to_home": "Torna alla Home",
-  "web.gfuc.return_to_previous": "Torna alla pagina precedente"
+  "web.gfuc.return_to_previous": "Torna alla pagina precedente",
+
+  "web.gfuc.please_select_order_account_first":
+    "Seleziona prima un account di ordine"
 };

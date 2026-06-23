@@ -279,7 +279,11 @@ import SuccessDialog from "@/components/SuccessDialog/index.vue";
 import { useAppStore } from "@/store/app";
 import { useUserStore } from "@/store/user";
 import { useRouter } from "vue-router";
-import type { FormInstance, UploadInstance } from "element-plus";
+import {
+  ElMessage,
+  type FormInstance,
+  type UploadInstance
+} from "element-plus";
 
 const router = useRouter();
 const appStore = useAppStore();
@@ -329,8 +333,23 @@ const handleCustomerChange = (val: string) => {
 };
 
 const downloadTemplate = async () => {
+  let customerId = "";
+
+  if (isMoreCustomer.value) {
+    customerId = form.customerId;
+  } else {
+    customerId = shipperOptions.value[0]?.customerId || "";
+  }
+
+  if (!customerId) {
+    ElMessage.warning(
+      t("web.gfuc.please_select_order_account_first" /** 请先选择下单帐户 **/)
+    );
+    return;
+  }
+
   const res = await downloadOrderTemplate({
-    customerId: form.customerId || shipperOptions.value[0]?.customerId || ""
+    customerId
   });
   const blob = new Blob([res], {
     type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"

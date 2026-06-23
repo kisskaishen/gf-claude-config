@@ -495,5 +495,8 @@ export default {
   "web.gfuc.page_not_found_description":
     "Sorry, de pagina die u zoekt bestaat niet of is verwijderd.",
   "web.gfuc.return_to_home": "Terug naar Home",
-  "web.gfuc.return_to_previous": "Ga terug"
+  "web.gfuc.return_to_previous": "Ga terug",
+
+  "web.gfuc.please_select_order_account_first":
+    "Selecteer eerst een bestelaccount"
 };
