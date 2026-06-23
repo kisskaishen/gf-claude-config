@@ -1,0 +1,62 @@
+src/lang/locales/it.ts
+  s_0a190d876c8697::t_b860f6c0c888df 396
+  s_0a190d876c8697::t_a911fbd6f36d8c 329
+  s_0a190d876c8697::t_3fb29ecc461d5a 399-400
+  s_0a190d876c8697::t_a589f5bec33caa 398
+src/lang/locales/zh.ts
+  s_0a190d876c8697::t_30ef4149a7bf25 310
+  s_0a190d876c8697::t_88e9f4399feafa 376
+  s_0a190d876c8697::t_dfb71f9a0e6e94 375
+  s_0a190d876c8697::t_17624055591895 373
+src/views/finance/components/ClaimTable.vue
+  s_0a190d876c8697::t_f205129f5286b8 17-21
+  s_0a190d876c8697::t_86bf7e3004486c 214
+  s_0a190d876c8697::t_d2eeb1f6c68735 539,565
+  s_0a190d876c8697::t_d319b85c4fd7da 25-29
+src/lang/locales/nl.ts
+  s_0a190d876c8697::t_c69dc28cbca91e 386
+  s_0a190d876c8697::t_6fa520d4baaeb0 320
+  s_0a190d876c8697::t_65b34cc56e1b53 388
+  s_0a190d876c8697::t_7fb4dc3d4d6f10 389-390
+src/lang/locales/en.ts
+  s_0a190d876c8697::t_72871df82e1fae 326
+  s_0a190d876c8697::t_8276b414f19aca 394
+  s_0a190d876c8697::t_90b32160e728e9 397
+  s_0a190d876c8697::t_4ce83758ab3a6a 396
+  s_0a190d876c8697::t_a02218f9bcf524 398
+src/views/finance/account.vue
+  s_0a190d876c8697::t_a4a9782bfe2828 22,28,34-38,47,51,60-62,105,109,112-118
+  s_0a190d876c8697::t_61e2144a2cf663 106-108
+src/lang/locales/fr.ts
+  s_0a190d876c8697::t_3facc377e06654 412
+  s_0a190d876c8697::t_bc1db0cada4540 413
+  s_0a190d876c8697::t_b4c5a898dd33bb 339
+  s_0a190d876c8697::t_1944d0b829c0a2 409
+  s_0a190d876c8697::t_b577709fec9db4 411
+src/views/finance/components/CostTable.vue
+  s_0a190d876c8697::t_3b957eb71eb642 245
+  s_0a190d876c8697::t_1ccb614d22eccf 604,630
+  s_0a190d876c8697::t_6b8a1c450c4565 25-29
+  s_0a190d876c8697::t_831b7889a7597d 17-21
+src/layout/components/NavBar.vue
+  s_0a190d876c8697::t_d2b1790e783e39 21-25
+src/views/finance/components/FlyToTaskCenter/index.vue
+  s_0a190d876c8697::t_7b9050021cb0c1 15,50-76,86-104,108-110,114-129,131-134,136,138-147,178
+  s_0a190d876c8697::t_c5d2f3e18aa537 1-14,16-49,77-85,105-107,111-113,130,135,137,148-177,179-180
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "3e3761f10abfcba7eaeff25d4854248c9c63c08d",
+  "prompts": {},
+  "sessions": {
+    "s_0a190d876c8697": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e5a1c0d7-5772-4e98-ab88-17e1363c4781",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
