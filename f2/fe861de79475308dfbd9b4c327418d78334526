@@ -1,0 +1,39 @@
+src/lang/locales/zh.ts
+  s_9dfadb9e04532c::t_b6b6c5245abb99 468-470
+  s_9dfadb9e04532c::t_06fe8c2970069b 471-474
+src/lang/locales/en.ts
+  s_9dfadb9e04532c::t_ae4a72c87a3b77 498-500
+  s_9dfadb9e04532c::t_fe9c2a983f7978 501-504
+src/lang/locales/it.ts
+  s_9dfadb9e04532c::t_a979896212d3c5 501-503
+  s_9dfadb9e04532c::t_5689b9726a9897 504-507
+src/lang/locales/nl.ts
+  s_9dfadb9e04532c::t_72dd85189117b2 491-493
+  s_9dfadb9e04532c::t_288b4fb122e3ee 494-497
+src/lang/locales/fr.ts
+  s_9dfadb9e04532c::t_017980a00c3efd 521-524
+  s_9dfadb9e04532c::t_9435787e1bd8c3 518-520
+src/utils/request.ts
+  s_9dfadb9e04532c::t_2c078dda1ba378 109-127,137,141-146,150,164
+src/views/login/components/LoginForm.vue
+  s_9dfadb9e04532c::t_654cdf312f1420 28-41
+  s_9dfadb9e04532c::t_68357d9f09e163 258
+  s_9dfadb9e04532c::t_8adb6c8d96116c 158
+  s_9dfadb9e04532c::t_468959a6e66842 223-225,227-257,259-266,269-275
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "f2fe861de79475308dfbd9b4c327418d78334526",
+  "prompts": {},
+  "sessions": {
+    "s_9dfadb9e04532c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7b5ae9af-3ca9-4f32-9d72-087774d10e7a",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
