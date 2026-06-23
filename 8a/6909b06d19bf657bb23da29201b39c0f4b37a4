@@ -1,0 +1,58 @@
+src/api/finance.ts
+  s_9dfadb9e04532c::t_d60bacbadc77b4 206
+  s_9dfadb9e04532c::t_dd943a10c2d9a0 201-205,207-208
+src/lang/locales/it.ts
+  s_ba01be7bbb0084::t_85c01bdb7400ee 367
+src/lang/locales/fr.ts
+  s_ba01be7bbb0084::t_f142d62af84834 379
+src/lang/locales/zh.ts
+  s_ba01be7bbb0084::t_85d1db429e7ed7 347
+src/lang/locales/nl.ts
+  s_ba01be7bbb0084::t_35e95d709c6401 358
+src/views/finance/components/CostTable.vue
+  s_9dfadb9e04532c::t_9c41a09f017157 276-283,286-292
+  s_9dfadb9e04532c::t_34708a344576e1 47
+src/views/finance/components/ClaimTable.vue
+  s_9dfadb9e04532c::t_7533304877ddac 242,248-251,256-262
+  s_9dfadb9e04532c::t_2dfffa55448c04 43
+src/api/product.ts
+  s_ba01be7bbb0084::t_407036d320bc9d 64
+  s_ba01be7bbb0084::t_22ee0e5dc73841 57-58,60-63,67-68
+  s_ba01be7bbb0084::t_af33250080a019 59,65-66
+src/views/finance/account.vue
+  s_9dfadb9e04532c::t_11eee1b8d701e4 21,27
+  s_9dfadb9e04532c::t_46821ab9b77839 57,66,80-96
+src/lang/locales/en.ts
+  s_ba01be7bbb0084::t_d55f540822043e 365
+src/views/order/batch.vue
+  s_ba01be7bbb0084::t_9557f31dc6f5bd 347,363-367
+  s_ba01be7bbb0084::t_25392b20877609 352
+  s_ba01be7bbb0084::t_daa4056775492b 80,86
+  s_ba01be7bbb0084::t_0283213848d274 79,81-85,87-92
+  s_ba01be7bbb0084::t_736fb34d0fa187 59
+  s_ba01be7bbb0084::t_0cbfb8f7015385 345-346,348-351,353-361
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "8a6909b06d19bf657bb23da29201b39c0f4b37a4",
+  "prompts": {},
+  "sessions": {
+    "s_9dfadb9e04532c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7b5ae9af-3ca9-4f32-9d72-087774d10e7a",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    },
+    "s_ba01be7bbb0084": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f7638a9a-cce6-4a99-b712-4d30521cbb52",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
