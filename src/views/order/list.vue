@@ -137,6 +137,17 @@
             >
               <template #default="{ row }">
                 <template v-if="item.prop === 'orderStatusName'">
+                  <!-- 6、7、8 按异常类型888展示 -->
+                  <CommonTag
+                    v-if="[6, 7, 8].includes(row.orderStatus)"
+                    :bg-color="statusColorMap[888].bgColor"
+                    :text-color="statusColorMap[888].textColor"
+                    :count="
+                      orderStatusDict.options.value.find(
+                        (o) => o.value === row.orderStatus
+                      )?.label || row.orderStatusName
+                    "
+                  />
                   <div v-for="item in exceptionOrderStatusOptions">
                     <CommonTag
                       v-if="row.orderStatus === item.value"
@@ -155,7 +166,9 @@
                     effect="dark"
                     hide-after="200"
                   >
-                    <span class="text-wrap-cell">{{ getAddress(row.orderConsigneeVO) }}</span>
+                    <span class="text-wrap-cell">{{
+                      getAddress(row.orderConsigneeVO)
+                    }}</span>
                   </el-tooltip>
                 </template>
               </template>
