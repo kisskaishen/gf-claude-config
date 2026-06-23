@@ -227,7 +227,6 @@ const handleSubmit = async () => {
     dialogVisible.value = false;
   } catch (e: any) {
     console.error("提交失败", e);
-    ElMessage.error(e?.message || t("web.gfuc.feedback_submit_failed"));
   } finally {
     submitting.value = false;
   }
