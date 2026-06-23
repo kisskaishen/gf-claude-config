@@ -516,5 +516,12 @@ export default {
   "web.gfuc.max_size": "Max {size}px",
   "web.gfuc.dimension_width": "Largeur : {values}",
   "web.gfuc.dimension_height": "Hauteur : {values}",
-  "web.gfuc.dimension_separator": " ; "
+  "web.gfuc.dimension_separator": " ; ",
+
+  // 404
+  "web.gfuc.page_not_found": "Page introuvable",
+  "web.gfuc.page_not_found_description":
+    "Désolé, la page que vous recherchez n'existe pas ou a été supprimée.",
+  "web.gfuc.return_to_home": "Retour à l'accueil",
+  "web.gfuc.return_to_previous": "Retour à la page précédente"
 };

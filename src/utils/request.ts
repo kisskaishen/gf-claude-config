@@ -106,6 +106,25 @@ service.interceptors.request.use(
   }
 );
 
+/** 防抖错误提示：短时间内相同 message 只弹一次 */
+let lastErrorMessage = "";
+let lastErrorTime = 0;
+const ERROR_DEBOUNCE_MS = 3000;
+
+const debouncedError = (message: string) => {
+  const now = Date.now();
+  if (message === lastErrorMessage && now - lastErrorTime < ERROR_DEBOUNCE_MS) {
+    return;
+  }
+  lastErrorMessage = message;
+  lastErrorTime = now;
+  ElMessage({
+    message,
+    type: "error",
+    duration: 5 * 1000
+  });
+};
+
 // 响应拦截器
 service.interceptors.response.use(
   (response: AxiosResponse) => {
@@ -115,36 +134,20 @@ service.interceptors.response.use(
     }
 
     const res = response.data as Result;
-    // /oms/aceert / order;
+
     // 3.5 响应数据格式规范
     // status: 接口业务处理状态码：1-成功，0-失败
     if (res.status !== 1) {
-      if (response.config.url === "/oms/create/order") {
-        ElMessage({
-          message: res?.msgEn || res.message || res.msg || "Error",
-          type: "error",
-          duration: 5 * 1000
-        });
-      } else {
-        ElMessage({
-          message: res.message || res.msg || "Error",
-          type: "error",
-          duration: 5 * 1000
-        });
-      }
+      const errorMsg =
+        response.config.url === "/oms/create/order"
+          ? ((res?.msgEn || res.message || res.msg || "Error") as string)
+          : ((res.message || res.msg || "Error") as string);
+
+      debouncedError(errorMsg);
 
       // 特殊错误码处理，例如：Token 失效
       if (res.code === 401) {
-        if (response.config.url === "/oms/create/order") {
-          ElMessage({
-            message: "下单Token失效，请联系客服",
-            type: "error"
-          });
-        } else {
-          ElMessage({
-            message: "Token 失效，请重新登录",
-            type: "error"
-          });
+        if (response.config.url !== "/oms/create/order") {
           const userStore = useUserStoreWithOut();
           userStore.logout();
           location.reload();
@@ -158,11 +161,7 @@ service.interceptors.response.use(
   },
   (error) => {
     console.log("err" + error);
-    ElMessage({
-      message: error.message,
-      type: "error",
-      duration: 5 * 1000
-    });
+    debouncedError(error.message);
     return Promise.reject(error);
   }
 );

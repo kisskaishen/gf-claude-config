@@ -489,5 +489,12 @@ export default {
   "web.gfuc.max_size": "Max {size}px",
   "web.gfuc.dimension_width": "Breedte: {values}",
   "web.gfuc.dimension_height": "Hoogte: {values}",
-  "web.gfuc.dimension_separator": "; "
+  "web.gfuc.dimension_separator": "; ",
+
+  // 404
+  "web.gfuc.page_not_found": "Pagina niet gevonden",
+  "web.gfuc.page_not_found_description":
+    "Sorry, de pagina die u zoekt bestaat niet of is verwijderd.",
+  "web.gfuc.return_to_home": "Terug naar Home",
+  "web.gfuc.return_to_previous": "Ga terug"
 };

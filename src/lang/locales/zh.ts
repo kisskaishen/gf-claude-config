@@ -466,5 +466,11 @@ export default {
   "web.gfuc.max_size": "最大 {size}px",
   "web.gfuc.dimension_width": "宽度: {values}",
   "web.gfuc.dimension_height": "高度: {values}",
-  "web.gfuc.dimension_separator": "；"
+  "web.gfuc.dimension_separator": "；",
+
+  // 404
+  "web.gfuc.page_not_found": "页面不见了",
+  "web.gfuc.page_not_found_description": "抱歉，您访问的页面不存在或已被移除。",
+  "web.gfuc.return_to_home": "返回首页",
+  "web.gfuc.return_to_previous": "返回上一页"
 };
