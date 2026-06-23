@@ -362,6 +362,7 @@ export default {
   "web.gfuc.balance_tip": "View available account balance and frozen amount",
   "web.gfuc.upload_task_click": "Upload records are clickable",
   "web.gfuc.view": "View",
+  "web.gfuc.orderable_products": "Orderable Products",
 
   "web.gfuc.freight_bill": "Freight Bill",
   "web.gfuc.claim_bill": "Claim Bill",

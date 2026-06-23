@@ -18,11 +18,13 @@
       <ClaimTable
         v-model:status="activeTab"
         :search-claim-bill-no="claimBillSearchNo"
+        :settle-cycle-data="settleCycleData"
         @show-success-dialog="successVisible = true"
         v-if="activeTab === 1"
       />
       <CostTable
         v-model:status="activeTab"
+        :settle-cycle-data="settleCycleData"
         @show-success-dialog="successVisible = true"
         @search-claim-bill="handleSearchClaimBill"
         v-else
@@ -52,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import ClaimTable from "@/views/finance/components/ClaimTable.vue";
 import CostTable from "@/views/finance/components/CostTable.vue";
 import SuccessDialog from "@/components/SuccessDialog/index.vue";
@@ -61,6 +63,7 @@ import { columnWidth } from "@/utils/index";
 import PageContainer from "@/components/PageContainer/index.vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
+import { getCustomerSettleCycle } from "@/api/finance";
 
 const { t } = useI18n();
 const router = useRouter();
@@ -73,6 +76,24 @@ const successVisible = ref(false);
 
 const activeTab = ref(0);
 const claimBillSearchNo = ref("");
+
+/** 客户结算周期数据 */
+const settleCycleData = ref(null);
+
+/** 获取客户结算周期 */
+const fetchCustomerSettleCycle = async () => {
+  try {
+    const res = await getCustomerSettleCycle();
+    settleCycleData.value = res;
+    console.log("客户结算周期:", res);
+  } catch (error) {
+    console.error("获取客户结算周期失败:", error);
+  }
+};
+
+onMounted(() => {
+  fetchCustomerSettleCycle();
+});
 
 const handleSearchClaimBill = (claimBillNo: string) => {
   claimBillSearchNo.value = claimBillNo;

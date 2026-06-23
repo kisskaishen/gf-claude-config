@@ -56,6 +56,7 @@
                 :label="$t('web.gfuc.order_account')"
                 prop="customerId"
                 :rules="customerRules"
+                class="!mb-0"
               >
                 <el-select
                   v-model="form.customerId"
@@ -73,6 +74,22 @@
                 </el-select>
               </el-form-item>
             </el-form>
+          </div>
+
+          <!-- 可下单产品 -->
+          <div v-if="customerProducts.length > 0">
+            <span class="text-sm font-medium text-text-regular">{{
+              $t("web.gfuc.orderable_products" /** 可下单产品 **/)
+            }}</span>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <el-tag
+                v-for="item in customerProducts"
+                :key="item.productCode"
+                type="primary"
+              >
+                {{ item.productName }}
+              </el-tag>
+            </div>
           </div>
 
           <!-- 上传区域 -->
@@ -274,6 +291,7 @@ import {
   getOrderImportResult,
   downloadFailedOrderData
 } from "@/api/order";
+import { getCustomerProducts } from "@/api/product";
 import SuccessDialog from "@/components/SuccessDialog/index.vue";
 
 import { useAppStore } from "@/store/app";
@@ -324,9 +342,40 @@ const form = reactive({
   customerId: ""
 });
 
+const customerProducts = ref<{ productCode: string; productName: string }[]>(
+  []
+);
+
+const fetchCustomerProducts = async () => {
+  const country = appStore.site;
+  const customerId =
+    form.customerId || shipperOptions.value[0]?.customerId || "";
+  if (!customerId) {
+    customerProducts.value = [];
+    return;
+  }
+  try {
+    const res = await getCustomerProducts({
+      country: country || "",
+      customerId
+    });
+    customerProducts.value = res || [];
+  } catch {
+    customerProducts.value = [];
+  }
+};
+
 const handleCustomerChange = (val: string) => {
   form.customerId = val;
+  fetchCustomerProducts();
 };
+
+onMounted(() => {
+  if (shipperOptions.value.length === 1) {
+    form.customerId = shipperOptions.value[0]?.customerId || "";
+  }
+  fetchCustomerProducts();
+});
 
 const downloadTemplate = async () => {
   const res = await downloadOrderTemplate({

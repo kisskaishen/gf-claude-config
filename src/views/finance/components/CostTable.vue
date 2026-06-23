@@ -44,7 +44,7 @@
               @change="handleCycleChange"
             >
               <el-option
-                v-for="item in cycleTypeListDict.options.value"
+                v-for="item in cycleTypeList"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
@@ -273,9 +273,23 @@ const appStore = useAppStore();
 defineOptions({
   name: "CostTable"
 });
+
+const props = defineProps({
+  settleCycleData: {
+    type: Array,
+    default: () => []
+  }
+});
+
 const emits = defineEmits(["show-success-dialog", "searchClaimBill"]);
 
-const cycleTypeListDict = useDict("fms_receivable_cycle_type");
+/** 结算周期列表 — 由父组件通过接口透传，替代原字典数据 */
+const cycleTypeList = computed(() => {
+  return (props.settleCycleData || []).map((item: any) => ({
+    value: item.itemCode || item.value,
+    label: item.itemValue || item.label
+  }));
+});
 const billStatusListDict = useDict("lcs.finance.bill.status");
 const invoiceStatusListDict = useDict("fms.receivable.invoice.status.type");
 const halfMonthListDict = useDict("fms.bill.month.type");
@@ -616,23 +630,23 @@ onMounted(() => {
   }
 
   .action-btn {
-    padding: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.2s;
-    border: 1px solid #ebebeb;
-    margin: 0;
     width: 32px;
     height: 32px;
-    color: #999999;
+    padding: 8px;
+    margin: 0;
+    color: #999;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    transition: all 0.2s;
 
     &:hover {
-      border-color: var(--el-color-primary);
       color: var(--el-color-primary);
+      border-color: var(--el-color-primary);
     }
   }
 }

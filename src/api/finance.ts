@@ -198,3 +198,11 @@ export function downloadClaimBill(data: {
     data
   });
 }
+
+/** 获取客户结算周期 */
+export function getCustomerSettleCycle() {
+  return request({
+    url: "/fms/getCustomerSettleCycle",
+    method: "post"
+  });
+}

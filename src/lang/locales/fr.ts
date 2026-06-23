@@ -376,6 +376,7 @@ export default {
   "web.gfuc.upload_task_click":
     "Les historiques de téléchargement sont cliquables",
   "web.gfuc.view": "Voir",
+  "web.gfuc.orderable_products": "Produits commandables",
 
   "web.gfuc.freight_bill": "Facture de fret",
   "web.gfuc.claim_bill": "Facture de réclamation",

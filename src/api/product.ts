@@ -54,3 +54,15 @@ export function updateProduct(data: ProductItem) {
     data
   });
 }
+
+// 5. 根据国家与客户获取客户产品列表
+export function getCustomerProducts(data: {
+  country: string;
+  customerId: string;
+}) {
+  return request<{ productCode: string; productName: string }[]>({
+    url: "/user/customerProducts",
+    method: "post",
+    data
+  });
+}

@@ -364,6 +364,7 @@ export default {
     "Visualizza saldo disponibile del conto e importo bloccato",
   "web.gfuc.upload_task_click": "I record di caricamento sono cliccabili",
   "web.gfuc.view": "Visualizza",
+  "web.gfuc.orderable_products": "Prodotti ordinabili",
 
   "web.gfuc.freight_bill": "Fattura di trasporto",
   "web.gfuc.claim_bill": "Fattura di reclamo",

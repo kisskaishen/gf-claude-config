@@ -344,6 +344,7 @@ export default {
   "web.gfuc.balance_tip": "查看可用账户余额及冻结额度",
   "web.gfuc.upload_task_click": "上传记录可点击",
   "web.gfuc.view": "查看",
+  "web.gfuc.orderable_products": "可下单产品",
 
   "web.gfuc.freight_bill": "运费账单",
   "web.gfuc.claim_bill": "理赔账单",

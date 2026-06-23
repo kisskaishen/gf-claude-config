@@ -355,6 +355,7 @@ export default {
     "Bekijk beschikbaar saldo en bevroren bedrag van uw account",
   "web.gfuc.upload_task_click": "Uploadgeschiedenis is aanklikbaar",
   "web.gfuc.view": "Bekijk",
+  "web.gfuc.orderable_products": "Bestelbare producten",
 
   "web.gfuc.freight_bill": "Vrachtfactuur",
   "web.gfuc.claim_bill": "Claimfactuur",
