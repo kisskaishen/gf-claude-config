@@ -1,0 +1,26 @@
+src/views/order/list.vue
+  s_690927e5b91857::t_67feaddc46003b 140-150
+src/views/order/detail.vue
+  s_690927e5b91857::t_7e8c696e52cc39 265
+  s_690927e5b91857::t_255857f79260b5 483-485
+  s_690927e5b91857::t_0082856c1289c9 519-521
+  s_690927e5b91857::t_4363749422b89f 507
+  s_690927e5b91857::t_cfd452d5bda3f1 475-482,486-488
+  s_690927e5b91857::t_0615f293436b44 42-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "5d493eead1e4652f47dd9cf310662da5e0de8501",
+  "prompts": {},
+  "sessions": {
+    "s_690927e5b91857": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1b93b4ec-b8a2-40b2-81b3-6628f79a5fb2",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
