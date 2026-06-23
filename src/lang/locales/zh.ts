@@ -472,5 +472,7 @@ export default {
   "web.gfuc.page_not_found": "页面不见了",
   "web.gfuc.page_not_found_description": "抱歉，您访问的页面不存在或已被移除。",
   "web.gfuc.return_to_home": "返回首页",
-  "web.gfuc.return_to_previous": "返回上一页"
+  "web.gfuc.return_to_previous": "返回上一页",
+
+  "web.gfuc.please_select_order_account_first": "请先选择下单帐户"
 };

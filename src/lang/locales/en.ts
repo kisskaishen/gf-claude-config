@@ -503,5 +503,8 @@ export default {
   "web.gfuc.page_not_found_description":
     "Sorry, the page you are looking for does not exist or has been removed.",
   "web.gfuc.return_to_home": "Back to Home",
-  "web.gfuc.return_to_previous": "Go Back"
+  "web.gfuc.return_to_previous": "Go Back",
+
+  "web.gfuc.please_select_order_account_first":
+    "Please select an order account first"
 };
