@@ -39,7 +39,13 @@
         <div class="order-field">
           <span class="field-label">{{ $t("web.gfuc.order_status") }}</span>
           <div class="field-value-row">
-            <span class="status-badge" :class="statusClass">
+            <span
+              class="status-badge"
+              :style="{
+                backgroundColor: statusColorMap[orderData?.orderStatus]?.bgColor || '#f5f5f5',
+                color: statusColorMap[orderData?.orderStatus]?.textColor || '#333'
+              }"
+            >
               {{ orderData?.orderStatusName || orderData?.orderStatus || "-" }}
             </span>
             <!-- <template v-if="orderData?.orderStatus === 1">
@@ -256,7 +262,7 @@
             }}</span>
           </div>
           <el-table
-            :data="orderData.orderItemList"
+            :data="orderData?.orderItemList || []"
             border
             style="width: 100%"
             class="goods-table"
@@ -466,13 +472,20 @@ const statusSteps = computed(() => {
 
 const computedSteps = computed(() => statusSteps.value);
 
-// 状态 badge 样式类
-const statusClass = computed(() => {
-  const status = orderData.value?.orderStatus;
-  if (status === 1) return "status-active"; // 已下单 - 绿色
-  if (status === 3 || status === 4) return "status-active"; // 准备派送/派送中 - 蓝色
-  return "";
-});
+// 状态颜色映射（与订单列表 CommonTag 保持一致）
+const statusColorMap: Record<number, { bgColor: string; textColor: string }> = {
+  0: { bgColor: "#FEF3EB", textColor: "#FC4C02" },
+  1: { bgColor: "#DFEDFF", textColor: "#237BEB" },
+  2: { bgColor: "#F0F0F0", textColor: "#999" },
+  3: { bgColor: "#FFF4E1", textColor: "#F59E0B" },
+  4: { bgColor: "#FFF4E1", textColor: "#F59E0B" },
+  5: { bgColor: "#E7F5F0", textColor: "#02B578" },
+  6: { bgColor: "#FFE1E4", textColor: "#FF0014" },
+  7: { bgColor: "#FFE1E4", textColor: "#FF0014" },
+  8: { bgColor: "#FFE1E4", textColor: "#FF0014" },
+  888: { bgColor: "#FFE1E4", textColor: "#FF0014" },
+  999: { bgColor: "#FFE1E4", textColor: "#FF0014" }
+};
 
 onMounted(() => {
   fetchOrderDetail();
@@ -491,7 +504,7 @@ const fetchOrderDetail = async () => {
     const orderId = route.params.orderId;
     if (orderType.value === "order") {
       const response = await getOrderDetail({ id: orderId });
-      orderData.value = response;
+      orderData.value = response || { orderItemList: [], trackingInfo: [] };
     } else {
       const response = await getExceptionOrderDetail({
         unusualOrderId: orderId
@@ -503,7 +516,9 @@ const fetchOrderDetail = async () => {
       const data = await getOrderTracking({
         orderNumber: orderData.value?.waybillNo
       });
-      orderData.value.trackingInfo = data[0]?.trackDetailItemList || [];
+      if (orderData.value) {
+        orderData.value.trackingInfo = data[0]?.trackDetailItemList || [];
+      }
     }
   } catch (error) {
     console.error("Failed to fetch order detail:", error);
@@ -674,16 +689,6 @@ const consigneeAddress = (obj: any) => {
         border-radius: 80px;
         font-size: 14px;
         font-weight: 500;
-
-        &.status-active {
-          background: #e8f9ef;
-          color: #00b947;
-        }
-
-        &.status-blue {
-          background: #ebf2ff;
-          color: #237beb;
-        }
       }
 
       .action-btn {
