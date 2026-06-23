@@ -348,8 +348,8 @@ const customerProducts = ref<{ productCode: string; productName: string }[]>(
 
 const fetchCustomerProducts = async () => {
   const country = appStore.site;
-  const customerId =
-    form.customerId || shipperOptions.value[0]?.customerId || "";
+  // 当没有选择customerId时，不展示可下单产品
+  const customerId = form.customerId;
   if (!customerId) {
     customerProducts.value = [];
     return;

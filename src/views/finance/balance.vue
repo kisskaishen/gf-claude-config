@@ -100,22 +100,23 @@
         </div>
       </div>
     </div>
+
+    <RechargeDialog v-model="rechargeVisible" @success="init" />
   </page-container>
 </template>
 
 <script setup lang="ts">
 import { getBalance } from "@/api/finance";
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { ref, onMounted } from "vue";
 import CommonTitle from "@/components/CommonTitle/index.vue";
+import RechargeDialog from "@/views/finance/components/RechargeDialog/index.vue";
 
 defineOptions({
   name: "Balance"
 });
 
-const router = useRouter();
-
 const loading = ref(false);
+const rechargeVisible = ref(false);
 
 const balanceInfo = ref({
   /** 可下单金额 */
@@ -136,9 +137,7 @@ const formatAmount = (num: number) => {
 };
 
 const handleRecharge = () => {
-  router.push({
-    name: "Recharge"
-  });
+  rechargeVisible.value = true;
 };
 
 const init = async () => {

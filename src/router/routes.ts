@@ -105,7 +105,12 @@ export const routes: RouteRecordRaw[] = [
         path: "recharge",
         name: "Recharge",
         component: () => import("@/views/finance/recharge.vue"),
-        meta: { title: "充值", requireAuth: true, i18n: "web.gfuc.recharge" }
+        meta: {
+          title: "充值",
+          requireAuth: true,
+          hidden: true,
+          i18n: "web.gfuc.recharge"
+        }
       },
       {
         path: "record",
@@ -186,6 +191,7 @@ export const routes: RouteRecordRaw[] = [
       title: "任务管理",
       icon: "task",
       i18n: "web.gfuc.task_management",
+      hidden: true,
       width: "18px",
       height: "18px"
     },

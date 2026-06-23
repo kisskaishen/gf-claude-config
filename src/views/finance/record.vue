@@ -11,6 +11,13 @@
       @search="fetchData"
       @reset="fetchData"
     >
+      <!-- 操作区 -->
+      <template #action-left>
+        <el-button type="primary" @click="rechargeVisible = true">
+          {{ $t("web.gfuc.recharge" /** 充值 **/) }}
+        </el-button>
+      </template>
+
       <!-- 搜索区域 -->
       <template #search>
         <el-form-item prop="paymentMethod">
@@ -131,6 +138,8 @@
         />
       </template>
     </TableLayout>
+
+    <RechargeDialog v-model="rechargeVisible" @success="fetchData" />
   </PageContainer>
 </template>
 
@@ -138,6 +147,7 @@
 import { ref, onMounted } from "vue";
 import TableLayout from "@/components/TableLayout/index.vue";
 import PageContainer from "@/components/PageContainer/index.vue";
+import RechargeDialog from "@/views/finance/components/RechargeDialog/index.vue";
 import { useI18n } from "vue-i18n";
 import { useDict } from "@/hooks/useDict";
 import { getRechargeRecord } from "@/api/finance";
@@ -153,6 +163,8 @@ defineOptions({
 });
 
 const { t } = useI18n();
+
+const rechargeVisible = ref(false);
 
 /** 日期类型 */
 const enum DateType {

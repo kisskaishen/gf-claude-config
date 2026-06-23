@@ -13,6 +13,16 @@
       <!-- 时区选择 (带搜索) -->
       <TimezoneSelect />
 
+      <!-- 任务中心 -->
+      <el-tooltip
+        :content="$t('web.gfuc.task_list' /** 任务中心 **/)"
+        placement="bottom"
+      >
+        <div class="task-center-btn" @click="handleGoTaskCenter">
+          <svg-icon name="upload-download" width="24" height="24" />
+        </div>
+      </el-tooltip>
+
       <!-- 用户头像 -->
       <el-tooltip :content="`${userAccount}`" placement="bottom">
         <el-avatar :size="30" :src="avatarImg"></el-avatar>
@@ -31,11 +41,13 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/user";
 import TimezoneSelect from "@/components/TimezoneSelect/index.vue";
 import SiteSelect from "@/components/SiteSelect/index.vue";
 import LangSelect from "@/components/LangSelect/index.vue";
+import SvgIcon from "@/components/SvgIcon/index.vue";
 import { useI18n } from "vue-i18n";
 import avatarImg from "@/assets/avatar.png";
 
@@ -45,6 +57,11 @@ const router = useRouter();
 const userStore = useUserStore();
 
 const userAccount = computed(() => userStore.userInfo?.account || "User");
+
+/** 跳转到任务中心 */
+const handleGoTaskCenter = () => {
+  router.push("/task/list");
+};
 // --- 退出逻辑 ---
 const handleLogout = async () => {
   try {
@@ -88,6 +105,19 @@ const handleLogout = async () => {
     gap: 24px;
     align-items: center;
     font-size: 14px;
+
+    .task-center-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      cursor: pointer;
+      transition: color 0.2s;
+
+      &:hover {
+        color: var(--el-color-primary);
+      }
+    }
 
     .logout-btn {
       margin-right: 40px;
