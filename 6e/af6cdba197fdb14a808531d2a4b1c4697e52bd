@@ -1,0 +1,54 @@
+src/views/finance/balance.vue
+  s_9dfadb9e04532c::t_efa9a01d17ff4b 140
+  s_9dfadb9e04532c::t_d4c4fd2102226d 110
+  s_9dfadb9e04532c::t_95ccedf67d6154 112,119
+  s_9dfadb9e04532c::t_e71a1ea9b21061 103-104
+src/layout/components/NavBar.vue
+  s_9dfadb9e04532c::t_c12c8f3a64dff8 16,20,25
+  s_9dfadb9e04532c::t_76d8f3c5341eeb 17-19,21,23-24
+  s_9dfadb9e04532c::t_15f031c991f816 109-113,115-120
+  s_9dfadb9e04532c::t_2553c4448ae1d2 50,60-64
+  s_9dfadb9e04532c::t_46befa2bb987b1 114
+  s_9dfadb9e04532c::t_8d3bf3cdb5fe4f 44
+  s_9dfadb9e04532c::t_e78695a3f8e895 22
+src/views/order/batch.vue
+  s_22be43d207419c::t_9962a4f7365079 351-352
+src/views/finance/components/RechargeDialog/index.vue
+  s_9dfadb9e04532c::t_97ba4c2d0cb961 131
+  s_9dfadb9e04532c::t_a979ca461aee5d 1-4,6-119,143,163,171,188-189,193-523,530-533,535-614,621-625
+  s_9dfadb9e04532c::t_535ef9492f69d0 120-130,132-142,144-162,164-170,172-187,190-192
+  s_9dfadb9e04532c::t_da35f40aac44af 524-529,534
+  s_9dfadb9e04532c::t_3b5c06d42337c7 615-620
+  s_9dfadb9e04532c::t_9d7c9a4d939104 5
+src/router/routes.ts
+  s_9dfadb9e04532c::t_e77d16e1c56424 108
+src/views/finance/record.vue
+  s_9dfadb9e04532c::t_996a2942e024c0 167-168
+  s_9dfadb9e04532c::t_fa9a12dc8f06f9 150
+  s_9dfadb9e04532c::t_4a4656b670e8d2 141-142
+  s_9dfadb9e04532c::t_5c35c47f936dd6 14-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "6eaf6cdba197fdb14a808531d2a4b1c4697e52bd",
+  "prompts": {},
+  "sessions": {
+    "s_22be43d207419c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f5d60f4c-324d-4eb0-9ad9-05d85589c8eb",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    },
+    "s_9dfadb9e04532c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7b5ae9af-3ca9-4f32-9d72-087774d10e7a",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
