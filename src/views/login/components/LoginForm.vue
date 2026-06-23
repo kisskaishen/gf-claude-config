@@ -7,22 +7,6 @@
     class="form-body"
     @submit.prevent
   >
-    <!-- 走货国家（输入邮箱后展示） -->
-    <el-form-item
-      v-if="showCountrySelect"
-      :label="$t('web.gfuc.country_zh' /** 走货国家 */)"
-      prop="country"
-    >
-      <el-select v-model="loginData.country" class="full-width">
-        <el-option
-          v-for="code in countryOptions"
-          :key="code"
-          :label="$t(`web.gfuc.country_${code}`, code)"
-          :value="code"
-        />
-      </el-select>
-    </el-form-item>
-
     <!-- 邮箱 -->
     <el-form-item :label="$t('web.gfuc.email' /** 邮箱 */)" prop="email">
       <el-input
@@ -39,6 +23,22 @@
         :placeholder="$t('web.gfuc.please_enter_password')"
         show-password
       />
+    </el-form-item>
+
+    <!-- 走货国家（输入邮箱后展示） -->
+    <el-form-item
+      v-if="showCountrySelect"
+      :label="$t('web.gfuc.country_zh' /** 走货国家 */)"
+      prop="country"
+    >
+      <el-select v-model="loginData.country" class="full-width">
+        <el-option
+          v-for="code in countryOptions"
+          :key="code"
+          :label="$t(`web.gfuc.country_${code}`, code)"
+          :value="code"
+        />
+      </el-select>
     </el-form-item>
 
     <!-- 验证码 -->
@@ -155,6 +155,7 @@
 defineOptions({ name: "LoginForm" });
 
 import { ref, reactive, computed, nextTick, watch } from "vue";
+import { debounce } from "lodash-es";
 import { type FormInstance, type FormRules, ElMessage } from "element-plus";
 import AgreementModal from "./AgreementModal.vue";
 
@@ -219,34 +220,63 @@ const loginFormRef = ref<FormInstance>();
 // --- 走货国家选项（输入邮箱后动态获取） ---
 const showCountrySelect = ref(false);
 const countryOptions = ref<string[]>([]);
+let accountCountryAbortController: AbortController | null = null;
+let lastAccountCountryWarnMsg = "";
+let lastAccountCountryWarnTime = 0;
+
+/** 邮箱变更时防抖请求走货国家 */
+const fetchAccountCountry = debounce(async (email: string) => {
+  // 取消上一次未完成的请求
+  if (accountCountryAbortController) {
+    accountCountryAbortController.abort();
+  }
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showCountrySelect.value = false;
+    countryOptions.value = [];
+    return;
+  }
+
+  accountCountryAbortController = new AbortController();
+  const signal = accountCountryAbortController.signal;
+
+  try {
+    const countries = await getAccountCountry({ accountId: email });
+    // 请求已被取消则忽略结果
+    if (signal.aborted) return;
+
+    countryOptions.value = countries || [];
+    showCountrySelect.value = countryOptions.value.length > 1;
+    if (countryOptions.value.length >= 1) {
+      loginData.country = countryOptions.value[0];
+    }
+
+    // 邮箱格式正确但返回空数组，说明该邮箱未注册（带防抖提示）
+    if (countryOptions.value.length === 0) {
+      const now = Date.now();
+      const msg = t(
+        "web.gfuc.email_not_registered" /** 当前邮箱暂未注册，请检查后重试 */
+      );
+      if (
+        msg !== lastAccountCountryWarnMsg ||
+        now - lastAccountCountryWarnTime > 3000
+      ) {
+        lastAccountCountryWarnMsg = msg;
+        lastAccountCountryWarnTime = now;
+        ElMessage.warning(msg);
+      }
+    }
+  } catch (error: any) {
+    if (error?.name === "CanceledError" || signal.aborted) return;
+    showCountrySelect.value = false;
+    countryOptions.value = [];
+  }
+}, 300);
 
 watch(
   () => loginData.email,
-  async (val) => {
-    if (val && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
-      try {
-        const countries = await getAccountCountry({ accountId: val });
-        countryOptions.value = countries || [];
-        // 只有一个国家时无需展示选择器，直接赋值使用
-        showCountrySelect.value = countryOptions.value.length > 1;
-        if (countryOptions.value.length >= 1) {
-          loginData.country = countryOptions.value[0];
-        }
-        // 邮箱格式正确但返回空数组，说明该邮箱未注册
-        if (countryOptions.value.length === 0) {
-          ElMessage.warning(
-            t("web.gfuc.email_not_registered" /** 当前邮箱暂未注册，请检查后重试 */)
-          );
-        }
-      } catch {
-        // 接口失败不展示走货国家
-        showCountrySelect.value = false;
-        countryOptions.value = [];
-      }
-    } else {
-      showCountrySelect.value = false;
-      countryOptions.value = [];
-    }
+  (val) => {
+    fetchAccountCountry(val);
   }
 );
 
