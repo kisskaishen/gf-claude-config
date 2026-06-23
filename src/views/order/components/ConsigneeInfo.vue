@@ -109,51 +109,82 @@
                   />
                 </el-form-item>
               </el-col>
-              <el-col :span="16">
-                <el-form-item prop="address2">
-                  <template #label>
-                    <div class="flex items-center gap-1">
+              <!-- 法语：补充地址1和补充地址2各占两列，无tooltip -->
+              <template v-if="lang === 'fr'">
+                <el-col :span="16">
+                  <el-form-item prop="address2">
+                    <template #label>
                       {{ $t("web.gfuc.address2") }}
-                      <el-tooltip
-                        :content="$t('web.gfuc.address2_tip' /** 补充地址1 **/)"
-                        placement="top"
-                      >
-                        <el-icon class="tip-icon">
-                          <svg-icon name="question" />
-                        </el-icon>
-                      </el-tooltip>
-                    </div>
-                  </template>
-
-                  <el-input
-                    v-model="orderConsignee.address2"
-                    :placeholder="$t('web.gfuc.please_enter_address')"
-                    maxlength="255"
-                  />
-                </el-form-item>
-              </el-col>
-              <el-col :span="16">
-                <el-form-item prop="address3">
-                  <template #label>
-                    <div class="flex items-center gap-1">
+                      {{ $t("web.gfuc.address2_tip") }}
+                    </template>
+                    <el-input
+                      v-model="orderConsignee.address2"
+                      :placeholder="$t('web.gfuc.please_enter_address')"
+                      maxlength="255"
+                    />
+                  </el-form-item>
+                </el-col>
+                <el-col :span="16">
+                  <el-form-item prop="address3">
+                    <template #label>
                       {{ $t("web.gfuc.address3") }}
-                      <el-tooltip
-                        :content="$t('web.gfuc.address3_tip' /** 补充地址2 **/)"
-                        placement="top"
-                      >
-                        <el-icon class="tip-icon">
-                          <svg-icon name="question" />
-                        </el-icon>
-                      </el-tooltip>
-                    </div>
-                  </template>
-                  <el-input
-                    v-model="orderConsignee.address3"
-                    :placeholder="$t('web.gfuc.please_enter_address')"
-                    maxlength="255"
-                  />
-                </el-form-item>
-              </el-col>
+                      {{ $t("web.gfuc.address3_tip") }}
+                    </template>
+                    <el-input
+                      v-model="orderConsignee.address3"
+                      :placeholder="$t('web.gfuc.please_enter_address')"
+                      maxlength="255"
+                    />
+                  </el-form-item>
+                </el-col>
+              </template>
+              <!-- 非法语：补充地址1和补充地址2各占一列，带tooltip -->
+              <template v-else>
+                <el-col :span="8">
+                  <el-form-item prop="address2">
+                    <template #label>
+                      <div class="flex items-center gap-1">
+                        {{ $t("web.gfuc.address2") }}
+                        <el-tooltip
+                          :content="$t('web.gfuc.address2_tip')"
+                          placement="top"
+                        >
+                          <el-icon class="tip-icon">
+                            <svg-icon name="question" />
+                          </el-icon>
+                        </el-tooltip>
+                      </div>
+                    </template>
+                    <el-input
+                      v-model="orderConsignee.address2"
+                      :placeholder="$t('web.gfuc.please_enter_address')"
+                      maxlength="255"
+                    />
+                  </el-form-item>
+                </el-col>
+                <el-col :span="8">
+                  <el-form-item prop="address3">
+                    <template #label>
+                      <div class="flex items-center gap-1">
+                        {{ $t("web.gfuc.address3") }}
+                        <el-tooltip
+                          :content="$t('web.gfuc.address3_tip')"
+                          placement="top"
+                        >
+                          <el-icon class="tip-icon">
+                            <svg-icon name="question" />
+                          </el-icon>
+                        </el-tooltip>
+                      </div>
+                    </template>
+                    <el-input
+                      v-model="orderConsignee.address3"
+                      :placeholder="$t('web.gfuc.please_enter_address')"
+                      maxlength="255"
+                    />
+                  </el-form-item>
+                </el-col>
+              </template>
 
               <el-col :span="8" v-if="site !== 'FR'">
                 <el-form-item
@@ -305,7 +336,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import { Edit } from "@element-plus/icons-vue";
 import {
   getAddressByCode,
@@ -370,6 +401,9 @@ const orderConsignee = ref({
 });
 const site = computed(() => {
   return appStore.site || "";
+});
+const lang = computed(() => {
+  return appStore.lang || "";
 });
 watch(
   () => site.value,
