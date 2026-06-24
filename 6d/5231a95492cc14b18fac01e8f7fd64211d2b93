@@ -1,0 +1,26 @@
+src/views/login/components/LoginForm.vue
+  s_690927e5b91857::t_3e0f641fb7e99d 487
+src/store/app.ts
+  s_690927e5b91857::t_12ace889bdc8ef 37-40
+  s_690927e5b91857::t_04991c8a8478f8 24-25
+  s_690927e5b91857::t_1bf2184bf7cdf8 76,83
+src/components/SiteSelect/index.vue
+  s_690927e5b91857::t_a823b4bce4797c 36-39,41
+  s_690927e5b91857::t_042fb2e320186e 29-34,40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "6d5231a95492cc14b18fac01e8f7fd64211d2b93",
+  "prompts": {},
+  "sessions": {
+    "s_690927e5b91857": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1b93b4ec-b8a2-40b2-81b3-6628f79a5fb2",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
