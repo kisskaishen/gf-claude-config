@@ -777,6 +777,11 @@ const consigneeAddress = (obj: any) => {
       flex-shrink: 0;
       position: relative;
       z-index: 1;
+      cursor: default;
+
+      :deep(svg) {
+        cursor: default;
+      }
 
       &.dot-completed {
         background: #00D99D;
