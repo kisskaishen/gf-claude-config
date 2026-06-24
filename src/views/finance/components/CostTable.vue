@@ -15,7 +15,12 @@
       >
         <template #action-left>
           <el-button @click="handleBatchExport" :loading="exportLoading">
-            <svg-icon name="export" width="16" height="16" class="mr-2" />
+            <svg-icon
+              name="upload-download"
+              width="20"
+              height="20"
+              class="mr-1"
+            />
             {{ $t("web.gfuc.export" /** 导出 **/) }}
           </el-button>
           <el-button @click="handleBatchDownload" :loading="downloadLoading">
@@ -616,23 +621,23 @@ onMounted(() => {
   }
 
   .action-btn {
-    padding: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.2s;
-    border: 1px solid #ebebeb;
-    margin: 0;
     width: 32px;
     height: 32px;
-    color: #999999;
+    padding: 8px;
+    margin: 0;
+    color: #999;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    transition: all 0.2s;
 
     &:hover {
-      border-color: var(--el-color-primary);
       color: var(--el-color-primary);
+      border-color: var(--el-color-primary);
     }
   }
 }

@@ -123,7 +123,7 @@
                 :key="index"
               >
                 <span
-                  class="flex items-center justify-center w-4 h-4 text-xs font-medium text-white rounded-full bg-primary"
+                  class="flex items-center justify-center flex-shrink-0 w-4 h-4 text-xs font-medium text-white rounded-full bg-primary"
                 >
                   {{ step }}
                 </span>
@@ -162,9 +162,12 @@
           <div class="p-6 bg-white border rounded-lg border-border">
             <div class="mb-2.5">
               <span class="text-sm font-medium text-primary"
-                ><svg-icon name="icon-warning" width="16" height="16" />{{
-                  $t("web.gfuc.batch_import_notice_title")
-                }}</span
+                ><svg-icon
+                  name="icon-warning"
+                  width="16"
+                  height="16"
+                  class="mr-1"
+                />{{ $t("web.gfuc.batch_import_notice_title") }}</span
               >
             </div>
             <div class="flex flex-col">
@@ -176,14 +179,14 @@
                   $t("web.gfuc.batch_import_notice1")
                 }}</span>
               </div>
-              <div class="flex items-center gap-3 pt-2">
+              <!-- <div class="flex items-center gap-3 pt-2">
                 <span
                   class="w-1.5 h-1.5 rounded-full bg-[#c8c8c8] flex-shrink-0"
                 ></span>
                 <span class="text-xs font-medium text-text-tertiary">{{
                   $t("web.gfuc.batch_import_notice2")
                 }}</span>
-              </div>
+              </div> -->
               <div class="flex items-center gap-3 pt-2">
                 <span
                   class="w-1.5 h-1.5 rounded-full bg-[#c8c8c8] flex-shrink-0"
@@ -192,14 +195,14 @@
                   $t("web.gfuc.batch_import_notice3")
                 }}</span>
               </div>
-              <div class="flex items-center gap-3 pt-2">
+              <!-- <div class="flex items-center gap-3 pt-2">
                 <span
                   class="w-1.5 h-1.5 rounded-full bg-[#c8c8c8] flex-shrink-0"
                 ></span>
                 <span class="text-xs font-medium text-text-tertiary">{{
                   $t("web.gfuc.batch_import_notice4")
                 }}</span>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

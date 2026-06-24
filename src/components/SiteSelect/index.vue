@@ -26,21 +26,22 @@ const appStore = useAppStore();
 
 const userStore = useUserStore();
 
+const siteLabelMap: Record<string, string> = {
+  [Site.fr]: "web.gfuc.french_site",
+  [Site.it]: "web.gfuc.italian_site",
+  [Site.nl]: "web.gfuc.dutch_site"
+};
+
 const options = computed(() => {
-  return [
-    {
-      value: Site.fr,
-      label: t("web.gfuc.french_site" /** 法国站 **/)
-    },
-    {
-      value: Site.it,
-      label: t("web.gfuc.italian_site" /** 意大利站 **/)
-    },
-    {
-      value: Site.nl,
-      label: t("web.gfuc.dutch_site" /** 荷兰站 **/)
-    }
-  ];
+  // 优先使用登录时从接口获取的站点列表
+  const list =
+    appStore.siteList.length > 0
+      ? appStore.siteList
+      : [Site.fr, Site.it, Site.nl];
+  return list.map((code) => ({
+    value: code,
+    label: t(siteLabelMap[code] || code)
+  }));
 });
 
 const handleSetSite = (val: any) => {

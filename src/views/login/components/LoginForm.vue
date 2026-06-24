@@ -484,6 +484,7 @@ const handleLogin = async () => {
       try {
         loading.value = true;
         appStore.setSite(loginData.country);
+        appStore.setSiteList(countryOptions.value);
         await userStore.login({
           country: loginData.country as Country,
           email: loginData.email,

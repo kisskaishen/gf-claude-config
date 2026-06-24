@@ -21,6 +21,8 @@ export const useAppStore = defineStore(
 
     const site = ref(userStore.userInfo?.country);
 
+    const siteList = ref<string[]>([]);
+
     const loadedI18nMap = ref(false);
 
     // Actions
@@ -30,6 +32,10 @@ export const useAppStore = defineStore(
 
     const setSite = (val: Site) => {
       site.value = val;
+    };
+
+    const setSiteList = (list: string[]) => {
+      siteList.value = list;
     };
 
     const setLang = (_lang: Lang) => {
@@ -67,12 +73,14 @@ export const useAppStore = defineStore(
     return {
       sidebar,
       site,
+      siteList,
       lang,
       timezone,
       loadedI18nMap,
 
       toggleSidebar,
       setSite,
+      setSiteList,
       setLang,
       setTimezone,
       setPreferences,
