@@ -26,7 +26,7 @@
           <div
             class="bg-[#fef3eb] border border-primary rounded-lg p-6 flex gap-1 flex-col items-start"
           >
-            <div class="flex gap-2 items-center">
+            <div class="flex items-center gap-2">
               <svg-icon name="icon-tips" width="16" height="16" />
 
               <span class="text-sm text-text-regular">{{
@@ -117,7 +117,7 @@
         <!-- 右侧区域 -->
         <div class="w-[335px] flex flex-col gap-3">
           <!-- 步骤说明卡片 -->
-          <div class="p-6 bg-white rounded-lg border border-border">
+          <div class="p-6 bg-white border rounded-lg border-border">
             <div class="flex gap-2.5 items-center mb-4">
               <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none">
                 <path
@@ -135,12 +135,12 @@
             </div>
             <div class="flex flex-col gap-2.5">
               <div
-                class="flex gap-3 items-center"
+                class="flex items-center gap-3"
                 v-for="(step, index) in [1, 2, 3, 4, 5]"
                 :key="index"
               >
                 <span
-                  class="flex justify-center items-center w-4 h-4 text-xs font-medium text-white rounded-full bg-primary"
+                  class="flex items-center justify-center flex-shrink-0 w-4 h-4 text-xs font-medium text-white rounded-full bg-primary"
                 >
                   {{ step }}
                 </span>
@@ -176,12 +176,15 @@
           </div>
 
           <!-- 注意事项卡片 -->
-          <div class="p-6 bg-white rounded-lg border border-border">
+          <div class="p-6 bg-white border rounded-lg border-border">
             <div class="mb-2.5">
               <span class="text-sm font-medium text-primary"
-                ><svg-icon name="icon-warning" width="16" height="16" />{{
-                  $t("web.gfuc.batch_import_notice_title")
-                }}</span
+                ><svg-icon
+                  name="icon-warning"
+                  width="16"
+                  height="16"
+                  class="mr-1"
+                />{{ $t("web.gfuc.batch_import_notice_title") }}</span
               >
             </div>
             <div class="flex flex-col">
@@ -193,24 +196,30 @@
                   $t("web.gfuc.batch_import_notice1")
                 }}</span>
               </div>
-              <div class="flex gap-3 items-center px-4 py-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#c8c8c8]"></span>
+              <!-- <div class="flex items-center gap-3 pt-2">
+                <span
+                  class="w-1.5 h-1.5 rounded-full bg-[#c8c8c8] flex-shrink-0"
+                ></span>
                 <span class="text-xs font-medium text-text-tertiary">{{
                   $t("web.gfuc.batch_import_notice2")
                 }}</span>
-              </div>
-              <div class="flex gap-3 items-center px-4 py-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#c8c8c8]"></span>
+              </div> -->
+              <div class="flex items-center gap-3 pt-2">
+                <span
+                  class="w-1.5 h-1.5 rounded-full bg-[#c8c8c8] flex-shrink-0"
+                ></span>
                 <span class="text-xs font-medium text-text-tertiary">{{
                   $t("web.gfuc.batch_import_notice3")
                 }}</span>
               </div>
-              <div class="flex gap-3 items-center px-4 py-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#c8c8c8]"></span>
+              <!-- <div class="flex items-center gap-3 pt-2">
+                <span
+                  class="w-1.5 h-1.5 rounded-full bg-[#c8c8c8] flex-shrink-0"
+                ></span>
                 <span class="text-xs font-medium text-text-tertiary">{{
                   $t("web.gfuc.batch_import_notice4")
                 }}</span>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -222,7 +231,7 @@
       class="mt-6 bg-white rounded-lg shadow-[0_2px_16px_rgba(79,87,125,0.08)] p-6"
       v-if="totalCount > 0"
     >
-      <div class="flex justify-between items-center">
+      <div class="flex items-center justify-between">
         <div v-if="taskStatus === 2" class="text-sm text-text-placeholder">
           <span
             >{{ $t("web.gfuc.upload_task_total_prefix") }}{{ totalCount

@@ -1,5 +1,8 @@
 <template>
-  <div class="step-container">
+  <div
+    class="step-container"
+    :class="{ 'step-completed': isCompleted, 'step-active': isActive }"
+  >
     <div
       class="mr-4 step-left"
       :class="{ 'step-completed': isCompleted, 'step-active': isActive }"

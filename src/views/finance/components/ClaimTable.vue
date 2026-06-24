@@ -14,12 +14,13 @@
         @selection-change="handleSelectionChange"
       >
         <template #action-left>
-          <el-button
-            ref="exportBtnRef"
-            @click="handleBatchExport"
-            :loading="exportLoading"
-          >
-            <svg-icon name="export" width="16" height="16" class="mr-2" />
+          <el-button @click="handleBatchExport" :loading="exportLoading">
+            <svg-icon
+              name="upload-download"
+              width="20"
+              height="20"
+              class="mr-1"
+            />
             {{ $t("web.gfuc.export" /** 导出 **/) }}
           </el-button>
           <el-button
