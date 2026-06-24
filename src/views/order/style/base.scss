@@ -34,7 +34,7 @@
   }
 
   .step-content {
-    @apply p-4 bg-white flex-1 rounded-lg;
+    @apply p-4 bg-white flex-1 rounded-lg border border-transparent;
 
     .step-content-header {
       @apply relative flex items-center justify-between mb-4 pl-2.5;
@@ -75,5 +75,11 @@
 
   .step-placeholder {
     @apply text-sm gap-x-6 text-info;
+  }
+
+  &.step-active {
+    .step-content {
+      border-color: var(--color-primary);
+    }
   }
 }
