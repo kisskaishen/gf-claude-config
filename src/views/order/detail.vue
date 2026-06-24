@@ -74,20 +74,16 @@
               :class="{
                 'dot-active': step.status === currentStepStatus,
                 'dot-completed': step.status < currentStepStatus,
-                'dot-pending': step.status > currentStepStatus
+                'dot-pending': step.status > currentStepStatus,
+                'dot-failed': [2, 6, 7, 8].includes(step.status) && step.status === currentStepStatus
               }"
             >
               <svg-icon
-                v-if="step.status < currentStepStatus"
-                name="check"
-                width="12"
-                height="12"
-              />
-              <svg-icon
-                v-else-if="step.status === currentStepStatus"
-                name="circle"
-                width="12"
-                height="12"
+                v-if="stepIcons[step.status]"
+                :name="stepIcons[step.status]"
+                width="24"
+                height="24"
+                :color="step.status <= currentStepStatus ? '#fff' : '#C8C8C8'"
               />
             </div>
             <span
@@ -95,7 +91,8 @@
               :class="{
                 'label-active': step.status === currentStepStatus,
                 'label-completed': step.status < currentStepStatus,
-                'label-pending': step.status > currentStepStatus
+                'label-pending': step.status > currentStepStatus,
+                'label-failed': [2, 6, 7, 8].includes(step.status) && step.status === currentStepStatus
               }"
               >{{ step.label }}</span
             >
@@ -456,12 +453,22 @@ const currentStepStatus = computed(() => orderData.value?.orderStatus || 0);
 
 // 根据订单类型计算进度步骤
 const statusSteps = computed(() => {
-  let arr = [1, 3, 4];
-  if ([6, 7, 8].includes(orderData.value?.orderStatus)) {
-    arr[4] = orderData.value?.orderStatus;
-  } else {
-    arr.push(5);
+  const status = orderData.value?.orderStatus;
+  let arr: number[] = [];
+
+  // 已取消：只显示 已下单 → 已取消
+  if (status === 2) {
+    arr = [1, 2];
   }
+  // 异常：已下单 → 准备派送 → 派送中 → 异常状态
+  else if ([6, 7, 8].includes(status)) {
+    arr = [1, 3, 4, status];
+  }
+  // 正常：已下单 → 准备派送 → 派送中 → 已送达
+  else {
+    arr = [1, 3, 4, 5];
+  }
+
   return orderStatusDict.options.value
     .filter((item: any) => arr.includes(item.value))
     .map((item: any) => ({
@@ -471,6 +478,18 @@ const statusSteps = computed(() => {
 });
 
 const computedSteps = computed(() => statusSteps.value);
+
+// 步骤图标映射
+const stepIcons: Record<number, string> = {
+  1: "icon-detail-ordered",
+  2: "icon-detail-failed",
+  3: "icon-detail-ready-delivery",
+  4: "icon-detail-out-delivery",
+  5: "icon-detail-delivered",
+  6: "icon-detail-failed",
+  7: "icon-detail-failed",
+  8: "icon-detail-failed"
+};
 
 // 状态颜色映射（与订单列表 CommonTag 保持一致）
 const statusColorMap: Record<number, { bgColor: string; textColor: string }> = {
@@ -738,7 +757,7 @@ const consigneeAddress = (obj: any) => {
       margin-bottom: 24px;
 
       &.connector-active {
-        background: var(--color-primary);
+        background: #00D99D;
       }
     }
 
@@ -760,14 +779,20 @@ const consigneeAddress = (obj: any) => {
       z-index: 1;
 
       &.dot-completed {
-        background: var(--color-primary);
+        background: #00D99D;
         color: #fff;
       }
 
       &.dot-active {
-        background: var(--color-primary);
+        background: #00D99D;
         color: #fff;
-        box-shadow: 0 0 0 4px rgba(252, 76, 2, 0.15);
+        box-shadow: 0 0 0 4px rgba(0, 217, 157, 0.15);
+      }
+
+      &.dot-failed {
+        background: #FF0014;
+        color: #fff;
+        box-shadow: 0 0 0 4px rgba(255, 0, 20, 0.15);
       }
 
       &.dot-pending {
@@ -786,11 +811,15 @@ const consigneeAddress = (obj: any) => {
 
       &.label-active,
       &.label-completed {
-        color: var(--color-primary);
+        color: #00D99D;
       }
 
       &.label-pending {
         color: #c0c0c0;
+      }
+
+      &.label-failed {
+        color: #FF0014;
       }
     }
   }
