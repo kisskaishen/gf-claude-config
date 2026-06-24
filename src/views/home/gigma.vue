@@ -276,8 +276,8 @@
   <div
     class="flex fixed right-0 bottom-[10%] flex-col gap-2 px-1.5 py-3 bg-white shadow-md -translate-y-1/2 min-w-14"
   >
-    <!-- 帮助 -->
-    <div
+    <!-- 帮助（暂时隐藏） -->
+    <!-- <div
       class="flex flex-col items-center justify-center transition-shadow bg-white cursor-pointer"
     >
       <svg
@@ -296,7 +296,7 @@
       </svg>
       <span class="text-sm whitespace-nowrap text-info">帮助</span>
     </div>
-    <el-divider style="margin: 0" />
+    <el-divider style="margin: 0" /> -->
     <!-- 反馈 -->
     <div
       class="flex flex-col items-center justify-center transition-shadow bg-white cursor-pointer"
