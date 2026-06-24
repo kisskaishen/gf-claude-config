@@ -246,9 +246,13 @@ const emit = defineEmits(["next", "edit", "update:formData"]);
 
 const formRef = ref(null);
 
-const rules = reactive({
+const rules = computed(() => ({
   productType: [
-    { required: true, message: "请选择产品类型", trigger: "change" }
+    {
+      required: true,
+      message: t("web.gfuc.please_select_product_type"),
+      trigger: "change"
+    }
   ],
   productCode: [
     {
@@ -317,7 +321,7 @@ const rules = reactive({
       trigger: "change"
     }
   ]
-});
+}));
 
 const formData = ref({
   productType: "ECO",
