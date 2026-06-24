@@ -1,0 +1,40 @@
+src/assets/svg-icons/icon-detail-ready-delivery.svg
+  s_690927e5b91857::t_21ab4928846a8c 2
+src/assets/svg-icons/icon-detail-failed.svg
+  s_690927e5b91857::t_3183c9d5318bb8 1-3
+src/assets/svg-icons/icon-detail-ordered.svg
+  s_690927e5b91857::t_82a6f19d095ef0 2-4
+src/assets/svg-icons/icon-detail-out-delivery.svg
+  s_690927e5b91857::t_60cd47550563ee 2
+src/views/order/detail.vue
+  s_690927e5b91857::t_c8dfd201d79146 94
+  s_690927e5b91857::t_00b7f190b69bc9 782,787,789-795,823
+  s_690927e5b91857::t_5017f80ed77b6c 488-491
+  s_690927e5b91857::t_dcf6eacbfccaab 82-86
+  s_690927e5b91857::t_e7832ae3ea16f8 760
+  s_690927e5b91857::t_48e79ef33171f5 814,820-822
+  s_690927e5b91857::t_e8cb5ca0568cc8 77
+  s_690927e5b91857::t_8ba08b2fe359ba 456-461,463-471
+  s_690927e5b91857::t_b3c4b92fd890c0 482-484,486-487,492-493
+  s_690927e5b91857::t_be609860460f4a 485
+  s_690927e5b91857::t_bd48c2e170381b 78
+  s_690927e5b91857::t_bd511d363aa169 95
+src/assets/svg-icons/icon-detail-delivered.svg
+  s_690927e5b91857::t_16cd01469a399c 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "7c2621176859fe89ac85ba82aa256c3109fa2ff0",
+  "prompts": {},
+  "sessions": {
+    "s_690927e5b91857": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1b93b4ec-b8a2-40b2-81b3-6628f79a5fb2",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
