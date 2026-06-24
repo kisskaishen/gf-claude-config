@@ -1,0 +1,19 @@
+src/views/order/components/ProductInfo.vue
+  s_7132bbcab1dec0::t_d81337bd1277d8 249,251
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "6e750074d969927c0c4ab9872cf7b8afa0adf43e",
+  "prompts": {},
+  "sessions": {
+    "s_7132bbcab1dec0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f76c9b41-a63f-42fc-a780-ecbfe08631c3",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
