@@ -42,8 +42,10 @@
             <span
               class="status-badge"
               :style="{
-                backgroundColor: statusColorMap[orderData?.orderStatus]?.bgColor || '#f5f5f5',
-                color: statusColorMap[orderData?.orderStatus]?.textColor || '#333'
+                backgroundColor:
+                  statusColorMap[orderData?.orderStatus]?.bgColor || '#f5f5f5',
+                color:
+                  statusColorMap[orderData?.orderStatus]?.textColor || '#333'
               }"
             >
               {{ orderData?.orderStatusName || orderData?.orderStatus || "-" }}
@@ -75,7 +77,9 @@
                 'dot-active': step.status === currentStepStatus,
                 'dot-completed': step.status < currentStepStatus,
                 'dot-pending': step.status > currentStepStatus,
-                'dot-failed': [2, 6, 7, 8].includes(step.status) && step.status === currentStepStatus
+                'dot-failed':
+                  [2, 6, 7, 8].includes(step.status) &&
+                  step.status === currentStepStatus
               }"
             >
               <svg-icon
@@ -92,7 +96,9 @@
                 'label-active': step.status === currentStepStatus,
                 'label-completed': step.status < currentStepStatus,
                 'label-pending': step.status > currentStepStatus,
-                'label-failed': [2, 6, 7, 8].includes(step.status) && step.status === currentStepStatus
+                'label-failed':
+                  [2, 6, 7, 8].includes(step.status) &&
+                  step.status === currentStepStatus
               }"
               >{{ step.label }}</span
             >
@@ -521,6 +527,7 @@ watch(
 const fetchOrderDetail = async () => {
   try {
     const orderId = route.params.orderId;
+    if (!orderId) return;
     if (orderType.value === "order") {
       const response = await getOrderDetail({ id: orderId });
       orderData.value = response || { orderItemList: [], trackingInfo: [] };
@@ -757,7 +764,7 @@ const consigneeAddress = (obj: any) => {
       margin-bottom: 24px;
 
       &.connector-active {
-        background: #00D99D;
+        background: #00d99d;
       }
     }
 
@@ -784,18 +791,18 @@ const consigneeAddress = (obj: any) => {
       }
 
       &.dot-completed {
-        background: #00D99D;
+        background: #00d99d;
         color: #fff;
       }
 
       &.dot-active {
-        background: #00D99D;
+        background: #00d99d;
         color: #fff;
         box-shadow: 0 0 0 4px rgba(0, 217, 157, 0.15);
       }
 
       &.dot-failed {
-        background: #FF0014;
+        background: #ff0014;
         color: #fff;
         box-shadow: 0 0 0 4px rgba(255, 0, 20, 0.15);
       }
@@ -816,7 +823,7 @@ const consigneeAddress = (obj: any) => {
 
       &.label-active,
       &.label-completed {
-        color: #00D99D;
+        color: #00d99d;
       }
 
       &.label-pending {
@@ -824,7 +831,7 @@ const consigneeAddress = (obj: any) => {
       }
 
       &.label-failed {
-        color: #FF0014;
+        color: #ff0014;
       }
     }
   }
