@@ -1,0 +1,70 @@
+src/lang/locales/nl.ts
+  s_7132bbcab1dec0::t_50035bb839b3a3 508-510
+src/lang/locales/it.ts
+  s_7132bbcab1dec0::t_1c9bfed10ffc33 518-520
+src/lang/locales/zh.ts
+  s_7132bbcab1dec0::t_227c6053708004 480-482
+src/layout/components/TagsView.vue
+  s_7132bbcab1dec0::t_fac63c521472f0 377-387
+  s_7132bbcab1dec0::t_c9475a67e563fd 372
+src/views/order/batch.vue
+  h_a8c280f6806a43 2
+src/components/CommonUpload/index.vue
+  s_7132bbcab1dec0::t_f356cca7d1c000 172-177
+  s_7132bbcab1dec0::t_f68daee3701cb5 1021-1023
+  s_7132bbcab1dec0::t_6478ab7d88699c 1035-1038
+  s_7132bbcab1dec0::t_4908170e66f98d 1032
+  s_7132bbcab1dec0::t_a47866e63de9a2 1019,1025-1030,1034
+  s_7132bbcab1dec0::t_03e34da3abe15d 1039
+  s_7132bbcab1dec0::t_7e4d7696a92dd3 1031,1033
+  s_7132bbcab1dec0::t_48388767bde9d5 126-156,158-166,168-169
+  s_7132bbcab1dec0::t_e4b266ce335d2c 843-853
+src/views/login/components/RegisterForm.vue
+  s_7132bbcab1dec0::t_800efd04e60b93 1045
+  s_7132bbcab1dec0::t_d8dc5b2740bd90 1054
+src/lang/locales/en.ts
+  s_7132bbcab1dec0::t_91e6db1ba97255 515-517
+src/layout/components/Sidebar/index.vue
+  s_7132bbcab1dec0::t_0f03ce55089faa 38-43,46
+  s_7132bbcab1dec0::t_fa217d4d3dec02 220
+  s_7132bbcab1dec0::t_3b844d1e193064 240,250
+  s_7132bbcab1dec0::t_f5a527ee912030 54-56,59,63,73-95
+  s_7132bbcab1dec0::t_039c9bd83b9c99 236,248
+src/layout/components/NavBar.vue
+  s_7132bbcab1dec0::t_bc7f3965761b9c 79-80,87-88,111
+  s_7132bbcab1dec0::t_845c3dfe8430e3 81,98
+  s_7132bbcab1dec0::t_5f06275432d9c8 82
+  s_7132bbcab1dec0::t_7ed1becab93904 89-93
+  s_7132bbcab1dec0::t_0bb2796d88ec38 38,40
+  s_7132bbcab1dec0::t_17ff3cb9312c20 9
+  s_7132bbcab1dec0::t_f7c440009840a0 83-86
+  s_7132bbcab1dec0::t_830547de4d6a39 101-103,106-108
+  s_7132bbcab1dec0::t_5ba5d2da35a39d 104-105,116
+  s_7132bbcab1dec0::t_45c4fcb99367a1 39
+  s_7132bbcab1dec0::t_471fe453ea6306 8,10-11
+  s_7132bbcab1dec0::t_9efe75667919d1 14-17
+  s_7132bbcab1dec0::t_59bb327c74a7b2 77-78
+src/lang/locales/fr.ts
+  s_7132bbcab1dec0::t_e88f859cdf9807 535-537
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "e7db4fd1768b50fda0b60c5ba5e418d129422629",
+  "prompts": {},
+  "humans": {
+    "h_a8c280f6806a43": {
+      "author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  },
+  "sessions": {
+    "s_7132bbcab1dec0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f76c9b41-a63f-42fc-a780-ecbfe08631c3",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
