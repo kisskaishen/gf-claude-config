@@ -1042,7 +1042,7 @@ const handleAgreementCancel = () => {
     height: auto;
     white-space: normal;
 
-    --el-checkbox-input-border: 1px solid var(--color);
+    --el-checkbox-input-border: 1px solid #999;
 
     .el-checkbox__input {
       margin-top: 2px;
@@ -1051,7 +1051,7 @@ const handleAgreementCancel = () => {
     .el-checkbox__label {
       font-size: 13px;
       line-height: 18px;
-      color: var(--color);
+      color: #999;
     }
   }
 

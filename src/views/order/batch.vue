@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-bg">
+  <div class="bg-bg">
     <!-- 批量上传卡片 -->
     <div
       class="bg-white rounded-lg shadow-[0_2px_16px_rgba(79,87,125,0.08)] p-6 flex flex-col gap-6"

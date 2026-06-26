@@ -512,5 +512,7 @@ export default {
   "web.gfuc.return_to_previous": "Go Back",
 
   "web.gfuc.please_select_order_account_first":
-    "Please select an order account first"
+    "Please select an order account first",
+
+  "web.gfuc.logout": "Logout"
 };

@@ -121,68 +121,60 @@
         </template>
 
         <template #file="{ file }">
-          <div class="text-info">{{ $t("web.gfuc.upload_result") }}</div>
           <slot name="file" :file="file">
             <div class="relative file-item">
-              <svg-icon name="upload-file" width="40" height="48"></svg-icon>
-              <div class="absolute left-0 h-12 top-2 w-9">
-                <div
-                  class="h-12 text-sm font-normal text-center text-white leading-[48px]"
-                >
-                  {{ file.name.split(".")[1] }}
+              <div class="file-item-row">
+                <svg-icon
+                  :name="getFileSvgIcon(file.name)"
+                  width="34"
+                  height="40"
+                ></svg-icon>
+                <div class="flex flex-col flex-1 min-w-0">
+                  <!-- 文件名 -->
+                  <div>
+                    <span
+                      class="w-full overflow-hidden whitespace-normal file-name"
+                      >{{ file.name }}</span
+                    >
+                  </div>
+                  <!-- 进度和状态 -->
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-normal text-info">{{
+                      currentProgress + "%"
+                    }}</span>
+                    <span
+                      class="text-xs font-normal"
+                      :class="
+                        currentProgress === 100 ? 'text-success' : 'text-info'
+                      "
+                      >{{
+                        currentProgress === 100
+                          ? $t("web.gfuc.upload_success")
+                          : $t("web.gfuc.uploading")
+                      }}</span
+                    >
+                  </div>
                 </div>
-              </div>
-              <div class="flex flex-col flex-1 min-w-0">
-                <!-- 文件名 -->
-                <div>
-                  <span
-                    class="w-full overflow-hidden whitespace-normal file-name"
-                    >{{ file.name }}</span
-                  >
-                </div>
-                <!-- 进度和状态 -->
-                <div class="flex items-center gap-2">
-                  <!-- <span class="text-sm text-info">{{ file.status }}</span> -->
-                  <span class="text-xs font-normal text-info">{{
-                    currentProgress + "%"
-                  }}</span>
-                  <span
-                    class="text-xs font-normal"
-                    :class="
-                      currentProgress === 100 ? 'text-success' : 'text-info'
-                    "
-                    >{{
-                      currentProgress === 100
-                        ? $t("web.gfuc.upload_success")
-                        : $t("web.gfuc.uploading")
-                    }}</span
-                  >
-                  <!-- <span class="text-xs font-normal file-size text-info">{{
-                    formatFileSize(file.size)
-                  }}</span> -->
-                </div>
-                <div class="relative w-full h-1">
-                  <el-progress
-                    :percentage="currentProgress"
-                    :show-text="false"
-                    class="w-full"
-                    :color="currentProgress === 100 ? ['#00b578'] : ['#fc4c02']"
-                  />
-                  <!-- <el-progress :percentage="file.percent" status="active" /> -->
-                </div>
-              </div>
 
-              <div class="flex gap-1">
-                <el-button link @click="handleRefresh">
-                  <el-icon><Refresh /></el-icon>
-                </el-button>
-                <el-button
-                  link
-                  @click="handleRemoveFile(file)"
-                  class="text-primary"
-                >
-                  <el-icon><Delete /></el-icon>
-                </el-button>
+                <div class="flex gap-1">
+                  <el-button link @click="handleRefresh">
+                    <el-icon><Refresh /></el-icon>
+                  </el-button>
+                  <el-button
+                    link
+                    @click="handleRemoveFile(file)"
+                    class="text-primary"
+                  >
+                    <el-icon><Delete /></el-icon>
+                  </el-button>
+                </div>
+              </div>
+              <div class="file-progress-bar">
+                <el-progress
+                  :percentage="currentProgress"
+                  :show-text="false"
+                  :color="currentProgress === 100 ? ['#00b578'] : ['#fc4c02']"
+                />
               </div>
             </div>
           </slot>
@@ -848,6 +840,17 @@ const handleRemoveFile = (file) => {
   }
 };
 
+// 获取文件SVG图标名
+const getFileSvgIcon = (fileName) => {
+  const ext = fileName.split(".").pop()?.toLowerCase() || "";
+  // 支持的文件类型svg图标
+  const supportedExts = ["xls", "xlsx", "pdf", "jpg", "jpeg", "png"];
+  if (supportedExts.includes(ext)) {
+    return `icon-${ext}`;
+  }
+  return "upload-file";
+};
+
 // 获取文件图标
 const getFileIcon = (fileName) => {
   const ext = fileName.split(".").pop().toLowerCase();
@@ -1013,10 +1016,27 @@ defineExpose({
 // ===== 文件模式下文件列表项 =====
 .file-item {
   display: flex;
-  gap: 8px;
-  align-items: center;
+  flex-direction: column;
   width: 100%;
-  padding: 8px 0;
+  padding: 24px;
+  background-color: #f7f7f8;
+  border-radius: 8px;
+
+  .file-item-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .file-progress-bar {
+    position: relative;
+    width: 100%;
+    margin-top: 12px;
+
+    :deep(.el-progress) {
+      display: block;
+    }
+  }
 
   .file-name {
     flex: 1;

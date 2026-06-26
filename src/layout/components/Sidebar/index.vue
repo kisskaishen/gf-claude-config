@@ -35,15 +35,15 @@
       </el-menu>
     </el-scrollbar>
 
-    <!-- 底部帮助中心入口（暂隐藏） -->
-    <!-- <div class="sidebar-footer">
-      <div class="help-entry" @click="goHelpCenter">
-        <svg-icon name="help" :size="isCollapse ? '20px' : '20px'" />
-        <span v-show="!isCollapse" class="help-text">{{
-          $t("web.gfuc.help_center")
+    <!-- 底部退出登录 -->
+    <div class="sidebar-footer">
+      <div class="logout-entry" @click="handleLogout">
+        <svg-icon name="icon-logout" width="24" height="24" />
+        <span v-show="!isCollapse" class="logout-text">{{
+          $t("web.gfuc.logout" /** 退出登录 **/)
         }}</span>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -51,11 +51,16 @@
 import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useAppStore } from "@/store/app";
+import { useUserStore } from "@/store/user";
+import { useI18n } from "vue-i18n";
+import { ElMessageBox, ElMessage } from "element-plus";
 import SidebarItem from "./SidebarItem.vue";
 
+const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
 const appStore = useAppStore();
+const userStore = useUserStore();
 
 const menuRoutes = computed(() => router.options.routes);
 const activeMenu = computed(() => route.path);
@@ -65,8 +70,29 @@ const toggleCollapse = () => {
   appStore.toggleSidebar();
 };
 
-const goHelpCenter = () => {
-  router.push("/help");
+const handleLogout = async () => {
+  try {
+    await ElMessageBox.confirm(
+      t("gfuc.confirm_logout_prompt" /** 确定要退出登录吗？ **/),
+      t("gfuc.prompt" /** 提示 **/),
+      {
+        confirmButtonText: t("gfuc.confirm" /** 确定 **/),
+        cancelButtonText: t("gfuc.cancel" /** 取消 **/),
+        type: "warning"
+      }
+    );
+    if (sessionStorage.getItem("balanceAlertNotShown")) {
+      sessionStorage.removeItem("balanceAlertNotShown");
+    }
+    if (sessionStorage.getItem("single_order_form_data")) {
+      sessionStorage.removeItem("single_order_form_data");
+    }
+    userStore.logout();
+    router.push("/login");
+    ElMessage.success(t("gfuc.logged_out" /** 已退出登录 **/));
+  } catch {
+    // 用户取消
+  }
 };
 </script>
 
@@ -191,7 +217,7 @@ const goHelpCenter = () => {
     }
 
     .sidebar-footer {
-      .help-entry {
+      .logout-entry {
         justify-content: center;
         padding: 12px 0;
       }
@@ -207,11 +233,11 @@ const goHelpCenter = () => {
     flex-shrink: 0;
     border-top: 1px solid var(--border-color-light, #eff0f5);
 
-    .help-entry {
+    .logout-entry {
       display: flex;
       gap: 10px;
       align-items: center;
-      padding: 12px 20px;
+      padding: 12px 16px;
       cursor: pointer;
       transition: background-color 0.2s;
 
@@ -219,9 +245,9 @@ const goHelpCenter = () => {
         background-color: rgb(252 76 2 / 4%);
       }
 
-      .help-text {
+      .logout-text {
         font-size: var(--font-size-md);
-        color: var(--text-color-primary);
+        color: #999;
         white-space: nowrap;
       }
     }

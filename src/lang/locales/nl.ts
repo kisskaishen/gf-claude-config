@@ -505,5 +505,7 @@ export default {
   "web.gfuc.return_to_previous": "Ga terug",
 
   "web.gfuc.please_select_order_account_first":
-    "Selecteer eerst een bestelaccount"
+    "Selecteer eerst een bestelaccount",
+
+  "web.gfuc.logout": "Uitloggen"
 };

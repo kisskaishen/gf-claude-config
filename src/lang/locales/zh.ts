@@ -477,5 +477,7 @@ export default {
   "web.gfuc.return_to_home": "返回首页",
   "web.gfuc.return_to_previous": "返回上一页",
 
-  "web.gfuc.please_select_order_account_first": "请先选择下单帐户"
+  "web.gfuc.please_select_order_account_first": "请先选择下单帐户",
+
+  "web.gfuc.logout": "退出登录"
 };

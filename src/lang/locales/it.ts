@@ -515,5 +515,7 @@ export default {
   "web.gfuc.return_to_previous": "Torna alla pagina precedente",
 
   "web.gfuc.please_select_order_account_first":
-    "Seleziona prima un account di ordine"
+    "Seleziona prima un account di ordine",
+
+  "web.gfuc.logout": "Disconnettersi"
 };

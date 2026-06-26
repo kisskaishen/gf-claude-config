@@ -532,5 +532,7 @@ export default {
   "web.gfuc.return_to_previous": "Retour à la page précédente",
 
   "web.gfuc.please_select_order_account_first":
-    "Veuillez d'abord sélectionner un compte de commande"
+    "Veuillez d'abord sélectionner un compte de commande",
+
+  "web.gfuc.logout": "Déconnexion"
 };
