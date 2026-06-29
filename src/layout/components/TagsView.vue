@@ -367,9 +367,26 @@ onBeforeUnmount(() => {
       width: 50px;
     }
 
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      content: "";
+      background-color: transparent;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition:
+        transform 0.5s,
+        background-color 0.5s;
+    }
+
     &:hover {
-      color: var(--color-primary);
-      background-color: #fc4c0233;
+      &::after {
+        background-color: var(--color-primary);
+        transform: scaleX(1);
+      }
     }
 
     &.active {
@@ -377,13 +394,8 @@ onBeforeUnmount(() => {
       background-color: #fc4c0233;
 
       &::after {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        content: "";
         background-color: var(--color-primary);
+        transform: scaleX(1);
       }
 
       .close-icon {
