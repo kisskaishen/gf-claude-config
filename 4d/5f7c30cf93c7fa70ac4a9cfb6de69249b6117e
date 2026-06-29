@@ -1,0 +1,61 @@
+docs/business/data-models.md
+  s_7ab0b6c94a3706::t_a615ff539a59ae 1-92
+docs/business/finance.md
+  s_7ab0b6c94a3706::t_a6e9f87d357aec 1-221
+docs/business/README.md
+  s_7ab0b6c94a3706::t_a0f3823fc1b910 1-45
+docs/README.md
+  s_7ab0b6c94a3706::t_64196748300c62 25-44
+docs/business/task.md
+  s_7ab0b6c94a3706::t_c8a2e92661d149 1-94
+docs/business/order.md
+  s_7ab0b6c94a3706::t_7b089af4683ee3 1-251
+docs/skills/generate-business-docs-from-code.md
+  s_7ab0b6c94a3706::t_ebd29c03a184b5 1-396
+docs/business/architecture.md
+  s_7ab0b6c94a3706::t_3bf4f322288d7e 1-94
+docs/business/home.md
+  s_7ab0b6c94a3706::t_c155bfe7936673 1-66
+docs/business/login.md
+  s_7ab0b6c94a3706::t_83b53630a57dbd 1-144
+docs/business/setting.md
+  s_7ab0b6c94a3706::t_7ef52c1beb576a 1-59
+docs/skills/commit-pre-check.md
+  s_7132bbcab1dec0::t_3241b1fafc1ec3 236-246,248-249,251-252,254-255
+  s_7132bbcab1dec0::t_2831b663066112 280,282-283
+  s_7132bbcab1dec0::t_bd1ff7c1b893f8 182
+  s_7132bbcab1dec0::t_f37e37d3167d5e 164
+  s_7132bbcab1dec0::t_a3c67dc088dcb7 209
+  s_7132bbcab1dec0::t_53c3492597d32a 44-137
+  s_7132bbcab1dec0::t_94324b9f064670 1-17,19-21,23-25,27-29,31-33,39-43,138-163,165-181,183-208,210-235,247,250,253,256-264,266-279,281
+  s_7132bbcab1dec0::t_4cc29f2d4c4598 265
+  s_7132bbcab1dec0::t_7dee89cb1cb0dc 18,22,26,30,34-38
+docs/business/help.md
+  s_7ab0b6c94a3706::t_6333b93ed0dcb0 1-52
+docs/skills/README.md
+  s_7ab0b6c94a3706::t_f8a1152f1addb6 22-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "4d5f7c30cf93c7fa70ac4a9cfb6de69249b6117e",
+  "prompts": {},
+  "sessions": {
+    "s_7132bbcab1dec0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f76c9b41-a63f-42fc-a780-ecbfe08631c3",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    },
+    "s_7ab0b6c94a3706": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "702e89a1-347e-4a37-b527-eaa968353d91",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
