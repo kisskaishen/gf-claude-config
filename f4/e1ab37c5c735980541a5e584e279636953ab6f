@@ -1,0 +1,19 @@
+.claude/settings.json
+  s_e038fdc0f84a10::t_c9647435c6d003 1-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "f4e1ab37c5c735980541a5e584e279636953ab6f",
+  "prompts": {},
+  "sessions": {
+    "s_e038fdc0f84a10": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e71e240-a5a9-4f98-b770-185b1ef59dee",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
