@@ -355,7 +355,6 @@ onBeforeUnmount(() => {
     color: var(--text-color-tertiary);
     text-decoration: none;
     cursor: pointer;
-    transition: all 0.3s;
 
     .tags-view-item-title {
       overflow: hidden;
@@ -365,6 +364,10 @@ onBeforeUnmount(() => {
 
     &.more-btn {
       width: 50px;
+
+      &::after {
+        display: none;
+      }
     }
 
     &::after {
@@ -380,6 +383,10 @@ onBeforeUnmount(() => {
       transition:
         transform 0.5s,
         background-color 0.5s;
+
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
     }
 
     &:hover {
