@@ -103,8 +103,8 @@ function getI18nTitle(meta: any) {
 }
 
 .svg-icon {
-  font-size: 20px;
   margin-right: 6px;
+  font-size: 20px;
 }
 
 /* 菜单选中时图标颜色跟随文字 */

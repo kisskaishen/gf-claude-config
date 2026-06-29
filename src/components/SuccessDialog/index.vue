@@ -139,7 +139,7 @@ const handleSecondaryClick = () => {
 
 /* 按钮文字超出最大宽度自动换行 */
 .success-dialog :deep(.el-button span) {
-  white-space: normal !important;
   word-break: break-word;
+  white-space: normal !important;
 }
 </style>

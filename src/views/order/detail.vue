@@ -661,10 +661,10 @@ const consigneeAddress = (obj: any) => {
 
 /* 顶部卡片 */
 .detail-top-card {
-  background: #fff;
-  border-radius: 8px;
   padding: 24px;
   margin-bottom: 24px;
+  background: #fff;
+  border-radius: 8px;
 
   .top-row {
     display: flex;
@@ -672,8 +672,8 @@ const consigneeAddress = (obj: any) => {
     margin-bottom: 24px;
 
     .order-field {
-      flex: 1;
       display: flex;
+      flex: 1;
       flex-direction: column;
       gap: 8px;
       padding: 0 24px;
@@ -693,75 +693,75 @@ const consigneeAddress = (obj: any) => {
       }
 
       .field-value {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: space-between;
         font-size: 16px;
         font-weight: 500;
         color: #525252;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
       }
 
       .field-value-row {
         display: flex;
-        align-items: center;
         gap: 12px;
+        align-items: center;
       }
 
       .status-badge {
         display: inline-flex;
         align-items: center;
         padding: 3px 12px;
-        border-radius: 80px;
         font-size: 14px;
         font-weight: 500;
+        border-radius: 80px;
       }
 
       .action-btn {
         display: inline-flex;
-        align-items: center;
         gap: 4px;
+        align-items: center;
         padding: 8px 12px;
-        border: 1px solid #e5e6e8;
-        border-radius: 4px;
         font-size: 14px;
         font-weight: 500;
         color: #525252;
-        background: #fff;
         cursor: pointer;
+        background: #fff;
+        border: 1px solid #e5e6e8;
+        border-radius: 4px;
 
         &:hover {
-          border-color: var(--color-primary);
           color: var(--color-primary);
+          border-color: var(--color-primary);
         }
       }
     }
 
     .top-divider {
-      width: 1px;
-      background: #e5e6e8;
       flex-shrink: 0;
       align-self: stretch;
+      width: 1px;
+      background: #e5e6e8;
     }
   }
 
   /* 进度条 — 居中对齐，圆圈在上文案在下 */
   .progress-row {
     display: flex;
+    gap: 0;
     align-items: center;
     justify-content: center;
     width: 80%;
-    margin: 0 auto;
     padding-top: 8px;
-    gap: 0;
+    margin: 0 auto;
 
     .connector {
       flex: 1;
-      height: 2px;
-      background: #e0e0e0;
-      min-width: 20px;
       align-self: center;
+      min-width: 20px;
+      height: 2px;
       margin-bottom: 24px;
+      background: #e0e0e0;
 
       &.connector-active {
         background: #00d99d;
@@ -775,42 +775,42 @@ const consigneeAddress = (obj: any) => {
     }
 
     .step-dot {
+      position: relative;
+      z-index: 1;
       display: flex;
+      flex-shrink: 0;
       align-items: center;
       justify-content: center;
       width: 38px;
       height: 38px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      position: relative;
-      z-index: 1;
       cursor: default;
+      border-radius: 50%;
 
       :deep(svg) {
         cursor: default;
       }
 
       &.dot-completed {
-        background: #00d99d;
         color: #fff;
+        background: #00d99d;
       }
 
       &.dot-active {
-        background: #00d99d;
         color: #fff;
-        box-shadow: 0 0 0 4px rgba(0, 217, 157, 0.15);
+        background: #00d99d;
+        box-shadow: 0 0 0 4px rgb(0 217 157 / 15%);
       }
 
       &.dot-failed {
-        background: #ff0014;
         color: #fff;
-        box-shadow: 0 0 0 4px rgba(255, 0, 20, 0.15);
+        background: #ff0014;
+        box-shadow: 0 0 0 4px rgb(255 0 20 / 15%);
       }
 
       &.dot-pending {
+        color: #c0c0c0;
         background: #f5f5f5;
         border: 1px solid #e0e0e0;
-        color: #c0c0c0;
       }
     }
 
@@ -843,40 +843,40 @@ const consigneeAddress = (obj: any) => {
   gap: 24px;
 
   .left-column {
-    flex: 1;
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: 16px;
     min-width: 0;
   }
 
   .right-column {
-    width: 340px;
-    flex-shrink: 0;
     display: flex;
+    flex-shrink: 0;
     flex-direction: column;
     gap: 16px;
+    width: 340px;
   }
 }
 
 /* 信息卡片 */
 .info-card {
+  padding: 24px;
   background: #fff;
   border-radius: 8px;
-  padding: 24px;
 
   .card-title {
     display: flex;
-    align-items: center;
     gap: 8px;
+    align-items: center;
     margin-bottom: 20px;
 
     .title-bar {
+      flex-shrink: 0;
       width: 4px;
       height: 22px;
       background: var(--color-primary);
       border-radius: 2px;
-      flex-shrink: 0;
     }
 
     .title-text {
@@ -887,15 +887,15 @@ const consigneeAddress = (obj: any) => {
 
     .delivery-tag {
       display: inline-flex;
-      align-items: center;
       gap: 4px;
-      margin-left: auto;
+      align-items: center;
       padding: 4px 12px;
-      background: #ffede4;
-      border-radius: 80px;
+      margin-left: auto;
       font-size: 14px;
       font-weight: 500;
       color: var(--color-primary);
+      background: #ffede4;
+      border-radius: 80px;
     }
   }
 
@@ -904,16 +904,16 @@ const consigneeAddress = (obj: any) => {
     align-items: stretch;
 
     .grid-divider {
-      width: 1px;
-      background: #e5e6e8;
       flex-shrink: 0;
-      margin: 0 24px;
       align-self: stretch;
+      width: 1px;
+      margin: 0 24px;
+      background: #e5e6e8;
     }
 
     .info-item {
-      flex: 1;
       display: flex;
+      flex: 1;
       flex-direction: column;
       gap: 8px;
 
@@ -924,20 +924,20 @@ const consigneeAddress = (obj: any) => {
       }
 
       .info-value {
+        display: flex;
+        gap: 8px;
+        align-items: center;
         font-size: 16px;
         font-weight: 500;
         color: #525252;
-        display: flex;
-        align-items: center;
-        gap: 8px;
       }
     }
   }
 
   .copy-icon {
-    cursor: pointer;
-    color: #525252;
     flex-shrink: 0;
+    color: #525252;
+    cursor: pointer;
 
     &:hover {
       color: var(--color-primary);
@@ -951,22 +951,22 @@ const consigneeAddress = (obj: any) => {
   gap: 0;
 
   .address-divider {
-    width: 1px;
-    background: #e5e6e8;
-    margin: 8px 40px;
     flex-shrink: 0;
+    width: 1px;
+    margin: 8px 40px;
+    background: #e5e6e8;
   }
 
   .address-column {
-    flex: 1;
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: 16px;
 
     .address-title {
       display: flex;
-      align-items: center;
       gap: 8px;
+      align-items: center;
       font-size: 16px;
       font-weight: 500;
       color: #354250;
@@ -974,23 +974,23 @@ const consigneeAddress = (obj: any) => {
 
     .address-item {
       display: flex;
-      align-items: flex-start;
       gap: 8px;
+      align-items: flex-start;
 
       .address-label {
+        flex-shrink: 0;
+        min-width: 32px;
         font-size: 14px;
         font-weight: 500;
         color: #7a869a;
         white-space: nowrap;
-        flex-shrink: 0;
-        min-width: 32px;
       }
 
       .address-value {
         font-size: 16px;
         font-weight: 500;
-        color: #525252;
         line-height: 1.5;
+        color: #525252;
         word-break: break-word;
       }
     }
@@ -1000,10 +1000,10 @@ const consigneeAddress = (obj: any) => {
 /* 表格 */
 .goods-table {
   :deep(.table-header) {
-    background: #f7f7f8;
-    color: #525252;
     font-size: 16px;
     font-weight: 500;
+    color: #525252;
+    background: #f7f7f8;
   }
 
   :deep(.el-table__header-wrapper) {
@@ -1030,10 +1030,10 @@ const consigneeAddress = (obj: any) => {
 /* 包裹摘要 */
 .parcel-summary {
   display: flex;
-  align-items: center;
   gap: 24px;
-  margin-top: 16px;
+  align-items: center;
   padding: 10px 16px;
+  margin-top: 16px;
   background: #f7f7f8;
   border-radius: 4px;
 
@@ -1062,22 +1062,22 @@ const consigneeAddress = (obj: any) => {
 
 /* 右侧轨迹卡片 */
 .tracking-card {
+  padding: 24px;
   background: #fff;
   border-radius: 8px;
-  padding: 24px;
 
   .card-title {
     display: flex;
-    align-items: center;
     gap: 8px;
+    align-items: center;
     margin-bottom: 20px;
 
     .title-bar {
+      flex-shrink: 0;
       width: 4px;
       height: 22px;
       background: var(--color-primary);
       border-radius: 2px;
-      flex-shrink: 0;
     }
 
     .title-text {
@@ -1099,18 +1099,18 @@ const consigneeAddress = (obj: any) => {
     }
 
     .tracking-item {
+      position: relative;
       display: flex;
       gap: 14px;
       margin-bottom: 24px;
-      position: relative;
 
       &::before {
-        content: "";
         position: absolute;
         top: 20px;
-        left: 11px;
         bottom: -24px;
+        left: 11px;
         width: 2px;
+        content: "";
         background: #f0f0f0;
       }
 
@@ -1133,18 +1133,18 @@ const consigneeAddress = (obj: any) => {
         }
 
         .tracking-time {
+          margin-top: 4px;
           font-size: 12px;
           color: #999;
-          margin-top: 4px;
         }
       }
     }
 
     .tracking-empty {
-      text-align: center;
       padding: 40px 0;
-      color: #999;
       font-size: 14px;
+      color: #999;
+      text-align: center;
     }
   }
 

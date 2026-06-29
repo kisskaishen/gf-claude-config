@@ -510,23 +510,23 @@ watch(
     }
 
     .action-btn {
-      padding: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: transparent;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: all 0.2s;
-      border: 1px solid #ebebeb;
-      margin: 0;
       width: 32px;
       height: 32px;
-      color: #999999;
+      padding: 8px;
+      margin: 0;
+      color: #999;
+      cursor: pointer;
+      background: transparent;
+      border: 1px solid #ebebeb;
+      border-radius: 4px;
+      transition: all 0.2s;
 
       &:hover {
-        border-color: var(--el-color-primary);
         color: var(--el-color-primary);
+        border-color: var(--el-color-primary);
       }
     }
   }
@@ -560,12 +560,12 @@ watch(
 
   .text-wrap-cell {
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    line-clamp: 2;
     overflow: hidden;
-    word-break: break-word;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
     line-height: 1.4;
+    word-break: break-word;
+    -webkit-box-orient: vertical;
   }
 }
 </style>

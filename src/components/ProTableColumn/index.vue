@@ -91,10 +91,10 @@ export default defineComponent({
 <style scoped>
 .text-wrap-cell {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
   overflow: hidden;
-  word-break: break-word;
+  -webkit-line-clamp: 2;
   line-height: 1.4;
+  word-break: break-word;
+  -webkit-box-orient: vertical;
 }
 </style>

@@ -41,12 +41,12 @@ const handleClick = () => {
   align-items: center;
   justify-content: center;
   padding: 4px 12px;
-  border: 1px solid;
-  border-radius: 12px;
   font-size: 14px;
   line-height: 14px;
   cursor: pointer;
   user-select: none;
+  border: 1px solid;
+  border-radius: 12px;
   transition: all 0.2s ease;
 }
 

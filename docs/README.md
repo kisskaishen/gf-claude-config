@@ -22,13 +22,26 @@ docs/
 │   ├── [vue-conventions.md](standards/vue-conventions.md)       #   Vue 3 组件开发约定
 │   ├── [typescript-rules.md](standards/typescript-rules.md)     #   TypeScript 编码规范
 │   └── [git-workflow.md](standards/git-workflow.md)             #   Git 工作流程与提交规范
-└── skills/                                      # 🔧 技能库 — 常用操作指南
-    ├── [README.md](skills/README.md)            #   技能库说明
-    ├── [api-calls.md](skills/api-calls.md)      #   API 调用模式
-    ├── [state-management.md](skills/state-management.md)       #   状态管理（Pinia）指南
-    ├── [component-guide.md](skills/component-guide.md)         #   组件开发指南
-    ├── [ui-fidelity-implementation.md](skills/ui-fidelity-implementation.md)  #   UI 高保真还原
-    └── [automated-testing.md](skills/automated-testing.md)     #   自动化测试
+├── skills/                                      # 🔧 技能库 — 常用操作指南
+│   ├── [README.md](skills/README.md)            #   技能库说明
+│   ├── [api-calls.md](skills/api-calls.md)      #   API 调用模式
+│   ├── [state-management.md](skills/state-management.md)       #   状态管理（Pinia）指南
+│   ├── [component-guide.md](skills/component-guide.md)         #   组件开发指南
+│   ├── [ui-fidelity-implementation.md](skills/ui-fidelity-implementation.md)  #   UI 高保真还原
+│   ├── [automated-testing.md](skills/automated-testing.md)     #   自动化测试
+│   ├── [commit-pre-check.md](skills/commit-pre-check.md)      #   提交前检查
+│   └── [generate-business-docs-from-code.md](skills/generate-business-docs-from-code.md)  #   代码→业务文档
+└── business/                                     # 📊 业务文档 — 由代码生成
+    ├── [README.md](business/README.md)           #   业务文档索引
+    ├── [architecture.md](business/architecture.md)            #   前端架构概览
+    ├── [data-models.md](business/data-models.md)             #   全局数据模型
+    ├── [order.md](business/order.md)             #   订单管理
+    ├── [finance.md](business/finance.md)          #   财务管理
+    ├── [task.md](business/task.md)               #   任务管理
+    ├── [home.md](business/home.md)               #   首页
+    ├── [login.md](business/login.md)             #   登录认证
+    ├── [setting.md](business/setting.md)          #   系统设置
+    └── [help.md](business/help.md)               #   帮助中心
 ```
 
 ## 使用方式

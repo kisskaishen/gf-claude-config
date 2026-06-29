@@ -19,3 +19,5 @@ priority: medium
 | [组件开发指南](component-guide.md)             | 创建新组件、组件设计决策                         |
 | [UI 高保真还原](ui-fidelity-implementation.md) | Figma 设计稿生成 Vue 3 页面，截图+像素级自测验证 |
 | [自动化测试](automated-testing.md)             | Vitest 单元测试、组件测试、API Mock、覆盖率      |
+| [从代码生成业务文档](generate-business-docs-from-code.md) | 扫描项目代码，自动分析业务逻辑生成结构化文档 |
+| [提交前检查](commit-pre-check.md)             | ESLint + Stylelint + TypeScript + 单元测试        |

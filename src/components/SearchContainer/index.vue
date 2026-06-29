@@ -144,9 +144,10 @@ const operationOffset = computed(() => {
 <style scoped lang="scss">
 .operation-col {
   display: flex;
+  gap: 12px;
   align-items: center;
   justify-content: flex-end;
-  gap: 12px;
+
   // 和 el-form-item 的内容区高度对齐
   min-height: 32px;
 
