@@ -1,0 +1,92 @@
+src/api/task.test.ts
+  s_eeaf1078b12f34::t_56faecf934d89c 1-2,7-50
+  s_eeaf1078b12f34::t_b980ee51cc80f7 3-6
+src/layout/components/TagsView.vue
+  s_eeaf1078b12f34::t_506adabad409ab 367-370,386-389
+src/utils/crypto.test.ts
+  s_eeaf1078b12f34::t_7fa62524f51bfc 15
+  s_eeaf1078b12f34::t_b6034b7e0e2f0b 4-12,16-19
+  s_eeaf1078b12f34::t_2be2cbb9c60e63 1-3,13-14,20-78
+src/hooks/useResetableRef.test.ts
+  s_eeaf1078b12f34::t_417c7a9fac7e00 1-86
+src/hooks/useDict.test.ts
+  s_eeaf1078b12f34::t_8c0ebe30f03413 6
+  s_eeaf1078b12f34::t_af6dcaea5de5aa 152-154
+  s_eeaf1078b12f34::t_592ace16ec7822 23-28,39-40,54-55,64-65,70,73-74,83-84,94-95,107,110,112,119-120,122-123,125-126,137-139,141
+  s_eeaf1078b12f34::t_5100606195e229 4-5,7-9
+  s_eeaf1078b12f34::t_61a4d82691f1f0 14,17-19,105-106,108-109,111,124,127,133,136,140
+  s_eeaf1078b12f34::t_da7801d851ee0b 1-3,10-13,15-16,20-22,29-38,41-53,56-63,66-69,71-72,75-82,85-93,96-104,113-114,116-117,131-132,134-135,142-151,155-156
+  s_eeaf1078b12f34::t_d6cbcbecd3cd8b 115,118,121,128-130
+src/utils/download.test.ts
+  s_eeaf1078b12f34::t_9332e7c1806fb9 1-16,19-26,29-35,37,40-52,54-67,69-88
+  s_eeaf1078b12f34::t_e2ddf6bd502b87 17-18,27-28,36,38-39,53,68
+  s_eeaf1078b12f34::t_10635973b75475 89-91
+src/api/user.test.ts
+  s_eeaf1078b12f34::t_2d63f90c00013e 1-2,7-156
+  s_eeaf1078b12f34::t_e5bc7f57587440 3-6
+src/components/commonTag/index.test.ts
+  s_eeaf1078b12f34::t_8a1f1729f7e436 30-31
+  s_eeaf1078b12f34::t_dcae588e61236d 20-21
+  s_eeaf1078b12f34::t_937504f18b32b5 1-19,22-29,32-39,41-69
+  s_eeaf1078b12f34::t_7790fd261771e6 40
+  s_eeaf1078b12f34::t_528ff228864545 70-71
+src/router/routes.test.ts
+  s_eeaf1078b12f34::t_0a5467efb597be 1-100
+src/store/tagsView.test.ts
+  s_eeaf1078b12f34::t_3fdfd9ff290465 1-169
+src/api/common.test.ts
+  s_eeaf1078b12f34::t_cf52778c538ef9 1-3,8-72
+  s_eeaf1078b12f34::t_3b3c90ac595bee 4-7
+src/store/app.test.ts
+  s_eeaf1078b12f34::t_318aa263cd945f 1,3-24,26,30,52-53
+  s_eeaf1078b12f34::t_2a37db332d8c6a 2,25,27-29,31-51,54-75
+  s_eeaf1078b12f34::t_1358e783c7b00c 76-78
+src/api/home.test.ts
+  s_eeaf1078b12f34::t_222564bc2b5ce6 1-2,7-74
+  s_eeaf1078b12f34::t_c7e5d95ae5805a 3-6
+src/components/SvgIcon/index.test.ts
+  s_eeaf1078b12f34::t_c12908d924a918 1-15,19-26,29-77
+  s_eeaf1078b12f34::t_f836c011450961 27-28
+  s_eeaf1078b12f34::t_ac7d5b82508239 16-18
+src/api/product.test.ts
+  s_eeaf1078b12f34::t_4c26790a2ee5c4 1-2,7-99
+  s_eeaf1078b12f34::t_014f3656cf9ba8 3-6
+src/utils/index.test.ts
+  s_eeaf1078b12f34::t_70196adf96517e 10-15
+  s_eeaf1078b12f34::t_3de5a40b2024c7 1-9,16-159
+src/api/finance.test.ts
+  s_eeaf1078b12f34::t_c240d62dfd8208 1-2,7-166
+  s_eeaf1078b12f34::t_d5894d4419d099 3-6
+src/router/index.test.ts
+  s_eeaf1078b12f34::t_86d534767e0efd 1-39
+src/components/CommonTitle/index.test.ts
+  s_eeaf1078b12f34::t_6ddf0b08371270 1-58
+src/router/guard.test.ts
+  s_eeaf1078b12f34::t_693511abaddf62 1-2,23,29-31,39-42,44-53,55-70,74-86,89-91,93-95,97-99,101-103,105-107,109-111,113,118,120-123,125,127-128,130-132,135-144,147-153,156-160,180-185,187-188,190,192-194
+  s_eeaf1078b12f34::t_ff9792531a8367 22,43,54,87-88,92,96,100,104,108,112,114-117,119,124,129,133-134,145,154,161-163,165-173,175-179,186,189,191
+  s_eeaf1078b12f34::t_2245128b78cf66 71-73
+  s_eeaf1078b12f34::t_e7e71a6bff41b9 146,155
+  s_eeaf1078b12f34::t_4c9f27dbe5621c 164,174
+  s_eeaf1078b12f34::t_abea4b1668ff6f 3-21,24-28,32-38
+  s_eeaf1078b12f34::t_2f18b42e860a0a 126
+  s_eeaf1078b12f34::t_b393db6ad62c68 195-197
+src/api/order.test.ts
+  s_eeaf1078b12f34::t_8af1f4d62174c5 1-2,7-227
+  s_eeaf1078b12f34::t_83b48a5269364a 3-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "6708b98faf208b5683bcd3b76e48a82f8a53bf6b",
+  "prompts": {},
+  "sessions": {
+    "s_eeaf1078b12f34": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d227983-efbe-4bc4-976f-00ba710c4ff6",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
