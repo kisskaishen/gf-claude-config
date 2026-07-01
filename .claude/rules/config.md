@@ -1,36 +1,33 @@
 ---
 paths:
   - "src/**/*.ts"
-  - "src/**/*.js"
-  - "vite.config.*"
-  - ".env*"
 ---
 
-# Configuration & Environment
+# 配置与环境
 
-One typed, validated source of config. No hardcoded hosts, keys, or magic environment reads scattered across the app.
+一个带类型的、经过验证的配置来源。无散落在各处的硬编码地址、密钥或魔数环境变量读取。
 
-## Source of truth
+## 唯一来源
 
-- All environment config comes from `import.meta.env` (Vite) — never `process.env` in client code, never a hardcoded URL/key inline.
-- Only **`VITE_`-prefixed** vars are exposed to the client bundle, and everything exposed is **public** (see `security.md`). Real secrets have no `VITE_` prefix and stay server-side, reached through an API.
+- 所有环境配置来自 `import.meta.env`（Vite）— 客户端代码中绝不使用 `process.env`，绝不在代码内联硬编码 URL/密钥。
+- 仅 **`VITE_` 前缀**的变量暴露给客户端包，所有暴露的内容都是**公开的**（见 `security.md`）。真正的密钥无 `VITE_` 前缀并保留在服务端，通过 API 访问。
 
-## Validate once, import everywhere
+## 一次验证，全量导入
 
-- Parse and validate env at startup in a single module (e.g. `config.ts`): assert required vars are present, coerce types, and export a typed `config` object. Fail fast with a clear message if something required is missing — don't discover it at runtime three screens in.
-- The rest of the app imports `config`, not `import.meta.env` directly. That keeps reads typed, centralized, and mockable.
+- 在启动时于单一模块（如 `config.ts`）中解析和验证环境变量：断言必填变量存在、强制类型转换、并导出带类型的 `config` 对象。如果缺失必填变量则快速失败并给出清晰信息 — 不要在使用时才发现。
+- 应用其余部分导入 `config`，而非直接使用 `import.meta.env`。这使读取保持类型化、集中化且可模拟。
 
-## Files & modes
+## 文件与模式
 
-- `.env` (shared, committable defaults) · `.env.local` (machine overrides, **git-ignored**) · `.env.[mode]` for `development`/`production`/test. Never commit `.env*.local` or any file with real secrets.
-- Document every required var in a committed `.env.example`. Use `import.meta.env.MODE`/`DEV`/`PROD` for mode branches.
-- **Build-time vs runtime:** `import.meta.env` is inlined at build. Values that must change per deployment without a rebuild come from a runtime source (an API or a served `config.json`), not baked-in vars.
+- `.env`（共享、可提交的默认值）· `.env.local`（机器级别的覆盖，**git 忽略**）· `.env.[mode]` 用于 `development`/`production`/test。绝不提交 `.env*.local` 或任何包含真实密钥的文件。
+- 在可提交的 `.env.example` 中记录每个必填变量。使用 `import.meta.env.MODE`/`DEV`/`PROD` 进行模式判断。
+- **构建时 vs 运行时：** `import.meta.env` 在构建时内联。需要在每次部署时改变而不重新构建的值来自运行时来源（API 或托管的 `config.json`），而非构建时内嵌的变量。
 
-## Feature flags
+## 功能开关
 
-- Centralize flags in the typed config; default new flags **off**. Remove a flag once its rollout is complete — stale flags are dead branches.
+- 将开关集中在带类型的 config 中；新开关默认**关闭**。开关部署完成即移除 — 过期的开关是死代码分支。
 
-## Verify
+## 验证
 
-- No `process.env` or raw inline secrets in client code; no scattered `import.meta.env.VITE_*` reads outside the config module.
-- Required vars are validated at startup and documented in `.env.example`.
+- 客户端代码中无 `process.env` 或原始内联密钥；config 模块外无散落的 `import.meta.env.VITE_*` 读取。
+- 必填变量在启动时验证并记录在 `.env.example` 中。

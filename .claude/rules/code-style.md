@@ -1,57 +1,52 @@
 ---
 paths:
   - "**/*.ts"
-  - "**/*.tsx"
-  - "**/*.js"
-  - "**/*.jsx"
-  - "**/*.mjs"
-  - "**/*.cjs"
   - "**/*.vue"
 ---
 
-# Code Style
+# 代码风格
 
-ESLint + Prettier are the source of truth for formatting — never hand-format against them. These rules cover what tooling can't enforce.
+ESLint + Prettier 是格式化的唯一标准 — 绝不手动格式化和它们对抗。以下规则覆盖工具无法强制执行的内容。
 
-> **TypeScript is optional.** The TypeScript section applies only when the project uses TS (a `tsconfig.json` exists or SFCs use `lang="ts"`). For JavaScript projects, follow the JavaScript section instead and ignore the type-only rules.
+> **TypeScript 是可选的。** TypeScript 部分仅适用于项目使用 TS 时（存在 `tsconfig.json` 或 SFC 使用 `lang="ts"`）。对 JavaScript 项目，改为遵循 JavaScript 部分并忽略仅类型规则。
 
-## TypeScript (when the project uses TypeScript)
+## TypeScript（当项目使用 TypeScript 时）
 
-- `strict: true`. Never use `any`; prefer `unknown` and narrow, or a precise type.
-- Exported functions and composables have explicit return types. Internal helpers may infer.
-- Prefer `type` for object shapes and unions; use `interface` only when declaration merging is needed.
-- Derive types from a single source: `z.infer<typeof schema>`, `ReturnType<>`, indexed access — avoid restating shapes.
-- No non-null `!` assertions to silence the compiler; handle the nullish case.
+- `strict: true`。绝不使用 `any`；优先使用 `unknown` 并缩小类型，或使用精确类型。
+- 导出的函数和 composables 有显式返回类型。内部辅助函数可以推断。
+- 对象结构和联合类型优先用 `type`；仅在需要声明合并时使用 `interface`。
+- 类型从单一来源派生：`z.infer<typeof schema>`、`ReturnType<>`、索引访问 — 避免重复声明结构。
+- 不用非空 `!` 断言来消音编译器；处理空值情况。
 
-## JavaScript (when the project has no TypeScript)
+## JavaScript（当项目不使用 TypeScript 时）
 
-- Keep files plain JS/JSX — don't add `lang="ts"` or type annotations.
-- Use runtime prop validation (`type`, `required`, `default`, `validator`) as the component contract instead of types.
-- Document non-obvious shapes with JSDoc (`@param`, `@returns`, `@typedef`) where it genuinely helps editor intellisense — don't JSDoc everything.
-- Keep the discipline the TS rules imply: no implicit globals, handle nullish values explicitly, derive values rather than duplicating them.
+- 文件保持纯 JS/JSX — 不要添加 `lang="ts"` 或类型注解。
+- 使用运行时 prop 校验（`type`、`required`、`default`、`validator`）作为组件契约，而非类型。
+- 用 JSDoc（`@param`、`@returns`、`@typedef`）文档化不那么显而易见的形状，仅在确实能帮助编辑器智能提示时 — 不要给所有东西加 JSDoc。
+- 保持 TS 规则隐含的纪律：无隐式全局变量、显式处理空值、派生值而非重复声明。
 
 ## Vue SFC
 
-- Always `<script setup>`; in TS projects use `<script setup lang="ts">`. Order: `<script setup>`, then `<template>`, then `<style scoped>`.
-- TS: type props/emits with the generic form — `defineProps<Props>()`, `defineEmits<{ change: [value: string] }>()`. JS: use the runtime form with validators — `defineProps({ value: { type: String, required: true } })`, `defineEmits(['change'])`.
-- Optional-prop defaults: on Vue 3.5+ prefer reactive props destructure — `const { size = 'md' } = defineProps<Props>()`; use `withDefaults` only on Vue ≤3.4. Required props get no default.
-- Two-way binding: prefer `defineModel()` (Vue 3.4+) over a manual `modelValue` prop + `update:modelValue` emit.
-- Template refs: `useTemplateRef('name')` (Vue 3.5+). Generate stable ids for label/input wiring with `useId()`.
-- Slots are the API for injecting _markup_: expose named slots for structural regions (`#header`/`#footer`), scoped slots (`<slot :item="item" />`) to hand data back to the caller, and a default slot for the main body. Reach for a slot before a prop that carries renderable content or toggles a chunk of template. In TS, declare the contract with `defineSlots<{ default(props: { item: T }): any }>()`.
-- One component per file. Filename matches the component name.
+- 始终使用 `<script setup>`；TS 项目使用 `<script setup lang="ts">`。顺序：`<script setup>`、然后 `<template>`、然后 `<style scoped>`。
+- TS：用泛型形式类型化 props/emits — `defineProps<Props>()`、`defineEmits<{ change: [value: string] }>()`。JS：使用带校验器的运行时形式 — `defineProps({ value: { type: String, required: true } })`、`defineEmits(['change'])`。
+- 可选 prop 默认值：Vue 3.5+ 优先使用响应式 props 解构 — `const { size = 'md' } = defineProps<Props>()`；仅 Vue ≤3.4 使用 `withDefaults`。必填 prop 不需要默认值。
+- 双向绑定：优先使用 `defineModel()`（Vue 3.4+）而非手动的 `modelValue` prop + `update:modelValue` emit。
+- 模板引用：`useTemplateRef('name')`（Vue 3.5+）。使用 `useId()` 生成稳定的 id 用于标签/输入框关联。
+- 插槽是注入 _标记_ 的 API：暴露具名插槽给结构性区域（`#header`/`#footer`），作用域插槽（`<slot :item="item" />`）传递数据给调用方，默认插槽给主体内容。优先使用插槽而非携带可渲染内容的 prop 或切换模板块的布尔值。TS 中用 `defineSlots<{ default(props: { item: T }): any }>()` 声明契约。
+- 每个组件一个文件。文件名与组件名一致。
 
-## Naming
+## 命名
 
-- Components: `PascalCase` (files and usage). Composables: `useThing`. Stores: `useThingStore`.
-- Booleans read as predicates: `isLoading`, `hasError`, `canSubmit`.
-- Event names: past-tense or imperative, kebab in template (`@row-selected`).
+- 组件：`PascalCase`（文件和用法）。Composables：`useThing`。Stores：`useThingStore`。
+- 布尔值为谓词：`isLoading`、`hasError`、`canSubmit`。
+- 事件名：过去式或祈使句，模板中 kebab-case（`@row-selected`）。
 
-## Imports
+## 导入
 
-- Order: node/std, external packages, `@/` aliases, relative — separated by blank lines.
-- Use the `@/` alias for `src`; avoid `../../../` chains.
+- 顺序：node/std、外部包、`@/` 别名、相对路径 — 用空行分隔。
+- 使用 `@/` 别名指向 `src`；避免 `../../../` 链式路径。
 
-## Hygiene
+## 代码卫生
 
-- No `console.log` in committed code (use a logger or remove). No commented-out code blocks.
-- No TODOs without a tracking reference.
+- 提交的代码中无 `console.log`（使用 logger 或删除）。无注释掉的代码块。
+- 无跟踪引用则无 TODO。

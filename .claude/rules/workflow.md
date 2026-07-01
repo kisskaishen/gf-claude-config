@@ -1,37 +1,37 @@
-# Workflow — Agent Pipeline
+# 工作流 — Agent 流水线
 
-Orchestration for feature work. Agents live in `.claude/agents/`. Prefer delegating bounded work to subagents to keep the main context clean.
+功能开发的编排框架。Agents 位于 `.claude/agents/`。优先将有限范围的工作委托给子 agent 以保持主上下文干净。
 
-**Skills vs agents** — a `/skill` runs its checklist inline in the current session (quick, ad-hoc, can fix as it goes); the matching agent (`code-review` → `ui-reviewer`, `a11y-audit` → `accessibility-auditor`, `perf-audit` → `performance-auditor`, `security-audit` → `security-scanner`, `debug-frontend` → `debugger`, `refactor` → `refactoring-expert`) is the isolated, least-privilege specialist the pipeline delegates to. Use the skill for solo/ad-hoc work, the agent for a gated pipeline run.
+**Skills vs agents** — 一个 `/skill` 在当前会话中内联运行其清单（快速、临时、可边做边修）；对应的 agent（`code-review` → `ui-reviewer`、`a11y-audit` → `accessibility-auditor`、`perf-audit` → `performance-auditor`、`security-audit` → `security-scanner`、`debug-frontend` → `debugger`、`refactor` → `refactoring-expert`）是流水线中委托的隔离、最小权限专家。个人/临时工作使用 skill，门禁式流水线运行使用 agent。
 
-## Standard feature
-
-```
-Planning  →  Developer  →  Quality Gate (parallel)  →  DocsWriter
-```
-
-1. **Planning** — `planner` turns the request into a short plan (scope, components, state, edge cases, test plan). For anything with real UX/architecture/security trade-offs, the lead runs `devil` against the plan (read-only) and folds the critique back into planning before code is written. Trivial changes skip straight to Developer.
-2. **Developer** — `frontend-developer` implements against the plan and the rules. Writes/updates unit tests as it goes.
-3. **Quality Gate (run in parallel)** — `ui-reviewer`, `accessibility-auditor`, `test-engineer`, `performance-auditor`, and `security-scanner`. If any returns a Critical/Important finding, it routes back to `frontend-developer`; then only the auditors that flagged rerun. After two fix-and-rerun cycles, stop and surface any remaining findings to the user for a decision.
-4. **DocsWriter** — `docs-writer` updates README/component docs/changelog if public behavior changed.
-
-> **Execution model.** The lead (main session) spawns each agent with the context it needs and relays results between steps — subagents report back to the lead, not to each other. `SendMessage` between agents applies only when the pipeline runs as an experimental agent **team** (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` in `settings.json`).
-
-## Bug fix
+## 标准功能开发
 
 ```
-Debugger  →  Developer  →  Verify (test-engineer + ui-reviewer)
+规划  →  开发  →  质量门禁（并行）  →  文档编写
 ```
 
-`debugger` reproduces and finds root cause; `frontend-developer` fixes; verification confirms with a regression test.
+1. **规划** — `planner` 将需求转化为简要计划（范围、组件、状态、边界情况、测试计划）。对于有实质 UX/架构/安全权衡的事项，负责人对计划运行 `devil`（只读）并将批评反馈融入规划，然后才写代码。简单变更直接跳到开发。
+2. **开发** — `frontend-developer` 按照计划和规则实现。在实现过程中编写/更新单元测试。
+3. **质量门禁（并行运行）** — `ui-reviewer`、`accessibility-auditor`、`test-engineer`、`performance-auditor` 和 `security-scanner`。如有任何返回 Critical/Important 发现，路由回 `frontend-developer`；然后仅重新运行标记了问题的审计项。最多两轮修复并重新运行后，停止并将剩余发现提交给用户决策。
+4. **文档编写** — 如果公开行为有变更，`docs-writer` 更新 README/组件文档/changelog。
 
-## Refactor
+> **执行模型。** 负责人（主会话）用每个 agent 需要的上下文派发它，并在步骤间传递结果 — 子 agent 向负责人汇报，而非彼此之间。`SendMessage` 在 agent 间使用仅适用于流水线以实验性 agent **团队**方式运行时（`settings.json` 中 `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`）。
+
+## Bug 修复
 
 ```
-refactoring-expert  →  Verify (test-engineer + ui-reviewer)
+调试  →  开发  →  验证（test-engineer + ui-reviewer）
 ```
 
-`refactoring-expert` restructures code without changing behavior — tests stay green before and after (it adds characterization tests first if the area is uncovered). Use it instead of `frontend-developer` when the goal is cleanup/structure, not new behavior. For component splits it works from the decomposition patterns and split signals in `architecture.md`; verify confirms behavior is unchanged and that extracted/promoted units keep a stable API.
+`debugger` 复现并找到根因；`frontend-developer` 修复；验证环节用回归测试确认。
+
+## 重构
+
+```
+refactoring-expert  →  验证（test-engineer + ui-reviewer）
+```
+
+`refactoring-expert` 不改变行为地重构代码 — 测试保持通过（如果该区域未覆盖则先添加特征测试）。当目标是清理/结构调整、而非新功能时用它代替 `frontend-developer`。对组件拆分，它遵循 `architecture.md` 中的分解模式和拆分信号；验证确认行为未变、提取/提升的单元保持稳定的 API。
 
 ## CI/CD
 
@@ -39,8 +39,8 @@ refactoring-expert  →  Verify (test-engineer + ui-reviewer)
 ci-cd-engineer  →  ui-reviewer + security-scanner
 ```
 
-## Severity (used by all reviewing agents)
+## 严重程度（所有审查 agent 通用）
 
-- **Critical** — broken behavior, a11y blocker, security issue, failing build/tests. Must fix before merge.
-- **Important** — likely bug, perf regression, missing test for new logic. Fix before merge.
-- **Nice-to-have** — style/readability. Optional.
+- **Critical** — 功能破坏、无障碍阻断、安全问题、构建/测试失败。合并前必须修复。
+- **Important** — 可能的 bug、性能退化、新逻辑缺少测试。合并前修复。
+- **Nice-to-have** — 风格/可读性。可选。

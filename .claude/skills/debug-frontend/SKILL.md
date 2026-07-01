@@ -1,20 +1,20 @@
 ---
 name: debug-frontend
-description: Systematically diagnose a frontend bug to root cause before fixing. Use when something is broken, errors out, or behaves unexpectedly in the UI.
+description: 系统性地诊断前端 bug 到根因后再修复。当 UI 出现问题、报错或行为不符合预期时使用。
 ---
 
-# Debug a frontend issue
+# 调试前端问题
 
-1. **Reproduce deterministically.** Nail the exact steps, environment, and expected vs actual. Can't reproduce → state what info is missing and stop guessing.
-2. **Read before editing.** Locate the relevant component(s), composable(s), store, and API path. Trace the data flow end to end.
-3. **Inspect the usual frontend suspects:**
-   - Reactivity lost — destructured `reactive`, mutated prop, missing `ref`/`toRefs`.
-   - Stale closure in an event handler/watcher.
-   - Lifecycle/async ordering — effect runs before data; unhandled promise; missing loading/error state.
-   - `v-for` key reuse causing wrong DOM reuse.
-   - Leaked listener/timer not cleaned up.
-   - Build/env difference (works in dev, not prod).
-4. **Form one hypothesis** for the root cause and say _why_. Separate symptom from cause.
-5. **Confirm it** with a minimal change or a failing test that isolates the cause — don't fix on a hunch.
-6. **Fix minimally**, add a regression test that fails before / passes after, and note any related latent issues.
-7. **Verify** the whole suite stays green.
+1. **确定性复现。** 明确具体的复现步骤、环境以及预期与实际表现的差异。无法复现 → 说明缺少什么信息，停止猜测。
+2. **先读再改。** 定位相关的组件、composable、store 和 API 路径。端到端跟踪数据流。
+3. **检查前端常见疑点：**
+   - 响应式丢失 — 解构了 `reactive`、修改了 prop、缺少 `ref`/`toRefs`。
+   - 事件处理器/watcher 中的闭包过期。
+   - 生命周期/异步顺序 — effect 在数据就绪前执行；未处理的 promise；缺少加载/错误状态。
+   - `v-for` key 重用导致错误的 DOM 复用。
+   - 泄漏的监听器/定时器未清理。
+   - 构建/环境差异（开发环境正常，生产环境异常）。
+4. **形成一个根因假设**并说明 _为什么_。区分症状和原因。
+5. **验证假设** — 通过最小改动或一个能隔离原因的失败测试来确认 — 不要凭直觉修复。
+6. **最小化修复**，添加修复前失败/修复后通过的回归测试，并记录任何相关的潜在问题。
+7. **验证**整个测试套件保持通过。

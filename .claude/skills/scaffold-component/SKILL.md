@@ -1,18 +1,18 @@
 ---
 name: scaffold-component
-description: Create a new Vue 3 component the project's way — props/emits contracts (typed in TS), correct placement, styling with tokens, a11y baseline, and a unit test. Use when adding a new component or UI element.
+description: 按照项目规范创建新的 Vue 3 组件 — props/emits 契约（TS 项目中带类型）、正确的位置、使用 Token 的样式、无障碍基线以及单元测试。用于添加新组件或 UI 元素时。
 ---
 
-# Scaffold a component
+# 脚手架生成组件
 
-1. **Decide placement.** Put it where your layout keeps components — `src/components/` (layer-first), a feature's `components/` (feature-first), or a shared `components/` if it's reused widely. Confirm a similar component doesn't already exist (search first; reuse beats rebuild).
-2. **Create `<Name>.vue`** with `<script setup>` (add `lang="ts"` in TS projects):
-   - TS: define a `Props` type and `defineProps<Props>()` (defaults via reactive props destructure on Vue 3.5+, `withDefaults` on ≤3.4); type emits with `defineEmits<{ ... }>()`. JS: use runtime validators — `defineProps({ ... })` with `type`/`required`/`default`/`validator` — and `defineEmits([...])`.
-   - Keep it presentational: state in, events out. No data fetching here.
-3. **Template** — semantic native elements; labels for any control; keyboard-operable; visible focus. Style with the project's design tokens — no magic values (Tailwind utilities by default; Sass variables or `var(--token)` custom properties otherwise).
-4. **Logic** — if there's non-trivial logic, extract a `useX` composable instead of inlining it.
-5. **Test** — add `<Name>.test.ts` (`.test.js` in JS projects): render with props, assert visible output and emitted events, cover an edge/error state. Query by role/label/text.
-6. **Verify** — `<pm> run lint && <pm> run test` (add `<pm> run typecheck` in TS projects). Run a quick axe check if interactive.
-7. **Export** if it's a shared component (barrel/index per project convention).
+1. **确定位置。** 放在你的项目布局指定的位置 — `src/components/`（按层布局）、功能模块的 `components/`（按功能布局）、或被广泛复用的共享 `components/`。先搜索确认没有类似组件（复用优于重建）。
+2. **创建 `<Name>.vue`**，使用 `<script setup>`（TS 项目加上 `lang="ts"`）：
+   - TS：定义 `Props` 类型和 `defineProps<Props>()`（Vue 3.5+ 用响应式 props 解构设置默认值，≤3.4 用 `withDefaults`）；用 `defineEmits<{ ... }>()` 类型化 emits。JS：使用运行时校验器 — `defineProps({ ... })` 带 `type`/`required`/`default`/`validator` — 以及 `defineEmits([...])`。
+   - 保持展示型：状态通过 props 传入，事件通过 emits 传出。此处不做数据获取。
+3. **模板** — 语义化原生元素；任何控件都有标签；键盘可操作；焦点可见。用项目设计 Token 编写样式 — 无魔数（默认用 Tailwind 工具类；否则用 Sass 变量或 `var(--token)` 自定义属性）。
+4. **逻辑** — 如果有非平凡逻辑，提取到 `useX` composable 而非内联在组件中。
+5. **测试** — 添加 `<Name>.test.ts`（JS 项目为 `.test.js`）：用 props 渲染，断言可见输出和已触发事件，覆盖一个边界/错误状态。通过 role/label/text 查询。
+6. **验证** — `<pm> run lint && <pm> run test`（TS 项目加上 `<pm> run typecheck`）。如果交互性较强，快速运行 axe 检查。
+7. **导出** — 如果是共享组件，按项目约定从 barrel/index 导出。
 
-Keep it focused: split on a decomposition **signal** — ≥3 responsibilities, prop/boolean explosion, deep template nesting, logic dwarfing the template, or a repeated block — not on a line count alone (see `architecture.md` → Decomposition & reuse).
+保持专注：根据分解**信号**来拆分 — ≥3 个职责、prop/布尔爆炸、深层模板嵌套、逻辑远超模板、或存在重复块 — 而非仅凭代码行数（参考 `architecture.md` → 分解与复用）。

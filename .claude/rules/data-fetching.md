@@ -1,47 +1,44 @@
 ---
 paths:
   - "src/**/*.vue"
-  - "src/**/composables/**"
-  - "src/**/services/**"
-  - "src/**/api/**"
-  - "src/**/stores/**"
+  - "src/**/*.ts"
 ---
 
-# Data Fetching
+# 数据获取
 
-How the app talks to the network. Architecture says _where_ fetching lives (`architecture.md`); this says _how_ to do it well. Remote data is **untrusted** — escape it at the sink (see `security.md`).
+应用如何与网络通信。架构说明了获取逻辑放在 _哪里_（`architecture.md`）；这里说明 _如何_ 做好它。远程数据是**不可信的** — 在使用点进行转义（见 `security.md`）。
 
-## Where it lives
+## 放在哪里
 
-- Components never call `fetch`/axios directly. A component calls a composable (`useX`) or a thin `services/`/`api/` module; the module owns the request and returns a result with an explicit shape.
-- Keep transport details (base URL, headers, auth, error mapping) in one `api/` client, not sprinkled across call sites. Config comes from validated env (see `config.md`).
+- 组件绝不直接调用 `fetch`/axios。组件调用 composable（`useX`）或瘦的 `services/`/`api/` 模块；模块负责请求并返回有明确结构的结果。
+- 将传输细节（base URL、headers、认证、错误映射）集中在一个 `api/` 客户端中，而非散落在调用点。配置来自已验证的环境变量（见 `config.md`）。
 
-## Shape & validation
+## 形状与验证
 
-- Validate the response at the boundary before it enters the app — parse with a schema (Zod/Valibot) in TS, or explicit mapping + runtime checks in JS. Never assume the payload matches the type.
-- Derive the type from the schema (`z.infer`), don't hand-write a parallel `interface`. Map wire shapes to domain shapes in the service, so views never see raw API quirks.
+- 在响应进入应用之前于边界处验证它 — TS 中通过 schema（Zod/Valibot）解析，JS 中通过显式映射 + 运行时检查。绝不假设负载匹配类型。
+- 类型从 schema 派生（`z.infer`），不要手写并行的 `interface`。在服务层将接口结构映射为领域结构，这样视图层永远看不到原始的 API 怪癖。
 
-## Async state
+## 异步状态
 
-- Every async read exposes **loading / error / empty / success**, and the UI renders all four — no spinner that never resolves, no blank screen on error, no "no data" mistaken for "loading".
-- Surface failures; never swallow them (see `error-handling.md`). Keep already-loaded data visible while refetching when it improves UX.
+- 每个异步读取暴露 **loading / error / empty / success** 四种状态，UI 渲染所有四种 — 无不停止的加载动画，无错误时的空白页面，无"无数据"被误认为"加载中"。
+- 暴露失败；绝不吞没它们（见 `error-handling.md`）。在重新获取时保持已加载的数据可见（当这能改善 UX 时）。
 
-## Lifecycle & efficiency
+## 生命周期与效率
 
-- Cancel in-flight requests when inputs change or the scope is torn down — `AbortController` wired to `onScopeDispose`. Debounce user-driven queries (search-as-you-type).
-- Dedupe concurrent identical requests; parallelize independent ones (`Promise.all`) instead of awaiting in series (no waterfalls).
-- Reach for a query library (TanStack Query and similar) for caching, dedup, retry, and invalidation rather than hand-rolling them; key the cache by its inputs.
+- 当输入变化或作用域销毁时取消进行中的请求 — `AbortController` 连接到 `onScopeDispose`。对用户驱动的查询（搜索即输入）进行防抖。
+- 去重并发相同请求；并行化独立请求（`Promise.all`）而非串行等待（不要瀑布式）。
+- 优先使用查询库（TanStack Query 等）来缓存、去重、重试和失效，而非手动实现；按输入对缓存进行键化。
 
-## Mutations
+## 变更请求
 
-- Disable the trigger while a mutation is in flight; re-enable on settle. Invalidate or update affected queries after success.
-- Optimistic updates must roll back to the previous state on failure.
+- 变更进行中时禁用触发按钮；完成后重新启用。成功后使受影响查询失效或更新。
+- 乐观更新必须在失败时回滚到先前状态。
 
-## Server cache vs client state
+## 服务端缓存 vs 客户端状态
 
-- Server data is a **cache**, not source-of-truth app state. Don't copy fetched data into a Pinia store and treat it as canonical — let the query layer own it; keep Pinia for genuinely shared _client_ state (see `architecture.md`).
+- 服务端数据是**缓存**，不是应用状态的权威来源。不要将获取的数据复制到 Pinia store 并当作权威 — 让查询层来管理；Pinia 保留给真正共享的 _客户端_ 状态（见 `architecture.md`）。
 
-## Verify
+## 验证
 
-- Each new async read renders loading, error, and empty states, not just the happy path.
-- Responses are validated/parsed before use; requests are cancelled on teardown.
+- 每个新的异步读取渲染 loading、error 和 empty 状态，不仅仅是正常路径。
+- 响应在使用前经过验证/解析；请求在销毁时被取消。

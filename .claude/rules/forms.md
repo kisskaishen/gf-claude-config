@@ -1,31 +1,28 @@
 ---
 paths:
   - "src/**/*.vue"
-  - "src/**/*.tsx"
-  - "src/**/*.jsx"
-  - "src/**/composables/**"
 ---
 
-# Forms
+# 表单
 
-## Validation
+## 校验
 
-- Validate against a schema (e.g. Zod) — one source of truth for shape + rules; derive types from it, don't restate.
-- If the project uses a form lib (vee-validate / FormKit), follow it consistently; otherwise keep values, errors, and status in a small `useForm`-style composable.
-- Validate on submit and on blur/touch — not on every keystroke (debounce if you must). Don't surface errors for fields the user hasn't touched yet.
+- 通过 schema（如 Zod）进行校验 — 结构和规则的唯一来源；从中派生类型，不要重复声明。
+- 如果项目使用表单库（vee-validate / FormKit），保持一致性；否则将值、错误和状态放在一个小的 `useForm` 风格的 composable 中。
+- 提交时和失焦/触摸时校验 — 而不是每次按键都校验（如需要则防抖）。不要为用户尚未触及的字段显示错误。
 
-## State & submission
+## 状态与提交
 
-- Track `dirty`, `touched`, `submitting`, and `valid`. Disable submit while `submitting`; guard against double-submit.
-- The form component owns no data fetching — submit goes through a composable / `api/` service. Map server-side field errors back onto the matching fields; show a form-level summary for non-field errors.
-- Reset dirty-tracking after a successful submit; warn on unsaved changes only where it genuinely matters.
+- 跟踪 `dirty`、`touched`、`submitting` 和 `valid`。`submitting` 为 true 时禁用提交；防止重复提交。
+- 表单组件不拥有数据获取 — 提交通过 composable / `api/` 服务进行。将服务端字段错误映射回对应字段；非字段错误显示表单级摘要。
+- 成功提交后重置脏跟踪；仅在真正重要时对未保存更改进行警告。
 
-## Accessibility (see accessibility.md)
+## 无障碍（见 accessibility.md）
 
-- Every control labelled; mark invalid fields with `aria-invalid` and link the message via `aria-describedby`. Required state conveyed non-visually.
-- On a failed submit, move focus to the first invalid field (or an error summary) — don't leave the user hunting.
-- Errors are text, never color-only.
+- 每个控件有标签；用 `aria-invalid` 标记无效字段并通过 `aria-describedby` 链接错误消息。必填状态以非视觉方式传达。
+- 提交失败时，将焦点移至第一个无效字段（或错误摘要）— 不要让用户四处寻找。
+- 错误是文本，绝不只靠颜色表示。
 
-## Custom inputs
+## 自定义输入
 
-- Custom field components support `v-model` via `defineModel`; expose `disabled`/`invalid` and forward the label association. Keep them presentational — validation lives in the form, not the input.
+- 自定义字段组件通过 `defineModel` 支持 `v-model`；暴露 `disabled`/`invalid` 并传递标签关联。保持展示型 — 校验在表单层，不在输入组件内。

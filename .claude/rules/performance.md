@@ -2,36 +2,32 @@
 paths:
   - "src/**/*.vue"
   - "src/**/*.ts"
-  - "src/**/*.tsx"
-  - "src/**/*.js"
-  - "src/**/*.jsx"
-  - "vite.config.*"
 ---
 
-# Performance
+# 性能
 
-## Loading
+## 加载
 
-- Route-level code splitting via dynamic `import()`. Lazy-load heavy, below-the-fold, or rarely-used components with `defineAsyncComponent` — give them loading/error states (or coordinate several async deps with `<Suspense>` + a fallback — still experimental, API may change).
-- Keep the initial bundle lean. Question every new dependency — prefer a small util or native API over a large lib; weigh its provenance and known vulnerabilities (see `security.md`), not just its size.
-- Tree-shake: import named members, never whole namespaces of large libraries.
+- 路由级代码分割通过动态 `import()`。用 `defineAsyncComponent` 懒加载重型、首屏以下或不常用的组件 — 给它们加载/错误状态（或用 `<Suspense>` + fallback 协调多个异步依赖 — 仍为实验性，API 可能变化）。
+- 保持初始包精简。审视每个新依赖 — 优先使用小工具函数或原生 API 而非大型库；权衡其来源和已知漏洞（见 `security.md`），而不只看体积。
+- Tree-shaking：导入具名成员，绝不导入大型库的整个命名空间。
 
-## Rendering
+## 渲染
 
-- Always key `v-for` with a stable unique id (never the index for dynamic lists).
-- Virtualize long lists (hundreds+ rows) instead of rendering everything.
-- Use `computed` for derived state; avoid `watch` that recomputes what a `computed` could.
-- Reach for `v-once`/`v-memo` only on proven-expensive static subtrees.
-- Debounce/throttle high-frequency handlers (input, scroll, resize).
-- Large or deeply-nested data that doesn't need per-property reactivity → `shallowRef`/`shallowReactive`; wrap inert data (config, big lookups) with `markRaw` to skip proxying.
+- 始终用稳定的唯一 id 作为 `v-for` 的 key（动态列表绝不使用 index）。
+- 对长列表（数百行以上）使用虚拟化而非全量渲染。
+- 对于派生状态使用 `computed`；避免用 `watch` 重新计算 `computed` 就能做到的事情。
+- 仅在验证确实昂贵的静态子树上使用 `v-once`/`v-memo`。
+- 对高频事件处理器（输入、滚动、resize）进行防抖/节流。
+- 大型或深层嵌套的数据结构若不需要逐属性响应式 → `shallowRef`/`shallowReactive`；用 `markRaw` 包裹惰性数据（配置、大型查表）以避免代理化。
 
-## Assets
+## 资源
 
-- Serve appropriately sized, modern-format images; lazy-load off-screen images.
-- Avoid layout shift: reserve dimensions for images/embeds.
+- 提供尺寸合适、现代格式的图片；屏幕外图片懒加载。
+- 避免布局偏移：为图片/嵌入内容预留尺寸。
 
-## Budget & verify
+## 预算与验证
 
-- Targets (Core Web Vitals): LCP ≤ 2.5s, INP ≤ 200ms, CLS ≤ 0.1.
-- Set a per-project initial-route JS budget and treat a notable bundle-size regression as a blocker; watch size on every change.
-- Optimize based on measurement (build analysis / Lighthouse / field RUM), not guesses.
+- 指标目标（Core Web Vitals）：LCP ≤ 2.5s、INP ≤ 200ms、CLS ≤ 0.1。
+- 为每个项目设定初始路由 JS 预算，将显著的包体积回归视为阻断项；关注每次变更的体积变化。
+- 基于测量进行优化（构建分析 / Lighthouse / 现场 RUM），而非靠猜测。

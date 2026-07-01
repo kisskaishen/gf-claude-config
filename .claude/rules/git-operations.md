@@ -1,33 +1,33 @@
-# Git Operations
+# Git 操作
 
-(Global rule — no path scope. Applies to every repo.)
+（全局规则 — 无路径限定。适用于每个仓库。）
 
-## Safety
+## 安全
 
-- Never commit directly to `main`/`master`. Work on a branch.
-- Never run a destructive or history-rewriting command (`push --force`, hard reset on shared branches) without explicit human confirmation.
-- Never commit secrets, `.env`, tokens, or keys. If one is staged, stop and flag it.
-- Run the quality gate (see `CLAUDE.md`) before every commit.
+- 绝不直接提交到 `main`/`master`。在分支上工作。
+- 未经明确人工确认，绝不运行破坏性或改写历史的命令（`push --force`、共享分支上的 hard reset）。
+- 绝不提交密钥、`.env` 文件、Token 或密码。如果已暂存，停止操作并指出。
+- 每次提交前运行质量门禁（见 `CLAUDE.md`）。
 
-## Branches
+## 分支
 
-- `feature/<short-slug>`, `fix/<short-slug>`, `chore/<short-slug>`.
+- `feature/<简短的slug>`、`fix/<简短的slug>`、`chore/<简短的slug>`。
 
-## Commits (Conventional Commits)
+## 提交（约定式提交）
 
-- Format: `type(scope): summary` — types: `feat fix refactor perf test docs chore build ci style`.
-- Imperative, present tense, ≤72-char subject. Body explains _why_, not _what_.
-- Small, focused commits over one giant commit.
+- 格式：`type(scope): summary` — 类型：`feat fix refactor perf test docs chore build ci style`。
+- 祈使句、现在时、标题 ≤72 个字符。正文解释 _为什么_，而非 _是什么_。
+- 小而专注的提交优于一个大提交。
 
-## Pull requests
+## 拉取请求（PR）
 
-- Keep PRs small and single-purpose.
-- PR description: **What** changed, **Why**, **How to test**, and screenshots/recordings for UI changes.
-- Note any a11y/perf impact. Link the tracking issue/card.
-- Do not push on the user's behalf without confirmation.
+- 保持 PR 小而目的单一。
+- PR 描述：**是什么**变更、**为什么**、**如何测试**，UI 变更需附截图/录屏。
+- 注明任何无障碍/性能影响。链接跟踪 issue/卡片。
+- 未经确认不要替用户推送。
 
-## Approval before committing or opening a PR
+## 提交或发起 PR 前需审批
 
-- Before `git commit`: show the changed files (`git status --short` / `git diff --stat`) and the **full** commit message — subject **and** body — verbatim, then wait. Don't run the commit until the user approves; let them edit or append to the message first.
-- Before `gh pr create`: show the **full** PR title and description the same way; let the user adjust or add to it before it's opened.
-- `.claude/settings.json` already puts `git commit`/`git push` in `ask` as a hard stop — this rule defines _what to surface_ at that stop (file list + full text), not merely that one exists.
+- 在 `git commit` 之前：展示变更文件（`git status --short` / `git diff --stat`）和**完整**提交信息 — 标题**和**正文 — 逐字展示，然后等待。用户批准前不执行提交；让用户先编辑或补充信息。
+- 在 `gh pr create` 之前：同样的方式展示**完整** PR 标题和描述；让用户在发起前调整或补充。
+- `.claude/settings.json` 已将 `git commit`/`git push` 设为 `ask` 作为硬性阻断 — 本规则定义了在该阻断点 _应展示什么内容_（文件列表 + 完整文本），而不仅仅是确认存在。
