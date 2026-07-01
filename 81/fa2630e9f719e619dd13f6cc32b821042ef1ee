@@ -1,0 +1,113 @@
+agents/ci-cd-engineer.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-46
+agents/frontend-developer.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-42
+agents/devil.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-35
+agents/security-scanner.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-51
+rules/error-handling.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-42
+agents/planner.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-38
+rules/code-style.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-52
+rules/forms.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-28
+agents/ui-reviewer.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-43
+hooks/check-refs.mjs
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-91
+rules/workflow.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-46
+skills/a11y-audit/SKILL.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-13
+agents/debugger.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-39
+rules/security.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-69
+rules/testing.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-38
+rules/styling.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-29
+settings.json
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-53
+rules/principles.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-26
+agents/refactoring-expert.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-41
+rules/accessibility.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-39
+hooks/detect-stack.mjs
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-138
+README.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-53
+skills/code-review/SKILL.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-24
+rules/performance.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-33
+skills/perf-audit/SKILL.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-13
+skills/wizard/SKILL.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-40
+agents/test-engineer.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-36
+rules/architecture.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-70
+agents/accessibility-auditor.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-37
+skills/add-tests/SKILL.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-36
+rules/i18n.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-26
+skills/prune/SKILL.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-67
+skills/release/SKILL.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-33
+agents/docs-writer.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-33
+skills/scaffold-feature/SKILL.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-21
+agents/performance-auditor.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-37
+skills/debug-frontend/SKILL.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-20
+skills/upgrade-deps/SKILL.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-32
+hooks/session-start.mjs
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-35
+skills/refactor/SKILL.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-18
+rules/data-fetching.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-44
+skills/security-audit/SKILL.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-21
+rules/config.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-33
+.gitignore
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-4
+rules/git-operations.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-33
+skills/scaffold-component/SKILL.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-18
+skills/verify/SKILL.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-28
+rules/observability.md
+  s_bbb2404927cefd::t_78e2eca3040ac0 1-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "81fa2630e9f719e619dd13f6cc32b821042ef1ee",
+  "prompts": {},
+  "sessions": {
+    "s_bbb2404927cefd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24c70bcc-fed8-40e5-95d5-5e5e7304d698",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
