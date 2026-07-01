@@ -1,0 +1,23 @@
+.claude
+  s_bbb2404927cefd::t_51406c41c9ed02 1
+.gitignore
+  s_bbb2404927cefd::t_7e3232926c788e 25
+.gitmodules
+  s_bbb2404927cefd::t_9d610a358c0821 1-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "427feb0dffa98dd3da7381a84a0f61c957259532",
+  "prompts": {},
+  "sessions": {
+    "s_bbb2404927cefd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24c70bcc-fed8-40e5-95d5-5e5e7304d698",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
