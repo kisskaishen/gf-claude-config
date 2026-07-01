@@ -1,0 +1,42 @@
+src/views/finance/components/CostTable.vue
+  s_8dd99d9bd27860::t_103bb3e3a7b75d 5,12
+  s_8dd99d9bd27860::t_e471b3b19b7e96 281
+  s_8dd99d9bd27860::t_9595b5f325cfe3 542-544
+src/views/finance/account.vue
+  s_8dd99d9bd27860::t_b6d06bdca8759e 87-94
+  s_8dd99d9bd27860::t_73d3ac2d4092e1 44
+  s_8dd99d9bd27860::t_f1dbf158df5677 53
+  s_8dd99d9bd27860::t_afa6c5bff504b7 56
+src/views/order/list.vue
+  s_8dd99d9bd27860::t_7cbfe6b317eaa7 456-470,978
+  s_8dd99d9bd27860::t_5f0e838ded4b56 152
+  s_8dd99d9bd27860::t_589557693278ce 7,14
+  s_8dd99d9bd27860::t_5ed6845b58c896 153-155
+  s_8dd99d9bd27860::t_10522e36a643a7 471-473
+  s_8dd99d9bd27860::t_4ce870322a94c8 979
+src/views/order/batch.vue
+  s_8dd99d9bd27860::t_f1882075c335a1 547
+  s_8dd99d9bd27860::t_ac212902c44c77 301-302
+  s_8dd99d9bd27860::t_a195cfd8f61480 543,545
+  s_8dd99d9bd27860::t_38d59598c9d4e8 371
+src/views/finance/components/ClaimTable.vue
+  s_8dd99d9bd27860::t_a4ba5f8c89cb3d 249
+  s_8dd99d9bd27860::t_07a50a20e7f630 483-485
+  s_8dd99d9bd27860::t_53b7d05fc052b4 5,12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "30db392d4af7a0087c1ac76c4a4f6ba48c950de2",
+  "prompts": {},
+  "sessions": {
+    "s_8dd99d9bd27860": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2546a0d8-6eee-418c-a990-7bd02fb153e3",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
