@@ -246,7 +246,6 @@ import {
 import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
 import { useAppStore } from "@/store/app";
-import { cloneDeep } from "lodash-es";
 
 const userStore = useUserStore();
 
@@ -480,9 +479,7 @@ const getParams = () => {
   return params;
 };
 
-const handleResetForm = () => {
-  Object.assign(searchForm, cloneDeep(initialFormState));
-};
+const handleResetForm = () => {};
 
 const getListData = async () => {
   const params = getParams();

@@ -665,7 +665,6 @@ const fetchExceptionData = () => {
 
 // 异常订单重置
 const handleExceptionReset = () => {
-  Object.assign(exceptionSearchForm, cloneDeep(exceptionInitialState));
   setExceptionDefaultRange();
 };
 
@@ -975,7 +974,6 @@ const getAddress = (obj: any) => {
 };
 
 const handleResetForm = () => {
-  Object.assign(searchForm, cloneDeep(initialFormState));
   setDefaultRange();
   if (sessionStorage.getItem("trackingNo")) {
     sessionStorage.removeItem("trackingNo");

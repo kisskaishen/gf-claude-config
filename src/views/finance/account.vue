@@ -20,14 +20,14 @@
         :search-claim-bill-no="claimBillSearchNo"
         :settle-cycle-data="settleCycleData"
         @fly-to-task-center="handleFlyToTaskCenter"
-        v-if="activeTab === 1"
+        v-show="activeTab === 1"
       />
       <CostTable
         v-model:status="activeTab"
         :settle-cycle-data="settleCycleData"
         @fly-to-task-center="handleFlyToTaskCenter"
         @search-claim-bill="handleSearchClaimBill"
-        v-else
+        v-show="activeTab !== 1"
       />
     </div>
 

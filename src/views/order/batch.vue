@@ -536,17 +536,14 @@ const handleContinue = () => {
   }
 };
 
-watch(
-  () => currentLang.value,
-  () => {
-    if (formRef.value) {
-      const savedCustomerId = form.customerId;
-      formRef.value.resetFields();
-      form.customerId = savedCustomerId;
-    }
-    fetchCustomerProducts();
+watch(currentLang, () => {
+  if (formRef.value) {
+    const savedCustomerId = form.customerId;
+    formRef.value.resetFields();
+    form.customerId = savedCustomerId;
   }
-);
+  fetchCustomerProducts();
+});
 
 const goTaskList = () => {
   router.push("/task/list");
