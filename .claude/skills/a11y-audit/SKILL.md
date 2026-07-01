@@ -1,13 +1,13 @@
 ---
 name: a11y-audit
-description: Run an accessibility audit on a view or component against WCAG 2.2 AA. Use before merging UI changes or when asked to check accessibility.
+description: 对视图或组件运行 WCAG 2.2 AA 无障碍审计。合并 UI 更改前或被要求检查无障碍时使用。
 ---
 
-# Accessibility audit
+# 无障碍审计
 
-1. **Automated pass** — run an axe check on the changed view(s) (`<pm> exec` / `npx`). Record violations; they're the floor, not the ceiling.
-2. **Semantics** — verify native elements are used where possible; ARIA only fills real gaps and is correct; headings/landmarks are sane.
-3. **Forms** — every control has a label; errors are associated and announced; required/invalid state isn't color-only.
-4. **Keyboard walk** — operate the component keyboard-only: everything reachable and operable, visible focus, logical order, Escape closes overlays, focus traps in modals and restores on close.
-5. **Perceivable** — alt text correct (empty for decorative); meaning never by color alone; contrast ≥4.5:1 (text) / ≥3:1 (large text, UI); `prefers-reduced-motion` honored.
-6. **Report** — list issues by severity with the exact element and the fix; separate automated from manual findings. A11y blockers are Critical and block merge.
+1. **自动化扫描** — 对变更的视图运行 axe 检查（`<pm> exec` / `npx`）。记录违规项；这是底线，不是上限。
+2. **语义化** — 验证是否优先使用原生元素；ARIA 仅填补真正缺口且使用正确；标题/地标结构合理。
+3. **表单** — 每个控件有标签；错误被关联并播报；必填/无效状态不只用颜色表示。
+4. **键盘漫游** — 纯键盘操作组件：所有功能可触达和操作，焦点可见，顺序合理，Escape 关闭遮罩层，模态框内焦点被困并关闭后恢复。
+5. **可感知** — alt 文本正确（装饰性则为空）；含义从不只依赖颜色；对比度 ≥4.5:1（正文）/ ≥3:1（大文字、UI）；遵循 `prefers-reduced-motion`。
+6. **报告** — 按严重程度列出问题，注明具体元素和修复方案；区分自动化发现和手动发现。无障碍阻断项为 Critical 级别，阻止合并。

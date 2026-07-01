@@ -1,32 +1,32 @@
 ---
 name: upgrade-deps
-description: Safely upgrade project dependencies — audit for vulns, review changelogs for breaking changes, update in small batches, and prove the app still works via the gate. Use for routine maintenance or to clear a security advisory.
+description: 安全升级项目依赖 — 审计漏洞、审查 changelog 中的破坏性变更、小批量更新、通过质量门禁证明应用仍正常运行。用于日常维护或清除安全通告。
 ---
 
-# Upgrade dependencies
+# 升级依赖
 
-Upgrade deliberately, in reviewable batches, proving nothing broke at each step. Use the detected package manager consistently (`<pm>`).
+有意识地升级，分批可审查地进行，每步证明没有破坏任何东西。统一使用检测到的包管理器（`<pm>`）。
 
-## 1. Survey
+## 1. 调研
 
-- `<pm> outdated` for what's behind; `<pm> audit` for known vulns (security advisories are the priority — see `security.md` → supply chain).
-- Separate **patch/minor** (low risk) from **major** (breaking). Note anything on the critical path (framework, build tool, test runner).
+- `<pm> outdated` 查看落后版本；`<pm> audit` 查看已知漏洞（安全通告优先 — 参考 `security.md` → 供应链）。
+- 区分**修订号/次版本号**（低风险）和**主版本号**（破坏性）。注意关键路径上的包（框架、构建工具、测试运行器）。
 
-## 2. Batch & read before bumping
+## 2. 分批 & 升级前阅读
 
-- Group related packages (e.g. all `@vue/*`, all eslint plugins). One concern per batch so a failure is easy to bisect.
-- For majors, read the changelog/migration guide first; list the breaking changes that touch this codebase before editing.
+- 将相关包分组（例如所有 `@vue/*`、所有 eslint 插件）。每批只关注一类变更，这样失败容易二分定位。
+- 对于主版本号升级，先阅读 changelog/迁移指南；在编辑代码前列出影响此代码库的破坏性变更。
 
-## 3. Apply
+## 3. 执行
 
-- Update the batch, keep the lockfile changes, and install with the project's manager (never mix managers).
-- Apply required codemods/migrations for majors. Don't smuggle unrelated refactors into the upgrade.
+- 更新该批次，保留 lockfile 变更，用项目的包管理器安装（绝不混用管理器）。
+- 应用主版本号升级所需的 codemods/迁移。不要将无关的重构夹带到升级中。
 
-## 4. Prove it
+## 4. 验证
 
-- Run the gate: `<pm> run lint && <pm> run test` (+ `<pm> run typecheck` in TS) and `<pm> run build`. Re-run `<pm> audit` to confirm the advisory cleared.
-- Smoke-test the affected area; for a framework/build bump, run the app.
+- 运行门禁：`<pm> run lint && <pm> run test`（TS 项目加上 `<pm> run typecheck`）以及 `<pm> run build`。重新运行 `<pm> audit` 确认安全通告已清除。
+- 冒烟测试受影响区域；框架/构建工具的版本升级则运行应用。
 
-## 5. Commit per batch
+## 5. 每批单独提交
 
-- One focused commit per batch (`chore(deps): …`) with the notable breaking changes in the body, via the `git-operations.md` approval flow. Easy to revert one batch without losing the rest.
+- 每批一个专注的提交（`chore(deps): …`），在正文中说明重要的破坏性变更，通过 `git-operations.md` 审批流程提交。这样回退某批时不会丢失其他批次。

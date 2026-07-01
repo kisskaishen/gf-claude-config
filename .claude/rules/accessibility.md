@@ -1,41 +1,39 @@
 ---
 paths:
   - "src/**/*.vue"
-  - "src/**/*.tsx"
-  - "src/**/*.jsx"
 ---
 
-# Accessibility (target: WCAG 2.2 AA)
+# 无障碍（目标：WCAG 2.2 AA）
 
-A11y is part of "done", reviewed like any other requirement.
+无障碍是"已完成"的一部分，如同任何其他需求一样审查。
 
-## Semantics first
+## 语义优先
 
-- Use the correct native element (`button`, `a`, `nav`, `ul`, `label`) before reaching for `div` + ARIA. Native semantics beat ARIA.
-- Add ARIA only to fill genuine gaps. A wrong ARIA role is worse than none.
-- Every form control has an associated `<label>` (or `aria-label`). Group related controls with `fieldset`/`legend`.
+- 使用正确的原生元素（`button`、`a`、`nav`、`ul`、`label`），然后再考虑 `div` + ARIA。原生语义优于 ARIA。
+- 仅在填补真正缺口时才添加 ARIA。错误的 ARIA role 比没有更糟。
+- 每个表单控件有关联的 `<label>`（或 `aria-label`）。用 `fieldset`/`legend` 分组相关控件。
 
-## Keyboard & focus
+## 键盘与焦点
 
-- Everything actionable is reachable and operable by keyboard. No mouse-only interactions.
-- Visible focus styles — never remove the outline without an equal-or-better replacement.
-- Modals/menus: trap focus while open, restore focus to the trigger on close, close on Escape. Get these from **one** shared overlay primitive rather than re-solving them per feature (see `architecture.md` → Decomposition & reuse).
-- Logical tab order; don't use positive `tabindex`.
-- On SPA route change, move focus to the new view's main heading/landmark (`tabindex="-1"` + `focus()`) or announce it via a live region — client-side navigation doesn't move focus or notify screen readers.
+- 所有可操作元素可通过键盘触达和操作。无仅鼠标交互。
+- 可见焦点样式 — 绝不在没有同等或更好替代方案的情况下移除 outline。
+- 模态框/菜单：打开时困住焦点，关闭时恢复焦点到触发器，Escape 关闭。这些行为从**一个**共享的遮罩层基元获取，而非每个功能各自实现（见 `architecture.md` → 分解与复用）。
+- 合理的 tab 顺序；不使用正数 `tabindex`。
+- SPA 路由变化时，将焦点移至新视图的主标题/地标（`tabindex="-1"` + `focus()`）或通过实时区域播报 — 客户端导航不移动焦点或通知屏幕阅读器。
 
-## Perceivable
+## 可感知
 
-- Meaningful images have `alt`; decorative images have `alt=""`.
-- Don't convey meaning by color alone — pair with text/icon/shape.
-- Maintain contrast: ≥4.5:1 body text, ≥3:1 large text and UI boundaries.
+- 有意义图片有 `alt`；装饰性图片使用 `alt=""`。
+- 不只通过颜色传达含义 — 辅以文本/图标/形状。
+- 保持对比度：正文 ≥4.5:1，大文字和 UI 边界 ≥3:1。
 
-## WCAG 2.2 specifics
+## WCAG 2.2 特有问题
 
-- Interactive targets are ≥24×24 CSS px, or have equivalent spacing (2.5.8) — watch dense tables and icon buttons.
-- Keep the focused element visible — sticky headers/footers must not obscure it (2.4.11).
-- Don't make users re-enter info already provided earlier in the same flow (3.3.7).
+- 交互目标 ≥24×24 CSS px，或有等效间距（2.5.8）— 注意密集表格和图标按钮。
+- 保持聚焦元素可见 — 粘性头部/底部不得遮挡它（2.4.11）。
+- 不要让用户重新输入已在同流程中提供过的信息（3.3.7）。
 
-## Verify
+## 验证
 
-- Run an axe check on changed views; resolve violations before review.
-- Sanity-check with keyboard-only navigation for any interactive component.
+- 对变更的视图运行 axe 检查；审查前解决违规。
+- 对任何交互组件进行纯键盘导航的合理性检查。

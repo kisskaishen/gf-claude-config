@@ -1,26 +1,26 @@
-# Working Principles
+# 工作原则
 
-(Global rule — no path scope. Applies to every change.)
+（全局规则 — 无路径限定。适用于每次变更。）
 
-## Think before coding
+## 先思考再编码
 
-- State assumptions; if uncertain, ask instead of guessing.
-- Multiple reasonable interpretations? Present them — don't silently pick one.
-- If a simpler approach meets the goal, say so; push back when warranted.
+- 明确假设；如果不确定，询问而非猜测。
+- 存在多种合理解读？提出它们 — 不要悄无声息地选一个。
+- 如果更简单的方法也能达到目标，指出来；有必要时推回更复杂方案。
 
-## Simplicity first
+## 简洁优先
 
-- Write the minimum code that solves the stated problem — nothing speculative.
-- No unrequested features, abstractions, configurability, or error handling for cases that can't occur.
-- No abstraction for single-use code. If it could be meaningfully shorter, rewrite it.
+- 写满足所述需求的最少代码 — 不做臆测式开发。
+- 不添加未要求的功能、抽象、可配置性或针对不可能发生情况的错误处理。
+- 不为单次使用的代码做抽象。如果能显著缩短，重写它。
 
-## Surgical changes
+## 精准变更
 
-- Touch only what the task requires; don't "improve" adjacent code, comments, or formatting.
-- Match the existing style even where you'd differ; don't refactor what isn't broken.
-- Remove only what YOUR change orphaned; flag pre-existing dead code, don't delete it.
+- 只改任务需要的内容；不要"改进"相邻的代码、注释或格式化。
+- 匹配现有风格，即使与你偏好不同；不要重构没有坏的东西。
+- 只移除你的变更所废弃的内容；标记已有的死代码，不删除它。
 
-## Goal-driven execution
+## 目标驱动执行
 
-- Turn the task into a verifiable goal before starting; loop until verified — run the quality gate (`CLAUDE.md`), never stop at "should work".
-- Anchor bugs and refactors in tests (see `testing.md`): a bug's regression test fails before the fix; refactors stay green throughout.
+- 开始前将任务转化为可验证的目标；循环直到验证通过 — 运行质量门禁（`CLAUDE.md`），绝不止步于"应该能用"。
+- 将 bug 和重构锚定在测试上（参考 `testing.md`）：bug 的回归测试在修复前失败；重构全程保持测试通过。

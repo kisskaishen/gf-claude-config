@@ -8,31 +8,31 @@ paths:
   - "e2e/**"
 ---
 
-# Testing
+# 测试
 
-## What to test
+## 测什么
 
-- Test behavior and contracts, not implementation details. Assert on what the user sees/does.
-- Cover: composables (logic), store actions/getters, component behavior (props in → rendered output / emitted events out), and critical user flows e2e.
-- Where the project uses Storybook, stories for shared UI-kit components double as interaction/visual-regression coverage — optional, not a substitute for behavior tests.
-- Do NOT test: framework internals, trivial passthrough props, exact class strings, or snapshot-everything.
+- 测试行为和契约，而非实现细节。断言用户看到/做的事。
+- 覆盖：composables（逻辑）、store actions/getters、组件行为（props 输入 → 渲染输出 / 已触发事件输出）以及关键用户流程的 e2e 测试。
+- 项目使用 Storybook 时，共享 UI kit 组件的 stories 可作为交互/视觉回归覆盖 — 可选，不替代行为测试。
+- 不测试：框架内部实现、琐碎的直通 props、具体的 class 字符串、或全量快照。
 
-## Unit / component (Vitest)
+## 单元/组件测试（Vitest）
 
-- Accessible queries come from `@testing-library/vue` or Vitest browser-mode locators (`vitest-browser-vue`); in plain Vue Test Utils projects, still prefer role/label selection. Component tests run in jsdom or Vitest browser mode per the project's config — don't mix.
-- Query by accessible role/label/text (`getByRole`, `getByLabelText`), not by CSS selectors or test-id unless nothing else works.
-- Arrange–Act–Assert. One behavior per test; descriptive names ("emits `submit` with form data when valid").
-- Mock only at boundaries (network, time, modules). Don't mock the thing under test. Mock the network at the HTTP layer with MSW — shared request handlers, not hand-stubbed fetch/axios — so tests exercise real serialization.
-- Use `vi.useFakeTimers()` for debounce/timeout logic; flush and restore.
+- 无障碍查询来自 `@testing-library/vue` 或 Vitest 浏览器模式定位器（`vitest-browser-vue`）；在纯 Vue Test Utils 项目中，仍优先使用 role/label 选择。组件测试在 jsdom 或 Vitest 浏览器模式下运行（按项目配置）— 不要混用。
+- 通过无障碍 role/label/text（`getByRole`、`getByLabelText`）查询，而非 CSS 选择器或 test-id，除非别无他法。
+- Arrange–Act–Assert。每个测试一个行为；描述性名称（"valid 时 emit `submit` 带表单数据"）。
+- 仅在边界处模拟（网络、时间、模块）。不模拟被测试对象本身。用 MSW 在 HTTP 层模拟网络 — 共享请求处理器，而非手动 stub fetch/axios — 这样测试会经过真实的序列化。
+- 对防抖/超时逻辑使用 `vi.useFakeTimers()`；刷新并恢复。
 
-## E2E (Playwright)
+## E2E 测试（Playwright）
 
-- Cover the few flows that would be catastrophic if broken (auth, primary CRUD path, checkout-equivalent).
-- Prefer role/text locators and Playwright auto-waiting; avoid arbitrary `waitForTimeout`.
-- Keep e2e independent and idempotent; set up state via API/fixtures, not by clicking through prerequisites.
+- 覆盖一旦出问题就灾难性的少量流程（登录、核心增删改查路径、下单等）。
+- 优先使用 role/text 定位器和 Playwright 的自动等待；避免随意使用 `waitForTimeout`。
+- 保持 e2e 独立且幂等；通过 API/fixtures 设置状态，而非通过点击前序步骤达到测试起点。
 
-## Bar
+## 标准
 
-- New logic ships with tests. A bug fix ships with a regression test that fails before the fix.
-- Tests must be deterministic — no reliance on real network, clock, or ordering.
-- Cover new logic meaningfully; don't chase a vanity coverage %. Ratchet coverage forward — a change shouldn't drop it.
+- 新逻辑附带测试。Bug 修复附带一个修复前失败的回归测试。
+- 测试必须是确定性的 — 不依赖真实网络、时钟或顺序。
+- 有意义地覆盖新逻辑；不追求虚假的覆盖率百分比。覆盖率只进不退 — 变更不应降低它。

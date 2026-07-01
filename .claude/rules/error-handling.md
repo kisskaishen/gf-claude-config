@@ -2,44 +2,41 @@
 paths:
   - "src/**/*.vue"
   - "src/**/*.ts"
-  - "src/**/*.tsx"
-  - "src/**/*.js"
-  - "src/**/*.jsx"
 ---
 
-# Error Handling
+# 错误处理
 
-Failures are part of the contract. Handle them deliberately; make them visible to the user and to your tooling (see `observability.md`).
+失败是契约的一部分。有意识地处理它们；让它们对用户和工具可见（见 `observability.md`）。
 
-## Categorize first
+## 先分类
 
-- **Expected** — validation failures, 4xx, "not found", offline. Handle inline with a clear, actionable user message and a path forward (retry, fix input).
-- **Unexpected** — bugs, 5xx, broken invariants. Catch at a boundary, show a generic fallback, and report it. Don't pretend it was expected.
+- **预期内** — 校验失败、4xx、"未找到"、离线。内联处理，给出清晰、可操作的用户提示和前进路径（重试、修正输入）。
+- **预期外** — 程序错误、5xx、损坏的不变量。在边界处捕获，显示通用降级提示，并上报。不要假装它是预期内的。
 
-## Never swallow
+## 绝不吞没
 
-- No empty `catch {}`. Every catch either handles the error, rethrows it, or reports it — never silences it.
-- Don't surface raw error text, stack traces, or internal details to users (poor UX and an info leak — see `security.md`). Log the detail; show the human a sentence.
+- 无空的 `catch {}`。每个 catch 要么处理错误、要么重新抛出、要么上报 — 绝不使其静默。
+- 不将原始错误文本、堆栈跟踪或内部细节展示给用户（糟糕的 UX 且属于信息泄露 — 见 `security.md`）。记录细节；向用户展示一句人可读的说明。
 
-## Boundaries
+## 边界
 
-- Wrap routed views / risky subtrees in an error boundary using `onErrorCaptured` (or a small `ErrorBoundary` component) that renders a fallback instead of blanking the screen. Promote it to a shared overlay/primitive if reused (see `architecture.md`).
-- `onErrorCaptured` catches render and lifecycle errors of descendants — **not** errors inside async callbacks or promises. Handle those where they happen.
+- 将路由视图 / 有风险的子树包裹在错误边界中，使用 `onErrorCaptured`（或一个小型 `ErrorBoundary` 组件），渲染降级内容而非空白屏幕。如果被复用则提升为共享遮罩/基元（见 `architecture.md`）。
+- `onErrorCaptured` 捕获后代组件的渲染和生命周期错误 — **不**捕获异步回调或 promise 中的错误。在哪里发生就在哪里处理。
 
-## Async
+## 异步
 
-- Every `await`/promise that can reject is wrapped (`try/catch` or `.catch`). For expected failures, prefer returning a typed result (a discriminated union / `Result`) over throwing.
-- Set last-resort nets: `app.config.errorHandler` and `window.addEventListener('unhandledrejection', …)` → report, don't just log. These are a safety net, not the primary strategy.
+- 每个可能 reject 的 `await`/promise 都被包裹（`try/catch` 或 `.catch`）。对于预期内的失败，优先返回带类型的结果（可区分联合类型 / `Result`）而非抛出。
+- 设置最后的兜底网：`app.config.errorHandler` 和 `window.addEventListener('unhandledrejection', …)` → 上报，而不只是记录。这些是安全网，而非主要策略。
 
 ## TypeScript
 
-- `catch (e)` is `unknown` — narrow (`instanceof Error`, a type guard) before reading `.message`. Never type it `any`.
+- `catch (e)` 是 `unknown` — 读取 `.message` 前先缩小类型（`instanceof Error`、类型守卫）。绝不将其类型为 `any`。
 
-## User experience
+## 用户体验
 
-- Preserve user input on failure (don't clear the form). Offer retry for transient errors. Field-level vs form-level error placement follows `forms.md`.
+- 失败时保留用户输入（不要清空表单）。对临时错误提供重试。字段级 vs 表单级错误放置遵循 `forms.md`。
 
-## Verify
+## 验证
 
-- New async paths handle rejection; no empty catches introduced.
-- Failure states are reachable and rendered (test the error branch, not just success).
+- 新的异步路径处理了 rejection；未引入空 catch。
+- 失败状态可触达并可渲染（测试了错误分支，不仅仅是成功）。

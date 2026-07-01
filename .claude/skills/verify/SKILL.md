@@ -1,28 +1,28 @@
 ---
 name: verify
-description: Run the quality gate and confirm a change actually meets its goal before commit — lint, tests, typecheck, plus a rules sanity pass. Use to close out any task ("make sure it works") rather than stopping at "should work".
+description: 运行质量门禁并确认变更确实达成了目标再提交 — lint、test、typecheck，加上规则合规性检查。用于收尾任何任务（"确保它能用"），而非停留在"应该能用"。
 ---
 
-# Verify
+# 验证
 
-Turn "should work" into "verified". The quality gate is the floor (`CLAUDE.md`); don't stop until it passes (see `principles.md`).
+将"应该能用"变为"已验证"。质量门禁是底线（`CLAUDE.md`）；没有通过就不算完成（参考 `principles.md`）。
 
-## 1. Run the gate
+## 1. 运行门禁
 
-- `<pm> run lint && <pm> run test` — and `<pm> run typecheck` in TS projects. All must pass; a failing gate blocks the commit.
-- If a script name differs in this repo, use the actual one (`package.json`).
+- `<pm> run lint && <pm> run test` — TS 项目加上 `<pm> run typecheck`。全部必须通过；失败的门禁阻止提交。
+- 如果此仓库的脚本名称不同，使用实际名称（`package.json`）。
 
-## 2. Confirm the goal, not just green
+## 2. 确认目标达成，而不只是通过
 
-- Restate the task as a concrete, checkable outcome and confirm the change meets it — new behavior is exercised by a test; a bug fix has a regression test that **failed before** and passes now (see `testing.md`).
-- Check the diff for scope creep: only what the task required changed (see `principles.md` → surgical changes). No stray `console.log`, debug code, or commented-out blocks.
+- 将任务重述为具体的、可检查的结果，并确认变更满足该结果 — 新行为有测试覆盖；bug 修复有一个**之前失败**、现在通过的回归测试（参考 `testing.md`）。
+- 检查 diff 是否有范围蔓延：只改了任务要求的内容（参考 `principles.md` → 精准变更）。没有散落的 `console.log`、调试代码或注释掉的代码块。
 
-## 3. Spot-check the relevant rules
+## 3. 抽查相关规则
 
-- New behavior: loading/error/empty states rendered, errors not swallowed (`data-fetching.md`, `error-handling.md`).
-- UI: keyboard-operable + labelled (`accessibility.md`); tokens not magic values (`styling.md`); no obvious XSS sink (`security.md`).
-- For a deeper pass, hand off to `/code-review`, `/a11y-audit`, `/perf-audit`, or `/security-audit`.
+- 新行为：渲染了加载/错误/空数据状态，错误未被吞没（`data-fetching.md`、`error-handling.md`）。
+- UI：键盘可操作 + 有标签（`accessibility.md`）；用 Token 而非魔数（`styling.md`）；无明显 XSS 风险点（`security.md`）。
+- 如需更深入检查，转交给 `/code-review`、`/a11y-audit`、`/perf-audit` 或 `/security-audit`。
 
-## 4. Report
+## 4. 报告
 
-- State plainly what passed and what (if anything) is still failing or skipped — show the failing output, don't paper over it. Only call it done when the gate is green and the goal is met.
+- 明确说明什么通过了、什么（如果有）仍失败或被跳过 — 展示失败的输出，不要掩饰。只有门禁通过且目标达成才算完成。

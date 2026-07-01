@@ -1,33 +1,29 @@
 ---
 paths:
   - "src/**/*.vue"
-  - "src/**/*.tsx"
-  - "src/**/*.jsx"
-  - "src/**/*.css"
   - "src/**/*.scss"
-  - "src/**/*.sass"
-  - "src/**/*.module.css"
+  - "src/**/*.css"
 ---
 
-# Styling
+# 样式
 
-Default approach: **Tailwind CSS 4** (CSS-first `@theme` tokens). The principles below hold for any styling system — if the project uses Sass/SCSS, CSS Modules, or scoped `<style>`, apply the equivalent mechanic from _Your styling approach_.
+默认方案：**Tailwind CSS 4**（CSS-first `@theme` 令牌）。以下原则适用于任何样式系统 — 如果项目使用 Sass/SCSS、CSS Modules 或 scoped `<style>`，应用等价机制。
 
-## Principles (any approach)
+## 原则（任何方案通用）
 
-- **Design tokens, not magic values** — reference semantic/named tokens (`surface`, `muted`, `brand`), never raw palette or off-scale numbers in markup.
-- **One source of truth** for color/spacing/type/radius tokens — change them in one place, not per-component.
-- Stick to the spacing/size/radius scale; no one-off values (a stray `13px`) without a documented reason. Don't mix raw hex with tokenized colors or ship near-duplicates that shadow an existing token.
-- **Extract repeated style patterns into a component** — reserve shared-style mechanisms for genuine primitives; don't build `@apply`/`@mixin`/`composes` soup.
-- **Mobile-first**: unprefixed base styles, layered up at larger breakpoints.
-- Reusable components respond to their **container** (`@container` queries), not the viewport; reserve viewport breakpoints (`sm: md: lg:`) for page-level layout.
-- Prefer `flex`/`grid` over absolute positioning for layout.
-- One dark-mode strategy (class or `prefers-color-scheme`), applied consistently — never inline both palettes.
-- Honor `prefers-reduced-motion` for all non-trivial animation.
-- No inline `style=""` for what your classes/stylesheet can express; reserve it for genuinely dynamic computed values — and never bind a raw user-supplied string to `:style` (CSS injection; see `security.md`).
+- **设计令牌，而非魔数** — 引用语义化/具名令牌（`surface`、`muted`、`brand`），绝不在标记中使用原始调色板或超出标准的数值。
+- **颜色/间距/字体/圆角令牌有唯一来源** — 在一个地方修改，而非每个组件修改。
+- 遵循间距/尺寸/圆角比例尺；无文档记录的情况下不使用一次性值（孤立的 `13px`）。不将原始十六进制颜色与令牌颜色混用，也不提交与已有令牌几乎重复的色值。
+- **提取重复样式模式为组件** — 将共享样式机制保留给真正的基元；不要构建 `@apply`/`@mixin`/`composes` 杂乱堆。
+- **移动优先**：无前缀的基础样式，在更大断点处递增叠加。
+- 可复用组件响应其**容器**（`@container` 查询），而非视口；视口断点（`sm: md: lg:`）保留给页面级布局。
+- 布局优先使用 `flex`/`grid`，而非绝对定位。
+- 一种暗色模式策略（class 或 `prefers-color-scheme`），一致应用 — 绝不内联两套调色板。
+- 对所有非平凡动画遵循 `prefers-reduced-motion`。
+- 无内联 `style=""` 用于你的 class/样式表能表达的内容；保留给真正的动态计算值 — 且绝不将原始用户输入绑定到 `:style`（CSS 注入；见 `security.md`）。
 
-## Your styling approach
+## 你的样式方案
 
-- **Tailwind 4 (default)** — tokens in `@theme { … }` in the CSS entry; semantic utilities (`bg-surface`, `text-muted`); responsive `sm: md: lg:`; `motion-reduce:`; reserve `@apply` for shared primitives.
-- **Sass/SCSS** — tokens as variables/maps (`$color-surface`, `$space-*`) in `variables.scss`/`_tokens.scss`, shared via `@use`; reuse via `@mixin`/`@include` or `%placeholder`/`@extend`; responsive via `@media (min-width …)`.
-- **CSS Modules / scoped `<style>`** — tokens as `:root { --color-surface; --space-* }` custom properties used via `var(--token)`; reuse via `composes` (Modules) or a shared component; reduced-motion via `@media (prefers-reduced-motion: reduce)`.
+- **Tailwind 4（默认）** — 令牌在 CSS 入口文件的 `@theme { … }` 中；语义化工具类（`bg-surface`、`text-muted`）；响应式 `sm: md: lg:`；`motion-reduce:`；`@apply` 保留给共享基元。
+- **Sass/SCSS** — 令牌为变量/map（`$color-surface`、`$space-*`）在 `variables.scss`/`_tokens.scss` 中，通过 `@use` 共享；复用通过 `@mixin`/`@include` 或 `%placeholder`/`@extend`；响应式通过 `@media (min-width …)`。
+- **CSS Modules / scoped `<style>`** — 令牌为 `:root { --color-surface; --space-* }` 自定义属性，通过 `var(--token)` 使用；复用通过 `composes`（Modules）或共享组件；减弱动画通过 `@media (prefers-reduced-motion: reduce)`。

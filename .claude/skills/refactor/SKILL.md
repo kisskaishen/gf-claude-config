@@ -1,18 +1,18 @@
 ---
 name: refactor
-description: Restructure existing frontend code without changing behavior — split an overgrown component, extract a composable, deduplicate, promote reusable units to shared/. Use for cleanup/structure work, not new features.
+description: 不改变行为的前提下重构前端代码 — 拆分臃肿的组件、提取 composable、去重、将可复用单元提升到 shared/。用于清理/结构调整工作，而非新功能。
 ---
 
-# Refactor
+# 重构
 
-Behavior stays identical. Tests are green before you start and at every step.
+行为保持不变。开始前和每一步后测试都保持绿色。
 
-1. **Pin behavior.** Run `<pm> run test` first — it must be green. If the area is uncovered, add **characterization tests** that capture current behavior before touching anything (the safety net for "no behavior change").
-2. **Name the pain & scope it.** One refactor theme per pass — no behavior changes smuggled in. State what's wrong (duplication, fat component, prop drilling, loose types) before editing.
-3. **Spot the split signals** (see `architecture.md` → Decomposition & reuse): ≥3 responsibilities in one component, prop/boolean explosion, template nesting >3 deep, `<script>` dwarfing `<template>`, or a repeated block. Size alone isn't a signal.
-4. **Pick the matching pattern** — extract a leaf component, extract a composable, slots-over-props, a compound set, a headless/styled split, or collapse per-feature overlay handling (focus-trap/Escape/scroll-lock) onto the shared overlay primitive. Choose by the signal, not by size — see `architecture.md` → Decomposition & reuse for which pattern fits which signal.
-5. **Promote on the rule of two.** First reuse can copy; the second caller earns extraction to `shared/` — but only once the unit is presentational, has a stable prop/emit/slot API, and earns its own name. One-off code stays local.
-6. **Move in small steps**, keeping the public API of components/composables stable (flag callers if it must change). Typecheck/lint/test between steps.
-7. **Verify** — `<pm> run lint && <pm> run test` (add `<pm> run typecheck` in TS projects). Confirm tests are still green and report what changed and why.
+1. **固定行为。** 首先运行 `<pm> run test` — 必须全部通过。如果该区域没有测试覆盖，在修改任何代码之前添加**特征测试**来捕获当前行为（"行为不变"的安全网）。
+2. **明确痛点并确定范围。** 一次重构只围绕一个主题 — 不夹带行为变更。编辑前说明哪里有问题（重复、组件臃肿、prop 层层传递、类型松散）。
+3. **识别拆分信号**（参考 `architecture.md` → 分解与复用）：一个组件 ≥3 个职责、prop/布尔爆炸、模板嵌套 >3 层、`<script>` 远超 `<template>`、或存在重复块。仅凭代码行数不是信号。
+4. **选择合适的模式** — 提取叶子组件、提取 composable、用插槽替代 prop、组合组件、无头/有样式分离、或将各功能模块中各自实现的遮罩层行为（焦点困住/Escape/滚动锁定）收归共享遮罩基元。按信号选择，而非按代码行数 — 参考 `architecture.md` → 分解与复用了解哪种模式适配哪种信号。
+5. **按"二次提取规则"提升。** 第一次复用可以复制；第二个调用方出现时提取到 `shared/` — 但前提是该单元是纯展示型的、有稳定的 prop/emit/slot API、并取得自己的名称。一次性代码留在本地。
+6. **小步推进**，保持组件/composable 的公共 API 稳定（如果必须变更则标记调用方）。每步之间进行 typecheck/lint/test。
+7. **验证** — `<pm> run lint && <pm> run test`（TS 项目加上 `<pm> run typecheck`）。确认测试仍全部通过，并报告变更内容和原因。
 
-> Deeper or pipeline-gated refactor? Delegate to the `refactoring-expert` agent (isolated, least-privilege). Use this skill for solo/ad-hoc cleanup.
+> 需要更深度的或门禁式的重构？委托给 `refactoring-expert` agent（隔离、最小权限）。本 skill 用于个人/临时清理。
