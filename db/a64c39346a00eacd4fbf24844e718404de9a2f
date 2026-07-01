@@ -1,0 +1,27 @@
+src/views/finance/components/CostTable.vue
+  s_8dd99d9bd27860::t_ac9f5354758f56 541
+src/views/order/batch.vue
+  s_8dd99d9bd27860::t_2abb6490a54302 540
+  s_8dd99d9bd27860::t_052bb2ba46fe12 539
+  s_8dd99d9bd27860::t_df32ae67b0f5a2 541-543
+src/views/finance/account.vue
+  s_8dd99d9bd27860::t_b1c46ca2a179ee 23,30
+src/views/finance/components/ClaimTable.vue
+  s_8dd99d9bd27860::t_e7e0fb6b2dd0f4 482
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "dba64c39346a00eacd4fbf24844e718404de9a2f",
+  "prompts": {},
+  "sessions": {
+    "s_8dd99d9bd27860": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2546a0d8-6eee-418c-a990-7bd02fb153e3",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
