@@ -4,13 +4,14 @@
       <!-- 正常订单表格 (orderStatus !== 999) -->
       <div class="order-content" v-if="searchForm.orderStatus !== 999">
         <TableLayout
-          v-model:searchFormModel="searchForm"
+          :searchFormModel="searchForm"
           v-model:currentPage="pagination.currentPage"
           v-model:pageSize="pagination.pageSize"
           :data="tableData"
           :total="pagination.total"
           :loading="loading"
           :searchConfig="{ cols: 4, rowNum: 1, operationCols: 2 }"
+          @update:searchFormModel="(val) => Object.assign(searchForm, val)"
           @search="fetchData"
           @reset="handleReset"
           @selection-change="handleSelectionChange"
@@ -148,16 +149,18 @@
                       )?.label || row.orderStatusName
                     "
                   />
-                  <div v-for="item in exceptionOrderStatusOptions">
+                  <template
+                    v-for="item in exceptionOrderStatusOptions"
+                    :key="item.value"
+                  >
                     <CommonTag
                       v-if="row.orderStatus === item.value"
-                      :key="item.value"
                       :bg-color="item.bgColor"
                       :text-color="item.textColor"
                       :count="item.label"
                       :active="row.orderStatus === item.value"
                     ></CommonTag>
-                  </div>
+                  </template>
                 </template>
                 <template v-else-if="item.prop === 'orderConsigneeVO.address1'">
                   <el-tooltip
@@ -245,13 +248,16 @@
       <!-- 异常订单表格 (orderStatus === 999) -->
       <div class="order-content order-content--exception" v-else>
         <TableLayout
-          v-model:searchFormModel="exceptionSearchForm"
+          :searchFormModel="exceptionSearchForm"
           v-model:currentPage="exceptionPagination.currentPage"
           v-model:pageSize="exceptionPagination.pageSize"
           :data="exceptionTableData"
           :total="exceptionPagination.total"
           :loading="exceptionLoading"
           :searchConfig="{ cols: 4, rowNum: 1 }"
+          @update:searchFormModel="
+            (val) => Object.assign(exceptionSearchForm, val)
+          "
           @search="fetchExceptionData"
           @reset="handleExceptionReset"
         >
@@ -447,25 +453,27 @@ watch(
 );
 
 // ===== 异常订单状态 =====
+const exceptionInitialState = {
+  consigneeCode: "",
+  consigneeCodeList: [] as string[],
+  orderNumber: "",
+  cusOrderNumList: [] as string[],
+  orderNumberList: [] as string[],
+  customerName: "",
+  customerNameSet: [] as string[],
+  pageNum: 0,
+  pageSize: 0,
+  orderTimeRange: ["", ""] as any,
+  queryEndTime: "",
+  queryStartTime: "",
+  referenceNoList: [] as string[],
+  unusualType: "",
+  userTimeZone: "",
+  waybillNoList: [] as string[]
+};
+
 const exceptionSearchForm: Record<string, any> = reactive(
-  cloneDeep({
-    consigneeCode: "",
-    consigneeCodeList: [],
-    orderNumber: "",
-    cusOrderNumList: [],
-    orderNumberList: [],
-    customerName: "",
-    customerNameSet: [],
-    pageNum: 0,
-    pageSize: 0,
-    orderTimeRange: ["", ""] as any,
-    queryEndTime: "",
-    queryStartTime: "",
-    referenceNoList: [],
-    unusualType: "",
-    userTimeZone: "",
-    waybillNoList: []
-  })
+  cloneDeep(exceptionInitialState)
 );
 
 const exceptionPagination = reactive({
@@ -657,8 +665,7 @@ const fetchExceptionData = () => {
 
 // 异常订单重置
 const handleExceptionReset = () => {
-  exceptionSearchForm.orderNumber = "";
-  exceptionSearchForm.orderNumberList = [];
+  Object.assign(exceptionSearchForm, cloneDeep(exceptionInitialState));
   setExceptionDefaultRange();
 };
 
@@ -968,7 +975,8 @@ const getAddress = (obj: any) => {
 };
 
 const handleResetForm = () => {
-  searchForm.orderNumber = "";
+  Object.assign(searchForm, cloneDeep(initialFormState));
+  setDefaultRange();
   if (sessionStorage.getItem("trackingNo")) {
     sessionStorage.removeItem("trackingNo");
   }
@@ -1241,7 +1249,7 @@ onActivated(() => {
   -webkit-line-clamp: 2;
   line-clamp: 2;
   line-height: 1.4;
-  word-break: break-word;
+  overflow-wrap: break-word;
   -webkit-box-orient: vertical;
 }
 </style>

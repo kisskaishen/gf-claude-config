@@ -298,9 +298,9 @@ import {
   downloadOrderTemplate,
   uploadOrder,
   getOrderImportResult,
-  downloadFailedOrderData
+  downloadFailedOrderData,
+  getProductStepInfo
 } from "@/api/order";
-import { getCustomerProducts } from "@/api/product";
 import SuccessDialog from "@/components/SuccessDialog/index.vue";
 
 import { useAppStore } from "@/store/app";
@@ -368,7 +368,7 @@ const fetchCustomerProducts = async () => {
     return;
   }
   try {
-    const res = await getCustomerProducts({
+    const res = await getProductStepInfo({
       country: country || "",
       customerId
     });
@@ -540,8 +540,11 @@ watch(
   () => currentLang.value,
   () => {
     if (formRef.value) {
+      const savedCustomerId = form.customerId;
       formRef.value.resetFields();
+      form.customerId = savedCustomerId;
     }
+    fetchCustomerProducts();
   }
 );
 

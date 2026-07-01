@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, watch } from "vue";
 import ClaimTable from "@/views/finance/components/ClaimTable.vue";
 import CostTable from "@/views/finance/components/CostTable.vue";
 import FlyToTaskCenter from "@/views/finance/components/FlyToTaskCenter/index.vue";
@@ -50,8 +50,10 @@ import PageContainer from "@/components/PageContainer/index.vue";
 import { useI18n } from "vue-i18n";
 import { ElMessage } from "element-plus";
 import { getCustomerSettleCycle } from "@/api/finance";
+import { useAppStore } from "@/store/app";
 
 const { t } = useI18n();
+const appStore = useAppStore();
 
 defineOptions({
   name: "AccountList"
@@ -81,6 +83,14 @@ const fetchCustomerSettleCycle = async () => {
 onMounted(() => {
   fetchCustomerSettleCycle();
 });
+
+/** 监听语言切换，重新获取客户结算周期 */
+watch(
+  () => appStore.lang,
+  () => {
+    fetchCustomerSettleCycle();
+  }
+);
 
 const handleSearchClaimBill = (claimBillNo: string) => {
   claimBillSearchNo.value = claimBillNo;

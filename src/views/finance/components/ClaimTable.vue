@@ -2,13 +2,14 @@
   <div>
     <div class="account-content">
       <TableLayout
-        v-model:searchFormModel="searchForm"
+        :searchFormModel="searchForm"
         v-model:currentPage="pagination.currentPage"
         v-model:pageSize="pagination.pageSize"
         :data="tableData"
         :total="pagination.total"
         :loading="loading"
         :searchConfig="{ cols: 3, rowNum: 1 }"
+        @update:searchFormModel="(val) => Object.assign(searchForm, val)"
         @search="fetchData"
         @reset="handleReset"
         @selection-change="handleSelectionChange"
@@ -245,6 +246,7 @@ import {
 import { useUserStore } from "@/store/user";
 import { useI18n } from "vue-i18n";
 import { useAppStore } from "@/store/app";
+import { cloneDeep } from "lodash-es";
 
 const userStore = useUserStore();
 
@@ -478,7 +480,9 @@ const getParams = () => {
   return params;
 };
 
-const handleResetForm = () => {};
+const handleResetForm = () => {
+  Object.assign(searchForm, cloneDeep(initialFormState));
+};
 
 const getListData = async () => {
   const params = getParams();
