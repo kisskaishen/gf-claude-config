@@ -393,7 +393,7 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, watch, computed } from "vue";
 import { spliceArray, commaToArr, columnWidth } from "@/utils/index";
-import { downloadFile } from "@/utils/download";
+
 import { Printer } from "@element-plus/icons-vue";
 import {
   getOrderList,
@@ -1016,12 +1016,12 @@ const handleView = (row: any) => {
 };
 
 const handlePrint = (row: any) => {
-  // 打印订单
+  // 打印订单 — 新标签页预览
   getOrderLabelUrl({
     waybillNo: row.waybillNo,
     customerId: row.customerId
   }).then((res) => {
-    downloadFile(res.url, row.waybillNo);
+    window.open(res.url, "_blank");
   });
 };
 
@@ -1109,7 +1109,7 @@ const handleBatchPrint = () => {
         url = res.url;
       }
 
-      downloadFile(url, t("web.gfuc.order_file"));
+      window.open(url, "_blank");
     })
     .catch(() => {
       printLoading.value = false;
