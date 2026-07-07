@@ -1,0 +1,1607 @@
+.claude/skills/pm-skill/anthropics-skills/.claude-plugin/marketplace.json
+  s_ce16155f98e967::t_e3c9712a0c968e 1-55
+.claude/skills/pm-skill/anthropics-skills/.gitignore
+  s_ce16155f98e967::t_fe2aa6503d8068 1-5
+.claude/skills/pm-skill/anthropics-skills/README.md
+  s_ce16155f98e967::t_7ca173da6523a1 1-96
+.claude/skills/pm-skill/anthropics-skills/THIRD_PARTY_NOTICES.md
+  s_ce16155f98e967::t_15bb1e7b2667df 1-405
+.claude/skills/pm-skill/anthropics-skills/skills/algorithmic-art/LICENSE.txt
+  s_ce16155f98e967::t_94bb3528ce3abc 1-202
+.claude/skills/pm-skill/anthropics-skills/skills/algorithmic-art/SKILL.md
+  s_ce16155f98e967::t_0449122cc2e2f8 1-405
+.claude/skills/pm-skill/anthropics-skills/skills/algorithmic-art/templates/generator_template.js
+  s_ce16155f98e967::t_930a65f0802c64 1-223
+.claude/skills/pm-skill/anthropics-skills/skills/algorithmic-art/templates/viewer.html
+  s_ce16155f98e967::t_2f2419cc4ba52e 1-599
+.claude/skills/pm-skill/anthropics-skills/skills/brand-guidelines/LICENSE.txt
+  s_ce16155f98e967::t_609950e223febf 1-202
+.claude/skills/pm-skill/anthropics-skills/skills/brand-guidelines/SKILL.md
+  s_ce16155f98e967::t_24f68110326bc3 1-73
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/LICENSE.txt
+  s_ce16155f98e967::t_c3d9e9dc383265 1-202
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/SKILL.md
+  s_ce16155f98e967::t_dde9cae4b84c87 1-130
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/ArsenalSC-OFL.txt
+  s_ce16155f98e967::t_819153e5e0ca41 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/BigShoulders-OFL.txt
+  s_ce16155f98e967::t_88719633ecbfaa 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/Boldonse-OFL.txt
+  s_ce16155f98e967::t_cb50ec0f347db3 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/BricolageGrotesque-OFL.txt
+  s_ce16155f98e967::t_a4260fca86f14a 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/CrimsonPro-OFL.txt
+  s_ce16155f98e967::t_3c47d6f339aa54 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/DMMono-OFL.txt
+  s_ce16155f98e967::t_9359dc7b09ecc6 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/EricaOne-OFL.txt
+  s_ce16155f98e967::t_e8a6b9c5e12c1d 1-94
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/GeistMono-OFL.txt
+  s_ce16155f98e967::t_23cccc90d7a3f1 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/Gloock-OFL.txt
+  s_ce16155f98e967::t_cfc90840e5c078 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/IBMPlexMono-OFL.txt
+  s_ce16155f98e967::t_c9b411d91a972a 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/InstrumentSans-OFL.txt
+  s_ce16155f98e967::t_5657f915db9c63 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/Italiana-OFL.txt
+  s_ce16155f98e967::t_930d76a7a0ecf0 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/JetBrainsMono-OFL.txt
+  s_ce16155f98e967::t_41408212c29ba6 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/Jura-OFL.txt
+  s_ce16155f98e967::t_766fc0c46ea2c6 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/LibreBaskerville-OFL.txt
+  s_ce16155f98e967::t_5e857848733fc5 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/Lora-OFL.txt
+  s_ce16155f98e967::t_b351dcc0836ff0 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/NationalPark-OFL.txt
+  s_ce16155f98e967::t_a5733def826d7f 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/NothingYouCouldDo-OFL.txt
+  s_ce16155f98e967::t_199ac5eb73fe61 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/Outfit-OFL.txt
+  s_ce16155f98e967::t_03261efcad82e4 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/PixelifySans-OFL.txt
+  s_ce16155f98e967::t_35f0b20c5f2f5c 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/PoiretOne-OFL.txt
+  s_ce16155f98e967::t_085f5b165443ec 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/RedHatMono-OFL.txt
+  s_ce16155f98e967::t_216ccf1d92bb75 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/Silkscreen-OFL.txt
+  s_ce16155f98e967::t_5eeb576192fa05 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/SmoochSans-OFL.txt
+  s_ce16155f98e967::t_fbc3d3cf9fc55b 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/Tektur-OFL.txt
+  s_ce16155f98e967::t_8c0fdb6146f31b 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/WorkSans-OFL.txt
+  s_ce16155f98e967::t_2c2da7322508d2 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/canvas-design/canvas-fonts/YoungSerif-OFL.txt
+  s_ce16155f98e967::t_d8bbd86351ff78 1-93
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/LICENSE.txt
+  s_ce16155f98e967::t_5628bc975a0c51 1-202
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/SKILL.md
+  s_ce16155f98e967::t_d60a3fa9b48a08 1-561
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/csharp/claude-api/README.md
+  s_ce16155f98e967::t_edcf22cc4ea3c0 1-361
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/csharp/claude-api/batches.md
+  s_ce16155f98e967::t_29fa714d25ed00 1-14
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/csharp/claude-api/files-api.md
+  s_ce16155f98e967::t_34ae0e56829ef9 1-23
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/csharp/claude-api/streaming.md
+  s_ce16155f98e967::t_fba05dd7fc2c18 1-28
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/csharp/claude-api/tool-use.md
+  s_ce16155f98e967::t_a5b442f74a3bc0 1-164
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/curl/examples.md
+  s_ce16155f98e967::t_630a5fc015d204 1-255
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/curl/managed-agents.md
+  s_ce16155f98e967::t_0af716d3508ea2 1-338
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/go/claude-api/README.md
+  s_ce16155f98e967::t_a748fa974a98df 1-185
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/go/claude-api/files-api.md
+  s_ce16155f98e967::t_85d1531a4d0e6a 1-21
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/go/claude-api/streaming.md
+  s_ce16155f98e967::t_b458b948acfdbf 1-43
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/go/claude-api/tool-use.md
+  s_ce16155f98e967::t_2a0768c0a9a42b 1-220
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/go/managed-agents/README.md
+  s_ce16155f98e967::t_a685a48d1073ae 1-563
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/java/claude-api/README.md
+  s_ce16155f98e967::t_d900146a295a91 1-238
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/java/claude-api/files-api.md
+  s_ce16155f98e967::t_1af73166c71fed 1-25
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/java/claude-api/streaming.md
+  s_ce16155f98e967::t_26ac51366e68b6 1-24
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/java/claude-api/tool-use.md
+  s_ce16155f98e967::t_840477c2ede515 1-228
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/java/managed-agents/README.md
+  s_ce16155f98e967::t_3f2f361ec84045 1-442
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/php/claude-api/README.md
+  s_ce16155f98e967::t_78f9ec949bbb96 1-173
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/php/claude-api/batches.md
+  s_ce16155f98e967::t_9a92570b0610d3 1-15
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/php/claude-api/files-api.md
+  s_ce16155f98e967::t_7032864ecb68c8 1-11
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/php/claude-api/streaming.md
+  s_ce16155f98e967::t_56936af83d8fdc 1-27
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/php/claude-api/tool-use.md
+  s_ce16155f98e967::t_076144f31f8775 1-253
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/php/managed-agents/README.md
+  s_ce16155f98e967::t_ad16ea4ed7988e 1-442
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/python/claude-api/README.md
+  s_ce16155f98e967::t_054d0f3709015d 1-564
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/python/claude-api/batches.md
+  s_ce16155f98e967::t_8f0e5e15c71455 1-198
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/python/claude-api/files-api.md
+  s_ce16155f98e967::t_ec3f62c99b8257 1-170
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/python/claude-api/streaming.md
+  s_ce16155f98e967::t_f84bbc443f7839 1-179
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/python/claude-api/tool-use.md
+  s_ce16155f98e967::t_8a3003ae635521 1-590
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/python/managed-agents/README.md
+  s_ce16155f98e967::t_0113bf77bdbebb 1-334
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/ruby/claude-api/README.md
+  s_ce16155f98e967::t_db4daa767c151a 1-133
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/ruby/claude-api/streaming.md
+  s_ce16155f98e967::t_87a5924d61052e 1-16
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/ruby/claude-api/tool-use.md
+  s_ce16155f98e967::t_d9ea1ee2b642a9 1-41
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/ruby/managed-agents/README.md
+  s_ce16155f98e967::t_f9cf97055097e6 1-393
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/agent-design.md
+  s_ce16155f98e967::t_9c7428687c8029 1-101
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/anthropic-cli.md
+  s_ce16155f98e967::t_34fd4470aeb641 1-246
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/claude-platform-on-aws.md
+  s_ce16155f98e967::t_c2f7ebece2abbd 1-59
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/error-codes.md
+  s_ce16155f98e967::t_f3d4b1c65f89d5 1-256
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/live-sources.md
+  s_ce16155f98e967::t_21b806b6b77427 1-143
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/managed-agents-api-reference.md
+  s_ce16155f98e967::t_8fbbcc7f7bae4c 1-422
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/managed-agents-client-patterns.md
+  s_ce16155f98e967::t_b07ae4ef03478b 1-211
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/managed-agents-core.md
+  s_ce16155f98e967::t_23ce9b9944126f 1-252
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/managed-agents-environments.md
+  s_ce16155f98e967::t_0dc0610be461a7 1-219
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/managed-agents-events.md
+  s_ce16155f98e967::t_8db8888a823db5 1-220
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/managed-agents-memory.md
+  s_ce16155f98e967::t_bc6a8801788a1a 1-197
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/managed-agents-multiagent.md
+  s_ce16155f98e967::t_6fa8abbe6a0d55 1-99
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/managed-agents-onboarding.md
+  s_ce16155f98e967::t_11b2ca39e0d568 1-82
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/managed-agents-outcomes.md
+  s_ce16155f98e967::t_54486ebf0956e9 1-106
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/managed-agents-overview.md
+  s_ce16155f98e967::t_ab582df8c76dde 1-71
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/managed-agents-scheduled-deployments.md
+  s_ce16155f98e967::t_85bb927a4fd2b5 1-144
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/managed-agents-self-hosted-sandboxes.md
+  s_ce16155f98e967::t_4c2054cae2899d 1-174
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/managed-agents-tools.md
+  s_ce16155f98e967::t_560a558e1bdfa2 1-358
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/managed-agents-webhooks.md
+  s_ce16155f98e967::t_53286ece11710c 1-110
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/model-migration.md
+  s_ce16155f98e967::t_c953ad97922281 1-1145
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/models.md
+  s_ce16155f98e967::t_4ea4b6306561fb 1-132
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/platform-availability.md
+  s_ce16155f98e967::t_f7bbe579cff512 1-96
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/prompt-caching.md
+  s_ce16155f98e967::t_2c8b2ff104b2f0 1-223
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/token-counting.md
+  s_ce16155f98e967::t_68cac4dc2e20c0 1-56
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/shared/tool-use-concepts.md
+  s_ce16155f98e967::t_7435ce18815443 1-444
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/typescript/claude-api/README.md
+  s_ce16155f98e967::t_bad4c05e88fa27 1-404
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/typescript/claude-api/batches.md
+  s_ce16155f98e967::t_73589aea3433cf 1-106
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/typescript/claude-api/files-api.md
+  s_ce16155f98e967::t_99e224fe8b5107 1-98
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/typescript/claude-api/streaming.md
+  s_ce16155f98e967::t_8743994b972560 1-178
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/typescript/claude-api/tool-use.md
+  s_ce16155f98e967::t_ced94d3776e0fd 1-548
+.claude/skills/pm-skill/anthropics-skills/skills/claude-api/typescript/managed-agents/README.md
+  s_ce16155f98e967::t_602045e53c2a5c 1-357
+.claude/skills/pm-skill/anthropics-skills/skills/doc-coauthoring/SKILL.md
+  s_ce16155f98e967::t_ab9e8630f339cb 1-375
+.claude/skills/pm-skill/anthropics-skills/skills/docx/LICENSE.txt
+  s_ce16155f98e967::t_4566f5f3b74197 1-30
+.claude/skills/pm-skill/anthropics-skills/skills/docx/SKILL.md
+  s_ce16155f98e967::t_995fefa8e0bf7e 1-590
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/__init__.py
+  s_ce16155f98e967::t_b5d1fb20b2b33c 1
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/accept_changes.py
+  s_ce16155f98e967::t_9242eec7c60b58 1-135
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/comment.py
+  s_ce16155f98e967::t_875d197c2a4633 1-318
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/helpers/merge_runs.py
+  s_ce16155f98e967::t_aebc3cadec2a5b 1-199
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/helpers/simplify_redlines.py
+  s_ce16155f98e967::t_a7010047ed7a5c 1-197
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/pack.py
+  s_ce16155f98e967::t_050c6f3ee9d722 1-159
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd
+  s_ce16155f98e967::t_0918f6068e2883 1-1499
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd
+  s_ce16155f98e967::t_8fe514dc071f38 1-146
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd
+  s_ce16155f98e967::t_7a8ed7905e3f88 1-1085
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd
+  s_ce16155f98e967::t_665e718bcc1756 1-11
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd
+  s_ce16155f98e967::t_459a316bac2677 1-3081
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd
+  s_ce16155f98e967::t_6ae675b3b2fa11 1-23
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd
+  s_ce16155f98e967::t_fc9d208ca12931 1-185
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd
+  s_ce16155f98e967::t_daa1dd6b615e8d 1-287
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd
+  s_ce16155f98e967::t_772dac86388bb9 1-1676
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd
+  s_ce16155f98e967::t_22d52c6d795a36 1-28
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd
+  s_ce16155f98e967::t_b23fb54d89b4b9 1-144
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd
+  s_ce16155f98e967::t_61c13359db78be 1-174
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd
+  s_ce16155f98e967::t_db364452d31588 1-25
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd
+  s_ce16155f98e967::t_7659595e67d62c 1-18
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd
+  s_ce16155f98e967::t_b9d089c7f5c2d3 1-59
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd
+  s_ce16155f98e967::t_82814580af6e0c 1-56
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd
+  s_ce16155f98e967::t_8ace9938edb146 1-195
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-math.xsd
+  s_ce16155f98e967::t_98021031286c8d 1-582
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd
+  s_ce16155f98e967::t_a2a79f27450906 1-25
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/sml.xsd
+  s_ce16155f98e967::t_0c936aa88cfe45 1-4439
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-main.xsd
+  s_ce16155f98e967::t_76d1145073de23 1-570
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd
+  s_ce16155f98e967::t_d5892e87ba15eb 1-509
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd
+  s_ce16155f98e967::t_0ffe93d567c9f7 1-12
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd
+  s_ce16155f98e967::t_46248e0452d460 1-108
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd
+  s_ce16155f98e967::t_7459b500645a62 1-96
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/wml.xsd
+  s_ce16155f98e967::t_5fe1475cee2b4f 1-3646
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ISO-IEC29500-4_2016/xml.xsd
+  s_ce16155f98e967::t_aee9c29906387a 1-116
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ecma/fouth-edition/opc-contentTypes.xsd
+  s_ce16155f98e967::t_300c6df71bcf63 1-42
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ecma/fouth-edition/opc-coreProperties.xsd
+  s_ce16155f98e967::t_44b7c21c0ccdfd 1-50
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ecma/fouth-edition/opc-digSig.xsd
+  s_ce16155f98e967::t_25152ef30a3d7b 1-49
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/ecma/fouth-edition/opc-relationships.xsd
+  s_ce16155f98e967::t_93bfa2ff7c709d 1-33
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/mce/mc.xsd
+  s_ce16155f98e967::t_10c8985630a83d 1-75
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/microsoft/wml-2010.xsd
+  s_ce16155f98e967::t_8af76aee47a203 1-560
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/microsoft/wml-2012.xsd
+  s_ce16155f98e967::t_73ef1442c50a14 1-67
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/microsoft/wml-2018.xsd
+  s_ce16155f98e967::t_a33fcd6b005903 1-14
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/microsoft/wml-cex-2018.xsd
+  s_ce16155f98e967::t_34fd559e9c9cd7 1-20
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/microsoft/wml-cid-2016.xsd
+  s_ce16155f98e967::t_d3d2066048dcbd 1-13
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/microsoft/wml-sdtdatahash-2020.xsd
+  s_ce16155f98e967::t_6d28c8c9e93981 1-4
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/schemas/microsoft/wml-symex-2015.xsd
+  s_ce16155f98e967::t_ee025e535813d2 1-8
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/soffice.py
+  s_ce16155f98e967::t_3fedb3191c3da9 1-183
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/unpack.py
+  s_ce16155f98e967::t_ca388d0b5bc980 1-132
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/validate.py
+  s_ce16155f98e967::t_2db1c52ea45ed6 1-111
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/validators/__init__.py
+  s_ce16155f98e967::t_1bb3504349331a 1-15
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/validators/base.py
+  s_ce16155f98e967::t_4efe5cd5b0a819 1-847
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/validators/docx.py
+  s_ce16155f98e967::t_42456a46c1cc86 1-446
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/validators/pptx.py
+  s_ce16155f98e967::t_71ffe6f78a00e4 1-275
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/office/validators/redlining.py
+  s_ce16155f98e967::t_1498616538bd78 1-247
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/templates/comments.xml
+  s_ce16155f98e967::t_1f61d52f405797 1-3
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/templates/commentsExtended.xml
+  s_ce16155f98e967::t_609e7c0b5f04f1 1-3
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/templates/commentsExtensible.xml
+  s_ce16155f98e967::t_11c6cb1a46c462 1-3
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/templates/commentsIds.xml
+  s_ce16155f98e967::t_471e4288e6f551 1-3
+.claude/skills/pm-skill/anthropics-skills/skills/docx/scripts/templates/people.xml
+  s_ce16155f98e967::t_c66e01396c09c4 1-3
+.claude/skills/pm-skill/anthropics-skills/skills/frontend-design/LICENSE.txt
+  s_ce16155f98e967::t_3b802b8241d0bd 1-177
+.claude/skills/pm-skill/anthropics-skills/skills/frontend-design/SKILL.md
+  s_ce16155f98e967::t_52d7ea342f1eb2 1-55
+.claude/skills/pm-skill/anthropics-skills/skills/internal-comms/LICENSE.txt
+  s_ce16155f98e967::t_f994d77b54bb95 1-202
+.claude/skills/pm-skill/anthropics-skills/skills/internal-comms/SKILL.md
+  s_ce16155f98e967::t_0b979934da4ace 1-32
+.claude/skills/pm-skill/anthropics-skills/skills/internal-comms/examples/3p-updates.md
+  s_ce16155f98e967::t_20551be9eed61d 1-47
+.claude/skills/pm-skill/anthropics-skills/skills/internal-comms/examples/company-newsletter.md
+  s_ce16155f98e967::t_4f8ab67b42bdef 1-65
+.claude/skills/pm-skill/anthropics-skills/skills/internal-comms/examples/faq-answers.md
+  s_ce16155f98e967::t_b937dfdb7f27db 1-30
+.claude/skills/pm-skill/anthropics-skills/skills/internal-comms/examples/general-comms.md
+  s_ce16155f98e967::t_77f2ae72e64500 1-16
+.claude/skills/pm-skill/anthropics-skills/skills/mcp-builder/LICENSE.txt
+  s_ce16155f98e967::t_994d6fa4312097 1-202
+.claude/skills/pm-skill/anthropics-skills/skills/mcp-builder/SKILL.md
+  s_ce16155f98e967::t_99ecee06ce3f0c 1-236
+.claude/skills/pm-skill/anthropics-skills/skills/mcp-builder/reference/evaluation.md
+  s_ce16155f98e967::t_00a417e2c6b91f 1-602
+.claude/skills/pm-skill/anthropics-skills/skills/mcp-builder/reference/mcp_best_practices.md
+  s_ce16155f98e967::t_9aed7c96e2f484 1-249
+.claude/skills/pm-skill/anthropics-skills/skills/mcp-builder/reference/node_mcp_server.md
+  s_ce16155f98e967::t_a58b1b4c6600bf 1-970
+.claude/skills/pm-skill/anthropics-skills/skills/mcp-builder/reference/python_mcp_server.md
+  s_ce16155f98e967::t_692fa76dc3bd8e 1-719
+.claude/skills/pm-skill/anthropics-skills/skills/mcp-builder/scripts/connections.py
+  s_ce16155f98e967::t_10a97d20dfab58 1-151
+.claude/skills/pm-skill/anthropics-skills/skills/mcp-builder/scripts/evaluation.py
+  s_ce16155f98e967::t_dba15605cd2e50 1-373
+.claude/skills/pm-skill/anthropics-skills/skills/mcp-builder/scripts/example_evaluation.xml
+  s_ce16155f98e967::t_1cd1c4129ab712 1-22
+.claude/skills/pm-skill/anthropics-skills/skills/mcp-builder/scripts/requirements.txt
+  s_ce16155f98e967::t_765ec27e7aee34 1-2
+.claude/skills/pm-skill/anthropics-skills/skills/pdf/LICENSE.txt
+  s_ce16155f98e967::t_614031e402f75f 1-30
+.claude/skills/pm-skill/anthropics-skills/skills/pdf/SKILL.md
+  s_ce16155f98e967::t_1d150a82f88c35 1-314
+.claude/skills/pm-skill/anthropics-skills/skills/pdf/forms.md
+  s_ce16155f98e967::t_148a62595c55d5 1-294
+.claude/skills/pm-skill/anthropics-skills/skills/pdf/reference.md
+  s_ce16155f98e967::t_e18f9441e3da89 1-612
+.claude/skills/pm-skill/anthropics-skills/skills/pdf/scripts/check_bounding_boxes.py
+  s_ce16155f98e967::t_45810f0f5cb783 1-65
+.claude/skills/pm-skill/anthropics-skills/skills/pdf/scripts/check_fillable_fields.py
+  s_ce16155f98e967::t_346f1dac4efa22 1-11
+.claude/skills/pm-skill/anthropics-skills/skills/pdf/scripts/convert_pdf_to_images.py
+  s_ce16155f98e967::t_b2f25835cf3eaf 1-33
+.claude/skills/pm-skill/anthropics-skills/skills/pdf/scripts/create_validation_image.py
+  s_ce16155f98e967::t_7f55d8f8c0c4a2 1-37
+.claude/skills/pm-skill/anthropics-skills/skills/pdf/scripts/extract_form_field_info.py
+  s_ce16155f98e967::t_a9fb42a70875a2 1-122
+.claude/skills/pm-skill/anthropics-skills/skills/pdf/scripts/extract_form_structure.py
+  s_ce16155f98e967::t_efc254b3232d97 1-115
+.claude/skills/pm-skill/anthropics-skills/skills/pdf/scripts/fill_fillable_fields.py
+  s_ce16155f98e967::t_50b2b9681a155c 1-98
+.claude/skills/pm-skill/anthropics-skills/skills/pdf/scripts/fill_pdf_form_with_annotations.py
+  s_ce16155f98e967::t_3514b4b1c045f6 1-107
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/LICENSE.txt
+  s_ce16155f98e967::t_91cfdf1a0077c8 1-30
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/SKILL.md
+  s_ce16155f98e967::t_738d4c10889f31 1-232
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/editing.md
+  s_ce16155f98e967::t_65f755a5497c27 1-205
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/pptxgenjs.md
+  s_ce16155f98e967::t_d6cd8891eb8893 1-420
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/add_slide.py
+  s_ce16155f98e967::t_2943029912e17e 1-195
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/clean.py
+  s_ce16155f98e967::t_d4c181d910a74c 1-286
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/helpers/merge_runs.py
+  s_ce16155f98e967::t_665b9d1af2cbbd 1-199
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/helpers/simplify_redlines.py
+  s_ce16155f98e967::t_4e577d505f8a40 1-197
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/pack.py
+  s_ce16155f98e967::t_1827563bf4c5e3 1-159
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd
+  s_ce16155f98e967::t_a193f6e7a63f3c 1-1499
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd
+  s_ce16155f98e967::t_150a11d2b91e91 1-146
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd
+  s_ce16155f98e967::t_71591ee3b0c5da 1-1085
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd
+  s_ce16155f98e967::t_55f1fd27dbeb04 1-11
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd
+  s_ce16155f98e967::t_4c0545b0ac4a0c 1-3081
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd
+  s_ce16155f98e967::t_e1cabf349ec1e9 1-23
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd
+  s_ce16155f98e967::t_46a723fa2747eb 1-185
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd
+  s_ce16155f98e967::t_79f8898c950799 1-287
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd
+  s_ce16155f98e967::t_92ba6d4fbcecc6 1-1676
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd
+  s_ce16155f98e967::t_159c91f03657e5 1-28
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd
+  s_ce16155f98e967::t_8e4d7a10c809af 1-144
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd
+  s_ce16155f98e967::t_8ae6c05ae7aec6 1-174
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd
+  s_ce16155f98e967::t_8e0b3aa4acdc66 1-25
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd
+  s_ce16155f98e967::t_e8d5fc1c44720d 1-18
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd
+  s_ce16155f98e967::t_8baead7c670551 1-59
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd
+  s_ce16155f98e967::t_b94a6128746c4f 1-56
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd
+  s_ce16155f98e967::t_a05a13345e409d 1-195
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-math.xsd
+  s_ce16155f98e967::t_5844684d8abb72 1-582
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd
+  s_ce16155f98e967::t_385527c3742ecf 1-25
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/sml.xsd
+  s_ce16155f98e967::t_5064f63579ff2d 1-4439
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-main.xsd
+  s_ce16155f98e967::t_eb742322ad9698 1-570
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd
+  s_ce16155f98e967::t_b6327de9d10def 1-509
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd
+  s_ce16155f98e967::t_7b6a8534e1a02c 1-12
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd
+  s_ce16155f98e967::t_04ea1eab98d0ab 1-108
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd
+  s_ce16155f98e967::t_c99a07dbc0f5e8 1-96
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/wml.xsd
+  s_ce16155f98e967::t_ac4dfdcfec431b 1-3646
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ISO-IEC29500-4_2016/xml.xsd
+  s_ce16155f98e967::t_b8aa741f9b9ee9 1-116
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ecma/fouth-edition/opc-contentTypes.xsd
+  s_ce16155f98e967::t_ae781a523c9ead 1-42
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ecma/fouth-edition/opc-coreProperties.xsd
+  s_ce16155f98e967::t_086098e7190bfa 1-50
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ecma/fouth-edition/opc-digSig.xsd
+  s_ce16155f98e967::t_6b74ae027abb1a 1-49
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/ecma/fouth-edition/opc-relationships.xsd
+  s_ce16155f98e967::t_b46426221ccaad 1-33
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/mce/mc.xsd
+  s_ce16155f98e967::t_5bc5fbc0e9a00c 1-75
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/microsoft/wml-2010.xsd
+  s_ce16155f98e967::t_b825939e94d51a 1-560
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/microsoft/wml-2012.xsd
+  s_ce16155f98e967::t_6bfd4a4f63fdfa 1-67
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/microsoft/wml-2018.xsd
+  s_ce16155f98e967::t_eb17cfb234fb1d 1-14
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/microsoft/wml-cex-2018.xsd
+  s_ce16155f98e967::t_c5c52d84394817 1-20
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/microsoft/wml-cid-2016.xsd
+  s_ce16155f98e967::t_7f2b41f43fe74c 1-13
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/microsoft/wml-sdtdatahash-2020.xsd
+  s_ce16155f98e967::t_828862fa63db91 1-4
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/schemas/microsoft/wml-symex-2015.xsd
+  s_ce16155f98e967::t_6f37bd7259d954 1-8
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/soffice.py
+  s_ce16155f98e967::t_66fbc475c65fad 1-183
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/unpack.py
+  s_ce16155f98e967::t_2346c2f7a8919a 1-132
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/validate.py
+  s_ce16155f98e967::t_3edb479512f8fc 1-111
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/validators/__init__.py
+  s_ce16155f98e967::t_ea03faba837eb2 1-15
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/validators/base.py
+  s_ce16155f98e967::t_2dc08dd64f3da7 1-847
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/validators/docx.py
+  s_ce16155f98e967::t_ef713bdd73f303 1-446
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/validators/pptx.py
+  s_ce16155f98e967::t_bd40d03a596782 1-275
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/office/validators/redlining.py
+  s_ce16155f98e967::t_bd616e32e68f0c 1-247
+.claude/skills/pm-skill/anthropics-skills/skills/pptx/scripts/thumbnail.py
+  s_ce16155f98e967::t_fb42d876a3151f 1-289
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/LICENSE.txt
+  s_ce16155f98e967::t_ae8ea3d16e2ced 1-202
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/SKILL.md
+  s_ce16155f98e967::t_0cb5fdbdc18e16 1-485
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/agents/analyzer.md
+  s_ce16155f98e967::t_c08d201743b50a 1-274
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/agents/comparator.md
+  s_ce16155f98e967::t_4dbe934decb286 1-202
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/agents/grader.md
+  s_ce16155f98e967::t_43668944949c27 1-223
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/assets/eval_review.html
+  s_ce16155f98e967::t_a0769bd714f794 1-146
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/eval-viewer/generate_review.py
+  s_ce16155f98e967::t_81e9b15541d785 1-471
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/eval-viewer/viewer.html
+  s_ce16155f98e967::t_b918af5ba4d468 1-1325
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/references/schemas.md
+  s_ce16155f98e967::t_264ec500e165b2 1-430
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/scripts/aggregate_benchmark.py
+  s_ce16155f98e967::t_af0b9934f62777 1-401
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/scripts/generate_report.py
+  s_ce16155f98e967::t_d57f2916ac6f83 1-326
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/scripts/improve_description.py
+  s_ce16155f98e967::t_a267774466286e 1-247
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/scripts/package_skill.py
+  s_ce16155f98e967::t_5cc093d2f3147d 1-136
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/scripts/quick_validate.py
+  s_ce16155f98e967::t_d0e7f058a21062 1-103
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/scripts/run_eval.py
+  s_ce16155f98e967::t_216c6dadaea8d8 1-310
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/scripts/run_loop.py
+  s_ce16155f98e967::t_aa24d5d53629ac 1-328
+.claude/skills/pm-skill/anthropics-skills/skills/skill-creator/scripts/utils.py
+  s_ce16155f98e967::t_6a76537eee0aca 1-47
+.claude/skills/pm-skill/anthropics-skills/skills/slack-gif-creator/LICENSE.txt
+  s_ce16155f98e967::t_3ea6ffa9e87a96 1-202
+.claude/skills/pm-skill/anthropics-skills/skills/slack-gif-creator/SKILL.md
+  s_ce16155f98e967::t_962124bb49e1d8 1-254
+.claude/skills/pm-skill/anthropics-skills/skills/slack-gif-creator/core/easing.py
+  s_ce16155f98e967::t_d35579ce89e924 1-234
+.claude/skills/pm-skill/anthropics-skills/skills/slack-gif-creator/core/frame_composer.py
+  s_ce16155f98e967::t_6c286ab3d81b6b 1-176
+.claude/skills/pm-skill/anthropics-skills/skills/slack-gif-creator/core/gif_builder.py
+  s_ce16155f98e967::t_15c6a36a97987c 1-269
+.claude/skills/pm-skill/anthropics-skills/skills/slack-gif-creator/core/validators.py
+  s_ce16155f98e967::t_c26095d18f8c75 1-136
+.claude/skills/pm-skill/anthropics-skills/skills/slack-gif-creator/requirements.txt
+  s_ce16155f98e967::t_880fffdb388442 1-4
+.claude/skills/pm-skill/anthropics-skills/skills/theme-factory/LICENSE.txt
+  s_ce16155f98e967::t_71c072044095de 1-202
+.claude/skills/pm-skill/anthropics-skills/skills/theme-factory/SKILL.md
+  s_ce16155f98e967::t_c9e079bea90bee 1-59
+.claude/skills/pm-skill/anthropics-skills/skills/theme-factory/themes/arctic-frost.md
+  s_ce16155f98e967::t_436f1c6820748d 1-19
+.claude/skills/pm-skill/anthropics-skills/skills/theme-factory/themes/botanical-garden.md
+  s_ce16155f98e967::t_f652b23f2570ed 1-19
+.claude/skills/pm-skill/anthropics-skills/skills/theme-factory/themes/desert-rose.md
+  s_ce16155f98e967::t_2efc43fbebd778 1-19
+.claude/skills/pm-skill/anthropics-skills/skills/theme-factory/themes/forest-canopy.md
+  s_ce16155f98e967::t_34fa7bf8810237 1-19
+.claude/skills/pm-skill/anthropics-skills/skills/theme-factory/themes/golden-hour.md
+  s_ce16155f98e967::t_a71889f2d262c0 1-19
+.claude/skills/pm-skill/anthropics-skills/skills/theme-factory/themes/midnight-galaxy.md
+  s_ce16155f98e967::t_e656be75045bff 1-19
+.claude/skills/pm-skill/anthropics-skills/skills/theme-factory/themes/modern-minimalist.md
+  s_ce16155f98e967::t_ff31c253e2d904 1-19
+.claude/skills/pm-skill/anthropics-skills/skills/theme-factory/themes/ocean-depths.md
+  s_ce16155f98e967::t_4b003756a10fbb 1-19
+.claude/skills/pm-skill/anthropics-skills/skills/theme-factory/themes/sunset-boulevard.md
+  s_ce16155f98e967::t_8963be7cd2e07d 1-19
+.claude/skills/pm-skill/anthropics-skills/skills/theme-factory/themes/tech-innovation.md
+  s_ce16155f98e967::t_8103489c16aa8f 1-19
+.claude/skills/pm-skill/anthropics-skills/skills/web-artifacts-builder/LICENSE.txt
+  s_ce16155f98e967::t_f233fe2e1f6c8c 1-202
+.claude/skills/pm-skill/anthropics-skills/skills/web-artifacts-builder/SKILL.md
+  s_ce16155f98e967::t_9c81fb424a2826 1-74
+.claude/skills/pm-skill/anthropics-skills/skills/web-artifacts-builder/scripts/bundle-artifact.sh
+  s_ce16155f98e967::t_55547c5a581e21 1-54
+.claude/skills/pm-skill/anthropics-skills/skills/web-artifacts-builder/scripts/init-artifact.sh
+  s_ce16155f98e967::t_2f9fac0802e4e5 1-322
+.claude/skills/pm-skill/anthropics-skills/skills/webapp-testing/LICENSE.txt
+  s_ce16155f98e967::t_4a2ea272a2e053 1-202
+.claude/skills/pm-skill/anthropics-skills/skills/webapp-testing/SKILL.md
+  s_ce16155f98e967::t_1632bf29e4e5ec 1-96
+.claude/skills/pm-skill/anthropics-skills/skills/webapp-testing/examples/console_logging.py
+  s_ce16155f98e967::t_5be393c999b038 1-35
+.claude/skills/pm-skill/anthropics-skills/skills/webapp-testing/examples/element_discovery.py
+  s_ce16155f98e967::t_016ba895dfe6c5 1-40
+.claude/skills/pm-skill/anthropics-skills/skills/webapp-testing/examples/static_html_automation.py
+  s_ce16155f98e967::t_6e400fcedaa06e 1-33
+.claude/skills/pm-skill/anthropics-skills/skills/webapp-testing/scripts/with_server.py
+  s_ce16155f98e967::t_481000361d4871 1-106
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/LICENSE.txt
+  s_ce16155f98e967::t_f5e18ea3ffe093 1-30
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/SKILL.md
+  s_ce16155f98e967::t_c578abc4bef2da 1-292
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/helpers/merge_runs.py
+  s_ce16155f98e967::t_51fe1a098392cb 1-199
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/helpers/simplify_redlines.py
+  s_ce16155f98e967::t_b305c880554d1a 1-197
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/pack.py
+  s_ce16155f98e967::t_de9df26f72e7c8 1-159
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd
+  s_ce16155f98e967::t_ff5cb38febcebf 1-1499
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd
+  s_ce16155f98e967::t_04e717f7284c65 1-146
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd
+  s_ce16155f98e967::t_d5375766d6c7c8 1-1085
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd
+  s_ce16155f98e967::t_a719f42a3f9d58 1-11
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd
+  s_ce16155f98e967::t_298bad2aaea495 1-3081
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd
+  s_ce16155f98e967::t_eadc265fc78000 1-23
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd
+  s_ce16155f98e967::t_c550fc4009559e 1-185
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd
+  s_ce16155f98e967::t_4ada74fe5bfccd 1-287
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd
+  s_ce16155f98e967::t_143cdfad1a5eef 1-1676
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd
+  s_ce16155f98e967::t_37a0f34f67e666 1-28
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd
+  s_ce16155f98e967::t_d2f3074331de18 1-144
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd
+  s_ce16155f98e967::t_207266a1c040d8 1-174
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd
+  s_ce16155f98e967::t_e03ab3649b0a10 1-25
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd
+  s_ce16155f98e967::t_764c2c9cce5d58 1-18
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd
+  s_ce16155f98e967::t_b1465df18f9812 1-59
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd
+  s_ce16155f98e967::t_0dc6e63a61de64 1-56
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd
+  s_ce16155f98e967::t_3f9159fa83211c 1-195
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-math.xsd
+  s_ce16155f98e967::t_3c59212aed264b 1-582
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd
+  s_ce16155f98e967::t_b98f83f29a3188 1-25
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/sml.xsd
+  s_ce16155f98e967::t_6b7159478dc022 1-4439
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-main.xsd
+  s_ce16155f98e967::t_1a09db1f6a837f 1-570
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd
+  s_ce16155f98e967::t_45672e02778ee7 1-509
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd
+  s_ce16155f98e967::t_40101f97cc44d6 1-12
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd
+  s_ce16155f98e967::t_49c3ab9276850f 1-108
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd
+  s_ce16155f98e967::t_6ac29cdfde9c01 1-96
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/wml.xsd
+  s_ce16155f98e967::t_b580a147dca580 1-3646
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ISO-IEC29500-4_2016/xml.xsd
+  s_ce16155f98e967::t_a769366201c5d8 1-116
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ecma/fouth-edition/opc-contentTypes.xsd
+  s_ce16155f98e967::t_f411c0ee6b54dd 1-42
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ecma/fouth-edition/opc-coreProperties.xsd
+  s_ce16155f98e967::t_01f0b2cc81dd3c 1-50
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ecma/fouth-edition/opc-digSig.xsd
+  s_ce16155f98e967::t_2e79d300cebc2a 1-49
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/ecma/fouth-edition/opc-relationships.xsd
+  s_ce16155f98e967::t_9351103f2ab38e 1-33
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/mce/mc.xsd
+  s_ce16155f98e967::t_9ade0fe9a65180 1-75
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/microsoft/wml-2010.xsd
+  s_ce16155f98e967::t_5e215bdceca815 1-560
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/microsoft/wml-2012.xsd
+  s_ce16155f98e967::t_f2ac0d492e4d97 1-67
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/microsoft/wml-2018.xsd
+  s_ce16155f98e967::t_7a83027a6c6009 1-14
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/microsoft/wml-cex-2018.xsd
+  s_ce16155f98e967::t_300515b7ba3c64 1-20
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/microsoft/wml-cid-2016.xsd
+  s_ce16155f98e967::t_ba02c18aed2825 1-13
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/microsoft/wml-sdtdatahash-2020.xsd
+  s_ce16155f98e967::t_4b4a41faec06ba 1-4
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/schemas/microsoft/wml-symex-2015.xsd
+  s_ce16155f98e967::t_2b2d1f9fa5f8bb 1-8
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/soffice.py
+  s_ce16155f98e967::t_afcd9b6e33e1a2 1-183
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/unpack.py
+  s_ce16155f98e967::t_ed82d8cae169ba 1-132
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/validate.py
+  s_ce16155f98e967::t_cd57bb38cbf6c2 1-111
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/validators/__init__.py
+  s_ce16155f98e967::t_7b30fd314e5d67 1-15
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/validators/base.py
+  s_ce16155f98e967::t_7b5afc72bbe25f 1-847
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/validators/docx.py
+  s_ce16155f98e967::t_77c8f600271aca 1-446
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/validators/pptx.py
+  s_ce16155f98e967::t_bd9e030f347b2c 1-275
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/office/validators/redlining.py
+  s_ce16155f98e967::t_388a8ca3092956 1-247
+.claude/skills/pm-skill/anthropics-skills/skills/xlsx/scripts/recalc.py
+  s_ce16155f98e967::t_61dba9fcd45541 1-184
+.claude/skills/pm-skill/anthropics-skills/spec/agent-skills-spec.md
+  s_ce16155f98e967::t_17f21c3d34fc94 1-3
+.claude/skills/pm-skill/anthropics-skills/template/SKILL.md
+  s_ce16155f98e967::t_5aa8661d293e40 1-6
+.claude/skills/pm-skill/prd-prototype/README.md
+  s_ce16155f98e967::t_baedd25823258d 1-176
+.claude/skills/pm-skill/prd-prototype/SKILL.md
+  s_ce16155f98e967::t_5682d0f8afb52c 1-446
+.claude/skills/pm-skill/prd-sprint/README.md
+  s_ce16155f98e967::t_079b38e14051ac 1-160
+.claude/skills/pm-skill/prd-sprint/SKILL.md
+  s_ce16155f98e967::t_b47b1c6216fde6 1-431
+.claude/skills/pm-skill/prd-sprint/references/prd-template.md
+  s_ce16155f98e967::t_6806e6c35b0be4 1-289
+.claude/skills/pm-skill/vercel-agent-skills/.github/workflows/react-best-practices-ci.yml
+  s_ce16155f98e967::t_7becf8886b87dc 1-33
+.claude/skills/pm-skill/vercel-agent-skills/.gitignore
+  s_ce16155f98e967::t_cc7fb3ba611156 1-3
+.claude/skills/pm-skill/vercel-agent-skills/AGENTS.md
+  s_ce16155f98e967::t_b6d5fd85fef772 1-108
+.claude/skills/pm-skill/vercel-agent-skills/CLAUDE.md
+  s_ce16155f98e967::t_f33e895093530e 1
+.claude/skills/pm-skill/vercel-agent-skills/README.md
+  s_ce16155f98e967::t_837311864dbe92 1-228
+.claude/skills/pm-skill/vercel-agent-skills/packages/react-best-practices-build/.gitignore
+  s_ce16155f98e967::t_8399fe60a13565 1
+.claude/skills/pm-skill/vercel-agent-skills/packages/react-best-practices-build/package.json
+  s_ce16155f98e967::t_c588de4923f032 1-31
+.claude/skills/pm-skill/vercel-agent-skills/packages/react-best-practices-build/pnpm-lock.yaml
+  s_ce16155f98e967::t_ac19bdda91bab8 1-331
+.claude/skills/pm-skill/vercel-agent-skills/packages/react-best-practices-build/src/build.ts
+  s_ce16155f98e967::t_eac0b1ce7b32c7 1-320
+.claude/skills/pm-skill/vercel-agent-skills/packages/react-best-practices-build/src/config.ts
+  s_ce16155f98e967::t_89bc833bb1c0f5 1-98
+.claude/skills/pm-skill/vercel-agent-skills/packages/react-best-practices-build/src/extract-tests.ts
+  s_ce16155f98e967::t_2d415d7bca5560 1-77
+.claude/skills/pm-skill/vercel-agent-skills/packages/react-best-practices-build/src/migrate.ts
+  s_ce16155f98e967::t_e8b3cebc4e1d18 1-177
+.claude/skills/pm-skill/vercel-agent-skills/packages/react-best-practices-build/src/parser.ts
+  s_ce16155f98e967::t_79675ee43cecb7 1-261
+.claude/skills/pm-skill/vercel-agent-skills/packages/react-best-practices-build/src/types.ts
+  s_ce16155f98e967::t_ee2a3d3409759b 1-53
+.claude/skills/pm-skill/vercel-agent-skills/packages/react-best-practices-build/src/validate.ts
+  s_ce16155f98e967::t_d49462f6428c9c 1-110
+.claude/skills/pm-skill/vercel-agent-skills/packages/react-best-practices-build/test-cases.json
+  s_ce16155f98e967::t_99e78b26f01b78 1-1114
+.claude/skills/pm-skill/vercel-agent-skills/packages/react-best-practices-build/tsconfig.json
+  s_ce16155f98e967::t_3acc2f2755f4ab 1-17
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/package.json
+  s_ce16155f98e967::t_1bf1972edac527 1-12
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/account-scope-grading.test.mjs
+  s_ce16155f98e967::t_022c5efdfed120 1-81
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/budget-summary.test.mjs
+  s_ce16155f98e967::t_b0c6b34361f405 1-229
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/build-minutes-fanout.test.mjs
+  s_ce16155f98e967::t_85710ada4d9fa2 1-78
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/cache-components-suspense-dedupe.test.mjs
+  s_ce16155f98e967::t_c11af093601c38 1-122
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/check-citations-script.test.mjs
+  s_ce16155f98e967::t_4c21ecb3a81a2e 1-15
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/citations.test.mjs
+  s_ce16155f98e967::t_2d8137dfcee29d 1-138
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/cold-start-revival.test.mjs
+  s_ce16155f98e967::t_d13130fea1016e 1-94
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/collect-framework-preflight.test.mjs
+  s_ce16155f98e967::t_63c1b6c8e87455 1-635
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/collect-sub-agent-outputs.test.mjs
+  s_ce16155f98e967::t_ada0a0194651c0 1-181
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/collection-command-docs.test.mjs
+  s_ce16155f98e967::t_9a3c67535071cb 1-40
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/cost-coverage.test.mjs
+  s_ce16155f98e967::t_1ee5ebf54fb8cb 1-98
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/dedup-recs.test.mjs
+  s_ce16155f98e967::t_ae5318daab3ba3 1-305
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/deep-dive-extract.test.mjs
+  s_ce16155f98e967::t_76aa085f9aea32 1-54
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/deep-dive.test.mjs
+  s_ce16155f98e967::t_0565f58f2eb6be 1-405
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/display-labels.test.mjs
+  s_ce16155f98e967::t_feb71e8b6350bb 1-110
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/edge-heavy-import.test.mjs
+  s_ce16155f98e967::t_7b97d945afe1ef 1-97
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/README.md
+  s_ce16155f98e967::t_7adfb9ca8cb7fc 1-41
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/contract-commitments-empty-200.txt
+  s_ce16155f98e967::t_cf56f082112aff 1-14
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/contract-empty-commitments.json
+  s_ce16155f98e967::t_fb590871b9d3e1 1-5
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/deep-dive/README.md
+  s_ce16155f98e967::t_6b6bc9f8d2c6ad 1-42
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/deep-dive/slow_route_latency_p95.json
+  s_ce16155f98e967::t_96870ed1ca3748 1-23
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/deep-dive/slow_route_perDeployment.json
+  s_ce16155f98e967::t_b6aa6d6dfae718 1-30
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/deep-dive/slow_route_startTypeSplit.json
+  s_ce16155f98e967::t_94bca6d8d43fdc 1-34
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/deep-dive/slow_route_statusDist.json
+  s_ce16155f98e967::t_a144a1eff3e41e 1-30
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/deep-dive/uncached_route_cacheBreakdown.json
+  s_ce16155f98e967::t_386c0bca9b4673 1-26
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-bot-id-checks.json
+  s_ce16155f98e967::t_21742864445aca 1-19
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-cwv-cls-by-route.json
+  s_ce16155f98e967::t_a067c2ae4922e1 1-21
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-cwv-count-by-route.json
+  s_ce16155f98e967::t_d63a1c65a3ec62 1-21
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-cwv-count.json
+  s_ce16155f98e967::t_c13b140e40a18e 1-19
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-cwv-inp-by-route.json
+  s_ce16155f98e967::t_222f2616491b1b 1-21
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-cwv-lcp-by-route.json
+  s_ce16155f98e967::t_33d00a5db2c516 1-21
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-cwv-ttfb-by-route.json
+  s_ce16155f98e967::t_d52eab9c724db7 1-21
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-error-invalid-dimension.json
+  s_ce16155f98e967::t_9f7050f8d9b9b8 1-43
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-ext-api-p75.json
+  s_ce16155f98e967::t_fa877d6a64cff3 1-59
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-external-api-bytes.json
+  s_ce16155f98e967::t_92c9e87b14b059 1-2750
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-external-api-count.json
+  s_ce16155f98e967::t_694ec0dace39d9 1-2750
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-fdt-by-bot.json
+  s_ce16155f98e967::t_5d4dd0961d2d28 1-5477
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-fdt-by-cache.json
+  s_ce16155f98e967::t_c82c5408cb36a1 1-6386
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-fdt-by-route.json
+  s_ce16155f98e967::t_5993c0bb4caf8d 1-35474
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-firewall-by-action.json
+  s_ce16155f98e967::t_677fc6748073fd 1-1841
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-fn-count-by-route-http-status.json
+  s_ce16155f98e967::t_be97c573a14bfd 1-38
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-fn-cpu-by-route.json
+  s_ce16155f98e967::t_11da573ee4f9bb 1-7295
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-fn-duration-p95-by-route.json
+  s_ce16155f98e967::t_bcd4a32d7b761d 1-98
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-fn-gbhr-by-route.json
+  s_ce16155f98e967::t_b6c1e32399a092 1-7295
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-fn-peak-memory-by-route.json
+  s_ce16155f98e967::t_4192baf15cbc49 1-7295
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-fn-provisioned-memory-by-route.json
+  s_ce16155f98e967::t_2d6914c2b9459f 1-7295
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-fn-start-type-by-route.json
+  s_ce16155f98e967::t_16fe7a74b9136c 1-21844
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-fn-ttfb-p95-by-route.json
+  s_ce16155f98e967::t_4904f513017ef3 1-7295
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-image-by-host.json
+  s_ce16155f98e967::t_e3e9058078716c 1-21
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-image-count.json
+  s_ce16155f98e967::t_81fe6848503719 1-19
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-image-source-bytes.json
+  s_ce16155f98e967::t_d6e9018d4b3d05 1-19
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-isr-reads-by-route.json
+  s_ce16155f98e967::t_7ac90951149224 1-31838
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-isr-writes-by-route.json
+  s_ce16155f98e967::t_cc90aaf6a53e41 1-31838
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-middleware-count.json
+  s_ce16155f98e967::t_d083a539e28853 1-21
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-middleware-duration-p95.json
+  s_ce16155f98e967::t_48a9ea4cbb7589 1-21
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-request-count-by-route-method.json
+  s_ce16155f98e967::t_bca3b852258d7f 1-264
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-request-count-group-by-http-status.json
+  s_ce16155f98e967::t_cbf280d3b1e91b 1-98
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-request-count-group-by-route-cache.json
+  s_ce16155f98e967::t_60d6d4bcc21e53 1-125
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-request-count-group-by-route.json
+  s_ce16155f98e967::t_f0f7051f1e4912 1-106
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-request-count-since-30d.json
+  s_ce16155f98e967::t_a5012f6a839cb2 1-59
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/metrics-schema.json
+  s_ce16155f98e967::t_d381265fb16851 1-290
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/project-v9.json
+  s_ce16155f98e967::t_a58138b23daad3 1-134
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/real-cli-output/usage-404-stderr.txt
+  s_ce16155f98e967::t_006c58e831aa62 1-2
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/signals.hobby.json
+  s_ce16155f98e967::t_60fc60f7f3ce53 1-33
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/fixtures/signals.pro-oplus.json
+  s_ce16155f98e967::t_210286d48937db 1-106
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/flags-gate.test.mjs
+  s_ce16155f98e967::t_f4b238f5d0927f 1-206
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/framework-support.test.mjs
+  s_ce16155f98e967::t_9532d18be31f93 1-38
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/gate-contract.test.mjs
+  s_ce16155f98e967::t_aa18c880f4b340 1-129
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/gate-selection.test.mjs
+  s_ce16155f98e967::t_704daf8e30c569 1-96
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/gate.test.mjs
+  s_ce16155f98e967::t_8dfd88ba6f9d44 1-134
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/grade-and-verify.test.mjs
+  s_ce16155f98e967::t_05ee03076cdc69 1-1233
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/hallucination-probe.test.mjs
+  s_ce16155f98e967::t_622612bd4631bd 1-97
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/impact-label.test.mjs
+  s_ce16155f98e967::t_5b2cbe53a917d2 1-92
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/impact-magnitude.test.mjs
+  s_ce16155f98e967::t_4ca1fc977ad688 1-58
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/infer-plan.test.mjs
+  s_ce16155f98e967::t_c11779ed21dd32 1-153
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/investigation-brief.test.mjs
+  s_ce16155f98e967::t_e7460043e0ffbc 1-578
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/large-static-asset.test.mjs
+  s_ce16155f98e967::t_af54941ef99e85 1-99
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/merge-signals.test.mjs
+  s_ce16155f98e967::t_e71db605258e27 1-152
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/new-gates.test.mjs
+  s_ce16155f98e967::t_79c8b83883ff0f 1-299
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/observability-events-attribution.test.mjs
+  s_ce16155f98e967::t_0a530824732d8a 1-81
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/observability-preflight.test.mjs
+  s_ce16155f98e967::t_1abbccd90a13e7 1-83
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/observations.test.mjs
+  s_ce16155f98e967::t_8d9077b282cb3e 1-124
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/oplus-diagnose.test.mjs
+  s_ce16155f98e967::t_a98cb9be97eee8 1-145
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/prepare-investigation-brief-cli.test.mjs
+  s_ce16155f98e967::t_c8edb303652557 1-115
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/project-config-contradict.test.mjs
+  s_ce16155f98e967::t_6465b0c6640e74 1-117
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/project-facts.test.mjs
+  s_ce16155f98e967::t_724ff807ec4181 1-105
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/public-release-safety.test.mjs
+  s_ce16155f98e967::t_2800a01cae2bd2 1-99
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/queries.test.mjs
+  s_ce16155f98e967::t_d16e8dbc9fd1f8 1-193
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/reconcile-candidates-cli.test.mjs
+  s_ce16155f98e967::t_8ccdc27f13d909 1-50
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/reconcile-candidates.test.mjs
+  s_ce16155f98e967::t_1a7e0671b2f6a7 1-205
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/reconcile-pipeline.test.mjs
+  s_ce16155f98e967::t_d5037f933464f3 1-76
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/region-misconfig.test.mjs
+  s_ce16155f98e967::t_a0f1d1208e8811 1-95
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/region-pin-in-config.test.mjs
+  s_ce16155f98e967::t_bee52711b38015 1-51
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/render-report.test.mjs
+  s_ce16155f98e967::t_ccb5775d46c932 1-1452
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/repo-root.test.mjs
+  s_ce16155f98e967::t_5e96a390c3163a 1-119
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/route-errors.test.mjs
+  s_ce16155f98e967::t_1d04cd77a8dbe4 1-65
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/route-normalize.test.mjs
+  s_ce16155f98e967::t_ef2e5425872c1d 1-212
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/route-shape-warnings.test.mjs
+  s_ce16155f98e967::t_8ccc28bb88ba86 1-60
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/sanitizers.test.mjs
+  s_ce16155f98e967::t_4f01660bfb043b 1-418
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/scan-codebase-layouts.test.mjs
+  s_ce16155f98e967::t_045544f3044938 1-119
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/slow-route-5xx-disqualify.test.mjs
+  s_ce16155f98e967::t_861dc563d6f2cb 1-96
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/support-topics.test.mjs
+  s_ce16155f98e967::t_12d7822d357ec7 1-238
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/sveltekit-parity.test.mjs
+  s_ce16155f98e967::t_43918e0d2afa84 1-107
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/throttle.test.mjs
+  s_ce16155f98e967::t_7949b55c7d8020 1-290
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/time-window.test.mjs
+  s_ce16155f98e967::t_85f34bc653c3fb 1-36
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/turbo-force-bypass.test.mjs
+  s_ce16155f98e967::t_e4391bb5269f89 1-95
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/uncached-route-method-filter.test.mjs
+  s_ce16155f98e967::t_53259a496282ec 1-85
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/unoptimized-image-ext.test.mjs
+  s_ce16155f98e967::t_0fbcf18ebefbc5 1-117
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/usage-spike-triage.test.mjs
+  s_ce16155f98e967::t_618c7b4e4886ed 1-74
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/use-cache-date-stamp.test.mjs
+  s_ce16155f98e967::t_338f49c6bfcd11 1-96
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/vercel-command.test.mjs
+  s_ce16155f98e967::t_913b60dcabed10 1-102
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/vercel-redaction.test.mjs
+  s_ce16155f98e967::t_681439dc95ecc9 1-48
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/verify-and-regen-cli.test.mjs
+  s_ce16155f98e967::t_82f308b8799c21 1-193
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/voice-drift.test.mjs
+  s_ce16155f98e967::t_5ee9d3d25d12cf 1-107
+.claude/skills/pm-skill/vercel-agent-skills/packages/vercel-optimize-tests/test/workspace-resolver.test.mjs
+  s_ce16155f98e967::t_10c9aa23c8ec5a 1-318
+.claude/skills/pm-skill/vercel-agent-skills/skills.sh.json
+  s_ce16155f98e967::t_126d24700f37e4 1-32
+.claude/skills/pm-skill/vercel-agent-skills/skills/composition-patterns/AGENTS.md
+  s_ce16155f98e967::t_31ecf95114fde2 1-946
+.claude/skills/pm-skill/vercel-agent-skills/skills/composition-patterns/README.md
+  s_ce16155f98e967::t_9b4dad828195b0 1-60
+.claude/skills/pm-skill/vercel-agent-skills/skills/composition-patterns/SKILL.md
+  s_ce16155f98e967::t_188e7c09d12629 1-89
+.claude/skills/pm-skill/vercel-agent-skills/skills/composition-patterns/metadata.json
+  s_ce16155f98e967::t_0fc393df6a1308 1-11
+.claude/skills/pm-skill/vercel-agent-skills/skills/composition-patterns/rules/_sections.md
+  s_ce16155f98e967::t_af406c1d0e8e58 1-29
+.claude/skills/pm-skill/vercel-agent-skills/skills/composition-patterns/rules/_template.md
+  s_ce16155f98e967::t_5e1ac207e24919 1-24
+.claude/skills/pm-skill/vercel-agent-skills/skills/composition-patterns/rules/architecture-avoid-boolean-props.md
+  s_ce16155f98e967::t_4a33a1147af543 1-100
+.claude/skills/pm-skill/vercel-agent-skills/skills/composition-patterns/rules/architecture-compound-components.md
+  s_ce16155f98e967::t_fa5d1449ed8811 1-112
+.claude/skills/pm-skill/vercel-agent-skills/skills/composition-patterns/rules/patterns-children-over-render-props.md
+  s_ce16155f98e967::t_7e384e2cbe61a8 1-87
+.claude/skills/pm-skill/vercel-agent-skills/skills/composition-patterns/rules/patterns-explicit-variants.md
+  s_ce16155f98e967::t_af3f286d48f003 1-100
+.claude/skills/pm-skill/vercel-agent-skills/skills/composition-patterns/rules/react19-no-forwardref.md
+  s_ce16155f98e967::t_2a7d3bd8f794a8 1-42
+.claude/skills/pm-skill/vercel-agent-skills/skills/composition-patterns/rules/state-context-interface.md
+  s_ce16155f98e967::t_12863d5bfde9ed 1-191
+.claude/skills/pm-skill/vercel-agent-skills/skills/composition-patterns/rules/state-decouple-implementation.md
+  s_ce16155f98e967::t_0c84830193736c 1-113
+.claude/skills/pm-skill/vercel-agent-skills/skills/composition-patterns/rules/state-lift-state.md
+  s_ce16155f98e967::t_e3a3f943d383f5 1-125
+.claude/skills/pm-skill/vercel-agent-skills/skills/deploy-to-vercel/SKILL.md
+  s_ce16155f98e967::t_bfb1c3999e5811 1-296
+.claude/skills/pm-skill/vercel-agent-skills/skills/deploy-to-vercel/resources/deploy-codex.sh
+  s_ce16155f98e967::t_331afe620cf3f4 1-301
+.claude/skills/pm-skill/vercel-agent-skills/skills/deploy-to-vercel/resources/deploy.sh
+  s_ce16155f98e967::t_defbbc6fbe969b 1-301
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/AGENTS.md
+  s_ce16155f98e967::t_031c5926feeb9d 1-3810
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/README.md
+  s_ce16155f98e967::t_e07e6d76eb0067 1-123
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/SKILL.md
+  s_ce16155f98e967::t_a9c959af10f5ca 1-149
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/metadata.json
+  s_ce16155f98e967::t_e6f7c0617d84d5 1-15
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/_sections.md
+  s_ce16155f98e967::t_acb8e06e4e36ce 1-46
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/_template.md
+  s_ce16155f98e967::t_399addd8c50c40 1-28
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/advanced-effect-event-deps.md
+  s_ce16155f98e967::t_80c580604c8788 1-56
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/advanced-event-handler-refs.md
+  s_ce16155f98e967::t_de25be2ab8fd8d 1-55
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/advanced-init-once.md
+  s_ce16155f98e967::t_1e78371fb8ce32 1-42
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/advanced-use-latest.md
+  s_ce16155f98e967::t_ca9ce7f5b6d515 1-39
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/async-api-routes.md
+  s_ce16155f98e967::t_74f9e4d1269f23 1-38
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/async-cheap-condition-before-await.md
+  s_ce16155f98e967::t_31dab9d38331e6 1-37
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/async-defer-await.md
+  s_ce16155f98e967::t_9608658532510b 1-82
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/async-dependencies.md
+  s_ce16155f98e967::t_b096ca39aa3fab 1-51
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/async-parallel.md
+  s_ce16155f98e967::t_d3d9c5d312b378 1-28
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/async-suspense-boundaries.md
+  s_ce16155f98e967::t_92f1de9faf4a7f 1-99
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/bundle-analyzable-paths.md
+  s_ce16155f98e967::t_034c54cda09159 1-63
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/bundle-barrel-imports.md
+  s_ce16155f98e967::t_09f7b431647e3f 1-60
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/bundle-conditional.md
+  s_ce16155f98e967::t_bc11006d050562 1-31
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/bundle-defer-third-party.md
+  s_ce16155f98e967::t_ad184f0550c0eb 1-49
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/bundle-dynamic-imports.md
+  s_ce16155f98e967::t_f67c3dd85eea12 1-35
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/bundle-preload.md
+  s_ce16155f98e967::t_5bcfc79e750533 1-50
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/client-event-listeners.md
+  s_ce16155f98e967::t_938935359ed3e4 1-74
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/client-localstorage-schema.md
+  s_ce16155f98e967::t_7630a5d11f288f 1-71
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/client-passive-event-listeners.md
+  s_ce16155f98e967::t_e2139379b1fce4 1-48
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/client-swr-dedup.md
+  s_ce16155f98e967::t_fcb3bfc9d97287 1-56
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/js-batch-dom-css.md
+  s_ce16155f98e967::t_45da42cd421a3f 1-107
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/js-cache-function-results.md
+  s_ce16155f98e967::t_d59c897209792a 1-80
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/js-cache-property-access.md
+  s_ce16155f98e967::t_9ef5fa1d14d6ef 1-28
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/js-cache-storage.md
+  s_ce16155f98e967::t_b090708f025729 1-70
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/js-combine-iterations.md
+  s_ce16155f98e967::t_f3affa3c980047 1-32
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/js-early-exit.md
+  s_ce16155f98e967::t_7d0af71f8f4a91 1-50
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/js-flatmap-filter.md
+  s_ce16155f98e967::t_875880ee5e60ff 1-60
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/js-hoist-regexp.md
+  s_ce16155f98e967::t_b882768264e44e 1-45
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/js-index-maps.md
+  s_ce16155f98e967::t_7fb80b79ac51b1 1-37
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/js-length-check-first.md
+  s_ce16155f98e967::t_3dd920f83945c9 1-49
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/js-min-max-loop.md
+  s_ce16155f98e967::t_ae509cf0b7a9a1 1-82
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/js-request-idle-callback.md
+  s_ce16155f98e967::t_8a0cc55a0a4782 1-105
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/js-set-map-lookups.md
+  s_ce16155f98e967::t_d7fab626ac4d9c 1-24
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/js-tosorted-immutable.md
+  s_ce16155f98e967::t_3f08b8d87f5ccf 1-57
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rendering-activity.md
+  s_ce16155f98e967::t_9f3c10977cff97 1-26
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rendering-animate-svg-wrapper.md
+  s_ce16155f98e967::t_2d79a4173b5a59 1-47
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rendering-conditional-render.md
+  s_ce16155f98e967::t_be59f039be3f21 1-40
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rendering-content-visibility.md
+  s_ce16155f98e967::t_42960c145986fc 1-38
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rendering-hoist-jsx.md
+  s_ce16155f98e967::t_d04a88c51f7582 1-46
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rendering-hydration-no-flicker.md
+  s_ce16155f98e967::t_75b08e59aceae6 1-82
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rendering-hydration-suppress-warning.md
+  s_ce16155f98e967::t_920d8bdec5d80e 1-30
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rendering-resource-hints.md
+  s_ce16155f98e967::t_f93c710f9fe020 1-85
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rendering-script-defer-async.md
+  s_ce16155f98e967::t_0db222e58c112f 1-68
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rendering-svg-precision.md
+  s_ce16155f98e967::t_26ace27cc134fa 1-28
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rendering-usetransition-loading.md
+  s_ce16155f98e967::t_15fbb7567dfbfe 1-75
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-defer-reads.md
+  s_ce16155f98e967::t_10aa6cccdb0a87 1-39
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-dependencies.md
+  s_ce16155f98e967::t_b7decb4f5e3d85 1-45
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-derived-state-no-effect.md
+  s_ce16155f98e967::t_90d650e5b49136 1-40
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-derived-state.md
+  s_ce16155f98e967::t_35ab6c42701c79 1-29
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-functional-setstate.md
+  s_ce16155f98e967::t_298ad74c35a940 1-74
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-lazy-state-init.md
+  s_ce16155f98e967::t_c03bff065e6271 1-58
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-memo-with-default-value.md
+  s_ce16155f98e967::t_a7fb1272ee4ee9 1-38
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-memo.md
+  s_ce16155f98e967::t_eee524f48f62f3 1-44
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-move-effect-to-event.md
+  s_ce16155f98e967::t_07a91d60d2294b 1-45
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-no-inline-components.md
+  s_ce16155f98e967::t_5bf3330dc92918 1-82
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-simple-expression-in-memo.md
+  s_ce16155f98e967::t_89f58684d668c4 1-35
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-split-combined-hooks.md
+  s_ce16155f98e967::t_8567731ea90436 1-64
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-transitions.md
+  s_ce16155f98e967::t_d8d228c6603ede 1-40
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-use-deferred-value.md
+  s_ce16155f98e967::t_60f193c5609b62 1-59
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/rerender-use-ref-transient-values.md
+  s_ce16155f98e967::t_f0b54cd40026cf 1-73
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/server-after-nonblocking.md
+  s_ce16155f98e967::t_d080461c5b9ffd 1-73
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/server-auth-actions.md
+  s_ce16155f98e967::t_212f52a3df1dfc 1-96
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/server-cache-lru.md
+  s_ce16155f98e967::t_a3b226de801063 1-41
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/server-cache-react.md
+  s_ce16155f98e967::t_afc6532b97f14f 1-76
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/server-dedup-props.md
+  s_ce16155f98e967::t_57ccf6a1877f62 1-65
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/server-hoist-static-io.md
+  s_ce16155f98e967::t_662d05565005d7 1-149
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/server-no-shared-module-state.md
+  s_ce16155f98e967::t_c8dfba46f541f7 1-50
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/server-parallel-fetching.md
+  s_ce16155f98e967::t_53071e01d6093e 1-83
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/server-parallel-nested-fetching.md
+  s_ce16155f98e967::t_2f3d36c5cf5eac 1-34
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-best-practices/rules/server-serialization.md
+  s_ce16155f98e967::t_1e0fc35a4bc15d 1-38
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/AGENTS.md
+  s_ce16155f98e967::t_36f36d67b7105d 1-2897
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/README.md
+  s_ce16155f98e967::t_4dff17566a98bb 1-165
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/SKILL.md
+  s_ce16155f98e967::t_2fa515e1c45daf 1-121
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/metadata.json
+  s_ce16155f98e967::t_8b42abc7ab186b 1-16
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/_sections.md
+  s_ce16155f98e967::t_3acff8ea6cf802 1-86
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/_template.md
+  s_ce16155f98e967::t_c720c2d2de0508 1-28
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/animation-derived-value.md
+  s_ce16155f98e967::t_047b42b331b30e 1-53
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/animation-gesture-detector-press.md
+  s_ce16155f98e967::t_a0bb33b6369245 1-95
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/animation-gpu-properties.md
+  s_ce16155f98e967::t_11025a21796898 1-65
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/design-system-compound-components.md
+  s_ce16155f98e967::t_0794eca477a51f 1-66
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/fonts-config-plugin.md
+  s_ce16155f98e967::t_6dc65b9e4b3ba2 1-71
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/imports-design-system-folder.md
+  s_ce16155f98e967::t_c83a83e496c7fb 1-68
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/js-hoist-intl.md
+  s_ce16155f98e967::t_c349d5d0a0d292 1-61
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/list-performance-callbacks.md
+  s_ce16155f98e967::t_59c7f7b2da378e 1-44
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/list-performance-function-references.md
+  s_ce16155f98e967::t_3dc8b064642d4a 1-132
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/list-performance-images.md
+  s_ce16155f98e967::t_bc0c6a29d2b05b 1-53
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/list-performance-inline-objects.md
+  s_ce16155f98e967::t_58ecd038481aec 1-97
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/list-performance-item-expensive.md
+  s_ce16155f98e967::t_9483ae45d874a5 1-94
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/list-performance-item-memo.md
+  s_ce16155f98e967::t_c3a38316c04860 1-82
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/list-performance-item-types.md
+  s_ce16155f98e967::t_e0ad9f5cf5b66c 1-104
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/list-performance-virtualize.md
+  s_ce16155f98e967::t_2c589fe34dd058 1-67
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/monorepo-native-deps-in-app.md
+  s_ce16155f98e967::t_c7253e1bcaafbe 1-46
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/monorepo-single-dependency-versions.md
+  s_ce16155f98e967::t_35bfcc1a238598 1-63
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/navigation-native-navigators.md
+  s_ce16155f98e967::t_572ab394a4b737 1-188
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/react-compiler-destructure-functions.md
+  s_ce16155f98e967::t_20e1d2119968bf 1-50
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/react-compiler-reanimated-shared-values.md
+  s_ce16155f98e967::t_bca71b3a270594 1-48
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/react-state-dispatcher.md
+  s_ce16155f98e967::t_52889465cf4759 1-91
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/react-state-fallback.md
+  s_ce16155f98e967::t_7c5844444bde86 1-56
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/react-state-minimize.md
+  s_ce16155f98e967::t_90e1f27f3b0e6a 1-65
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/rendering-no-falsy-and.md
+  s_ce16155f98e967::t_6570f4a1428639 1-74
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/rendering-text-in-text-component.md
+  s_ce16155f98e967::t_2afa9702af97ab 1-36
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/scroll-position-no-state.md
+  s_ce16155f98e967::t_40ddad3c7cc35f 1-82
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/state-ground-truth.md
+  s_ce16155f98e967::t_25ac615cf6ce7b 1-80
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/ui-expo-image.md
+  s_ce16155f98e967::t_f44825494d18ab 1-66
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/ui-image-gallery.md
+  s_ce16155f98e967::t_7cfd6f756a8583 1-104
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/ui-measure-views.md
+  s_ce16155f98e967::t_35bba48d1c381a 1-78
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/ui-menus.md
+  s_ce16155f98e967::t_c1b2c8f7c1088f 1-174
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/ui-native-modals.md
+  s_ce16155f98e967::t_934723e46c7ed3 1-77
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/ui-pressable.md
+  s_ce16155f98e967::t_40aa94077d717e 1-61
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/ui-safe-area-scroll.md
+  s_ce16155f98e967::t_8380244741db75 1-65
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/ui-scrollview-content-inset.md
+  s_ce16155f98e967::t_07096b9591f9ec 1-45
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-native-skills/rules/ui-styling.md
+  s_ce16155f98e967::t_8eb81766ab070d 1-87
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-view-transitions/AGENTS.md
+  s_ce16155f98e967::t_cdf20262159bd2 1-955
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-view-transitions/README.md
+  s_ce16155f98e967::t_1544bc4f5aea7f 1-42
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-view-transitions/SKILL.md
+  s_ce16155f98e967::t_8b01fa3148548f 1-320
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-view-transitions/metadata.json
+  s_ce16155f98e967::t_f0452fe8f79a46 1-12
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-view-transitions/references/css-recipes.md
+  s_ce16155f98e967::t_a3c165087138e1 1-242
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-view-transitions/references/implementation.md
+  s_ce16155f98e967::t_049e53498fb609 1-182
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-view-transitions/references/nextjs.md
+  s_ce16155f98e967::t_b0595b6feacee9 1-176
+.claude/skills/pm-skill/vercel-agent-skills/skills/react-view-transitions/references/patterns.md
+  s_ce16155f98e967::t_074e85cff5eef6 1-262
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-cli-with-tokens/SKILL.md
+  s_ce16155f98e967::t_b78c4b67a818c0 1-353
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/AGENTS.md
+  s_ce16155f98e967::t_6b2a19d23ee3f0 1-48
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/CONTRIBUTING.md
+  s_ce16155f98e967::t_333be1a3cd9a78 1-41
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/README.md
+  s_ce16155f98e967::t_a8cf8ef30533ba 1-91
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/SKILL.md
+  s_ce16155f98e967::t_4e71d2f9b01d52 1-322
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/auth-route.mjs
+  s_ce16155f98e967::t_7b6979c2fbfb51 1-23
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/budget-summary.mjs
+  s_ce16155f98e967::t_1296e39bae0c66 1-182
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/citations.mjs
+  s_ce16155f98e967::t_cec17bd34f7114 1-139
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/cost-coverage.mjs
+  s_ce16155f98e967::t_3d29b05354742e 1-143
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/dedup-recs.mjs
+  s_ce16155f98e967::t_3bc6d10523bad5 1-325
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/deep-dive.mjs
+  s_ce16155f98e967::t_9cd53859153d35 1-350
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/display-labels.mjs
+  s_ce16155f98e967::t_75ea82ed46c840 1-185
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/extract-claims.mjs
+  s_ce16155f98e967::t_5a4b9c6c1ea2b0 1-550
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/framework-support.mjs
+  s_ce16155f98e967::t_165fdc9f7bb681 1-67
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/build-minutes-fanout.mjs
+  s_ce16155f98e967::t_a0fecfb555af58 1-69
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/cold-start.mjs
+  s_ce16155f98e967::t_d7b9338659df07 1-66
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/contract.mjs
+  s_ce16155f98e967::t_43842d9932b66a 1-79
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/cwv-poor.mjs
+  s_ce16155f98e967::t_5567e59221ceb7 1-87
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/external-api-slow.mjs
+  s_ce16155f98e967::t_0999ab4c82b7bd 1-55
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/hard-gates.mjs
+  s_ce16155f98e967::t_407104e1d1a756 1-73
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/index.mjs
+  s_ce16155f98e967::t_812c08b289f5be 1-45
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/isr-overrevalidation.mjs
+  s_ce16155f98e967::t_3e7c9d6e9d3837 1-62
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/middleware-heavy.mjs
+  s_ce16155f98e967::t_56170939aff317 1-51
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/observability-events-attribution.mjs
+  s_ce16155f98e967::t_a8f2a40241d5cd 1-56
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/platform-bot-protection.mjs
+  s_ce16155f98e967::t_b96b0d32574452 1-115
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/platform-fluid-compute.mjs
+  s_ce16155f98e967::t_f279ff8b08ab63 1-83
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/region-misconfig.mjs
+  s_ce16155f98e967::t_67bf66a9324cbc 1-64
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/route-errors.mjs
+  s_ce16155f98e967::t_e301543498503b 1-80
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/scanner-driven.mjs
+  s_ce16155f98e967::t_898a19aa6ee2bd 1-122
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/select-candidates.mjs
+  s_ce16155f98e967::t_5425846030624c 1-134
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/slow-route.mjs
+  s_ce16155f98e967::t_bde09eba13350d 1-88
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/types.d.ts
+  s_ce16155f98e967::t_9fee82fa878267 1-38
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/uncached-route.mjs
+  s_ce16155f98e967::t_fe5f5f64f4bede 1-93
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/gates/usage-spike-triage.mjs
+  s_ce16155f98e967::t_895667a9a14497 1-121
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/grade-recommendation.mjs
+  s_ce16155f98e967::t_0485a71760c349 1-155
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/impact-label.mjs
+  s_ce16155f98e967::t_c26782c81993a4 1-126
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/impact-magnitude.mjs
+  s_ce16155f98e967::t_cb2a481305869d 1-60
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/investigation-brief.mjs
+  s_ce16155f98e967::t_4b8b6b888b016b 1-610
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/observation-safety.mjs
+  s_ce16155f98e967::t_ab79988657ed51 1-174
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/project-facts.mjs
+  s_ce16155f98e967::t_7201a0869d540d 1-99
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/queries.mjs
+  s_ce16155f98e967::t_1ba441fee19760 1-315
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/reconcile-candidates.mjs
+  s_ce16155f98e967::t_13e542803ec088 1-372
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/render-report.mjs
+  s_ce16155f98e967::t_59567ec24ac633 1-955
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/repo-root.mjs
+  s_ce16155f98e967::t_b55152014903a8 1-86
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/route-normalize.mjs
+  s_ce16155f98e967::t_156b1c6972d02a 1-220
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/sanitizers/bot-protection-certainty.mjs
+  s_ce16155f98e967::t_08d6c67cf29d9c 1-38
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/sanitizers/cache-tag-invalidation-certainty.mjs
+  s_ce16155f98e967::t_137392928d8e87 1-30
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/sanitizers/count-correct.mjs
+  s_ce16155f98e967::t_79531eb80a7dcd 1-52
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/sanitizers/function-duration-invocations.mjs
+  s_ce16155f98e967::t_fd5315059caba6 1-38
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/sanitizers/index.mjs
+  s_ce16155f98e967::t_184625f3e23814 1-79
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/sanitizers/middleware-conflict.mjs
+  s_ce16155f98e967::t_f1a1bcf381fecd 1-36
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/sanitizers/missing-citation.mjs
+  s_ce16155f98e967::t_264974c868f3ea 1-16
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/sanitizers/pre-release.mjs
+  s_ce16155f98e967::t_0322fbe523fab9 1-74
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/sanitizers/rate-limit.mjs
+  s_ce16155f98e967::t_1d687ec3603f24 1-67
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/sanitizers/rendering-mode-mislabel.mjs
+  s_ce16155f98e967::t_9cca72c374d415 1-38
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/sanitizers/undeclared-dep.mjs
+  s_ce16155f98e967::t_43415662901273 1-78
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/sanitizers/vercel-directive-strip.mjs
+  s_ce16155f98e967::t_3be234261aca15 1-37
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/sanitizers/window-units.mjs
+  s_ce16155f98e967::t_b7c092bc553478 1-32
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/cache-components-suspense-dedupe.mjs
+  s_ce16155f98e967::t_2c4c6725625e74 1-109
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/edge-heavy-import.mjs
+  s_ce16155f98e967::t_d4d4c6167b78ed 1-94
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/force-dynamic.mjs
+  s_ce16155f98e967::t_6f42675ddce165 1-42
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/headers-in-page.mjs
+  s_ce16155f98e967::t_37bef65169cbaf 1-44
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/index.mjs
+  s_ce16155f98e967::t_3bf46bd2817c36 1-35
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/large-static-asset.mjs
+  s_ce16155f98e967::t_3f5a75f94bb0c7 1-92
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/max-age-without-s-maxage.mjs
+  s_ce16155f98e967::t_7572dfc760b9d3 1-42
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/middleware-broad-matcher.mjs
+  s_ce16155f98e967::t_b625e41f0d079a 1-55
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/missing-cache-headers.mjs
+  s_ce16155f98e967::t_141f8a5c75df3e 1-90
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/prisma-include-tree.mjs
+  s_ce16155f98e967::t_a47d133dbc4ea2 1-42
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/region-pin-in-config.mjs
+  s_ce16155f98e967::t_406480d6863898 1-88
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/source-maps-production.mjs
+  s_ce16155f98e967::t_37cf3f9fde57fc 1-36
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/sveltekit-prerender-missing.mjs
+  s_ce16155f98e967::t_4e45660e543704 1-43
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/turbo-force-bypass.mjs
+  s_ce16155f98e967::t_da8ac60b646210 1-129
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/unoptimized-image.mjs
+  s_ce16155f98e967::t_254d6b3275371e 1-113
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/scanners/use-cache-date-stamp.mjs
+  s_ce16155f98e967::t_42a26fb1a04205 1-106
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/support-topics.mjs
+  s_ce16155f98e967::t_825d8b6dd3fd08 1-355
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/throttle.mjs
+  s_ce16155f98e967::t_f11fb07f6d24c4 1-273
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/util.mjs
+  s_ce16155f98e967::t_686461ae2aa192 1-17
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/vercel.mjs
+  s_ce16155f98e967::t_bc38bd113a8c75 1-864
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/verify-claim.mjs
+  s_ce16155f98e967::t_e2c73940827ae2 1-1296
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/lib/workspace-resolver.mjs
+  s_ce16155f98e967::t_809410f042bfed 1-521
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/metadata.json
+  s_ce16155f98e967::t_fc3e254e751764 1-14
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/candidates.md
+  s_ce16155f98e967::t_cd4a18a2aa7cca 1-176
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/data-collection.md
+  s_ce16155f98e967::t_c58e99ab1b5877 1-218
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/docs-library.json
+  s_ce16155f98e967::t_51f1ba04a07cb4 1-683
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/doctrine.md
+  s_ce16155f98e967::t_d5c40780b0baca 1-105
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/observability-plus.md
+  s_ce16155f98e967::t_b84ef4e130720b 1-108
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/playbooks/README.md
+  s_ce16155f98e967::t_4461b94bf352a9 1-53
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/playbooks/ai-application.md
+  s_ce16155f98e967::t_5d5430213b2499 1-32
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/playbooks/api-service.md
+  s_ce16155f98e967::t_8a9ff27f8483fb 1-30
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/playbooks/content-site.md
+  s_ce16155f98e967::t_8a0ae7a94a7d84 1-30
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/playbooks/ecommerce.md
+  s_ce16155f98e967::t_eb570ea597179b 1-30
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/playbooks/marketing.md
+  s_ce16155f98e967::t_92aa13b4d00351 1-30
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/playbooks/saas.md
+  s_ce16155f98e967::t_abb0238edc7dbe 1-31
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/playbooks/sveltekit.md
+  s_ce16155f98e967::t_ccf2027334999c 1-75
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/recommendations.md
+  s_ce16155f98e967::t_187c24bbb0a290 1-203
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/scanner-patterns.md
+  s_ce16155f98e967::t_d983fa6464d39d 1-251
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/scoring.md
+  s_ce16155f98e967::t_33b0dffb7d06f5 1-205
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/README.md
+  s_ce16155f98e967::t_c6fecd094dbbcd 1-46
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/astro-edge-middleware-scope.md
+  s_ce16155f98e967::t_ce4dba119d4dbf 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/astro-output-mode-and-isr.md
+  s_ce16155f98e967::t_bae292a6c6608f 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/auth-preserving-parallelization.md
+  s_ce16155f98e967::t_3f1ddddf503524 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/bot-protection-product-guardrails.md
+  s_ce16155f98e967::t_e777bffa9d295d 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/build-minutes-monorepo-fanout.md
+  s_ce16155f98e967::t_522e89c4d96638 1-23
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/cache-components-static-shell-boundaries.md
+  s_ce16155f98e967::t_46611beab504f9 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/cache-components-suspense-dedupe-pitfall.md
+  s_ce16155f98e967::t_b666e7f921755c 1-23
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/cdn-cache-auth-safety.md
+  s_ce16155f98e967::t_85dacd5382cde1 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/cold-start-initialization-bundle.md
+  s_ce16155f98e967::t_ad0a2b5cecc07c 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/core-web-vitals-client-bottlenecks.md
+  s_ce16155f98e967::t_4558f7132f947a 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/database-egress-pooling-region.md
+  s_ce16155f98e967::t_be5a05a82a493e 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/dynamic-rendering-traps.md
+  s_ce16155f98e967::t_f929fcf61dcb88 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/external-api-critical-path-platform.md
+  s_ce16155f98e967::t_acb80e1eac4312 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/external-api-critical-path.md
+  s_ce16155f98e967::t_e5a6f0a21c41c5 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/fast-data-transfer-payloads.md
+  s_ce16155f98e967::t_4bd3b8dacae6f0 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/fluid-compute-caveats.md
+  s_ce16155f98e967::t_11a5483d025b8a 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/function-duration-io-and-after.md
+  s_ce16155f98e967::t_08f792e4ad19c5 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/function-invocation-reduction.md
+  s_ce16155f98e967::t_1ef68035447c3b 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/function-region-misconfiguration-ttfb.md
+  s_ce16155f98e967::t_6b4c61f8286299 1-23
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/image-optimization-cost-control.md
+  s_ce16155f98e967::t_9f4a2da9b36bde 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/isr-revalidation-static-generation.md
+  s_ce16155f98e967::t_b51bb618eb547f 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/middleware-proxy-edge-cost.md
+  s_ce16155f98e967::t_6a2a22f694150f 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/next-fetch-revalidate-floor.md
+  s_ce16155f98e967::t_0ec9fe86413143 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/next-font-cls-self-hosting.md
+  s_ce16155f98e967::t_bf346baa3e80e6 1-23
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/next-heavy-ui-lazy-load-boundaries.md
+  s_ce16155f98e967::t_8bb6baf2816ab1 1-23
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/next-image-lcp-preload-sizes.md
+  s_ce16155f98e967::t_69ee2134273c46 1-23
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/next-route-handler-get-cache-defaults.md
+  s_ce16155f98e967::t_cd175ca96ba3bd 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/next-script-third-party-strategy.md
+  s_ce16155f98e967::t_926bdbdafda4b8 1-23
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/nextjs-version-cache-semantics.md
+  s_ce16155f98e967::t_c551684cb80908 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/not-found-catchall-request-waste.md
+  s_ce16155f98e967::t_4f79d4da6c85db 1-23
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/nuxt-route-rules-cache-isr.md
+  s_ce16155f98e967::t_3a2acf6f9e47a1 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/observability-events-cost-attribution.md
+  s_ce16155f98e967::t_a4e4ba994514df 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/post-response-work-waituntil.md
+  s_ce16155f98e967::t_ad3fecb87d541d 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/route-error-durable-offload.md
+  s_ce16155f98e967::t_5e62adb645961a 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/route-error-runtime-limits.md
+  s_ce16155f98e967::t_e5e72cea6fef3c 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/runtime-cache-reusable-data.md
+  s_ce16155f98e967::t_12b380aea9f6e5 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/sveltekit-isr-prerender-safety.md
+  s_ce16155f98e967::t_7118671d7b673e 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/sveltekit-split-cold-start-tradeoff.md
+  s_ce16155f98e967::t_32542b8862cc84 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/usage-spike-triage.md
+  s_ce16155f98e967::t_70924e0a5bc17e 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/use-cache-date-stamp-isr-write-amplifier.md
+  s_ce16155f98e967::t_2527e9a5d947b4 1-23
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/use-cache-remote-shared-origin-data.md
+  s_ce16155f98e967::t_6cc99f660b6ec7 1-22
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/support-topics/workflow-resumable-stream-routes.md
+  s_ce16155f98e967::t_e58428f4ebeac8 1-23
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/verification.md
+  s_ce16155f98e967::t_fc32a917e5565b 1-102
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/references/voice.md
+  s_ce16155f98e967::t_2699640cc422c9 1-76
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/budget-summary.mjs
+  s_ce16155f98e967::t_7f867b74bfaaea 1-56
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/build-docs.mjs
+  s_ce16155f98e967::t_16320365062344 1-74
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/check-citations.mjs
+  s_ce16155f98e967::t_7d1ae59049b83c 1-81
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/check-docs-fresh.mjs
+  s_ce16155f98e967::t_4d348d51b59ced 1-93
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/collect-signals.mjs
+  s_ce16155f98e967::t_b229d3af1d115d 1-576
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/collect-sub-agent-outputs.mjs
+  s_ce16155f98e967::t_44ff0e3b3ba57f 1-296
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/deep-dive.mjs
+  s_ce16155f98e967::t_d30c7b25362bbb 1-319
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/gate-investigations.mjs
+  s_ce16155f98e967::t_003b4a21c144de 1-166
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/merge-signals.mjs
+  s_ce16155f98e967::t_274fff76d9bc46 1-192
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/prepare-investigation-brief.mjs
+  s_ce16155f98e967::t_a549f1da4c3963 1-231
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/reconcile-candidates.mjs
+  s_ce16155f98e967::t_29171b13bb120c 1-62
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/render-report.mjs
+  s_ce16155f98e967::t_161bd7160cc53e 1-437
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/scan-codebase.mjs
+  s_ce16155f98e967::t_a8a338a819f4c1 1-313
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/verify-and-regen.mjs
+  s_ce16155f98e967::t_646fc49583dafb 1-346
+.claude/skills/pm-skill/vercel-agent-skills/skills/vercel-optimize/scripts/verify-finding.mjs
+  s_ce16155f98e967::t_0f0abc539848ef 1-19
+.claude/skills/pm-skill/vercel-agent-skills/skills/web-design-guidelines/SKILL.md
+  s_ce16155f98e967::t_ba97e0f875174f 1-39
+.claude/skills/pm-skill/vercel-agent-skills/skills/writing-guidelines/SKILL.md
+  s_ce16155f98e967::t_e659f74288c4d0 1-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "5ae54b3ec5f01c5f465425611bae858851a236ac",
+  "prompts": {},
+  "sessions": {
+    "s_ce16155f98e967": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b8343a6d-6cb1-42f2-9562-faef39b8c21e",
+        "model": "unknown"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
