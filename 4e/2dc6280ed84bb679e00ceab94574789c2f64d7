@@ -1,0 +1,19 @@
+.gitignore
+  s_ce16155f98e967::t_12ebdf5cafaa34 25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "4e2dc6280ed84bb679e00ceab94574789c2f64d7",
+  "prompts": {},
+  "sessions": {
+    "s_ce16155f98e967": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b8343a6d-6cb1-42f2-9562-faef39b8c21e",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
