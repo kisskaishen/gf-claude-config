@@ -1,0 +1,19 @@
+src/styles/index.scss
+  s_ce16155f98e967::t_0bba8aff27dbfe 5-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "1fe160af2bc34a74862d1a058d77fb1639c4377f",
+  "prompts": {},
+  "sessions": {
+    "s_ce16155f98e967": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b8343a6d-6cb1-42f2-9562-faef39b8c21e",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
