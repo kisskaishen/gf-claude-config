@@ -19,7 +19,7 @@ export const routes: RouteRecordRaw[] = [
         component: () => import("@/views/home/index.vue"),
         meta: {
           title: "首页",
-          icon: "home",
+          icon: "icon-slider-home",
           i18n: "web.gfuc.homepage",
           affix: true
         }
@@ -32,7 +32,7 @@ export const routes: RouteRecordRaw[] = [
     redirect: "/order/single",
     meta: {
       title: "订单管理",
-      icon: "order",
+      icon: "icon-slider-order",
       i18n: "web.gfuc.order_management",
       requireAuth: true
     },
@@ -97,7 +97,7 @@ export const routes: RouteRecordRaw[] = [
     redirect: "/finance/balance",
     meta: {
       title: "财务管理",
-      icon: "finance",
+      icon: "icon-slider-finance",
       i18n: "web.gfuc.financial_management"
     },
     children: [
@@ -141,7 +141,7 @@ export const routes: RouteRecordRaw[] = [
     component: () => import("@/layout/index.vue"),
     meta: {
       title: "设置",
-      icon: "setting",
+      icon: "icon-slider-setting",
       i18n: "web.gfuc.setting"
     },
     redirect: "/setting/messageNotification",
