@@ -2,6 +2,8 @@
 @use "./var";
 @use "./element";
 @use "./element-override";
+@use "element-plus/theme-chalk/src/message-box.scss";
+@use "element-plus/theme-chalk/src/message.scss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
