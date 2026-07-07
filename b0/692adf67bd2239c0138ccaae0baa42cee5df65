@@ -1,0 +1,27 @@
+skills/ui-fidelity/SKILL.md
+  s_36ef5db806df97::t_192fd97e8b5edc 1-86
+skills/gen-business-docs/SKILL.md
+  s_36ef5db806df97::t_938fa687f5dfb6 1-64
+skills/pinia-store/SKILL.md
+  s_36ef5db806df97::t_460189aff30670 1-119
+skills/pre-commit/SKILL.md
+  s_36ef5db806df97::t_b8b6653d6beeb0 1-57
+skills/api-request/SKILL.md
+  s_36ef5db806df97::t_17f6c1503b0248 1-106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "b0692adf67bd2239c0138ccaae0baa42cee5df65",
+  "prompts": {},
+  "sessions": {
+    "s_36ef5db806df97": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d61ecf1f-d844-40fd-aa10-3a902caebbdb",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
