@@ -35,8 +35,14 @@
       </el-menu>
     </el-scrollbar>
 
-    <!-- 底部退出登录 -->
+    <!-- 底部帮助中心和退出登录 -->
     <div class="sidebar-footer">
+      <div class="help-entry" @click="handleGoHelp">
+        <svg-icon name="help" width="24" height="24" />
+        <span v-show="!isCollapse" class="help-text">{{
+          $t("web.gfuc.help_center" /** 帮助中心 **/)
+        }}</span>
+      </div>
       <div class="logout-entry" @click="handleLogout">
         <svg-icon name="icon-logout" width="24" height="24" />
         <span v-show="!isCollapse" class="logout-text">{{
@@ -68,6 +74,10 @@ const isCollapse = computed(() => !appStore.sidebar.opened);
 
 const toggleCollapse = () => {
   appStore.toggleSidebar();
+};
+
+const handleGoHelp = () => {
+  router.push("/help");
 };
 
 const handleLogout = async () => {
@@ -119,7 +129,7 @@ const handleLogout = async () => {
     }
 
     .logo-text {
-      font-size: var(--font-size-md);
+      font-size: var(--font-size-base);
       font-weight: 600;
       color: var(--text-color-primary);
       white-space: nowrap;
@@ -165,6 +175,17 @@ const handleLogout = async () => {
   :deep(.el-menu) {
     width: 100%;
     border-right: none;
+
+    // 一级菜单字体颜色
+    .el-menu-item,
+    .el-sub-menu__title {
+      color: #000;
+    }
+
+    // 二级菜单字体颜色
+    .el-menu--inline .el-menu-item {
+      color: #525252;
+    }
 
     &.el-menu--collapse {
       width: 100%;
@@ -217,6 +238,11 @@ const handleLogout = async () => {
     }
 
     .sidebar-footer {
+      .help-entry {
+        justify-content: center;
+        padding: 12px 0;
+      }
+
       .logout-entry {
         justify-content: center;
         padding: 12px 0;
@@ -231,7 +257,25 @@ const handleLogout = async () => {
 
   .sidebar-footer {
     flex-shrink: 0;
-    border-top: 1px solid var(--border-color-light, #eff0f5);
+
+    .help-entry {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 12px 16px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: rgb(252 76 2 / 4%);
+      }
+
+      .help-text {
+        font-size: var(--font-size-base);
+        color: #999;
+        white-space: nowrap;
+      }
+    }
 
     .logout-entry {
       display: flex;
@@ -246,7 +290,7 @@ const handleLogout = async () => {
       }
 
       .logout-text {
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-base);
         color: #999;
         white-space: nowrap;
       }
