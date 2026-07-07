@@ -166,6 +166,17 @@ const handleLogout = async () => {
     width: 100%;
     border-right: none;
 
+    // 一级菜单字体颜色
+    .el-menu-item,
+    .el-sub-menu__title {
+      color: #000;
+    }
+
+    // 二级菜单字体颜色
+    .el-menu--inline .el-menu-item {
+      color: #525252;
+    }
+
     &.el-menu--collapse {
       width: 100%;
 
