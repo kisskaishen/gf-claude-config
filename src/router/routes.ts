@@ -117,9 +117,9 @@ export const routes: RouteRecordRaw[] = [
         name: "RechargeRecord",
         component: () => import("@/views/finance/record.vue"),
         meta: {
-          title: "充值记录",
+          title: "充值",
           requireAuth: true,
-          i18n: "web.gfuc.recharge_record"
+          i18n: "web.gfuc.recharge"
         }
       },
       {
