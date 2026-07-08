@@ -1,0 +1,14 @@
+src/router/routes.ts
+  h_a8c280f6806a43 120,122
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "139e82f67ac14c47dc10b4b2efa57ba6ba159d99",
+  "prompts": {},
+  "humans": {
+    "h_a8c280f6806a43": {
+      "author": "秦文凯 <qinwenkai@gofo.com>"
+    }
+  }
+}
